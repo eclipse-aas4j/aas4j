@@ -2,40 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dataformat-parent</artifactId>
+        <groupId>org.eclipse.aas4j</groupId>
+        <version>${revision}</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.admin-shell.aas</groupId>
     <artifactId>model</artifactId>
-    <version>${revision}</version>
 
     <!-- Description, name, URL, developers, and scm are required by Sonatype for the Central Repository release -->
     <description>This project includes a Java representation of the classes defined in the Asset Administration Shell ontology.</description>
     <name>Asset Administration Shell Java Model</name>
-    <url>https://github.com/admin-shell-io/java-model</url>
-    <developers>
-        <developer>
-            <organization>SAP SE</organization>
-            <url>https://github.com/admin-shell-io/java-model#contributors</url>
-        </developer>
-        <developer>
-            <organization>Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e.V.</organization>
-            <url>https://github.com/admin-shell-io/java-model#contributors</url>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:git://github.com/admin-shell-io/java-model.git</connection>
-        <developerConnection>scm:git:git://github.com/admin-shell-io/java-model.git</developerConnection>
-        <url>https://github.com/admin-shell-io/java-model/tree/main</url>
-    </scm>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
 
 
     <properties>
