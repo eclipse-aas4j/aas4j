@@ -1,0 +1,91 @@
+{
+  "idShort": "TestAssetAdministrationShell",
+  "description": [
+    {
+      "language": "en-us",
+      "text": "An Example Asset Administration Shell for the test application"
+    },
+    {
+      "language": "de",
+      "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+    }
+  ],
+  "modelType":
+  {
+    "name": "AssetAdministrationShell"
+  },
+  "identification":
+  {
+    "id": "https://acplt.org/Test_AssetAdministrationShell",
+    "idType": "Iri"
+  },
+  "administration":
+  {
+    "version": "0.9",
+    "revision": "0"
+  },
+  "derivedFrom":
+  {
+    "keys": [
+      {
+        "type": "AssetAdministrationShell",
+        "idType": "Iri",
+        "value": "https://acplt.org/TestAssetAdministrationShell2"
+      }
+    ]
+  },
+  "assetInformation":
+  {
+    "assetKind": "Instance",
+    "globalAssetId":
+    {
+      "keys": [
+        {
+          "type": "Asset",
+          "idType": "Iri",
+          "value": "https://acplt.org/Test_Asset"
+        }
+      ]
+    },
+    "billOfMaterial": [
+      {
+        "keys": [
+          {
+            "type": "Submodel",
+            "idType": "Iri",
+            "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
+          }
+        ]
+      }
+    ]
+  },
+  "submodels": [
+    {
+      "keys": [
+        {
+          "type": "Submodel",
+          "idType": "Iri",
+          "value": "https://acplt.org/Test_Submodel"
+        }
+      ]
+    },
+    {
+      "keys": [
+        {
+          "type": "Submodel",
+          "idType": "Iri",
+          "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
+        }
+      ]
+    },
+    {
+      "keys": [
+        {
+          "type": "Submodel",
+          "idType": "Iri",
+          "value": "http://acplt.org/Submodels/Assets/TestAsset/Identification"
+        }
+      ]
+    }
+  ]
+}

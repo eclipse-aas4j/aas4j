@@ -1,0 +1,34 @@
+# This workflow will deploy the Serializers and the Validator to the sonatype
+# staging environment. This will NOT automatically publish the artifacts. An
+# authorized user must still manually close the staging repository first.
+
+name: Generate and Deploy to Sonatype
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'adopt'
+          server-id: ossrh
+          server-username: OSSRH_USERNAME
+          server-password: OSSRH_PASSWORD
+          gpg-private-key: ${{ secrets.MYGPGKEY_SEC }}
+
+      - name: Publish to Apache Maven Central
+        run: mvn -P MavenCentral license:format deploy
+        env:
+          OSSRH_USERNAME: sebbader
+          OSSRH_PASSWORD: ${{ secrets.SEBBADER_OSSHR_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_KEY_PASSWORD }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_KEY_PASSWORD }}

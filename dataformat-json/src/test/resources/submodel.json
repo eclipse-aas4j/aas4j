@@ -1,0 +1,139 @@
+
+{
+    "modelType":
+            {
+                "name": "Submodel"
+            },
+    "kind": "Instance",
+    "semanticId":
+            {
+                "keys": [
+                    {
+                        "idType": "Iri",
+                        "type": "Submodel",
+                        "value": "http://acplt.org/SubmodelTemplates/AssetIdentification"
+                    }
+                ]
+            },
+    "administration":
+            {
+                "revision": "0",
+                "version": "0.9"
+            },
+    "identification":
+            {
+                "idType": "Iri",
+                "id": "http://acplt.org/Submodels/Assets/TestAsset/Identification"
+            },
+    "idShort": "Identification",
+    "submodelElements": [
+        {
+            "modelType":
+                    {
+                        "name": "Property"
+                    },
+            "semanticId":
+                    {
+                        "keys": [
+                            {
+                                "idType": "Iri",
+                                "type": "GlobalReference",
+                                "value": "0173-1#02-AAO677#002"
+                            }
+                        ]
+                    },
+            "value": "http://acplt.org/ValueId/ACPLT",
+            "valueId":
+                    {
+                        "keys": [
+                            {
+                                "idType": "Iri",
+                                "type": "GlobalReference",
+                                "value": "http://acplt.org/ValueId/ACPLT"
+                            }
+                        ]
+                    },
+            "valueType": "string",
+            "qualifiers": [
+                {
+                    "modelType":
+                            {
+                                "name": "Qualifier"
+                            },
+                    "type": "http://acplt.org/Qualifier/ExampleQualifier",
+                    "value": "100",
+                    "valueType": "int"
+                },
+                {
+                    "modelType":
+                            {
+                                "name": "Qualifier"
+                            },
+                    "type": "http://acplt.org/Qualifier/ExampleQualifier2",
+                    "value": "50",
+                    "valueType": "int"
+                }
+            ],
+            "idShort": "ManufacturerName",
+            "description": [
+                {
+                    "language": "en-us",
+                    "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
+                },
+                {
+                    "language": "de",
+                    "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+                }
+            ]
+        },
+        {
+            "modelType":
+                    {
+                        "name": "Property"
+                    },
+            "semanticId":
+                    {
+                        "keys": [
+                            {
+                                "idType": "Iri",
+                                "type": "GlobalReference",
+                                "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
+                            }
+                        ]
+                    },
+            "value": "978-8234-234-342",
+            "valueId":
+                    {
+                        "keys": [
+                            {
+                                "idType": "Iri",
+                                "type": "GlobalReference",
+                                "value": "978-8234-234-342"
+                            }
+                        ]
+                    },
+            "valueType": "string",
+            "idShort": "InstanceId",
+            "description": [
+                {
+                    "language": "en-us",
+                    "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
+                },
+                {
+                    "language": "de",
+                    "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+                }
+            ]
+        }
+    ],
+    "description": [
+        {
+            "language": "en-us",
+            "text": "An example asset identification submodel for the test application"
+        },
+        {
+            "language": "de",
+            "text": "Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung"
+        }
+    ]
+}

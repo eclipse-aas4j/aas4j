@@ -1,0 +1,14 @@
+<settings>
+    <servers>
+        <server>
+            <id>snapshots</id>
+            <username>ids</username>
+            <password>indasp123!</password>
+        </server>
+        <server>
+            <id>eis-snapshot-repo</id>
+            <username>ids</username>
+            <password>indasp123!</password>
+        </server>
+    </servers>
+</settings>
