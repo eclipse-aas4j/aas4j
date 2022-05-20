@@ -1,9 +1,9 @@
-# Java Model
+# Eclipse AAS4J - AAS Model
 
 The AAS Java Model is an implementation of the Asset Administration Shell
 metamodel in Java. It contains all classes and properties as defined by the
 document 'Details of the Asset Administration Shell' published on
-[www.plattform-i40.de](https://www.plattform-i40.de).
+[Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
 
 
 # Build and Use
@@ -16,7 +16,7 @@ or by integrating the library as a dependency:
 
 ```
 <dependency>
-  <groupId>io.admin-shell.aas</groupId>
+  <groupId>org.eclipse.aas4j</groupId>
   <artifactId>model</artifactId>
   <version>latest-version</version>
 <dependency>
@@ -30,10 +30,6 @@ The project contains several packages.
 - `io.adminshell.aas.v3.model.annotations` Annotations used on the model
 - `io.adminshell.aas.v3.model.builder` Abstract builder classes for the interfaces
 - `io.adminshell.aas.v3.model.impl` Default implementations of the AAS classes. Can be replaced with custom implementations if needed.
-
-# How to Contribute
-
-We always look for contributions, bug reports, feature requests etc. Simply open an [issue](https://github.com/admin-shell-io/java-model/issues) or - even better - directly propose a change through a [pull request](https://github.com/admin-shell-io/java-model/pulls).
 
 
 # Contributors
