@@ -34,6 +34,9 @@ The project contains several packages.
 
 # Contributors
 
+
+An updated list of the committers can be found here: https://projects.eclipse.org/projects/dt.aas4j/who
+
 | Name | Affiliation | Github Account |
 |:--| -- | -- |
 | Sebastian Bader | Fraunhofer IAIS | [sebbader](https://github.com/sebbader) |
