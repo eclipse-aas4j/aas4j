@@ -1,17 +1,18 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package io.adminshell.aas.v3.model.impl;
 
 import java.util.Objects;
@@ -37,8 +38,8 @@ public class DefaultAccessControlPolicyPoints implements AccessControlPolicyPoin
     @IRI("https://admin-shell.io/aas/3/0/RC01/AccessControlPolicyPoints/policyDecisionPoint")
     protected PolicyDecisionPoint policyDecisionPoint;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC01/AccessControlPolicyPoints/policyEnforcementPoints")
-    protected PolicyEnforcementPoints policyEnforcementPoints;
+    @IRI("https://admin-shell.io/aas/3/0/RC01/AccessControlPolicyPoints/policyEnforcementPoint")
+    protected PolicyEnforcementPoints policyEnforcementPoint;
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/AccessControlPolicyPoints/policyInformationPoints")
     protected PolicyInformationPoints policyInformationPoints;
@@ -49,7 +50,7 @@ public class DefaultAccessControlPolicyPoints implements AccessControlPolicyPoin
     public int hashCode() {
         return Objects.hash(this.policyAdministrationPoint,
             this.policyDecisionPoint,
-            this.policyEnforcementPoints,
+            this.policyEnforcementPoint,
             this.policyInformationPoints);
     }
 
@@ -65,7 +66,7 @@ public class DefaultAccessControlPolicyPoints implements AccessControlPolicyPoin
             DefaultAccessControlPolicyPoints other = (DefaultAccessControlPolicyPoints) obj;
             return Objects.equals(this.policyAdministrationPoint, other.policyAdministrationPoint) &&
                 Objects.equals(this.policyDecisionPoint, other.policyDecisionPoint) &&
-                Objects.equals(this.policyEnforcementPoints, other.policyEnforcementPoints) &&
+                Objects.equals(this.policyEnforcementPoint, other.policyEnforcementPoint) &&
                 Objects.equals(this.policyInformationPoints, other.policyInformationPoints);
         }
     }
@@ -91,13 +92,13 @@ public class DefaultAccessControlPolicyPoints implements AccessControlPolicyPoin
     }
 
     @Override
-    public PolicyEnforcementPoints getPolicyEnforcementPoints() {
-        return policyEnforcementPoints;
+    public PolicyEnforcementPoints getPolicyEnforcementPoint() {
+        return policyEnforcementPoint;
     }
 
     @Override
-    public void setPolicyEnforcementPoints(PolicyEnforcementPoints policyEnforcementPoints) {
-        this.policyEnforcementPoints = policyEnforcementPoints;
+    public void setPolicyEnforcementPoint(PolicyEnforcementPoints policyEnforcementPoint) {
+        this.policyEnforcementPoint = policyEnforcementPoint;
     }
 
     @Override

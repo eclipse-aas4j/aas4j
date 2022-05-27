@@ -1,17 +1,18 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package io.adminshell.aas.v3.model.impl;
 
 import java.util.ArrayList;
@@ -40,20 +41,23 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
     @IRI("https://admin-shell.io/aas/3/0/RC01/AccessPermissionRule/targetSubjectAttributes")
     protected SubjectAttributes targetSubjectAttributes;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC01/HasExtensions/extension")
+    protected List<Extension> extensions = new ArrayList<>();
+
     @IRI("https://admin-shell.io/aas/3/0/RC01/Qualifiable/qualifier")
     protected List<Constraint> qualifiers = new ArrayList<>();
+
+    @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/category")
+    protected String category;
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/description")
     protected List<LangString> descriptions = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/displayName")
-    protected LangString displayName;
+    protected List<LangString> displayNames = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/idShort")
     protected String idShort;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/referableCategory")
-    protected List<String> referableCategories = new ArrayList<>();
 
     public DefaultAccessPermissionRule() {}
 
@@ -61,10 +65,11 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
     public int hashCode() {
         return Objects.hash(this.permissionsPerObjects,
             this.targetSubjectAttributes,
-            this.referableCategories,
+            this.category,
             this.descriptions,
-            this.displayName,
+            this.displayNames,
             this.idShort,
+            this.extensions,
             this.qualifiers);
     }
 
@@ -80,10 +85,11 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
             DefaultAccessPermissionRule other = (DefaultAccessPermissionRule) obj;
             return Objects.equals(this.permissionsPerObjects, other.permissionsPerObjects) &&
                 Objects.equals(this.targetSubjectAttributes, other.targetSubjectAttributes) &&
-                Objects.equals(this.referableCategories, other.referableCategories) &&
+                Objects.equals(this.category, other.category) &&
                 Objects.equals(this.descriptions, other.descriptions) &&
-                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.displayNames, other.displayNames) &&
                 Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
                 Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
@@ -109,13 +115,13 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
     }
 
     @Override
-    public List<String> getReferableCategories() {
-        return referableCategories;
+    public String getCategory() {
+        return category;
     }
 
     @Override
-    public void setReferableCategories(List<String> referableCategories) {
-        this.referableCategories = referableCategories;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
@@ -129,13 +135,13 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
     }
 
     @Override
-    public LangString getDisplayName() {
-        return displayName;
+    public List<LangString> getDisplayNames() {
+        return displayNames;
     }
 
     @Override
-    public void setDisplayName(LangString displayName) {
-        this.displayName = displayName;
+    public void setDisplayNames(List<LangString> displayNames) {
+        this.displayNames = displayNames;
     }
 
     @Override
@@ -146,6 +152,16 @@ public class DefaultAccessPermissionRule implements AccessPermissionRule {
     @Override
     public void setIdShort(String idShort) {
         this.idShort = idShort;
+    }
+
+    @Override
+    public List<Extension> getExtensions() {
+        return extensions;
+    }
+
+    @Override
+    public void setExtensions(List<Extension> extensions) {
+        this.extensions = extensions;
     }
 
     @Override
