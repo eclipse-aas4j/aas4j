@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.dataformat.xml.deserialization;
 
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 
 public class LangStringsDeserializer extends NoEntryWrapperListDeserializer<LangString> {
     public LangStringsDeserializer() {

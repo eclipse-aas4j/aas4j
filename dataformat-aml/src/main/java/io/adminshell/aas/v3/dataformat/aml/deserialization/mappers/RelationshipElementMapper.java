@@ -20,7 +20,7 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.RelationshipElement;
+import io.adminshell.aas.v3.rc02.model.RelationshipElement;
 import java.beans.PropertyDescriptor;
 
 public class RelationshipElementMapper extends ReferableMapper<RelationshipElement> {

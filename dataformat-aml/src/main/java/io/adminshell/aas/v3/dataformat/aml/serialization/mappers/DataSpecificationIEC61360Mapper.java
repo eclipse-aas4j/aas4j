@@ -20,10 +20,12 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import java.beans.PropertyDescriptor;
 
+// TODO solve the EmbeddedDataSpecifciation issue
+/*
 public class DataSpecificationIEC61360Mapper extends DefaultMapper<DataSpecificationIEC61360> {
 
     @Override
@@ -44,4 +46,4 @@ public class DataSpecificationIEC61360Mapper extends DefaultMapper<DataSpecifica
     protected boolean skipProperty(PropertyDescriptor property) {
         return property.getName().equals("levelTypes") || property.getName().equals("valueList");
     }
-}
+}*/

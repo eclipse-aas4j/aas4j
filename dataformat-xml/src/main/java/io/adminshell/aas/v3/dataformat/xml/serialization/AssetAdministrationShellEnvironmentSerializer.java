@@ -30,13 +30,12 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
-import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 
-public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<AssetAdministrationShellEnvironment> {
+public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
     private static final String[] SCHEMA_LOCATION = {"xsi:schemaLocation",
         "http://www.admin-shell.io/aas/3/0 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd"};
@@ -62,7 +61,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
     }
 
     @Override
-    public void serialize(AssetAdministrationShellEnvironment value, JsonGenerator gen, SerializerProvider serializers)
+    public void serialize(Environment value, JsonGenerator gen, SerializerProvider serializers)
             throws IOException {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         XMLStreamWriter streamWriter = xgen.getStaxWriter();
@@ -95,18 +94,10 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
         }
     }
 
-    private void writeContent(AssetAdministrationShellEnvironment value, ToXmlGenerator xgen) throws IOException {
+    private void writeContent(Environment value, ToXmlGenerator xgen) throws IOException {
         writeAssetAdministrationShells(xgen, value.getAssetAdministrationShells());
-        writeAssets(xgen, value.getAssets());
         writeConceptDescriptions(xgen, value.getConceptDescriptions());
         writeSubmodels(xgen, value.getSubmodels());
-    }
-
-    private void writeAssets(ToXmlGenerator xgen, List<Asset> assets) throws IOException {
-        if (assets.isEmpty()) {
-            return;
-        }
-        writeWrappedArray(xgen, ASSETLIST_TAGNAME, ASSET_TAGNAME, assets);
     }
 
     private void writeAssetAdministrationShells(ToXmlGenerator xgen, List<AssetAdministrationShell> aasList)

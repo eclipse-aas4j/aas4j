@@ -15,12 +15,12 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Entity;
-import io.adminshell.aas.v3.model.EntityType;
+import io.adminshell.aas.v3.rc02.model.Entity;
+import io.adminshell.aas.v3.rc02.model.EntityType;
 import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.impl.DefaultEntity;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEntity;
 
 public class EntityParser extends ReferableParser<Entity> {
 

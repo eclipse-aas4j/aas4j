@@ -32,11 +32,11 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import io.adminshell.aas.v3.dataformat.DeserializationException;
 import io.adminshell.aas.v3.dataformat.Serializer;
 import io.adminshell.aas.v3.dataformat.xml.XmlDeserializer;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
 
 /**
  * The AASX package converter converts a aasx package into a list of aas, a list
@@ -49,7 +49,7 @@ public class AASXDeserializer {
 
     private XmlDeserializer deserializer = new XmlDeserializer();
 
-    private AssetAdministrationShellEnvironment environment;
+    private Environment environment;
     private final OPCPackage aasxRoot;
 
     /**
@@ -85,7 +85,7 @@ public class AASXDeserializer {
      * @throws IOException if creating input streams for aasx fails
      * @throws DeserializationException if deserialization of the serialized aas environment fails
      */
-    public AssetAdministrationShellEnvironment read() throws InvalidFormatException, IOException, DeserializationException {
+    public Environment read() throws InvalidFormatException, IOException, DeserializationException {
         // If the XML was already parsed return cached environment
         if (environment != null) {
             return environment;

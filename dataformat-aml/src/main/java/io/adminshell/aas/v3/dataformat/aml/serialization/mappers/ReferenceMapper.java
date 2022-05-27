@@ -21,8 +21,7 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.DefaultMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class ReferenceMapper extends DefaultMapper<Reference> {
 

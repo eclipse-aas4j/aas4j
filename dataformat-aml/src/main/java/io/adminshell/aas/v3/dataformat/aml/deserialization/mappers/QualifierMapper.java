@@ -17,14 +17,15 @@ package io.adminshell.aas.v3.dataformat.aml.deserialization.mappers;
 
 import io.adminshell.aas.v3.dataformat.aml.deserialization.AmlParser;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.DefaultMapper;
-import io.adminshell.aas.v3.dataformat.aml.deserialization.Mapper;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.*;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
+import io.adminshell.aas.v3.rc02.model.*;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultQualifier;
 
 import java.beans.PropertyDescriptor;
 

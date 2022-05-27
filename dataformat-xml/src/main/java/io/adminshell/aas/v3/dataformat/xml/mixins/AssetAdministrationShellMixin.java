@@ -21,15 +21,11 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.View;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public interface AssetAdministrationShellMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRef")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRefs")
     public List<Reference> getSubmodels();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "view")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "views")
-    public List<View> getViews();
 }

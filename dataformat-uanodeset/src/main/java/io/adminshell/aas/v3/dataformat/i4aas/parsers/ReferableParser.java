@@ -24,20 +24,20 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASUtils;
 import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 import io.adminshell.aas.v3.model.Constraint;
 import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.HasDataSpecification;
-import io.adminshell.aas.v3.model.HasKind;
-import io.adminshell.aas.v3.model.HasSemantics;
+import io.adminshell.aas.v3.rc02.model.HasDataSpecification;
+import io.adminshell.aas.v3.rc02.model.HasKind;
+import io.adminshell.aas.v3.rc02.model.HasSemantics;
 import io.adminshell.aas.v3.model.Identifier;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Qualifiable;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Qualifiable;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 
 public abstract class ReferableParser<T extends Referable> extends I4AASParser<T> {
 

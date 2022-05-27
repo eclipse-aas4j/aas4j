@@ -37,8 +37,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.adminshell.aas.v3.dataformat.SerializationException;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
 import io.adminshell.aas.v3.dataformat.core.AASSimple;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEnvironment;
 
 public class JsonSerializerTest {
     public static final java.io.File AASSIMPLE_FILE = new java.io.File("src/test/resources/jsonExample.json");
@@ -51,7 +51,7 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeNull() throws JsonProcessingException, IOException, SerializationException {
-        assertEquals("null", new JsonSerializer().write((AssetAdministrationShellEnvironment) null));
+        assertEquals("null", new JsonSerializer().write((Environment) null));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeEmpty() throws JsonProcessingException, IOException, SerializationException, JSONException {
-        validateAndCompare(new java.io.File("src/test/resources/empty_aas.json"), new DefaultAssetAdministrationShellEnvironment.Builder().build());
+        validateAndCompare(new java.io.File("src/test/resources/empty_aas.json"), new DefaultEnvironment.Builder().build());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class JsonSerializerTest {
         validateAndCompare(AASFULL_FILE, AASFull.ENVIRONMENT);
     }
 
-    private void validateAndCompare(File expectedFile, AssetAdministrationShellEnvironment environment) throws IOException, SerializationException, JSONException {
+    private void validateAndCompare(File expectedFile, Environment environment) throws IOException, SerializationException, JSONException {
         String expected = Files.readString(expectedFile.toPath());
         String actual = new JsonSerializer().write(environment);
         logger.info(actual);

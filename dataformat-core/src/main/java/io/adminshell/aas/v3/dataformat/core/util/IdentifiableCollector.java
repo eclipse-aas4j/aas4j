@@ -16,12 +16,11 @@
 package io.adminshell.aas.v3.dataformat.core.util;
 
 import io.adminshell.aas.v3.dataformat.core.visitor.AssetAdministrationShellElementWalkerVisitor;
-import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Identifiable;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.Identifiable;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,9 +30,9 @@ import java.util.Set;
  */
 public class IdentifiableCollector {
 
-    private AssetAdministrationShellEnvironment env;
+    private Environment env;
 
-    public IdentifiableCollector(AssetAdministrationShellEnvironment env) {
+    public IdentifiableCollector(Environment env) {
         this.env = env;
     }
 
@@ -49,12 +48,6 @@ public class IdentifiableCollector {
 
         @Override
         public void visit(AssetAdministrationShell value) {
-            identifiables.add(value);
-            AssetAdministrationShellElementWalkerVisitor.super.visit(value);
-        }
-
-        @Override
-        public void visit(Asset value) {
             identifiables.add(value);
             AssetAdministrationShellElementWalkerVisitor.super.visit(value);
         }

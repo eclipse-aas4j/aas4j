@@ -21,15 +21,17 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXObject;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.*;
-import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
-import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.*;
+// TODO import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
+// TODO import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+// TODO solve the EmbeddedDataSpecifciation issue
+/*
 public class EmbeddedDataSpecificationCollectionMapper extends DefaultMapper<Collection<EmbeddedDataSpecification>> {
 
     @Override
@@ -60,4 +62,4 @@ public class EmbeddedDataSpecificationCollectionMapper extends DefaultMapper<Col
         return result;
     }
 
-}
+}*/

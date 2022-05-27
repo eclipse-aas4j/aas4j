@@ -20,9 +20,11 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 
+// TODO solve the EmbeddedDataSpecifciation issue
+/*
 public class DataSpecificationMapper extends DefaultMapper<EmbeddedDataSpecification> {
 
     public DataSpecificationMapper() {
@@ -45,4 +47,4 @@ public class DataSpecificationMapper extends DefaultMapper<EmbeddedDataSpecifica
             // should this even be serialized for AML?
         }
     }
-}
+}*/

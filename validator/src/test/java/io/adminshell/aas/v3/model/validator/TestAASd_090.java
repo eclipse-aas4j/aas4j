@@ -21,12 +21,12 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.Blob;
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.Property;
-import io.adminshell.aas.v3.model.impl.DefaultBlob;
-import io.adminshell.aas.v3.model.impl.DefaultFile;
-import io.adminshell.aas.v3.model.impl.DefaultProperty;
+import io.adminshell.aas.v3.rc02.model.Blob;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultBlob;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultFile;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultProperty;
 
 /**
  * Tests the following constraint:

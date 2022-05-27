@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.dataformat.aml.serialization.mappers;
 
-import io.adminshell.aas.v3.model.Property;
+import io.adminshell.aas.v3.rc02.model.Property;
 
 public class PropertyMapper extends AbstractElementMapperWithValueType<Property> {
 

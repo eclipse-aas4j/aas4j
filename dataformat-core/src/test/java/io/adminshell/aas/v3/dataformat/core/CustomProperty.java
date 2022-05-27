@@ -18,11 +18,13 @@ package io.adminshell.aas.v3.dataformat.core;
 import java.util.List;
 import java.util.Objects;
 
-import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.*;
 
 public class CustomProperty implements Property {
 
-	protected List<EmbeddedDataSpecification> embeddedDataSpecifications;
+	// protected List<EmbeddedDataSpecification> embeddedDataSpecifications;
+
+	protected List<Reference> dataSpecifications;
 
 	protected ModelingKind kind;
 
@@ -32,19 +34,21 @@ public class CustomProperty implements Property {
 
 	protected Reference valueId;
 
-	protected String valueType;
+	protected DataTypeDefXsd valueType;
 
-	protected List<Constraint> qualifiers;
+	protected List<Qualifier> qualifiers;
 
 	protected String category;
 
-	protected List<LangString> descriptions;
+	protected LangStringSet descriptions;
 
-	protected List<LangString> displayNames;
+	protected LangStringSet displayNames;
 
 	protected String idShort;
 
 	protected List<Extension> extensions;
+
+	protected List<Reference> supplementalSemanticIds;
 
 	protected CustomProperty() {
 	}
@@ -52,7 +56,7 @@ public class CustomProperty implements Property {
 	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[] { this.valueType, this.value, this.valueId, this.category, this.descriptions,
-				this.displayNames, this.idShort, this.qualifiers, this.embeddedDataSpecifications, this.kind,
+				this.displayNames, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications,*/ this.kind,
 				this.semanticId });
 	}
 
@@ -71,19 +75,19 @@ public class CustomProperty implements Property {
 					&& Objects.equals(this.descriptions, other.descriptions)
 					&& Objects.equals(this.displayNames, other.displayNames)
 					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
-					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
 					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
 		}
 	}
 
 	@Override
-	final public String getValueType() {
-		return valueType;
+	final public DataTypeDefXsd getValueType() {
+		return this.valueType;
 	}
 
 	@Override
-	final public void setValueType(String valueType) {
-		this.valueType = valueType;
+	final public void setValueType(DataTypeDefXsd dataType) {
+		this.valueType = dataType;
 	}
 
 	@Override
@@ -117,23 +121,33 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDescriptions() {
+	final public LangStringSet getDescription() {
 		return descriptions;
 	}
 
 	@Override
-	final public void setDescriptions(List<LangString> descriptions) {
-		this.descriptions = descriptions;
+	final public void setDescription(LangStringSet description) {
+		this.descriptions = description;
 	}
 
 	@Override
-	final public List<LangString> getDisplayNames() {
+	public String getChecksum() {
+		return null;
+	}
+
+	@Override
+	public void setChecksum(String checksum) {
+
+	}
+
+	@Override
+	final public LangStringSet getDisplayName() {
 		return displayNames;
 	}
 
 	@Override
-	final public void setDisplayNames(List<LangString> displayNames) {
-		this.displayNames = displayNames;
+	final public void setDisplayName(LangStringSet displayName) {
+		this.displayNames = displayName;
 	}
 
 	@Override
@@ -147,16 +161,16 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<Constraint> getQualifiers() {
+	final public List<Qualifier> getQualifiers() {
 		return qualifiers;
 	}
 
 	@Override
-	final public void setQualifiers(List<Constraint> qualifiers) {
+	final public void setQualifiers(List<Qualifier> qualifiers) {
 		this.qualifiers = qualifiers;
 	}
 
-	@Override
+	/* TODO @Override
 	final public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
 		return embeddedDataSpecifications;
 	}
@@ -164,6 +178,16 @@ public class CustomProperty implements Property {
 	@Override
 	final public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
 		this.embeddedDataSpecifications = embeddedDataSpecifications;
+	}*/
+
+	@Override
+	final public List<Reference> getDataSpecifications() {
+		return dataSpecifications;
+	}
+
+	@Override
+	final public void setDataSpecifications(List<Reference> dataSpecifications) {
+		this.dataSpecifications = dataSpecifications;
 	}
 
 	@Override
@@ -184,6 +208,16 @@ public class CustomProperty implements Property {
 	@Override
 	final public void setSemanticId(Reference semanticId) {
 		this.semanticId = semanticId;
+	}
+
+	@Override
+	public List<Reference> getSupplementalSemanticIds() {
+		return supplementalSemanticIds;
+	}
+
+	@Override
+	public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+		this.supplementalSemanticIds = supplementalSemanticIds;
 	}
 
 	@Override

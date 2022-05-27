@@ -19,8 +19,8 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXObject;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -116,7 +116,7 @@ public class AmlParser {
      * @throws MappingException when resolving fails, e.g. because cardinalities
      * do not match or AML IDs cannot be resolved
      */
-    public void resolveIdsToReferences(AssetAdministrationShellEnvironment environment) throws MappingException {
+    public void resolveIdsToReferences(Environment environment) throws MappingException {
         for (Map.Entry<ObjectLocationByProperty, List<String>> entry : idsToResolve.entrySet()) {
             Object value = null;
             Class<?> acceptedType = null;

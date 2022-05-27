@@ -20,7 +20,7 @@ import io.adminshell.aas.v3.dataformat.aml.common.AbstractMappingContext;
 import io.adminshell.aas.v3.dataformat.aml.common.naming.NamingStrategy;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
 import io.adminshell.aas.v3.dataformat.mapping.MappingProvider;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Type;
 

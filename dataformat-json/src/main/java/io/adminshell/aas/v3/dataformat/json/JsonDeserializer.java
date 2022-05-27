@@ -28,12 +28,12 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import io.adminshell.aas.v3.dataformat.DeserializationException;
 import io.adminshell.aas.v3.dataformat.Deserializer;
 import io.adminshell.aas.v3.dataformat.core.ReflectionHelper;
-import io.adminshell.aas.v3.dataformat.core.deserialization.EmbeddedDataSpecificationDeserializer;
+// TODO import io.adminshell.aas.v3.dataformat.core.deserialization.EmbeddedDataSpecificationDeserializer;
 import io.adminshell.aas.v3.dataformat.core.deserialization.EnumDeserializer;
 import io.adminshell.aas.v3.dataformat.json.modeltype.ModelTypeProcessor;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Environment;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Referable;
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
@@ -42,8 +42,9 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
+    // TODO
     protected static Map<Class<?>, com.fasterxml.jackson.databind.JsonDeserializer> customDeserializers = Map.of(
-            EmbeddedDataSpecification.class, new EmbeddedDataSpecificationDeserializer());
+           /* EmbeddedDataSpecification.class, new EmbeddedDataSpecificationDeserializer() */);
 
     public JsonDeserializer() {
         initTypeResolver();
@@ -89,9 +90,9 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
     }
 
     @Override
-    public AssetAdministrationShellEnvironment read(String value) throws DeserializationException {
+    public Environment read(String value) throws DeserializationException {
         try {
-            return mapper.treeToValue(ModelTypeProcessor.preprocess(value), AssetAdministrationShellEnvironment.class);
+            return mapper.treeToValue(ModelTypeProcessor.preprocess(value), Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
         }

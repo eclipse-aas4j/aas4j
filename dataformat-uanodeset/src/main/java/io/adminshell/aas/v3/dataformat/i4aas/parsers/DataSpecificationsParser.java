@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
 import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
 
 public class DataSpecificationsParser extends I4AASParser<List<EmbeddedDataSpecification>> {

@@ -24,12 +24,11 @@ import io.adminshell.aas.v3.dataformat.aml.common.naming.NumberingClassNamingStr
 import io.adminshell.aas.v3.dataformat.aml.common.naming.PropertyNamingStrategy;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
 import io.adminshell.aas.v3.dataformat.mapping.MappingProvider;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.AssetInformation;
-import io.adminshell.aas.v3.model.Identifiable;
-import io.adminshell.aas.v3.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Qualifiable;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.AssetInformation;
+import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Qualifiable;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class Aml2AasMapper {
      * @return AssetAdministrationShellEnvironment representation
      * @throws MappingException if the mapping fails
      */
-    public AssetAdministrationShellEnvironment map(CAEXFile aml) throws MappingException {
+    public Environment map(CAEXFile aml) throws MappingException {
         // unclear how to handle additional information
         List<Object> additionalInformation = aml.getAdditionalInformation();
         AmlParser parser = new AmlParser(aml);
@@ -71,12 +70,11 @@ public class Aml2AasMapper {
         mappingProvider.register(new OperationCollectionMapper());
         mappingProvider.register(new FileMapper());
         mappingProvider.register(new RangeMapper());
-        mappingProvider.register(new ViewMapper());
         mappingProvider.register(new PropertyMapper());
         mappingProvider.register(new ConceptDescriptionMapper());
-        mappingProvider.register(new EmbeddedDataSpecificationCollectionMapper());
-        mappingProvider.register(new DataSpecificationIEC61360Mapper());
-        mappingProvider.register(new EnumDataTypeIEC61360Mapper());
+        // TODO mappingProvider.register(new EmbeddedDataSpecificationCollectionMapper());
+        // TODO mappingProvider.register(new DataSpecificationIEC61360Mapper());
+        // TODO mappingProvider.register(new EnumDataTypeIEC61360Mapper());
         mappingProvider.register(new IdentifierKeyValuePairCollectionMapper());
 
         AbstractClassNamingStrategy classNamingStrategy = new NumberingClassNamingStrategy();
@@ -88,7 +86,7 @@ public class Aml2AasMapper {
         propertyNamingStrategy.registerCustomNaming(AssetInformation.class, "specificAssetIds", "specificAssetId");
         MappingContext context = new MappingContext(mappingProvider, classNamingStrategy, propertyNamingStrategy, config.getTypeFactory());
         context.setDocumentInfo(AmlDocumentInfo.fromFile(aml));
-        AssetAdministrationShellEnvironment result = context.map(AssetAdministrationShellEnvironment.class, parser);
+        Environment result = context.map(Environment.class, parser);
         parser.resolveIdsToReferences(result);
         return result;
     }

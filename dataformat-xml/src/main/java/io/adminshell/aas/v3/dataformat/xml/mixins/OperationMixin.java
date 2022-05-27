@@ -20,7 +20,7 @@ import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
-import io.adminshell.aas.v3.model.OperationVariable;
+import io.adminshell.aas.v3.rc02.model.OperationVariable;
 
 public interface OperationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariable")

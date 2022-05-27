@@ -17,9 +17,8 @@ package io.adminshell.aas.v3.dataformat.core;
 
 
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
-import io.adminshell.aas.v3.model.KeyElements;
-import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.KeyTypes;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,11 +26,10 @@ public class AasUtilsTest {
 
     @Test
     public void testParseReference() {
-        Reference reference = AasUtils.parseReference("(Property)[IdShort]Temperature");
+        Reference reference = AasUtils.parseReference("(ModelReference)[Property]Temperature");
         Assert.assertNotNull(reference);
         Assert.assertEquals(1, reference.getKeys().size());
-        Assert.assertEquals(KeyElements.PROPERTY, reference.getKeys().get(0).getType());
-        Assert.assertEquals(KeyType.ID_SHORT, reference.getKeys().get(0).getIdType());
+        Assert.assertEquals(KeyTypes.PROPERTY, reference.getKeys().get(0).getType());
         Assert.assertEquals("Temperature", reference.getKeys().get(0).getValue());
     }
 }

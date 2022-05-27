@@ -20,9 +20,9 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.Operation;
-import io.adminshell.aas.v3.model.OperationVariable;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.Operation;
+import io.adminshell.aas.v3.rc02.model.OperationVariable;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public class OperationMapper extends SubmodelElementMapper<Operation> {
 

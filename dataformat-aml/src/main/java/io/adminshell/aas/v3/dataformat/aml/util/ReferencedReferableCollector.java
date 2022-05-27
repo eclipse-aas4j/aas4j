@@ -17,19 +17,19 @@ package io.adminshell.aas.v3.dataformat.aml.util;
 
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.core.visitor.AssetAdministrationShellElementWalkerVisitor;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.ReferenceElement;
-import io.adminshell.aas.v3.model.RelationshipElement;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.ReferenceElement;
+import io.adminshell.aas.v3.rc02.model.RelationshipElement;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ReferencedReferableCollector {
 
-    private AssetAdministrationShellEnvironment env;
+    private Environment env;
 
-    public ReferencedReferableCollector(AssetAdministrationShellEnvironment env) {
+    public ReferencedReferableCollector(Environment env) {
         this.env = env;
     }
 

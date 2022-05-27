@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.*;
+import io.adminshell.aas.v3.rc02.model.model.*;
 
 @JsonTypeName("aas:SubmodelElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")

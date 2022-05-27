@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.adminshell.aas.v3.model.AnnotatedRelationshipElement;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.AnnotatedRelationshipElement;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 @JsonTypeName("aas:RelationshipElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")

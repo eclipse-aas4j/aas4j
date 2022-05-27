@@ -19,8 +19,8 @@ package io.adminshell.aas.v3.dataformat.rdf.mixins;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 @JsonTypeName("aas:EmbeddedDataSpecification")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")

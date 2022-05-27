@@ -15,12 +15,11 @@
  */
 package io.adminshell.aas.v3.dataformat.aml.serialization.mappers;
 
-import io.adminshell.aas.v3.dataformat.aml.serialization.DefaultMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.serialization.DefaultCollectionMapper;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -53,7 +52,7 @@ public class LangStringCollectionMapper extends DefaultCollectionMapper<LangStri
                 .addAttribute(value.stream()
                         .map(x -> AttributeType.builder()
                         .withName(NAME_PREFIX + x.getLanguage())
-                        .withValue(x.getValue())
+                        .withValue(x.getText())
                         .build())
                         .collect(Collectors.toList()))
                 .build());

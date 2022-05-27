@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.dataformat.aml.serialization.mappers;
 
-import io.adminshell.aas.v3.model.Range;
+import io.adminshell.aas.v3.rc02.model.Range;
 
 public class RangeMapper extends AbstractElementMapperWithValueType<Range> {
 

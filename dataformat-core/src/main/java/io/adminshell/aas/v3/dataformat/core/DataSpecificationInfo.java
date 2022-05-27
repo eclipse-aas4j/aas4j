@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.dataformat.core;
 
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 /**
  * Class representing all information required for a (custom) data specification

@@ -24,7 +24,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 
 /**
  * Tests the following constraint:

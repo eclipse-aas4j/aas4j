@@ -23,7 +23,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
 import io.adminshell.aas.v3.dataformat.xml.deserialization.KeysDeserializer;
-import io.adminshell.aas.v3.model.Key;
+import io.adminshell.aas.v3.rc02.model.Key;
 
 public interface ReferenceMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")

@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.adminshell.aas.v3.dataformat.xml.SubmodelElementManager;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public class SubmodelElementDeserializer extends JsonDeserializer<SubmodelElement> {
 

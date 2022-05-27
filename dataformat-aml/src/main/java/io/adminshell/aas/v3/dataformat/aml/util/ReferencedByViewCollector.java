@@ -17,18 +17,17 @@ package io.adminshell.aas.v3.dataformat.aml.util;
 
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.core.visitor.AssetAdministrationShellElementWalkerVisitor;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.View;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ReferencedByViewCollector {
 
-    private AssetAdministrationShellEnvironment env;
+    private Environment env;
 
-    public ReferencedByViewCollector(AssetAdministrationShellEnvironment env) {
+    public ReferencedByViewCollector(Environment env) {
         this.env = env;
     }
 
@@ -42,11 +41,6 @@ public class ReferencedByViewCollector {
 
         Set<Referable> referencedElements = new HashSet<>();
 
-        @Override
-        public void visit(View view) {
-            view.getContainedElements().forEach(x -> handleReference(x));
-            AssetAdministrationShellElementWalkerVisitor.super.visit(view);
-        }
 
         private void handleReference(Reference reference) {
             Referable target = AasUtils.resolve(reference, env);

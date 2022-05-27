@@ -19,7 +19,7 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.DefaultMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.OperationVariable;
+import io.adminshell.aas.v3.rc02.model.OperationVariable;
 
 public class OperationVariableMapper extends DefaultMapper<OperationVariable> {
 

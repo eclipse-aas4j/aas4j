@@ -21,10 +21,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.Key;
+import io.adminshell.aas.v3.rc02.model.Key;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
 
 /**
  * Tests the following constraint:

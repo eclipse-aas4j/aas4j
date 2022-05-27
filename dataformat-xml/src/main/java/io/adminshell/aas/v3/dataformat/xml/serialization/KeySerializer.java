@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 
-import io.adminshell.aas.v3.model.Key;
+import io.adminshell.aas.v3.rc02.model.Key;
 
 public class KeySerializer extends JsonSerializer<Key> {
 
@@ -35,8 +35,6 @@ public class KeySerializer extends JsonSerializer<Key> {
         xgen.writeObjectFieldStart("key");
 
         try {
-            String idTypeValue = AasUtils.serializeEnumName(key.getIdType().toString());
-            xgen.getStaxWriter().writeAttribute("idType", idTypeValue);
             String keyTypeValue = AasUtils.serializeEnumName(key.getType().toString());
             xgen.getStaxWriter().writeAttribute("type", keyTypeValue);
         } catch (XMLStreamException e) {

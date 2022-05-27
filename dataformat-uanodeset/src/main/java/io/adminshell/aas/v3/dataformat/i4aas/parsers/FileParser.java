@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.impl.DefaultFile;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultFile;
 
 public class FileParser extends ReferableParser<File> {
 

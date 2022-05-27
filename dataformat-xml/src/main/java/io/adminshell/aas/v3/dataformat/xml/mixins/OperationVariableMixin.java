@@ -18,7 +18,7 @@ package io.adminshell.aas.v3.dataformat.xml.mixins;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import io.adminshell.aas.v3.dataformat.xml.serialization.SubmodelElementSerializer;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public interface OperationVariableMixin {
     @JsonSerialize(using = SubmodelElementSerializer.class)

@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodel;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultSubmodel;
 import org.junit.Ignore;
 import org.junit.Test;
 

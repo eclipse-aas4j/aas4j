@@ -17,8 +17,8 @@ package io.adminshell.aas.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.LevelType;
+import io.adminshell.aas.v3.rc02.model.LangString;
+// TODO import io.adminshell.aas.v3.model.LevelType;
 import java.util.List;
 
 public interface DataSpecificationIEC61360Mixin {
@@ -29,11 +29,13 @@ public interface DataSpecificationIEC61360Mixin {
     @JsonProperty("definition")
     public void setDefinitions(List<LangString> definitions);
 
-    @JsonProperty("levelType")
-    public List<LevelType> getLevelTypes();
+    // TODO
+    // @JsonProperty("levelType")
+    // public List<LevelType> getLevelTypes();
 
-    @JsonProperty("levelType")
-    public void setLevelTypes(List<LevelType> levelTypes);
+    // TODO
+    // @JsonProperty("levelType")
+    // public void setLevelTypes(List<LevelType> levelTypes);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")

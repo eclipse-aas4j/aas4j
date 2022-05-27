@@ -19,7 +19,7 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
 
 public class QualifierMapper extends AbstractElementMapperWithValueType<Qualifier> {
 

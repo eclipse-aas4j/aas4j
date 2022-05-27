@@ -20,8 +20,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.AdministrativeInformation;
-import io.adminshell.aas.v3.model.impl.DefaultAdministrativeInformation;
+import io.adminshell.aas.v3.rc02.model.AdministrativeInformation;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultAdministrativeInformation;
 
 /**
  * Tests the following constraint:

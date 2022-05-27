@@ -24,9 +24,9 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
-import io.adminshell.aas.v3.model.DataTypeIEC61360;
-import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
+// TODO import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
+// TODO import io.adminshell.aas.v3.model.DataTypeIEC61360;
+// TODO import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +35,9 @@ import java.util.List;
 /**
  *
  */
+
+// TODO solve the EmbeddedDataSpecifciation issue
+    /*
 public class DataSpecificationIEC61360Mapper extends DefaultMapper<DataSpecificationIEC61360> {
 
     @Override
@@ -112,3 +115,4 @@ public class DataSpecificationIEC61360Mapper extends DefaultMapper<DataSpecifica
 
 
 }
+*/

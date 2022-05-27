@@ -18,19 +18,18 @@ package io.adminshell.aas.v3.dataformat.core.util;
 import com.google.common.base.Objects;
 import com.google.common.reflect.TypeToken;
 import io.adminshell.aas.v3.dataformat.core.ReflectionHelper;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Identifiable;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.KeyElements;
-import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Operation;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Identifiable;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.KeyTypes;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Operation;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -84,7 +83,6 @@ public class AasUtils {
         return reference.getKeys().stream()
                 .map(x -> String.format("(%s)[%s]%s",
                 serializeEnumName(x.getType().name()),
-                serializeEnumName(x.getIdType().name()),
                 x.getValue()))
                 .collect(Collectors.joining(","));
     }
@@ -119,6 +117,8 @@ public class AasUtils {
         try {
             Reference result = referenceType.getConstructor().newInstance();
             result.setKeys(Stream.of(value.split(",")).map(x -> parseKey(x)).collect(Collectors.toList()));
+            // TODO: ReferenceType is ignored
+            //  result.setType(Stream.of(value.split(",")).map(x -> parseReferenceType(x)).collect(Collectors.toList()));
             return result;
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
@@ -183,11 +183,9 @@ public class AasUtils {
     public static Key parseKey(String value) {
         Matcher matcher = KEY_REGEX.matcher(value);
         if (matcher.find()) {
-            KeyElements keyElements = KeyElements.valueOf(deserializeEnumName(matcher.group(KEY_REGEX_GROUP_TYPE)));
-            KeyType keyType = KeyType.valueOf(deserializeEnumName(matcher.group(KEY_REGEX_GROUP_ID_TYPE)));
+            KeyTypes keyType = KeyTypes.valueOf(deserializeEnumName(matcher.group(KEY_REGEX_GROUP_ID_TYPE)));
             return new DefaultKey.Builder()
-                    .type(keyElements)
-                    .idType(keyType)
+                    .type(keyType)
                     .value(matcher.group(KEY_REGEX_GROUP_VALUE))
                     .build();
         }
@@ -209,11 +207,11 @@ public class AasUtils {
      * @return true if the reference is a local reference to the given
      * environment, false otherwise
      */
-    public static boolean isLocal(Reference reference, AssetAdministrationShellEnvironment environment) {
-        return !reference.getKeys().stream().anyMatch(x -> x.getType() == KeyElements.GLOBAL_REFERENCE);
+    public static boolean isLocal(Reference reference, Environment environment) {
+        return !reference.getKeys().stream().anyMatch(x -> x.getType() == KeyTypes.GLOBAL_REFERENCE);
     }
 
-    public static List<Submodel> getSubmodelTemplates(AssetAdministrationShell aas, AssetAdministrationShellEnvironment environment) {
+    public static List<Submodel> getSubmodelTemplates(AssetAdministrationShell aas, Environment environment) {
         return aas.getSubmodels().stream()
                 .map(ref -> resolve(ref, environment, Submodel.class))
                 .filter(sm -> sm != null)
@@ -221,7 +219,7 @@ public class AasUtils {
                 .collect(Collectors.toList());
     }
 
-    public static boolean hasTemplate(AssetAdministrationShell aas, AssetAdministrationShellEnvironment environment) {
+    public static boolean hasTemplate(AssetAdministrationShell aas, Environment environment) {
         return !getSubmodelTemplates(aas, environment).isEmpty();
     }
 
@@ -239,8 +237,7 @@ public class AasUtils {
             Reference reference = referenceType.getConstructor().newInstance();
             Key key = keyType.getConstructor().newInstance();
             key.setType(referableToKeyType(identifiable));
-            key.setIdType(KeyType.valueOf(identifiable.getIdentification().getIdType().toString()));
-            key.setValue(identifiable.getIdentification().getIdentifier());
+            key.setValue(identifiable.getId());
             reference.setKeys(List.of(key));
             return reference;
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -266,10 +263,10 @@ public class AasUtils {
      * i.e. abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT are never
      * returned; null if there is no corresponding KeyElements type
      */
-    public static KeyElements referableToKeyType(Referable referable) {
+    public static KeyTypes referableToKeyType(Referable referable) {
         Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
         if (aasInterface != null) {
-            return KeyElements.valueOf(deserializeEnumName(aasInterface.getSimpleName()));
+            return KeyTypes.valueOf(deserializeEnumName(aasInterface.getSimpleName()));
         }
         return null;
     }
@@ -327,7 +324,7 @@ public class AasUtils {
      * null if no matching Class/interface could be found. It also returns
      * abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
      */
-    public static Class<?> keyTypeToClass(KeyElements key) {
+    public static Class<?> keyTypeToClass(KeyTypes key) {
         return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
                 .filter(x -> x.getSimpleName().equals(serializeEnumName(key.name())))
                 .findAny()
@@ -360,7 +357,6 @@ public class AasUtils {
                 try {
                     Key newKey = keyType.getConstructor().newInstance();
                     newKey.setType(AasUtils.referableToKeyType(element));
-                    newKey.setIdType(KeyType.ID_SHORT);
                     newKey.setValue(element.getIdShort());
                     result.getKeys().add(newKey);
                 } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
@@ -422,15 +418,6 @@ public class AasUtils {
                     return false;
                 }
             }
-            if (!(Objects.equal(ref1Key.getIdType(), ref2Key.getIdType())
-                    && Objects.equal(ref1Key.getValue(), ref2Key.getValue()))) {
-                return false;
-            }
-            if ((ref1Key.getIdType() == KeyType.IRI)
-                    || (ref1Key.getIdType() == KeyType.IRDI)
-                    || (ref1Key.getIdType() == KeyType.CUSTOM)) {
-                return true;
-            }
         }
         return true;
     }
@@ -465,7 +452,6 @@ public class AasUtils {
             for (Key key : reference.getKeys()) {
                 Key newKey = keyType.getConstructor().newInstance();
                 newKey.setType(key.getType());
-                newKey.setIdType(key.getIdType());
                 newKey.setValue(key.getValue());
                 newKeys.add(newKey);
             }
@@ -488,7 +474,7 @@ public class AasUtils {
      * resolved, otherwise null
      * @throws IllegalArgumentException if something goes wrong while resolving
      */
-    public static Referable resolve(Reference reference, AssetAdministrationShellEnvironment env) {
+    public static Referable resolve(Reference reference, Environment env) {
         return resolve(reference, env, Referable.class);
     }
 
@@ -507,7 +493,7 @@ public class AasUtils {
      * resolved, otherwise null
      * @throws IllegalArgumentException if something goes wrong while resolving
      */
-    public static <T extends Referable> T resolve(Reference reference, AssetAdministrationShellEnvironment env, Class<T> type) {
+    public static <T extends Referable> T resolve(Reference reference, Environment env, Class<T> type) {
         if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
             return null;
         }
@@ -533,8 +519,7 @@ public class AasUtils {
             if (referencedType != null) {
                 List<Identifiable> matchingIdentifiables = identifiables.stream()
                         .filter(x -> referencedType.isAssignableFrom(x.getClass()))
-                        .filter(x -> key.getIdType().name().equals(x.getIdentification().getIdType().name()))
-                        .filter(x -> x.getIdentification().getIdentifier().equals(key.getValue()))
+                        .filter(x -> x.getId().equals(key.getValue()))
                         .collect(Collectors.toList());
                 if (matchingIdentifiables.size() > 1) {
                     throw new IllegalArgumentException("found multiple matching Identifiables for id '" + key.getValue() + "'");

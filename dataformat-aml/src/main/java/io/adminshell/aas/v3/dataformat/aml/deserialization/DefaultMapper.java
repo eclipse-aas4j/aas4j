@@ -37,6 +37,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import io.adminshell.aas.v3.rc02.model.DataTypeDefXsd;
 import org.apache.xerces.dom.ElementNSImpl;
 
 /**
@@ -407,12 +408,12 @@ public class DefaultMapper<T> implements Mapper<T> {
         return result;
     }
 
-    protected String getDataTypeFromAttribute(AttributeType attributeType) {
+    protected DataTypeDefXsd getDataTypeFromAttribute(AttributeType attributeType) {
         if (attributeType == null || attributeType.getAttributeDataType() == null) {
             return null;
         }
         String attributeDataType = attributeType.getAttributeDataType();
-        return attributeDataType.substring(attributeDataType.lastIndexOf(":") + 1);
+        return DataTypeDefXsd.valueOf(attributeDataType.substring(attributeDataType.lastIndexOf(":") + 1));
     }
 
     protected void setValueDataTypeFromAttributeDataType(AmlParser parser, Object parent, String attributeRefWithAttributeDataType, Class aasClazz) throws MappingException {
@@ -422,7 +423,7 @@ public class DefaultMapper<T> implements Mapper<T> {
                 attributeRefWithAttributeDataType).stream().findFirst().orElse(null);
         if (attributeType != null) {
             try {
-                String dataType = getDataTypeFromAttribute(attributeType);
+                DataTypeDefXsd dataType = getDataTypeFromAttribute(attributeType);
                 List<Method> methods = List.of(aasClazz.getMethods());
                 Method method = methods.stream().filter(x -> x.getName().contains("setValueType")).findFirst().orElse(null);
                 if (method == null) return;

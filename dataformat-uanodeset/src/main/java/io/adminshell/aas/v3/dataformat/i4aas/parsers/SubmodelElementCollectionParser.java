@@ -15,9 +15,9 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultSubmodelElementCollection;
 
 public class SubmodelElementCollectionParser extends ReferableParser<SubmodelElementCollection> {
 

@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.dataformat.xml.deserialization;
 
-import io.adminshell.aas.v3.model.Key;
+import io.adminshell.aas.v3.rc02.model.Key;
 
 public class KeysDeserializer extends NoEntryWrapperListDeserializer<Key> {
     public KeysDeserializer() {

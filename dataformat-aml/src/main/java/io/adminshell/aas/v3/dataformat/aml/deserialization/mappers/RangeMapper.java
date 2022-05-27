@@ -21,10 +21,10 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Range;
+import io.adminshell.aas.v3.rc02.model.DataTypeDefXsd;
+import io.adminshell.aas.v3.rc02.model.Range;
 
 import java.beans.PropertyDescriptor;
-import java.util.List;
 
 /**
  *
@@ -56,10 +56,10 @@ public class RangeMapper extends DefaultMapper<Range> {
                 .orElse(null);
 
         if (attributeTypeMax != null || attributeTypeMin != null){
-            String dataTypeMin = getDataTypeFromAttribute(attributeTypeMin);
-            String dataTypeMax = getDataTypeFromAttribute(attributeTypeMax);
+            DataTypeDefXsd dataTypeMin = getDataTypeFromAttribute(attributeTypeMin);
+            DataTypeDefXsd dataTypeMax = getDataTypeFromAttribute(attributeTypeMax);
 
-            if (!dataTypeMax.equalsIgnoreCase(dataTypeMin))
+            if (!dataTypeMax.equals(dataTypeMin))
                 throw new MappingException(String.format("min/max attributes in range %s %s has different attribute datatypes", parser.getCurrent().getID(), parser.getCurrent().getName()));
 
             ((Range) parent).setValueType(dataTypeMax);

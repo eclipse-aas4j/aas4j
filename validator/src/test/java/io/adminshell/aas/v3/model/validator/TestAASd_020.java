@@ -15,12 +15,8 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Operation;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.impl.DefaultOperation;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
-import org.junit.Ignore;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultQualifier;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

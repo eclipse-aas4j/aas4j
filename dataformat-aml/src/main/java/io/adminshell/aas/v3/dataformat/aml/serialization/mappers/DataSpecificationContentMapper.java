@@ -20,7 +20,7 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
 
 public class DataSpecificationContentMapper extends DefaultMapper<DataSpecificationContent> {
 

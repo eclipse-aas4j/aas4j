@@ -31,16 +31,17 @@ import static io.adminshell.aas.v3.dataformat.core.DataSpecificationManager.PROP
 import static io.adminshell.aas.v3.dataformat.core.DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT;
 
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 /**
  * Custom Serializer for class DataSpecification. Adds type information in form
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<EmbeddedDataSpecification> {
+// TODO: solve EmbeddedDataSpecifiction issue
+/* public class EmbeddedDataSpecificationSerializer extends JsonSerializer<EmbeddedDataSpecification> {
 
     private static final Logger logger = LoggerFactory.getLogger(EmbeddedDataSpecificationSerializer.class);
 
@@ -98,4 +99,4 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<Embedded
             TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }
-}
+}*/

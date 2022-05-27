@@ -20,13 +20,15 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.builder.LangStringBuilder;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultLangString;
 
 public class LangStringNodeDeserializer implements CustomJsonNodeDeserializer<LangString> {
     @Override
     public LangString readValue(JsonNode node, JsonParser parser) throws IOException {
         String lang = node.get("lang").asText();
         String text = node.get("").asText();
-        return new LangString(text, lang);
+        return new DefaultLangString.Builder().text(text).language(lang).build();
     }
 }

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 
 public class LangStringSerializer extends JsonSerializer<LangString> {
 
@@ -41,7 +41,7 @@ public class LangStringSerializer extends JsonSerializer<LangString> {
         xgen.setNextIsAttribute(false);
         xgen.setNextIsUnwrapped(true);
         xgen.writeFieldName("value");
-        xgen.writeString(langString.getValue());
+        xgen.writeString(langString.getText());
 
         xgen.writeEndObject();
     }

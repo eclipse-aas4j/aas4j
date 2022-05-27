@@ -17,7 +17,7 @@ package io.adminshell.aas.v3.dataformat.aml.common.naming;
 
 import com.google.common.reflect.TypeToken;
 import io.adminshell.aas.v3.dataformat.core.util.MostSpecificTypeTokenComparator;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Referable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;

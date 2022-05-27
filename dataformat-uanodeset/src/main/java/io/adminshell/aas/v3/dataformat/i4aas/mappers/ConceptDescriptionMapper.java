@@ -18,10 +18,10 @@ package io.adminshell.aas.v3.dataformat.i4aas.mappers;
 import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 import io.adminshell.aas.v3.model.Identifier;
 import io.adminshell.aas.v3.model.IdentifierType;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class ConceptDescriptionMapper extends IdentifiableMapper<ConceptDescription>
 		implements HasDataSpecificationMapper {

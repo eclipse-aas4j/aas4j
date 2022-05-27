@@ -22,8 +22,8 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class ReferenceSerializer extends JsonSerializer<Reference> {
     private NoEntryWrapperListSerializer<Key> keyListSerializer;

@@ -16,7 +16,7 @@
 package io.adminshell.aas.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.OperationVariable;
+import io.adminshell.aas.v3.rc02.model.OperationVariable;
 import java.util.List;
 
 public interface OperationMixin {

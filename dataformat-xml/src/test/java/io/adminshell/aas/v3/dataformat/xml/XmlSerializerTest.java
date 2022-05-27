@@ -39,8 +39,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.adminshell.aas.v3.dataformat.SerializationException;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
 import io.adminshell.aas.v3.dataformat.core.AASSimple;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEnvironment;
 
 public class XmlSerializerTest {
     public static final java.io.File AASFULL_FILE = new java.io.File("src/test/resources/test_demo_full_example.xml");
@@ -62,7 +62,7 @@ public class XmlSerializerTest {
     @Test
     public void testSerializeMinimal() throws IOException, SerializationException, SAXException {
         File file = new File("src/test/resources/minimum.xml");
-        AssetAdministrationShellEnvironment environment = new DefaultAssetAdministrationShellEnvironment.Builder()
+        Environment environment = new DefaultEnvironment.Builder()
             .build();
         validateXmlSerializer(file, environment);
     }
@@ -85,12 +85,12 @@ public class XmlSerializerTest {
         validateXmlSerializer(AASFULL_FILE, AASFull.ENVIRONMENT);
     }
 
-    private void validateXmlSerializer(File expectedFile, AssetAdministrationShellEnvironment environment)
+    private void validateXmlSerializer(File expectedFile, Environment environment)
         throws IOException, SerializationException, SAXException {
         validateXmlSerializer(expectedFile, environment, new XmlSerializer());
     }
 
-    private void validateXmlSerializer(File expectedFile, AssetAdministrationShellEnvironment environment, XmlSerializer xmlSerializer)
+    private void validateXmlSerializer(File expectedFile, Environment environment, XmlSerializer xmlSerializer)
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
         Set<String> errors = new XmlSchemaValidator().validateSchema(actual);

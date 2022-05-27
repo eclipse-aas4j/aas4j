@@ -21,7 +21,7 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.DataTypeIEC61360;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class DataSpecificationIEC61360Mapper extends I4AASMapper<DataSpecificationIEC61360, UAObject> {
 

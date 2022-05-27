@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.dataformat.core;
 
-import io.adminshell.aas.v3.model.impl.DefaultSubmodel;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultSubmodel;
 
 public class CustomSubmodel extends DefaultSubmodel {
 

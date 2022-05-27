@@ -27,8 +27,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
-import io.adminshell.aas.v3.model.DataElement;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.DataElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public class DataElementsDeserializer extends JsonDeserializer<List<DataElement>> {
 

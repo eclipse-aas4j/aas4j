@@ -19,7 +19,7 @@ package io.adminshell.aas.v3.dataformat.rdf;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import io.adminshell.aas.v3.model.annotations.IRI;
+import io.adminshell.aas.v3.rc02.model.annotations.IRI;
 
 import java.io.IOException;
 
