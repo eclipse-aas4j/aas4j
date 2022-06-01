@@ -21,9 +21,9 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 
-import io.adminshell.aas.v3.rc02.model.AssetKind;
-import io.adminshell.aas.v3.rc02.model.EntityType;
-import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import org.eclipse.aas4j.v3.rc02.model.AssetKind;
+import org.eclipse.aas4j.v3.rc02.model.EntityType;
+import org.eclipse.aas4j.v3.rc02.model.ModelingKind;
 import org.opcfoundation.ua._2008._02.types.ObjectFactory;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 

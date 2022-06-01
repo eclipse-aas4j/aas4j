@@ -25,11 +25,11 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.IdentifierKeyValuePairMappe
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.ReferenceMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.Entity;
-import io.adminshell.aas.v3.rc02.model.EntityType;
+import org.eclipse.aas4j.v3.rc02.model.Entity;
+import org.eclipse.aas4j.v3.rc02.model.EntityType;
 import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.rc02.model.Reference;
-import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
 
 public class EntityMapper extends SubmodelElementMapper<Entity> {
 

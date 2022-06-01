@@ -17,10 +17,10 @@ package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
 import java.util.List;
 
-import io.adminshell.aas.v3.rc02.model.LangString;
-import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.rc02.model.Reference;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultMultiLanguageProperty;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.MultiLanguageProperty;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultMultiLanguageProperty;
 
 public class MultiLanguagePropertyParser extends ReferableParser<MultiLanguageProperty> {
 

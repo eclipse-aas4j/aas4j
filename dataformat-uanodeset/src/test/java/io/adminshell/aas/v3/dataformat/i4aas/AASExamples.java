@@ -15,26 +15,26 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas;
 
-import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.AssetAdministrationShell;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.rc02.model.AssetKind;
+import org.eclipse.aas4j.v3.rc02.model.AssetKind;
 import io.adminshell.aas.v3.model.DataTypeIEC61360;
 import io.adminshell.aas.v3.model.IdentifierType;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.rc02.model.LangString;
-import io.adminshell.aas.v3.rc02.model.ModelingKind;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultAdministrativeInformation;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.ModelingKind;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAdministrativeInformation;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAssetAdministrationShell;
 import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetInformation;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAssetInformation;
 import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultFile;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultFile;
 import io.adminshell.aas.v3.model.impl.DefaultIdentifier;
 import io.adminshell.aas.v3.model.impl.DefaultIdentifierKeyValuePair;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultKey;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultReference;
 
 public class AASExamples {
 

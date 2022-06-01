@@ -40,8 +40,8 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASUtils;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
 import io.adminshell.aas.v3.model.Identifier;
-import io.adminshell.aas.v3.rc02.model.Referable;
-import io.adminshell.aas.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.Referable;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 
 public class MappingContext {
 

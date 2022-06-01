@@ -24,7 +24,7 @@ import org.opcfoundation.ua._2008._02.types.ObjectFactory;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
-import io.adminshell.aas.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
 
 public class LangStringPropertyMapper extends I4AASMapper<List<LangString>, UAVariable> {
 

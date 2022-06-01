@@ -22,7 +22,7 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.ReferenceMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.StringPropertyMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.Property;
+import org.eclipse.aas4j.v3.rc02.model.Property;
 
 public class PropertyMapper extends SubmodelElementMapper<Property> {
 

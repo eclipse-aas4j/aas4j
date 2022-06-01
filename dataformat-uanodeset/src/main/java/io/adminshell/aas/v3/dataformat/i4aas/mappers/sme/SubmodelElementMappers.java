@@ -16,8 +16,8 @@
 package io.adminshell.aas.v3.dataformat.i4aas.mappers.sme;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
-import io.adminshell.aas.v3.rc02.model.*;
-import io.adminshell.aas.v3.rc02.model.model.*;
+import org.eclipse.aas4j.v3.rc02.model.*;
+import org.eclipse.aas4j.v3.rc02.model.model.*;
 
 public class SubmodelElementMappers {
 

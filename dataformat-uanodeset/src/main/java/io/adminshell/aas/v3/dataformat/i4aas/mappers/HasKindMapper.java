@@ -20,8 +20,8 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.adminshell.aas.v3.rc02.model.HasKind;
-import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import org.eclipse.aas4j.v3.rc02.model.HasKind;
+import org.eclipse.aas4j.v3.rc02.model.ModelingKind;
 
 public interface HasKindMapper {
 
