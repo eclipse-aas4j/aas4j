@@ -17,11 +17,12 @@ package io.adminshell.aas.v3.dataformat.i4aas.mappers;
 
 import java.util.List;
 
+import io.adminshell.aas.v3.rc02.model.Reference;
 import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetInformation;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.AssetInformation;
 
 public class AssetAdministrationShellMapper extends IdentifiableMapper<AssetAdministrationShell>
 		implements HasDataSpecificationMapper {
@@ -57,9 +58,9 @@ public class AssetAdministrationShellMapper extends IdentifiableMapper<AssetAdmi
 	private void mapSubmodels() {
 		UAObject smFolder = source.getSubmodels().isEmpty() ? null
 				: createReferenceList(AAS_SUBMODELREFERENCES_LIST_BROWSENAME);
-		List<io.adminshell.aas.v3.model.Reference> submodels = source.getSubmodels();
+		List<Reference> submodels = source.getSubmodels();
 		for (int i = 0; i < submodels.size(); i++) {
-			io.adminshell.aas.v3.model.Reference reference = submodels.get(i);
+			Reference reference = submodels.get(i);
 			UAObject createSubmodelReferenceUaObject = new ReferenceMapper(reference, ctx,
 					SM_DISPLAYNAME_PREFIX + reference.getKeys().get(0).getValue()).map();
 			attachAsComponent(smFolder, createSubmodelReferenceUaObject);
@@ -67,7 +68,7 @@ public class AssetAdministrationShellMapper extends IdentifiableMapper<AssetAdmi
 	}
 
 	private void mapDerivedFrom() {
-		io.adminshell.aas.v3.model.Reference derivedFrom = source.getDerivedFrom();
+		Reference derivedFrom = source.getDerivedFrom();
 		if (derivedFrom != null) {
 			UAObject uaDerivedFrom = new ReferenceMapper(derivedFrom, ctx, AAS_DERIVEDFROM_BROWSENAME).map();
 			attachAsComponent(target, uaDerivedFrom);

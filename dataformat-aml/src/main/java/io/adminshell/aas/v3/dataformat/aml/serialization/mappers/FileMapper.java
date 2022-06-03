@@ -22,7 +22,7 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.RoleClassType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.File;
+import io.adminshell.aas.v3.rc02.model.File;
 
 public class FileMapper extends DefaultMapper<File> {
 
@@ -47,7 +47,7 @@ public class FileMapper extends DefaultMapper<File> {
                             .withName(ATTRIBUTE_MIMETYPE_NAME)
                             .withAttributeDataType(ATTRIBUTE_MIMETYPE_DATATYPE)
                             .withRefSemantic(generator.refSemantic(File.class, ATTRIBUTE_MIMETYPE_NAME))
-                            .withValue(value.getMimeType())
+                            .withValue(value.getContentType())
                             .build())
                     .addAttribute(AttributeType.builder()
                             .withName(ATTRIBUTE_REFURI_NAME)

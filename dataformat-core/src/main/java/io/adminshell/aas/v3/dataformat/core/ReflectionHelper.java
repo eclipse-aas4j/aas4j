@@ -29,8 +29,7 @@ import org.apache.commons.lang3.ClassUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.adminshell.aas.v3.model.Constraint;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Referable;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassInfoList;
@@ -43,7 +42,7 @@ import io.github.classgraph.ScanResult;
 public class ReflectionHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(ReflectionHelper.class);
-    private static final String ROOT_PACKAGE_NAME = "io.adminshell.aas.v3";
+    private static final String ROOT_PACKAGE_NAME = "io.adminshell.aas.v3.rc02";
     /**
      * Name of package where the generated model classes are defined
      */
@@ -73,9 +72,9 @@ public class ReflectionHelper {
     public static final String DEFAULT_IMPLEMENTATION_PREFIX = "Default";
     /**
      * Distinct root superclasses of which classify a class to include type
-     * informatino via the modelType property
+     * information via the modelType property
      */
-    public static final Set<Class<?>> MODEL_TYPE_SUPERCLASSES = Set.of(Referable.class, Constraint.class);
+    public static final Set<Class<?>> MODEL_TYPE_SUPERCLASSES = Set.of(Referable.class);
     /**
      * Expanded list of all classes that shall be annotated with the modelType
      * property.

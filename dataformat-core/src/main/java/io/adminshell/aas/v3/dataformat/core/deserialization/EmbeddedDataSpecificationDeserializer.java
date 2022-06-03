@@ -29,10 +29,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.rc02.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Reference;
+// TODO import io.adminshell.aas.v3.rc02.model.impl.DefaultEmbeddedDataSpecification;
 
 /**
  * Custom Deserializer for class DataSpecification. First reads property
@@ -40,7 +40,8 @@ import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
  * deserialization based on the found value with the help of
  * DataSpecificationManager.
  */
-public class EmbeddedDataSpecificationDeserializer extends JsonDeserializer<EmbeddedDataSpecification> {
+// TODO: solve the problem with EmbeddedDataSpecifications
+/* public class EmbeddedDataSpecificationDeserializer extends JsonDeserializer<EmbeddedDataSpecification> {
 
     @Override
     public EmbeddedDataSpecification deserialize(JsonParser parser, DeserializationContext context)
@@ -69,3 +70,4 @@ public class EmbeddedDataSpecificationDeserializer extends JsonDeserializer<Embe
         return new DefaultEmbeddedDataSpecification.Builder().dataSpecification(reference).build();
     }
 }
+*/

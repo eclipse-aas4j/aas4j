@@ -21,10 +21,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.Entity;
-import io.adminshell.aas.v3.model.EntityType;
+import io.adminshell.aas.v3.rc02.model.Entity;
+import io.adminshell.aas.v3.rc02.model.EntityType;
 import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.impl.DefaultEntity;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEntity;
 import io.adminshell.aas.v3.model.impl.DefaultIdentifierKeyValuePair;
 
 /**

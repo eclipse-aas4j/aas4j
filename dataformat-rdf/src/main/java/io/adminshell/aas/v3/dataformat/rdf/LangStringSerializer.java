@@ -21,7 +21,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 
 public class LangStringSerializer extends StdSerializer<LangString> {
 

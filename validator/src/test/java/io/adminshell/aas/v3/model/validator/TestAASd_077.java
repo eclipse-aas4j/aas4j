@@ -16,13 +16,10 @@
 
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.*;
-import io.adminshell.aas.v3.model.impl.*;
+import io.adminshell.aas.v3.rc02.model.Extension;
+import io.adminshell.aas.v3.rc02.model.Referable;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;

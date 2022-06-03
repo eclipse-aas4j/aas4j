@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Range;
-import io.adminshell.aas.v3.model.impl.DefaultRange;
+import io.adminshell.aas.v3.rc02.model.Range;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultRange;
 
 public class RangeParser extends ReferableParser<Range> {
 

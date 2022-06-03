@@ -17,7 +17,7 @@ package io.adminshell.aas.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 import java.util.List;
 
 public interface DataSpecificationPhysicalUnitMixin {

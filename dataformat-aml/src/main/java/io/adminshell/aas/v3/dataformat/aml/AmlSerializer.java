@@ -22,7 +22,7 @@ import io.adminshell.aas.v3.dataformat.aml.header.AutomationMLVersion;
 import io.adminshell.aas.v3.dataformat.aml.header.WriterInfo;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
 import java.io.IOException;
 import java.io.StringWriter;
 import javax.xml.bind.JAXBException;
@@ -42,7 +42,7 @@ public class AmlSerializer implements Serializer {
     private static final Logger log = LoggerFactory.getLogger(AmlSerializer.class);
 
     @Override
-    public String write(AssetAdministrationShellEnvironment aasEnvironment) throws SerializationException {
+    public String write(Environment aasEnvironment) throws SerializationException {
         return write(aasEnvironment, AmlSerializationConfig.DEFAULT);
     }
 
@@ -56,7 +56,7 @@ public class AmlSerializer implements Serializer {
      * @return the string representation of the environment
      * @throws SerializationException if serialization fails
      */
-    public String write(AssetAdministrationShellEnvironment aasEnvironment, AmlSerializationConfig config) throws SerializationException {
+    public String write(Environment aasEnvironment, AmlSerializationConfig config) throws SerializationException {
         try {
             CAEXFile aml = new AasToAmlMapper().map(aasEnvironment, config);
             if (config.isIncludeLibraries()) {

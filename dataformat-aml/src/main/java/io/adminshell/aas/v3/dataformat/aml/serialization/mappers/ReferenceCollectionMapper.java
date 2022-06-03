@@ -19,7 +19,7 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.DefaultCollectionMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.util.Collection;
 
 public class ReferenceCollectionMapper extends DefaultCollectionMapper<Reference> {

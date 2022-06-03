@@ -15,9 +15,9 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultQualifier;
 
 public class QualifierParser extends I4AASParser<Qualifier> {
 

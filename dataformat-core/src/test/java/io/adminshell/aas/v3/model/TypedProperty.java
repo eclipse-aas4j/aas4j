@@ -15,6 +15,8 @@
  */
 package io.adminshell.aas.v3.model;
 
+import io.adminshell.aas.v3.rc02.model.Property;
+
 public interface TypedProperty extends Property {
     
 }

@@ -16,10 +16,11 @@
 package io.adminshell.aas.v3.model.validator;
 
 
-import io.adminshell.aas.v3.model.*;
-import io.adminshell.aas.v3.model.impl.DefaultAssetInformation;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.AssetInformation;
+import io.adminshell.aas.v3.rc02.model.AssetKind;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetInformation;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 import org.junit.Ignore;
 import org.junit.Test;
 

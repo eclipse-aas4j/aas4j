@@ -31,8 +31,8 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.BasicIdentifier;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASConstants;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.Referable;
 
 /**
  * Generic base class used for all mapper implementation.

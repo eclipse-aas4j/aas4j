@@ -21,12 +21,15 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
-import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Operation;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import org.junit.Test;
 
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultOperation;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultOperation;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 
 /**
  * Tests the following constraint:

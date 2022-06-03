@@ -28,9 +28,9 @@ import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationInfo;
 
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO: import io.adminshell.aas.v3.rc02.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,9 @@ import org.slf4j.LoggerFactory;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<EmbeddedDataSpecification> {
+
+// TODO: Solve the problem with EmbeddedDataSpecifications
+/*public class EmbeddedDataSpecificationSerializer extends JsonSerializer<EmbeddedDataSpecification> {
 
     private static final Logger logger = LoggerFactory.getLogger(EmbeddedDataSpecificationSerializer.class);
 
@@ -96,4 +98,4 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<Embedded
         serialize(data, generator, provider);
     }
 
-}
+}*/

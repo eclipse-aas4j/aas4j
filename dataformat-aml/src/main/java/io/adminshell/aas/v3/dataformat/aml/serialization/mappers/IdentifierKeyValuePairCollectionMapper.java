@@ -21,20 +21,20 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetInformation;
-import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
+import io.adminshell.aas.v3.rc02.model.AssetInformation;
+import io.adminshell.aas.v3.rc02.model.SpecificAssetId;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collection<IdentifierKeyValuePair>> {
+public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collection<SpecificAssetId>> {
 
     private static final String ATTRIBUTE_NAME = "specificAssetId";
 
     @Override
-    public void map(Collection<IdentifierKeyValuePair> value, AmlGenerator generator, MappingContext context) throws MappingException {
+    public void map(Collection<SpecificAssetId> value, AmlGenerator generator, MappingContext context) throws MappingException {
         if (value == null || context == null || value.isEmpty()) {
             return;
         }
@@ -42,7 +42,7 @@ public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collec
                 .withName(ATTRIBUTE_NAME)
                 .withRefSemantic(generator.refSemantic(AssetInformation.class, ATTRIBUTE_NAME));
         List<AttributeType> attributes = new ArrayList<>();
-        for (IdentifierKeyValuePair element : value) {
+        for (SpecificAssetId element : value) {
             AttributeType.Builder builder = AttributeType.builder()
                     .withName(ATTRIBUTE_NAME + (value.size() > 1 ? "_" + (attributes.size() + 1) : ""));
             for (PropertyDescriptor property : AasUtils.getAasProperties(element.getClass())) {
@@ -59,7 +59,7 @@ public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collec
         generator.add(wrapperBuilder.build());
     }
 
-    protected Object getElemenetPropertyValue(IdentifierKeyValuePair elemenet, PropertyDescriptor property, MappingContext context) throws MappingException {
+    protected Object getElemenetPropertyValue(SpecificAssetId elemenet, PropertyDescriptor property, MappingContext context) throws MappingException {
         try {
             return property.getReadMethod().invoke(elemenet);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {

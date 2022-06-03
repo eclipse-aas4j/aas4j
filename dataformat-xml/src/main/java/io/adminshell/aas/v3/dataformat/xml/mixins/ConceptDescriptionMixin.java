@@ -22,7 +22,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
 import io.adminshell.aas.v3.dataformat.xml.deserialization.ReferencesDeserializer;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public interface ConceptDescriptionMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "isCaseOf")

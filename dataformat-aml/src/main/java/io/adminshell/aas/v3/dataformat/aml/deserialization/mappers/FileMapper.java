@@ -22,7 +22,7 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InterfaceClassType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.File;
+import io.adminshell.aas.v3.rc02.model.File;
 
 import java.beans.PropertyDescriptor;
 import java.util.List;
@@ -68,7 +68,7 @@ public class FileMapper extends DefaultMapper<File> {
             ((File) parent).setValue(refUriAttribute.getValue() == null ? null : refUriAttribute.getValue().toString());
 
         if (mimeTypeAttribute != null)
-            ((File) parent).setMimeType(mimeTypeAttribute.getValue() == null ? null : mimeTypeAttribute.getValue().toString());
+            ((File) parent).setContentType(mimeTypeAttribute.getValue() == null ? null : mimeTypeAttribute.getValue().toString());
 
         super.mapProperties(parent, parser, context);
     }

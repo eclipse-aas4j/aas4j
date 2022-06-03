@@ -22,8 +22,8 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.LangStringPropertyMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.ReferenceMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class MultiLanguagePropertyMapper extends SubmodelElementMapper<MultiLanguageProperty> {
 

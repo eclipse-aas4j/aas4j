@@ -16,8 +16,8 @@
 package io.adminshell.aas.v3.dataformat.aml;
 
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 import java.util.Set;
 import java.util.stream.Collectors;
 

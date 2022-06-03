@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.*;
-import io.adminshell.aas.v3.model.impl.*;
+import io.adminshell.aas.v3.rc02.model.*;
+import io.adminshell.aas.v3.rc02.model.model.*;
 import org.junit.Ignore;
 import org.junit.Test;
 

@@ -28,10 +28,10 @@ import io.adminshell.aas.v3.dataformat.SerializationException;
 import io.adminshell.aas.v3.dataformat.Serializer;
 import io.adminshell.aas.v3.dataformat.core.serialization.EnumSerializer;
 import io.adminshell.aas.v3.dataformat.json.modeltype.ModelTypeProcessor;
-import io.adminshell.aas.v3.dataformat.core.serialization.EmbeddedDataSpecificationSerializer;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Referable;
+// TODO import io.adminshell.aas.v3.dataformat.core.serialization.EmbeddedDataSpecificationSerializer;
+import io.adminshell.aas.v3.rc02.model.Environment;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Referable;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
 
     protected SimpleModule buildCustomSerializerModule() {
         SimpleModule module = new SimpleModule();
-        module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
+        // TODO: module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
         return module;
     }
 
@@ -71,7 +71,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
     }
 
     @Override
-    public String write(AssetAdministrationShellEnvironment aasEnvironment) throws SerializationException {
+    public String write(Environment aasEnvironment) throws SerializationException {
         try {
             return mapper.writeValueAsString(ModelTypeProcessor.postprocess(mapper.valueToTree(aasEnvironment)));
         } catch (JsonProcessingException ex) {

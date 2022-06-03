@@ -24,8 +24,8 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.AssetAdministra
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.AssetAdministrationShellMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ConstraintCollectionMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.DataSpecificationContentMapper;
-import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.DataSpecificationIEC61360Mapper;
-import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.EmbeddedDataSpecificationCollectionMapper;
+// TODO import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.DataSpecificationIEC61360Mapper;
+// TODO import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.EmbeddedDataSpecificationCollectionMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.FileMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.LangStringCollectionMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.OperationVariableCollectionMapper;
@@ -35,7 +35,6 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ReferenceCollec
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ReferenceElementMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.RelationshipElementMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.SubmodelMapper;
-import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ViewMapper;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ConceptDescriptionMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.IdentifierKeyValuePairCollectionMapper;
@@ -44,31 +43,31 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.RangeMapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.mappers.ReferenceMapper;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
 import io.adminshell.aas.v3.dataformat.mapping.MappingProvider;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.Referable;
 import org.slf4j.LoggerFactory;
 import io.adminshell.aas.v3.dataformat.mapping.SourceBasedMapper;
-import io.adminshell.aas.v3.model.MultiLanguageProperty;
+import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
 
 /**
- * Maps an AssetAdministrationShellEnvironment to an AML file
+ * Maps an Environment to an AML file
  */
 public class AasToAmlMapper {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(AasToAmlMapper.class);
 
     /**
-     * Maps an AssetAdministrationShellEnvironment to an AML file (represented
+     * Maps an Environment to an AML file (represented
      * by a CAEXFile)
      *
-     * @param env the AssetAdministrationShellEnvironment to map
+     * @param env the Environment to map
      * @param config the serialization conig
-     * @return an AML representation of the AssetAdministrationShellEnvironment
+     * @return an AML representation of the Environment
      * @throws MappingException if the mapping fails
      */
-    public CAEXFile map(AssetAdministrationShellEnvironment env, AmlSerializationConfig config) throws MappingException {
+    public CAEXFile map(Environment env, AmlSerializationConfig config) throws MappingException {
         AbstractClassNamingStrategy classNamingStrategy = new NumberingClassNamingStrategy();
         classNamingStrategy.registerCustomNaming(LangString.class, x -> "aml-lang=" + x.getLanguage());
         PropertyNamingStrategy propertyNamingStrategy = new PropertyNamingStrategy();
@@ -91,12 +90,11 @@ public class AasToAmlMapper {
         mappingProvider.register(new QualifierMapper());
         mappingProvider.register(new FileMapper());
         mappingProvider.register(new SubmodelMapper());
-        mappingProvider.register(new EmbeddedDataSpecificationCollectionMapper());
+        // TODO mappingProvider.register(new EmbeddedDataSpecificationCollectionMapper());
         mappingProvider.register(new DataSpecificationContentMapper());
         mappingProvider.register(new ReferenceElementMapper());
         mappingProvider.register(new RelationshipElementMapper());
-        mappingProvider.register(new DataSpecificationIEC61360Mapper());
-        mappingProvider.register(new ViewMapper());
+        // TODO mappingProvider.register(new DataSpecificationIEC61360Mapper());
         mappingProvider.register(new PropertyMapper());
         mappingProvider.register(new RangeMapper());
         mappingProvider.register(new ConceptDescriptionMapper());

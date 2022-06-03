@@ -16,8 +16,8 @@
 package io.adminshell.aas.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.util.List;
 
 public interface ConceptDescriptionMixin {
@@ -34,5 +34,5 @@ public interface ConceptDescriptionMixin {
 //    @JsonProperty("embeddedDataSpecifications")
 //    @JsonDeserialize(using = DataSpecificationDeserializer.class)
 
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
+    // TODO public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 }

@@ -20,8 +20,8 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 
 public class SubmodelMapper extends DefaultMapper<Submodel> {
 

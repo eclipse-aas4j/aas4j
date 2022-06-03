@@ -20,25 +20,25 @@ import io.adminshell.aas.v3.dataformat.aml.util.ReferencedReferableCollector;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
 import io.adminshell.aas.v3.dataformat.mapping.MappingProvider;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
 import io.adminshell.aas.v3.dataformat.aml.common.AbstractMappingContext;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Type;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.util.Set;
 
 public class MappingContext extends AbstractMappingContext<Mapper> {
 
     private static final Logger log = LoggerFactory.getLogger(MappingContext.class);
-    private final AssetAdministrationShellEnvironment environment;
+    private final Environment environment;
     private final Set<Reference> referencedReferables;
 
     public MappingContext(MappingProvider mappingProvider,
             NamingStrategy internalElementNamingStrategy,
             NamingStrategy attributeNamingStrategy,
-            AssetAdministrationShellEnvironment environment) {
+            Environment environment) {
         this(mappingProvider,
                 internalElementNamingStrategy,
                 attributeNamingStrategy,
@@ -50,7 +50,7 @@ public class MappingContext extends AbstractMappingContext<Mapper> {
     private MappingContext(MappingProvider mappingProvider,
             NamingStrategy classNamingStrategy,
             NamingStrategy propertyNamingStrategy,
-            AssetAdministrationShellEnvironment environment,
+            Environment environment,
             Set<Reference> referencedReferables,
             PropertyDescriptor property) {
         super(mappingProvider, classNamingStrategy, propertyNamingStrategy, property);
@@ -98,7 +98,7 @@ public class MappingContext extends AbstractMappingContext<Mapper> {
         return property;
     }
 
-    public AssetAdministrationShellEnvironment getEnvironment() {
+    public Environment getEnvironment() {
         return environment;
     }
 }

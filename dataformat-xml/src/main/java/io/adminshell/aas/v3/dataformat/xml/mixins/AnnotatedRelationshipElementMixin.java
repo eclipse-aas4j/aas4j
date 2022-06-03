@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import io.adminshell.aas.v3.dataformat.xml.deserialization.DataElementsDeserializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.DataElementsSerializer;
-import io.adminshell.aas.v3.model.DataElement;
+import io.adminshell.aas.v3.rc02.model.DataElement;
 
 public interface AnnotatedRelationshipElementMixin {
     @JsonSerialize(using = DataElementsSerializer.class)

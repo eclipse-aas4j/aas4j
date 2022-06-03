@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.adminshell.aas.v3.model.AccessPermissionRule;
 import io.adminshell.aas.v3.model.Constraint;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 import java.util.List;
 

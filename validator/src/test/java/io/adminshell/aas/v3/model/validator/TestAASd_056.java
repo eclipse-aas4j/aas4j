@@ -24,15 +24,15 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Entity;
-import io.adminshell.aas.v3.model.EntityType;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.Entity;
+import io.adminshell.aas.v3.rc02.model.EntityType;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.impl.DefaultEntity;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEntity;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 
 /**
  * Tests the following constraint:

@@ -17,6 +17,9 @@ package io.adminshell.aas.v3.dataformat.rdf;
 
 import io.adminshell.aas.v3.dataformat.DeserializationException;
 import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import org.apache.jena.riot.RDFLanguages;
 import org.junit.Assert;
 import org.junit.Test;

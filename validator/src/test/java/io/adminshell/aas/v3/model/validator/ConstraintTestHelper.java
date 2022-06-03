@@ -18,25 +18,25 @@ package io.adminshell.aas.v3.model.validator;
 
 import java.util.List;
 
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.AssetKind;
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.AssetKind;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 import io.adminshell.aas.v3.model.IdentifierType;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetAdministrationShell;
 import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.impl.DefaultAssetInformation;
-import io.adminshell.aas.v3.model.impl.DefaultConceptDescription;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetInformation;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultConceptDescription;
 import io.adminshell.aas.v3.model.impl.DefaultIdentifier;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodel;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultSubmodel;
 
 public class ConstraintTestHelper {
 

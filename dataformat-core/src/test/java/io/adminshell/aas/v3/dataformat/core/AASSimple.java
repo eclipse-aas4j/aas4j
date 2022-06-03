@@ -17,34 +17,15 @@ package io.adminshell.aas.v3.dataformat.core;
 
 import java.util.Arrays;
 
-import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.AssetKind;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.DataTypeIEC61360;
-import io.adminshell.aas.v3.model.IdentifierType;
-import io.adminshell.aas.v3.model.KeyElements;
-import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.impl.DefaultAdministrativeInformation;
-import io.adminshell.aas.v3.model.impl.DefaultAsset;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShell;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.impl.DefaultAssetInformation;
-import io.adminshell.aas.v3.model.impl.DefaultConceptDescription;
-import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
-import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.impl.DefaultFile;
-import io.adminshell.aas.v3.model.impl.DefaultIdentifier;
-import io.adminshell.aas.v3.model.impl.DefaultIdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultProperty;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodel;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.AssetKind;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.KeyTypes;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.impl.*;
 
 public class AASSimple {
 
@@ -113,7 +94,7 @@ public class AASSimple {
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUETYPE = "langString";
     private static final String SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE;
     private static final String SUBMODEL_DOCUMENTATION_FILE_ID_SHORT = "DigitalFile_PDF";
-    private static final String SUBMODEL_DOCUMENTATION_FILE_MIMETYPE = "application/pdf";
+    private static final String SUBMODEL_DOCUMENTATION_FILE_contentType = "application/pdf";
     private static final String SUBMODEL_DOCUMENTATION_FILE_VALUE = "/aasx/OperatingManual.pdf";
 
     // SUBMODEL_OPERATIONAL_DATA
@@ -129,7 +110,6 @@ public class AASSimple {
     }
 
     public static final AssetAdministrationShell AAS = createAAS();
-    public static final Asset ASSET = createAsset();
     public static final Submodel SUBMODEL_TECHNICAL_DATA = createSubmodelTechnicalData();
     public static final Submodel SUBMODEL_OPERATIONAL_DATA = createSubmodelOperationalData();
     public static final Submodel SUBMODEL_DOCUMENTATION = createSubmodelDocumentation();
@@ -138,114 +118,94 @@ public class AASSimple {
     public static final ConceptDescription CONCEPT_DESCRIPTION_MAXROTATIONSPEED = createConceptDescriptionMaxRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_ROTATIONSPEED = createConceptDescriptionRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_DOCUMENT = createConceptDescriptionDocument();
-    public static final AssetAdministrationShellEnvironment ENVIRONMENT = createEnvironment();
+    public static final Environment ENVIRONMENT = createEnvironment();
 
     public static AssetAdministrationShell createAAS() {
         return new DefaultAssetAdministrationShell.Builder()
                 .idShort(AAS_ID)
-                .identification(
-                        new DefaultIdentifier.Builder()
-                                .idType(IdentifierType.IRI)
-                                .identifier(AAS_IDENTIFIER)
-                                .build())
+                .id(AAS_IDENTIFIER)
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
                         .globalAssetId(new DefaultReference.Builder()
-                                .key(new DefaultKey.Builder()
-                                        .type(KeyElements.ASSET)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.ASSET_ADMINISTRATION_SHELL)
                                         .value(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
-                                        .idType(KeyType.IRI)
                                         .build())
                                 .build())
-                        .specificAssetId(new DefaultIdentifierKeyValuePair.Builder()
-                                .key(EQUIPMENT_ID)
+                        .specificAssetId(new DefaultSpecificAssetId.Builder()
+                                .name(EQUIPMENT_ID)
                                 .value(_538FD1B3_F99F_4A52_9C75_72E9FA921270)
                                 .externalSubjectId(new DefaultReference.Builder()
-                                        .key(new DefaultKey.Builder()
-                                                .type(KeyElements.GLOBAL_REFERENCE)
+                                        .keys(new DefaultKey.Builder()
+                                                .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_ERP_012)
-                                                .idType(KeyType.IRI)
+                                                
                                                 .build())
                                         .build())
                                 .build())
-                        .specificAssetId(new DefaultIdentifierKeyValuePair.Builder()
-                                .key(DEVICE_ID)
+                        .specificAssetId(new DefaultSpecificAssetId.Builder()
+                                .name(DEVICE_ID)
                                 .value(QJ_YG_PGGJWKI_HK4_RR_QI_YS_LG)
                                 .externalSubjectId(new DefaultReference.Builder()
-                                        .key(new DefaultKey.Builder()
-                                                .type(KeyElements.GLOBAL_REFERENCE)
+                                        .keys(new DefaultKey.Builder()
+                                                .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1)
-                                                .idType(KeyType.IRI)
+                                                
                                                 .build())
                                         .build())
                                 .build())
-                        .defaultThumbnail(new DefaultFile.Builder()
-                                .kind(ModelingKind.INSTANCE)
-                                .idShort(THUMBNAIL)
-                                .mimeType(IMAGE_PNG)
-                                .value(HTTPS_GITHUB_COM_ADMIN_SHELL_IO_BLOB_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG)
+                        .defaultThumbnail(new DefaultResource.Builder()
+                                .contentType(IMAGE_PNG)
+                                .path(HTTPS_GITHUB_COM_ADMIN_SHELL_IO_BLOB_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG)
                                 .build())
                         .build())
-                .submodel(new DefaultReference.Builder()
-                        .key(new DefaultKey.Builder()
-                                .type(KeyElements.SUBMODEL)
+                .submodels(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.SUBMODEL)
                                 .value(SUBMODEL_TECHNICAL_DATA_ID)
-                                .idType(KeyType.IRI).build())
+                                .build())
                         .build())
-                .submodel(
+                .submodels(
                         new DefaultReference.Builder()
-                                .key(new DefaultKey.Builder()
-                                        .type(KeyElements.SUBMODEL)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
                                         .value(SUBMODEL_OPERATIONAL_DATA_ID)
-                                        .idType(KeyType.IRI)
+                                        
                                         .build())
                                 .build())
-                .submodel(new DefaultReference.Builder().key(new DefaultKey.Builder()
-                        .type(KeyElements.SUBMODEL)
+                .submodels(new DefaultReference.Builder().keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
                         .value(SUBMODEL_DOCUMENTATION_ID)
-                        .idType(KeyType.IRI)
+                        
                         .build())
                         .build())
                 .build();
     }
 
-    public static Asset createAsset() {
-        return new DefaultAsset.Builder().idShort(SERVO_DC_MOTOR)
-                .identification(new DefaultIdentifier.Builder()
-                        .idType(IdentifierType.IRI)
-                        .identifier(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
-                        .build())
-                .build();
-    }
 
     public static Submodel createSubmodelTechnicalData() {
         return new DefaultSubmodel.Builder()
                 .semanticId(new DefaultReference.Builder()
-                        .key(new DefaultKey.Builder()
-                                .type(KeyElements.GLOBAL_REFERENCE)
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID)
-                                .idType(KeyType.IRDI)
                                 .build())
                         .build())
                 .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_TECHNICAL_DATA_ID_SHORT)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(SUBMODEL_TECHNICAL_DATA_ID)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .submodelElement(new DefaultProperty.Builder()
+                .id(SUBMODEL_TECHNICAL_DATA_ID)
+                .submodelElements(new DefaultProperty.Builder()
                         .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
-                                .key(new DefaultKey.Builder()
-                                        .type(KeyElements.CONCEPT_DESCRIPTION)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID_PROPERTY)
-                                        .idType(KeyType.IRDI)
+                                        
                                         .build())
                                 .build())
                         .idShort(SUBMODEL_TECHNICAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_TECHNICAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_TECHNICAL_DATA_PROPERTY_VALUE)
-                        .valueType(SUBMODEL_TECHNICAL_DATA_PROPERTY_VALUETYPE)
                         .build())
                 .build();
     }
@@ -254,23 +214,19 @@ public class AASSimple {
         return new DefaultSubmodel.Builder()
                 .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_OPERATIONAL_DATA_ID_SHORT)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(SUBMODEL_OPERATIONAL_DATA_ID)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .submodelElement(new DefaultProperty.Builder()
+                .id(SUBMODEL_OPERATIONAL_DATA_ID)
+                .submodelElements(new DefaultProperty.Builder()
                         .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
-                                .key(new DefaultKey.Builder()
-                                        .type(KeyElements.CONCEPT_DESCRIPTION)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_OPERATIONAL_DATA_SEMANTIC_ID_PROPERTY)
-                                        .idType(KeyType.IRI)
+                                        
                                         .build())
                                 .build())
                         .idShort(SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE)
-                        .valueType(SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE)
                         .build())
                 .build();
     }
@@ -279,48 +235,44 @@ public class AASSimple {
         return new DefaultSubmodel.Builder()
                 .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_DOCUMENTATION_ID_SHORT)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(SUBMODEL_DOCUMENTATION_ID)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .submodelElement(new DefaultSubmodelElementCollection.Builder()
+                .id(SUBMODEL_DOCUMENTATION_ID)
+                .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
-                                .key(new DefaultKey.Builder()
-                                        .type(KeyElements.CONCEPT_DESCRIPTION)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_SEMANTIC_ID)
-                                        .idType(KeyType.IRI)
+                                        
                                         .build())
                                 .build())
                         .idShort(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_ID_SHORT)
                         .value(new DefaultProperty.Builder()
                                 .kind(ModelingKind.INSTANCE)
                                 .semanticId(new DefaultReference.Builder()
-                                        .key(new DefaultKey.Builder()
-                                                .type(KeyElements.CONCEPT_DESCRIPTION)
+                                        .keys(new DefaultKey.Builder()
+                                                .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID)
-                                                .idType(KeyType.IRI)
+                                                
                                                 .build())
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT)
                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_VALUE)
-                                .valueType(SUBMODEL_DOCUMENTATION_PROPERTY_VALUETYPE)
                                 .build())
                         .value(new DefaultFile.Builder()
                                 .kind(ModelingKind.INSTANCE)
                                 .semanticId(new DefaultReference.Builder()
-                                        .key(new DefaultKey.Builder()
-                                                .type(KeyElements.CONCEPT_DESCRIPTION)
+                                        .keys(new DefaultKey.Builder()
+                                                .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID)
-                                                .idType(KeyType.IRI)
+                                                
                                                 .build())
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_FILE_ID_SHORT)
-                                .mimeType(SUBMODEL_DOCUMENTATION_FILE_MIMETYPE)
+                                .contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
                                 .value(SUBMODEL_DOCUMENTATION_FILE_VALUE)
                                 .build())
-                        .ordered(false)
-                        .allowDuplicates(false)
+                        //.ordered(false)
+                        //.allowDuplicates(false)
                         .build())
                 .build();
     }
@@ -328,11 +280,8 @@ public class AASSimple {
     public static ConceptDescription createConceptDescriptionTitle() {
         return new DefaultConceptDescription.Builder()
                 .idShort(TITLE)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE)
+                /* TODO .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
                                 .preferredName(new LangString(TITLE, "EN"))
                                 .preferredName(new LangString(TITEL, "DE"))
@@ -343,18 +292,15 @@ public class AASSimple {
                                 .dataType(DataTypeIEC61360.STRING_TRANSLATABLE)
                                 .definition(new LangString(SPRACHABHÄNGIGER_TITELDES_DOKUMENTS, "EN"))
                                 .build())
-                        .build())
+                        .build()) */
                 .build();
     }
 
     public static ConceptDescription createConceptDescriptionDigitalFile() {
         return new DefaultConceptDescription.Builder()
                 .idShort(DIGITAL_FILE)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE)
+                /* TODO .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
                         .dataSpecificationContent(
                                 new DefaultDataSpecificationIEC61360.Builder()
                                         .preferredName(new LangString(DIGITAL_FILE, "EN"))
@@ -366,7 +312,7 @@ public class AASSimple {
                                         .dataType(DataTypeIEC61360.STRING)
                                         .definition(new LangString(DIGITAL_FILE_DEFINITION, "EN"))
                                         .build())
-                        .build())
+                        .build()) */
                 .build();
     }
 
@@ -377,11 +323,8 @@ public class AASSimple {
                         .version("2")
                         .revision("2.1")
                         .build())
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(_0173_1_02_BAA120_008)
-                        .idType(IdentifierType.IRDI)
-                        .build())
-                .embeddedDataSpecifications(
+                .id(_0173_1_02_BAA120_008)
+                /* TODO .embeddedDataSpecifications(
                         Arrays.asList(
                                 new DefaultEmbeddedDataSpecification.Builder()
                                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
@@ -389,10 +332,10 @@ public class AASSimple {
                                                 .preferredName(new LangString(MAX_ROTATIONSPEED, "en"))
                                                 .unit(_1_MIN)
                                                 .unitId(new DefaultReference.Builder()
-                                                        .key(new DefaultKey.Builder()
-                                                                .type(KeyElements.GLOBAL_REFERENCE)
+                                                        .keys(new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value(_0173_1_05_AAA650_002)
-                                                                .idType(KeyType.IRDI)
+                                                                
                                                                 .build())
                                                         .build())
                                                 .sourceOfDefinition("ExampleString")
@@ -400,7 +343,7 @@ public class AASSimple {
                                                 .definition(new LangString(MAX_ROTATE_DEF_DE, "de"))
                                                 .definition(new LangString(MAX_ROTATE_DEF_EN, "EN"))
                                                 .build())
-                                        .build()))
+                                        .build()))*/
                 .build();
     }
 
@@ -408,11 +351,8 @@ public class AASSimple {
         return new DefaultConceptDescription.Builder()
                 .idShort(ROTATION_SPEED)
                 .category(PROPERTY)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(HTTP_CUSTOMER_COM_CD_1_1_18EBD56F6B43D895)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .embeddedDataSpecification(
+                .id(HTTP_CUSTOMER_COM_CD_1_1_18EBD56F6B43D895)
+                /* TODO .embeddedDataSpecification(
                         new DefaultEmbeddedDataSpecification.Builder()
                                 .dataSpecificationContent(
                                         new DefaultDataSpecificationIEC61360.Builder()
@@ -422,10 +362,10 @@ public class AASSimple {
                                                 .shortName(new LangString(ACTUAL_ROTATION_SPEED, "EN"))
                                                 .unit(_1_MIN)
                                                 .unitId(new DefaultReference.Builder()
-                                                        .key(new DefaultKey.Builder()
-                                                                .type(KeyElements.GLOBAL_REFERENCE)
+                                                        .keys(new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value(_0173_1_05_AAA650_002)
-                                                                .idType(KeyType.IRDI)
+                                                                
                                                                 .build())
                                                         .build())
                                                 .sourceOfDefinition("ExampleString")
@@ -433,18 +373,15 @@ public class AASSimple {
                                                 .definition(new LangString(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD, "DE"))
                                                 .definition(new LangString(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED, "EN"))
                                                 .build())
-                                .build())
+                                .build()) */
                 .build();
     }
 
     public static ConceptDescription createConceptDescriptionDocument() {
         return new DefaultConceptDescription.Builder()
                 .idShort(DOCUMENT)
-                .identification(new DefaultIdentifier.Builder()
-                        .identifier(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT)
-                        .idType(IdentifierType.IRI)
-                        .build())
-                .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT)
+                /*.embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
                                 .preferredName(new LangString(DOCUMENT, "EN"))
                                 .shortName(new LangString(DOCUMENT, "EN"))
@@ -454,12 +391,12 @@ public class AASSimple {
                                 .dataType(DataTypeIEC61360.STRING)
                                 .definition(new LangString(DOCUMENT_DEF, "EN"))
                                 .build())
-                        .build())
+                        .build())*/
                 .build();
     }
 
-    public static AssetAdministrationShellEnvironment createEnvironment() {
-        return new DefaultAssetAdministrationShellEnvironment.Builder()
+    public static Environment createEnvironment() {
+        return new DefaultEnvironment.Builder()
                 .assetAdministrationShells(createAAS())
                 .submodels(createSubmodelTechnicalData())
                 .submodels(createSubmodelDocumentation())
@@ -469,7 +406,6 @@ public class AASSimple {
                 .conceptDescriptions(createConceptDescriptionMaxRotationSpeed())
                 .conceptDescriptions(createConceptDescriptionRotationSpeed())
                 .conceptDescriptions(createConceptDescriptionDocument())
-                .assets(createAsset())
                 .build();
     }
 }

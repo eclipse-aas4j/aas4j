@@ -24,7 +24,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
 import io.adminshell.aas.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public interface SubmodelMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelElements")

@@ -20,13 +20,11 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
-import io.adminshell.aas.v3.model.KeyElements;
-import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+import io.adminshell.aas.v3.rc02.model.KeyTypes;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -44,9 +42,10 @@ public class DataSpecificationManager {
     public static final String DATA_SPECIFICATION_IEC61360_PREFIX = "IEC";
 
     private static final Set<DataSpecificationInfo> KNOWN_IMPLEMENTATIONS = new HashSet<>(Arrays.asList(
-            new DataSpecificationInfo(DataSpecificationIEC61360.class,
-                    createGlobalIri(DATA_SPECIFICATION_IEC61360_IRI),
-                    DATA_SPECIFICATION_IEC61360_PREFIX)));
+    //        new DataSpecificationInfo(DataSpecificationIEC61360.class,
+    //                createGlobalIri(DATA_SPECIFICATION_IEC61360_IRI),
+    //                DATA_SPECIFICATION_IEC61360_PREFIX)
+    ));
 
     /**
      * Allows to register an additional data specification template
@@ -60,7 +59,7 @@ public class DataSpecificationManager {
 
     private static Reference createGlobalIri(String iri) {
         return new DefaultReference.Builder().keys(Arrays.asList(
-                new DefaultKey.Builder().idType(KeyType.IRI).type(KeyElements.GLOBAL_REFERENCE).value(iri).build()))
+                new DefaultKey.Builder().type(KeyTypes.GLOBAL_REFERENCE).value(iri).build()))
                 .build();
     }
 

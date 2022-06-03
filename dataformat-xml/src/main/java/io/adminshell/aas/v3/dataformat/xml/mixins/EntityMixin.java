@@ -24,12 +24,12 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
 import io.adminshell.aas.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
-import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SpecificAssetId;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public interface EntityMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
-    public IdentifierKeyValuePair getExternalAssetId();
+    public SpecificAssetId getExternalAssetId();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
     @JsonSerialize(using = SubmodelElementsSerializer.class)

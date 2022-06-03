@@ -27,21 +27,21 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable.Value;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.AnnotatedRelationshipElement;
-import io.adminshell.aas.v3.model.Blob;
-import io.adminshell.aas.v3.model.Capability;
-import io.adminshell.aas.v3.model.Entity;
+import io.adminshell.aas.v3.rc02.model.AnnotatedRelationshipElement;
+import io.adminshell.aas.v3.rc02.model.Blob;
+import io.adminshell.aas.v3.rc02.model.Capability;
+import io.adminshell.aas.v3.rc02.model.Entity;
 import io.adminshell.aas.v3.model.Event;
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.model.Operation;
-import io.adminshell.aas.v3.model.Property;
-import io.adminshell.aas.v3.model.Range;
-import io.adminshell.aas.v3.model.ReferenceElement;
-import io.adminshell.aas.v3.model.RelationshipElement;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
+import io.adminshell.aas.v3.rc02.model.Operation;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.Range;
+import io.adminshell.aas.v3.rc02.model.ReferenceElement;
+import io.adminshell.aas.v3.rc02.model.RelationshipElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
 
 public class ParserUtils {
 

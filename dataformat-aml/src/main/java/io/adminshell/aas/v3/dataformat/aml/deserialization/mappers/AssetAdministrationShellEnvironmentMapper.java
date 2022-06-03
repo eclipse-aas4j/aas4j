@@ -23,25 +23,25 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.SystemUnitFamilyType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultEnvironment;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class AssetAdministrationShellEnvironmentMapper implements Mapper<AssetAdministrationShellEnvironment> {
+public class AssetAdministrationShellEnvironmentMapper implements Mapper<Environment> {
 
     private final String ASSET_ADMINISTRATION_SHELL_SYSTEM_UNIT_CLASSES = "AssetAdministrationShellSystemUnitClasses";
     private final String ROLE_CLASS_LIB_ASSET_ADMINISTRATION_SHELL = "AssetAdministrationShellRoleClassLib/AssetAdministrationShell";
 
     @Override
-    public AssetAdministrationShellEnvironment map(AmlParser parser, MappingContext context) throws MappingException {
+    public Environment map(AmlParser parser, MappingContext context) throws MappingException {
         // TODO use typeFactory instead of explicitly using Default... classes
-        AssetAdministrationShellEnvironment result = new DefaultAssetAdministrationShellEnvironment.Builder().build();
+        Environment result = new DefaultEnvironment.Builder().build();
         List<InternalElementType> shells = parser.getContent().getInstanceHierarchy().stream()
                 .flatMap(x -> x.getInternalElement().stream().filter(filterByRole(AssetAdministrationShell.class)))
                 .collect(Collectors.toList());
@@ -79,7 +79,7 @@ public class AssetAdministrationShellEnvironmentMapper implements Mapper<AssetAd
                 .filter(x ->x.getSupportedRoleClass().get(0).getRefRoleClassPath().equalsIgnoreCase(ROLE_CLASS_LIB_ASSET_ADMINISTRATION_SHELL))
                 .collect(Collectors.toList());
 
-        AssetAdministrationShellEnvironment resultTemplatesAASEnvironments = new DefaultAssetAdministrationShellEnvironment.Builder().build();
+        Environment resultTemplatesAASEnvironments = new DefaultEnvironment.Builder().build();
         for(SystemUnitFamilyType systemUnitFamilyTypeShell : systemUnitFamilyTypeShells){
                 parser.setCurrent(systemUnitFamilyTypeShell);
             try {

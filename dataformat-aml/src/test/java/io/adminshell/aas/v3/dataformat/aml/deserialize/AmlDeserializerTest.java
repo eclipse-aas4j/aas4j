@@ -21,7 +21,6 @@ import io.adminshell.aas.v3.dataformat.aml.fixtures.FullExample;
 import io.adminshell.aas.v3.dataformat.aml.fixtures.SimpleExample;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
 import io.adminshell.aas.v3.dataformat.core.AASSimple;
-import io.adminshell.aas.v3.model.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -29,6 +28,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -39,8 +42,8 @@ public class AmlDeserializerTest {
 
     @Test
     public void testSAPFullExample() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment actual = deserializer.read(FullExample.FILE);
-        AssetAdministrationShellEnvironment expected = AASFull.createEnvironment();
+        Environment actual = deserializer.read(FullExample.FILE);
+        Environment expected = AASFull.createEnvironment();
         //some changes on the Full Example environment are necessary because there are some constructs inside which are
         //not possible with AML due to the mapping specifications
 
@@ -57,8 +60,8 @@ public class AmlDeserializerTest {
 
     @Test
     public void testSAPSimpleExample() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment actual = deserializer.read(SimpleExample.FILE);
-        AssetAdministrationShellEnvironment expected = AASSimple.createEnvironment();
+        Environment actual = deserializer.read(SimpleExample.FILE);
+        Environment expected = AASSimple.createEnvironment();
         //some changes on the Simple Example environment are necessary because there are some constructs inside which are
         //not possible with AML due to the mapping specifications
 
@@ -70,54 +73,49 @@ public class AmlDeserializerTest {
         adaptSubmodels(expected);
         //swap the idx of two submodels because assertEquals checks also the order of the elements
         swapSubmodelIdx(expected, 1, 2);
-        // remove assets as they are not part of the current AML specification
-        removeAssets(expected);
+
         adaptAssetInformation(expected);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSubmodels() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment actual = deserializer.read(FullExample.FILE);
-        AssetAdministrationShellEnvironment expected = AASFull.createEnvironment();
+        Environment actual = deserializer.read(FullExample.FILE);
+        Environment expected = AASFull.createEnvironment();
         adaptSubmodels(expected);
         swapSubmodelIdx(actual, 0, 2);
         assertEquals(expected.getSubmodels(), actual.getSubmodels());
     }
 
-    private void swapSubmodelIdx(AssetAdministrationShellEnvironment env, int idxSrc, int idxDest) {
+    private void swapSubmodelIdx(Environment env, int idxSrc, int idxDest) {
         Collections.swap(env.getSubmodels(), idxSrc, idxDest);
     }
 
-    private void adaptAssetInformation(AssetAdministrationShellEnvironment env) {
+    private void adaptAssetInformation(Environment env) {
         // remove thumbnail as it is not defined in current AML specification
         env.getAssetAdministrationShells().forEach(x -> x.getAssetInformation().setDefaultThumbnail(null));
     }
 
-    private void adaptSubmodels(AssetAdministrationShellEnvironment env) {
+    private void adaptSubmodels(Environment env) {
         //non referenced submodels are not considered in AML
         List<String> submodelIds = new ArrayList<>();
         env.getAssetAdministrationShells().stream().forEach(
                 x -> x.getSubmodels().stream()
                         .forEach(y -> y.getKeys().stream().forEach(z -> submodelIds.add(z.getValue()))));
 
-        List<Submodel> referencedSubmodels = env.getSubmodels().stream().filter(x -> submodelIds.contains(x.getIdentification().getIdentifier())).collect(Collectors.toList());
+        List<Submodel> referencedSubmodels = env.getSubmodels().stream().filter(x -> submodelIds.contains(x.getId())).collect(Collectors.toList());
         env.setSubmodels(referencedSubmodels);
-    }
-
-    private void removeAssets(AssetAdministrationShellEnvironment env) {
-        env.getAssets().clear();
     }
 
     @Test
     public void testAssetAdministrationShells() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment actual = deserializer.read(FullExample.FILE);
-        AssetAdministrationShellEnvironment expected = AASFull.createEnvironment();
+        Environment actual = deserializer.read(FullExample.FILE);
+        Environment expected = AASFull.createEnvironment();
         adaptAssetAdministrationShells(expected);
         assertEquals(expected.getAssetAdministrationShells(), actual.getAssetAdministrationShells());
     }
 
-    private void adaptAssetAdministrationShells(AssetAdministrationShellEnvironment env) {
+    private void adaptAssetAdministrationShells(Environment env) {
         //Need to remove Asset Administration Shell which have no Submodels
         //they are not considered in AML due to the specification
         List<AssetAdministrationShell> nonEmptyShells = new ArrayList<>();
@@ -131,22 +129,23 @@ public class AmlDeserializerTest {
 
     @Test
     public void testConceptDescriptions() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment actual = deserializer.read(FullExample.FILE);
-        AssetAdministrationShellEnvironment expected = AASFull.createEnvironment();
+        Environment actual = deserializer.read(FullExample.FILE);
+        Environment expected = AASFull.createEnvironment();
         //Need to remove Level Types and Value Lists from embedded dataspecification
         //they are not considered in AML due to the specification
         adaptConceptDescriptions(expected);
         assertEquals(expected.getConceptDescriptions(), actual.getConceptDescriptions());
     }
 
-    private void adaptConceptDescriptions(AssetAdministrationShellEnvironment env) {
-        List<ConceptDescription> expectedConceptDescriptions = env.getConceptDescriptions();
+    private void adaptConceptDescriptions(Environment env) {
+        // TODO
+        /*List<ConceptDescription> expectedConceptDescriptions = env.getConceptDescriptions();
         for (ConceptDescription c : expectedConceptDescriptions) {
             for (EmbeddedDataSpecification embeddedDataSpecification : c.getEmbeddedDataSpecifications()) {
                 ((DataSpecificationIEC61360) embeddedDataSpecification.getDataSpecificationContent()).setLevelTypes(new ArrayList<>());
                 ((DataSpecificationIEC61360) embeddedDataSpecification.getDataSpecificationContent()).setValueList(null);
             }
         }
-
+*/
     }
 }

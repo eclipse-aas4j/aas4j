@@ -31,15 +31,15 @@ import io.adminshell.aas.v3.dataformat.Serializer;
 import io.adminshell.aas.v3.dataformat.core.ReflectionHelper;
 import io.adminshell.aas.v3.dataformat.core.serialization.EnumSerializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
-import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
+// TODO import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.KeySerializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.LangStringSerializer;
 import io.adminshell.aas.v3.dataformat.xml.serialization.ReferenceSerializer;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Environment;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class XmlSerializer implements Serializer {
     protected XmlMapper mapper;
@@ -70,14 +70,14 @@ public class XmlSerializer implements Serializer {
 
     protected SimpleModule buildCustomSerializerModule() {
         SimpleModule module = new SimpleModule();
-        module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
+        // TODO: module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
         AssetAdministrationShellEnvironmentSerializer aasEnvSerializer;
         if (namespacePrefixes != null) {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer(namespacePrefixes);
         } else {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer();
         }
-        module.addSerializer(AssetAdministrationShellEnvironment.class, aasEnvSerializer);
+        module.addSerializer(Environment.class, aasEnvSerializer);
         module.addSerializer(Key.class, new KeySerializer());
         module.addSerializer(Reference.class, new ReferenceSerializer());
         module.addSerializer(LangString.class, new LangStringSerializer());
@@ -91,7 +91,7 @@ public class XmlSerializer implements Serializer {
     }
 
     @Override
-    public String write(AssetAdministrationShellEnvironment aasEnvironment) throws SerializationException {
+    public String write(Environment aasEnvironment) throws SerializationException {
         try {
             ObjectWriter writer = mapper.writer();
             return writer.writeValueAsString(aasEnvironment);

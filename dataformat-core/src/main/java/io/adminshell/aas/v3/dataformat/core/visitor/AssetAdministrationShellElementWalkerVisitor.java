@@ -15,86 +15,10 @@
  */
 package io.adminshell.aas.v3.dataformat.core.visitor;
 
-import io.adminshell.aas.v3.model.AccessControl;
-import io.adminshell.aas.v3.model.AccessControlPolicyPoints;
-import io.adminshell.aas.v3.model.AccessPermissionRule;
-import io.adminshell.aas.v3.model.AnnotatedRelationshipElement;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.AssetInformation;
-import io.adminshell.aas.v3.model.BasicEvent;
-import io.adminshell.aas.v3.model.BlobCertificate;
-import io.adminshell.aas.v3.model.Certificate;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Entity;
-import io.adminshell.aas.v3.model.Extension;
-import io.adminshell.aas.v3.model.Formula;
-import io.adminshell.aas.v3.model.HasDataSpecification;
-import io.adminshell.aas.v3.model.HasExtensions;
-import io.adminshell.aas.v3.model.HasSemantics;
-import io.adminshell.aas.v3.model.Identifiable;
-import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.model.ObjectAttributes;
-import io.adminshell.aas.v3.model.Operation;
-import io.adminshell.aas.v3.model.OperationVariable;
-import io.adminshell.aas.v3.model.Permission;
-import io.adminshell.aas.v3.model.PermissionsPerObject;
-import io.adminshell.aas.v3.model.PolicyAdministrationPoint;
-import io.adminshell.aas.v3.model.PolicyInformationPoints;
-import io.adminshell.aas.v3.model.Property;
-import io.adminshell.aas.v3.model.Qualifiable;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.ReferenceElement;
-import io.adminshell.aas.v3.model.RelationshipElement;
-import io.adminshell.aas.v3.model.Security;
-import io.adminshell.aas.v3.model.SubjectAttributes;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
-import io.adminshell.aas.v3.model.ValueList;
-import io.adminshell.aas.v3.model.ValueReferencePair;
-import io.adminshell.aas.v3.model.View;
+import io.adminshell.aas.v3.rc02.model.*;
 
 public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdministrationShellElementVisitor {
 
-    @Override
-    public default void visit(AccessControl accessControl) {
-        if (accessControl == null) {
-            return;
-        }
-        visit(accessControl.getDefaultEnvironmentAttributes());
-        visit(accessControl.getDefaultPermissions());
-        visit(accessControl.getDefaultSubjectAttributes());
-        visit(accessControl.getSelectableEnvironmentAttributes());
-        visit(accessControl.getSelectablePermissions());
-        visit(accessControl.getSelectableSubjectAttributes());
-        accessControl.getAccessPermissionRules().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(accessControl);
-    }
-
-    @Override
-    public default void visit(AccessControlPolicyPoints accessControlPolicyPoints) {
-        if (accessControlPolicyPoints == null) {
-            return;
-        }
-        visit(accessControlPolicyPoints.getPolicyAdministrationPoint());
-        visit(accessControlPolicyPoints.getPolicyDecisionPoint());
-        visit(accessControlPolicyPoints.getPolicyEnforcementPoint());
-        visit(accessControlPolicyPoints.getPolicyInformationPoints());
-        AssetAdministrationShellElementVisitor.super.visit(accessControlPolicyPoints);
-    }
-
-    @Override
-    public default void visit(AccessPermissionRule accessPermissionRule) {
-        if (accessPermissionRule == null) {
-            return;
-        }
-        visit(accessPermissionRule.getTargetSubjectAttributes());
-        accessPermissionRule.getPermissionsPerObjects().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(accessPermissionRule);
-    }
 
     @Override
     public default void visit(AnnotatedRelationshipElement annotatedRelationshipElement) {
@@ -111,10 +35,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(assetAdministrationShell.getDerivedFrom());
-        visit(assetAdministrationShell.getSecurity());
         visit(assetAdministrationShell.getAssetInformation());
         assetAdministrationShell.getSubmodels().forEach(x -> visit(x));
-        assetAdministrationShell.getViews().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(assetAdministrationShell);
     }
 
@@ -124,28 +46,26 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(assetInformation.getGlobalAssetId());
+        visit(assetInformation.getSpecificAssetId());
         visit(assetInformation.getDefaultThumbnail());
-        assetInformation.getSpecificAssetIds().forEach(x -> visit(x));
-        assetInformation.getBillOfMaterials().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(assetInformation);
     }
 
     @Override
-    public default void visit(BasicEvent basicEvent) {
+    public default void visit(Resource resource) {
+        if (resource == null) {
+            return;
+        }
+        AssetAdministrationShellElementVisitor.super.visit(resource);
+    }
+
+    @Override
+    public default void visit(BasicEventElement basicEvent) {
         if (basicEvent == null) {
             return;
         }
         visit(basicEvent.getObserved());
         AssetAdministrationShellElementVisitor.super.visit(basicEvent);
-    }
-
-    @Override
-    public default void visit(Certificate certificate) {
-        if (certificate == null) {
-            return;
-        }
-        visit(certificate.getPolicyAdministrationPoint());
-        AssetAdministrationShellElementVisitor.super.visit(certificate);
     }
 
     @Override
@@ -162,7 +82,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasDataSpecification == null) {
             return;
         }
-        hasDataSpecification.getEmbeddedDataSpecifications().forEach(x -> visit(x));
+        //hasDataSpecification.getEmbeddedDataSpecifications().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasDataSpecification);
     }
 
@@ -190,17 +110,25 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(identifiable.getAdministration());
-        visit(identifiable.getIdentification());
         AssetAdministrationShellElementVisitor.super.visit(identifiable);
     }
 
     @Override
-    public default void visit(IdentifierKeyValuePair identifierKeyValuePair) {
-        if (identifierKeyValuePair == null) {
+    public default void visit(LangStringSet langStringSet) {
+        if (langStringSet == null) {
             return;
         }
-        visit(identifierKeyValuePair.getExternalSubjectId());
-        AssetAdministrationShellElementVisitor.super.visit(identifierKeyValuePair);
+        langStringSet.getLangStrings().forEach(x -> visit(x));
+        AssetAdministrationShellElementVisitor.super.visit(langStringSet);
+    }
+
+    @Override
+    public default void visit(SpecificAssetId specificAssetId) {
+        if (specificAssetId == null) {
+            return;
+        }
+        visit(specificAssetId.getExternalSubjectId());
+        AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
     @Override
@@ -208,18 +136,9 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (multiLanguageProperty == null) {
             return;
         }
-        multiLanguageProperty.getValues().forEach(x -> visit(x));
+        visit(multiLanguageProperty.getValue());
         visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
-    }
-
-    @Override
-    public default void visit(ObjectAttributes objectAttributes) {
-        if (objectAttributes == null) {
-            return;
-        }
-        objectAttributes.getObjectAttributes().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(objectAttributes);
     }
 
     @Override
@@ -229,15 +148,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         }
         visit(operationVariable.getValue());
         AssetAdministrationShellElementVisitor.super.visit(operationVariable);
-    }
-
-    @Override
-    public default void visit(PolicyInformationPoints policyInformationPoints) {
-        if (policyInformationPoints == null) {
-            return;
-        }
-        policyInformationPoints.getInternalInformationPoints().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(policyInformationPoints);
     }
 
     @Override
@@ -272,8 +182,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescriptions().forEach(x -> visit(x));
-        referable.getDisplayNames().forEach(x -> visit(x));
+        visit(referable.getDescription());
+        visit(referable.getDisplayName());
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 
@@ -306,55 +216,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(Security security) {
-        if (security == null) {
-            return;
-        }
-        visit(security.getAccessControlPolicyPoints());
-        security.getCertificates().forEach(x -> visit(x));
-        security.getRequiredCertificateExtensions().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(security);
-    }
-
-    @Override
-    public default void visit(SubjectAttributes subjectAttributes) {
-        if (subjectAttributes == null) {
-            return;
-        }
-        subjectAttributes.getSubjectAttributes().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(subjectAttributes);
-    }
-
-    @Override
-    public default void visit(Permission permission) {
-        if (permission == null) {
-            return;
-        }
-        visit(permission.getPermission());
-        AssetAdministrationShellElementVisitor.super.visit(permission);
-    }
-
-    @Override
-    public default void visit(PermissionsPerObject permissionsPerObject) {
-        if (permissionsPerObject == null) {
-            return;
-        }
-        visit(permissionsPerObject.getObject());
-        visit(permissionsPerObject.getTargetObjectAttributes());
-        permissionsPerObject.getPermissions().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(permissionsPerObject);
-    }
-
-    @Override
-    public default void visit(PolicyAdministrationPoint policyAdministrationPoint) {
-        if (policyAdministrationPoint == null) {
-            return;
-        }
-        visit(policyAdministrationPoint.getLocalAccessControl());
-        AssetAdministrationShellElementVisitor.super.visit(policyAdministrationPoint);
-    }
-
-    @Override
     public default void visit(Entity entity) {
         if (entity == null) {
             return;
@@ -363,15 +224,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         visit(entity.getSpecificAssetId());
         entity.getStatements().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(entity);
-    }
-
-    @Override
-    public default void visit(Formula formula) {
-        if (formula == null) {
-            return;
-        }
-        formula.getDependsOns().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(formula);
     }
 
     @Override
@@ -384,7 +236,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(AssetAdministrationShellEnvironment assetAdministrationShellEnvironment) {
+    public default void visit(Environment assetAdministrationShellEnvironment) {
         if (assetAdministrationShellEnvironment == null) {
             return;
         }
@@ -421,44 +273,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         operation.getInoutputVariables().forEach(x -> visit(x.getValue()));
         operation.getOutputVariables().forEach(x -> visit(x.getValue()));
         AssetAdministrationShellElementVisitor.super.visit(operation);
-    }
-
-    @Override
-    public default void visit(BlobCertificate blobCertificate) {
-        if (blobCertificate == null) {
-            return;
-        }
-        visit(blobCertificate.getBlobCertificate());
-        visit(blobCertificate.getPolicyAdministrationPoint());
-        blobCertificate.getContainedExtensions().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(blobCertificate);
-    }
-
-    @Override
-    public default void visit(ValueList valueList) {
-        if (valueList == null) {
-            return;
-        }
-        valueList.getValueReferencePairTypes().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(valueList);
-    }
-
-    @Override
-    public default void visit(ValueReferencePair valueReferencePair) {
-        if (valueReferencePair == null) {
-            return;
-        }
-        visit(valueReferencePair.getValueId());
-        AssetAdministrationShellElementVisitor.super.visit(valueReferencePair);
-    }
-
-    @Override
-    public default void visit(View view) {
-        if (view == null) {
-            return;
-        }
-        view.getContainedElements().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(view);
     }
 
 }

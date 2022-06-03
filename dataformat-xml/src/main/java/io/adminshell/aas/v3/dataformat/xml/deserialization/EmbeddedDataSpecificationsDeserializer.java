@@ -28,13 +28,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
-import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.Reference;
+// TODO import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
+// TODO import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
 
-public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<List<EmbeddedDataSpecification>> {
+// TODO fix the EmbeddedDataSpecification issue
+/* public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<List<EmbeddedDataSpecification>> {
 
     @Override
     public List<EmbeddedDataSpecification> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
@@ -74,4 +75,4 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Lis
         return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIEC61360.class);
     }
 
-}
+}*/

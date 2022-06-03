@@ -21,6 +21,9 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 
+import io.adminshell.aas.v3.rc02.model.AssetKind;
+import io.adminshell.aas.v3.rc02.model.EntityType;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
 import org.opcfoundation.ua._2008._02.types.ObjectFactory;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 
@@ -35,13 +38,13 @@ public class I4AASEnumMapper extends I4AASMapper<Enum<?>, UAVariable> {
 				org.opcfoundation.ua.i4aas.v3.types.AASKeyElementsDataType.class);
 		enum2enumMap.put(io.adminshell.aas.v3.model.KeyType.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASKeyTypeDataType.class);
-		enum2enumMap.put(io.adminshell.aas.v3.model.AssetKind.class,
+		enum2enumMap.put(AssetKind.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASAssetKindDataType.class);
 		enum2enumMap.put(io.adminshell.aas.v3.model.Category.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASCategoryDataType.class);
 		enum2enumMap.put(io.adminshell.aas.v3.model.DataTypeIEC61360.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASDataTypeIEC61360DataType.class);
-		enum2enumMap.put(io.adminshell.aas.v3.model.EntityType.class,
+		enum2enumMap.put(EntityType.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASEntityTypeDataType.class);
 		enum2enumMap.put(io.adminshell.aas.v3.model.IdentifiableElements.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASKeyElementsDataType.class);
@@ -51,7 +54,7 @@ public class I4AASEnumMapper extends I4AASMapper<Enum<?>, UAVariable> {
 				org.opcfoundation.ua.i4aas.v3.types.AASLevelTypeDataType.class);
 		enum2enumMap.put(io.adminshell.aas.v3.model.LocalKeyType.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASKeyTypeDataType.class);
-		enum2enumMap.put(io.adminshell.aas.v3.model.ModelingKind.class,
+		enum2enumMap.put(ModelingKind.class,
 				org.opcfoundation.ua.i4aas.v3.types.AASModelingKindDataType.class);
 		// enum2enumMap.put(io.adminshell.aas.v3.model.PermissionKind.class, null);//no
 		// match, since it is from security part

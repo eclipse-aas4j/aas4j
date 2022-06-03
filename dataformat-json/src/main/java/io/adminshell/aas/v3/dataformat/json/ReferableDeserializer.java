@@ -16,7 +16,7 @@
 package io.adminshell.aas.v3.dataformat.json;
 
 import io.adminshell.aas.v3.dataformat.DeserializationException;
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Referable;
 
 import java.util.List;
 

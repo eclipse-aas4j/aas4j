@@ -24,7 +24,7 @@ import io.adminshell.aas.v3.dataformat.aml.fixtures.SimpleExample;
 import io.adminshell.aas.v3.dataformat.aml.serialization.id.IntegerIdGenerator;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
 import io.adminshell.aas.v3.dataformat.core.AASSimple;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,7 +49,7 @@ public class AmlSerializerTest {
         validateAmlSerializer(SimpleExample.FILE, AASSimple.ENVIRONMENT);
     }
 
-    private void validateAmlSerializer(File expectedFile, AssetAdministrationShellEnvironment environment)
+    private void validateAmlSerializer(File expectedFile, Environment environment)
             throws SerializationException, SAXException, IOException {
         String expected = Files.readString(expectedFile.toPath());
         String actual = new AmlSerializer().write(environment, AmlSerializationConfig.builder()

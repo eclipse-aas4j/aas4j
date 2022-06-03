@@ -24,21 +24,21 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
 import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.DataTypeIEC61360;
 import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 import io.adminshell.aas.v3.model.LevelType;
-import io.adminshell.aas.v3.model.Range;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.Range;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
-import io.adminshell.aas.v3.model.impl.DefaultRange;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultRange;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultReference;
 
 /**
  * Tests the following constraint:

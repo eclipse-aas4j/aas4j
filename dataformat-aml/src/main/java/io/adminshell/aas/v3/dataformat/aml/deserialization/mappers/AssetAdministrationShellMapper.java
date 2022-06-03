@@ -20,11 +20,11 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.AmlParser;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import java.beans.PropertyDescriptor;
 import java.util.List;
 
@@ -41,8 +41,8 @@ public class AssetAdministrationShellMapper extends IdentifiableMapper<AssetAdmi
                 .withoutParent()
                 .map(new TypeToken<List<Submodel>>() {
                 }.getType(), parser);
-        if (context.getParent() != null && AssetAdministrationShellEnvironment.class.isAssignableFrom(context.getParent().getClass())) {
-            List<Submodel> submodelsInEnvironment = ((AssetAdministrationShellEnvironment) context.getParent()).getSubmodels();
+        if (context.getParent() != null && Environment.class.isAssignableFrom(context.getParent().getClass())) {
+            List<Submodel> submodelsInEnvironment = ((Environment) context.getParent()).getSubmodels();
             // ensure there are not duplicate submodels in environment
             // this may happen if multiple AAS reference/contain the same submodel
             submodels.forEach(x -> {

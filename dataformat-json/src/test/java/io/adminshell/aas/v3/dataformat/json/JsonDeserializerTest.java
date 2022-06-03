@@ -27,11 +27,11 @@ import io.adminshell.aas.v3.dataformat.core.AASSimple;
 import io.adminshell.aas.v3.dataformat.core.CustomProperty;
 import io.adminshell.aas.v3.dataformat.core.CustomSubmodel;
 import io.adminshell.aas.v3.dataformat.core.CustomSubmodel2;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Property;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.impl.DefaultProperty;
-import io.adminshell.aas.v3.model.impl.DefaultSubmodel;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultProperty;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultSubmodel;
 
 public class JsonDeserializerTest {
 
@@ -44,13 +44,13 @@ public class JsonDeserializerTest {
 
     @Test
     public void testSimpleExample() throws Exception {
-        AssetAdministrationShellEnvironment env = new JsonDeserializer().read(JsonSerializerTest.AASSIMPLE_FILE);
+        Environment env = new JsonDeserializer().read(JsonSerializerTest.AASSIMPLE_FILE);
         assertEquals(AASSimple.ENVIRONMENT, env);
     }
 
     @Test
     public void testFullExample() throws Exception {
-        AssetAdministrationShellEnvironment env = new JsonDeserializer().read(JsonSerializerTest.AASFULL_FILE);
+        Environment env = new JsonDeserializer().read(JsonSerializerTest.AASFULL_FILE);
         assertEquals(AASFull.ENVIRONMENT, env);
     }
 
@@ -58,7 +58,7 @@ public class JsonDeserializerTest {
     public void testCustomImplementationClass() throws Exception {
         String json = new JsonSerializer().write(AASSimple.ENVIRONMENT);
         Deserializer deserializer = new JsonDeserializer();
-        AssetAdministrationShellEnvironment environment = deserializer.read(json);
+        Environment environment = deserializer.read(json);
         checkImplementationClasses(environment, DefaultSubmodel.class, DefaultProperty.class);
         deserializer.useImplementation(Submodel.class, CustomSubmodel.class);
         deserializer.useImplementation(Property.class, CustomProperty.class);
@@ -69,7 +69,7 @@ public class JsonDeserializerTest {
         checkImplementationClasses(environment, CustomSubmodel2.class, CustomProperty.class);
     }
 
-    private void checkImplementationClasses(AssetAdministrationShellEnvironment environment,
+    private void checkImplementationClasses(Environment environment,
             Class<? extends Submodel> submodelImpl, Class<? extends Property> propertyImpl) {
         environment.getSubmodels().forEach(submodel -> {
             assertEquals(submodel.getClass(), submodelImpl);

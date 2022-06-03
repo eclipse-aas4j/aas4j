@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import io.adminshell.aas.v3.dataformat.rdf.custom.BigDecimalSerializer;
 import io.adminshell.aas.v3.dataformat.rdf.custom.XMLGregorianCalendarDeserializer;
 import io.adminshell.aas.v3.dataformat.rdf.custom.XMLGregorianCalendarSerializer;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 
 import java.math.BigDecimal;
 import java.net.URI;

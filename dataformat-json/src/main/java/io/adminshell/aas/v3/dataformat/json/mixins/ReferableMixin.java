@@ -17,8 +17,10 @@ package io.adminshell.aas.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangStringSet;
+
 import java.util.List;
 import java.util.Set;
 
@@ -28,14 +30,14 @@ public interface ReferableMixin {
     public Set<AssetAdministrationShell> getIdShort();
 
     @JsonProperty("description")
-    public List<LangString> getDescriptions();
+    public LangStringSet getDescriptions();
 
     @JsonProperty("description")
-    public void setDescriptions(List<LangString> descriptions);
+    public void setDescriptions(LangStringSet descriptions);
 
     @JsonProperty("displayName")
-    public List<LangString> getDisplayNames();
+    public LangStringSet getDisplayNames();
 
     @JsonProperty("displayName")
-    public void setDisplayNames(List<LangString> displayNames);
+    public void setDisplayNames(LangStringSet displayNames);
 }

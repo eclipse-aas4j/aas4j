@@ -24,13 +24,15 @@ import io.adminshell.aas.v3.dataformat.core.DataSpecificationInfo;
 import io.adminshell.aas.v3.dataformat.core.DataSpecificationManager;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.DataSpecificationContent;
-import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+// TODO solve the EmbeddedDataSpecifciation issue
+/*
 public class EmbeddedDataSpecificationCollectionMapper extends DefaultMapper<Collection<EmbeddedDataSpecification>> {
 
     @Override
@@ -93,4 +95,4 @@ public class EmbeddedDataSpecificationCollectionMapper extends DefaultMapper<Col
         }
         return getDataSpecificationContentType(type.getSuperclass());
     }
-}
+}*/

@@ -21,10 +21,10 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.InternalElementType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import java.beans.PropertyDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +55,7 @@ public class AssetAdministrationShellMapper extends DefaultMapper<AssetAdministr
             } else {
                 log.warn("unresolvable submodel reference '{}' found in AssetAdministrationShell '{}'",
                         AasUtils.asString(reference),
-                        aas.getIdentification().getIdentifier());
+                        aas.getId());
                 context.map(AasUtils.asString(reference), generator);
             }
         }

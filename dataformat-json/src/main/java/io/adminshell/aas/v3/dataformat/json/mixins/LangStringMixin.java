@@ -22,10 +22,10 @@ public interface LangStringMixin {
 
     @JsonProperty("text")
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getValue();
+    public String getText();
 
     @JsonProperty("text")
-    public void setValue(String value);
+    public void setText(String value);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public String getLanguage();

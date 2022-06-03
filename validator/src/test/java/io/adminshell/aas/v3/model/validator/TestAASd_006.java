@@ -15,13 +15,10 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultQualifier;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;

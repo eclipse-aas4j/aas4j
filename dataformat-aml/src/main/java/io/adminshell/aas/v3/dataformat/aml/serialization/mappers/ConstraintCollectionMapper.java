@@ -19,17 +19,17 @@ import io.adminshell.aas.v3.dataformat.aml.serialization.Mapper;
 import io.adminshell.aas.v3.dataformat.aml.serialization.AmlGenerator;
 import io.adminshell.aas.v3.dataformat.aml.serialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Constraint;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
 import java.util.Collection;
 
-public class ConstraintCollectionMapper implements Mapper<Collection<Constraint>> {
+public class ConstraintCollectionMapper implements Mapper<Collection<Qualifier>> {
 
     @Override
-    public void map(Collection<Constraint> value, AmlGenerator generator, MappingContext context) throws MappingException {
+    public void map(Collection<Qualifier> value, AmlGenerator generator, MappingContext context) throws MappingException {
         if (value == null || value.isEmpty()) {
             return;
         }
-        for (Constraint element : value) {
+        for (Qualifier element : value) {
             context.map(element, generator);
         }
     }

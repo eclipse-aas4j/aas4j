@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.RelationshipElement;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.RelationshipElement;
 import io.adminshell.aas.v3.model.impl.DefaultRelationshipElement;
 
 public class RelationshipElementParser extends ReferableParser<RelationshipElement> {

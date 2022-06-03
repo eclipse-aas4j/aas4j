@@ -21,7 +21,7 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.AasTypeFactory;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.Aml2AasMapper;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXFile;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
 import java.io.StringReader;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -38,7 +38,7 @@ public class AmlDeserializer implements Deserializer {
     private AasTypeFactory typeFactory = new AasTypeFactory();
 
     @Override
-    public AssetAdministrationShellEnvironment read(String value) throws DeserializationException {
+    public Environment read(String value) throws DeserializationException {
         try {
             Unmarshaller unmarshaller = JAXBContextFactory.createContext(new Class[]{CAEXFile.class}, null).createUnmarshaller();
             StringReader reader = new StringReader(value);

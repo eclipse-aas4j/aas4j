@@ -20,10 +20,12 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.DefaultMapper;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.DataTypeIEC61360;
+// TODO import io.adminshell.aas.v3.model.DataTypeIEC61360;
 import org.apache.xerces.dom.ElementNSImpl;
 import org.apache.xerces.dom.TextImpl;
 
+// TODO solve the EmbeddedDataSpecifciation issue
+/*
 public class EnumDataTypeIEC61360Mapper extends DefaultMapper<DataTypeIEC61360> {
 
     @Override
@@ -55,4 +57,4 @@ public class EnumDataTypeIEC61360Mapper extends DefaultMapper<DataTypeIEC61360> 
         return null;
     }
 
-}
+}*/

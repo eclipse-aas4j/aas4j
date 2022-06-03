@@ -21,13 +21,14 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXObject;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.*;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ConstraintCollectionMapper extends DefaultMapper<Collection<Constraint>> {
+public class ConstraintCollectionMapper extends DefaultMapper<Collection<Qualifier>> {
 
 
     public static final String QUALIFIABLE_ATTRIBUTE_PATH = "AAS:Qualifiable";

@@ -30,8 +30,8 @@ import org.opcfoundation.ua.i4aas.v3.types.AASKeyTypeDataType;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 public class ReferenceMapper extends I4AASMapper<Reference, UAObject> {
 

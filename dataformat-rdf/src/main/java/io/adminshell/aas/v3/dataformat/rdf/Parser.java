@@ -15,9 +15,9 @@
  */
 package io.adminshell.aas.v3.dataformat.rdf;
 
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.annotations.IRI;
-import io.adminshell.aas.v3.model.annotations.KnownSubtypes;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.annotations.IRI;
+import io.adminshell.aas.v3.rc02.model.annotations.KnownSubtypes;
 import org.apache.jena.datatypes.DatatypeFormatException;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;

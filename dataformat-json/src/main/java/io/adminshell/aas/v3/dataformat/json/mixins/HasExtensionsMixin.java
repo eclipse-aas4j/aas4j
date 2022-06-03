@@ -19,7 +19,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.adminshell.aas.v3.model.Extension;
+import io.adminshell.aas.v3.rc02.model.Extension;
 
 public interface HasExtensionsMixin {
 

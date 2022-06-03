@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.adminshell.aas.v3.model.AssetKind;
+import io.adminshell.aas.v3.rc02.model.AssetKind;
 
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 
 public interface AssetInformationMixin {
 

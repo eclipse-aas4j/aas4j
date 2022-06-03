@@ -30,11 +30,11 @@ import org.slf4j.LoggerFactory;
 
 import io.adminshell.aas.v3.dataformat.SerializationException;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Referable;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public class JsonReferableSerializerTest {
 
@@ -42,41 +42,41 @@ public class JsonReferableSerializerTest {
 
     @Test
     public void testSerializeAAS() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         AssetAdministrationShell assetAdministrationShell = environment.getAssetAdministrationShells().get(0);
         compare("src/test/resources/assetAdministrationShell.json",assetAdministrationShell);
     }
 
     @Test
     public void testSerializeAASs() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         compare("src/test/resources/assetAdministrationShellList.json",
                 environment.getAssetAdministrationShells().get(0), environment.getAssetAdministrationShells().get(1));
     }
 
     @Test
     public void testSerializeSubmodel() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         Submodel submodel = environment.getSubmodels().get(0);
         compare("src/test/resources/submodel.json",submodel);
     }
 
     @Test
     public void testSerializeSubmodels() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         compare("src/test/resources/submodelList.json", environment.getSubmodels().get(0), environment.getSubmodels().get(1));
     }
 
     @Test
     public void testSerializeSubmodelelement() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         compare("src/test/resources/submodelElement.json",submodelElement);
     }
 
     @Test
     public void testSerializeSubmodelelements() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement0 = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         SubmodelElement submodelElement1 = environment.getSubmodels().get(0).getSubmodelElements().get(1);
         compare("src/test/resources/submodelElementList.json",submodelElement0,submodelElement1);
@@ -84,7 +84,7 @@ public class JsonReferableSerializerTest {
 
     @Test
     public void testSerializeSubmodelelementCollection() throws IOException, SerializationException, JSONException {
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElementCollection = environment.getSubmodels().get(6).getSubmodelElements().get(5);
         compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);
     }

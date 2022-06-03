@@ -29,8 +29,8 @@ import io.adminshell.aas.v3.dataformat.Deserializer;
 import io.adminshell.aas.v3.dataformat.core.ReflectionHelper;
 import io.adminshell.aas.v3.dataformat.core.deserialization.EnumDeserializer;
 import io.adminshell.aas.v3.dataformat.xml.deserialization.SubmodelElementDeserializer;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 public class XmlDeserializer implements Deserializer {
 
@@ -83,9 +83,9 @@ public class XmlDeserializer implements Deserializer {
     }
 
     @Override
-    public AssetAdministrationShellEnvironment read(String value) throws DeserializationException {
+    public Environment read(String value) throws DeserializationException {
         try {
-            return mapper.readValue(value, AssetAdministrationShellEnvironment.class);
+            return mapper.readValue(value, Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("deserialization failed", ex);
         }

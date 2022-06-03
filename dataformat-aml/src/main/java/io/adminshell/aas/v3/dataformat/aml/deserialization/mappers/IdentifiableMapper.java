@@ -22,10 +22,9 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXObject;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.Identifiable;
-import io.adminshell.aas.v3.model.Identifier;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Identifiable;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.Reference;
 import java.beans.PropertyDescriptor;
 
 /**
@@ -47,9 +46,9 @@ public class IdentifiableMapper<T extends Identifiable> extends DefaultMapper<T>
         AttributeType attribute = findAttribute(parser.getCurrent(), PROPERTY_IDENTIFICATION, context);
         CAEXObject temp = parser.getCurrent();
         parser.setCurrent(attribute);
-        Identifier identification = context.map(Identifier.class, parser);
+        String identification = context.map(String.class, parser);
         parser.setCurrent(temp);
-        ((Identifiable) parent).setIdentification(identification);
+        ((Identifiable) parent).setId(identification);
         Reference reference = AasUtils.toReference((Identifiable) parent,
                 context.getTypeFactory().getImplementationType(Reference.class),
                 context.getTypeFactory().getImplementationType(Key.class));

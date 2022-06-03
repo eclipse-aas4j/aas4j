@@ -20,7 +20,7 @@ import io.adminshell.aas.v3.dataformat.aml.deserialization.DefaultMapper;
 import io.adminshell.aas.v3.dataformat.aml.deserialization.MappingContext;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.LangString;
+import io.adminshell.aas.v3.rc02.model.LangString;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,7 +37,7 @@ public class LangStringCollectionMapper extends DefaultMapper<Collection<LangStr
             try {
                 LangString newElement = context.getTypeFactory().newInstance(LangString.class);
                 newElement.setLanguage(value.getName().substring(value.getName().indexOf("=") + 1));
-                newElement.setValue(String.valueOf(getValue(value)));
+                newElement.setText(String.valueOf(getValue(value)));
                 result.add(newElement);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                 throw new MappingException("error mapping Collection<LangString> - could not create new instance for interface LangString");

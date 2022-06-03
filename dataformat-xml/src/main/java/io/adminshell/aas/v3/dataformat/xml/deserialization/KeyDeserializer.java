@@ -20,31 +20,24 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.KeyElements;
-import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
+import io.adminshell.aas.v3.rc02.model.Key;
+import io.adminshell.aas.v3.rc02.model.KeyTypes;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultKey;
 
 public class KeyDeserializer implements CustomJsonNodeDeserializer<Key> {
 
 
     @Override
     public Key readValue(JsonNode node, JsonParser parser) throws IOException {
-        JsonNode idTypeNode = node.get("idType");
         JsonNode typeNode = node.get("type");
         JsonNode valueNode = node.get("");
-        KeyType idType = createKeyTypeFromNode(parser, idTypeNode);
-        KeyElements type = createKeyElementsFromNode(parser, typeNode);
+        KeyTypes type = createKeyTypesFromNode(parser, typeNode);
         String value = valueNode.asText();
-        return new DefaultKey.Builder().idType(idType).type(type).value(value).build();
+        return new DefaultKey.Builder().type(type).value(value).build();
     }
 
-    private KeyElements createKeyElementsFromNode(JsonParser parser, JsonNode typeNode) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, typeNode, KeyElements.class);
-    }
-
-    private KeyType createKeyTypeFromNode(JsonParser parser, JsonNode idTypeNode) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, idTypeNode, KeyType.class);
+    private KeyTypes createKeyTypesFromNode(JsonParser parser, JsonNode typeNode) throws IOException {
+        return DeserializationHelper.createInstanceFromNode(parser, typeNode, KeyTypes.class);
     }
 
 }

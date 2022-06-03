@@ -21,7 +21,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
-import io.adminshell.aas.v3.model.Extension;
+import io.adminshell.aas.v3.rc02.model.Extension;
 
 public interface HasExtensionsMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "extension")

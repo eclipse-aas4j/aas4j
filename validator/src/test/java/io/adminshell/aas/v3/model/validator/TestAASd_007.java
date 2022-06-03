@@ -15,11 +15,9 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.Property;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultProperty;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
+import io.adminshell.aas.v3.rc02.model.Property;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultProperty;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

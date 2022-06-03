@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.adminshell.aas.v3.model.Formula;
-import io.adminshell.aas.v3.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
 
 @JsonTypeName("aas:Constraint")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")

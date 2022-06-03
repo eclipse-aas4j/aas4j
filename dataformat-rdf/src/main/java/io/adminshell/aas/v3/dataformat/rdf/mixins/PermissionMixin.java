@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.adminshell.aas.v3.model.PermissionKind;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.Reference;
 
 @JsonTypeName("aas:Permission")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")

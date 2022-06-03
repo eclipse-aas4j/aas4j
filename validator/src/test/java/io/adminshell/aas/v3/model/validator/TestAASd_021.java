@@ -16,10 +16,10 @@
 package io.adminshell.aas.v3.model.validator;
 
 import io.adminshell.aas.v3.model.Constraint;
-import io.adminshell.aas.v3.model.Qualifiable;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.impl.DefaultProperty;
-import io.adminshell.aas.v3.model.impl.DefaultQualifier;
+import io.adminshell.aas.v3.rc02.model.Qualifiable;
+import io.adminshell.aas.v3.rc02.model.Qualifier;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultProperty;
+import io.adminshell.aas.v3.rc02.model.impl.DefaultQualifier;
 import org.junit.Ignore;
 import org.junit.Test;
 

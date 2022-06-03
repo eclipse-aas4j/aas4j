@@ -26,20 +26,19 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.SystemUnitClassType.Suppor
 import io.adminshell.aas.v3.dataformat.aml.model.caex.SystemUnitFamilyType;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.ModelingKind;
-import io.adminshell.aas.v3.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.ConceptDescription;
+import io.adminshell.aas.v3.rc02.model.ModelingKind;
+import io.adminshell.aas.v3.rc02.model.Submodel;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class AssetAdministrationShellEnvironmentMapper extends DefaultMapper<AssetAdministrationShellEnvironment> {
+public class AssetAdministrationShellEnvironmentMapper extends DefaultMapper<Environment> {
 
     @Override
-    public void map(AssetAdministrationShellEnvironment value, AmlGenerator generator, MappingContext context) throws MappingException {
+    public void map(Environment value, AmlGenerator generator, MappingContext context) throws MappingException {
         List<AssetAdministrationShell> assetAdministrationShells = value.getAssetAdministrationShells().stream()
                 .filter(x -> x.getSubmodels().stream()
                 .anyMatch(sm -> {
@@ -73,7 +72,7 @@ public class AssetAdministrationShellEnvironmentMapper extends DefaultMapper<Ass
         generator.addInstanceHierarchy(builder.build());
     }
 
-    protected void mapTemplates(AssetAdministrationShellEnvironment env, AmlGenerator generator, MappingContext context) throws MappingException {
+    protected void mapTemplates(Environment env, AmlGenerator generator, MappingContext context) throws MappingException {
         boolean empty = true;
         SystemUnitClassLib.Builder builder = SystemUnitClassLib.builder()
                 .withName(generator.getDocumentInfo().getAssetAdministrationShellSystemUnitClassLib());

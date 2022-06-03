@@ -24,7 +24,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
-import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.*;
 
 /**
  * Generic deserializer interface to deserialize a given string, Outputstream or
@@ -46,7 +46,7 @@ public interface Deserializer {
      * @return an instance of AssetAdministrationShellEnvironment
      * @throws DeserializationException if deserialization fails
      */
-    AssetAdministrationShellEnvironment read(String value) throws DeserializationException;
+    Environment read(String value) throws DeserializationException;
 
     /**
      * Deserializes a given InputStream into an instance of
@@ -57,7 +57,7 @@ public interface Deserializer {
      * @return an instance of AssetAdministrationShellEnvironment
      * @throws DeserializationException if deserialization fails
      */
-    default AssetAdministrationShellEnvironment read(InputStream src) throws DeserializationException {
+    default Environment read(InputStream src) throws DeserializationException {
         return read(src, DEFAULT_CHARSET);
     }
 
@@ -71,7 +71,7 @@ public interface Deserializer {
      * @return an instance of AssetAdministrationShellEnvironment
      * @throws DeserializationException if deserialization fails
      */
-    default AssetAdministrationShellEnvironment read(InputStream src, Charset charset) throws DeserializationException {
+    default Environment read(InputStream src, Charset charset) throws DeserializationException {
         return read(new BufferedReader(
                 new InputStreamReader(src, charset))
                 .lines()
@@ -89,7 +89,7 @@ public interface Deserializer {
      * @throws FileNotFoundException if file is not present
      * @throws DeserializationException if deserialization fails
      */
-    default AssetAdministrationShellEnvironment read(java.io.File file, Charset charset)
+    default Environment read(java.io.File file, Charset charset)
             throws FileNotFoundException, DeserializationException {
         return read(new FileInputStream(file), charset);
     }
@@ -104,7 +104,7 @@ public interface Deserializer {
      * @throws FileNotFoundException if the file is not present
      * @throws DeserializationException if deserialization fails
      */
-    default AssetAdministrationShellEnvironment read(java.io.File file) throws FileNotFoundException, DeserializationException {
+    default Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
         return read(file, DEFAULT_CHARSET);
     }
 

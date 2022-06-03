@@ -24,19 +24,19 @@ import org.junit.Test;
 import io.adminshell.aas.v3.dataformat.DeserializationException;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
 import io.adminshell.aas.v3.dataformat.core.AASSimple;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
+import io.adminshell.aas.v3.rc02.model.Environment;
 
 public class XMLDeserializerTest {
 
     @Test
     public void deserializeAASSimple() throws Exception {
-        AssetAdministrationShellEnvironment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
         assertEquals(AASSimple.ENVIRONMENT, env);
     }
 
     @Test
     public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
-        AssetAdministrationShellEnvironment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
         assertEquals(AASFull.ENVIRONMENT, env);
     }
 }

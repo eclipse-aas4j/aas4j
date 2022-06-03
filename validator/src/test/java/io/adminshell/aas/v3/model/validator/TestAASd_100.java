@@ -15,7 +15,7 @@
  */
 package io.adminshell.aas.v3.model.validator;
 
-import io.adminshell.aas.v3.model.Referable;
+import io.adminshell.aas.v3.rc02.model.Referable;
 import org.junit.Test;
 
 import java.util.ArrayList;

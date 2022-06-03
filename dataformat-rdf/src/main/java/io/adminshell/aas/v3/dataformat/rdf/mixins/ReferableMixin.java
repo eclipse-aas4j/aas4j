@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.adminshell.aas.v3.model.*;
+import io.adminshell.aas.v3.rc02.model.Identifiable;
+import io.adminshell.aas.v3.rc02.model.LangString;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
 
 import java.util.List;
 

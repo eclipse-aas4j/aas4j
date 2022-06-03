@@ -21,18 +21,18 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import io.adminshell.aas.v3.dataformat.xml.AasXmlNamespaceContext;
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.Reference;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.Reference;
+import io.adminshell.aas.v3.rc02.model.SpecificAssetId;
 
 public interface AssetInformationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-    public List<IdentifierKeyValuePair> getSpecificAssetIds();
+    public List<SpecificAssetId> getSpecificAssetIds();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-    public void setSpecificAssetIds(List<IdentifierKeyValuePair> specificAssetIds);
+    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRef")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "billOfMaterials")

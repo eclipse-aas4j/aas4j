@@ -36,11 +36,11 @@ import org.slf4j.LoggerFactory;
 import io.adminshell.aas.v3.dataformat.SerializationException;
 import io.adminshell.aas.v3.dataformat.Serializer;
 import io.adminshell.aas.v3.dataformat.xml.XmlSerializer;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.File;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.File;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
 
 /**
  * This class can be used to generate an .aasx file from Metamodel Objects and
@@ -87,7 +87,7 @@ public class AASXSerializer {
      * @throws SerializationException if serializing the given elements fails
      * @throws IOException if creating output streams for aasx fails
      */
-    public void write(AssetAdministrationShellEnvironment environment, Collection<InMemoryFile> files, OutputStream os)
+    public void write(Environment environment, Collection<InMemoryFile> files, OutputStream os)
             throws SerializationException, IOException {
         prepareFilePaths(environment.getSubmodels());
 
@@ -125,7 +125,7 @@ public class AASXSerializer {
                 try {
                     InMemoryFile content = findFileByPath(files, filePath);
                     logger.trace("Writing file '" + filePath + "' to .aasx.");
-                    createAASXPart(rootPackage, xmlPart, filePath, file.getMimeType(), AASSUPPL_RELTYPE, content.getFileContent());
+                    createAASXPart(rootPackage, xmlPart, filePath, file.getContentType(), AASSUPPL_RELTYPE, content.getFileContent());
                 } catch (RuntimeException e) {
                     // Log that a file is missing and continue building the .aasx
                     logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");

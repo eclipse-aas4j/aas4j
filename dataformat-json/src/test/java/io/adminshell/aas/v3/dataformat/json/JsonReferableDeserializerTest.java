@@ -29,11 +29,11 @@ import org.slf4j.LoggerFactory;
 
 import io.adminshell.aas.v3.dataformat.DeserializationException;
 import io.adminshell.aas.v3.dataformat.core.AASFull;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
+import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
+import io.adminshell.aas.v3.rc02.model.Environment;
+import io.adminshell.aas.v3.rc02.model.Submodel;
+import io.adminshell.aas.v3.rc02.model.SubmodelElement;
+import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
 
 public class JsonReferableDeserializerTest {
 
@@ -44,7 +44,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/assetAdministrationShell.json");
         String expected = Files.readString(fileExpected.toPath());
         AssetAdministrationShell aas = new JsonDeserializer().readReferable(expected, AssetAdministrationShell.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         AssetAdministrationShell aasExpected = environment.getAssetAdministrationShells().get(0);
 
         assertEquals(aasExpected, aas);
@@ -55,7 +55,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/assetAdministrationShellList.json");
         String expected = Files.readString(fileExpected.toPath());
         List<AssetAdministrationShell> aas = new JsonDeserializer().readReferables(expected, AssetAdministrationShell.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         List<AssetAdministrationShell> aasExpected = Arrays.asList(environment.getAssetAdministrationShells().get(0)
                 ,environment.getAssetAdministrationShells().get(1)) ;
 
@@ -67,7 +67,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/submodel.json");
         String expected = Files.readString(fileExpected.toPath());
         Submodel submodel = new JsonDeserializer().readReferable(expected,Submodel.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         Submodel submodelExpected = environment.getSubmodels().get(0);
 
         assertEquals(submodelExpected, submodel);
@@ -78,7 +78,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/submodelList.json");
         String expected = Files.readString(fileExpected.toPath());
         List<Submodel> submodels = new JsonDeserializer().readReferables(expected,Submodel.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         List<Submodel> submodelsExpected = Arrays.asList(environment.getSubmodels().get(0),environment.getSubmodels().get(1));
 
         assertEquals(submodelsExpected, submodels);
@@ -89,7 +89,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/submodelElement.json");
         String expected = Files.readString(fileExpected.toPath());
         SubmodelElement submodelElement = new JsonDeserializer().readReferable(expected,SubmodelElement.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElementExpected = environment.getSubmodels().get(0).getSubmodelElements().get(0);
 
         assertEquals(submodelElementExpected, submodelElement);
@@ -100,7 +100,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/submodelElementList.json");
         String expected = Files.readString(fileExpected.toPath());
         List<SubmodelElement> submodelElements = new JsonDeserializer().readReferables(expected,SubmodelElement.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         List<SubmodelElement> submodelElementsExpected = Arrays.asList(
                 environment.getSubmodels().get(0).getSubmodelElements().get(0),
                 environment.getSubmodels().get(0).getSubmodelElements().get(1));                ;
@@ -113,7 +113,7 @@ public class JsonReferableDeserializerTest {
         File fileExpected = new File("src/test/resources/submodelElementCollection.json");
         String expected = Files.readString(fileExpected.toPath());
         SubmodelElementCollection submodelElementCollection = new JsonDeserializer().readReferable(expected,SubmodelElementCollection.class);
-        AssetAdministrationShellEnvironment environment = AASFull.ENVIRONMENT;
+        Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElementCollectionExpected = environment.getSubmodels().get(6).getSubmodelElements().get(5);                ;
 
         assertEquals(submodelElementCollectionExpected, submodelElementCollection);

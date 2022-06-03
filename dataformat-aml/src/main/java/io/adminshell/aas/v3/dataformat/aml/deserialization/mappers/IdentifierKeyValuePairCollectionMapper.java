@@ -22,7 +22,7 @@ import io.adminshell.aas.v3.dataformat.aml.model.caex.AttributeType;
 import io.adminshell.aas.v3.dataformat.aml.model.caex.CAEXObject;
 import io.adminshell.aas.v3.dataformat.core.util.AasUtils;
 import io.adminshell.aas.v3.dataformat.mapping.MappingException;
-import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
+import io.adminshell.aas.v3.rc02.model.SpecificAssetId;
 import java.beans.PropertyDescriptor;
 
 import java.lang.reflect.InvocationTargetException;
@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collection<IdentifierKeyValuePair>> {
+public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collection<SpecificAssetId>> {
 
     @Override
     protected Collection mapCollectionValueProperty(AmlParser parser, MappingContext context) throws MappingException {
@@ -46,8 +46,8 @@ public class IdentifierKeyValuePairCollectionMapper extends DefaultMapper<Collec
         for (AttributeType attribute : attributes) {
             parser.setCurrent(attribute);
             try {
-                IdentifierKeyValuePair element = context.getTypeFactory().newInstance(IdentifierKeyValuePair.class);
-                for (PropertyDescriptor property : AasUtils.getAasProperties(IdentifierKeyValuePair.class)) {
+                SpecificAssetId element = context.getTypeFactory().newInstance(SpecificAssetId.class);
+                for (PropertyDescriptor property : AasUtils.getAasProperties(SpecificAssetId.class)) {
                     Object propertyValue = context
                             .with(element)
                             .with(property)
