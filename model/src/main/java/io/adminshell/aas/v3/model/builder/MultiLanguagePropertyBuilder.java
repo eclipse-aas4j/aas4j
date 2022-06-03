@@ -1,17 +1,18 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package io.adminshell.aas.v3.model.builder;
 
 import java.util.List;
@@ -47,46 +48,24 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for valueIds
+     * This function allows setting a value for valueId
      * 
-     * @param valueIds desired value to be set
-     * @return Builder object with new value for valueIds
-     */
-    public B valueIds(List<Reference> valueIds) {
-        getBuildingInstance().setValueIds(valueIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List valueIds
-     * 
-     * @param valueId desired value to be added
-     * @return Builder object with new value for valueIds
+     * @param valueId desired value to be set
+     * @return Builder object with new value for valueId
      */
     public B valueId(Reference valueId) {
-        getBuildingInstance().getValueIds().add(valueId);
+        getBuildingInstance().setValueId(valueId);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for referableCategories
+     * This function allows setting a value for category
      * 
-     * @param referableCategories desired value to be set
-     * @return Builder object with new value for referableCategories
+     * @param category desired value to be set
+     * @return Builder object with new value for category
      */
-    public B referableCategories(List<String> referableCategories) {
-        getBuildingInstance().setReferableCategories(referableCategories);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List referableCategories
-     * 
-     * @param referableCategory desired value to be added
-     * @return Builder object with new value for referableCategories
-     */
-    public B referableCategory(String referableCategory) {
-        getBuildingInstance().getReferableCategories().add(referableCategory);
+    public B category(String category) {
+        getBuildingInstance().setCategory(category);
         return getSelf();
     }
 
@@ -113,13 +92,24 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for displayName
+     * This function allows setting a value for displayNames
      * 
-     * @param displayName desired value to be set
-     * @return Builder object with new value for displayName
+     * @param displayNames desired value to be set
+     * @return Builder object with new value for displayNames
+     */
+    public B displayNames(List<LangString> displayNames) {
+        getBuildingInstance().setDisplayNames(displayNames);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List displayNames
+     * 
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayNames
      */
     public B displayName(LangString displayName) {
-        getBuildingInstance().setDisplayName(displayName);
+        getBuildingInstance().getDisplayNames().add(displayName);
         return getSelf();
     }
 
@@ -131,6 +121,28 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      */
     public B idShort(String idShort) {
         getBuildingInstance().setIdShort(idShort);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for extensions
+     * 
+     * @param extensions desired value to be set
+     * @return Builder object with new value for extensions
+     */
+    public B extensions(List<Extension> extensions) {
+        getBuildingInstance().setExtensions(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List extensions
+     * 
+     * @param extension desired value to be added
+     * @return Builder object with new value for extensions
+     */
+    public B extension(Extension extension) {
+        getBuildingInstance().getExtensions().add(extension);
         return getSelf();
     }
 
@@ -157,24 +169,24 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for dataSpecifications
+     * This function allows setting a value for embeddedDataSpecifications
      * 
-     * @param dataSpecifications desired value to be set
-     * @return Builder object with new value for dataSpecifications
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
      */
-    public B dataSpecifications(List<Reference> dataSpecifications) {
-        getBuildingInstance().setDataSpecifications(dataSpecifications);
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List dataSpecifications
+     * This function allows adding a value to the List embeddedDataSpecifications
      * 
-     * @param dataSpecification desired value to be added
-     * @return Builder object with new value for dataSpecifications
+     * @param embeddedDataSpecification desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
      */
-    public B dataSpecification(Reference dataSpecification) {
-        getBuildingInstance().getDataSpecifications().add(dataSpecification);
+    public B embeddedDataSpecification(EmbeddedDataSpecification embeddedDataSpecification) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecification);
         return getSelf();
     }
 

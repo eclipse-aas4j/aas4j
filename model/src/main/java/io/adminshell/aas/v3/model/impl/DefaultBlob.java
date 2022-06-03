@@ -1,17 +1,18 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package io.adminshell.aas.v3.model.impl;
 
 import java.util.ArrayList;
@@ -42,8 +43,11 @@ public class DefaultBlob implements Blob {
     @IRI("https://admin-shell.io/aas/3/0/RC01/Blob/value")
     protected byte[] value;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC01/HasDataSpecification/dataSpecification")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC01/HasDataSpecification/embeddedDataSpecification")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
+    @IRI("https://admin-shell.io/aas/3/0/RC01/HasExtensions/extension")
+    protected List<Extension> extensions = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/HasKind/kind")
     protected ModelingKind kind;
@@ -54,17 +58,17 @@ public class DefaultBlob implements Blob {
     @IRI("https://admin-shell.io/aas/3/0/RC01/Qualifiable/qualifier")
     protected List<Constraint> qualifiers = new ArrayList<>();
 
+    @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/category")
+    protected String category;
+
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/description")
     protected List<LangString> descriptions = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/displayName")
-    protected LangString displayName;
+    protected List<LangString> displayNames = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/idShort")
     protected String idShort;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC01/Referable/referableCategory")
-    protected List<String> referableCategories = new ArrayList<>();
 
     public DefaultBlob() {}
 
@@ -72,12 +76,13 @@ public class DefaultBlob implements Blob {
     public int hashCode() {
         return Objects.hash(this.mimeType,
             Arrays.hashCode(this.value),
-            this.referableCategories,
+            this.category,
             this.descriptions,
-            this.displayName,
+            this.displayNames,
             this.idShort,
+            this.extensions,
             this.qualifiers,
-            this.dataSpecifications,
+            this.embeddedDataSpecifications,
             this.kind,
             this.semanticId);
     }
@@ -94,12 +99,13 @@ public class DefaultBlob implements Blob {
             DefaultBlob other = (DefaultBlob) obj;
             return Objects.equals(this.mimeType, other.mimeType) &&
                 Arrays.equals(this.value, other.value) &&
-                Objects.equals(this.referableCategories, other.referableCategories) &&
+                Objects.equals(this.category, other.category) &&
                 Objects.equals(this.descriptions, other.descriptions) &&
-                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.displayNames, other.displayNames) &&
                 Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
                 Objects.equals(this.qualifiers, other.qualifiers) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.semanticId, other.semanticId);
         }
@@ -126,13 +132,13 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public List<String> getReferableCategories() {
-        return referableCategories;
+    public String getCategory() {
+        return category;
     }
 
     @Override
-    public void setReferableCategories(List<String> referableCategories) {
-        this.referableCategories = referableCategories;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
@@ -146,13 +152,13 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public LangString getDisplayName() {
-        return displayName;
+    public List<LangString> getDisplayNames() {
+        return displayNames;
     }
 
     @Override
-    public void setDisplayName(LangString displayName) {
-        this.displayName = displayName;
+    public void setDisplayNames(List<LangString> displayNames) {
+        this.displayNames = displayNames;
     }
 
     @Override
@@ -166,6 +172,16 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
+    public List<Extension> getExtensions() {
+        return extensions;
+    }
+
+    @Override
+    public void setExtensions(List<Extension> extensions) {
+        this.extensions = extensions;
+    }
+
+    @Override
     public List<Constraint> getQualifiers() {
         return qualifiers;
     }
@@ -176,13 +192,13 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public List<Reference> getDataSpecifications() {
-        return dataSpecifications;
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
     }
 
     @Override
-    public void setDataSpecifications(List<Reference> dataSpecifications) {
-        this.dataSpecifications = dataSpecifications;
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override

@@ -1,17 +1,18 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package io.adminshell.aas.v3.model.impl;
 
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ import io.adminshell.aas.v3.model.builder.*;
 /**
  * Default implementation of package io.adminshell.aas.v3.model.AssetInformation
  * 
- * In AssetInformation identifying meta data of the asset that is represented by an AAS is defined.
  * The asset may either represent an asset type or an asset instance. The asset has a globally
  * unique identifier plus - if needed - additional domain specific (proprietary) identifiers.
  * However, to support the corner case of very first phase of lifecycle where a stabilised/constant
@@ -39,29 +39,29 @@ import io.adminshell.aas.v3.model.builder.*;
 public class DefaultAssetInformation implements AssetInformation {
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/assetKind")
-    protected List<AssetKind> assetKinds = new ArrayList<>();
+    protected AssetKind assetKind;
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/billOfMaterial")
     protected List<Reference> billOfMaterials = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/externalAssetId")
-    protected List<IdentifierKeyValuePair> externalAssetIds = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/defaultThumbnail")
+    protected File defaultThumbnail;
 
     @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/globalAssetId")
     protected Reference globalAssetId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/thumbnail")
-    protected File thumbnail;
+    @IRI("https://admin-shell.io/aas/3/0/RC01/AssetInformation/specificAssetId")
+    protected List<IdentifierKeyValuePair> specificAssetIds = new ArrayList<>();
 
     public DefaultAssetInformation() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.assetKinds,
+        return Objects.hash(this.assetKind,
             this.globalAssetId,
-            this.externalAssetIds,
+            this.specificAssetIds,
             this.billOfMaterials,
-            this.thumbnail);
+            this.defaultThumbnail);
     }
 
     @Override
@@ -74,22 +74,22 @@ public class DefaultAssetInformation implements AssetInformation {
             return false;
         } else {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
-            return Objects.equals(this.assetKinds, other.assetKinds) &&
+            return Objects.equals(this.assetKind, other.assetKind) &&
                 Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.externalAssetIds, other.externalAssetIds) &&
+                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
                 Objects.equals(this.billOfMaterials, other.billOfMaterials) &&
-                Objects.equals(this.thumbnail, other.thumbnail);
+                Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
         }
     }
 
     @Override
-    public List<AssetKind> getAssetKinds() {
-        return assetKinds;
+    public AssetKind getAssetKind() {
+        return assetKind;
     }
 
     @Override
-    public void setAssetKinds(List<AssetKind> assetKinds) {
-        this.assetKinds = assetKinds;
+    public void setAssetKind(AssetKind assetKind) {
+        this.assetKind = assetKind;
     }
 
     @Override
@@ -103,13 +103,13 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public List<IdentifierKeyValuePair> getExternalAssetIds() {
-        return externalAssetIds;
+    public List<IdentifierKeyValuePair> getSpecificAssetIds() {
+        return specificAssetIds;
     }
 
     @Override
-    public void setExternalAssetIds(List<IdentifierKeyValuePair> externalAssetIds) {
-        this.externalAssetIds = externalAssetIds;
+    public void setSpecificAssetIds(List<IdentifierKeyValuePair> specificAssetIds) {
+        this.specificAssetIds = specificAssetIds;
     }
 
     @Override
@@ -123,13 +123,13 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public File getThumbnail() {
-        return thumbnail;
+    public File getDefaultThumbnail() {
+        return defaultThumbnail;
     }
 
     @Override
-    public void setThumbnail(File thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setDefaultThumbnail(File defaultThumbnail) {
+        this.defaultThumbnail = defaultThumbnail;
     }
 
     /**

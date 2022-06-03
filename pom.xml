@@ -30,6 +30,7 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
+        <module>model</module>
         <module>dataformat-aasx</module>
         <module>dataformat-aml</module>
         <module>dataformat-core</module>
@@ -45,7 +46,7 @@
         <revision.patch>1</revision.patch>
         <revision.suffix></revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>[${revision.major}.${revision.minor},)</model.version>
+        <model.version>1.2.0</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
