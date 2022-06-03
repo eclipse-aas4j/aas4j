@@ -13,18 +13,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.admin-shell.aas</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>dataformat-rdf</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>io.admin-shell.aas</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>dataformat-json</artifactId>
             <version>${revision}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.admin-shell.aas</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
             <classifier>tests</classifier>

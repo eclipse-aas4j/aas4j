@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.admin-shell.aas</groupId>
+        <groupId>org.eclipse.aas4j</groupId>
         <artifactId>dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
@@ -13,12 +13,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.admin-shell.aas</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>io.admin-shell.aas</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
             <classifier>tests</classifier>
