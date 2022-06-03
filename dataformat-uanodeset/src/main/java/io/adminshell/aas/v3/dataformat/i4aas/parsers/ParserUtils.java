@@ -27,21 +27,21 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable.Value;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.AnnotatedRelationshipElement;
-import io.adminshell.aas.v3.rc02.model.Blob;
-import io.adminshell.aas.v3.rc02.model.Capability;
-import io.adminshell.aas.v3.rc02.model.Entity;
+import org.eclipse.aas4j.v3.rc02.model.AnnotatedRelationshipElement;
+import org.eclipse.aas4j.v3.rc02.model.Blob;
+import org.eclipse.aas4j.v3.rc02.model.Capability;
+import org.eclipse.aas4j.v3.rc02.model.Entity;
 import io.adminshell.aas.v3.model.Event;
-import io.adminshell.aas.v3.rc02.model.File;
-import io.adminshell.aas.v3.rc02.model.LangString;
-import io.adminshell.aas.v3.rc02.model.MultiLanguageProperty;
-import io.adminshell.aas.v3.rc02.model.Operation;
-import io.adminshell.aas.v3.rc02.model.Property;
-import io.adminshell.aas.v3.rc02.model.Range;
-import io.adminshell.aas.v3.rc02.model.ReferenceElement;
-import io.adminshell.aas.v3.rc02.model.RelationshipElement;
-import io.adminshell.aas.v3.rc02.model.SubmodelElement;
-import io.adminshell.aas.v3.rc02.model.SubmodelElementCollection;
+import org.eclipse.aas4j.v3.rc02.model.File;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.MultiLanguageProperty;
+import org.eclipse.aas4j.v3.rc02.model.Operation;
+import org.eclipse.aas4j.v3.rc02.model.Property;
+import org.eclipse.aas4j.v3.rc02.model.Range;
+import org.eclipse.aas4j.v3.rc02.model.ReferenceElement;
+import org.eclipse.aas4j.v3.rc02.model.RelationshipElement;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElementCollection;
 
 public class ParserUtils {
 

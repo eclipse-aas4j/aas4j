@@ -21,7 +21,7 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.StringPropertyMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.Range;
+import org.eclipse.aas4j.v3.rc02.model.Range;
 
 public class RangeMapper extends SubmodelElementMapper<Range> {
 

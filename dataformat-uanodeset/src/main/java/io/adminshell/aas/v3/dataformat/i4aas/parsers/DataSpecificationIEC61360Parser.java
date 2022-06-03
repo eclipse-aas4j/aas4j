@@ -19,8 +19,8 @@ import java.util.List;
 
 import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.DataTypeIEC61360;
-import io.adminshell.aas.v3.rc02.model.LangString;
-import io.adminshell.aas.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
 
 public class DataSpecificationIEC61360Parser extends I4AASParser<DataSpecificationIEC61360> {

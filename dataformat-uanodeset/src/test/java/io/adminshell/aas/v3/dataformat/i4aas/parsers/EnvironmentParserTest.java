@@ -21,12 +21,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import io.adminshell.aas.v3.dataformat.i4aas.TestUANodeset;
-import io.adminshell.aas.v3.rc02.model.AdministrativeInformation;
+import org.eclipse.aas4j.v3.rc02.model.AdministrativeInformation;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.rc02.model.DataSpecificationContent;
+import org.eclipse.aas4j.v3.rc02.model.DataSpecificationContent;
 import io.adminshell.aas.v3.model.DataSpecificationIEC61360;
 import io.adminshell.aas.v3.model.IdentifierType;
-import io.adminshell.aas.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 
 public class EnvironmentParserTest {
 

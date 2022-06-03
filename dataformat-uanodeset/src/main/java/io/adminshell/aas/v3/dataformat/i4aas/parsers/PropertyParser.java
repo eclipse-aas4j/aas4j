@@ -15,9 +15,9 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.rc02.model.Property;
-import io.adminshell.aas.v3.rc02.model.Reference;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultProperty;
+import org.eclipse.aas4j.v3.rc02.model.Property;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultProperty;
 
 public class PropertyParser extends ReferableParser<Property> {
 

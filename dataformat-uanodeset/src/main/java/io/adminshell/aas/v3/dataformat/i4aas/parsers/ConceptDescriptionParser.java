@@ -16,9 +16,9 @@
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.ConceptDescription;
-import io.adminshell.aas.v3.rc02.model.Reference;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultConceptDescription;
+import org.eclipse.aas4j.v3.rc02.model.ConceptDescription;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultConceptDescription;
 
 public class ConceptDescriptionParser extends IdentifiableParser<ConceptDescription> {
 

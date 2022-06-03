@@ -16,10 +16,10 @@
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.rc02.model.AssetAdministrationShell;
-import io.adminshell.aas.v3.rc02.model.AssetInformation;
-import io.adminshell.aas.v3.rc02.model.Reference;
-import io.adminshell.aas.v3.rc02.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.AssetInformation;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAssetAdministrationShell;
 
 public class AssetAdministrationShellParser extends IdentifiableParser<AssetAdministrationShell> {
 
