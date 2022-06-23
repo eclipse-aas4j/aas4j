@@ -203,6 +203,7 @@ public class AASSimple {
                         .idShort(SUBMODEL_TECHNICAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_TECHNICAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_TECHNICAL_DATA_PROPERTY_VALUE)
+                        .valueType(DataTypeDefXsd.INTEGER)
                         .build())
                 .build();
     }
@@ -224,6 +225,7 @@ public class AASSimple {
                         .idShort(SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE)
+                        .valueType(DataTypeDefXsd.INTEGER)
                         .build())
                 .build();
     }
@@ -254,6 +256,7 @@ public class AASSimple {
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT)
                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_VALUE)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultFile.Builder()
                                 .kind(ModelingKind.INSTANCE)
@@ -265,7 +268,7 @@ public class AASSimple {
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_FILE_ID_SHORT)
-                                .contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
+                                //.contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
                                 .value(SUBMODEL_DOCUMENTATION_FILE_VALUE)
                                 .build())
                         //.ordered(false)

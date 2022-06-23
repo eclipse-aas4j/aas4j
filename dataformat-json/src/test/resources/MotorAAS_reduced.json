@@ -1,24 +1,19 @@
 {
     "assetAdministrationShells": [
         {
-            "modelType": {
-                "name": "AssetAdministrationShell"
-            },
+            "modelType": "AssetAdministrationShell",
             "idShort": "ExampleMotor",
-            "identification": {
-                "idType": "Iri",
-                "id": "http://customer.com/aas/9175_7013_7091_9168"
-            },
+            "id": "http://customer.com/aas/9175_7013_7091_9168",
             "assetInformation": {
                 "assetKind": "Instance",
                 "globalAssetId": {
                     "keys": [
                         {
-                            "type": "Asset",
-                            "value": "http://customer.com/assets/KHBVZJSQKIY",
-                            "idType": "Iri"
+                            "type": "AssetAdministrationShell",
+                            "value": "http://customer.com/assets/KHBVZJSQKIY"
                         }
-                    ]
+                    ],
+                    "type": "GlobalReference"
                 },
                 "specificAssetIds": [
                     {
@@ -28,10 +23,10 @@
                             "keys": [
                                 {
                                     "type": "GlobalReference",
-                                    "value": "http://customer.com/Systems/ERP/012",
-                                    "idType": "Iri"
+                                    "value": "http://customer.com/Systems/ERP/012"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         }
                     },
                     {
@@ -41,21 +36,19 @@
                             "keys": [
                                 {
                                     "type": "GlobalReference",
-                                    "value": "http://customer.com/Systems/IoT/1",
-                                    "idType": "Iri"
+                                    "value": "http://customer.com/Systems/IoT/1"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         }
                     }
                 ],
                 "thumbnail": {
-                    "modelType": {
-                        "name": "File"
-                    },
+                    "modelType": "File",
                     "kind": "Instance",
                     "idShort": "thumbnail",
                     "mimeType": "image/png",
-                    "value": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
+                    "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
                 }
             },
             "submodels": [
@@ -63,129 +56,99 @@
                     "keys": [
                         {
                             "type": "Submodel",
-                            "value": "http://i40.customer.com/type/1/1/7A7104BDAB57E184",
-                            "idType": "Iri"
+                            "value": "http.//i40.customer.com/type/1/1/7A7104BDAB57E184"
                         }
-                    ]
+                    ],
+                    "type": "GlobalReference"
                 },
                 {
                     "keys": [
                         {
                             "type": "Submodel",
-                            "value": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935",
-                            "idType": "Iri"
+                            "value": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"
                         }
-                    ]
+                    ],
+                    "type": "GlobalReference"
                 }
             ]
-        }
-    ],
-    "assets": [
-        {
-            "modelType": {
-                "name": "Asset"
-            },
-            "idShort": "ServoDCMotor",
-            "identification": {
-                "idType": "Iri",
-                "id": "http://customer.com/assets/KHBVZJSQKIY"
-            }
         }
     ],
     "submodels": [
         {
-            "modelType": {
-                "name": "Submodel"
-            },
+            "modelType": "Submodel",
             "semanticId": {
                 "keys": [
                     {
                         "type": "GlobalReference",
-                        "value": "0173-1#01-AFZ615#016",
-                        "idType": "Irdi"
+                        "value": "0173-1#01-AFZ615#016"
                     }
-                ]
+                ],
+                "type": "GlobalReference"
             },
             "kind": "Instance",
             "idShort": "TechnicalData",
-            "identification": {
-                "idType": "Iri",
-                "id": "http://i40.customer.com/type/1/1/7A7104BDAB57E184"
-            },
+            "id": "http://i40.customer.com/type/1/1/7A7104BDAB57E184",
             "submodelElements": [
                 {
-                    "modelType": {
-                        "name": "Property"
-                    },
+                    "modelType": "Property",
                     "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
                                 "type": "ConceptDescription",
-                                "value": "0173-1#02-BAA120#008",
-                                "idType": "Irdi"
+                                "value": "0173-1#02-BAA120#008"
                             }
-                        ]
+                        ],
+                        "type": "GlobalReference"
                     },
                     "idShort": "MaxRotationSpeed",
                     "category": "Parameter",
                     "value": "5000",
-                    "valueType": "integer"
+                    "valueType": "xs:integer"
                 }
             ]
         },
         {
-            "modelType": {
-                "name": "Submodel"
-            },
+            "modelType": "Submodel",
             "kind": "Instance",
             "idShort": "OperationalData",
-            "identification": {
-                "idType": "Iri",
-                "id": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"
-            },
+            "id": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935",
             "submodelElements": [
                 {
-                    "modelType": {
-                        "name": "Property"
-                    },
+                    "modelType": "Property",
                     "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
                                 "type": "ConceptDescription",
-                                "value": "http://customer.com/cd/1/1/18EBD56F6B43D895",
-                                "idType": "Iri"
+                                "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                             }
-                        ]
+                        ],
+                        "type": "GlobalReference"
                     },
                     "idShort": "RotationSpeed",
                     "category": "Variable",
                     "value": "4370",
-                    "valueType": "integer"
+                    "valueType": "xs:integer"
                 }
             ]
         }
     ],
     "conceptDescriptions": [
         {
-            "modelType": {
-                "name": "ConceptDescription"
-            },
+            "modelType": "ConceptDescription",
             "idShort": "MaxRotationSpeed",
             "category": "PROPERTY",
             "administration": {
-                "version": "",
+                "version": "0",
                 "revision": "2"
             },
-            "identification": {
-                "idType": "Irdi",
-                "id": "0173-1#02-BAA120#008"
-            },
+            "id": "0173-1#02-BAA120#008",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
-                        "keys": []
+                        "keys": [],
+                        "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
                         "preferredName": [
@@ -204,10 +167,10 @@
                             "keys": [
                                 {
                                     "type": "GlobalReference",
-                                    "value": "0173-1#05-AAA650#002",
-                                    "idType": "Irdi"
+                                    "value": "0173-1#05-AAA650#002"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         },
                         "sourceOfDefinition": "",
                         "dataType": "RealMeasure",
@@ -226,25 +189,20 @@
             ]
         },
         {
-            "modelType": {
-                "name": "ConceptDescription"
-            },
+            "modelType": "ConceptDescription",
             "idShort": "RotationSpeed",
             "category": "PROPERTY",
-            "identification": {
-                "idType": "Iri",
-                "id": "http://customer.com/cd/1/1/18EBD56F6B43D895"
-            },
+            "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://adminshell.io/DataSpecificationTemplates/DataSpecificationIEC61360",
-                                "idType": "Iri"
+                                "value": "http://adminshell.io/DataSpecificationTemplates/DataSpecificationIEC61360"
                             }
-                        ]
+                        ],
+                        "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
                         "preferredName": [
@@ -272,10 +230,10 @@
                             "keys": [
                                 {
                                     "type": "GlobalReference",
-                                    "value": "0173-1#05-AAA650#002",
-                                    "idType": "Irdi"
+                                    "value": "0173-1#05-AAA650#002"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         },
                         "sourceOfDefinition": "",
                         "dataType": "RealMeasure",

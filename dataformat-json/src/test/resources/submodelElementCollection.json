@@ -1,7 +1,9 @@
 {
   "idShort": "ExampleSubmodelCollectionOrdered",
   "category": "Parameter",
-  "description": [
+  "description":
+  {
+    "langStrings":  [
     {
       "language": "en-us",
       "text": "Example SubmodelElementCollectionOrdered object"
@@ -10,27 +12,27 @@
       "language": "de",
       "text": "Beispiel SubmodelElementCollectionOrdered Element"
     }
-  ],
-  "modelType":
-  {
-    "name": "SubmodelElementCollection"
-  },
+  ]
+},
+  "modelType": "SubmodelElementCollection",
   "semanticId":
   {
     "keys": [
       {
         "type": "GlobalReference",
-        "idType": "Iri",
         "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
       }
-    ]
+    ],
+    "type": "GlobalReference"
   },
   "kind": "Template",
   "value": [
     {
       "idShort": "ExampleProperty",
       "category": "Constant",
-      "description": [
+      "description":
+      {
+        "langStrings":  [
         {
           "language": "en-us",
           "text": "Example Property object"
@@ -39,28 +41,28 @@
           "language": "de",
           "text": "Beispiel Property Element"
         }
-      ],
-      "modelType":
-      {
-        "name": "Property"
-      },
+      ]
+    },
+      "modelType": "Property",
       "semanticId":
       {
         "keys": [
           {
             "type": "GlobalReference",
-            "idType": "Iri",
             "value": "http://acplt.org/Properties/ExampleProperty"
           }
-        ]
+        ],
+        "type": "GlobalReference"
       },
       "kind": "Template",
-      "valueType": "string"
+      "valueType": "xs:string"
     },
     {
       "idShort": "ExampleMultiLanguageProperty",
       "category": "Constant",
-      "description": [
+      "description":
+      {
+        "langStrings":  [
         {
           "language": "en-us",
           "text": "Example MultiLanguageProperty object"
@@ -69,27 +71,27 @@
           "language": "de",
           "text": "Beispiel MulitLanguageProperty Element"
         }
-      ],
-      "modelType":
-      {
-        "name": "MultiLanguageProperty"
-      },
+      ]
+    },
+      "modelType": "MultiLanguageProperty",
       "semanticId":
       {
         "keys": [
           {
             "type": "GlobalReference",
-            "idType": "Iri",
             "value": "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty"
           }
-        ]
+        ],
+        "type": "GlobalReference"
       },
       "kind": "Template"
     },
     {
       "idShort": "ExampleRange",
       "category": "Parameter",
-      "description": [
+      "description":
+      {
+        "langStrings": [
         {
           "language": "en-us",
           "text": "Example Range object"
@@ -98,54 +100,53 @@
           "language": "de",
           "text": "Beispiel Range Element"
         }
-      ],
-      "modelType":
-      {
-        "name": "Range"
-      },
+      ]
+    },
+      "modelType": "Range",
       "semanticId":
       {
         "keys": [
           {
             "type": "GlobalReference",
-            "idType": "Iri",
             "value": "http://acplt.org/Ranges/ExampleRange"
           }
-        ]
+        ],
+        "type": "GlobalReference"
       },
       "kind": "Template",
-      "valueType": "int",
+      "valueType": "xs:int",
       "max": "100"
     },
     {
       "idShort": "ExampleRange2",
       "category": "Parameter",
-      "description": [
+      "description":
         {
-          "language": "en-us",
-          "text": "Example Range object"
-        },
-        {
-          "language": "de",
-          "text": "Beispiel Range Element"
-        }
-      ],
-      "modelType":
-      {
-        "name": "Range"
+          "langStrings":
+           [
+          {
+            "language": "en-us",
+            "text": "Example Range object"
+          },
+          {
+            "language": "de",
+            "text": "Beispiel Range Element"
+          }
+        ]
       },
+      "modelType": "Range",
       "semanticId":
       {
         "keys": [
           {
             "type": "GlobalReference",
-            "idType": "Iri",
             "value": "http://acplt.org/Ranges/ExampleRange"
           }
-        ]
+        ],
+        "type": "GlobalReference"
       },
       "kind": "Template",
-      "valueType": "int",
+      "valueType": "xs:int",
       "min": "0"
     }
   ],
