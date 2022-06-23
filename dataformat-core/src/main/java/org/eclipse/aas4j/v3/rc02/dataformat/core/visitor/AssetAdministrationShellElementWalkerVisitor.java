@@ -46,7 +46,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(assetInformation.getGlobalAssetId());
-        visit(assetInformation.getSpecificAssetId());
+        assetInformation.getSpecificAssetId().forEach(x -> visit(x));
         visit(assetInformation.getDefaultThumbnail());
         AssetAdministrationShellElementVisitor.super.visit(assetInformation);
     }

@@ -22,12 +22,14 @@ import org.eclipse.aas4j.v3.rc02.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.rc02.model.impl.*;
 import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAssetInformation;
 
+import java.util.List;
+
 /**
  * In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is
  * defined.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultAssetInformation.class)
+        @KnownSubtypes.Type(value = DefaultAssetInformation.class)
 })
 public interface AssetInformation {
 
@@ -75,10 +77,10 @@ public interface AssetInformation {
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId
      *
-     * @return Returns the SpecificAssetId for the property specificAssetId.
+     * @return Returns the List of SpecificAssetIds for the property specificAssetId.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId")
-    SpecificAssetId getSpecificAssetId();
+    List<SpecificAssetId> getSpecificAssetId();
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
@@ -88,7 +90,7 @@ public interface AssetInformation {
      *
      * @param specificAssetId desired value for the property specificAssetId.
      */
-    void setSpecificAssetId(SpecificAssetId specificAssetId);
+    void setSpecificAssetId(List<SpecificAssetId> specificAssetId);
 
     /**
      * Thumbnail of the asset represented by the Asset Administration Shell.

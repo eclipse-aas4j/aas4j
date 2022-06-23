@@ -20,12 +20,14 @@ package org.eclipse.aas4j.v3.rc02.model.builder;
 import org.eclipse.aas4j.v3.rc02.model.*;
 import org.eclipse.aas4j.v3.rc02.model.*;
 
+import java.util.List;
+
 public abstract class AssetInformationBuilder<T extends AssetInformation, B extends AssetInformationBuilder<T, B>>
-    extends ExtendableBuilder<T, B> {
+        extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for assetKind
-     * 
+     *
      * @param assetKind desired value to be set
      * @return Builder object with new value for assetKind
      */
@@ -36,7 +38,7 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
 
     /**
      * This function allows setting a value for globalAssetId
-     * 
+     *
      * @param globalAssetId desired value to be set
      * @return Builder object with new value for globalAssetId
      */
@@ -47,18 +49,29 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
 
     /**
      * This function allows setting a value for specificAssetId
-     * 
+     *
      * @param specificAssetId desired value to be set
      * @return Builder object with new value for specificAssetId
      */
-    public B specificAssetId(SpecificAssetId specificAssetId) {
+    public B specificAssetId(List<SpecificAssetId> specificAssetId) {
         getBuildingInstance().setSpecificAssetId(specificAssetId);
         return getSelf();
     }
 
     /**
+     * This function allows adding a value to the List specificAssetId
+     *
+     * @param specificAssetId desired value to be added
+     * @return Builder object with new value for specificAssetId
+     */
+    public B specificAssetId(SpecificAssetId specificAssetId) {
+        getBuildingInstance().getSpecificAssetId().add(specificAssetId);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for defaultThumbnail
-     * 
+     *
      * @param defaultThumbnail desired value to be set
      * @return Builder object with new value for defaultThumbnail
      */

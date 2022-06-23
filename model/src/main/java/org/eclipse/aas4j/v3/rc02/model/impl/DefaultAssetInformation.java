@@ -14,6 +14,8 @@
 
 package org.eclipse.aas4j.v3.rc02.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -44,16 +46,16 @@ public class DefaultAssetInformation implements AssetInformation {
     protected Reference globalAssetId;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId")
-    protected SpecificAssetId specificAssetId;
+    protected List<SpecificAssetId> specificAssetId = new ArrayList<>();
 
     public DefaultAssetInformation() {}
 
     @Override
     public int hashCode() {
         return Objects.hash(this.assetKind,
-            this.globalAssetId,
-            this.specificAssetId,
-            this.defaultThumbnail);
+                this.globalAssetId,
+                this.specificAssetId,
+                this.defaultThumbnail);
     }
 
     @Override
@@ -67,9 +69,9 @@ public class DefaultAssetInformation implements AssetInformation {
         } else {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
             return Objects.equals(this.assetKind, other.assetKind) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetId, other.specificAssetId) &&
-                Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
+                    Objects.equals(this.globalAssetId, other.globalAssetId) &&
+                    Objects.equals(this.specificAssetId, other.specificAssetId) &&
+                    Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
         }
     }
 
@@ -94,12 +96,12 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public SpecificAssetId getSpecificAssetId() {
+    public List<SpecificAssetId> getSpecificAssetId() {
         return specificAssetId;
     }
 
     @Override
-    public void setSpecificAssetId(SpecificAssetId specificAssetId) {
+    public void setSpecificAssetId(List<SpecificAssetId> specificAssetId) {
         this.specificAssetId = specificAssetId;
     }
 
