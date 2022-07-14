@@ -1,6 +1,6 @@
 :warning:  **Attention** - this project is the new home for the 
 AAS libraries for java previously available in [admin-shell-io](https://github.com/admin-shell-io).
-# Eclipse AAS4J (:construction: migration in progress, intial contribution)
+# Eclipse AAS4J (:construction: migration in progress, initial contribution)
 
 [Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 'Details of the Asset Administration Shell' published on [Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
 
