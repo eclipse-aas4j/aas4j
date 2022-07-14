@@ -18,11 +18,10 @@ package io.adminshell.aas.v3.dataformat.i4aas.mappers;
 import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 
-import io.adminshell.aas.v3.dataformat.i4aas.mappers.sme.MimeTypeMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.sme.ValueTypeMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.Qualifier;
-import io.adminshell.aas.v3.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.Qualifier;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 
 public class QualifierMapper extends I4AASMapper<Qualifier, UAObject> {
 

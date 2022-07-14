@@ -15,8 +15,8 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Blob;
-import io.adminshell.aas.v3.model.impl.DefaultBlob;
+import org.eclipse.aas4j.v3.rc02.model.Blob;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultBlob;
 
 public class BlobParser extends ReferableParser<Blob> {
 

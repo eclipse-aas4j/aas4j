@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Optional;
 
 import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import io.adminshell.aas.v3.model.Identifiable;
+import org.eclipse.aas4j.v3.rc02.model.Identifiable;
 import io.adminshell.aas.v3.model.IdentifierType;
-import io.adminshell.aas.v3.model.impl.DefaultAdministrativeInformation;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAdministrativeInformation;
 import io.adminshell.aas.v3.model.impl.DefaultIdentifier;
 
 public abstract class IdentifiableParser<T extends Identifiable> extends ReferableParser<T> {

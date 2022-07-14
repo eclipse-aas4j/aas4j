@@ -22,11 +22,11 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.sme.FileMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.AssetInformation;
-import io.adminshell.aas.v3.model.AssetKind;
-import io.adminshell.aas.v3.model.File;
+import org.eclipse.aas4j.v3.rc02.model.AssetInformation;
+import org.eclipse.aas4j.v3.rc02.model.AssetKind;
+import org.eclipse.aas4j.v3.rc02.model.File;
 import io.adminshell.aas.v3.model.IdentifierKeyValuePair;
-import io.adminshell.aas.v3.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 
 public class AssetInformationMapper extends I4AASMapper<AssetInformation, UAObject> {
 

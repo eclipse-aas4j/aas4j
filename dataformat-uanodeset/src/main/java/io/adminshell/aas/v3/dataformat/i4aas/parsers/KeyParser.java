@@ -17,10 +17,10 @@ package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
 import org.opcfoundation.ua.i4aas.v3.types.AASKeyDataType;
 
-import io.adminshell.aas.v3.model.Key;
+import org.eclipse.aas4j.v3.rc02.model.Key;
 import io.adminshell.aas.v3.model.KeyElements;
 import io.adminshell.aas.v3.model.KeyType;
-import io.adminshell.aas.v3.model.impl.DefaultKey;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultKey;
 
 public class KeyParser {
 

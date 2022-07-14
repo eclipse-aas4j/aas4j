@@ -27,9 +27,9 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAVariable.Value;
 import org.opcfoundation.ua.i4aas.v3.types.AASKeyDataType;
 import org.w3c.dom.Node;
 
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.impl.DefaultReference;
+import org.eclipse.aas4j.v3.rc02.model.Key;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultReference;
 
 public class ReferenceParser extends I4AASParser<Reference> {
 

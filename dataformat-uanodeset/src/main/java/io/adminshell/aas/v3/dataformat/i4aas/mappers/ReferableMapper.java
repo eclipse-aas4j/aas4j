@@ -19,8 +19,8 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 import org.opcfoundation.ua._2011._03.uanodeset.UAVariable;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASUtils;
-import io.adminshell.aas.v3.model.LangString;
-import io.adminshell.aas.v3.model.Referable;
+import org.eclipse.aas4j.v3.rc02.model.LangString;
+import org.eclipse.aas4j.v3.rc02.model.Referable;
 
 public class ReferableMapper<T extends Referable> extends I4AASMapper<T, UAObject> {
 

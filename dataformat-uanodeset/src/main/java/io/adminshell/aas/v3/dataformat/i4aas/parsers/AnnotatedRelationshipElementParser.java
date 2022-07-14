@@ -15,11 +15,11 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.AnnotatedRelationshipElement;
-import io.adminshell.aas.v3.model.DataElement;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.impl.DefaultAnnotatedRelationshipElement;
+import org.eclipse.aas4j.v3.rc02.model.AnnotatedRelationshipElement;
+import org.eclipse.aas4j.v3.rc02.model.DataElement;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultAnnotatedRelationshipElement;
 
 public class AnnotatedRelationshipElementParser extends ReferableParser<AnnotatedRelationshipElement> {
 

@@ -22,8 +22,8 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASConstants;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.model.Constraint;
-import io.adminshell.aas.v3.model.Qualifiable;
-import io.adminshell.aas.v3.model.Qualifier;
+import org.eclipse.aas4j.v3.rc02.model.Qualifiable;
+import org.eclipse.aas4j.v3.rc02.model.Qualifier;
 
 public interface QualifiableMapper {
 

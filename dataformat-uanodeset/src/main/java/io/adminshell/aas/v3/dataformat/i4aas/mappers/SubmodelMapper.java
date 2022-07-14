@@ -21,8 +21,8 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.sme.SubmodelElementMappers;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.Submodel;
-import io.adminshell.aas.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.rc02.model.Submodel;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
 
 public class SubmodelMapper extends IdentifiableMapper<Submodel> implements HasKindMapper, HasSemanticsMapper, HasDataSpecificationMapper, QualifiableMapper {
 

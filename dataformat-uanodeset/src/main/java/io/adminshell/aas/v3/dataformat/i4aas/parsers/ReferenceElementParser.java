@@ -15,9 +15,9 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.ReferenceElement;
-import io.adminshell.aas.v3.model.impl.DefaultReferenceElement;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.ReferenceElement;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultReferenceElement;
 
 public class ReferenceElementParser extends ReferableParser<ReferenceElement> {
 

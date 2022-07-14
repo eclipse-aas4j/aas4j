@@ -22,10 +22,10 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
 import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.AssetAdministrationShell;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Submodel;
+import org.eclipse.aas4j.v3.rc02.model.ConceptDescription;
+import org.eclipse.aas4j.v3.rc02.model.Submodel;
 
 public class EnvironmentMapper extends I4AASMapper<AssetAdministrationShellEnvironment, UAObject> {
 

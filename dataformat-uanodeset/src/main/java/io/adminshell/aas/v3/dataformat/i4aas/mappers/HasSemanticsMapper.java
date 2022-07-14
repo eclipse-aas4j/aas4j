@@ -15,19 +15,20 @@
  */
 package io.adminshell.aas.v3.dataformat.i4aas.mappers;
 
+import org.eclipse.aas4j.v3.rc02.model.Reference;
 import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.UaIdentifier;
-import io.adminshell.aas.v3.model.HasSemantics;
+import org.eclipse.aas4j.v3.rc02.model.HasSemantics;
 import io.adminshell.aas.v3.model.Identifier;
 import io.adminshell.aas.v3.model.IdentifierType;
-import io.adminshell.aas.v3.model.Key;
-import io.adminshell.aas.v3.model.impl.DefaultConceptDescription;
+import org.eclipse.aas4j.v3.rc02.model.Key;
+import org.eclipse.aas4j.v3.rc02.model.impl.DefaultConceptDescription;
 
 public interface HasSemanticsMapper {
 
 	default void mapSemantics(HasSemantics source, UAObject target, MappingContext ctx) {
-		io.adminshell.aas.v3.model.Reference semanticId = source.getSemanticId();
+		Reference semanticId = source.getSemanticId();
 		if (semanticId != null && !semanticId.getKeys().isEmpty()) {
 						
 			// get Dictionary Entry based on first key

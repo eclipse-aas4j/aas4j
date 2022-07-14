@@ -1,6 +1,8 @@
 {
   "idShort": "TestAssetAdministrationShell",
-  "description": [
+  "description":
+  {
+    "langStrings":  [
     {
       "language": "en-us",
       "text": "An Example Asset Administration Shell for the test application"
@@ -9,16 +11,10 @@
       "language": "de",
       "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
     }
-  ],
-  "modelType":
-  {
-    "name": "AssetAdministrationShell"
-  },
-  "identification":
-  {
-    "id": "https://acplt.org/Test_AssetAdministrationShell",
-    "idType": "Iri"
-  },
+  ]
+},
+  "modelType": "AssetAdministrationShell",
+  "id": "https://acplt.org/Test_AssetAdministrationShell",
   "administration":
   {
     "version": "0.9",
@@ -29,10 +25,10 @@
     "keys": [
       {
         "type": "AssetAdministrationShell",
-        "idType": "Iri",
         "value": "https://acplt.org/TestAssetAdministrationShell2"
       }
-    ]
+    ],
+    "type": "GlobalReference"
   },
   "assetInformation":
   {
@@ -41,21 +37,21 @@
     {
       "keys": [
         {
-          "type": "Asset",
-          "idType": "Iri",
+          "type": "AssetAdministrationShell",
           "value": "https://acplt.org/Test_Asset"
         }
-      ]
+      ],
+      "type": "GlobalReference"
     },
     "billOfMaterial": [
       {
         "keys": [
           {
             "type": "Submodel",
-            "idType": "Iri",
             "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
           }
-        ]
+        ],
+        "type": "GlobalReference"
       }
     ]
   },
@@ -64,7 +60,6 @@
       "keys": [
         {
           "type": "Submodel",
-          "idType": "Iri",
           "value": "https://acplt.org/Test_Submodel"
         }
       ]
@@ -73,19 +68,19 @@
       "keys": [
         {
           "type": "Submodel",
-          "idType": "Iri",
           "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
         }
-      ]
+      ],
+      "type": "GlobalReference"
     },
     {
       "keys": [
         {
           "type": "Submodel",
-          "idType": "Iri",
           "value": "http://acplt.org/Submodels/Assets/TestAsset/Identification"
         }
-      ]
+      ],
+      "type": "GlobalReference"
     }
   ]
 }

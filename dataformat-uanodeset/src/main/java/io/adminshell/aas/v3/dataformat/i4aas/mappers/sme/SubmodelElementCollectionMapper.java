@@ -24,8 +24,8 @@ import io.adminshell.aas.v3.dataformat.i4aas.mappers.BooleanPropertyMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.I4AASMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.SubmodelElementCollection;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
+import org.eclipse.aas4j.v3.rc02.model.SubmodelElementCollection;
 
 public class SubmodelElementCollectionMapper extends SubmodelElementMapper<SubmodelElementCollection> {
 

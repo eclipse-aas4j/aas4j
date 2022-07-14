@@ -17,10 +17,10 @@ package io.adminshell.aas.v3.dataformat.i4aas.parsers;
 
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
 import io.adminshell.aas.v3.model.Asset;
-import io.adminshell.aas.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.rc02.model.AssetAdministrationShell;
 import io.adminshell.aas.v3.model.AssetAdministrationShellEnvironment;
-import io.adminshell.aas.v3.model.ConceptDescription;
-import io.adminshell.aas.v3.model.Submodel;
+import org.eclipse.aas4j.v3.rc02.model.ConceptDescription;
+import org.eclipse.aas4j.v3.rc02.model.Submodel;
 import io.adminshell.aas.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
 
 public class EnvironmentParser extends I4AASParser<AssetAdministrationShellEnvironment> {

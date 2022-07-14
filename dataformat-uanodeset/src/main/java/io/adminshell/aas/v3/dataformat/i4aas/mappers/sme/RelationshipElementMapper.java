@@ -20,8 +20,8 @@ import org.opcfoundation.ua._2011._03.uanodeset.UAObject;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.MappingContext;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.ReferenceMapper;
 import io.adminshell.aas.v3.dataformat.i4aas.mappers.utils.I4AASIdentifier;
-import io.adminshell.aas.v3.model.Reference;
-import io.adminshell.aas.v3.model.RelationshipElement;
+import org.eclipse.aas4j.v3.rc02.model.Reference;
+import org.eclipse.aas4j.v3.rc02.model.RelationshipElement;
 
 public class RelationshipElementMapper extends SubmodelElementMapper<RelationshipElement> {
 
