@@ -25,7 +25,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.ResourceBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Resource
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Resource
  * 
  * Resource represents an address to a file (a locator). The value is an URI that can represent an
  * absolute or relative path

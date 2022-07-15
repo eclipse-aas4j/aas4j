@@ -29,7 +29,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.ExtensionBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Extension
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Extension
  * 
  * Single extension of an element.
  */

@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.SubmodelElementListBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.SubmodelElementList
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.SubmodelElementList
  * 
  * A submodel element list is an ordered list of submodel elements.
  */

@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.FileBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.File
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.File
  * 
  * A File is a data element that represents an address to a file (a locator).
  */

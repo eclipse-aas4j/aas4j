@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.ConceptDescriptionBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.ConceptDescription
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.ConceptDescription
  * 
  * The semantics of a property or other elements that may have a semantic description is defined by
  * a concept description.

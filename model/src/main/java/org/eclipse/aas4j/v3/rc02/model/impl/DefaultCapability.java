@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.CapabilityBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Capability
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Capability
  * 
  * A capability is the implementation-independent description of the potential of an asset to
  * achieve a certain effect in the physical or virtual world.

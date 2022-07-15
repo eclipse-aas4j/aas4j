@@ -28,7 +28,7 @@ import org.eclipse.aas4j.v3.rc02.model.LangString;
 import org.eclipse.aas4j.v3.rc02.model.builder.LangStringSetBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.LangStringSet
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.LangStringSet
  * 
  * Array of elements of type langString
  */

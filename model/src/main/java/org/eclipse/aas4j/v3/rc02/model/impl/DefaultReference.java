@@ -29,7 +29,7 @@ import org.eclipse.aas4j.v3.rc02.model.ReferenceTypes;
 import org.eclipse.aas4j.v3.rc02.model.builder.ReferenceBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Reference
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Reference
  * 
  * Reference to either a model element of the same or another AAS or to an external entity.
  */

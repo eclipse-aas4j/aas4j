@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.EntityBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Entity
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Entity
  * 
  * An entity is a submodel element that is used to model entities.
  */

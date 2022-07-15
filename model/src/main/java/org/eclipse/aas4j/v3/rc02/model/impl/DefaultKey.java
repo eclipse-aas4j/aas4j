@@ -26,7 +26,7 @@ import org.eclipse.aas4j.v3.rc02.model.KeyTypes;
 import org.eclipse.aas4j.v3.rc02.model.builder.KeyBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Key
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Key
  * 
  * A key is a reference to an element by its ID.
  */

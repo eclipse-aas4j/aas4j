@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.SubmodelElementCollectionBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.SubmodelElementCollection
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.SubmodelElementCollection
  * 
  * A submodel element collection is a kind of struct, i.e. a a logical encapsulation of multiple
  * named values. It has a fixed number of submodel elements.

@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.EnvironmentBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Environment
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Environment
  * 
  * Container for the sets of different identifiables.
  */

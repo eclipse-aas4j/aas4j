@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.AnnotatedRelationshipElementBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.AnnotatedRelationshipElement
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AnnotatedRelationshipElement
  * 
  * An annotated relationship element is a relationship element that can be annotated with additional
  * data elements.

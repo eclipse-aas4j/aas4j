@@ -26,7 +26,7 @@ import org.eclipse.aas4j.v3.rc02.model.SubmodelElement;
 import org.eclipse.aas4j.v3.rc02.model.builder.OperationVariableBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.OperationVariable
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.OperationVariable
  * 
  * The value of an operation variable is a submodel element that is used as input and/or output
  * variable of an operation.

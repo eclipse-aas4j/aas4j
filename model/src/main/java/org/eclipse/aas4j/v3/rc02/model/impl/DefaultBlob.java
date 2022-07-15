@@ -28,7 +28,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.BlobBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Blob
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Blob
  * 
  * A 'Blob' is a data element that represents a file that is contained with its source code in the
  * value attribute.

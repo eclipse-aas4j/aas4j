@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.SubmodelBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Submodel
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Submodel
  * 
  * A submodel defines a specific aspect of the asset represented by the AAS.
  */

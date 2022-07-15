@@ -26,7 +26,7 @@ import org.eclipse.aas4j.v3.rc02.model.Reference;
 import org.eclipse.aas4j.v3.rc02.model.builder.EventPayloadBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.EventPayload
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.EventPayload
  * 
  * Defines the necessary information of an event instance sent out or received.
  */

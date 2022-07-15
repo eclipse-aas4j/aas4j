@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.AssetInformationBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.AssetInformation
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AssetInformation
  * 
  * In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is
  * defined.

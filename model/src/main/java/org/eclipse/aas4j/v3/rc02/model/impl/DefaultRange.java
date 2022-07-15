@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.RangeBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Range
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Range
  * 
  * A range data element is a data element that defines a range with min and max.
  */

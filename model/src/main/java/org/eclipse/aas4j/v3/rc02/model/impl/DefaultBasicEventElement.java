@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.BasicEventElementBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.BasicEventElement
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.BasicEventElement
  * 
  * A basic event element.
  */

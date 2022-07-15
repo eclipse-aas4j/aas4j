@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.ReferenceElementBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.ReferenceElement
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.ReferenceElement
  * 
  * A reference element is a data element that defines a logical reference to another element within
  * the same or another AAS or a reference to an external object or entity.

@@ -28,7 +28,7 @@ import org.eclipse.aas4j.v3.rc02.model.Reference;
 import org.eclipse.aas4j.v3.rc02.model.builder.AdministrativeInformationBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.AdministrativeInformation
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AdministrativeInformation
  * 
  * Administrative meta-information for an element like version information.
  */

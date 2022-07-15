@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.builder.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.RelationshipElementBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.RelationshipElement
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.RelationshipElement
  * 
  * A relationship element is used to define a relationship between two elements being either
  * referable (model reference) or external (global reference).

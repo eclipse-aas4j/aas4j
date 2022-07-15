@@ -30,7 +30,7 @@ import org.eclipse.aas4j.v3.rc02.model.Qualifier;
 import org.eclipse.aas4j.v3.rc02.model.builder.QualifierBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Qualifier
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Qualifier
  * 
  * A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the
  * element.

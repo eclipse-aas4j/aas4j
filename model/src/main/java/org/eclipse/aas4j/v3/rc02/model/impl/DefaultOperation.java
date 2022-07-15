@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.rc02.model.*;
 import org.eclipse.aas4j.v3.rc02.model.builder.OperationBuilder;
 
 /**
- * Default implementation of package io.adminshell.aas.v3.rc02.model.Operation
+ * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Operation
  * 
  * An operation is a submodel element with input and output variables.
  */
