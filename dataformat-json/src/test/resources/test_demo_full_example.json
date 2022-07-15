@@ -987,7 +987,6 @@
                             {
                                 "keys": [
                                     {
-
                                         "type": "GlobalReference",
                                         "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
                                     }
@@ -1081,7 +1080,7 @@
                                     },
                                     {
                                         "language": "de",
-                                        "text": "Beispielswert für ein MulitLanguageProperty-Element"
+                                        "text": "Beispielswert für ein MultiLanguageProperty-Element"
                                     }
                                 ]
                             },
@@ -1089,11 +1088,11 @@
                                 "langStrings": [
                                     {
                                         "language": "en-us",
-                                        "text": "Example MulitLanguageProperty object"
+                                        "text": "Example MultiLanguageProperty object"
                                     },
                                     {
                                         "language": "de",
-                                        "text": "Beispiel MulitLanguageProperty Element"
+                                        "text": "Beispiel MultiLanguageProperty Element"
                                     }
                                 ]
                             }
@@ -1159,7 +1158,7 @@
                     "value": [
                         {
                             "modelType": "Blob",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "value": "AQIDBAU=",
                             "semanticId":
                                     {
@@ -1188,7 +1187,7 @@
                         },
                         {
                             "modelType": "File",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "value": "/TestFile.pdf",
                             "semanticId":
                                     {
@@ -1422,12 +1421,12 @@
                     "value": [
                         {
                             "modelType": "Blob",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "idShort": "ExampleBlob"
                         },
                         {
                             "modelType": "File",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "idShort": "ExampleFile"
                         },
                         {
@@ -1911,7 +1910,7 @@
                                     },
                                     {
                                         "language": "de",
-                                        "text": "Beispielswert für ein MulitLanguageProperty-Element"
+                                        "text": "Beispielswert für ein MultiLanguageProperty-Element"
                                     }
                                 ]
                             },
@@ -1919,11 +1918,11 @@
                                 "langStrings": [
                                     {
                                         "language": "en-us",
-                                        "text": "Example MulitLanguageProperty object"
+                                        "text": "Example MultiLanguageProperty object"
                                     },
                                     {
                                         "language": "de",
-                                        "text": "Beispiel MulitLanguageProperty Element"
+                                        "text": "Beispiel MultiLanguageProperty Element"
                                     }
                                 ]
                             }
@@ -1989,7 +1988,7 @@
                     "value": [
                         {
                             "modelType": "Blob",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "value": "AQIDBAU=",
                             "semanticId":
                                     {
@@ -2018,7 +2017,7 @@
                         },
                         {
                             "modelType": "File",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "value": "/TestFile.pdf",
                             "semanticId":
                                     {
@@ -2498,11 +2497,11 @@
                                 "langStrings": [
                                     {
                                         "language": "en-us",
-                                        "text": "Example MulitLanguageProperty object"
+                                        "text": "Example MultiLanguageProperty object"
                                     },
                                     {
                                         "language": "de",
-                                        "text": "Beispiel MulitLanguageProperty Element"
+                                        "text": "Beispiel MultiLanguageProperty Element"
                                     }
                                 ]
                             }
@@ -2599,7 +2598,7 @@
                     "value": [
                         {
                             "modelType": "Blob",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "kind": "Template",
                             "semanticId":
                                     {
@@ -2628,7 +2627,7 @@
                         },
                         {
                             "modelType": "File",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "kind": "Template",
                             "semanticId":
                                     {

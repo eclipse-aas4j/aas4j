@@ -25,7 +25,7 @@ public class AASSimple {
     private static final String ISO15519_1_2010 = "[ISO15519-1:2010]";
     private static final String DOKUMENT = "Dokument";
     private static final String DOCUMENT = "Document";
-    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT = "www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document";
+    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document";
     private static final String ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED = "Actual rotationspeed with which the motor or feedingunit is operated";
     private static final String AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD = "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird";
     private static final String ACTUAL_ROTATION_SPEED = "ActualRotationSpeed";
@@ -44,11 +44,11 @@ public class AASSimple {
     private static final String MAX_ROTATION_SPEED = "MaxRotationSpeed";
     private static final String DIGITAL_FILE_DEFINITION = "A file representing the document version. In addition to the mandatory PDF file, other files can be specified."; //"Eine Datei, die die Document Version repräsentiert. Neben der obligatorischen PDF Datei können weitere Dateien angegeben werden.";
     private static final String DIGITALE_DATEI = "DigitaleDatei";
-    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE = "www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile";
+    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile";
     private static final String DIGITAL_FILE = "DigitalFile";
     private static final String SPRACHABHÄNGIGER_TITELDES_DOKUMENTS = "SprachabhängigerTiteldesDokuments.";
     private static final String TITEL = "Titel";
-    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
+    private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
     private static final String TITLE = "Title";
     private static final String SERVO_DC_MOTOR = "ServoDCMotor";
     private static final String HTTPS_GITHUB_COM_ADMIN_SHELL_IO_BLOB_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png";
@@ -268,7 +268,7 @@ public class AASSimple {
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_FILE_ID_SHORT)
-                                //.contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
+                                .contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
                                 .value(SUBMODEL_DOCUMENTATION_FILE_VALUE)
                                 .build())
                         //.ordered(false)

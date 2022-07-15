@@ -3,16 +3,16 @@
   "description":
   {
     "langStrings":  [
-    {
-      "language": "en-us",
-      "text": "An Example Asset Administration Shell for the test application"
-    },
-    {
-      "language": "de",
-      "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
-    }
-  ]
-},
+      {
+        "language": "en-us",
+        "text": "An Example Asset Administration Shell for the test application"
+      },
+      {
+        "language": "de",
+        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+      }
+    ]
+  },
   "modelType": "AssetAdministrationShell",
   "id": "https://acplt.org/Test_AssetAdministrationShell",
   "administration":

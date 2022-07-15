@@ -16,40 +16,37 @@
                     ],
                     "type": "GlobalReference"
                 },
-                "specificAssetIds": [
+                "specificAssetId": [
                     {
-                        "key": "EquipmentID",
+                        "name": "EquipmentID",
                         "value": "538fd1b3-f99f-4a52-9c75-72e9fa921270",
-                        "subjectId":
+                        "externalSubjectId":
                         {
                             "keys": [
                                 {
-                                    "idType": "Iri",
                                     "type": "GlobalReference",
                                     "value": "http://customer.com/Systems/ERP/012"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         }
                     },
                     {
-                        "key": "DeviceID",
+                        "name": "DeviceID",
                         "value": "QjYgPggjwkiHk4RrQiYSLg==",
-                        "subjectId":
+                        "externalSubjectId":
                         {
                             "keys": [
                                 {
-                                    "idType": "Iri",
                                     "type": "GlobalReference",
                                     "value": "http://customer.com/Systems/IoT/1"
                                 }
-                            ]
+                            ],
+                            "type": "GlobalReference"
                         }
                     }
                 ],
                 "thumbnail": {
-                    "modelType": "File",
-                    "kind": "Instance",
-                    "idShort": "thumbnail",
                     "contentType": "image/png",
                     "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
                 }
@@ -59,7 +56,7 @@
                     "keys": [
                         {
                             "type": "Submodel",
-                            "value": "http.//i40.customer.com/type/1/1/7A7104BDAB57E184"
+                            "value": "http://i40.customer.com/type/1/1/7A7104BDAB57E184"
                         }
                     ],
                     "type": "GlobalReference"
@@ -99,7 +96,8 @@
                                 "type": "GlobalReference",
                                 "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
                             }
-                        ]
+                        ],
+                        "type": "GlobalReference"
                     },
                     "dataSpecificationContent":
                     {
@@ -146,11 +144,11 @@
                     {
                         "keys": [
                             {
-                                "idType": "Iri",
                                 "type": "GlobalReference",
                                 "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
                             }
-                        ]
+                        ],
+                        "type": "GlobalReference"
                     },
                     "dataSpecificationContent":
                     {
@@ -186,7 +184,7 @@
                     }
                 }
             ],
-            "id": "https://http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
+            "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
             "idShort": "DigitalFile"
         },
         {
@@ -357,7 +355,7 @@
                     }
                 }
             ],
-            "id": "http://http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
+            "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
             "idShort": "Document"
         }
     ],
@@ -369,7 +367,6 @@
             {
                 "keys": [
                     {
-                        "idType": "Irdi",
                         "type": "GlobalReference",
                         "value": "0173-1#01-AFZ615#016"
                     }
@@ -386,7 +383,6 @@
                     {
                         "keys": [
                             {
-                                "idType": "Irdi",
                                 "type": "ConceptDescription",
                                 "value": "0173-1#02-BAA120#008"
                             }
@@ -414,7 +410,7 @@
                         "keys": [
                             {
                                 "type": "ConceptDescription",
-                                "value": "https://http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
+                                "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
                             }
                         ],
                         "type": "GlobalReference"
@@ -429,9 +425,10 @@
                                 "keys": [
                                     {
                                         "type": "ConceptDescription",
-                                        "value": "https://http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
+                                        "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
                                     }
-                                ]
+                                ],
+                                "type": "GlobalReference"
                             },
                             "value": "OperatingManual",
                             "valueType": "xs:string",
@@ -439,14 +436,13 @@
                         },
                         {
                             "modelType": "File",
-                            "mimeType": "application/pdf",
+                            "contentType": "application/pdf",
                             "value": "/aasx/OperatingManual.pdf",
                             "kind": "Instance",
                             "semanticId":
                             {
                                 "keys": [
                                     {
-                                        "idType": "Iri",
                                         "type": "ConceptDescription",
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
                                     }
