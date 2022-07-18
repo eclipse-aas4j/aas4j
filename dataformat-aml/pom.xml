@@ -96,7 +96,7 @@
                             <xsdOptions>
                                 <xsdOption>
                                     <xsd>${basedir}/src/main/resources/CAEX_ClassModel_V2.15.xsd</xsd>
-                                    <packagename>org.eclipse.aas4j.v3.rc02.dataformat.aml.model.caex</packagename>
+                                    <packagename>org.eclipse.aas4j.v3.dataformat.aml.model.caex</packagename>
                                     <extensionArgs>
                                         <extensionArg>-Xfluent-builder</extensionArg>
                                         <extensionArg>-Ximmutable</extensionArg>
