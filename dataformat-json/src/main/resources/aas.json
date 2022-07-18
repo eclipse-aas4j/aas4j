@@ -105,8 +105,11 @@
                 "globalAssetId": {
                     "$ref": "#/definitions/Reference"
                 },
-                "specificAssetId": {
-                    "$ref": "#/definitions/SpecificAssetId"
+                "specificAssetIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SpecificAssetId"
+                    }
                 },
                 "defaultThumbnail": {
                     "$ref": "#/definitions/Resource"
@@ -534,6 +537,7 @@
                 "Blob",
                 "Capability",
                 "ConceptDescription",
+                "Identifiable",
                 "DataElement",
                 "Entity",
                 "EventElement",
@@ -542,8 +546,8 @@
                 "Operation",
                 "Property",
                 "Range",
-                "Referable",
                 "ReferenceElement",
+                "Referable",
                 "RelationshipElement",
                 "Submodel",
                 "SubmodelElement",
@@ -783,6 +787,7 @@
                         },
                         "idShort": {
                             "type": "string",
+                            "maxLength": 128,
                             "pattern": "^[a-zA-Z][a-zA-Z0-9_]+$"
                         },
                         "displayName": {

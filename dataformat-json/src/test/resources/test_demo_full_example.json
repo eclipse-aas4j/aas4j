@@ -393,11 +393,11 @@
                 "langStrings": [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example asset identification submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung"
                     }
                 ]
             }
@@ -579,11 +579,11 @@
                 "langStrings": [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example bill of material submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-BillofMaterial-Submodel für eine Test-Anwendung"
                     }
                 ]
             }
@@ -995,7 +995,6 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "ordered": true,
                     "description": {
                         "langStrings": [
                             {
@@ -1236,12 +1235,10 @@
                                                 "value": "https://acplt.org/Test_Submodel"
                                             },
                                             {
-                                                "idType": "IdShort",
                                                 "type": "SubmodelElementCollection",
                                                 "value": "ExampleSubmodelCollectionOrdered"
                                             },
                                             {
-                                                "idType": "IdShort",
                                                 "type": "Property",
                                                 "value": "ExampleProperty"
                                             }
@@ -1397,7 +1394,6 @@
                 {
                     "modelType": "SubmodelElementCollection",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "ordered": true,
                     "value": [
                         {
                             "modelType": "Property",
@@ -1838,7 +1834,6 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "ordered": true,
                     "description": {
                                     "langStrings": [
                                         {
@@ -2066,12 +2061,10 @@
                                                 "value": "https://acplt.org/Test_Submodel_Missing"
                                             },
                                             {
-                                                "idType": "IdShort",
                                                 "type": "SubmodelElementCollection",
                                                 "value": "ExampleSubmodelCollectionOrdered"
                                             },
                                             {
-                                                "idType": "IdShort",
                                                 "type": "Property",
                                                 "value": "ExampleProperty"
                                             }
@@ -2435,7 +2428,6 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "ordered": true,
                     "description": {
                         "langStrings": [
                             {

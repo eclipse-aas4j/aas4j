@@ -42,18 +42,7 @@
         }
       ],
       "type": "GlobalReference"
-    },
-    "billOfMaterial": [
-      {
-        "keys": [
-          {
-            "type": "Submodel",
-            "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
-          }
-        ],
-        "type": "GlobalReference"
-      }
-    ]
+    }
   },
   "submodels": [
     {
@@ -62,7 +51,8 @@
           "type": "Submodel",
           "value": "https://acplt.org/Test_Submodel"
         }
-      ]
+      ],
+      "type": "GlobalReference"
     },
     {
       "keys": [
