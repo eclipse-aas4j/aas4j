@@ -71,6 +71,9 @@ public class DefaultReferenceElement implements ReferenceElement {
     @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value")
     protected Reference value;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultReferenceElement() {}
 
     @Override
@@ -232,6 +235,16 @@ public class DefaultReferenceElement implements ReferenceElement {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

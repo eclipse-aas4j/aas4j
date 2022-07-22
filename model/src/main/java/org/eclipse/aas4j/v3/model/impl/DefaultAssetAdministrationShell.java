@@ -70,6 +70,9 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultAssetAdministrationShell() {}
 
     @Override
@@ -151,6 +154,16 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setDataSpecifications(List<Reference> dataSpecifications) {
         this.dataSpecifications = dataSpecifications;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override

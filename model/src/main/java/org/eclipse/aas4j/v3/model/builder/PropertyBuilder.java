@@ -67,6 +67,17 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
     }
 
     /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     *
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(DataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
      * This function allows adding a value to the List dataSpecifications
      * 
      * @param dataSpecifications desired value to be added

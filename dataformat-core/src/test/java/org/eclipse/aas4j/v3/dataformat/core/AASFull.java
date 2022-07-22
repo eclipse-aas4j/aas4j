@@ -1774,15 +1774,17 @@ public class AASFull {
                                 .build())
                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
-                /*.embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                .preferredName(new LangString("Test Specification", "de"))
-                                .preferredName(new LangString("TestSpecification", "en-us"))
+                                .preferredNames(Arrays.asList(
+                                        new DefaultLangString.Builder().text("Test Specification").language("de").build(),
+                                        new DefaultLangString.Builder().text("TestSpecification").language("en-us").build()
+                                ))
                                 .dataType(DataTypeIEC61360.REAL_MEASURE)
-                                .definition(new LangString("Dies ist eine Data Specification für Testzwecke", "de"))
-                                .definition(new LangString("This is a DataSpecification for testing purposes", "en-us"))
-                                .shortName(new LangString("Test Spec", "de"))
-                                .shortName(new LangString("TestSpec", "en-us"))
+                                .definitions(new DefaultLangString.Builder().text("Dies ist eine Data Specification für Testzwecke").language("de").build())
+                                .definitions(new DefaultLangString.Builder().text("This is a DataSpecification for testing purposes").language("en-us").build())
+                                .shortNames(new DefaultLangString.Builder().text("Test Spec").language("de").build())
+                                .shortNames(new DefaultLangString.Builder().text("TestSpec").language("en-us").build())
                                 .unit("SpaceUnit")
                                 .unitId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
@@ -1803,9 +1805,9 @@ public class AASFull {
                                                 .valueId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                
                                                                 .value("http://acplt.org/ValueId/ExampleValueId")
                                                                 .build())
+                                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                         .build())
                                                 // TODO valueType
                                                 .build())
@@ -1814,15 +1816,15 @@ public class AASFull {
                                                 .valueId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                
                                                                 .value("http://acplt.org/ValueId/ExampleValueId2")
                                                                 .build())
+                                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                         .build())
                                                 // TODO valueType
                                                 .build())
                                         .build())
                                 .build())
-                        .build())*/
+                        .build())
                 .build();
     }
 

@@ -73,6 +73,9 @@ public class DefaultFile implements File {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultFile() {}
 
     @Override
@@ -246,6 +249,16 @@ public class DefaultFile implements File {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

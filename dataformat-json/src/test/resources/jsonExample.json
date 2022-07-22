@@ -87,18 +87,18 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
+            "dataSpecification":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ],
+                "type": "GlobalReference"
+            },
             "embeddedDataSpecifications": [
                 {
-                    "dataSpecification":
-                    {
-                        "keys": [
-                            {
-                                "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                            }
-                        ],
-                        "type": "GlobalReference"
-                    },
                     "dataSpecificationContent":
                     {
                         "dataType": "StringTranslatable",
@@ -138,18 +138,18 @@
         },
         {
             "modelType": "ConceptDescription",
+            "dataSpecification":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ],
+                "type": "GlobalReference"
+            },
             "embeddedDataSpecifications": [
                 {
-                    "dataSpecification":
-                    {
-                        "keys": [
-                            {
-                                "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                            }
-                        ],
-                        "type": "GlobalReference"
-                    },
                     "dataSpecificationContent":
                     {
                         "dataType": "String",
@@ -189,17 +189,17 @@
         },
         {
             "modelType": "ConceptDescription",
+            "dataSpecification":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ]
+            },
             "embeddedDataSpecifications": [
                 {
-                    "dataSpecification":
-                    {
-                        "keys": [
-                            {
-                                "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                            }
-                        ]
-                    },
                     "dataSpecificationContent":
                     {
                         "dataType": "RealMeasure",
@@ -248,17 +248,17 @@
         },
         {
             "modelType": "ConceptDescription",
+            "dataSpecification":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ]
+            },
             "embeddedDataSpecifications": [
                 {
-                    "dataSpecification":
-                    {
-                        "keys": [
-                            {
-                                "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                            }
-                        ]
-                    },
                     "dataSpecificationContent":
                     {
                         "dataType": "RealMeasure",
@@ -313,17 +313,17 @@
         },
         {
             "modelType": "ConceptDescription",
+            "dataSpecification":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ]
+            },
             "embeddedDataSpecifications": [
                 {
-                    "dataSpecification":
-                    {
-                        "keys": [
-                            {
-                                "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                            }
-                        ]
-                    },
                     "dataSpecificationContent":
                     {
                         "dataType": "String",

@@ -54,4 +54,26 @@ public interface HasDataSpecification {
      */
     void setDataSpecifications(List<Reference> dataSpecifications);
 
+
+    /**
+     * EmbeddedDataSpecifications used by the element.
+     *
+     * More information under
+     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     *
+     * @return Returns the List of DataSpecifications for the property embeddedDataSpecifications.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    List<DataSpecification> getEmbeddedDataSpecifications();
+
+    /**
+     * EmbeddedDataSpecifications used by the element.
+     *
+     * More information under
+     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     *
+     * @param embeddedDataSpecifications desired value for the property embeddedDataSpecifications.
+     */
+    void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
+
 }

@@ -15,17 +15,24 @@
  */
 package org.eclipse.aas4j.v3.dataformat.json.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.aas4j.v3.model.DataSpecification;
+import org.eclipse.aas4j.v3.model.Extension;
+import org.eclipse.aas4j.v3.model.Reference;
 
-// TODO not needed anymore?
-public interface IdentifierMixin {
+import java.util.List;
 
-    @JsonProperty("id")
-    public void setId(String identifier);
+public interface HasDataSpecificationMixin {
 
-    @JsonProperty("id")
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getId();
+    @JsonProperty("embeddedDataSpecifications")
+    public List<DataSpecification> getEmbeddedDataSpecifications();
 
+    @JsonProperty("embeddedDataSpecifications")
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
+
+    @JsonProperty("dataSpecifications")
+    public List<Reference> getDataSpecifications();
+
+    @JsonProperty("dataSpecifications")
+    public void setDataSpecifications(List<Reference> dataSpecifications);
 }

@@ -76,6 +76,9 @@ public class DefaultSubmodel implements Submodel {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements")
     protected List<SubmodelElement> submodelElements = new ArrayList<>();
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultSubmodel() {}
 
     @Override
@@ -261,6 +264,16 @@ public class DefaultSubmodel implements Submodel {
     @Override
     public void setQualifiers(List<Qualifier> qualifiers) {
         this.qualifiers = qualifiers;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

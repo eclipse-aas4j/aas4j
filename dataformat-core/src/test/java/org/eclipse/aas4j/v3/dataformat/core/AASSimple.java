@@ -16,6 +16,7 @@
 package org.eclipse.aas4j.v3.dataformat.core;
 
 import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.builder.ReferenceBuilder;
 import org.eclipse.aas4j.v3.model.impl.*;
 
 
@@ -281,18 +282,25 @@ public class AASSimple {
         return new DefaultConceptDescription.Builder()
                 .idShort(TITLE)
                 .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE)
-                /* TODO .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .dataSpecifications(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                .preferredName(new LangString(TITLE, "EN"))
-                                .preferredName(new LangString(TITEL, "DE"))
-                                .shortName(new LangString(TITLE, "EN"))
-                                .shortName(new LangString(TITEL, "DE"))
+                                .preferredNames(new DefaultLangString.Builder().text(TITLE).language("EN").build())
+                                .preferredNames(new DefaultLangString.Builder().text(TITEL).language("DE").build())
+                                .shortNames(new DefaultLangString.Builder().text(TITLE).language("EN").build())
+                                .shortNames(new DefaultLangString.Builder().text(TITEL).language("DE").build())
                                 .unit("ExampleString")
                                 .sourceOfDefinition("ExampleString")
                                 .dataType(DataTypeIEC61360.STRING_TRANSLATABLE)
-                                .definition(new LangString(SPRACHABHÄNGIGER_TITELDES_DOKUMENTS, "EN"))
+                                .definitions(new DefaultLangString.Builder().text(SPRACHABHÄNGIGER_TITELDES_DOKUMENTS).language("EN").build())
                                 .build())
-                        .build()) */
+                        .build())
                 .build();
     }
 
@@ -300,19 +308,26 @@ public class AASSimple {
         return new DefaultConceptDescription.Builder()
                 .idShort(DIGITAL_FILE)
                 .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE)
-                /* TODO .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .dataSpecifications(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
                         .dataSpecificationContent(
                                 new DefaultDataSpecificationIEC61360.Builder()
-                                        .preferredName(new LangString(DIGITAL_FILE, "EN"))
-                                        .preferredName(new LangString(DIGITAL_FILE, "EN"))
-                                        .shortName(new LangString(DIGITAL_FILE, "EN"))
-                                        .shortName(new LangString(DIGITALE_DATEI, "DE"))
+                                        .preferredNames(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .preferredNames(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .shortNames(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .shortNames(new DefaultLangString.Builder().text(DIGITALE_DATEI).language("DE").build())
                                         .unit("ExampleString")
                                         .sourceOfDefinition("ExampleString")
                                         .dataType(DataTypeIEC61360.STRING)
-                                        .definition(new LangString(DIGITAL_FILE_DEFINITION, "EN"))
+                                        .definitions(new DefaultLangString.Builder().text(DIGITAL_FILE_DEFINITION).language("EN").build())
                                         .build())
-                        .build()) */
+                        .build())
                 .build();
     }
 
@@ -324,26 +339,32 @@ public class AASSimple {
                         .revision("2.1")
                         .build())
                 .id(_0173_1_02_BAA120_008)
-                /* TODO .embeddedDataSpecifications(
-                        Arrays.asList(
-                                new DefaultEmbeddedDataSpecification.Builder()
-                                        .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                                .preferredName(new LangString(MAX_DREHZAHL, "de"))
-                                                .preferredName(new LangString(MAX_ROTATIONSPEED, "en"))
-                                                .unit(_1_MIN)
-                                                .unitId(new DefaultReference.Builder()
-                                                        .keys(new DefaultKey.Builder()
-                                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                .value(_0173_1_05_AAA650_002)
-                                                                
-                                                                .build())
+                .dataSpecifications(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .embeddedDataSpecifications(
+                        new DefaultDataSpecification.Builder()
+                                .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
+                                        .preferredNames(new DefaultLangString.Builder().text(MAX_DREHZAHL).language("de").build())
+                                        .preferredNames(new DefaultLangString.Builder().text(MAX_ROTATIONSPEED).language("en").build())
+                                        .unit(_1_MIN)
+                                        .unitId(new DefaultReference.Builder()
+                                                .keys(new DefaultKey.Builder()
+                                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                                        .value(_0173_1_05_AAA650_002)
+
                                                         .build())
-                                                .sourceOfDefinition("ExampleString")
-                                                .dataType(DataTypeIEC61360.REAL_MEASURE)
-                                                .definition(new LangString(MAX_ROTATE_DEF_DE, "de"))
-                                                .definition(new LangString(MAX_ROTATE_DEF_EN, "EN"))
                                                 .build())
-                                        .build()))*/
+                                        .sourceOfDefinition("ExampleString")
+                                        .dataType(DataTypeIEC61360.REAL_MEASURE)
+                                        .definitions(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_DE).language("de").build())
+                                        .definitions(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_EN).language("EN").build())
+                                        .build())
+                                .build())
                 .build();
     }
 
@@ -352,14 +373,21 @@ public class AASSimple {
                 .idShort(ROTATION_SPEED)
                 .category(PROPERTY)
                 .id(HTTP_CUSTOMER_COM_CD_1_1_18EBD56F6B43D895)
-                /* TODO .embeddedDataSpecification(
-                        new DefaultEmbeddedDataSpecification.Builder()
+                .dataSpecifications(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .embeddedDataSpecifications(
+                        new DefaultDataSpecification.Builder()
                                 .dataSpecificationContent(
                                         new DefaultDataSpecificationIEC61360.Builder()
-                                                .preferredName(new LangString(AKTUELLE_DREHZAHL, "DE"))
-                                                .preferredName(new LangString(ACTUALROTATIONSPEED, "EN"))
-                                                .shortName(new LangString(AKTUELLE_DREHZAHL, "DE"))
-                                                .shortName(new LangString(ACTUAL_ROTATION_SPEED, "EN"))
+                                                .preferredNames(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
+                                                .preferredNames(new DefaultLangString.Builder().text(ACTUALROTATIONSPEED).language("EN").build())
+                                                .shortNames(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
+                                                .shortNames(new DefaultLangString.Builder().text(ACTUAL_ROTATION_SPEED).language("EN").build())
                                                 .unit(_1_MIN)
                                                 .unitId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
@@ -370,10 +398,10 @@ public class AASSimple {
                                                         .build())
                                                 .sourceOfDefinition("ExampleString")
                                                 .dataType(DataTypeIEC61360.REAL_MEASURE)
-                                                .definition(new LangString(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD, "DE"))
-                                                .definition(new LangString(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED, "EN"))
+                                                .definitions(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD).language("DE").build())
+                                                .definitions(new DefaultLangString.Builder().text(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED).language("EN").build())
                                                 .build())
-                                .build()) */
+                                .build())
                 .build();
     }
 
@@ -381,17 +409,24 @@ public class AASSimple {
         return new DefaultConceptDescription.Builder()
                 .idShort(DOCUMENT)
                 .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT)
-                /*.embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
+                .dataSpecifications(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                .preferredName(new LangString(DOCUMENT, "EN"))
-                                .shortName(new LangString(DOCUMENT, "EN"))
-                                .shortName(new LangString(DOKUMENT, "DE"))
+                                .preferredNames(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())
+                                .shortNames(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())
+                                .shortNames(new DefaultLangString.Builder().text(DOKUMENT).language("DE").build())
                                 .unit("ExampleString")
                                 .sourceOfDefinition(ISO15519_1_2010)
                                 .dataType(DataTypeIEC61360.STRING)
-                                .definition(new LangString(DOCUMENT_DEF, "EN"))
+                                .definitions(new DefaultLangString.Builder().text(DOCUMENT_DEF).language("EN").build())
                                 .build())
-                        .build())*/
+                        .build())
                 .build();
     }
 

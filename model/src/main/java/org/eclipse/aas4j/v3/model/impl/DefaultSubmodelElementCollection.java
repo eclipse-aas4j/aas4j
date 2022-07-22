@@ -71,6 +71,9 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
     protected List<SubmodelElement> value = new ArrayList<>();
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultSubmodelElementCollection() {}
 
     @Override
@@ -232,6 +235,16 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

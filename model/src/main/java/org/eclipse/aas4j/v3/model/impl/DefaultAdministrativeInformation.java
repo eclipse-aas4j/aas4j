@@ -20,6 +20,7 @@ import java.util.Objects;
 
 
 import org.eclipse.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.aas4j.v3.model.DataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.AdministrativeInformationBuilder;
@@ -43,6 +44,9 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
     protected List<Reference> dataSpecifications = new ArrayList<>();
+
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     public DefaultAdministrativeInformation() {}
 
@@ -97,6 +101,16 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @Override
     public void setDataSpecifications(List<Reference> dataSpecifications) {
         this.dataSpecifications = dataSpecifications;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

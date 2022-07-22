@@ -73,6 +73,9 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+
     public DefaultMultiLanguageProperty() {}
 
     @Override
@@ -246,6 +249,16 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<DataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

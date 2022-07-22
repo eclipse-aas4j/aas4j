@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.eclipse.aas4j.v3.model.Reference;
 
+// TODO not needed anymore?
 public interface IdentifierKeyValuePairMixin {
 
     @JsonProperty("subjectId")

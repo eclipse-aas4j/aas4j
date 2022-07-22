@@ -23,7 +23,7 @@ import org.eclipse.aas4j.v3.model.*;
 
 public class CustomProperty implements Property {
 
-	// protected List<EmbeddedDataSpecification> embeddedDataSpecifications;
+	 protected List<DataSpecification> embeddedDataSpecifications;
 
 	protected List<Reference> dataSpecifications;
 
@@ -171,15 +171,15 @@ public class CustomProperty implements Property {
 		this.qualifiers = qualifiers;
 	}
 
-	/* TODO @Override
-	final public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+	@Override
+	final public List<DataSpecification> getEmbeddedDataSpecifications() {
 		return embeddedDataSpecifications;
 	}
 
 	@Override
-	final public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+	final public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
 		this.embeddedDataSpecifications = embeddedDataSpecifications;
-	}*/
+	}
 
 	@Override
 	final public List<Reference> getDataSpecifications() {

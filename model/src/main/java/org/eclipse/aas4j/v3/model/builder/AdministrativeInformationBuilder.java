@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.eclipse.aas4j.v3.model.AdministrativeInformation;
 
+import org.eclipse.aas4j.v3.model.DataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 
 public abstract class AdministrativeInformationBuilder<T extends AdministrativeInformation, B extends AdministrativeInformationBuilder<T, B>>
@@ -54,6 +55,17 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
      */
     public B dataSpecifications(List<Reference> dataSpecifications) {
         getBuildingInstance().setDataSpecifications(dataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     *
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
         return getSelf();
     }
 
