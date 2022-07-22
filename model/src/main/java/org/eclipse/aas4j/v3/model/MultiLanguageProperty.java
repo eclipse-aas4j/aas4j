@@ -21,6 +21,8 @@ import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultMultiLanguageProperty;
 
+import java.util.List;
+
 
 /**
  * A property is a data element that has a multi-language value.
@@ -38,7 +40,7 @@ public interface MultiLanguageProperty extends DataElement {
      * @return Returns the LangStringSet for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
-    LangStringSet getValue();
+    List<LangString> getValue();
 
     /**
      * The value of the property instance.
@@ -47,7 +49,7 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * @param value desired value for the property value.
      */
-    void setValue(LangStringSet value);
+    void setValue(List<LangString> value);
 
     /**
      * Reference to the global unique ID of a coded value.

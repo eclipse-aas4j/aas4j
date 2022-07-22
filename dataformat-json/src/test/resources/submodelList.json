@@ -57,9 +57,7 @@
                     }
                 ],
                 "idShort": "ManufacturerName",
-                "description":
-                {
-                  "langStrings": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -69,7 +67,6 @@
                         "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                     }
                 ]
-              }
             },
             {
                 "modelType": "Property",
@@ -96,9 +93,7 @@
                         },
                 "valueType": "xs:string",
                 "idShort": "InstanceId",
-                "description":
-                {
-                  "langStrings":  [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -108,12 +103,9 @@
                         "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                     }
                 ]
-              }
             }
         ],
-        "description":
-        {
-          "langStrings": [
+        "description": [
             {
                 "language": "en-us",
                 "text": "An example asset identification submodel for the test application"
@@ -123,7 +115,6 @@
                 "text": "Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung"
             }
         ]
-      }
     },
     {
         "modelType": "Submodel",
@@ -175,9 +166,7 @@
                         "valueType": "xs:string",
                         "category": "Constant",
                         "idShort": "ExampleProperty2",
-                        "description":
-                        {
-                          "langStrings":  [
+                        "description": [
                             {
                                 "language": "en-us",
                                 "text": "Example Property object"
@@ -187,7 +176,6 @@
                                 "text": "Beispiel Property Element"
                             }
                         ]
-                      }
                     },
                     {
                         "modelType": "Property",
@@ -215,9 +203,7 @@
                         "valueType": "xs:string",
                         "category": "Constant",
                         "idShort": "ExampleProperty",
-                        "description":
-                        {
-                          "langStrings":  [
+                        "description": [
                             {
                                 "language": "en-us",
                                 "text": "Example Property object"
@@ -227,7 +213,6 @@
                                 "text": "Beispiel Property Element"
                             }
                         ]
-                      }
                     }
                 ],
                 "semanticId":
@@ -241,9 +226,7 @@
                             "type": "GlobalReference"
                         },
                 "idShort": "ExampleEntity",
-                "description":
-                {
-                  "langStrings":  [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -253,7 +236,6 @@
                         "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                     }
                 ]
-              }
             },
             {
                 "modelType": "Entity",
@@ -279,9 +261,7 @@
                             "type": "GlobalReference"
                         },
                 "idShort": "ExampleEntity2",
-                "description":
-                {
-                  "langStrings": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -291,12 +271,9 @@
                         "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                     }
                 ]
-              }
             }
         ],
-        "description":
-        {
-          "langStrings":  [
+        "description": [
             {
                 "language": "en-us",
                 "text": "An example bill of material submodel for the test application"
@@ -306,6 +283,5 @@
                 "text": "Ein Beispiel-BillofMaterial-Submodel für eine Test-Anwendung"
             }
         ]
-      }
     }
 ]

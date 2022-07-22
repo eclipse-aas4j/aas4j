@@ -20,6 +20,8 @@ package org.eclipse.aas4j.v3.model;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 
+import java.util.List;
+
 /**
  * Data Specification Template
  */
@@ -95,7 +97,7 @@ public interface DataSpecification {
      * @return Returns the LangStringSet for the property description.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/description")
-    LangStringSet getDescription();
+    List<LangString> getDescription();
 
     /**
      * Description how and in which context the data specification template is applicable. The
@@ -105,6 +107,6 @@ public interface DataSpecification {
      *
      * @param description desired value for the property description.
      */
-    void setDescription(LangStringSet description);
+    void setDescription(List<LangString> description);
 
 }

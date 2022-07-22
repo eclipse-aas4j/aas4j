@@ -29,7 +29,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param value desired value to be set
      * @return Builder object with new value for value
      */
-    public B value(LangStringSet value) {
+    public B value(List<LangString> value) {
         getBuildingInstance().setValue(value);
         return getSelf();
     }
@@ -161,7 +161,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(LangStringSet displayName) {
+    public B displayName(List<LangString> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -172,7 +172,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(LangStringSet description) {
+    public B description(List<LangString> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }

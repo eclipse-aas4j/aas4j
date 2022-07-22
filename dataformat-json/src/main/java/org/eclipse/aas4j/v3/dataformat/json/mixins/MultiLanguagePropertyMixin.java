@@ -16,13 +16,16 @@
 package org.eclipse.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.aas4j.v3.model.LangStringSet;
+
+import org.eclipse.aas4j.v3.model.LangString;
+
+import java.util.List;
 
 public interface MultiLanguagePropertyMixin {
 
     @JsonProperty("value")
-    public LangStringSet getValue();
+    public List<LangString> getValue();
 
     @JsonProperty("value")
-    public void setValue(LangStringSet value);
+    public void setValue(LangString value);
 }

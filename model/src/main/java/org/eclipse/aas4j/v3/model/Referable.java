@@ -22,6 +22,8 @@ package org.eclipse.aas4j.v3.model;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 
+import java.util.List;
+
 /**
  * An element that is referable by its 'idShort'.
  */
@@ -81,7 +83,7 @@ public interface Referable extends HasExtensions {
      * @return Returns the LangStringSet for the property displayName.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    LangStringSet getDisplayName();
+    List<LangString> getDisplayName();
 
     /**
      * Display name. Can be provided in several languages.
@@ -90,7 +92,7 @@ public interface Referable extends HasExtensions {
      *
      * @param displayName desired value for the property displayName.
      */
-    void setDisplayName(LangStringSet displayName);
+    void setDisplayName(List<LangString> displayName);
 
     /**
      * Description or comments on the element.
@@ -100,7 +102,7 @@ public interface Referable extends HasExtensions {
      * @return Returns the LangStringSet for the property description.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    LangStringSet getDescription();
+    List<LangString> getDescription();
 
     /**
      * Description or comments on the element.
@@ -109,7 +111,7 @@ public interface Referable extends HasExtensions {
      *
      * @param description desired value for the property description.
      */
-    void setDescription(LangStringSet description);
+    void setDescription(List<LangString> description);
 
     /**
      * Checksum to be used to determine if an Referable (including its aggregated child elements) has

@@ -41,9 +41,9 @@ public class CustomProperty implements Property {
 
 	protected String category;
 
-	protected LangStringSet descriptions;
+	protected List<LangString> descriptions;
 
-	protected LangStringSet displayNames;
+	protected List<LangString> displayNames;
 
 	protected String idShort;
 
@@ -122,12 +122,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public LangStringSet getDescription() {
+	final public List<LangString> getDescription() {
 		return descriptions;
 	}
 
 	@Override
-	final public void setDescription(LangStringSet description) {
+	final public void setDescription(List<LangString> description) {
 		this.descriptions = description;
 	}
 
@@ -142,12 +142,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public LangStringSet getDisplayName() {
+	final public List<LangString> getDisplayName() {
 		return displayNames;
 	}
 
 	@Override
-	final public void setDisplayName(LangStringSet displayName) {
+	final public void setDisplayName(List<LangString> displayName) {
 		this.displayNames = displayName;
 	}
 

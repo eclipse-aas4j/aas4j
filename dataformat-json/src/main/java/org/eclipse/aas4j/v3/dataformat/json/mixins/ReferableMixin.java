@@ -18,8 +18,9 @@ package org.eclipse.aas4j.v3.dataformat.json.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.LangStringSet;
+import org.eclipse.aas4j.v3.model.LangString;
 
+import java.util.List;
 import java.util.Set;
 
 public interface ReferableMixin {
@@ -28,14 +29,14 @@ public interface ReferableMixin {
     public Set<AssetAdministrationShell> getIdShort();
 
     @JsonProperty("description")
-    public LangStringSet getDescription();
+    public List<LangString> getDescription();
 
     @JsonProperty("description")
-    public void setDescription(LangStringSet descriptions);
+    public void setDescription(List<LangString> descriptions);
 
     @JsonProperty("displayName")
-    public LangStringSet getDisplayName();
+    public List<LangString> getDisplayName();
 
     @JsonProperty("displayName")
-    public void setDisplayName(LangStringSet displayNames);
+    public void setDisplayName(List<LangString> displayNames);
 }

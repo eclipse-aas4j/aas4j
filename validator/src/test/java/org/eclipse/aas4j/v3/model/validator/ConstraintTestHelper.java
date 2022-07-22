@@ -16,6 +16,7 @@
 
 package org.eclipse.aas4j.v3.model.validator;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.aas4j.v3.model.*;
@@ -25,7 +26,7 @@ public class ConstraintTestHelper {
 
 	public static ConceptDescription createConceptDescription(String idShort, String identifier, String category) {
 		return new DefaultConceptDescription.Builder()
-				.description(new DefaultLangStringSet.Builder().langStrings(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()).build())
+				.description(Arrays.asList(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()))
 				.id(identifier)
 				.category(category).idShort(idShort).build();
 	}

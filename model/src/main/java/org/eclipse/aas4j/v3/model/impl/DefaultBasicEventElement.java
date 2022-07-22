@@ -83,10 +83,10 @@ public class DefaultBasicEventElement implements BasicEventElement {
     protected String checksum;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected LangStringSet description;
+    protected List<LangString> description;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected LangStringSet displayName;
+    protected List<LangString> displayName;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -299,22 +299,22 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public LangStringSet getDisplayName() {
+    public List<LangString> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(LangStringSet displayName) {
+    public void setDisplayName(List<LangString> displayName) {
         this.displayName = displayName;
     }
 
     @Override
-    public LangStringSet getDescription() {
+    public List<LangString> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(LangStringSet description) {
+    public void setDescription(List<LangString> description) {
         this.description = description;
     }
 

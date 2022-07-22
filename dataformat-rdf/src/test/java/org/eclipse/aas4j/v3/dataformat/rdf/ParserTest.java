@@ -33,12 +33,12 @@ public class ParserTest {
         String aasEnvAsString = SerializerUtil.readResourceToString("example-from-serializer.jsonld");
         Environment aasEnv = new Serializer().read(aasEnvAsString);
         Assert.assertEquals(1, aasEnv.getSubmodels().size());
-        Assert.assertEquals(1, aasEnv.getAssetAdministrationShells().get(0).getDescription().getLangStrings().size());
-        Assert.assertEquals(2, aasEnv.getAssetAdministrationShells().get(0).getDisplayName().getLangStrings().size());
+        Assert.assertEquals(1, aasEnv.getAssetAdministrationShells().get(0).getDescription().size());
+        Assert.assertEquals(2, aasEnv.getAssetAdministrationShells().get(0).getDisplayName().size());
 
-        Assert.assertEquals("de", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().getLangStrings().get(0).getLanguage());
-        Assert.assertEquals("en", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().getLangStrings().get(1).getLanguage());
-        Assert.assertNull(aasEnv.getAssetAdministrationShells().get(0).getDescription().getLangStrings().get(0).getLanguage());
+        Assert.assertEquals("de", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().get(0).getLanguage());
+        Assert.assertEquals("en", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().get(1).getLanguage());
+        Assert.assertNull(aasEnv.getAssetAdministrationShells().get(0).getDescription().get(0).getLanguage());
 
 
     }

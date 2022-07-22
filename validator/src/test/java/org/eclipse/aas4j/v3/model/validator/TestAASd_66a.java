@@ -22,6 +22,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -75,7 +76,7 @@ public class TestAASd_66a {
 
         MultiLanguageProperty property = new DefaultMultiLanguageProperty.Builder()
                 .idShort("idShort")
-                .value(new DefaultLangStringSet.Builder().langStrings(new DefaultLangString.Builder().text("This is the value of MultilanguageProperty").language("en").build()).build())
+                .value(Arrays.asList( new DefaultLangString.Builder().text("This is the value of MultilanguageProperty").language("en").build()) )
                 .valueId(multilanguageValueIdReference)
                 .semanticId(semanticIdReference)
                 .build();
@@ -140,7 +141,7 @@ public class TestAASd_66a {
 
         MultiLanguageProperty property = new DefaultMultiLanguageProperty.Builder()
                 .idShort("idShort")
-                .value(new DefaultLangStringSet.Builder().langStrings(new DefaultLangString.Builder().text("Multilanguage").language("en").build()).build())
+                .value(Arrays.asList(new DefaultLangString.Builder().text("Multilanguage").language("en").build()))
                 .valueId(reference)
                 .semanticId(dummyReference)
                 .build();

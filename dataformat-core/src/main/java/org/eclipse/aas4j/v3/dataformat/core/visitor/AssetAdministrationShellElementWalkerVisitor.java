@@ -115,15 +115,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(LangStringSet langStringSet) {
-        if (langStringSet == null) {
-            return;
-        }
-        langStringSet.getLangStrings().forEach(x -> visit(x));
-        AssetAdministrationShellElementVisitor.super.visit(langStringSet);
-    }
-
-    @Override
     public default void visit(SpecificAssetId specificAssetId) {
         if (specificAssetId == null) {
             return;
@@ -137,7 +128,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (multiLanguageProperty == null) {
             return;
         }
-        visit(multiLanguageProperty.getValue());
+        multiLanguageProperty.getValue().forEach(x -> visit(x));
         visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
@@ -183,8 +174,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        visit(referable.getDescription());
-        visit(referable.getDisplayName());
+        referable.getDescription().forEach(x -> visit(x));
+        referable.getDisplayName().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 

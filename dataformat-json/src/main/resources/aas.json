@@ -233,7 +233,10 @@
                     "$ref": "#/definitions/AdministrativeInformation"
                 },
                 "description": {
-                    "$ref": "#/definitions/LangStringSet"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LangString"
+                    }
                 }
             },
             "required": [
@@ -571,21 +574,6 @@
                 "text"
             ]
         },
-        "LangStringSet": {
-            "type": "object",
-            "properties": {
-                "langStrings": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/LangString"
-                    },
-                    "minItems": 1
-                }
-            },
-            "required": [
-                "langStrings"
-            ]
-        },
         "ModelType": {
             "type": "string",
             "enum": [
@@ -623,7 +611,11 @@
                 {
                     "properties": {
                         "value": {
-                            "$ref": "#/definitions/LangStringSet"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LangString"
+                            },
+                            "minItems": 1
                         },
                         "valueId": {
                             "$ref": "#/definitions/Reference"
@@ -791,10 +783,18 @@
                             "pattern": "^[a-zA-Z][a-zA-Z0-9_]+$"
                         },
                         "displayName": {
-                            "$ref": "#/definitions/LangStringSet"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LangString"
+                            },
+                            "minItems": 1
                         },
                         "description": {
-                            "$ref": "#/definitions/LangStringSet"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LangString"
+                            },
+                            "minItems": 1
                         },
                         "checksum": {
                             "type": "string",

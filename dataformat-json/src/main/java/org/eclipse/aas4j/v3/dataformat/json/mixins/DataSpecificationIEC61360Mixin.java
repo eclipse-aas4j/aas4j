@@ -17,17 +17,19 @@ package org.eclipse.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.aas4j.v3.model.LangStringSet;
-// TODO import io.adminshell.aas.v3.model.LevelType;
 
+// TODO import io.adminshell.aas.v3.model.LevelType;
+import org.eclipse.aas4j.v3.model.LangString;
+
+import java.util.List;
 
 public interface DataSpecificationIEC61360Mixin {
 
     @JsonProperty("definition")
-    public LangStringSet getDefinition();
+    public List<LangString> getDefinition();
 
     @JsonProperty("definition")
-    public void setDefinition(LangStringSet definition);
+    public void setDefinition(List<LangString> definition);
 
     // TODO
     // @JsonProperty("levelType")
@@ -39,14 +41,14 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")
-    public LangStringSet getPreferredName();
+    public List<LangString> getPreferredName();
 
     @JsonProperty("preferredName")
-    public void setPreferredName(LangStringSet preferredName);
+    public void setPreferredName(List<LangString> preferredName);
 
     @JsonProperty("shortName")
-    public LangStringSet getShortName();
+    public List<LangString> getShortName();
 
     @JsonProperty("shortName")
-    public void setShortName(LangStringSet shortName);
+    public void setShortName(List<LangString> shortName);
 }

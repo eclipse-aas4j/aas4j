@@ -26,6 +26,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,18 +41,18 @@ public class SerializerTest {
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
                         .build())
-                .description(new DefaultLangStringSet.Builder().langStrings(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()).build())
-                .displayName(new DefaultLangStringSet.Builder()
-                        .langStrings(new DefaultLangString.Builder().text("Display Name 1").language("en").build())
-                        .langStrings(new DefaultLangString.Builder().text("Anzeigename 2").language("de").build())
-                        .build())
+                .description(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
+                .displayName(Arrays.asList(
+                        new DefaultLangString.Builder().text("Display Name 1").language("en").build(),
+                        new DefaultLangString.Builder().text("Anzeigename 2").language("de").build()
+                        ))
                 .build();
         Submodel submodel = new DefaultSubmodel.Builder()
-                .description(new DefaultLangStringSet.Builder().langStrings(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()).build())
-                .displayName(new DefaultLangStringSet.Builder()
-                        .langStrings(new DefaultLangString.Builder().text("First Submodel Element name").language("en").build())
-                        .langStrings(new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build())
-                        .build())
+                .description(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
+                .displayName(Arrays.asList(
+                        new DefaultLangString.Builder().text("First Submodel Element name").language("en").build(),
+                        new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build()
+                        ))
                 .category("Example category")
 //                .embeddedDataSpecification(new DefaultEmbeddedDataSpecification.Builder()
 //                        .dataSpecification(new DefaultReference.Builder()

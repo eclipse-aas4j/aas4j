@@ -1,19 +1,16 @@
 {
   "idShort": "ExampleSubmodelCollectionOrdered",
   "category": "Parameter",
-  "description":
-  {
-    "langStrings": [
-      {
-        "language": "en-us",
-        "text": "Example SubmodelElementCollectionOrdered object"
-      },
-      {
-        "language": "de",
-        "text": "Beispiel SubmodelElementCollectionOrdered Element"
-      }
-    ]
-  },
+  "description": [
+    {
+      "language": "en-us",
+      "text": "Example SubmodelElementCollectionOrdered object"
+    },
+    {
+      "language": "de",
+      "text": "Beispiel SubmodelElementCollectionOrdered Element"
+    }
+  ],
   "modelType": "SubmodelElementCollection",
   "semanticId":
   {
@@ -30,19 +27,16 @@
     {
       "idShort": "ExampleProperty",
       "category": "Constant",
-      "description":
-      {
-        "langStrings":  [
-          {
-            "language": "en-us",
-            "text": "Example Property object"
-          },
-          {
-            "language": "de",
-            "text": "Beispiel Property Element"
-          }
-        ]
-      },
+      "description": [
+        {
+          "language": "en-us",
+          "text": "Example Property object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel Property Element"
+        }
+      ],
       "modelType": "Property",
       "semanticId":
       {
@@ -60,9 +54,7 @@
     {
       "idShort": "ExampleMultiLanguageProperty",
       "category": "Constant",
-      "description":
-      {
-        "langStrings":  [
+      "description": [
         {
           "language": "en-us",
           "text": "Example MultiLanguageProperty object"
@@ -71,8 +63,7 @@
           "language": "de",
           "text": "Beispiel MultiLanguageProperty Element"
         }
-      ]
-    },
+      ],
       "modelType": "MultiLanguageProperty",
       "semanticId":
       {
@@ -90,18 +81,16 @@
       "idShort": "ExampleRange",
       "category": "Parameter",
       "description":
+       [
         {
-          "langStrings": [
-          {
-            "language": "en-us",
-            "text": "Example Range object"
-          },
-          {
-            "language": "de",
-            "text": "Beispiel Range Element"
-          }
-        ]
-      },
+          "language": "en-us",
+          "text": "Example Range object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel Range Element"
+        }
+      ],
       "modelType": "Range",
       "semanticId":
       {
@@ -121,19 +110,16 @@
       "idShort": "ExampleRange2",
       "category": "Parameter",
       "description":
+      [
         {
-          "langStrings":
-          [
-            {
-              "language": "en-us",
-              "text": "Example Range object"
-            },
-            {
-              "language": "de",
-              "text": "Beispiel Range Element"
-            }
-          ]
+          "language": "en-us",
+          "text": "Example Range object"
         },
+        {
+          "language": "de",
+          "text": "Beispiel Range Element"
+        }
+      ],
       "modelType": "Range",
       "semanticId":
       {

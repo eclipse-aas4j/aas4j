@@ -171,7 +171,7 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(LangStringSet displayName) {
+    public B displayName(List<LangString> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -182,7 +182,7 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(LangStringSet description) {
+    public B description(List<LangString> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }
