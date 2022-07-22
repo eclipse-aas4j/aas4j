@@ -42,7 +42,7 @@ import io.github.classgraph.ScanResult;
 public class ReflectionHelper {
 
     private static final Logger logger = LoggerFactory.getLogger(ReflectionHelper.class);
-    private static final String ROOT_PACKAGE_NAME = "org.eclipse.aas4j.v3.rc02";
+    private static final String ROOT_PACKAGE_NAME = "org.eclipse.aas4j.v3";
     /**
      * Name of package where the generated model classes are defined
      */

@@ -24,7 +24,7 @@ import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.aas4j.v3.model.ConceptDescription;
 import org.eclipse.aas4j.v3.model.Submodel;
 
-public interface AssetAdministrationShellEnvironmentMixin {
+public interface EnvironmentMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public Set<AssetAdministrationShell> getAssetAdministrationShells();

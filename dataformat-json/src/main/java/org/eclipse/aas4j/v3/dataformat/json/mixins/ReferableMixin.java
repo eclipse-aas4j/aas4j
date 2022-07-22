@@ -32,7 +32,7 @@ public interface ReferableMixin {
     public List<LangString> getDescription();
 
     @JsonProperty("description")
-    public void setDescription(List<LangString> descriptions);
+    public void setDescription(List<LangString> description);
 
     @JsonProperty("displayName")
     public List<LangString> getDisplayName();
