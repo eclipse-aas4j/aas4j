@@ -33,7 +33,8 @@ import java.util.Objects;
 public class DefaultDataSpecification implements DataSpecification {
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
-    protected DataSpecificationContent dataSpecificationContent;
+//    protected DataSpecificationContent dataSpecificationContent; // TODO: also allow DataSpecificationPhysicalUnit
+    protected DataSpecificationIEC61360 dataSpecificationContent;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/administration")
     protected AdministrativeInformation administrativeInformation;
@@ -72,12 +73,12 @@ public class DefaultDataSpecification implements DataSpecification {
     }
 
     @Override
-    public DataSpecificationContent getDataSpecificationContent() {
+    public DataSpecificationIEC61360 getDataSpecificationContent() {
         return dataSpecificationContent;
     }
 
     @Override
-    public void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
+    public void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
         this.dataSpecificationContent = dataSpecificationContent;
     }
 

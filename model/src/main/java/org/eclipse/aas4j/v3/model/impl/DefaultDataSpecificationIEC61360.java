@@ -38,13 +38,13 @@ import org.eclipse.aas4j.v3.model.builder.*;
 public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC61360 {
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType")
-    protected List<DataTypeIEC61360> dataTypes = new ArrayList<>();
+    protected DataTypeIEC61360 dataType;
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition")
     protected List<LangString> definitions = new ArrayList<>();
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/levelType")
-    protected List<LevelType> levelTypes = new ArrayList<>();
+    protected LevelType levelType;
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName")
     protected List<LangString> preferredNames = new ArrayList<>();
@@ -80,9 +80,9 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.dataTypes,
+        return Objects.hash(this.dataType,
                 this.definitions,
-                this.levelTypes,
+                this.levelType,
                 this.preferredNames,
                 this.shortNames,
                 this.sourceOfDefinition,
@@ -106,9 +106,9 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
             return false;
         } else {
             DefaultDataSpecificationIEC61360 other = (DefaultDataSpecificationIEC61360) obj;
-            return Objects.equals(this.dataTypes, other.dataTypes) &&
+            return Objects.equals(this.dataType, other.dataType) &&
                     Objects.equals(this.definitions, other.definitions) &&
-                    Objects.equals(this.levelTypes, other.levelTypes) &&
+                    Objects.equals(this.levelType, other.levelType) &&
                     Objects.equals(this.preferredNames, other.preferredNames) &&
                     Objects.equals(this.shortNames, other.shortNames) &&
                     Objects.equals(this.sourceOfDefinition, other.sourceOfDefinition) &&
@@ -123,13 +123,13 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public List<DataTypeIEC61360> getDataTypes() {
-        return dataTypes;
+    public DataTypeIEC61360 getDataType() {
+        return dataType;
     }
 
     @Override
-    public void setDataTypes(List<DataTypeIEC61360> dataTypes) {
-        this.dataTypes = dataTypes;
+    public void setDataType(DataTypeIEC61360 dataType) {
+        this.dataType = dataType;
     }
 
     @Override
@@ -143,18 +143,13 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public void setDefinitions(LangString definition) {
-        this.definitions.add(definition);
+    public LevelType getLevelType() {
+        return levelType;
     }
 
     @Override
-    public List<LevelType> getLevelTypes() {
-        return levelTypes;
-    }
-
-    @Override
-    public void setLevelTypes(List<LevelType> levelTypes) {
-        this.levelTypes = levelTypes;
+    public void setLevelType(LevelType levelType) {
+        this.levelType = levelType;
     }
 
     @Override
@@ -168,11 +163,6 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public void setPreferredNames(LangString preferredName) {
-        this.preferredNames.add(preferredName);
-    }
-
-    @Override
     public List<LangString> getShortNames() {
         return shortNames;
     }
@@ -180,11 +170,6 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     @Override
     public void setShortNames(List<LangString> shortNames) {
         this.shortNames = shortNames;
-    }
-
-    @Override
-    public void setShortNames(LangString shortName) {
-        this.shortNames.add(shortName);
     }
 
     @Override

@@ -20,20 +20,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 // TODO import io.adminshell.aas.v3.model.LevelType;
 import org.eclipse.aas4j.v3.model.LangString;
+import org.eclipse.aas4j.v3.model.LevelType;
 
 import java.util.List;
 
 public interface DataSpecificationIEC61360Mixin {
 
-    @JsonProperty("definition")
+    @JsonProperty("definitions")
     public List<LangString> getDefinition();
 
-    @JsonProperty("definition")
+    @JsonProperty("definitions")
     public void setDefinition(List<LangString> definition);
 
-    // TODO
-    // @JsonProperty("levelType")
-    // public List<LevelType> getLevelTypes();
+    @JsonProperty("levelType")
+    public List<LevelType> getLevelTypes();
 
     // TODO
     // @JsonProperty("levelType")

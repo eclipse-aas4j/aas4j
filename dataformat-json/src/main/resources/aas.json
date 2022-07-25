@@ -1033,13 +1033,13 @@
                 },
                 {
                     "properties": {
-                        "preferredName": {
+                        "preferredNames": {
                             "type": "array",
                             "items": {
                                 "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
                             }
                         },
-                        "shortName": {
+                        "shortNames": {
                             "type": "array",
                             "items": {
                                 "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
@@ -1063,7 +1063,7 @@
                         "dataType": {
                             "$ref": "#/definitions/DataTypeIEC61360"
                         },
-                        "definition": {
+                        "definitions": {
                             "type": "array",
                             "items": {
                                 "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"

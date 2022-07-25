@@ -290,6 +290,7 @@ public class AASSimple {
                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
                 .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
+                        .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE)
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
                                 .preferredNames(new DefaultLangString.Builder().text(TITLE).language("EN").build())
                                 .preferredNames(new DefaultLangString.Builder().text(TITEL).language("DE").build())
@@ -327,6 +328,7 @@ public class AASSimple {
                                         .dataType(DataTypeIEC61360.STRING)
                                         .definitions(new DefaultLangString.Builder().text(DIGITAL_FILE_DEFINITION).language("EN").build())
                                         .build())
+                        .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE)
                         .build())
                 .build();
     }
@@ -356,14 +358,15 @@ public class AASSimple {
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value(_0173_1_05_AAA650_002)
-
                                                         .build())
+                                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                 .build())
                                         .sourceOfDefinition("ExampleString")
                                         .dataType(DataTypeIEC61360.REAL_MEASURE)
                                         .definitions(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_DE).language("de").build())
                                         .definitions(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_EN).language("EN").build())
                                         .build())
+                                .id(_0173_1_02_BAA120_008)
                                 .build())
                 .build();
     }
@@ -393,14 +396,15 @@ public class AASSimple {
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value(_0173_1_05_AAA650_002)
-                                                                
                                                                 .build())
+                                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                         .build())
                                                 .sourceOfDefinition("ExampleString")
                                                 .dataType(DataTypeIEC61360.REAL_MEASURE)
                                                 .definitions(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD).language("DE").build())
                                                 .definitions(new DefaultLangString.Builder().text(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED).language("EN").build())
                                                 .build())
+                                .id(HTTP_CUSTOMER_COM_CD_1_1_18EBD56F6B43D895)
                                 .build())
                 .build();
     }
@@ -417,6 +421,7 @@ public class AASSimple {
                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
                 .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
+                        .id(WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT)
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
                                 .preferredNames(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())
                                 .shortNames(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())

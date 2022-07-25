@@ -208,6 +208,7 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
             "embeddedDataSpecifications": [
                 {
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
                     "dataSpecification": {
                         "keys": [
                             {
@@ -257,6 +258,7 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
             "embeddedDataSpecifications": [
                 {
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
                     "dataSpecification": {
                         "keys": [
                             {
@@ -311,6 +313,7 @@
             "id": "0173-1#02-BAA120#008",
             "embeddedDataSpecifications": [
                 {
+                    "id": "0173-1#02-BAA120#008",
                     "dataSpecification": {
                         "keys": [],
                         "type": "GlobalReference"
@@ -360,6 +363,7 @@
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
             "embeddedDataSpecifications": [
                 {
+                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
                     "dataSpecification": {
                         "keys": [
                             {
@@ -422,6 +426,7 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
             "embeddedDataSpecifications": [
                 {
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
                     "dataSpecification": {
                         "keys": [
                             {

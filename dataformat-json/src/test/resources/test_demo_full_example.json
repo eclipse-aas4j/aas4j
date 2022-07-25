@@ -269,6 +269,88 @@
                     ],
                     "type": "GlobalReference"
                 }
+            ],
+            "embeddedDataSpecifications":
+            [
+                {
+                    "id": "http://acplt.org/DataSpecifciations/Example/Identification",
+                    "dataSpecificationContent": {
+                        "dataType": "RealMeasure",
+                        "sourceOfDefinition": "http://acplt.org/DataSpec/ExampleDef",
+                        "symbol": "SU",
+                        "unit": "SpaceUnit",
+                        "unitId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "http://acplt.org/Units/SpaceUnit"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        },
+                        "value": "TEST",
+                        "valueFormat": "string",
+                        "valueList": {
+                            "valueReferencePairTypes": [
+                                {
+                                    "value": "http://acplt.org/ValueId/ExampleValueId",
+                                    "valueId": {
+                                        "keys": [
+                                            {
+                                                "type": "GlobalReference",
+                                                "value": "http://acplt.org/ValueId/ExampleValueId"
+                                            }
+                                        ],
+                                        "type": "GlobalReference"
+                                    }
+                                },
+                                {
+                                    "value": "http://acplt.org/ValueId/ExampleValueId2",
+                                    "valueId": {
+                                        "keys": [
+                                            {
+                                                "type": "GlobalReference",
+                                                "value": "http://acplt.org/ValueId/ExampleValueId2"
+                                            }
+                                        ],
+                                        "type": "GlobalReference"
+                                    }
+                                }
+                            ]
+                        },
+                        "definitions": [
+                            {
+                                "language": "de",
+                                "text": "Dies ist eine Data Specification für Testzwecke"
+                            },
+                            {
+                                "language": "en-us",
+                                "text": "This is a DataSpecification for testing purposes"
+                            }
+                        ],
+                        "levelType": "Min",
+                        "preferredNames": [
+                            {
+                                "language": "de",
+                                "text": "Test Specification"
+                            },
+                            {
+                                "language": "en-us",
+                                "text": "TestSpecification"
+                            }
+                        ],
+                        "shortNames": [
+                            {
+                                "language": "de",
+                                "text": "Test Spec"
+                            },
+                            {
+                                "language": "en-us",
+                                "text": "TestSpec"
+                            }
+                        ]
+                    }
+                }
             ]
         }
     ],

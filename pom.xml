@@ -43,7 +43,7 @@
     </modules>
     <properties>
         <revision.major>0</revision.major>
-        <revision.minor>1</revision.minor>
+        <revision.minor>2</revision.minor>
         <revision.patch>0</revision.patch>
         <revision.suffix>-SNAPSHOT</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>

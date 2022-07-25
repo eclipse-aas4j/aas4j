@@ -146,6 +146,7 @@
             "id": "0173-1#02-BAA120#008",
             "embeddedDataSpecifications": [
                 {
+                    "id": "0173-1#02-BAA120#008",
                     "dataSpecification": {
                         "keys": [],
                         "type": "GlobalReference"
@@ -195,6 +196,7 @@
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
             "embeddedDataSpecifications": [
                 {
+                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
                     "dataSpecification": {
                         "keys": [
                             {

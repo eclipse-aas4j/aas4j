@@ -27,22 +27,11 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
     /**
      * This function allows setting a value for dataTypes
      *
-     * @param dataTypes desired value to be set
-     * @return Builder object with new value for dataTypes
-     */
-    public B dataTypes(List<DataTypeIEC61360> dataTypes) {
-        getBuildingInstance().setDataTypes(dataTypes);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List dataTypes
-     *
-     * @param dataType desired value to be added
+     * @param dataType desired value to be set
      * @return Builder object with new value for dataTypes
      */
     public B dataType(DataTypeIEC61360 dataType) {
-        getBuildingInstance().getDataTypes().add(dataType);
+        getBuildingInstance().setDataType(dataType);
         return getSelf();
     }
 
@@ -68,16 +57,6 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
         return getSelf();
     }
 
-    /**
-     * This function allows setting a value for levelTypes
-     *
-     * @param levelTypes desired value to be set
-     * @return Builder object with new value for levelTypes
-     */
-    public B levelTypes(List<LevelType> levelTypes) {
-        getBuildingInstance().setLevelTypes(levelTypes);
-        return getSelf();
-    }
 
     /**
      * This function allows adding a value to the List levelTypes
@@ -86,7 +65,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @return Builder object with new value for levelTypes
      */
     public B levelType(LevelType levelType) {
-        getBuildingInstance().getLevelTypes().add(levelType);
+        getBuildingInstance().setLevelType(levelType);
         return getSelf();
     }
 
@@ -119,7 +98,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @return Builder object with new value for shortName
      */
     public B shortNames(LangString shortName) {
-        getBuildingInstance().setShortNames(shortName);
+        getBuildingInstance().getShortNames().add(shortName);
         return getSelf();
     }
 

@@ -1775,6 +1775,7 @@ public class AASFull {
                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
                 .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
+                        .id("http://acplt.org/DataSpecifciations/Example/Identification")
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
                                 .preferredNames(Arrays.asList(
                                         new DefaultLangString.Builder().text("Test Specification").language("de").build(),
@@ -1792,13 +1793,14 @@ public class AASFull {
                                                 
                                                 .value("http://acplt.org/Units/SpaceUnit")
                                                 .build())
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .sourceOfDefinition("http://acplt.org/DataSpec/ExampleDef")
                                 .symbol("SU")
                                 .valueFormat("string")
                                 .value("TEST")
                                 .levelType(LevelType.MIN)
-                                .levelType(LevelType.MAX)
+//                                .levelType(LevelType.MAX)
                                 .valueList(new DefaultValueList.Builder()
                                         .valueReferencePairTypes(new DefaultValueReferencePair.Builder()
                                                 .value("http://acplt.org/ValueId/ExampleValueId")

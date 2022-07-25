@@ -57,7 +57,7 @@ public interface DataSpecification {
      * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
-    DataSpecificationContent getDataSpecificationContent();
+    DataSpecificationIEC61360 getDataSpecificationContent();
 
     /**
      * The content of the template without meta data
@@ -67,7 +67,7 @@ public interface DataSpecification {
      *
      * @param dataSpecificationContent desired value for the property dataSpecificationContent.
      */
-    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
+    void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
 
     /**
      * Administrative information of an identifiable element.

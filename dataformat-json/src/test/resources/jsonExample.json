@@ -87,7 +87,7 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
-            "dataSpecification":
+            "dataSpecifications": [
             {
                 "keys": [
                     {
@@ -96,21 +96,22 @@
                     }
                 ],
                 "type": "GlobalReference"
-            },
+            } ],
             "embeddedDataSpecifications": [
                 {
                     "dataSpecificationContent":
                     {
+
                         "dataType": "StringTranslatable",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
-                        "definition": [
+                        "definitions": [
                             {
                                 "language": "EN",
                                 "text": "SprachabhängigerTiteldesDokuments."
                             }
                         ],
-                        "preferredName": [
+                        "preferredNames": [
                             {
                                 "language": "EN",
                                 "text": "Title"
@@ -120,7 +121,7 @@
                                 "text": "Titel"
                             }
                         ],
-                        "shortName": [
+                        "shortNames": [
                             {
                                 "language": "EN",
                                 "text": "Title"
@@ -130,7 +131,8 @@
                                 "text": "Titel"
                             }
                         ]
-                    }
+                    },
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
@@ -138,7 +140,7 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecification":
+            "dataSpecifications": [
             {
                 "keys": [
                     {
@@ -147,7 +149,7 @@
                     }
                 ],
                 "type": "GlobalReference"
-            },
+            } ],
             "embeddedDataSpecifications": [
                 {
                     "dataSpecificationContent":
@@ -155,13 +157,13 @@
                         "dataType": "String",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
-                        "definition": [
+                        "definitions": [
                             {
                                 "language": "EN",
                                 "text": "A file representing the document version. In addition to the mandatory PDF file, other files can be specified."
                             }
                         ],
-                        "preferredName": [
+                        "preferredNames": [
                             {
                                 "language": "EN",
                                 "text": "DigitalFile"
@@ -171,7 +173,7 @@
                                 "text": "DigitalFile"
                             }
                         ],
-                        "shortName": [
+                        "shortNames": [
                             {
                                 "language": "EN",
                                 "text": "DigitalFile"
@@ -181,7 +183,8 @@
                                 "text": "DigitaleDatei"
                             }
                         ]
-                    }
+                    },
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
@@ -189,74 +192,16 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecification":
+            "dataSpecifications": [
             {
                 "keys": [
                     {
                         "type": "GlobalReference",
                         "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
                     }
-                ]
-            },
-            "embeddedDataSpecifications": [
-                {
-                    "dataSpecificationContent":
-                    {
-                        "dataType": "RealMeasure",
-                        "sourceOfDefinition": "ExampleString",
-                        "unit": "1/min",
-                        "unitId":
-                        {
-                            "keys": [
-                                {
-                                    "type": "GlobalReference",
-                                    "value": "0173-1#05-AAA650#002"
-                                }
-                            ]
-                        },
-                        "definition": [
-                            {
-                                "language": "de",
-                                "text": "HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf"
-                            },
-                            {
-                                "language": "EN",
-                                "text": "Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated"
-                            }
-                        ],
-                        "preferredName": [
-                            {
-                                "language": "de",
-                                "text": "max.Drehzahl"
-                            },
-                            {
-                                "language": "en",
-                                "text": "Max.rotationspeed"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "administration":
-            {
-                "revision": "2.1",
-                "version": "2"
-            },
-            "id": "0173-1#02-BAA120#008",
-            "category": "PROPERTY",
-            "idShort": "MaxRotationSpeed"
-        },
-        {
-            "modelType": "ConceptDescription",
-            "dataSpecification":
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ]
-            },
+                ],
+                "type": "GlobalReference"
+            } ],
             "embeddedDataSpecifications": [
                 {
                     "dataSpecificationContent":
@@ -274,7 +219,69 @@
                             ],
                             "type": "GlobalReference"
                         },
-                        "definition": [
+                        "definitions": [
+                            {
+                                "language": "de",
+                                "text": "HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf"
+                            },
+                            {
+                                "language": "EN",
+                                "text": "Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated"
+                            }
+                        ],
+                        "preferredNames": [
+                            {
+                                "language": "de",
+                                "text": "max.Drehzahl"
+                            },
+                            {
+                                "language": "en",
+                                "text": "Max.rotationspeed"
+                            }
+                        ]
+                    },
+                    "id": "0173-1#02-BAA120#008"
+                }
+            ],
+            "administration":
+            {
+                "revision": "2.1",
+                "version": "2"
+            },
+            "id": "0173-1#02-BAA120#008",
+            "category": "PROPERTY",
+            "idShort": "MaxRotationSpeed"
+        },
+        {
+            "modelType": "ConceptDescription",
+            "dataSpecifications": [
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                    }
+                ],
+                "type": "GlobalReference"
+            } ],
+            "embeddedDataSpecifications": [
+                {
+                    "dataSpecificationContent":
+                    {
+                        "dataType": "RealMeasure",
+                        "sourceOfDefinition": "ExampleString",
+                        "unit": "1/min",
+                        "unitId":
+                        {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "0173-1#05-AAA650#002"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        },
+                        "definitions": [
                             {
                                 "language": "DE",
                                 "text": "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird"
@@ -284,7 +291,7 @@
                                 "text": "Actual rotationspeed with which the motor or feedingunit is operated"
                             }
                         ],
-                        "preferredName": [
+                        "preferredNames": [
                             {
                                 "language": "DE",
                                 "text": "AktuelleDrehzahl"
@@ -294,7 +301,7 @@
                                 "text": "Actualrotationspeed"
                             }
                         ],
-                        "shortName": [
+                        "shortNames": [
                             {
                                 "language": "DE",
                                 "text": "AktuelleDrehzahl"
@@ -304,7 +311,8 @@
                                 "text": "ActualRotationSpeed"
                             }
                         ]
-                    }
+                    },
+                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                 }
             ],
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
@@ -313,15 +321,16 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecification":
+            "dataSpecifications": [
             {
                 "keys": [
                     {
                         "type": "GlobalReference",
                         "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
                     }
-                ]
-            },
+                ],
+                "type": "GlobalReference"
+            } ],
             "embeddedDataSpecifications": [
                 {
                     "dataSpecificationContent":
@@ -329,19 +338,19 @@
                         "dataType": "String",
                         "sourceOfDefinition": "[ISO15519-1:2010]",
                         "unit": "ExampleString",
-                        "definition": [
+                        "definitions": [
                             {
                                 "language": "EN",
                                 "text": "Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."
                             }
                         ],
-                        "preferredName": [
+                        "preferredNames": [
                             {
                                 "language": "EN",
                                 "text": "Document"
                             }
                         ],
-                        "shortName": [
+                        "shortNames": [
                             {
                                 "language": "EN",
                                 "text": "Document"
@@ -351,7 +360,8 @@
                                 "text": "Dokument"
                             }
                         ]
-                    }
+                    },
+                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",

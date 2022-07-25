@@ -48,7 +48,7 @@ public abstract class DataSpecificationBuilder<T extends DataSpecification, B ex
      * @param dataSpecificationContent desired value to be set
      * @return Builder object with new value for value
      */
-    public B dataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
+    public B dataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
         getBuildingInstance().setDataSpecificationContent(dataSpecificationContent);
         return getSelf();
     }
