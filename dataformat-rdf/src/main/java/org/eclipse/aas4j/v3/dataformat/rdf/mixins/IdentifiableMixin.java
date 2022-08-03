@@ -33,15 +33,15 @@ import org.eclipse.aas4j.v3.model.Submodel;
     @JsonSubTypes.Type(value = ConceptDescription.class)
 })
 public interface IdentifiableMixin extends ReferableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifiable/administration")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifiable/administration")
     AdministrativeInformation getAdministration();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifiable/administration")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifiable/administration")
     void setAdministration(AdministrativeInformation administration);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifiable/id")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifiable/id")
     String getId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifiable/id")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifiable/id")
     void setId(String id);
 }

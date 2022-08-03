@@ -26,7 +26,7 @@ public class ConstraintTestHelper {
 
 	public static ConceptDescription createConceptDescription(String idShort, String identifier, String category) {
 		return new DefaultConceptDescription.Builder()
-				.description(Arrays.asList(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()))
+				.descriptions(Arrays.asList(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()))
 				.id(identifier)
 				.category(category).idShort(idShort).build();
 	}

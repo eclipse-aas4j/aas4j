@@ -23,9 +23,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:Identifier")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface IdentifierMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifier/identifier")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifier/identifier")
     String getIdentifier();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Identifier/identifier")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Identifier/identifier")
     void setIdentifier(String identifier);
 }

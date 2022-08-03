@@ -122,12 +122,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDescription() {
+	final public List<LangString> getDescriptions() {
 		return descriptions;
 	}
 
 	@Override
-	final public void setDescription(List<LangString> description) {
+	final public void setDescriptions(List<LangString> description) {
 		this.descriptions = description;
 	}
 
@@ -142,12 +142,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDisplayName() {
+	final public List<LangString> getDisplayNames() {
 		return displayNames;
 	}
 
 	@Override
-	final public void setDisplayName(List<LangString> displayName) {
+	final public void setDisplayNames(List<LangString> displayName) {
 		this.displayNames = displayName;
 	}
 

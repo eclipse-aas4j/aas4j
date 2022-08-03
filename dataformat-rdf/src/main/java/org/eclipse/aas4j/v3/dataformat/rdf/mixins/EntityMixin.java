@@ -28,27 +28,27 @@ import java.util.List;
 @JsonTypeName("aas:Entity")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface EntityMixin extends SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/globalAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/globalAssetId")
     Reference getGlobalAssetId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/globalAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/globalAssetId")
     void setGlobalAssetId(Reference globalAssetId);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/specificAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/specificAssetId")
     SpecificAssetId getSpecificAssetId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/specificAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/specificAssetId")
     void setSpecificAssetId(SpecificAssetId specificAssetId);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/entityType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/entityType")
     EntityType getEntityType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/entityType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/entityType")
     void setEntityType(EntityType entityType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/statement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/statement")
     List<SubmodelElement> getStatements();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Entity/statement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Entity/statement")
     void setStatements(List<SubmodelElement> statements);
 }

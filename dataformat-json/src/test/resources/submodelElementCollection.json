@@ -1,7 +1,7 @@
 {
   "idShort": "ExampleSubmodelCollectionOrdered",
   "category": "Parameter",
-  "description": [
+  "descriptions": [
     {
       "language": "en-us",
       "text": "Example SubmodelElementCollectionOrdered object"
@@ -27,7 +27,7 @@
     {
       "idShort": "ExampleProperty",
       "category": "Constant",
-      "description": [
+      "descriptions": [
         {
           "language": "en-us",
           "text": "Example Property object"
@@ -54,7 +54,7 @@
     {
       "idShort": "ExampleMultiLanguageProperty",
       "category": "Constant",
-      "description": [
+      "descriptions": [
         {
           "language": "en-us",
           "text": "Example MultiLanguageProperty object"
@@ -80,7 +80,7 @@
     {
       "idShort": "ExampleRange",
       "category": "Parameter",
-      "description":
+      "descriptions":
        [
         {
           "language": "en-us",
@@ -109,7 +109,7 @@
     {
       "idShort": "ExampleRange2",
       "category": "Parameter",
-      "description":
+      "descriptions":
       [
         {
           "language": "en-us",

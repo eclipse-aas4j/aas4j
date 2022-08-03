@@ -32,9 +32,9 @@ import java.util.List;
     @JsonSubTypes.Type(value = SubmodelElement.class)
 })
 public interface QualifiableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifiable/qualifier")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifier")
     List<Qualifier> getQualifiers();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifiable/qualifier")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifier")
     void setQualifiers(List<Qualifier> qualifiers);
 }

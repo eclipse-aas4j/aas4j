@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:Reference")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ReferenceMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Reference/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/key")
     List<Key> getKeys();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Reference/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/key")
     void setKeys(List<Key> keys);
 }

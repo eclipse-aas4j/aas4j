@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:SubjectAttributes")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface SubjectAttributesMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/SubjectAttributes/subjectAttribute")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubjectAttributes/subjectAttribute")
     List<DataElement> getSubjectAttributes();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/SubjectAttributes/subjectAttribute")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubjectAttributes/subjectAttribute")
     void setSubjectAttributes(List<DataElement> subjectAttributes);
 }

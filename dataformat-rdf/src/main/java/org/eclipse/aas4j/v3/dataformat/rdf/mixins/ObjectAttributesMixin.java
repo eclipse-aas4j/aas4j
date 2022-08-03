@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:ObjectAttributes")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ObjectAttributesMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/ObjectAttributes/objectAttribute")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ObjectAttributes/objectAttribute")
     List<Reference> getObjectAttributes();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/ObjectAttributes/objectAttribute")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ObjectAttributes/objectAttribute")
     void setObjectAttributes(List<Reference> objectAttributes);
 }

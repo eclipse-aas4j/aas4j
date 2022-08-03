@@ -79,8 +79,8 @@ public interface AssetInformation {
      *
      * @return Returns the List of SpecificAssetIds for the property specificAssetId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId")
-    List<SpecificAssetId> getSpecificAssetId();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
+    List<SpecificAssetId> getSpecificAssetIds();
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
@@ -88,9 +88,9 @@ public interface AssetInformation {
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId
      *
-     * @param specificAssetId desired value for the property specificAssetId.
+     * @param specificAssetIds desired value for the property specificAssetId.
      */
-    void setSpecificAssetId(List<SpecificAssetId> specificAssetId);
+    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 
     /**
      * Thumbnail of the asset represented by the Asset Administration Shell.

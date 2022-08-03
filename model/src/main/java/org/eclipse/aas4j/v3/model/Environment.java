@@ -88,23 +88,5 @@ public interface Environment {
      */
     void setConceptDescriptions(List<ConceptDescription> conceptDescriptions);
 
-    /**
-     * Data specification
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/dataSpecifications
-     *
-     * @return Returns the List of DataSpecifications for the property dataSpecifications.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/dataSpecifications")
-    List<DataSpecification> getDataSpecifications();
-
-    /**
-     * Data specification
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/dataSpecifications
-     *
-     * @param dataSpecifications desired value for the property dataSpecifications.
-     */
-    void setDataSpecifications(List<DataSpecification> dataSpecifications);
 
 }

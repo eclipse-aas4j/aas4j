@@ -24,15 +24,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:AdministrativeInformation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface AdministrativeInformationMixin extends HasDataSpecificationMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AdministrativeInformation/version")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
     String getVersion();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AdministrativeInformation/version")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
     void setVersion(String version);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AdministrativeInformation/revision")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision")
     String getRevision();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AdministrativeInformation/revision")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision")
     void setRevision(String revision);
 }

@@ -60,7 +60,7 @@ public abstract class DataSpecificationBuilder<T extends DataSpecification, B ex
      * @return Builder object with new value for refersTo
      */
     public B descriptions(List<LangString> descriptions) {
-        getBuildingInstance().setDescription(descriptions);
+        getBuildingInstance().setDescriptions(descriptions);
         return getSelf();
     }
 

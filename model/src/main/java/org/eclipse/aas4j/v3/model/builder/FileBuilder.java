@@ -171,8 +171,8 @@ public abstract class FileBuilder<T extends File, B extends FileBuilder<T, B>> e
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
-        getBuildingInstance().setDisplayName(displayName);
+    public B displayNames(List<LangString> displayName) {
+        getBuildingInstance().setDisplayNames(displayName);
         return getSelf();
     }
 
@@ -182,8 +182,8 @@ public abstract class FileBuilder<T extends File, B extends FileBuilder<T, B>> e
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
-        getBuildingInstance().setDescription(description);
+    public B descriptions(List<LangString> description) {
+        getBuildingInstance().setDescriptions(description);
         return getSelf();
     }
 

@@ -50,11 +50,11 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     /**
      * This function allows setting a value for specificAssetId
      *
-     * @param specificAssetId desired value to be set
+     * @param specificAssetIds desired value to be set
      * @return Builder object with new value for specificAssetId
      */
-    public B specificAssetId(List<SpecificAssetId> specificAssetId) {
-        getBuildingInstance().setSpecificAssetId(specificAssetId);
+    public B specificAssetIds(List<SpecificAssetId> specificAssetIds) {
+        getBuildingInstance().setSpecificAssetIds(specificAssetIds);
         return getSelf();
     }
 
@@ -65,7 +65,7 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
      * @return Builder object with new value for specificAssetId
      */
     public B specificAssetId(SpecificAssetId specificAssetId) {
-        getBuildingInstance().getSpecificAssetId().add(specificAssetId);
+        getBuildingInstance().getSpecificAssetIds().add(specificAssetId);
         return getSelf();
     }
 

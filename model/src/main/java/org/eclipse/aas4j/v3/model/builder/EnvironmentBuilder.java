@@ -87,26 +87,4 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
         getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
         return getSelf();
     }
-
-    /**
-     * This function allows setting a value for dataSpecifications
-     * 
-     * @param dataSpecifications desired value to be set
-     * @return Builder object with new value for dataSpecifications
-     */
-    public B dataSpecifications(List<DataSpecification> dataSpecifications) {
-        getBuildingInstance().setDataSpecifications(dataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List dataSpecifications
-     * 
-     * @param dataSpecifications desired value to be added
-     * @return Builder object with new value for dataSpecifications
-     */
-    public B dataSpecifications(DataSpecification dataSpecifications) {
-        getBuildingInstance().getDataSpecifications().add(dataSpecifications);
-        return getSelf();
-    }
 }

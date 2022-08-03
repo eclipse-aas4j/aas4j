@@ -31,9 +31,9 @@ import org.eclipse.aas4j.v3.model.SubmodelElement;
     @JsonSubTypes.Type(value = SubmodelElement.class)
 })
 public interface HasKindMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasKind/kind")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
     ModelingKind getKind();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasKind/kind")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
     void setKind(ModelingKind kind);
 }

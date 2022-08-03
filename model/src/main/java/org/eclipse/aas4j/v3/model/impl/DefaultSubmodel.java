@@ -64,11 +64,11 @@ public class DefaultSubmodel implements Submodel {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
+    protected List<LangString> descriptions;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
+    protected List<LangString> displayNames;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -92,8 +92,8 @@ public class DefaultSubmodel implements Submodel {
             this.id,
             this.category,
             this.idShort,
-            this.displayName,
-            this.description,
+            this.displayNames,
+            this.descriptions,
             this.checksum,
             this.extensions,
             this.qualifiers);
@@ -118,8 +118,8 @@ public class DefaultSubmodel implements Submodel {
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayNames, other.displayNames) &&
+                Objects.equals(this.descriptions, other.descriptions) &&
                 Objects.equals(this.checksum, other.checksum) &&
                 Objects.equals(this.extensions, other.extensions) &&
                 Objects.equals(this.qualifiers, other.qualifiers);
@@ -217,23 +217,23 @@ public class DefaultSubmodel implements Submodel {
     }
 
     @Override
-    public List<LangString> getDisplayName() {
-        return displayName;
+    public List<LangString> getDisplayNames() {
+        return displayNames;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
-        this.displayName = displayName;
+    public void setDisplayNames(List<LangString> displayNames) {
+        this.displayNames = displayNames;
     }
 
     @Override
-    public List<LangString> getDescription() {
-        return description;
+    public List<LangString> getDescriptions() {
+        return descriptions;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
-        this.description = description;
+    public void setDescriptions(List<LangString> descriptions) {
+        this.descriptions = descriptions;
     }
 
     @Override

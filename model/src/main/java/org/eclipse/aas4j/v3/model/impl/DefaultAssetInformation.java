@@ -44,8 +44,8 @@ public class DefaultAssetInformation implements AssetInformation {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
     protected Reference globalAssetId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId")
-    protected List<SpecificAssetId> specificAssetId = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
+    protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
     public DefaultAssetInformation() {}
 
@@ -53,7 +53,7 @@ public class DefaultAssetInformation implements AssetInformation {
     public int hashCode() {
         return Objects.hash(this.assetKind,
                 this.globalAssetId,
-                this.specificAssetId,
+                this.specificAssetIds,
                 this.defaultThumbnail);
     }
 
@@ -69,7 +69,7 @@ public class DefaultAssetInformation implements AssetInformation {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
             return Objects.equals(this.assetKind, other.assetKind) &&
                     Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                    Objects.equals(this.specificAssetId, other.specificAssetId) &&
+                    Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
                     Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
         }
     }
@@ -95,13 +95,13 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public List<SpecificAssetId> getSpecificAssetId() {
-        return specificAssetId;
+    public List<SpecificAssetId> getSpecificAssetIds() {
+        return specificAssetIds;
     }
 
     @Override
-    public void setSpecificAssetId(List<SpecificAssetId> specificAssetId) {
-        this.specificAssetId = specificAssetId;
+    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
+        this.specificAssetIds = specificAssetIds;
     }
 
     @Override

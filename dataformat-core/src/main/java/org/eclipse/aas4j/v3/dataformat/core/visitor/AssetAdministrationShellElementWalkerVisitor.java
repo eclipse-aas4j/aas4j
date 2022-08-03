@@ -47,7 +47,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(assetInformation.getGlobalAssetId());
-        assetInformation.getSpecificAssetId().forEach(x -> visit(x));
+        assetInformation.getSpecificAssetIds().forEach(x -> visit(x));
         visit(assetInformation.getDefaultThumbnail());
         AssetAdministrationShellElementVisitor.super.visit(assetInformation);
     }
@@ -174,8 +174,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescription().forEach(x -> visit(x));
-        referable.getDisplayName().forEach(x -> visit(x));
+        referable.getDescriptions().forEach(x -> visit(x));
+        referable.getDisplayNames().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 

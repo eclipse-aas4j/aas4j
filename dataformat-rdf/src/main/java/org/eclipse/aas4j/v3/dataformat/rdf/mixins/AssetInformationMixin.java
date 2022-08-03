@@ -28,33 +28,33 @@ import java.util.List;
 @JsonTypeName("aas:AssetInformation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface AssetInformationMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/assetKind")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind")
     AssetKind getAssetKind();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/assetKind")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind")
     void setAssetKind(AssetKind assetKind);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/globalAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
     Reference getGlobalAssetId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/globalAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
     void setGlobalAssetId(Reference globalAssetId);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/specificAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
     List<SpecificAssetId> getSpecificAssetIds();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/specificAssetId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
     void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/billOfMaterial")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/billOfMaterial")
     List<Reference> getBillOfMaterials();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/billOfMaterial")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/billOfMaterial")
     void setBillOfMaterials(List<Reference> billOfMaterials);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/defaultThumbnail")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
     File getDefaultThumbnail();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetInformation/defaultThumbnail")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
     void setDefaultThumbnail(File defaultThumbnail);
 }

@@ -24,9 +24,9 @@ import org.eclipse.aas4j.v3.model.Reference;
 @JsonTypeName("aas:BasicEvent")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface BasicEventMixin extends EventMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/BasicEvent/observed")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEvent/observed")
     Reference getObserved();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/BasicEvent/observed")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEvent/observed")
     void setObserved(Reference observed);
 }

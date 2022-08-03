@@ -40,9 +40,6 @@ public class DefaultEnvironment implements Environment {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
     protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/dataSpecifications")
-    protected List<DataSpecification> dataSpecifications = new ArrayList<>();
-
     @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
     protected List<Submodel> submodels = new ArrayList<>();
 
@@ -52,8 +49,7 @@ public class DefaultEnvironment implements Environment {
     public int hashCode() {
         return Objects.hash(this.assetAdministrationShells,
             this.submodels,
-            this.conceptDescriptions,
-            this.dataSpecifications);
+            this.conceptDescriptions);
     }
 
     @Override
@@ -68,8 +64,7 @@ public class DefaultEnvironment implements Environment {
             DefaultEnvironment other = (DefaultEnvironment) obj;
             return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
                 Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.conceptDescriptions, other.conceptDescriptions) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications);
+                Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
         }
     }
 
@@ -101,16 +96,6 @@ public class DefaultEnvironment implements Environment {
     @Override
     public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
         this.conceptDescriptions = conceptDescriptions;
-    }
-
-    @Override
-    public List<DataSpecification> getDataSpecifications() {
-        return dataSpecifications;
-    }
-
-    @Override
-    public void setDataSpecifications(List<DataSpecification> dataSpecifications) {
-        this.dataSpecifications = dataSpecifications;
     }
 
     /**

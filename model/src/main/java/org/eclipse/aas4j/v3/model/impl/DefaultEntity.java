@@ -70,11 +70,11 @@ public class DefaultEntity implements Entity {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
+    protected List<LangString> descriptions;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
+    protected List<LangString> displayNames;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -97,8 +97,8 @@ public class DefaultEntity implements Entity {
             this.qualifiers,
             this.category,
             this.idShort,
-            this.displayName,
-            this.description,
+            this.displayNames,
+            this.descriptions,
             this.checksum,
             this.extensions);
     }
@@ -124,8 +124,8 @@ public class DefaultEntity implements Entity {
                 Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayNames, other.displayNames) &&
+                Objects.equals(this.descriptions, other.descriptions) &&
                 Objects.equals(this.checksum, other.checksum) &&
                 Objects.equals(this.extensions, other.extensions);
         }
@@ -242,23 +242,23 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public List<LangString> getDisplayName() {
-        return displayName;
+    public List<LangString> getDisplayNames() {
+        return displayNames;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
-        this.displayName = displayName;
+    public void setDisplayNames(List<LangString> displayName) {
+        this.displayNames = displayNames;
     }
 
     @Override
-    public List<LangString> getDescription() {
-        return description;
+    public List<LangString> getDescriptions() {
+        return descriptions;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
-        this.description = description;
+    public void setDescriptions(List<LangString> descriptions) {
+        this.descriptions = descriptions;
     }
 
     @Override

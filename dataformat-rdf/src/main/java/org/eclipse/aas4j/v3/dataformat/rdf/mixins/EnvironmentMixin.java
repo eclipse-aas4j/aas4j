@@ -24,24 +24,24 @@ import org.eclipse.aas4j.v3.model.Submodel;
 
 import java.util.List;
 
-@JsonTypeName("aas:AssetAdministrationShellEnvironment")
+@JsonTypeName("aas:Environment")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
-public interface AssetAdministrationShellEnvironmentMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/assetAdministrationShells")
+public interface EnvironmentMixin {
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
     List<AssetAdministrationShell> getAssetAdministrationShells();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/assetAdministrationShells")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
     void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/conceptDescriptions")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
     List<ConceptDescription> getConceptDescriptions();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/conceptDescriptions")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
     void setConceptDescriptions(List<ConceptDescription> conceptDescriptions);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/submodels")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
     List<Submodel> getSubmodels();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShellEnvironment/submodels")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
     void setSubmodels(List<Submodel> submodels);
 }

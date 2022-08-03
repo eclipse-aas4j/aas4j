@@ -29,7 +29,7 @@ public class JsonLdEnumSerializer extends JsonSerializer<Enum<?>> {
     @Override
     public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         //Generated Enum classes of the admin shell have @IRI annotations, which need to be used to provide proper RDF
-        if(value.getClass().isEnum() && value.getClass().getName().startsWith("io.adminshell.aas."))
+        if(value.getClass().isEnum() && value.getClass().getName().startsWith("org.eclipse.aas4j."))
         {
             //Try to get annotation value to get the IRI used in the ontology
             if(value.getClass().getAnnotation(IRI.class) != null && value.getClass().getAnnotation(IRI.class).value().length > 0)

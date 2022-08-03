@@ -15,25 +15,35 @@
  */
 package org.eclipse.aas4j.v3.dataformat.rdf.mixins;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.eclipse.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.aas4j.v3.model.AssetKind;
+import org.eclipse.aas4j.v3.model.File;
 import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.SpecificAssetId;
 
-@JsonTypeName("aas:EmbeddedDataSpecification")
+import java.util.List;
+
+@JsonTypeName("aas:SpecificAssetId")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
-public interface EmbeddedDataSpecificationMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/EmbeddedDataSpecification/dataSpecification")
-    Reference getDataSpecification();
+public interface SpecificAssetIdMixin extends HasSemanticsMixin {
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    String getName();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/EmbeddedDataSpecification/dataSpecification")
-    void setDataSpecification(Reference dataSpecification);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    void setName(String name);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/EmbeddedDataSpecification/dataSpecificationContent")
-    DataSpecificationContent getDataSpecificationContent();
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/EmbeddedDataSpecification/dataSpecificationContent")
-    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    void setValue(String value);
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    Reference getExternalSubjectId();
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    void setExternalSubjectId(Reference reference);
+
 }

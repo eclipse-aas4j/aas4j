@@ -24,9 +24,9 @@ import org.eclipse.aas4j.v3.model.Reference;
 @JsonTypeName("aas:ReferenceElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ReferenceElementMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/ReferenceElement/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value")
     Reference getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/ReferenceElement/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value")
     void setValue(Reference value);
 }

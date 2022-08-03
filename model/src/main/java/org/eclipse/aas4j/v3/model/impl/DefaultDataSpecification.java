@@ -29,7 +29,7 @@ import java.util.Objects;
  * Single extension of an element.
  */
 
-@IRI("aas:Extension")
+@IRI("aas:DataSpecification")
 public class DefaultDataSpecification implements DataSpecification {
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
@@ -37,7 +37,7 @@ public class DefaultDataSpecification implements DataSpecification {
     protected DataSpecificationIEC61360 dataSpecificationContent;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/administration")
-    protected AdministrativeInformation administrativeInformation;
+    protected AdministrativeInformation administration;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/id")
     protected String id;
@@ -50,7 +50,7 @@ public class DefaultDataSpecification implements DataSpecification {
     @Override
     public int hashCode() {
         return Objects.hash(this.dataSpecificationContent,
-            this.administrativeInformation,
+            this.administration,
             this.id,
             this.descriptions);
     }
@@ -65,7 +65,7 @@ public class DefaultDataSpecification implements DataSpecification {
             return false;
         } else {
             DefaultDataSpecification other = (DefaultDataSpecification) obj;
-            return Objects.equals(this.administrativeInformation, other.administrativeInformation) &&
+            return Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.dataSpecificationContent, other.dataSpecificationContent) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.descriptions, other.descriptions);
@@ -94,21 +94,21 @@ public class DefaultDataSpecification implements DataSpecification {
 
     @Override
     public AdministrativeInformation getAdministration() {
-        return administrativeInformation;
+        return administration;
     }
 
     @Override
     public void setAdministration(AdministrativeInformation administrativeInformation) {
-        this.administrativeInformation = administrativeInformation;
+        this.administration = administrativeInformation;
     }
 
     @Override
-    public List<LangString> getDescription() {
+    public List<LangString> getDescriptions() {
         return descriptions;
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
+    public void setDescriptions(List<LangString> descriptions) {
         this.descriptions = descriptions;
     }
 

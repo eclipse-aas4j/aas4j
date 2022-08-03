@@ -103,7 +103,7 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the List of LangStrings for the property definitions.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition")
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions")
     List<LangString> getDefinitions();
 
     /**
@@ -145,7 +145,7 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the LangString for the property preferredName.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName")
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames")
     List<LangString> getPreferredNames();
 
     /**
@@ -164,7 +164,7 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the LangString for the property shortName.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName")
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames")
     List<LangString> getShortNames();
 
     /**

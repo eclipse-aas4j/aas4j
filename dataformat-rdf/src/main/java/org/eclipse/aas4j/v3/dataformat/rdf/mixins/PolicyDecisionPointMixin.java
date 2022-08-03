@@ -24,9 +24,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:PolicyDecisionPoint")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface PolicyDecisionPointMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/PolicyDecisionPoint/externalPolicyDecisionPoints")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyDecisionPoint/externalPolicyDecisionPoints")
     boolean getExternalPolicyDecisionPoints();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/PolicyDecisionPoint/externalPolicyDecisionPoints")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyDecisionPoint/externalPolicyDecisionPoints")
     void setExternalPolicyDecisionPoints(boolean externalPolicyDecisionPoints);
 }

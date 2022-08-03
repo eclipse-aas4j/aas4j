@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:HasExtensions")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface HasExtensionsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasExtensions/extension")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension")
     List<Extension> getExtensions();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasExtensions/extension")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension")
     void setExtensions(List<Extension> extensions);
 }

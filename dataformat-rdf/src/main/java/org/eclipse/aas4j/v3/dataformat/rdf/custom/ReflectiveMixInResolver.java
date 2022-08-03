@@ -26,7 +26,7 @@ public class ReflectiveMixInResolver implements ClassIntrospector.MixInResolver 
             return JsonLdEnumMixin.class;
         }
         try {
-            return Class.forName("io.adminshell.aas.v3.dataformat.rdf.mixins." + cls.getSimpleName() + "Mixin");
+            return Class.forName("org.eclipse.aas4j.v3.dataformat.rdf.mixins." + cls.getSimpleName() + "Mixin");
         }
         catch (ClassNotFoundException ignored)
         {

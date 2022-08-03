@@ -26,15 +26,15 @@ import java.util.List;
 @JsonTypeName("aas:MultiLanguageProperty")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface MultiLanguagePropertyMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/MultiLanguageProperty/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
     List<LangString> getValues();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/MultiLanguageProperty/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
     void setValues(List<LangString> values);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/MultiLanguageProperty/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/valueId")
     Reference getValueId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/MultiLanguageProperty/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/valueId")
     void setValueId(Reference valueId);
 }

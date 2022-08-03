@@ -24,27 +24,27 @@ import org.eclipse.aas4j.v3.model.Reference;
 @JsonTypeName("aas:Qualifier")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface QualifierMixin extends HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/type")
     String getType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/type")
     void setType(String type);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
     String getValueType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
     void setValueType(String valueType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueId")
     Reference getValueId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Qualifier/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueId")
     void setValueId(Reference valueId);
 }

@@ -35,11 +35,15 @@ import java.util.List;
 })
 public interface HasDataSpecificationMixin {
 
-    // TODO: embeddedDataSpecification are unclear until now for 3.0.RC02
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiations")
+    List<Reference> getDataSpecifications();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasDataSpecification/embeddedDataSpecification")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiations")
+    void setDataSpecifications(List<Reference> dataSpecifications);
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
     List<DataSpecification> getEmbeddedDataSpecifications();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasDataSpecification/embeddedDataSpecification")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
     void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
 }

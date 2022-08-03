@@ -32,27 +32,27 @@ import java.util.List;
     @JsonSubTypes.Type(value = SubmodelElement.class)
 })
 public interface ReferableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/category")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/category")
     String getCategory();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/category")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/category")
     void setCategory(String category);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/description")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
     List<LangString> getDescriptions();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/description")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
     void setDescriptions(List<LangString> descriptions);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/displayName")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
     List<LangString> getDisplayNames();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/displayName")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
     void setDisplayNames(List<LangString> displayNames);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/idShort")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     String getIdShort();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Referable/idShort")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     void setIdShort(String idShort);
 }

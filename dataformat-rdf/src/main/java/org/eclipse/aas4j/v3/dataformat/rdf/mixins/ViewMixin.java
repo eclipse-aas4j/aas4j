@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:View")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ViewMixin extends ReferableMixin, HasDataSpecificationMixin, HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/View/containedElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/View/containedElement")
     List<Reference> getContainedElements();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/View/containedElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/View/containedElement")
     void setContainedElements(List<Reference> containedElements);
 }

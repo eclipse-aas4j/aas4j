@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:Submodel")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface SubmodelMixin extends QualifiableMixin, HasDataSpecificationMixin, IdentifiableMixin, HasKindMixin, HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Submodel/submodelElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElement")
     List<SubmodelElement> getSubmodelElements();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/Submodel/submodelElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElement")
     void setSubmodelElements(List<SubmodelElement> submodelElements);
 }

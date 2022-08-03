@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.aas4j.v3.model.*;
 
+import java.util.List;
+
 
 @JsonTypeName("aas:HasSemantics")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
@@ -33,9 +35,15 @@ import org.eclipse.aas4j.v3.model.*;
     @JsonSubTypes.Type(value = Extension.class)
 })
 public interface HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasSemantics/semanticId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
     Reference getSemanticId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC01/HasSemantics/semanticId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
     void setSemanticId(Reference semanticId);
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    List<Reference> getSupplementalSemanticIds();
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    void setSupplementalSemanticIds(List<Reference> references);
 }

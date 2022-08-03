@@ -82,36 +82,36 @@ public interface Referable extends HasExtensions {
      *
      * @return Returns the LangStringSet for the property displayName.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    List<LangString> getDisplayName();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
+    List<LangString> getDisplayNames();
 
     /**
      * Display name. Can be provided in several languages.
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/Referable/displayName
      *
-     * @param displayName desired value for the property displayName.
+     * @param displayNames desired value for the property displayName.
      */
-    void setDisplayName(List<LangString> displayName);
+    void setDisplayNames(List<LangString> displayNames);
 
     /**
      * Description or comments on the element.
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/Referable/description
      *
-     * @return Returns the LangStringSet for the property description.
+     * @return Returns the LangStrings for the property description.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    List<LangString> getDescription();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
+    List<LangString> getDescriptions();
 
     /**
      * Description or comments on the element.
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/Referable/description
      *
-     * @param description desired value for the property description.
+     * @param descriptions desired value for the property description.
      */
-    void setDescription(List<LangString> description);
+    void setDescriptions(List<LangString> descriptions);
 
     /**
      * Checksum to be used to determine if an Referable (including its aggregated child elements) has

@@ -71,9 +71,9 @@ public class Serializer implements org.eclipse.aas4j.v3.dataformat.Serializer, D
         addKnownNamespace("xsd", "http://www.w3.org/2001/XMLSchema#");
         addKnownNamespace("owl", "http://www.w3.org/2002/07/owl#");
         addKnownNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-        addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/RC01/");
-        addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC01/");
-        addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC01/");
+        addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/RC02/");
+        addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
+        addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
 
     }
 
