@@ -32,7 +32,7 @@
     <modules>
         <module>model</module>
         <module>dataformat-aasx</module>
-        <!-- <module>dataformat-aml</module>-->
+        <module>dataformat-aml</module>
         <module>dataformat-core</module>
         <module>dataformat-json</module>
         <module>dataformat-xml</module>
