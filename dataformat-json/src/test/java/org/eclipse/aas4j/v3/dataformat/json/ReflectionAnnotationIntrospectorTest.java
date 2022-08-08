@@ -41,17 +41,17 @@ import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeNameIdResolver;
 
-import io.adminshell.aas.v3.model.ClassA;
-import io.adminshell.aas.v3.model.ClassB;
+import org.eclipse.aas4j.v3.model.ClassA;
+import org.eclipse.aas4j.v3.model.ClassB;
 import org.eclipse.aas4j.v3.model.DataElement;
-import io.adminshell.aas.v3.model.DummyInterface;
+import org.eclipse.aas4j.v3.model.DummyInterface;
 import org.eclipse.aas4j.v3.model.Identifiable;
 import org.eclipse.aas4j.v3.model.Property;
 import org.eclipse.aas4j.v3.model.Referable;
 import org.eclipse.aas4j.v3.model.Submodel;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
-import io.adminshell.aas.v3.model.TypedProperty;
-import io.adminshell.aas.v3.model.TypedSubProperty;
+import org.eclipse.aas4j.v3.model.TypedProperty;
+import org.eclipse.aas4j.v3.model.TypedSubProperty;
 
 //review AAS-134: some basic, rather simple tests would be helpful to understand/document the cases for which the introspector is build for
 //also some javadoc could help
@@ -92,7 +92,6 @@ public class ReflectionAnnotationIntrospectorTest {
     }
 
     @Test
-    @Ignore // TODO: What is the intention of this test?
     public void testFindTypeNameForClassesWithTypeInfo() throws Exception {
         Map.of(CustomProperty.class, Property.class,
                 CustomSubProperty.class, Property.class,
@@ -163,7 +162,6 @@ public class ReflectionAnnotationIntrospectorTest {
     }
 
     @Test
-    @Ignore // TODO: Why should this test not fail? Why would we expect to find any subtypes of TypedProperty?
     public void testFindSubtypesForCustomInterfacesInModelNamespace() throws Exception {
         List.of(TypedProperty.class)
                 .forEach(x -> {

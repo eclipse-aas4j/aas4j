@@ -13,19 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.aas4j.v3.dataformat.json.mixins;
+package org.eclipse.aas4j.v3.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-// TODO not needed anymore?
-public interface IdentifierMixin {
-
-    @JsonProperty("id")
-    public void setId(String identifier);
-
-    @JsonProperty("id")
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getId();
-
+public class ClassA {
+    
 }

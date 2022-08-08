@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.adminshell.aas.v3.model;
+package org.eclipse.aas4j.v3.model;
 
 import org.eclipse.aas4j.v3.model.Property;
 
