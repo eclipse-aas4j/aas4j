@@ -36,8 +36,6 @@
         <module>dataformat-json</module>
         <module>dataformat-xml</module>
         <module>dataformat-rdf</module>
-        <!-- TODO: include again after upgrades to 3.0.RC02 are made -->
-        <!--<module>dataformat-uanodeset</module>-->
         <module>validator</module>
     </modules>
     <properties>
