@@ -64,7 +64,7 @@ Additionally, the sources that are used for generating the static documentation 
 
 # How to Contribute
 
-We always look for contributions, bug reports, feature requests etc. Please, read https://github.com/eclipse-digitaltwin/aas4j/blob/main/CONTRIBUTING.md for more information,
+We always look for contributions, bug reports, feature requests etc. Please, read https://github.com/eclipse-digitaltwin/aas4j/blob/main/CONTRIBUTING.md for more information.
 
 
 # Contributors
