@@ -81,7 +81,7 @@
          a  <https://admin-shell.io/aas/3/0/RC02/Property> ;
          rdfs:label "MaxRotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "MaxRotationSpeed"^^xsd:string ;
-         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "integer" ;
+         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "xs:int" ;
          <https://admin-shell.io/aas/3/0/RC02/Property/valueId> [
                   a <https://admin-shell.io/aas/3/0/RC02/Reference> ;
 				  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
@@ -109,7 +109,7 @@
          rdfs:label "RotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "RotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/HasKind/kind> <https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance> ;
-         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "integer" ;
+         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "xs:int" ;
          <https://admin-shell.io/aas/3/0/RC02/Property/valueId> [
                   a <https://admin-shell.io/aas/3/0/RC02/Reference> ;
 				  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
@@ -153,7 +153,7 @@
             a <https://admin-shell.io/aas/3/0/RC02/File>;
             rdf:subject <http://i40.customer.com/type/7A7104BDAB57E184/OperatingManual/Title>;
             rdfs:label "Title"^^xsd:string ;
-            <https://admin-shell.io/aas/3/0/RC02/File/valueType>  "xsd:string" ; #TODO not a File?
+            <https://admin-shell.io/aas/3/0/RC02/File/contentType>  "application/pdf" ; #TODO not a File?
             <https://admin-shell.io/aas/3/0/RC02/File/value> "Operating Manual"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "Title"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/category> "CONSTANT"^^xsd:string ;
@@ -175,7 +175,7 @@
             a <https://admin-shell.io/aas/3/0/RC02/Property>;
             rdf:subject <http://i40.customer.com/type/7A7104BDAB57E184/OperatingManual/DigitalFile_PDF>;
             rdfs:label "DigitalFile_PDF"^^xsd:string ;
-            <https://admin-shell.io/aas/3/0/RC02/File/valueType>  "xsd:string" ;
+            <https://admin-shell.io/aas/3/0/RC02/File/contentType>  "application/pdf" ;
             <https://admin-shell.io/aas/3/0/RC02/File/value> "/aasx/OperatingManual.pdf"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "DigitalFile_PDF"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/category> "CONSTANT"^^xsd:string ;
@@ -211,14 +211,14 @@
 
     <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> [
        a <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Max. rotation speed"@en, "max. Drehzahl"@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Max. rotation speed"@en, "max. Drehzahl"@de ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unit> "1/min"^^xsd:string ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unitId> [
           a <https://admin-shell.io/aas/3/0/RC02/GlobalReference> ;
           <http://admin-shell.io/aas/3/0/RC02/GlobalReference/value> "0173-1#05-AAA650#002"^^xsd:string ;
       ] ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "IntegerMeasure"^^xsd:string ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Höchste zulässige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf"@de, "Greatest permissible rotation speed with which the motor or feeding unit may be operated"@en ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "xs:intMeasure"^^xsd:string ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Höchste zulässige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf"@de, "Greatest permissible rotation speed with which the motor or feeding unit may be operated"@en ;
     ] ;
 .
 
@@ -240,14 +240,14 @@
 
     <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> [
          a <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> ;
-         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Actual rotation speed"@en, "Aktuelle Drehzahl"@de ;
+         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Actual rotation speed"@en, "Aktuelle Drehzahl"@de ;
          <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unit> "1/min"^^xsd:string ;
          <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unitId> [
             a <https://admin-shell.io/aas/3/0/RC02/GlobalReference> ;
             <http://admin-shell.io/aas/3/0/RC02/GlobalReference/value> "0173-1#05-AAA650#002"^^xsd:string ;
         ] ;
-         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "IntegerMeasure"^^xsd:string ;
-         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird."@de, "Actual rotation speed with which the motor or feeding unit is operated."@en ;
+         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "xs:intMeasure"^^xsd:string ;
+         <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird."@de, "Actual rotation speed with which the motor or feeding unit is operated."@en ;
       ] ;
   .
 
@@ -269,11 +269,11 @@
 
     <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> [
        a <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Document"@en, "Dokument"@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Document"@en, "Dokument"@de ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "Document"@en ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition> "[ISO 15519-1:2010]"^^xsd:string ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "Entity"^^xsd:string ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."@de ;
     ] ;
 
 .
@@ -295,10 +295,10 @@
 
     <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> [
        a <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Titel"@en, "Titel"@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Titel"@en, "Titel"@de ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "Titel"@en ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "StringTranslatable"^^xsd:string ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Sprachabhängiger Titel des Dokuments."@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Sprachabhängiger Titel des Dokuments."@de ;
     ] ;
 .
 
@@ -320,9 +320,9 @@
 
     <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> [
        a <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Digital File"@en ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Digital File"@en ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "DigitalFile"@en ;
        <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "File"^^xsd:string ;
-       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Eine Datei, die die DocumentVersion repräsentiert. Neben der obligatorischen PDF/A Datei können weitere Dateien angegeben werden."@de ;
+       <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Eine Datei, die die DocumentVersion repräsentiert. Neben der obligatorischen PDF/A Datei können weitere Dateien angegeben werden."@de ;
     ] ;
 .

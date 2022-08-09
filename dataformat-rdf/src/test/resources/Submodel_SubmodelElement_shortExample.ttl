@@ -28,7 +28,7 @@
          a  <https://admin-shell.io/aas/3/0/RC02/Property> ;
          rdfs:label "MaxRotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "MaxRotationSpeed"^^xsd:string ;
-         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "integer" ;
+         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "xs:int" ;
          <https://admin-shell.io/aas/3/0/RC02/Property/valueId> [
                   a <https://admin-shell.io/aas/3/0/RC02/Reference> ;
 				  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;

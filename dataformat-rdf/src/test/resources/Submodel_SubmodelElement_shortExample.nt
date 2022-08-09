@@ -14,7 +14,7 @@ _:Key <https://admin-shell.io/aas/3/0/RC02/Key/value> "0173-1#01-AFZ615#016"^^<h
 _:SubmodelElement <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Property> .
 _:SubmodelElement <http://www.w3.org/2000/01/rdf-schema#label> "MaxRotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:SubmodelElement <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "MaxRotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:SubmodelElement <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "integer" .
+_:SubmodelElement <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "xs:int" .
 _:SubmodelElement <https://admin-shell.io/aas/3/0/RC02/Property/valueId> _:ValueId .
 _:SubmodelElement <https://admin-shell.io/aas/3/0/RC02/Property/value> "5000"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:ValueId <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Reference> .

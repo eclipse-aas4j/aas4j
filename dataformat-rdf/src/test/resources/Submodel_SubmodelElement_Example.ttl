@@ -28,7 +28,7 @@
          a  <https://admin-shell.io/aas/3/0/RC02/Property> ;
          rdfs:label "MaxRotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "MaxRotationSpeed"^^xsd:string ;
-         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "integer" ;
+         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "xs:int" ;
          <https://admin-shell.io/aas/3/0/RC02/Property/valueId> [
                   a <https://admin-shell.io/aas/3/0/RC02/Reference> ;
 				  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
@@ -56,7 +56,7 @@
          rdfs:label "RotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "RotationSpeed"^^xsd:string ;
          <https://admin-shell.io/aas/3/0/RC02/HasKind/kind> <https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance> ;
-         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "integer" ;
+         <https://admin-shell.io/aas/3/0/RC02/Property/valueType>  "xs:int" ;
          <https://admin-shell.io/aas/3/0/RC02/Property/valueId> [
                   a <https://admin-shell.io/aas/3/0/RC02/Reference> ;
 				  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
@@ -101,7 +101,7 @@
             a <https://admin-shell.io/aas/3/0/RC02/File>;
             rdf:subject <http://i40.customer.com/type/7A7104BDAB57E184/OperatingManual/Title>;
             rdfs:label "Title"^^xsd:string ;
-            <https://admin-shell.io/aas/3/0/RC02/File/valueType>  "xsd:string" ; #TODO not a File?
+            <https://admin-shell.io/aas/3/0/RC02/File/contentType>  "application/pdf" ; #TODO not a File?
             <https://admin-shell.io/aas/3/0/RC02/File/value> "Operating Manual"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "Title"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/category> "CONSTANT"^^xsd:string ;
@@ -124,7 +124,7 @@
             a <https://admin-shell.io/aas/3/0/RC02/Property>;
             rdf:subject <http://i40.customer.com/type/7A7104BDAB57E184/OperatingManual/DigitalFile_PDF>;
             rdfs:label "DigitalFile_PDF"^^xsd:string ;
-            <https://admin-shell.io/aas/3/0/RC02/File/valueType>  "xsd:string" ;
+            <https://admin-shell.io/aas/3/0/RC02/File/contentType>  "application/pdf" ;
             <https://admin-shell.io/aas/3/0/RC02/File/value> "/aasx/OperatingManual.pdf"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "DigitalFile_PDF"^^xsd:string ;
             <https://admin-shell.io/aas/3/0/RC02/Referable/category> "CONSTANT"^^xsd:string ;

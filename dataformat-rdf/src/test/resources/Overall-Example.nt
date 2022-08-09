@@ -51,7 +51,7 @@ _:genid11 <https://admin-shell.io/aas/3/0/RC02/Key/value> "0173-1#01-AFZ615#016"
 _:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Property> .
 _:genid12 <http://www.w3.org/2000/01/rdf-schema#label> "MaxRotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid12 <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "MaxRotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid12 <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "integer" .
+_:genid12 <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "xs:int" .
 _:genid12 <https://admin-shell.io/aas/3/0/RC02/Property/valueId> _:genid13 .
 _:genid12 <https://admin-shell.io/aas/3/0/RC02/Property/value> "5000"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Reference> .
@@ -70,7 +70,7 @@ _:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell
 _:genid15 <http://www.w3.org/2000/01/rdf-schema#label> "RotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid15 <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "RotationSpeed"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid15 <https://admin-shell.io/aas/3/0/RC02/HasKind/kind> <https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance> .
-_:genid15 <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "integer" .
+_:genid15 <https://admin-shell.io/aas/3/0/RC02/Property/valueType> "xs:int" .
 _:genid15 <https://admin-shell.io/aas/3/0/RC02/Property/valueId> _:genid16 .
 _:genid15 <https://admin-shell.io/aas/3/0/RC02/Property/value> "4370"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Reference> .
@@ -149,13 +149,13 @@ _:genid29 <http://admin-shell.io/aas/3/0/RC02/Reference/value> "https://admin-sh
 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360> <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> _:genid38 .
 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360> <https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent> _:genid40 .
 _:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> .
-_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Max. rotation speed"@en .
-_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "max. Drehzahl"@de .
+_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNamess> "Max. rotation speed"@en .
+_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "max. Drehzahl"@de .
 _:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unit> "1/min"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unitId> _:genid31 .
-_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "IntegerMeasure"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "H\u00F6chste zul\u00E4ssige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf"@de .
-_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Greatest permissible rotation speed with which the motor or feeding unit may be operated"@en .
+_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "xs:intMeasure"^^<http://www.w3.org/2001/XMLSchema#string> .
+_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "H\u00F6chste zul\u00E4ssige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf"@de .
+_:genid30 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Greatest permissible rotation speed with which the motor or feeding unit may be operated"@en .
 _:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/GlobalReference> .
 _:genid31 <http://admin-shell.io/aas/3/0/RC02/GlobalReference/value> "0173-1#05-AAA650#002"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://customer.com/cd/1/1/18EBD56F6B43D895> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/ConceptDescription> .
@@ -168,13 +168,13 @@ _:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell
 _:genid32 <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> .
 _:genid32 <http://admin-shell.io/aas/3/0/RC02/Reference/value> "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> .
-_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Actual rotation speed"@en .
-_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Aktuelle Drehzahl"@de .
+_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Actual rotation speed"@en .
+_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Aktuelle Drehzahl"@de .
 _:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unit> "1/min"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/unitId> _:genid34 .
-_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "IntegerMeasure"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird."@de .
-_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Actual rotation speed with which the motor or feeding unit is operated."@en .
+_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "xs:intMeasure"^^<http://www.w3.org/2001/XMLSchema#string> .
+_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird."@de .
+_:genid33 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Actual rotation speed with which the motor or feeding unit is operated."@en .
 _:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/GlobalReference> .
 _:genid34 <http://admin-shell.io/aas/3/0/RC02/GlobalReference/value> "0173-1#05-AAA650#002"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/ConceptDescription> .
@@ -186,12 +186,12 @@ _:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell
 _:genid35 <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> .
 _:genid35 <http://admin-shell.io/aas/3/0/RC02/Reference/value> "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid36 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> .
-_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Document"@en .
-_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Dokument"@de .
+_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Document"@en .
+_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Dokument"@de .
 _:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "Document"@en .
 _:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition> "[ISO 15519-1:2010]"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "Entity"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Feste und geordnete Menge von f\u00FCr die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."@de .
+_:genid36 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Feste und geordnete Menge von f\u00FCr die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."@de .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/ConceptDescription> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "Title"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> <http://www.w3.org/2000/01/rdf-schema#label> "Title"^^<http://www.w3.org/2001/XMLSchema#string> .
@@ -201,11 +201,11 @@ _:genid37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell
 _:genid37 <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> .
 _:genid37 <http://admin-shell.io/aas/3/0/RC02/Reference/value> "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid38 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> .
-_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Titel"@en .
-_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Titel"@de .
+_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Titel"@en .
+_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Titel"@de .
 _:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "Titel"@en .
 _:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "StringTranslatable"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Sprachabh\u00E4ngiger Titel des Dokuments."@de .
+_:genid38 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Sprachabh\u00E4ngiger Titel des Dokuments."@de .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/ConceptDescription> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile> <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "DigitalFile"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile> <http://www.w3.org/2000/01/rdf-schema#label> "DigitalFile"^^<http://www.w3.org/2001/XMLSchema#string> .
@@ -215,7 +215,7 @@ _:genid39 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell
 _:genid39 <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> .
 _:genid39 <http://admin-shell.io/aas/3/0/RC02/Reference/value> "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360"^^<http://www.w3.org/2001/XMLSchema#string> .
 _:genid40 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360> .
-_:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName> "Digital File"@en .
+_:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames> "Digital File"@en .
 _:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName> "DigitalFile"@en .
 _:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType> "File"^^<http://www.w3.org/2001/XMLSchema#string> .
-_:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition> "Eine Datei, die die DocumentVersion repr\u00E4sentiert. Neben der obligatorischen PDF/A Datei k\u00F6nnen weitere Dateien angegeben werden."@de .
+_:genid40 <https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions> "Eine Datei, die die DocumentVersion repr\u00E4sentiert. Neben der obligatorischen PDF/A Datei k\u00F6nnen weitere Dateien angegeben werden."@de .
