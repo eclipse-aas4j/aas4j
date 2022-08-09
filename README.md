@@ -62,9 +62,9 @@ Additionally, the sources that are used for generating the static documentation 
 
 
 
-# How to Contribute (:construction: to be updated)
+# How to Contribute
 
-We always look for contributions, bug reports, feature requests etc. Simply open an [issue](https://projects.eclipse.org/projects/dt.aas4j/issues) or - even better - directly propose a change through a [pull request](https://projects.eclipse.org/projects/dt.aas4j/pulls).
+We always look for contributions, bug reports, feature requests etc. Please, read https://github.com/eclipse-digitaltwin/aas4j/blob/main/CONTRIBUTING.md for more information,
 
 
 # Contributors
