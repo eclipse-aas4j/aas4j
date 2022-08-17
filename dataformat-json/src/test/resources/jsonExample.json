@@ -48,7 +48,7 @@
                 ],
                 "thumbnail": {
                     "contentType": "image/png",
-                    "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
+                    "path": "file:///master/verwaltungsschale-detail-part1.png"
                 }
             },
             "submodels": [
@@ -446,7 +446,7 @@
                         {
                             "modelType": "File",
                             "contentType": "application/pdf",
-                            "value": "/aasx/OperatingManual.pdf",
+                            "value": "file:///aasx/OperatingManual.pdf",
                             "kind": "Instance",
                             "semanticId":
                             {

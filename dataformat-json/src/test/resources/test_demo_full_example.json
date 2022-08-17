@@ -214,11 +214,11 @@
             "descriptions":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example concept description for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
             
@@ -240,11 +240,11 @@
             "descriptions":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example concept description for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
             
@@ -265,6 +265,17 @@
 
                             "type": "GlobalReference",
                             "value": "http://acplt.org/ReferenceElements/ConceptDescriptionX"
+                        }
+                    ],
+                    "type": "GlobalReference"
+                }
+            ],
+            "dataSpecifications": [
+                {
+                    "keys": [
+                        {
+                            "type": "GlobalReference",
+                            "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
                         }
                     ],
                     "type": "GlobalReference"
@@ -291,7 +302,7 @@
                         "value": "TEST",
                         "valueFormat": "string",
                         "valueList": {
-                            "valueReferencePairTypes": [
+                            "valueReferencePairs": [
                                 {
                                     "value": "http://acplt.org/ValueId/ExampleValueId",
                                     "valueId": {
@@ -328,7 +339,7 @@
                                 "text": "This is a DataSpecification for testing purposes"
                             }
                         ],
-                        "levelType": "Min",
+                        "levelType": "Max",
                         "preferredNames": [
                             {
                                 "language": "de",
@@ -709,7 +720,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -727,7 +738,7 @@
                                         "value": "ExampleProperty2"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "descriptions":  [
                             {
@@ -772,7 +783,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -790,7 +801,7 @@
                                         "value": "ExampleProperty2"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "annotations": [
                         {
@@ -1029,6 +1040,8 @@
                                 ],
                                 "type": "GlobalReference"
                             },
+                    "direction": "Input",
+                    "state": "On",
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
                     "descriptions":  [
@@ -1239,7 +1252,7 @@
                         {
                             "modelType": "File",
                             "contentType": "application/pdf",
-                            "value": "/TestFile.pdf",
+                            "value": "file:///TestFile.pdf",
                             "semanticId":
                                     {
                                         "keys": [
@@ -1314,11 +1327,11 @@
             "descriptions":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
@@ -1348,7 +1361,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1366,7 +1379,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             }
                 },
                 {
@@ -1388,7 +1401,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1406,7 +1419,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             }
                 },
                 {
@@ -1438,7 +1451,9 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "idShort": "ExampleBasicEvent"
+                    "idShort": "ExampleBasicEvent",
+                    "direction": "Output",
+                    "state": "Off"
                 },
                 {
                     "modelType": "SubmodelElementCollection",
@@ -1543,7 +1558,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1561,7 +1576,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "descriptions":  [
                             {
@@ -1605,7 +1620,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1623,7 +1638,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "annotations": [
                         {
@@ -1847,6 +1862,8 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
+                    "direction": "Input",
+                    "state": "On",
                     "descriptions":  [
                             {
                                 "language": "en-us",
@@ -2042,7 +2059,7 @@
                         {
                             "modelType": "File",
                             "contentType": "application/pdf",
-                            "value": "/TestFile.pdf",
+                            "value": "file:///TestFile.pdf",
                             "semanticId":
                                     {
                                         "keys": [
@@ -2117,11 +2134,11 @@
             "descriptions":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
@@ -2170,7 +2187,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -2180,7 +2197,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                             "descriptions":  [
                                     {
@@ -2217,7 +2234,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -2227,7 +2244,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                             "descriptions":  [
                                     {
@@ -2419,6 +2436,8 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
+                    "direction": "Output",
+                    "state": "Off",
                     "descriptions":  [
                             {
                                 "language": "en-us",
@@ -2714,11 +2733,11 @@
             "descriptions":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
