@@ -15,7 +15,30 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.serialization;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.eclipse.aas4j.v3.model.LangString;
 
+import java.io.IOException;
+import java.util.List;
+
 public class LangStringsSerializer extends NoEntryWrapperListSerializer<LangString> {
+
+
+    @Override
+    public void serialize(List<LangString> langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+
+        ToXmlGenerator xgen = (ToXmlGenerator) gen;
+
+        xgen.writeStartObject();
+
+        xgen.writeEndObject();
+    }
+
+    @Override
+    public Class<List<LangString>> handledType() {
+        return (Class<List<LangString>>)(Object)List.class;
+    }
+
 }

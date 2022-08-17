@@ -15,18 +15,18 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.Qualifier;
+
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+@JsonPropertyOrder({
+        "semanticId", "supplementalSemanticIds", // --> HasSemantics
+        "kind", "type", "valueType", "value", "valueId"
+})
+public interface QualifierMixin {
 
-import org.eclipse.aas4j.v3.dataformat.xml.deserialization.DataElementsDeserializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.DataElementsSerializer;
-import org.eclipse.aas4j.v3.model.DataElement;
-
-
-public interface AnnotatedRelationshipElementMixin {
-    @JsonSerialize(using = DataElementsSerializer.class)
-    @JsonDeserialize(using = DataElementsDeserializer.class)
-    public List<DataElement> getAnnotations();
 }

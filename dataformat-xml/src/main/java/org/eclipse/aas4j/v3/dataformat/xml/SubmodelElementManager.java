@@ -50,7 +50,7 @@ public class SubmodelElementManager {
         CLASS_TO_NAME.put(DefaultMultiLanguageProperty.class, "multiLanguageProperty");
         CLASS_TO_NAME.put(DefaultCapability.class, "capability");
         CLASS_TO_NAME.put(DefaultEntity.class, "entity");
-        CLASS_TO_NAME.put(DefaultBasicEventElement.class, "basicEvent");
+        CLASS_TO_NAME.put(DefaultBasicEventElement.class, "basicEventElement");
         CLASS_TO_NAME.put(DefaultEventPayload.class, "eventPayload");
         CLASS_TO_NAME.put(DefaultOperation.class, "operation");
         CLASS_TO_NAME.put(DefaultOperationVariable.class, "operationVariable");

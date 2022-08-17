@@ -16,6 +16,7 @@
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -30,5 +31,5 @@ public interface SubmodelElementCollectionMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     @JsonSerialize(using = SubmodelElementsSerializer.class)
     @JsonDeserialize(using = SubmodelElementsDeserializer.class)
-    public Collection<SubmodelElement> getValues();
+    public List<SubmodelElement> getValue();
 }

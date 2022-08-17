@@ -15,18 +15,19 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import org.eclipse.aas4j.v3.dataformat.xml.deserialization.DataElementsDeserializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.DataElementsSerializer;
-import org.eclipse.aas4j.v3.model.DataElement;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.KeyTypes;
 
 
-public interface AnnotatedRelationshipElementMixin {
-    @JsonSerialize(using = DataElementsSerializer.class)
-    @JsonDeserialize(using = DataElementsDeserializer.class)
-    public List<DataElement> getAnnotations();
+@JsonPropertyOrder({"language", "text"})
+public interface LangStringMixin {
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "language")
+    public String getLanguage();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "text")
+    public String getText();
 }

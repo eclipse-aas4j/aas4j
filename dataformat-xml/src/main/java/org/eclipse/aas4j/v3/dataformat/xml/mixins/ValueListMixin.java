@@ -15,18 +15,16 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.ValueReferencePair;
+
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+public interface ValueListMixin {
 
-import org.eclipse.aas4j.v3.dataformat.xml.deserialization.DataElementsDeserializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.DataElementsSerializer;
-import org.eclipse.aas4j.v3.model.DataElement;
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "valueReferencePair")
+    List<ValueReferencePair> getValueReferencePairs();
 
-
-public interface AnnotatedRelationshipElementMixin {
-    @JsonSerialize(using = DataElementsSerializer.class)
-    @JsonDeserialize(using = DataElementsDeserializer.class)
-    public List<DataElement> getAnnotations();
 }

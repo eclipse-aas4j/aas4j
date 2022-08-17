@@ -17,15 +17,22 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserializer;
 import org.eclipse.aas4j.v3.model.Reference;
 
+
+@JsonPropertyOrder({"hasExtension", "category", "idShort", "displayNames", "descriptions", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "isCaseOf"})
 public interface ConceptDescriptionMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "isCaseOf")
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "isCaseOf")
     @JsonDeserialize(using = ReferencesDeserializer.class)
-    public List<Reference> getIsCaseOfs();
+    public List<Reference> getIsCaseOf();
+
 }

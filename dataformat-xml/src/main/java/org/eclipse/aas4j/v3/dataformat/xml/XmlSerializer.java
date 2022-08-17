@@ -15,6 +15,7 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml;
 
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -30,16 +31,11 @@ import org.eclipse.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.aas4j.v3.dataformat.Serializer;
 import org.eclipse.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
+import org.eclipse.aas4j.v3.dataformat.xml.serialization.*;
 // TODO import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.KeySerializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.LangStringSerializer;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.ReferenceSerializer;
-import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.*;
 // TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import org.eclipse.aas4j.v3.model.Key;
-import org.eclipse.aas4j.v3.model.LangString;
-import org.eclipse.aas4j.v3.model.Reference;
+
 
 public class XmlSerializer implements Serializer {
     protected XmlMapper mapper;
@@ -78,9 +74,11 @@ public class XmlSerializer implements Serializer {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer();
         }
         module.addSerializer(Environment.class, aasEnvSerializer);
-        module.addSerializer(Key.class, new KeySerializer());
-        module.addSerializer(Reference.class, new ReferenceSerializer());
+//        module.addSerializer(Key.class, new KeySerializer());
+//        module.addSerializer(Reference.class, new ReferenceSerializer());
         module.addSerializer(LangString.class, new LangStringSerializer());
+//        module.addSerializer(new LangStringsSerializer());
+        module.addSerializer(OperationVariable.class, new OperationVeriableSerializer());
         return module;
     }
 

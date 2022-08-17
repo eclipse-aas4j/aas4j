@@ -17,17 +17,19 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
-
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.KeyTypes;
+import org.eclipse.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({"type", "value"})
-public interface KeyMixin {
+@JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
+public interface SpecificAssetIdMixin {
+    
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
+    public String getName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     public String getValue();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    public KeyTypes getType();
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
+    public Reference getExternalSubjectId();
 }

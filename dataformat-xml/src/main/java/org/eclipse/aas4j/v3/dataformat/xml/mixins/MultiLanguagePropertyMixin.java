@@ -19,6 +19,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
@@ -27,8 +28,8 @@ import org.eclipse.aas4j.v3.dataformat.xml.serialization.LangStringsSerializer;
 import org.eclipse.aas4j.v3.model.LangString;
 
 public interface MultiLanguagePropertyMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonSerialize(using = LangStringsSerializer.class)
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+//    @JsonSerialize(using = LangStringsSerializer.class)
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getValues();
+    public List<LangString> getValue();
 }

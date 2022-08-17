@@ -15,25 +15,35 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.deserialization;
 
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.aas4j.v3.dataformat.core.DataSpecificationManager;
+import org.eclipse.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.aas4j.v3.model.DataSpecificationIEC61360;
 
-// TODO import io.adminshell.aas.v3.model.impl.DefaultDataSpecificationIEC61360;
-// TODO import io.adminshell.aas.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.impl.DefaultDataSpecificationIEC61360;
+
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 // TODO fix the EmbeddedDataSpecification issue
-/* public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<List<EmbeddedDataSpecification>> {
+public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<List<DataSpecificationContent>> {
 
     @Override
-    public List<EmbeddedDataSpecification> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public List<DataSpecificationContent> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
         }
-        if (node.has(DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT)) {
-            return createEmbeddedDataSpecificationsFromContent(parser, node);
-        } else {
-            return createEmbeddedDataSpecificationsFromReference(parser, node);
-        }
+
+        return createEmbeddedDataSpecificationsFromContent(parser, node);
     }
 
     private JsonNode getReferenceNode(JsonParser parser, JsonNode node) throws JsonMappingException {
@@ -44,21 +54,15 @@ package org.eclipse.aas4j.v3.dataformat.xml.deserialization;
         return nodeDataSpecification;
     }
 
-    private List<EmbeddedDataSpecification> createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
+    private List<DataSpecificationContent> createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
         JsonNode nodeContent = node.get(DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT);
         JsonNode specificationNode = nodeContent.get("dataSpecificationIEC61360");
         DataSpecificationContent content = createDefaultDataSpecificationIEC61360FromNode(parser, specificationNode);
-        return Collections.singletonList(new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(content).build());
-    }
-
-    private List<EmbeddedDataSpecification> createEmbeddedDataSpecificationsFromReference(JsonParser parser, JsonNode node) throws IOException {
-        JsonNode nodeDataSpecification = getReferenceNode(parser, node);
-        Reference reference = DeserializationHelper.createInstanceFromNode(parser, nodeDataSpecification, Reference.class);
-        return Collections.singletonList(new DefaultEmbeddedDataSpecification.Builder().dataSpecification(reference).build());
+        return Collections.singletonList(content);
     }
 
     private DataSpecificationContent createDefaultDataSpecificationIEC61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
         return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIEC61360.class);
     }
 
-}*/
+}

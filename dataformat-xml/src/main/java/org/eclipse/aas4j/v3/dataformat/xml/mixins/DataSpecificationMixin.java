@@ -16,18 +16,26 @@
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
-
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.aas4j.v3.model.KeyTypes;
+import org.eclipse.aas4j.v3.model.*;
 
-@JsonPropertyOrder({"type", "value"})
-public interface KeyMixin {
+import java.util.List;
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+@JsonPropertyOrder({"administration", "id", "dataSpecificationContent", "descriptions"})
+public interface DataSpecificationMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    public KeyTypes getType();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "administration")
+    public AdministrativeInformation getAdministration();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
+    public String getId();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
+    public DataSpecificationIEC61360 getDataSpecificationContent();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
+    public List<LangString> getDescriptions();
+
 }

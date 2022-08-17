@@ -17,17 +17,23 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
-
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.aas4j.v3.model.KeyTypes;
+import org.eclipse.aas4j.v3.model.*;
 
-@JsonPropertyOrder({"type", "value"})
-public interface KeyMixin {
+import java.util.List;
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+@JsonPropertyOrder({"assetAdministrationShells", "submodels", "conceptDescriptions", "dataSpecifications"})
+public interface EnvironmentMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    public KeyTypes getType();
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "assetAdministrationShells")
+    public List<AssetAdministrationShell> getAssetAdministrationShells();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
+    public List<Submodel> getSubmodels();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "conceptDescriptions")
+    public List<ConceptDescription> getConceptDescriptions();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
+    public List<DataSpecification> getDataSpecifications();
 }

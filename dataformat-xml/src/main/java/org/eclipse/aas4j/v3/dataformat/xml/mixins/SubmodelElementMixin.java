@@ -15,39 +15,32 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.LangStringsSerializer;
 import org.eclipse.aas4j.v3.model.LangString;
 
+import java.util.List;
 
-@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayNames", "descriptions", "checksum"})
-public interface ReferableMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
-//    @JsonSerialize(using = LangStringsSerializer.class)
-    @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getDescriptions();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
-    public void setDescriptions(List<LangString> descriptions);
+@JsonPropertyOrder({
+        "hasExtensions", "category", "idShort", "displayNames", "descriptions", "checksum", // --> Referable
+        "kind", // --> HasKind
+        "semanticId", "supplementalSemanticIds", // --> HasSemantics
+        "qualifier",  // --> Qualifiable
+        "dataSpecifications", "embeddedDataSpecifications", // --> HasDataSpecifications
+        "valueType", "value", "valueId" // --> Property
+        , "statements", "entityType", "globalAssetId", "specificAssetId" // --> Entity
+        , "first", "second", "annotations" // --> (Annotated)RelationsShipElement
+        , "inputVariables", "outputVariables", "inoutputVariables" // --> Operation
+        , "observed","direction","state","messageTopic","messageBroker","lastUpdate","minInterval","maxInterval" // --> BasicEventElement
+        , "min", "max" // Range
+})
+public interface SubmodelElementMixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")
-//    @JsonSerialize(using = LangStringsSerializer.class)
-    @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getDisplayNames();
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")
-    public void setDisplayNames(List<LangString> displayNames);
-
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getIdShort();
 }

@@ -35,20 +35,20 @@ public interface ValueList {
     /**
      * A pair of a value together with its global unique id..
      *
-     * More information under https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairTypes
+     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
      *
      * @return Returns the List of ValueReferencePairs for the property valueReferencePairTypes.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairTypes")
-    List<ValueReferencePair> getValueReferencePairTypes();
+    @IRI("https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairs")
+    List<ValueReferencePair> getValueReferencePairs();
 
     /**
      * A pair of a value together with its global unique id..
      *
-     * More information under https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairTypes
+     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
      *
-     * @param valueReferencePairTypes desired value for the property valueReferencePairTypes.
+     * @param valueReferencePairs desired value for the property valueReferencePairs.
      */
-    void setValueReferencePairTypes(List<ValueReferencePair> valueReferencePairTypes);
+    void setValueReferencePairTypes(List<ValueReferencePair> valueReferencePairs);
 
 }

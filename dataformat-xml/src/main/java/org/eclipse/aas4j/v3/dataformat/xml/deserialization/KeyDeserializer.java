@@ -30,7 +30,7 @@ public class KeyDeserializer implements CustomJsonNodeDeserializer<Key> {
     @Override
     public Key readValue(JsonNode node, JsonParser parser) throws IOException {
         JsonNode typeNode = node.get("type");
-        JsonNode valueNode = node.get("");
+        JsonNode valueNode = node.get("value");
         KeyTypes type = createKeyTypesFromNode(parser, typeNode);
         String value = valueNode.asText();
         return new DefaultKey.Builder().type(type).value(value).build();

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
+import org.eclipse.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
 public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
@@ -42,7 +43,7 @@ public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeStartObject();
         for (SubmodelElement element : value) {
-            xgen.writeFieldName("dataElement");
+            xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
             ser.serialize(element, xgen, serializers);
         }
         xgen.writeEndObject();
