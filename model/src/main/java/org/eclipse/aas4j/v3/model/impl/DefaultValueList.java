@@ -34,14 +34,14 @@ import org.eclipse.aas4j.v3.model.builder.*;
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairTypes")
-    protected List<ValueReferencePair> valueReferencePairTypes = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairs")
+    protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
     public DefaultValueList() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.valueReferencePairTypes);
+        return Objects.hash(this.valueReferencePairs);
     }
 
     @Override
@@ -54,18 +54,18 @@ public class DefaultValueList implements ValueList {
             return false;
         } else {
             DefaultValueList other = (DefaultValueList) obj;
-            return Objects.equals(this.valueReferencePairTypes, other.valueReferencePairTypes);
+            return Objects.equals(this.valueReferencePairs, other.valueReferencePairs);
         }
     }
 
     @Override
-    public List<ValueReferencePair> getValueReferencePairTypes() {
-        return valueReferencePairTypes;
+    public List<ValueReferencePair> getValueReferencePairs() {
+        return valueReferencePairs;
     }
 
     @Override
-    public void setValueReferencePairTypes(List<ValueReferencePair> valueReferencePairTypes) {
-        this.valueReferencePairTypes = valueReferencePairTypes;
+    public void setValueReferencePairTypes(List<ValueReferencePair> valueReferencePairs) {
+        this.valueReferencePairs = valueReferencePairs;
     }
 
     /**

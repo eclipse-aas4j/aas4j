@@ -38,11 +38,11 @@ public abstract class ValueListBuilder<T extends ValueList, B extends ValueListB
     /**
      * This function allows adding a value to the List valueReferencePairTypes
      *
-     * @param valueReferencePairTypes desired value to be added
+     * @param valueReferencePairs desired value to be added
      * @return Builder object with new value for valueReferencePairTypes
      */
-    public B valueReferencePairTypes(ValueReferencePair valueReferencePairTypes) {
-        getBuildingInstance().getValueReferencePairTypes().add(valueReferencePairTypes);
+    public B valueReferencePairs(ValueReferencePair valueReferencePairs) {
+        getBuildingInstance().getValueReferencePairs().add(valueReferencePairs);
         return getSelf();
     }
 }

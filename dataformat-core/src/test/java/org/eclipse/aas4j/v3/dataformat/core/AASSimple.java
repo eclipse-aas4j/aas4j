@@ -52,7 +52,7 @@ public class AASSimple {
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
     private static final String TITLE = "Title";
     private static final String SERVO_DC_MOTOR = "ServoDCMotor";
-    private static final String HTTPS_GITHUB_COM_ADMIN_SHELL_IO_BLOB_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png";
+    private static final String FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "file:///master/verwaltungsschale-detail-part1.png";
     private static final String IMAGE_PNG = "image/png";
     private static final String THUMBNAIL = "thumbnail";
     private static final String HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1 = "http://customer.com/Systems/IoT/1";
@@ -88,7 +88,7 @@ public class AASSimple {
     private static final String SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE;
     private static final String SUBMODEL_DOCUMENTATION_FILE_ID_SHORT = "DigitalFile_PDF";
     private static final String SUBMODEL_DOCUMENTATION_FILE_contentType = "application/pdf";
-    private static final String SUBMODEL_DOCUMENTATION_FILE_VALUE = "/aasx/OperatingManual.pdf";
+    private static final String SUBMODEL_DOCUMENTATION_FILE_VALUE = "file:///aasx/OperatingManual.pdf";
 
     // SUBMODEL_OPERATIONAL_DATA
     private static final String SUBMODEL_OPERATIONAL_DATA_ID_SHORT = "OperationalData";
@@ -150,7 +150,7 @@ public class AASSimple {
                                 .build())
                         .defaultThumbnail(new DefaultResource.Builder()
                                 .contentType(IMAGE_PNG)
-                                .path(HTTPS_GITHUB_COM_ADMIN_SHELL_IO_BLOB_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG)
+                                .path(FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG)
                                 .build())
                         .build())
                 .submodels(new DefaultReference.Builder()

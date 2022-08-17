@@ -338,7 +338,7 @@ public class ReflectionHelper {
                     } else {
                         Class<?> implementedClass = interfaceClassInfos.get(0).loadClass();
                         defaultImplementations.add(new ImplementationInfo(implementedClass, x));
-                        logger.info("using default implementation class '{}' for interface '{}'",
+                        logger.debug("using default implementation class '{}' for interface '{}'",
                                 x.getSimpleName(),
                                 interfaceClassInfos.get(0).getName());
 
@@ -367,7 +367,7 @@ public class ReflectionHelper {
                         logger.warn("could not auto-resolve target class for mixin '{}'", x.getSimpleName());
                     } else {
                         mixins.put(modelClassInfos.get(0).loadClass(), x);
-                        logger.info("using mixin '{}' for class '{}'",
+                        logger.debug("using mixin '{}' for class '{}'",
                                 x.getSimpleName(),
                                 modelClassInfos.get(0).getName());
                     }
