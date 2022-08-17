@@ -297,6 +297,7 @@
 							<enumeration value="Submodel"/>
 							<enumeration value="SubmodelElement"/>
 							<enumeration value="SubmodelElementCollection"/>
+							<enumeration value="SubmodelElementList"/>
 							<enumeration value="View"/>
 						</restriction>
 					</simpleType>
@@ -441,6 +442,7 @@
 			<element name="operation" type="aas:operation_t"/>
 			<element name="relationshipElement" type="aas:relationshipElement_t"/>
 			<element name="submodelElementCollection" type="aas:submodelElementCollection_t"/>
+			<element name="submodelElementList" type="aas:submodelElementList_t"/>
 			<group ref="aas:dataElement"/>
 		</choice>
 	</complexType>
@@ -460,6 +462,19 @@
 					<element name="allowDuplicates" type="boolean"/>
 					<element name="ordered" type="boolean"/>
 					<element name="value" type="aas:submodelElements_t"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="submodelElementList_t">
+		<complexContent>
+			<extension base="aas:submodelElementAbstract_t">
+				<sequence>
+					<element name="orderRelevant" type="boolean" minOccurs="0" maxOccurs="1"/>
+					<element name="value" type="aas:submodelElements_t" minOccurs="0"/>
+					<element name="semanticIdListElement" type="aas:reference_t" minOccurs="0" maxOccurs="1"/>
+					<!-- TODO: <element name="typeValueListElement" type="SubmodelElementElements"/>-->
+					<!-- TODO: <element name="valueTypeListElement" type="aas:dataTypeDef_t" minOccurs="0" maxOccurs="1"/>-->
 				</sequence>
 			</extension>
 		</complexContent>

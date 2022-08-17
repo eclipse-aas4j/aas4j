@@ -624,7 +624,7 @@
                </aas:basicEvent>
             </aas:submodelElement>
             <aas:submodelElement>
-               <aas:submodelElementCollection>
+               <aas:submodelElementList>
                   <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
                   <aas:category>Parameter</aas:category>
                   <aas:description>
@@ -636,8 +636,7 @@
                         <aas:key idType="Iri" type="GlobalReference">http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:key>
                      </aas:keys>
                   </aas:semanticId>
-                  <aas:allowDuplicates>false</aas:allowDuplicates>
-                  <aas:ordered>true</aas:ordered>
+                  <aas:orderRelevant>true</aas:orderRelevant>
                   <aas:value>
                      <aas:submodelElement>
                         <aas:property>
@@ -704,7 +703,7 @@
                         </aas:range>
                      </aas:submodelElement>
                   </aas:value>
-               </aas:submodelElementCollection>
+               </aas:submodelElementList>
             </aas:submodelElement>
             <aas:submodelElement>
                <aas:submodelElementCollection>
@@ -851,10 +850,9 @@
                </aas:basicEvent>
             </aas:submodelElement>
             <aas:submodelElement>
-               <aas:submodelElementCollection>
+               <aas:submodelElementList>
                   <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
-                  <aas:allowDuplicates>false</aas:allowDuplicates>
-                  <aas:ordered>true</aas:ordered>
+                  <aas:orderRelevant>true</aas:orderRelevant>
                   <aas:value>
                      <aas:submodelElement>
                         <aas:property>
@@ -874,7 +872,7 @@
                         </aas:range>
                      </aas:submodelElement>
                   </aas:value>
-               </aas:submodelElementCollection>
+               </aas:submodelElementList>
             </aas:submodelElement>
             <aas:submodelElement>
                <aas:submodelElementCollection>
@@ -1134,7 +1132,7 @@
                </aas:basicEvent>
             </aas:submodelElement>
             <aas:submodelElement>
-               <aas:submodelElementCollection>
+               <aas:submodelElementList>
                   <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
                   <aas:category>Parameter</aas:category>
                   <aas:description>
@@ -1146,8 +1144,7 @@
                         <aas:key idType="Iri" type="GlobalReference">http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:key>
                      </aas:keys>
                   </aas:semanticId>
-                  <aas:allowDuplicates>false</aas:allowDuplicates>
-                  <aas:ordered>true</aas:ordered>
+                  <aas:orderRelevant>true</aas:orderRelevant>
                   <aas:value>
                      <aas:submodelElement>
                         <aas:property>
@@ -1210,7 +1207,7 @@
                         </aas:range>
                      </aas:submodelElement>
                   </aas:value>
-               </aas:submodelElementCollection>
+               </aas:submodelElementList>
             </aas:submodelElement>
             <aas:submodelElement>
                <aas:submodelElementCollection>
@@ -1471,7 +1468,7 @@
                </aas:basicEvent>
             </aas:submodelElement>
             <aas:submodelElement>
-               <aas:submodelElementCollection>
+               <aas:submodelElementList>
                   <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
                   <aas:category>Parameter</aas:category>
                   <aas:description>
@@ -1484,8 +1481,7 @@
                         <aas:key idType="Iri" type="GlobalReference">http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:key>
                      </aas:keys>
                   </aas:semanticId>
-                  <aas:allowDuplicates>false</aas:allowDuplicates>
-                  <aas:ordered>true</aas:ordered>
+                  <aas:orderRelevant>true</aas:orderRelevant>
                   <aas:value>
                      <aas:submodelElement>
                         <aas:property>
@@ -1557,7 +1553,7 @@
                         </aas:range>
                      </aas:submodelElement>
                   </aas:value>
-               </aas:submodelElementCollection>
+               </aas:submodelElementList>
             </aas:submodelElement>
             <aas:submodelElement>
                <aas:submodelElementCollection>

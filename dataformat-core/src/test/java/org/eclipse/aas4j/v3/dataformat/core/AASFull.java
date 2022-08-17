@@ -628,9 +628,10 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .build())
-                .submodelElements(new DefaultSubmodelElementCollection.Builder()
+                .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelCollectionOrdered")
                         .category("Parameter")
+                        .orderRelevant(true)
                         .descriptions(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollectionOrdered object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollectionOrdered Element").language("de").build()
@@ -710,7 +711,6 @@ public class AASFull {
                                 .max("100")
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-//                        .orderRelevant(true)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered")
@@ -789,7 +789,6 @@ public class AASFull {
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .build())
-//                        .orderRelevant(false)
                         .build())
                 .build();
     }
@@ -892,8 +891,9 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .build())
-                .submodelElements(new DefaultSubmodelElementCollection.Builder()
+                .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelCollectionOrdered")
+                        .orderRelevant(true)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
                                 .value(null)
@@ -908,7 +908,6 @@ public class AASFull {
                                 .max(null)
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-//                        .orderRelevant(true)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered")
@@ -924,11 +923,9 @@ public class AASFull {
                         .value(new DefaultReferenceElement.Builder() // TODO: add key and type?
                                 .idShort("ExampleReferenceElement")
                                 .build())
-//                        .orderRelevant(false)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered2")
-//                        .orderRelevant(false)
                         .build())
                 .build();
     }
@@ -1189,9 +1186,10 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .build())
-                .submodelElements(new DefaultSubmodelElementCollection.Builder()
+                .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelCollectionOrdered")
                         .category("Parameter")
+                        .orderRelevant(true)
                         .descriptions(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollectionOrdered object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollectionOrdered Element").language("de").build()
@@ -1261,7 +1259,6 @@ public class AASFull {
                                 .max("100")
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-//                        .orderRelevant(true)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered")
@@ -1342,7 +1339,6 @@ public class AASFull {
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .build())
-                        //.orderRelevant(false)
                         .build())
                 .build();
     }
@@ -1546,9 +1542,10 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .build())
-                .submodelElements(new DefaultSubmodelElementCollection.Builder()
+                .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelCollectionOrdered")
                         .category("Parameter")
+                        .orderRelevant(true)
                         .descriptions(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollectionOrdered object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollectionOrdered Element").language("de").build()
@@ -1633,7 +1630,6 @@ public class AASFull {
                                 .max(null)
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-//                        .orderRelevant(true)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered")
@@ -1701,7 +1697,6 @@ public class AASFull {
                                         .build())
                                 .kind(ModelingKind.TEMPLATE)
                                 .build())
-                        //.orderRelevant(false)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelCollectionUnordered2")
@@ -1718,7 +1713,6 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .kind(ModelingKind.TEMPLATE)
-                        //.orderRelevant(false)
                         .build())
                 .build();
     }

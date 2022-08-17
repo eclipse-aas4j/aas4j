@@ -1057,7 +1057,7 @@
                     
                 },
                 {
-                    "modelType": "SubmodelElementCollection",
+                    "modelType": "SubmodelElementList",
                     "semanticId":
                             {
                                 "keys": [
@@ -1070,6 +1070,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
+                    "orderRelevant": true,
                     "descriptions":  [
                             {
                                 "language": "en-us",
@@ -1456,8 +1457,9 @@
                     "state": "Off"
                 },
                 {
-                    "modelType": "SubmodelElementCollection",
+                    "modelType": "SubmodelElementList",
                     "idShort": "ExampleSubmodelCollectionOrdered",
+                    "orderRelevant": true,
                     "value": [
                         {
                             "modelType": "Property",
@@ -1877,7 +1879,7 @@
                     
                 },
                 {
-                    "modelType": "SubmodelElementCollection",
+                    "modelType": "SubmodelElementList",
                     "semanticId":
                             {
                                 "keys": [
@@ -1890,6 +1892,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
+                    "orderRelevant": true,
                     "descriptions":  [
                                         {
                                             "language": "en-us",
@@ -2451,7 +2454,7 @@
                     
                 },
                 {
-                    "modelType": "SubmodelElementCollection",
+                    "modelType": "SubmodelElementList",
                     "kind": "Template",
                     "semanticId":
                             {
@@ -2465,6 +2468,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
+                    "orderRelevant": true,
                     "descriptions":  [
                             {
                                 "language": "en-us",

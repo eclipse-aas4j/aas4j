@@ -24,16 +24,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.aas4j.v3.model.*;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.eclipse.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
-import org.eclipse.aas4j.v3.model.SubmodelElementCollection;
 
 public class JsonReferableDeserializerTest {
 
@@ -97,7 +93,7 @@ public class JsonReferableDeserializerTest {
 
     @Test
     public void testReadSubmodelElements() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/submodelElementList.json");
+        File fileExpected = new File("src/test/resources/listOfSubmodelElements.json");
         String expected = Files.readString(fileExpected.toPath());
         List<SubmodelElement> submodelElements = new JsonDeserializer().readReferables(expected,SubmodelElement.class);
         Environment environment = AASFull.ENVIRONMENT;
@@ -109,12 +105,23 @@ public class JsonReferableDeserializerTest {
     }
 
     @Test
-    public void testReadSubmodelElementCollection() throws IOException, DeserializationException {
+    public void testReadSubmodelElementList() throws IOException, DeserializationException {
+        File fileExpected = new File("src/test/resources/submodelElementList.json");
+        String expected = Files.readString(fileExpected.toPath());
+        SubmodelElementList submodelElementList = new JsonDeserializer().readReferable(expected, SubmodelElementList.class);
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElement submodelElementListExpected = environment.getSubmodels().get(6).getSubmodelElements().get(5);                ;
+
+        assertEquals(submodelElementListExpected, submodelElementList);
+    }
+
+    @Test
+    public void testReadSubmodelElementColelction() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/submodelElementCollection.json");
         String expected = Files.readString(fileExpected.toPath());
-        SubmodelElementCollection submodelElementCollection = new JsonDeserializer().readReferable(expected,SubmodelElementCollection.class);
+        SubmodelElementCollection submodelElementCollection = new JsonDeserializer().readReferable(expected, SubmodelElementCollection.class);
         Environment environment = AASFull.ENVIRONMENT;
-        SubmodelElement submodelElementCollectionExpected = environment.getSubmodels().get(6).getSubmodelElements().get(5);                ;
+        SubmodelElement submodelElementCollectionExpected = environment.getSubmodels().get(6).getSubmodelElements().get(6);                ;
 
         assertEquals(submodelElementCollectionExpected, submodelElementCollection);
     }

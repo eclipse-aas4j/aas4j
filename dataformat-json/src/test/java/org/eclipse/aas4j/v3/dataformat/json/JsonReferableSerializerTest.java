@@ -79,14 +79,14 @@ public class JsonReferableSerializerTest {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement0 = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         SubmodelElement submodelElement1 = environment.getSubmodels().get(0).getSubmodelElements().get(1);
-        compare("src/test/resources/submodelElementList.json",submodelElement0,submodelElement1);
+        compare("src/test/resources/listOfSubmodelElements.json",submodelElement0,submodelElement1);
     }
 
     @Test
-    public void testSerializeSubmodelelementCollection() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelelementList() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElementCollection = environment.getSubmodels().get(6).getSubmodelElements().get(5);
-        compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);
+        compare("src/test/resources/submodelElementList.json",submodelElementCollection);
     }
 
     private void compare(String filePathForExpected, Referable... referable) throws IOException, SerializationException, JSONException {
