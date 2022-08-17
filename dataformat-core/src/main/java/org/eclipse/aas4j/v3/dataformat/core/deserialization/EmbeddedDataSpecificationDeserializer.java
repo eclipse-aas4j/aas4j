@@ -15,9 +15,20 @@
  */
 package org.eclipse.aas4j.v3.dataformat.core.deserialization;
 
-// TODO import org.eclipse.aas4j.v3.rc02.model.EmbeddedDataSpecification;
+// import org.eclipse.aas4j.v3.rc02.model.EmbeddedDataSpecification;
+// import org.eclipse.aas4j.v3.rc02.model.impl.DefaultEmbeddedDataSpecification;
 
-// TODO import org.eclipse.aas4j.v3.rc02.model.impl.DefaultEmbeddedDataSpecification;
+// TODO: Update handling of embeddedDataSpecifications
+// Currently we expect the following format
+//
+//      "embeddedDataSpecifications": [
+//          "embeddedDataSpecifications": {...},	// reference indicating the type
+//          "dataSpecificationContent": {...}		// actual data specification
+//      ]
+//
+// In the future, either embeddedDataSpecifications or dataSpecificationContent should be present.
+// However, it is still undefined how the actual (sub-)type of dataSpecificationContent should be serialized, so this cannot be implemented right now.
+// Therefore, this functionality is currently disabled until standardization progresses.
 
 /**
  * Custom Deserializer for class DataSpecification. First reads property
@@ -25,7 +36,6 @@ package org.eclipse.aas4j.v3.dataformat.core.deserialization;
  * deserialization based on the found value with the help of
  * DataSpecificationManager.
  */
-// TODO: solve the problem with EmbeddedDataSpecifications
 /* public class EmbeddedDataSpecificationDeserializer extends JsonDeserializer<EmbeddedDataSpecification> {
 
     @Override
