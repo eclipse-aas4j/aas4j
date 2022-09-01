@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeser
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
-@JsonPropertyOrder({ "hasExtension", "category", "idShort", "displayNames", "descriptions", "checksum", "administration", "id",   "kind",   "semanticId", "supplementalSemanticIds",  "qualifier",  "dataSpecifications", "embeddedDataSpecifications",   "submodelElements"})
+@JsonPropertyOrder({ "hasExtension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id",   "kind",   "semanticId", "supplementalSemanticIds",  "qualifier",  "dataSpecifications", "embeddedDataSpecifications",   "submodelElements"})
 public interface SubmodelMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelElements")
     @JsonSerialize(using = SubmodelElementsSerializer.class)

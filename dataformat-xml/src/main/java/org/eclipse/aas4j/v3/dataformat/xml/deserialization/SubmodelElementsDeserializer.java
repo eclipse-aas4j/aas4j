@@ -54,11 +54,11 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
     }
 
     private List<SubmodelElement> createSubmodelElements(JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws IOException, JsonProcessingException {
-        JsonNode nodeSubmodelElement = getSubmodelElementsNode(treeNode);
-        if (nodeSubmodelElement.isArray()) {
-            return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) nodeSubmodelElement);
+//        JsonNode nodeSubmodelElement = getSubmodelElementsNode(treeNode);
+        if (treeNode.isArray()) {
+            return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
         } else {
-            return getSubmodelElementsFromObjectNode(parser, ctxt, nodeSubmodelElement);
+            return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
         }
     }
 

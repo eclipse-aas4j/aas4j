@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aas:aasenv xmlns:aas="http://www.admin-shell.io/aas/3/0"
-	xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0"
-	xsi:schemaLocation="http://www.admin-shell.io/aas/3/0 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02"
+				 xmlns:abac="http://www.admin-shell.io/aas/abac/3/0"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns="https://admin-shell.io/aas/3/0/RC02"
+				 xsi:schemaLocation="http://www.admin-shell.io/aas/3/0 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
 	<aas:assetAdministrationShells>
 		<aas:assetAdministrationShell>
 			<aas:idShort>
@@ -45,23 +46,6 @@
 			</aas:submodelRefs>
 		</aas:assetAdministrationShell>
 	</aas:assetAdministrationShells>
-	<aas:assets>
-		<aas:asset>
-			<aas:idShort>
-				ServoDCMotor
-			</aas:idShort>
-			<aas:identification idType="IRI">
-				http://customer.com/assets/KHBVZJSQKIY
-			</aas:identification>
-			<aas:assetIdentificationModelRef>
-				<aas:keys/>
-			</aas:assetIdentificationModelRef>
-			<aas:billOfMaterialRef>
-				<aas:keys/>
-			</aas:billOfMaterialRef>
-			<aas:kind>Instance</aas:kind>
-		</aas:asset>
-	</aas:assets>
 		<aas:submodels>
 		<aas:submodel>
 			<aas:idShort>
@@ -483,4 +467,4 @@
 			</aas:embeddedDataSpecification>
 		</aas:conceptDescription>
 	</aas:conceptDescriptions>
-</aas:aasenv>
+</aas:environment>

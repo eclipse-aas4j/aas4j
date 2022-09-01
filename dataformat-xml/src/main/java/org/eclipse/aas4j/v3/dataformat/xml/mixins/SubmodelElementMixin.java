@@ -29,7 +29,7 @@ import java.util.List;
 
 
 @JsonPropertyOrder({
-        "hasExtensions", "category", "idShort", "displayNames", "descriptions", "checksum", // --> Referable
+        "hasExtensions", "category", "idShort", "displayNames", "description", "checksum", // --> Referable
         "kind", // --> HasKind
         "semanticId", "supplementalSemanticIds", // --> HasSemantics
         "qualifier",  // --> Qualifiable

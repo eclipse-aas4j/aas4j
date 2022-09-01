@@ -30,14 +30,14 @@ import org.eclipse.aas4j.v3.dataformat.xml.serialization.LangStringsSerializer;
 import org.eclipse.aas4j.v3.model.LangString;
 
 
-@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayNames", "descriptions", "checksum"})
+@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayNames", "description", "checksum"})
 public interface ReferableMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
 //    @JsonSerialize(using = LangStringsSerializer.class)
     @JsonDeserialize(using = LangStringsDeserializer.class)
     public List<LangString> getDescriptions();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
     public void setDescriptions(List<LangString> descriptions);
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")

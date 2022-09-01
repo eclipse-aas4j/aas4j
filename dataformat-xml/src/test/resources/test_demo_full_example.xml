@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="http://www.admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>TestAssetAdministrationShell</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An Example Asset Administration Shell for the test application</aas:text>
@@ -12,7 +12,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Verwaltungsschale für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -123,7 +123,7 @@
     </aas:assetAdministrationShell>
     <aas:assetAdministrationShell>
       <aas:idShort>TestAssetAdministrationShell</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An Example Asset Administration Shell for the test application</aas:text>
@@ -132,7 +132,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Verwaltungsschale für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -166,7 +166,7 @@
   <aas:submodels>
     <aas:submodel>
       <aas:idShort>Identification</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example asset identification submodel for the test application</aas:text>
@@ -175,7 +175,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -194,7 +194,7 @@
       <aas:submodelElements>
         <aas:property>
           <aas:idShort>ManufacturerName</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
@@ -203,7 +203,7 @@
               <aas:language>de</aas:language>
               <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -239,7 +239,7 @@
         </aas:property>
         <aas:property>
           <aas:idShort>InstanceId</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
@@ -248,7 +248,7 @@
               <aas:language>de</aas:language>
               <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -274,7 +274,7 @@
     </aas:submodel>
     <aas:submodel>
       <aas:idShort>BillOfMaterial</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example bill of material submodel for the test application</aas:text>
@@ -283,7 +283,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-BillofMaterial-Submodel für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
       </aas:administration>
@@ -301,7 +301,7 @@
       <aas:submodelElements>
         <aas:entity>
           <aas:idShort>ExampleEntity</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
@@ -310,7 +310,7 @@
               <aas:language>de</aas:language>
               <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -324,7 +324,7 @@
             <aas:property>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleProperty2</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Property object</aas:text>
@@ -333,7 +333,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Property Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -358,7 +358,7 @@
             <aas:property>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Property object</aas:text>
@@ -367,7 +367,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Property Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -394,7 +394,7 @@
         </aas:entity>
         <aas:entity>
           <aas:idShort>ExampleEntity2</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
@@ -403,7 +403,7 @@
               <aas:language>de</aas:language>
               <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -413,7 +413,6 @@
               </aas:key>
             </aas:keys>
           </aas:semanticId>
-          <aas:statements />
           <aas:entityType>SelfManagedEntity</aas:entityType>
           <aas:globalAssetId>
             <aas:type>GlobalReference</aas:type>
@@ -429,7 +428,7 @@
     </aas:submodel>
     <aas:submodel>
       <aas:idShort>TestSubmodel</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example submodel for the test application</aas:text>
@@ -438,7 +437,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -458,7 +457,7 @@
         <aas:relationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example RelationshipElement object</aas:text>
@@ -467,7 +466,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel RelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -515,7 +514,7 @@
         <aas:annotatedRelationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example AnnotatedRelationshipElement object</aas:text>
@@ -524,7 +523,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel AnnotatedRelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -581,7 +580,7 @@
         <aas:operation>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Operation object</aas:text>
@@ -590,7 +589,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Operation Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -607,7 +606,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty1</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -616,7 +615,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -647,7 +646,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty2</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -656,7 +655,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -687,7 +686,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty3</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -696,7 +695,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -725,7 +724,7 @@
         <aas:capability>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Capability object</aas:text>
@@ -734,7 +733,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Capability Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -748,7 +747,7 @@
         <aas:basicEventElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example BasicEvent object</aas:text>
@@ -757,7 +756,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel BasicEvent Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -790,7 +789,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
@@ -799,7 +798,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -813,7 +812,7 @@
             <aas:property>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Property object</aas:text>
@@ -822,7 +821,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Property Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -847,7 +846,7 @@
             <aas:multiLanguageProperty>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example MultiLanguageProperty object</aas:text>
@@ -856,7 +855,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel MultiLanguageProperty Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -889,7 +888,7 @@
             <aas:range>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Range object</aas:text>
@@ -898,7 +897,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Range Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -917,7 +916,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
@@ -926,7 +925,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -940,7 +939,7 @@
             <aas:blob>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Blob object</aas:text>
@@ -949,7 +948,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Blob Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -965,7 +964,7 @@
             <aas:file>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example File object</aas:text>
@@ -974,7 +973,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel File Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -990,7 +989,7 @@
             <aas:referenceElement>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Reference Element object</aas:text>
@@ -999,7 +998,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Reference Element Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1109,7 +1108,6 @@
               </aas:key>
             </aas:keys>
           </aas:second>
-          <aas:annotations/>
         </aas:annotatedRelationshipElement>
         <aas:operation>
           <aas:idShort>ExampleOperation</aas:idShort>
@@ -1174,7 +1172,6 @@
         </aas:submodelElementCollection>
         <aas:submodelElementCollection>
           <aas:idShort>ExampleSubmodelCollectionUnordered2</aas:idShort>
-          <aas:value/>
         </aas:submodelElementCollection>
       </aas:submodelElements>
     </aas:submodel>
@@ -1182,11 +1179,10 @@
       <aas:idShort>Test_Submodel2_Mandatory</aas:idShort>
       <aas:id>https://acplt.org/Test_Submodel2_Mandatory</aas:id>
       <aas:kind>Instance</aas:kind>
-      <aas:submodelElements />
     </aas:submodel>
     <aas:submodel>
       <aas:idShort>TestSubmodel</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example submodel for the test application</aas:text>
@@ -1195,7 +1191,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -1215,7 +1211,7 @@
         <aas:relationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example RelationshipElement object</aas:text>
@@ -1224,7 +1220,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel RelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1272,7 +1268,7 @@
         <aas:annotatedRelationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example AnnotatedRelationshipElement object</aas:text>
@@ -1281,7 +1277,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel AnnotatedRelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1338,7 +1334,7 @@
         <aas:operation>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Operation object</aas:text>
@@ -1347,7 +1343,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Operation Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -1364,7 +1360,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty1</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1373,7 +1369,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -1401,7 +1397,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty2</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1410,7 +1406,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -1438,7 +1434,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty3</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1447,7 +1443,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
                     <aas:keys>
@@ -1473,7 +1469,7 @@
         <aas:capability>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Capability object</aas:text>
@@ -1482,7 +1478,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Capability Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1496,7 +1492,7 @@
         <aas:basicEventElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example BasicEvent object</aas:text>
@@ -1505,7 +1501,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel BasicEvent Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1538,7 +1534,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
@@ -1547,7 +1543,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1561,7 +1557,7 @@
             <aas:property>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Property object</aas:text>
@@ -1570,7 +1566,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Property Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1592,7 +1588,7 @@
             <aas:multiLanguageProperty>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example MultiLanguageProperty object</aas:text>
@@ -1601,7 +1597,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel MultiLanguageProperty Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1625,7 +1621,7 @@
             <aas:range>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Range object</aas:text>
@@ -1634,7 +1630,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Range Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1653,7 +1649,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
@@ -1662,7 +1658,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -1676,7 +1672,7 @@
             <aas:blob>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Blob object</aas:text>
@@ -1685,7 +1681,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Blob Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1701,7 +1697,7 @@
             <aas:file>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example File object</aas:text>
@@ -1710,7 +1706,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel File Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1726,7 +1722,7 @@
             <aas:referenceElement>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Reference Element object</aas:text>
@@ -1735,7 +1731,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Reference Element Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
@@ -1769,7 +1765,7 @@
     </aas:submodel>
     <aas:submodel>
       <aas:idShort>TestSubmodel</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example submodel for the test application</aas:text>
@@ -1778,7 +1774,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -1798,7 +1794,7 @@
         <aas:relationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example RelationshipElement object</aas:text>
@@ -1807,7 +1803,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel RelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -1840,7 +1836,7 @@
         <aas:annotatedRelationshipElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example AnnotatedRelationshipElement object</aas:text>
@@ -1849,7 +1845,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel AnnotatedRelationshipElement Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -1878,12 +1874,11 @@
               </aas:key>
             </aas:keys>
           </aas:second>
-          <aas:annotations/>
         </aas:annotatedRelationshipElement>
         <aas:operation>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Operation object</aas:text>
@@ -1892,7 +1887,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Operation Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -1909,7 +1904,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1918,7 +1913,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:kind>Template</aas:kind>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
@@ -1940,7 +1935,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1949,7 +1944,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:kind>Template</aas:kind>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
@@ -1971,7 +1966,7 @@
                 <aas:property>
                   <aas:category>Constant</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
-                  <aas:descriptions>
+                  <aas:description>
                     <aas:langString>
                       <aas:language>en-us</aas:language>
                       <aas:text>Example Property object</aas:text>
@@ -1980,7 +1975,7 @@
                       <aas:language>de</aas:language>
                       <aas:text>Beispiel Property Element</aas:text>
                     </aas:langString>
-                  </aas:descriptions>
+                  </aas:description>
                   <aas:kind>Template</aas:kind>
                   <aas:semanticId>
                     <aas:type>GlobalReference</aas:type>
@@ -2000,7 +1995,7 @@
         <aas:capability>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example Capability object</aas:text>
@@ -2009,7 +2004,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel Capability Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -2024,7 +2019,7 @@
         <aas:basicEventElement>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example BasicEvent object</aas:text>
@@ -2033,7 +2028,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel BasicEvent Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -2059,7 +2054,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
@@ -2068,7 +2063,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -2083,7 +2078,7 @@
             <aas:property>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Property object</aas:text>
@@ -2092,7 +2087,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Property Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2108,7 +2103,7 @@
             <aas:multiLanguageProperty>
               <aas:category>Constant</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example MultiLanguageProperty object</aas:text>
@@ -2117,7 +2112,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel MultiLanguageProperty Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2132,7 +2127,7 @@
             <aas:range>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Range object</aas:text>
@@ -2141,7 +2136,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Range Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2158,7 +2153,7 @@
             <aas:range>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleRange2</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Range object</aas:text>
@@ -2167,7 +2162,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Range Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2186,7 +2181,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
@@ -2195,7 +2190,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -2210,7 +2205,7 @@
             <aas:blob>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Blob object</aas:text>
@@ -2219,7 +2214,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Blob Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2235,7 +2230,7 @@
             <aas:file>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example File object</aas:text>
@@ -2244,7 +2239,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel File Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2260,7 +2255,7 @@
             <aas:referenceElement>
               <aas:category>Parameter</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
-              <aas:descriptions>
+              <aas:description>
                 <aas:langString>
                   <aas:language>en-us</aas:language>
                   <aas:text>Example Reference Element object</aas:text>
@@ -2269,7 +2264,7 @@
                   <aas:language>de</aas:language>
                   <aas:text>Beispiel Reference Element Element</aas:text>
                 </aas:langString>
-              </aas:descriptions>
+              </aas:description>
               <aas:kind>Template</aas:kind>
               <aas:semanticId>
                 <aas:type>GlobalReference</aas:type>
@@ -2286,7 +2281,7 @@
         <aas:submodelElementCollection>
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleSubmodelCollectionUnordered2</aas:idShort>
-          <aas:descriptions>
+          <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
               <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
@@ -2295,7 +2290,7 @@
               <aas:language>de</aas:language>
               <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
             </aas:langString>
-          </aas:descriptions>
+          </aas:description>
           <aas:kind>Template</aas:kind>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
@@ -2306,7 +2301,6 @@
               </aas:key>
             </aas:keys>
           </aas:semanticId>
-          <aas:value/>
         </aas:submodelElementCollection>
       </aas:submodelElements>
     </aas:submodel>
@@ -2314,7 +2308,7 @@
   <aas:conceptDescriptions>
     <aas:conceptDescription>
       <aas:idShort>TestConceptDescription</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example concept description for the test application</aas:text>
@@ -2323,7 +2317,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-ConceptDescription für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -2347,7 +2341,7 @@
     </aas:conceptDescription>
     <aas:conceptDescription>
       <aas:idShort>TestConceptDescription1</aas:idShort>
-      <aas:descriptions>
+      <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
           <aas:text>An example concept description for the test application</aas:text>
@@ -2356,7 +2350,7 @@
           <aas:language>de</aas:language>
           <aas:text>Ein Beispiel-ConceptDescription für eine Test-Anwendung</aas:text>
         </aas:langString>
-      </aas:descriptions>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -2370,93 +2364,96 @@
         <aas:revision>0</aas:revision>
       </aas:administration>
       <aas:id>http://acplt.org/DataSpecifciations/Example/Identification</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>http://acplt.org/DataSpecifciations/Example/Identification</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Test Specification</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>TestSpecification</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:shortNames>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Test Spec</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>TestSpec</aas:text>
-            </aas:langString>
-          </IEC61360:shortNames>
-          <IEC61360:unit>SpaceUnit</IEC61360:unit>
-          <IEC61360:unitId>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/Units/SpaceUnit</aas:value>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
               </aas:key>
             </aas:keys>
-          </IEC61360:unitId>
-          <IEC61360:sourceOfDefinition>http://acplt.org/DataSpec/ExampleDef</IEC61360:sourceOfDefinition>
-          <IEC61360:symbol>SU</IEC61360:symbol>
-          <IEC61360:dataType>RealMeasure</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Dies ist eine Data Specification für Testzwecke</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>This is a DataSpecification for testing purposes</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-          <IEC61360:valueFormat>string</IEC61360:valueFormat>
-          <IEC61360:valueList>
-            <IEC61360:valueReferencePair>
-              <IEC61360:valueId>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Test Specification</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en-us</aas:language>
+                  <aas:text>TestSpecification</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:shortName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Test Spec</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en-us</aas:language>
+                  <aas:text>TestSpec</aas:text>
+                </aas:langString>
+              </aas:shortName>
+              <aas:unit>SpaceUnit</aas:unit>
+              <aas:unitId>
                 <aas:type>GlobalReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>GlobalReference</aas:type>
+                    <aas:value>http://acplt.org/Units/SpaceUnit</aas:value>
+                  </aas:key>
+                </aas:keys>
+              </aas:unitId>
+              <aas:sourceOfDefinition>http://acplt.org/DataSpec/ExampleDef</aas:sourceOfDefinition>
+              <aas:symbol>SU</aas:symbol>
+              <aas:dataType>REAL_MEASURE</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Dies ist eine Data Specification für Testzwecke</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en-us</aas:language>
+                  <aas:text>This is a DataSpecification for testing purposes</aas:text>
+                </aas:langString>
+              </aas:definition>
+              <aas:valueFormat>string</aas:valueFormat>
+              <aas:valueList>
+                <aas:valueReferencePairs>
+                  <aas:valueReferencePair>
                     <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
-                  </aas:key>
-                </aas:keys>
-              </IEC61360:valueId>
-              <IEC61360:value>http://acplt.org/ValueId/ExampleValueId</IEC61360:value>
-            </IEC61360:valueReferencePair>
-            <IEC61360:valueReferencePair>
-              <IEC61360:valueId>
-                <aas:type>GlobalReference</aas:type>
-                <aas:keys>
-                  <aas:key>
-                    <aas:type>GlobalReference</aas:type>
+                    <aas:valueId>
+                      <aas:type>GlobalReference</aas:type>
+                      <aas:keys>
+                        <aas:key>
+                          <aas:type>GlobalReference</aas:type>
+                          <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
+                        </aas:key>
+                      </aas:keys>
+                    </aas:valueId>
+                  </aas:valueReferencePair>
+                  <aas:valueReferencePair>
                     <aas:value>http://acplt.org/ValueId/ExampleValueId2</aas:value>
-                  </aas:key>
-                </aas:keys>
-              </IEC61360:valueId>
-              <IEC61360:value>http://acplt.org/ValueId/ExampleValueId2</IEC61360:value>
-            </IEC61360:valueReferencePair>
-          </IEC61360:valueList>
-          <IEC61360:value>TEST</IEC61360:value>
-          <IEC61360:levelType>Max</IEC61360:levelType>
-        </aas:dataSpecificationContent>
+                    <aas:valueId>
+                      <aas:type>GlobalReference</aas:type>
+                      <aas:keys>
+                        <aas:key>
+                          <aas:type>GlobalReference</aas:type>
+                          <aas:value>http://acplt.org/ValueId/ExampleValueId2</aas:value>
+                        </aas:key>
+                      </aas:keys>
+                    </aas:valueId>
+                  </aas:valueReferencePair>
+                </aas:valueReferencePairs>
+              </aas:valueList>
+              <aas:value>TEST</aas:value>
+              <aas:levelType>Max</aas:levelType>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
       <aas:isCaseOf>
         <aas:reference>

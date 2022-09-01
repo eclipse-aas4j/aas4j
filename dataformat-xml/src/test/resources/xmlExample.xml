@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="http://www.admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>ExampleMotor</aas:idShort>
@@ -192,99 +192,91 @@
     <aas:conceptDescription>
       <aas:idShort>Title</aas:idShort>
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Title</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>Titel</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:shortNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Title</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>Titel</aas:text>
-            </aas:langString>
-          </IEC61360:shortNames>
-          <IEC61360:unit>ExampleString</IEC61360:unit>
-          <IEC61360:sourceOfDefinition>ExampleString</IEC61360:sourceOfDefinition>
-          <IEC61360:dataType>StringTranslatable</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>SprachabhängigerTiteldesDokuments.</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-        </aas:dataSpecificationContent>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>GlobalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>ConceptDescription</aas:type>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>Title</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>DE</aas:language>
+                  <aas:text>Titel</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:shortName>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>Title</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>DE</aas:language>
+                  <aas:text>Titel</aas:text>
+                </aas:langString>
+              </aas:shortName>
+              <aas:unit>ExampleString</aas:unit>
+              <aas:sourceOfDefinition>ExampleString</aas:sourceOfDefinition>
+              <aas:dataType>STRING_TRANSLATABLE</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>SprachabhängigerTiteldesDokuments.</aas:text>
+                </aas:langString>
+              </aas:definition>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
     <aas:conceptDescription>
       <aas:idShort>DigitalFile</aas:idShort>
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>DigitalFile</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>DigitalFile</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:shortNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>DigitalFile</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>DigitaleDatei</aas:text>
-            </aas:langString>
-          </IEC61360:shortNames>
-          <IEC61360:unit>ExampleString</IEC61360:unit>
-          <IEC61360:sourceOfDefinition>ExampleString</IEC61360:sourceOfDefinition>
-          <IEC61360:dataType>String</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>A file representing the document version. In addition to the mandatory PDF file, other files can be specified.</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-        </aas:dataSpecificationContent>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>GlobalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>ConceptDescription</aas:type>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Digitale Datei</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:shortName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>digitale Datei</aas:text>
+                </aas:langString>
+              </aas:shortName>
+              <aas:dataType>IRI</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Eine Datei, die die DocumentVersion repräsentiert. Neben der obligatorischen PDF/A Datei können weitere Dateien angegeben werden.</aas:text>
+                </aas:langString>
+              </aas:definition>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
     <aas:conceptDescription>
@@ -295,161 +287,162 @@
         <aas:revision>2.1</aas:revision>
       </aas:administration>
       <aas:id>0173-1#02-BAA120#008</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>0173-1#02-BAA120#008</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>max.Drehzahl</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>en</aas:language>
-              <aas:text>Max.rotationspeed</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:unit>1/min</IEC61360:unit>
-          <IEC61360:unitId>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
               <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>0173-1#05-AAA650#002</aas:value>
+                <aas:type>ConceptDescription</aas:type>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</aas:value>
               </aas:key>
             </aas:keys>
-          </IEC61360:unitId>
-          <IEC61360:sourceOfDefinition>ExampleString</IEC61360:sourceOfDefinition>
-          <IEC61360:dataType>RealMeasure</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-        </aas:dataSpecificationContent>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>max. Drehzahl</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en</aas:language>
+                  <aas:text>Max. rotation speed</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:unit>
+                1/min
+              </aas:unit>
+              <aas:unitId>
+                <aas:type>GlobalReference</aas:type>
+                <aas:keys>
+                  <aas:key>
+                    <aas:type>ConceptDescription</aas:type>
+                    <aas:value>0173-1#05-AAA650#002</aas:value>
+                  </aas:key>
+                </aas:keys>
+              </aas:unitId>
+              <aas:dataType>REAL_MEASURE</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Höchste zulässige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en</aas:language>
+                  <aas:text>Greatest permissible rotation speed with which the motor or feeding unit may be operated</aas:text>
+                </aas:langString>
+              </aas:definition>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
     <aas:conceptDescription>
       <aas:category>PROPERTY</aas:category>
       <aas:idShort>RotationSpeed</aas:idShort>
       <aas:id>http://customer.com/cd/1/1/18EBD56F6B43D895</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>http://customer.com/cd/1/1/18EBD56F6B43D895</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>AktuelleDrehzahl</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Actualrotationspeed</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:shortNames>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>AktuelleDrehzahl</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>ActualRotationSpeed</aas:text>
-            </aas:langString>
-          </IEC61360:shortNames>
-          <IEC61360:unit>1/min</IEC61360:unit>
-          <IEC61360:unitId>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
               <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>0173-1#05-AAA650#002</aas:value>
+                <aas:type>ConceptDescription</aas:type>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</aas:value>
               </aas:key>
             </aas:keys>
-          </IEC61360:unitId>
-          <IEC61360:sourceOfDefinition>ExampleString</IEC61360:sourceOfDefinition>
-          <IEC61360:dataType>RealMeasure</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Actual rotationspeed with which the motor or feedingunit is operated</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-        </aas:dataSpecificationContent>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Aktuelle Drehzahl</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en</aas:language>
+                  <aas:text>Actual rotation speed</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:shortName>
+                <aas:langString>
+                  <aas:language>en</aas:language>
+                  <aas:text>RotationSpeed</aas:text>
+                </aas:langString>
+              </aas:shortName>
+              <aas:unit>
+                1/min
+              </aas:unit>
+              <aas:unitId>
+                <aas:type>GlobalReference</aas:type>
+                <aas:keys>
+                  <aas:key>
+                    <aas:type>ConceptDescription</aas:type>
+                    <aas:value>0173-1#05-AAA650#002</aas:value>
+                  </aas:key>
+                </aas:keys>
+              </aas:unitId>
+              <aas:dataType>REAL_MEASURE</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>de</aas:language>
+                  <aas:text>Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>en</aas:language>
+                  <aas:text>Actual rotation speed with which the motor or feeding unit is operated</aas:text>
+                </aas:langString>
+              </aas:definition>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
     <aas:conceptDescription>
       <aas:idShort>Document</aas:idShort>
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</aas:id>
-      <aas:dataSpecifications>
-        <aas:references>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>GlobalReference</aas:type>
-              <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:references>
-      </aas:dataSpecifications>
       <aas:embeddedDataSpecifications>
-        <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</aas:id>
-        <aas:dataSpecificationContent>
-          <IEC61360:preferredNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Document</aas:text>
-            </aas:langString>
-          </IEC61360:preferredNames>
-          <IEC61360:shortNames>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Document</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>DE</aas:language>
-              <aas:text>Dokument</aas:text>
-            </aas:langString>
-          </IEC61360:shortNames>
-          <IEC61360:unit>ExampleString</IEC61360:unit>
-          <IEC61360:sourceOfDefinition>[ISO15519-1:2010]</IEC61360:sourceOfDefinition>
-          <IEC61360:dataType>String</IEC61360:dataType>
-          <IEC61360:definitions>
-            <aas:langString>
-              <aas:language>EN</aas:language>
-              <aas:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</aas:text>
-            </aas:langString>
-          </IEC61360:definitions>
-        </aas:dataSpecificationContent>
+        <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>GlobalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
+          <aas:dataSpecificationContent>
+            <aas:dataSpecificationIec61360>
+              <aas:preferredName>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>Document</aas:text>
+                </aas:langString>
+              </aas:preferredName>
+              <aas:shortName>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>Document</aas:text>
+                </aas:langString>
+                <aas:langString>
+                  <aas:language>DE</aas:language>
+                  <aas:text>Dokument</aas:text>
+                </aas:langString>
+              </aas:shortName>
+              <aas:unit>ExampleString</aas:unit>
+              <aas:sourceOfDefinition>[ISO15519-1:2010]</aas:sourceOfDefinition>
+              <aas:dataType>STRING</aas:dataType>
+              <aas:definition>
+                <aas:langString>
+                  <aas:language>EN</aas:language>
+                  <aas:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</aas:text>
+                </aas:langString>
+              </aas:definition>
+            </aas:dataSpecificationIec61360>
+          </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
   </aas:conceptDescriptions>

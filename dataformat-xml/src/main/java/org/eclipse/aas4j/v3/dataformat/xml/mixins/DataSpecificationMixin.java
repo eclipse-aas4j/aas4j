@@ -23,7 +23,7 @@ import org.eclipse.aas4j.v3.model.*;
 
 import java.util.List;
 
-@JsonPropertyOrder({"administration", "id", "dataSpecificationContent", "descriptions"})
+@JsonPropertyOrder({"administration", "id", "dataSpecificationContent", "description"})
 public interface DataSpecificationMixin {
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "administration")
@@ -31,11 +31,13 @@ public interface DataSpecificationMixin {
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
     public String getId();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
+    public void setId(String id);
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
     public DataSpecificationIEC61360 getDataSpecificationContent();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "descriptions")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
     public List<LangString> getDescriptions();
 
 }

@@ -27,7 +27,7 @@ import org.eclipse.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserialize
 import org.eclipse.aas4j.v3.model.Reference;
 
 
-@JsonPropertyOrder({"hasExtension", "category", "idShort", "displayNames", "descriptions", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "isCaseOf"})
+@JsonPropertyOrder({"hasExtension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "isCaseOf"})
 public interface ConceptDescriptionMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
