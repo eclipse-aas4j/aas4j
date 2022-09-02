@@ -17,6 +17,7 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

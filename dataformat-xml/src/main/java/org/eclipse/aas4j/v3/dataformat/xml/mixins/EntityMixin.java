@@ -17,8 +17,10 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
@@ -32,6 +34,8 @@ public interface EntityMixin {
     public SpecificAssetId getExternalAssetId();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
+//    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = SubmodelElementsSerializer.class)
     @JsonDeserialize(using = SubmodelElementsDeserializer.class)
     public List<SubmodelElement> getStatements();

@@ -48,6 +48,6 @@ public interface ReferableMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")
     public void setDisplayNames(List<LangString> displayNames);
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+//    @JsonInclude(JsonInclude.Include.ALWAYS)
     public String getIdShort();
 }

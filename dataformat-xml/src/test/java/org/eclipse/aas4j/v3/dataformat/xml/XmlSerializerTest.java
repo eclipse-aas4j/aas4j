@@ -63,6 +63,12 @@ public class XmlSerializerTest {
     public void testSerializeMinimal() throws IOException, SerializationException, SAXException {
         File file = new File("src/test/resources/minimum.xml");
         Environment environment = new DefaultEnvironment.Builder()
+                .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
+                        .id("https://acplt.org/Test_AssetAdministrationShell")
+                        .assetInformation(new DefaultAssetInformation.Builder()
+                                .assetKind(AssetKind.INSTANCE)
+                                .build())
+                        .build())
             .build();
         validateXmlSerializer(file, environment);
     }
