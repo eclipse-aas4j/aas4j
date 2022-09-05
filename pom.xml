@@ -126,32 +126,6 @@
                 <version>${plugin.projectinfo.version}</version>
             </plugin>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${plugin.license.version}</version>
-                <configuration>
-                    <licenseSets>
-                        <licenseSet>
-                            <header>license-header.txt</header>
-                            <includes>
-                                <include>**/src/**/*.java</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/target/generated/**/*.java</exclude>
-                                <exclude>**/src/main/java/org/opcfoundation/ua/_2008/_02/types/*.java</exclude>
-                            </excludes>
-                        </licenseSet>
-                    </licenseSets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${plugin.source.version}</version>
