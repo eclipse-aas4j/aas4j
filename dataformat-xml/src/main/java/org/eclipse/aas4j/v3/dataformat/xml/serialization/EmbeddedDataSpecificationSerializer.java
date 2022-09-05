@@ -51,10 +51,10 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
         if (data == null) {
             return;
         }
-        generator.writeFieldName(PROP_DATA_SPECIFICATION_CONTENT);
+//        generator.writeFieldName(PROP_DATA_SPECIFICATION_CONTENT);
         generator.writeStartObject();
         // TODO: Add field name according to template type
-        generator.writeObjectField("dataSpecificationIEC61360", data);
+        generator.writeObjectField("dataSpecificationIec61360", data);
         generator.writeEndObject();
 
     }

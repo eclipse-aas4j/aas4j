@@ -23,7 +23,7 @@ import org.eclipse.aas4j.v3.model.*;
 
 public class CustomProperty implements Property {
 
-	 protected List<DataSpecification> embeddedDataSpecifications;
+	 protected List<EmbeddedDataSpecification> embeddedDataSpecifications;
 
 	protected List<Reference> dataSpecifications;
 
@@ -41,9 +41,9 @@ public class CustomProperty implements Property {
 
 	protected String category;
 
-	protected List<LangString> descriptions;
+	protected List<LangString> description;
 
-	protected List<LangString> displayNames;
+	protected List<LangString> displayName;
 
 	protected String idShort;
 
@@ -56,8 +56,8 @@ public class CustomProperty implements Property {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(new Object[] { this.valueType, this.value, this.valueId, this.category, this.descriptions,
-				this.displayNames, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications,*/ this.kind,
+		return Objects.hash(new Object[] { this.valueType, this.value, this.valueId, this.category, this.description,
+				this.displayName, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications,*/ this.kind,
 				this.semanticId });
 	}
 
@@ -73,8 +73,8 @@ public class CustomProperty implements Property {
 			CustomProperty other = (CustomProperty) obj;
 			return Objects.equals(this.valueType, other.valueType) && Objects.equals(this.value, other.value)
 					&& Objects.equals(this.valueId, other.valueId) && Objects.equals(this.category, other.category)
-					&& Objects.equals(this.descriptions, other.descriptions)
-					&& Objects.equals(this.displayNames, other.displayNames)
+					&& Objects.equals(this.description, other.description)
+					&& Objects.equals(this.displayName, other.displayName)
 					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
 					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
 					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
@@ -122,13 +122,13 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDescriptions() {
-		return descriptions;
+	final public List<LangString> getDescription() {
+		return description;
 	}
 
 	@Override
-	final public void setDescriptions(List<LangString> description) {
-		this.descriptions = description;
+	final public void setDescription(List<LangString> description) {
+		this.description = description;
 	}
 
 	@Override
@@ -142,13 +142,13 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDisplayNames() {
-		return displayNames;
+	final public List<LangString> getDisplayName() {
+		return displayName;
 	}
 
 	@Override
-	final public void setDisplayNames(List<LangString> displayName) {
-		this.displayNames = displayName;
+	final public void setDisplayName(List<LangString> displayName) {
+		this.displayName = displayName;
 	}
 
 	@Override
@@ -172,23 +172,13 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<DataSpecification> getEmbeddedDataSpecifications() {
+	final public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
 		return embeddedDataSpecifications;
 	}
 
 	@Override
-	final public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+	final public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
 		this.embeddedDataSpecifications = embeddedDataSpecifications;
-	}
-
-	@Override
-	final public List<Reference> getDataSpecifications() {
-		return dataSpecifications;
-	}
-
-	@Override
-	final public void setDataSpecifications(List<Reference> dataSpecifications) {
-		this.dataSpecifications = dataSpecifications;
 	}
 
 	@Override

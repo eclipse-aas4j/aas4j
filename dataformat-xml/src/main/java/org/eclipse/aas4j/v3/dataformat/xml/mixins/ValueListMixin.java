@@ -15,6 +15,7 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.Reference;
@@ -24,7 +25,8 @@ import java.util.List;
 
 public interface ValueListMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "valueReferencePair")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePairs")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePair")
     List<ValueReferencePair> getValueReferencePairs();
 
 }

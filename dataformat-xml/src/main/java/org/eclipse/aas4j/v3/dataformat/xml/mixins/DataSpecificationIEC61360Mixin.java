@@ -22,65 +22,69 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import org.eclipse.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.*;
 
 import java.util.List;
 
-@JsonPropertyOrder({"preferredNames", "shortNames", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definitions", "valueFormat", "valueList", "value", "valueId", "levelType"})
+@JsonPropertyOrder({"preferredName", "shortName", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definition", "valueFormat", "valueList", "value", "valueId", "levelType"})
+//@JacksonXmlRootElement(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationIec61360")
 public interface DataSpecificationIEC61360Mixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "definitions")
-    public List<LangString> getDefinitions();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
+    public List<LangString> getDefinition();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "definitions")
-    public void setDefinitions(List<LangString> definition);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
+    public void setDefinition(List<LangString> definition);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "levelType")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     public LevelType getLevelType();
 
     // TODO
-//    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "levelType")
+//    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     // public void setLevelTypes(List<LevelType> levelTypes);
 
 //    @JsonInclude(JsonInclude.Include.ALWAYS)
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "preferredNames")
-    public List<LangString> getPreferredNames();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
+    public List<LangString> getPreferredName();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "preferredNames")
-    public void setPreferredNames(List<LangString> preferredName);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
+    public void setPreferredName(List<LangString> preferredName);
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "shortNames")
-    public List<LangString> getShortNames();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
+    public List<LangString> getShortName();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "shortNames")
-    public void setShortNames(List<LangString> shortName);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
+    public void setShortName(List<LangString> shortName);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "sourceOfDefinition")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "sourceOfDefinition")
     public String getSourceOfDefinition();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "symbol")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "symbol")
     public String getSymbol();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "unit")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "unit")
     public String getUnit();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "unitId")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "unitId")
     public Reference getUnitId();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "valueFormat")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueFormat")
     public String getValueFormat();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "value")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     public String getValue();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "valueList")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueList")
     public ValueList getValueList();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "valueId")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
     public Reference getValueId();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.IEC61360_URI, localName = "dataType")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
+    @JsonSerialize(using = EnumSerializer.class)
     public DataTypeIEC61360 getDataType();
 
 }

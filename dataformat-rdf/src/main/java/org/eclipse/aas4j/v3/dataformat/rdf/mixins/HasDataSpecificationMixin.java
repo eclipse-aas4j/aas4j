@@ -42,8 +42,8 @@ public interface HasDataSpecificationMixin {
     void setDataSpecifications(List<Reference> dataSpecifications);
 
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    List<DataSpecification> getEmbeddedDataSpecifications();
+    List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
+    void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 }

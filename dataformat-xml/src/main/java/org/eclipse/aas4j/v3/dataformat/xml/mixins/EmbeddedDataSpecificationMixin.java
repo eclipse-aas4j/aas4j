@@ -16,28 +16,24 @@
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
+import org.eclipse.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
 import org.eclipse.aas4j.v3.model.*;
 
 import java.util.List;
 
-@JsonPropertyOrder({"administration", "id", "dataSpecificationContent", "description"})
-public interface DataSpecificationMixin {
+@JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
+public interface EmbeddedDataSpecificationMixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "administration")
-    public AdministrativeInformation getAdministration();
-
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-    public String getId();
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-    public void setId(String id);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
+    public Reference getDataSpecification();
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
+    @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
     public DataSpecificationIEC61360 getDataSpecificationContent();
-
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-    public List<LangString> getDescriptions();
 
 }

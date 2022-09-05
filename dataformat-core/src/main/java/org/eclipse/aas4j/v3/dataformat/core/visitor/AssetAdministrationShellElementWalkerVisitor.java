@@ -174,8 +174,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescriptions().forEach(x -> visit(x));
-        referable.getDisplayNames().forEach(x -> visit(x));
+        referable.getDescription().forEach(x -> visit(x));
+        referable.getDisplayName().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 

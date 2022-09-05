@@ -15,32 +15,23 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.aas4j.v3.dataformat.xml.deserialization.EmbeddedDataSpecificationsDeserializer;
-import org.eclipse.aas4j.v3.model.DataSpecification;
-import org.eclipse.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 
 import java.util.List;
 
+
 public interface HasDataSpecificationMixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "references") // TODO change back to "reference"
-    public List<Reference> getDataSpecifications();
-
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "references") // TODO change back to "reference"
-    public void setDataSpecifications(List<Reference> dataSpecifications);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
-    public List<DataSpecification> getEmbeddedDataSpecifications();
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
-    public void setEmbeddedDataSpecifications(List<DataSpecification> dataSpecifications);
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications);
 
 
 }

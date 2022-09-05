@@ -35,5 +35,5 @@ public interface EnvironmentMixin {
     public List<ConceptDescription> getConceptDescriptions();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
-    public List<DataSpecification> getDataSpecifications();
+    public List<EmbeddedDataSpecification> getDataSpecifications();
 }
