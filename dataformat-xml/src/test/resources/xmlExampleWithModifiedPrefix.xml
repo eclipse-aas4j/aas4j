@@ -1,4 +1,4 @@
-<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
   <test:assetAdministrationShells>
     <test:assetAdministrationShell>
       <test:idShort>ExampleMotor</test:idShort>
@@ -197,44 +197,44 @@
             <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
-                <test:type>ConceptDescription</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360</test:value>
+                <test:type>GlobalReference</test:type>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
-        <test:dataSpecificationContent>
-          <test:dataSpecificationIec61360>
-          <test:preferredName>
-            <test:langString>
-              <test:language>EN</test:language>
-              <test:text>Title</test:text>
-            </test:langString>
-            <test:langString>
-              <test:language>DE</test:language>
-              <test:text>Titel</test:text>
-            </test:langString>
-          </test:preferredName>
-          <test:shortName>
-            <test:langString>
-              <test:language>EN</test:language>
-              <test:text>Title</test:text>
-            </test:langString>
-            <test:langString>
-              <test:language>DE</test:language>
-              <test:text>Titel</test:text>
-            </test:langString>
-          </test:shortName>
-          <test:unit>ExampleString</test:unit>
-          <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
-          <test:dataType>STRING_TRANSLATABLE</test:dataType>
-          <test:definition>
-            <test:langString>
-              <test:language>EN</test:language>
-              <test:text>SprachabhängigerTiteldesDokuments.</test:text>
-            </test:langString>
-          </test:definition>
-          </test:dataSpecificationIec61360>
-        </test:dataSpecificationContent>
+          <test:dataSpecificationContent>
+            <test:dataSpecificationIec61360>
+              <test:preferredName>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>Title</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>DE</test:language>
+                  <test:text>Titel</test:text>
+                </test:langString>
+              </test:preferredName>
+              <test:shortName>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>Title</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>DE</test:language>
+                  <test:text>Titel</test:text>
+                </test:langString>
+              </test:shortName>
+              <test:unit>ExampleString</test:unit>
+              <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
+              <test:dataType>STRING_TRANSLATABLE</test:dataType>
+              <test:definition>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>SprachabhängigerTiteldesDokuments.</test:text>
+                </test:langString>
+              </test:definition>
+            </test:dataSpecificationIec61360>
+          </test:dataSpecificationContent>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
@@ -247,8 +247,8 @@
             <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
-                <test:type>ConceptDescription</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</test:value>
+                <test:type>GlobalReference</test:type>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -256,21 +256,31 @@
             <test:dataSpecificationIec61360>
               <test:preferredName>
                 <test:langString>
-                  <test:language>de</test:language>
-                  <test:text>Digitale Datei</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>DigitalFile</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>DigitalFile</test:text>
                 </test:langString>
               </test:preferredName>
               <test:shortName>
                 <test:langString>
-                  <test:language>de</test:language>
-                  <test:text>digitale Datei</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>DigitalFile</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>DE</test:language>
+                  <test:text>DigitaleDatei</test:text>
                 </test:langString>
               </test:shortName>
-              <test:dataType>IRI</test:dataType>
+              <test:unit>ExampleString</test:unit>
+              <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
+              <test:dataType>STRING</test:dataType>
               <test:definition>
                 <test:langString>
-                  <test:language>de</test:language>
-                  <test:text>Eine Datei, die die DocumentVersion repräsentiert. Neben der obligatorischen PDF/A Datei können weitere Dateien angegeben werden.</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>A file representing the document version. In addition to the mandatory PDF file, other files can be specified.</test:text>
                 </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
@@ -292,8 +302,8 @@
             <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
-                <test:type>ConceptDescription</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</test:value>
+                <test:type>GlobalReference</test:type>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -302,34 +312,33 @@
               <test:preferredName>
                 <test:langString>
                   <test:language>de</test:language>
-                  <test:text>max. Drehzahl</test:text>
+                  <test:text>max.Drehzahl</test:text>
                 </test:langString>
                 <test:langString>
                   <test:language>en</test:language>
-                  <test:text>Max. rotation speed</test:text>
+                  <test:text>Max.rotationspeed</test:text>
                 </test:langString>
               </test:preferredName>
-              <test:unit>
-                1/min
-              </test:unit>
+              <test:unit>1/min</test:unit>
               <test:unitId>
                 <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
-                    <test:type>ConceptDescription</test:type>
+                    <test:type>GlobalReference</test:type>
                     <test:value>0173-1#05-AAA650#002</test:value>
                   </test:key>
                 </test:keys>
               </test:unitId>
+              <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>REAL_MEASURE</test:dataType>
               <test:definition>
                 <test:langString>
                   <test:language>de</test:language>
-                  <test:text>Höchste zulässige Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben werden darf</test:text>
+                  <test:text>HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf</test:text>
                 </test:langString>
                 <test:langString>
-                  <test:language>en</test:language>
-                  <test:text>Greatest permissible rotation speed with which the motor or feeding unit may be operated</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated</test:text>
                 </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
@@ -347,8 +356,8 @@
             <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
-                <test:type>ConceptDescription</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationaas</test:value>
+                <test:type>GlobalReference</test:type>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -356,41 +365,44 @@
             <test:dataSpecificationIec61360>
               <test:preferredName>
                 <test:langString>
-                  <test:language>de</test:language>
-                  <test:text>Aktuelle Drehzahl</test:text>
+                  <test:language>DE</test:language>
+                  <test:text>AktuelleDrehzahl</test:text>
                 </test:langString>
                 <test:langString>
-                  <test:language>en</test:language>
-                  <test:text>Actual rotation speed</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>Actualrotationspeed</test:text>
                 </test:langString>
               </test:preferredName>
               <test:shortName>
                 <test:langString>
-                  <test:language>en</test:language>
-                  <test:text>RotationSpeed</test:text>
+                  <test:language>DE</test:language>
+                  <test:text>AktuelleDrehzahl</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>ActualRotationSpeed</test:text>
                 </test:langString>
               </test:shortName>
-              <test:unit>
-                1/min
-              </test:unit>
+              <test:unit>1/min</test:unit>
               <test:unitId>
                 <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
-                    <test:type>ConceptDescription</test:type>
+                    <test:type>GlobalReference</test:type>
                     <test:value>0173-1#05-AAA650#002</test:value>
                   </test:key>
                 </test:keys>
               </test:unitId>
+              <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>REAL_MEASURE</test:dataType>
               <test:definition>
                 <test:langString>
-                  <test:language>de</test:language>
-                  <test:text>Aktuelle Drehzahl, mit welcher der Motor oder die Speiseinheit betrieben wird</test:text>
+                  <test:language>DE</test:language>
+                  <test:text>Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird</test:text>
                 </test:langString>
                 <test:langString>
-                  <test:language>en</test:language>
-                  <test:text>Actual rotation speed with which the motor or feeding unit is operated</test:text>
+                  <test:language>EN</test:language>
+                  <test:text>Actual rotationspeed with which the motor or feedingunit is operated</test:text>
                 </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
@@ -399,50 +411,50 @@
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
     <test:conceptDescription>
-    <test:idShort>Document</test:idShort>
-    <test:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</test:id>
-    <test:embeddedDataSpecifications>
-      <test:embeddedDataSpecification>
-        <test:dataSpecification>
-          <test:type>GlobalReference</test:type>
-          <test:keys>
-            <test:key>
-              <test:type>GlobalReference</test:type>
-              <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
-            </test:key>
-          </test:keys>
-        </test:dataSpecification>
-        <test:dataSpecificationContent>
-          <test:dataSpecificationIec61360>
-            <test:preferredName>
-              <test:langString>
-                <test:language>EN</test:language>
-                <test:text>Document</test:text>
-              </test:langString>
-            </test:preferredName>
-            <test:shortName>
-              <test:langString>
-                <test:language>EN</test:language>
-                <test:text>Document</test:text>
-              </test:langString>
-              <test:langString>
-                <test:language>DE</test:language>
-                <test:text>Dokument</test:text>
-              </test:langString>
-            </test:shortName>
-            <test:unit>ExampleString</test:unit>
-            <test:sourceOfDefinition>[ISO15519-1:2010]</test:sourceOfDefinition>
-            <test:dataType>STRING</test:dataType>
-            <test:definition>
-              <test:langString>
-                <test:language>EN</test:language>
-                <test:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</test:text>
-              </test:langString>
-            </test:definition>
-          </test:dataSpecificationIec61360>
-        </test:dataSpecificationContent>
-      </test:embeddedDataSpecification>
-    </test:embeddedDataSpecifications>
+      <test:idShort>Document</test:idShort>
+      <test:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</test:id>
+      <test:embeddedDataSpecifications>
+        <test:embeddedDataSpecification>
+          <test:dataSpecification>
+            <test:type>GlobalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
+          <test:dataSpecificationContent>
+            <test:dataSpecificationIec61360>
+              <test:preferredName>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>Document</test:text>
+                </test:langString>
+              </test:preferredName>
+              <test:shortName>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>Document</test:text>
+                </test:langString>
+                <test:langString>
+                  <test:language>DE</test:language>
+                  <test:text>Dokument</test:text>
+                </test:langString>
+              </test:shortName>
+              <test:unit>ExampleString</test:unit>
+              <test:sourceOfDefinition>[ISO15519-1:2010]</test:sourceOfDefinition>
+              <test:dataType>STRING</test:dataType>
+              <test:definition>
+                <test:langString>
+                  <test:language>EN</test:language>
+                  <test:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</test:text>
+                </test:langString>
+              </test:definition>
+            </test:dataSpecificationIec61360>
+          </test:dataSpecificationContent>
+        </test:embeddedDataSpecification>
+      </test:embeddedDataSpecifications>
     </test:conceptDescription>
   </test:conceptDescriptions>
 </test:environment>

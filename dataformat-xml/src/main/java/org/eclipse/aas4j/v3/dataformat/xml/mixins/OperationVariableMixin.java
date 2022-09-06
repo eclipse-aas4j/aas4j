@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.aas4j.v3.dataformat.xml.serialization.OperationVeriableSerializer;
+import org.eclipse.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.SubmodelElementSerializer;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 

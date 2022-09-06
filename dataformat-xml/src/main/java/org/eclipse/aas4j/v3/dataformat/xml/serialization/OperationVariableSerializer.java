@@ -30,7 +30,7 @@ import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-public class OperationVeriableSerializer extends JsonSerializer<OperationVariable> {
+public class OperationVariableSerializer extends JsonSerializer<OperationVariable> {
 
     private SubmodelElementSerializer ser = new SubmodelElementSerializer();
 
