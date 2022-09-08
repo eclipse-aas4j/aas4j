@@ -30,7 +30,8 @@ public interface HasDataSpecificationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
     public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
     public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications);
 
 

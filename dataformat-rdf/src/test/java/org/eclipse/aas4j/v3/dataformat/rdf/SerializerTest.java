@@ -40,8 +40,8 @@ public class SerializerTest {
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
                         .build())
-                .descriptions(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
-                .displayNames(Arrays.asList(
+                .description(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
+                .displayName(Arrays.asList(
                         new DefaultLangString.Builder().text("Anzeigename 2").language("de").build(),
                         new DefaultLangString.Builder().text("Display Name 1").language("en").build()
                         ))
@@ -49,7 +49,7 @@ public class SerializerTest {
 
         Submodel submodel = new DefaultSubmodel.Builder()
                 .descriptions(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
-                .displayNames(Arrays.asList(
+                .displayName(Arrays.asList(
                         new DefaultLangString.Builder().text("First Submodel Element name").language("en").build(),
                         new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build()
                         ))

@@ -151,7 +151,7 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B descriptions(List<LangString> description) {
+    public B description(List<LangString> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }

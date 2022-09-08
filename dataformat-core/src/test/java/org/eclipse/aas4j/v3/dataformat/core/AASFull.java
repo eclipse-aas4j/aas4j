@@ -46,7 +46,7 @@ public class AASFull {
     public static AssetAdministrationShell createAAS1() {
         return new DefaultAssetAdministrationShell.Builder()
                 .idShort("TestAssetAdministrationShell")
-                .descriptions(Arrays.asList(
+                .description(Arrays.asList(
                         new DefaultLangString.Builder().text("An Example Asset Administration Shell for the test application").language("en-us").build(),
                         new DefaultLangString.Builder().text("Ein Beispiel-Verwaltungsschale für eine Test-Anwendung").language("de").build()
                         ))
@@ -153,7 +153,7 @@ public class AASFull {
     public static AssetAdministrationShell createAAS4() {
         return new DefaultAssetAdministrationShell.Builder()
                 .idShort("TestAssetAdministrationShell")
-                .descriptions(Arrays.asList(
+                .description(Arrays.asList(
                         new DefaultLangString.Builder().text("An Example Asset Administration Shell for the test application").language("en-us").build(),
                         new DefaultLangString.Builder().text("Ein Beispiel-Verwaltungsschale für eine Test-Anwendung").language("de").build()
                         ))

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({ "hasExtension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels"})

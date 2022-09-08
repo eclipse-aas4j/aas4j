@@ -27,12 +27,20 @@ import org.eclipse.aas4j.v3.dataformat.xml.deserialization.KeysDeserializer;
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.ReferenceTypes;
 
-@JsonPropertyOrder({"type", "keys"})
+@JsonPropertyOrder({"type", "key"})
 public interface ReferenceMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
     public List<Key> getKeys();
 
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
+    @JsonDeserialize(using = KeysDeserializer.class)
+    void setKeys(List<Key> keys);
+
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
     public ReferenceTypes getType();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+    void setType(ReferenceTypes types);
 }
