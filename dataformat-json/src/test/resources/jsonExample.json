@@ -87,21 +87,20 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-
+                        "modelType": "DataSpecificationIEC61360",
                         "dataType": "StringTranslatable",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
@@ -140,20 +139,20 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
+                        "modelType": "DataSpecificationIEC61360",
                         "dataType": "String",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
@@ -204,8 +203,18 @@
             } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
+                        "modelType": "DataSpecificationIEC61360",
                         "dataType": "RealMeasure",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
@@ -266,8 +275,18 @@
             } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
+                        "modelType": "DataSpecificationIEC61360",
                         "dataType": "RealMeasure",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
@@ -333,8 +352,18 @@
             } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
+                        "modelType": "DataSpecificationIEC61360",
                         "dataType": "String",
                         "sourceOfDefinition": "[ISO15519-1:2010]",
                         "unit": "ExampleString",
