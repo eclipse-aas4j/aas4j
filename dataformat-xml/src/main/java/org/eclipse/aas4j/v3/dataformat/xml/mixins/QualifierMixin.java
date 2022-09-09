@@ -16,10 +16,11 @@
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.aas4j.v3.model.Qualifier;
+import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.aas4j.v3.model.QualifierKind;
+import org.eclipse.aas4j.v3.model.Reference;
 
 import java.util.List;
 
@@ -29,4 +30,18 @@ import java.util.List;
 })
 public interface QualifierMixin {
 
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "kind")
+    void setKind(QualifierKind kind);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+    void setType(String type);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueType")
+    void setType(DataTypeDefXsd valueType);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+    void setValue(String value);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
+    void setValueId(Reference valueId);
 }

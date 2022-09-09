@@ -29,4 +29,8 @@ public interface QualifiableMixin {
     // TODO @JsonSerialize(using = ConstraintsSerializer.class)
     // TODO @JsonDeserialize(using = ConstraintsDeserializer.class)
     public List<Qualifier> getQualifiers();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
+    void setQualifiers(List<Qualifier> qualifiers);
 }
