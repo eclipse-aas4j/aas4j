@@ -1,4 +1,4 @@
-@prefix aas: <https://www.admin-shell.io/aas/3/0/RC02/> .
+@prefix aas: <https://admin-shell.io/aas/3/0/RC02/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,50 +7,50 @@
 
 # Asset Administration Shell
 <http://customer.com/aas/9175_7013_7091_9168> rdf:type aas:AssetAdministrationShell ;
-      <https://www.admin-shell.io/aas/3/0/RC02/Referable/idShort> "ExampleMotor"^^xs:string ;
+      <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "ExampleMotor"^^xs:string ;
       rdfs:label "ExampleMotor"^^xs:string ;
-      <https://www.admin-shell.io/aas/3/0/RC02/Referable/description> "A very short description of the AAS instance" ;
+      <https://admin-shell.io/aas/3/0/RC02/Referable/description> "A very short description of the AAS instance"@en ;
       rdfs:comment "A very short description of the AAS instance."^^xs:string ;
-      <https://www.admin-shell.io/aas/3/0/RC02/Identifiable/id> "https://customer.com/aas/9175_7013_7091_9168"^^xs:string ;
-      <https://www.admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation> [
-                   rdf:type <https://www.admin-shell.io/aas/3/0/RC02/AssetInformation> ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId> [
+      <https://admin-shell.io/aas/3/0/RC02/Identifiable/id> "https://customer.com/aas/9175_7013_7091_9168"^^xs:string ;
+      <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation> [
+                   rdf:type <https://admin-shell.io/aas/3/0/RC02/AssetInformation> ;
+                   <https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId> [
                                 rdf:type  aas:Reference ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Reference/type> <https://www.admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Reference/keys> [
+                                <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> ;
+                                <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
                                               rdf:type  aas:Key ;
-                                              <https://www.admin-shell.io/aas/3/0/RC02/Key/type> <https://www.admin-shell.io/aas/3/0/RC02/KeyTypes/GlobalReference> ;
-                                              <https://www.admin-shell.io/aas/3/0/RC02/Key/value> "https://customer.com/assets/KHBVZJSQKIY"^^xs:string ;
+                                              <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/GlobalReference> ;
+                                              <https://admin-shell.io/aas/3/0/RC02/Key/value> "https://customer.com/assets/KHBVZJSQKIY"^^xs:string ;
                                           ] ;
                             ] ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind> <https://www.admin-shell.io/aas/3/0/RC02/AssetKind/Instance> ;
+                   <https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind> <https://admin-shell.io/aas/3/0/RC02/AssetKind/Instance> ;
                ];
 
-      <https://www.admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
+      <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
                    rdf:type aas:Reference ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/type> <https://www.admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/keys> [
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
                                 rdf:type aas:Key ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/type> <https://www.admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel>  ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/type/1/1/7A7104BDAB57E184"^^xs:string ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel>  ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/type/1/1/7A7104BDAB57E184"^^xs:string ;
                             ]
                ];
-      <https://www.admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
+      <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
                    rdf:type aas:Reference ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/type> <https://www.admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/keys> [
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
                                 rdf:type aas:Key ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/type>  <https://www.admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel>  ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"^^xs:string ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/type>  <https://admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel>  ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"^^xs:string ;
                             ]
                ];
-      <https://www.admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
+      <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels> [
                    rdf:type aas:Reference ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/type> <https://www.admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
-                   <https://www.admin-shell.io/aas/3/0/RC02/Reference/keys> [
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference> ;
+                   <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
                                 rdf:type aas:Key ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/type> <https://www.admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel> ;
-                                <https://www.admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/type/1/1/1A7B62B529F19152"^^xs:string ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/Submodel> ;
+                                <https://admin-shell.io/aas/3/0/RC02/Key/value> "http://i40.customer.com/type/1/1/1A7B62B529F19152"^^xs:string ;
                             ]
                ];
 .
