@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+
 import org.eclipse.aas4j.v3.model.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -62,7 +63,7 @@ public class JsonReferableDeserializerTest {
     public void testReadSubmodel() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/submodel.json");
         String expected = Files.readString(fileExpected.toPath());
-        Submodel submodel = new JsonDeserializer().readReferable(expected,Submodel.class);
+        Submodel submodel = new JsonDeserializer().readReferable(expected, Submodel.class);
         Environment environment = AASFull.ENVIRONMENT;
         Submodel submodelExpected = environment.getSubmodels().get(0);
 
