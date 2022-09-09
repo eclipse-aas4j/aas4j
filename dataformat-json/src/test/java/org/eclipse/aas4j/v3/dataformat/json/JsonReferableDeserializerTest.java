@@ -25,7 +25,12 @@ import java.util.List;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
 
-import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.aas4j.v3.model.SubmodelElementCollection;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
