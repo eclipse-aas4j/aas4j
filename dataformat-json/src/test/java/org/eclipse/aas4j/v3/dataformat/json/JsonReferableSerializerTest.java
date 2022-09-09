@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.aas4j.v3.model.*;
 import org.json.JSONException;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -30,11 +31,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.eclipse.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Referable;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
 
 public class JsonReferableSerializerTest {
 
@@ -83,10 +79,17 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeSubmodelelementList() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElementCollection() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
-        SubmodelElement submodelElementCollection = environment.getSubmodels().get(6).getSubmodelElements().get(5);
-        compare("src/test/resources/submodelElementList.json",submodelElementCollection);
+        SubmodelElementCollection submodelElementCollection = (SubmodelElementCollection) environment.getSubmodels().get(6).getSubmodelElements().get(6);
+        compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);
+    }
+
+    @Test
+    public void testSerializeSubmodelElementList() throws IOException, SerializationException, JSONException {
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElementList submodelElementList = (SubmodelElementList) environment.getSubmodels().get(6).getSubmodelElements().get(5);
+        compare("src/test/resources/submodelElementList.json",submodelElementList);
     }
 
     private void compare(String filePathForExpected, Referable... referable) throws IOException, SerializationException, JSONException {
