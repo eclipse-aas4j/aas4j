@@ -122,7 +122,7 @@ public class JsonReferableDeserializerTest {
     }
 
     @Test
-    public void testReadSubmodelElementColelction() throws IOException, DeserializationException {
+    public void testReadSubmodelElementCollection() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/submodelElementCollection.json");
         String expected = Files.readString(fileExpected.toPath());
         SubmodelElementCollection submodelElementCollection = new JsonDeserializer().readReferable(expected, SubmodelElementCollection.class);

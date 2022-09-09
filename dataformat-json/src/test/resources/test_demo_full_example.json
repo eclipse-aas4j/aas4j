@@ -712,8 +712,8 @@
                                         "value": "https://acplt.org/Test_Submodel"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
@@ -775,8 +775,8 @@
                                         "value": "https://acplt.org/Test_Submodel"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
@@ -832,7 +832,6 @@
                             {
                                 "keys": [
                                     {
-
                                         "type": "GlobalReference",
                                         "value": "http://acplt.org/Operations/ExampleOperation"
                                     }
@@ -948,7 +947,6 @@
                                                 {
                                                     "keys": [
                                                         {
-
                                                             "type": "GlobalReference",
                                                             "value": "http://acplt.org/ValueId/ExampleValueId"
                                                         }
@@ -1020,15 +1018,15 @@
                                         "value": "https://acplt.org/Test_Submodel"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "semanticId":
                             {
@@ -1063,22 +1061,22 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
+                                        "value": "http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionOrdered",
+                    "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionOrdered object"
+                                "text": "Example ExampleSubmodelElementListOrdered object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionOrdered Element"
+                                "text": "Beispiel ExampleSubmodelElementListOrdered Element"
                             }
                     ],
                     "value": [
@@ -1204,21 +1202,21 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered"
+                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionUnordered",
+                    "idShort": "ExampleSubmodelElementCollection",
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionUnordered object"
+                                "text": "Example SubmodelElementCollection object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionUnordered Element"
+                                "text": "Beispiel SubmodelElementCollection Element"
                             }
                         ],
                     "value": [
@@ -1300,8 +1298,8 @@
                                                 "value": "https://acplt.org/Test_Submodel"
                                             },
                                             {
-                                                "type": "SubmodelElementCollection",
-                                                "value": "ExampleSubmodelCollectionOrdered"
+                                                "type": "SubmodelElementList",
+                                                "value": "ExampleSubmodelElementListOrdered"
                                             },
                                             {
                                                 "type": "Property",
@@ -1354,8 +1352,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Mandatory"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListUnordered"
                                     },
                                     {
                                         "type": "Property",
@@ -1372,8 +1370,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Mandatory"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListUnordered"
                                     },
                                     {
                                         "type": "MultiLanguageProperty",
@@ -1395,11 +1393,11 @@
                                     },
                                     {
                                         "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "value": "ExampleSubmodelElementCollection"
                                     },
                                     {
-                                        "type": "Property",
-                                        "value": "ExampleProperty"
+                                        "type": "Blob",
+                                        "value": "ExampleBlob"
                                     }
                                 ],
                                 "type": "ModelReference"
@@ -1412,8 +1410,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Mandatory"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListUnordered"
                                     },
                                     {
                                         "type": "MultiLanguageProperty",
@@ -1442,15 +1440,15 @@
                                         "value": "https://acplt.org/Test_Submodel_Mandatory"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListUnordered"
                                     },
                                     {
                                         "type": "Property",
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "idShort": "ExampleBasicEvent",
                     "direction": "Output",
@@ -1458,8 +1456,8 @@
                 },
                 {
                     "modelType": "SubmodelElementList",
-                    "idShort": "ExampleSubmodelCollectionOrdered",
-                    "orderRelevant": true,
+                    "idShort": "ExampleSubmodelElementListUnordered",
+                    "orderRelevant": false,
                     "value": [
                         {
                             "modelType": "Property",
@@ -1479,7 +1477,7 @@
                 },
                 {
                     "modelType": "SubmodelElementCollection",
-                    "idShort": "ExampleSubmodelCollectionUnordered",
+                    "idShort": "ExampleSubmodelElementCollection",
                     "value": [
                         {
                             "modelType": "Blob",
@@ -1499,7 +1497,7 @@
                 },
                 {
                     "modelType": "SubmodelElementCollection",
-                    "idShort": "ExampleSubmodelCollectionUnordered2"
+                    "idShort": "ExampleSubmodelElementCollection2"
                 }
             ]
         },
@@ -1528,7 +1526,7 @@
                         "version": "0.9"
                     },
             "id": "https://acplt.org/Test_Submodel_Missing",
-            "idShort": "TestSubmodel",
+            "idShort": "TestSubmodelMissing",
             "submodelElements": [
                 {
                     "modelType": "RelationshipElement",
@@ -1552,8 +1550,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
@@ -1570,8 +1568,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "MultiLanguageProperty",
@@ -1614,8 +1612,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
@@ -1632,8 +1630,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "MultiLanguageProperty",
@@ -1842,8 +1840,8 @@
                                         "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
                                     {
-                                        "type": "SubmodelElementCollection",
-                                        "value": "ExampleSubmodelCollectionOrdered"
+                                        "type": "SubmodelElementList",
+                                        "value": "ExampleSubmodelElementListOrdered"
                                     },
                                     {
                                         "type": "Property",
@@ -1885,22 +1883,22 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
+                                        "value": "http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionOrdered",
+                    "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "descriptions":  [
                                         {
                                             "language": "en-us",
-                                            "text": "Example SubmodelElementCollectionOrdered object"
+                                            "text": "Example SubmodelElementListOrdered object"
                                         },
                                         {
                                             "language": "de",
-                                            "text": "Beispiel SubmodelElementCollectionOrdered Element"
+                                            "text": "Beispiel SubmodelElementListOrdered Element"
                                         }
                                     ],
                     "value": [
@@ -1944,7 +1942,6 @@
                                     {
                                         "keys": [
                                             {
-
                                                 "type": "GlobalReference",
                                                 "value": "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty"
                                             }
@@ -2013,21 +2010,21 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered"
+                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionUnordered",
+                    "idShort": "ExampleSubmodelElementCollection",
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionUnordered object"
+                                "text": "Example SubmodelElementCollection object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionUnordered Element"
+                                "text": "Beispiel SubmodelElementCollection Element"
                             }
                         ],
                     "value": [
@@ -2101,24 +2098,23 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleReferenceElement",
-                            "value":
+                            "value": {
+                                "keys": [
                                     {
-                                        "keys": [
-                                            {
-                                                "type": "Submodel",
-                                                "value": "https://acplt.org/Test_Submodel_Missing"
-                                            },
-                                            {
-                                                "type": "SubmodelElementCollection",
-                                                "value": "ExampleSubmodelCollectionOrdered"
-                                            },
-                                            {
-                                                "type": "Property",
-                                                "value": "ExampleProperty"
-                                            }
-                                        ],
-                                        "type": "GlobalReference"
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Missing"
                                     },
+                                    {
+                                        "type": "SubmodelElementCollection",
+                                        "value": "ExampleSubmodelElementCollection"
+                                    },
+                                    {
+                                        "type": "File",
+                                        "value": "ExampleFile"
+                                    }
+                                ],
+                                "type": "ModelReference"
+                            },
                             "descriptions":  [
                                     {
                                         "language": "en-us",
@@ -2165,7 +2161,7 @@
                         "version": "0.9"
                     },
             "id": "https://acplt.org/Test_Submodel_Template",
-            "idShort": "TestSubmodel",
+            "idShort": "TestSubmodelTemplate",
             "submodelElements": [
                 {
                     "modelType": "RelationshipElement",
@@ -2186,6 +2182,14 @@
                             {
                                 "keys": [
                                     {
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Template"
+                                    },
+                                    {
+                                        "type": "Operation",
+                                        "value": "ExampleOperation"
+                                    },
+                                    {
                                         "type": "Property",
                                         "value": "ExampleProperty"
                                     }
@@ -2195,6 +2199,14 @@
                     "second":
                             {
                                 "keys": [
+                                    {
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Template"
+                                    },
+                                    {
+                                        "type": "Operation",
+                                        "value": "ExampleOperation"
+                                    },
                                     {
                                         "type": "Property",
                                         "value": "ExampleProperty"
@@ -2233,6 +2245,14 @@
                             {
                                 "keys": [
                                     {
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Template"
+                                    },
+                                    {
+                                        "type": "Operation",
+                                        "value": "ExampleOperation"
+                                    },
+                                    {
                                         "type": "Property",
                                         "value": "ExampleProperty"
                                     }
@@ -2242,6 +2262,14 @@
                     "second":
                             {
                                 "keys": [
+                                    {
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Template"
+                                    },
+                                    {
+                                        "type": "Operation",
+                                        "value": "ExampleOperation"
+                                    },
                                     {
                                         "type": "Property",
                                         "value": "ExampleProperty"
@@ -2258,8 +2286,7 @@
                                         "language": "de",
                                         "text": "Beispiel AnnotatedRelationshipElement Element"
                                     }
-                                ]
-
+                            ]
                 },
                 {
                     "modelType": "Operation",
@@ -2420,11 +2447,19 @@
                             {
                                 "keys": [
                                     {
+                                        "type": "Submodel",
+                                        "value": "https://acplt.org/Test_Submodel_Template"
+                                    },
+                                    {
+                                        "type": "Operation",
+                                        "value": "ExampleOperation"
+                                    },
+                                    {
                                         "type": "Property",
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "kind": "Template",
                     "semanticId":
@@ -2461,22 +2496,22 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
+                                        "value": "http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionOrdered",
+                    "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionOrdered object"
+                                "text": "Example SubmodelElementListOrdered object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionOrdered Element"
+                                "text": "Beispiel SubmodelElementListOrdered Element"
                             }
                         ],
                     "value": [
@@ -2603,21 +2638,21 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered"
+                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionUnordered",
+                    "idShort": "ExampleSubmodelElementCollection",
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionUnordered object"
+                                "text": "Example SubmodelElementCollection object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionUnordered Element"
+                                "text": "Beispiel SubmodelElementCollection Element"
                             }
                         ],
                     "value": [
@@ -2714,21 +2749,21 @@
                                 "keys": [
                                     {
                                         "type": "GlobalReference",
-                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered"
+                                        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
                                     }
                                 ],
                                 "type": "GlobalReference"
                             },
                     "category": "Parameter",
-                    "idShort": "ExampleSubmodelCollectionUnordered2",
+                    "idShort": "ExampleSubmodelElementCollection2",
                     "descriptions":  [
                             {
                                 "language": "en-us",
-                                "text": "Example SubmodelElementCollectionUnordered object"
+                                "text": "Example SubmodelElementCollection object"
                             },
                             {
                                 "language": "de",
-                                "text": "Beispiel SubmodelElementCollectionUnordered Element"
+                                "text": "Beispiel SubmodelElementCollection Element"
                             }
                         ]
                     

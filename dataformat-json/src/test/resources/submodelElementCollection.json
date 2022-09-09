@@ -1,14 +1,14 @@
 {
-  "idShort": "ExampleSubmodelCollectionUnordered",
+  "idShort": "ExampleSubmodelElementCollection",
   "category": "Parameter",
   "descriptions": [
     {
       "language": "en-us",
-      "text": "Example SubmodelElementCollectionUnordered object"
+      "text": "Example SubmodelElementCollection object"
     },
     {
       "language": "de",
-      "text": "Beispiel SubmodelElementCollectionUnordered Element"
+      "text": "Beispiel SubmodelElementCollection Element"
     }
   ],
   "modelType": "SubmodelElementCollection",
@@ -17,7 +17,7 @@
     "keys": [
       {
         "type": "GlobalReference",
-        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered"
+        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
       }
     ],
     "type": "GlobalReference"
