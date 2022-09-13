@@ -29,6 +29,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
+import org.eclipse.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.aas4j.v3.model.Environment;
@@ -38,9 +39,9 @@ import org.eclipse.aas4j.v3.model.Submodel;
 public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
     private static final String[] SCHEMA_LOCATION = {"xsi:schemaLocation",
-        "http://www.admin-shell.io/aas/3/0 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd"};
+        "https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd"};
 
-    private static final QName AASENV_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "aasenv");
+    private static final QName AASENV_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "environment");
     private static final QName AASLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "assetAdministrationShells");
     private static final QName AAS_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "assetAdministrationShell");
     private static final QName CONCEPTDICTIONARYLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "conceptDescriptions");
@@ -96,8 +97,8 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
 
     private void writeContent(Environment value, ToXmlGenerator xgen) throws IOException {
         writeAssetAdministrationShells(xgen, value.getAssetAdministrationShells());
-        writeConceptDescriptions(xgen, value.getConceptDescriptions());
         writeSubmodels(xgen, value.getSubmodels());
+        writeConceptDescriptions(xgen, value.getConceptDescriptions());
     }
 
     private void writeAssetAdministrationShells(ToXmlGenerator xgen, List<AssetAdministrationShell> aasList)
@@ -125,6 +126,9 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
 
     private void writeWrappedArray(ToXmlGenerator xgen, QName wrapper, QName wrapped, List<?> list)
             throws IOException {
+        // overwrite all empty list with null, as the schema does not allow empty XML lists
+        for (Object obj : list) ReflectionHelper.setEmptyListsToNull(obj);
+
         xgen.writeFieldName(wrapper.getLocalPart());
         xgen.writeStartArray();
         xgen.startWrappedValue(wrapper, wrapped);

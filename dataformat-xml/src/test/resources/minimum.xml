@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aas:aasenv xmlns:aas="http://www.admin-shell.io/aas/3/0"
-	xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0"
-	xsi:schemaLocation="http://www.admin-shell.io/aas/3/0 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
-</aas:aasenv>
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+  <aas:assetAdministrationShells>
+    <aas:assetAdministrationShell>
+      <aas:id>https://acplt.org/Test_AssetAdministrationShell</aas:id>
+      <aas:assetInformation>
+        <aas:assetKind>Instance</aas:assetKind>
+      </aas:assetInformation>
+    </aas:assetAdministrationShell>
+  </aas:assetAdministrationShells>
+</aas:environment>
+

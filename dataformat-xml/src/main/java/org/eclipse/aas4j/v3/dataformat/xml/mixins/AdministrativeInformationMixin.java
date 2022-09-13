@@ -19,8 +19,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.eclipse.aas4j.v3.model.Reference;
 
+
+@JsonPropertyOrder({"dataSpecifications", "embeddedDataSpecifications", "version", "revision"})
 public interface AdministrativeInformationMixin {
     @JsonIgnore
     public List<Reference> getDataSpecifications();

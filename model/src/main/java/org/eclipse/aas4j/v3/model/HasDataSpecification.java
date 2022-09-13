@@ -33,27 +33,6 @@ import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 })
 public interface HasDataSpecification {
 
-    /**
-     * Global reference to the data specification template used by the element.
-     *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications
-     *
-     * @return Returns the List of References for the property dataSpecifications.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    List<Reference> getDataSpecifications();
-
-    /**
-     * Global reference to the data specification template used by the element.
-     *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications
-     *
-     * @param dataSpecifications desired value for the property dataSpecifications.
-     */
-    void setDataSpecifications(List<Reference> dataSpecifications);
-
 
     /**
      * EmbeddedDataSpecifications used by the element.
@@ -64,7 +43,7 @@ public interface HasDataSpecification {
      * @return Returns the List of DataSpecifications for the property embeddedDataSpecifications.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    List<DataSpecification> getEmbeddedDataSpecifications();
+    List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     /**
      * EmbeddedDataSpecifications used by the element.
@@ -74,6 +53,6 @@ public interface HasDataSpecification {
      *
      * @param embeddedDataSpecifications desired value for the property embeddedDataSpecifications.
      */
-    void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
+    void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 
 }

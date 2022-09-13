@@ -16,6 +16,7 @@
 package org.eclipse.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -25,11 +26,30 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.eclipse.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
+import javax.xml.namespace.QName;
+
 public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
 
     @Override
     public void serialize(SubmodelElement value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
+
+        try {
+            Field nextName = xgen.getClass().getDeclaredField("_nextName");
+            nextName.setAccessible(true);
+            QName next = (QName) nextName.get(xgen);
+
+            String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
+
+            if (next.getLocalPart().equals(name)) {
+                xgen.writeObject(value); // only write the plain object without a deduplicate wrapping field
+                return ;
+            }
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            // TODO: report exception
+            throw new IOException(e);
+        }
+
         xgen.writeStartObject();
         String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
         xgen.writeFieldName(name);

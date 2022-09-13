@@ -24,6 +24,7 @@ import org.eclipse.aas4j.v3.dataformat.xml.deserialization.DataElementsDeseriali
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.DataElementsSerializer;
 import org.eclipse.aas4j.v3.model.DataElement;
 
+
 public interface AnnotatedRelationshipElementMixin {
     @JsonSerialize(using = DataElementsSerializer.class)
     @JsonDeserialize(using = DataElementsDeserializer.class)

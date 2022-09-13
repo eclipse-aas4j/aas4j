@@ -18,29 +18,7 @@ import org.eclipse.aas4j.v3.model.*;
 
 import java.util.List;
 
-public abstract class DataSpecificationBuilder<T extends DataSpecification, B extends DataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for administration
-     * 
-     * @param administrativeInformation desired value to be set
-     * @return Builder object with new value for name
-     */
-    public B administration(AdministrativeInformation administrativeInformation) {
-        getBuildingInstance().setAdministration(administrativeInformation);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for id
-     * 
-     * @param id desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B id(String id) {
-        getBuildingInstance().setId(id);
-        return getSelf();
-    }
+public abstract class EmbeddedDataSpecificationBuilder<T extends EmbeddedDataSpecification, B extends EmbeddedDataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for dataSpecificationContent
@@ -54,13 +32,13 @@ public abstract class DataSpecificationBuilder<T extends DataSpecification, B ex
     }
 
     /**
-     * This function allows setting a value for description
+     * This function allows setting a value for dataSpecification
      * 
-     * @param descriptions desired value to be set
+     * @param dataSpecification desired value to be set
      * @return Builder object with new value for refersTo
      */
-    public B descriptions(List<LangString> descriptions) {
-        getBuildingInstance().setDescriptions(descriptions);
+    public B dataSpecification(Reference dataSpecification) {
+        getBuildingInstance().setDataSpecification(dataSpecification);
         return getSelf();
     }
 

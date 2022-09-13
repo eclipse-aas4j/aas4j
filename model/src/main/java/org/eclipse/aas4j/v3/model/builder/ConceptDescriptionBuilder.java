@@ -51,8 +51,8 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
      * @param dataSpecifications desired value to be set
      * @return Builder object with new value for dataSpecifications
      */
-    public B dataSpecifications(List<Reference> dataSpecifications) {
-        getBuildingInstance().setDataSpecifications(dataSpecifications);
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(dataSpecifications);
         return getSelf();
     }
 
@@ -62,21 +62,11 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
      * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */
-    public B embeddedDataSpecifications(DataSpecification embeddedDataSpecifications) {
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
         getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 
-    /**
-     * This function allows adding a value to the List dataSpecifications
-     * 
-     * @param dataSpecifications desired value to be added
-     * @return Builder object with new value for dataSpecifications
-     */
-    public B dataSpecifications(Reference dataSpecifications) {
-        getBuildingInstance().getDataSpecifications().add(dataSpecifications);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for administration
@@ -128,8 +118,8 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayNames(List<LangString> displayName) {
-        getBuildingInstance().setDisplayNames(displayName);
+    public B displayName(List<LangString> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
 
@@ -140,7 +130,7 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
      * @return Builder object with new value for description
      */
     public B descriptions(List<LangString> description) {
-        getBuildingInstance().setDescriptions(description);
+        getBuildingInstance().setDescription(description);
         return getSelf();
     }
 

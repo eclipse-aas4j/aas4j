@@ -16,8 +16,7 @@
 package org.eclipse.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.aas4j.v3.model.DataSpecification;
-import org.eclipse.aas4j.v3.model.Extension;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 
 import java.util.List;
@@ -25,10 +24,10 @@ import java.util.List;
 public interface HasDataSpecificationMixin {
 
     @JsonProperty("embeddedDataSpecifications")
-    public List<DataSpecification> getEmbeddedDataSpecifications();
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     @JsonProperty("embeddedDataSpecifications")
-    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications);
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 
     @JsonProperty("dataSpecifications")
     public List<Reference> getDataSpecifications();

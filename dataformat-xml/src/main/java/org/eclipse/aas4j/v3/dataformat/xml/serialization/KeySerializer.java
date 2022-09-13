@@ -34,14 +34,12 @@ public class KeySerializer extends JsonSerializer<Key> {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeObjectFieldStart("key");
 
-        try {
-            String keyTypeValue = AasUtils.serializeEnumName(key.getType().toString());
-            xgen.getStaxWriter().writeAttribute("type", keyTypeValue);
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        }
+        String keyTypeValue = AasUtils.serializeEnumName(key.getType().toString());
         xgen.setNextIsAttribute(false);
-        xgen.setNextIsUnwrapped(true);
+        xgen.writeFieldName("type");
+        xgen.writeString(key.getType().name());
+
+        xgen.setNextIsAttribute(false);
         xgen.writeFieldName("value");
         xgen.writeString(key.getValue());
 

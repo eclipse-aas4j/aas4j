@@ -20,7 +20,7 @@ import java.util.Objects;
 
 
 import org.eclipse.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.aas4j.v3.model.DataSpecification;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.AdministrativeInformationBuilder;
@@ -46,7 +46,7 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     protected List<Reference> dataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     public DefaultAdministrativeInformation() {}
 
@@ -94,22 +94,12 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     }
 
     @Override
-    public List<Reference> getDataSpecifications() {
-        return dataSpecifications;
-    }
-
-    @Override
-    public void setDataSpecifications(List<Reference> dataSpecifications) {
-        this.dataSpecifications = dataSpecifications;
-    }
-
-    @Override
-    public List<DataSpecification> getEmbeddedDataSpecifications() {
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
         return embeddedDataSpecifications;
     }
 
     @Override
-    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 

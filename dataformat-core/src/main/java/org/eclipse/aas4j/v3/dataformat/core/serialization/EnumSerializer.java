@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import org.eclipse.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.aas4j.v3.dataformat.core.util.AasUtils;
 import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.aas4j.v3.model.DataTypeIEC61360;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will
@@ -46,6 +47,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
                 String enum_string = AasUtils.serializeEnumName(value.name());
                 gen.writeString("xs:" + enum_string.substring(0, 1).toLowerCase() + enum_string.substring(1));
             }
+        } else if (value instanceof DataTypeIEC61360) {
+            gen.writeString(value.name().toUpperCase());
         } else if (ReflectionHelper.ENUMS.contains(value.getClass())) {
             gen.writeString(AasUtils.serializeEnumName(value.name()));
         } else {

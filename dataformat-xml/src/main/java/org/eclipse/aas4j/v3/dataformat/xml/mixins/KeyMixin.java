@@ -15,15 +15,25 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
+import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.KeyTypes;
 
+@JsonPropertyOrder({"type", "value"})
 public interface KeyMixin {
-    @JacksonXmlText
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     public String getValue();
 
-    @JacksonXmlProperty(localName = "type", isAttribute = true)
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+    void setValue(String value);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
     public KeyTypes getType();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+    void setType(KeyTypes type);
 }

@@ -103,8 +103,8 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the List of LangStrings for the property definitions.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions")
-    List<LangString> getDefinitions();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition")
+    List<LangString> getDefinition();
 
     /**
      * Constraint AASd-074: For all ConceptDescriptions except for ConceptDescriptions of category VALUE
@@ -115,9 +115,9 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      * More information under
      * https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition
      *
-     * @param definitions desired value for the property definitions.
+     * @param definition desired value for the property definitions.
      */
-    void setDefinitions(List<LangString> definitions);
+    void setDefinition(List<LangString> definition);
 
     /**
      *
@@ -145,8 +145,8 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the LangString for the property preferredName.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames")
-    List<LangString> getPreferredNames();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName")
+    List<LangString> getPreferredName();
 
     /**
      *
@@ -155,7 +155,7 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @param preferredName desired value for the property preferredName.
      */
-    void setPreferredNames(List<LangString> preferredName);
+    void setPreferredName(List<LangString> preferredName);
 
     /**
      *
@@ -164,8 +164,8 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @return Returns the LangString for the property shortName.
      */
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames")
-    List<LangString> getShortNames();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName")
+    List<LangString> getShortName();
 
     /**
      *
@@ -174,7 +174,7 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
      *
      * @param shortName desired value for the property shortName.
      */
-    void setShortNames(List<LangString> shortName);
+    void setShortName(List<LangString> shortName);
 
     /**
      *

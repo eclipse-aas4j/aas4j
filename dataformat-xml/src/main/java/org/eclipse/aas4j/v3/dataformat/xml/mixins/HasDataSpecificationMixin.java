@@ -15,18 +15,24 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
-// TODO import io.adminshell.aas.v3.dataformat.xml.deserialization.EmbeddedDataSpecificationsDeserializer;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.aas4j.v3.model.Reference;
+
+import java.util.List;
+
 
 public interface HasDataSpecificationMixin {
 
-    // TODO fix the EmbeddedDataSpecification issue
-/*    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
-    @JsonDeserialize(using = EmbeddedDataSpecificationsDeserializer.class)
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
     public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications);
 
- */
+
 }

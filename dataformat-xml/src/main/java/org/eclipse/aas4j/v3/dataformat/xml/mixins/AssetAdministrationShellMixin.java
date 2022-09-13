@@ -17,15 +17,24 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.aas4j.v3.model.Reference;
 
+@JsonPropertyOrder({ "hasExtension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels"})
 public interface AssetAdministrationShellMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRef")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRefs")
+
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id") //TODO move into IdentifiableMixin
+    public String getId();
+
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
     public List<Reference> getSubmodels();
 
 }

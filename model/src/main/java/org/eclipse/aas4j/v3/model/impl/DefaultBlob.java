@@ -67,24 +67,24 @@ public class DefaultBlob implements Blob {
     protected String checksum;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    protected List<LangString> descriptions;
+    protected List<LangString> description;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
-    protected List<LangString> displayNames;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    protected List<LangString> displayName;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<DataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @Override
-    public List<DataSpecification> getEmbeddedDataSpecifications() {
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
         return embeddedDataSpecifications;
     }
 
     @Override
-    public void setEmbeddedDataSpecifications(List<DataSpecification> embeddedDataSpecifications) {
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
@@ -101,8 +101,8 @@ public class DefaultBlob implements Blob {
             this.qualifiers,
             this.category,
             this.idShort,
-            this.displayNames,
-            this.descriptions,
+            this.displayName,
+            this.description,
             this.checksum,
             this.extensions);
     }
@@ -126,8 +126,8 @@ public class DefaultBlob implements Blob {
                 Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayNames, other.displayNames) &&
-                Objects.equals(this.descriptions, other.descriptions) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
                 Objects.equals(this.extensions, other.extensions);
         }
@@ -151,16 +151,6 @@ public class DefaultBlob implements Blob {
     @Override
     public void setContentType(String contentType) {
         this.contentType = contentType;
-    }
-
-    @Override
-    public List<Reference> getDataSpecifications() {
-        return dataSpecifications;
-    }
-
-    @Override
-    public void setDataSpecifications(List<Reference> dataSpecifications) {
-        this.dataSpecifications = dataSpecifications;
     }
 
     @Override
@@ -224,23 +214,23 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public List<LangString> getDisplayNames() {
-        return displayNames;
+    public List<LangString> getDisplayName() {
+        return displayName;
     }
 
     @Override
-    public void setDisplayNames(List<LangString> displayName) {
-        this.displayNames = displayNames;
+    public void setDisplayName(List<LangString> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
-    public List<LangString> getDescriptions() {
-        return descriptions;
+    public List<LangString> getDescription() {
+        return description;
     }
 
     @Override
-    public void setDescriptions(List<LangString> descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(List<LangString> descriptions) {
+        this.description = description;
     }
 
     @Override
