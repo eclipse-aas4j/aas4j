@@ -46,7 +46,7 @@ public class AASFull {
     public static AssetAdministrationShell createAAS1() {
         return new DefaultAssetAdministrationShell.Builder()
                 .idShort("TestAssetAdministrationShell")
-                .descriptions(Arrays.asList(
+                .description(Arrays.asList(
                         new DefaultLangString.Builder().text("An Example Asset Administration Shell for the test application").language("en-us").build(),
                         new DefaultLangString.Builder().text("Ein Beispiel-Verwaltungsschale für eine Test-Anwendung").language("de").build()
                         ))
@@ -153,7 +153,7 @@ public class AASFull {
     public static AssetAdministrationShell createAAS4() {
         return new DefaultAssetAdministrationShell.Builder()
                 .idShort("TestAssetAdministrationShell")
-                .descriptions(Arrays.asList(
+                .description(Arrays.asList(
                         new DefaultLangString.Builder().text("An Example Asset Administration Shell for the test application").language("en-us").build(),
                         new DefaultLangString.Builder().text("Ein Beispiel-Verwaltungsschale für eine Test-Anwendung").language("de").build()
                         ))
@@ -1782,25 +1782,24 @@ public class AASFull {
                                 .build())
                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
-                .dataSpecifications(new DefaultReference.Builder()
-                        .type(ReferenceTypes.GLOBAL_REFERENCE)
-                        .keys(new DefaultKey.Builder()
-                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
+                        .dataSpecification(new DefaultReference.Builder()
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                        .build())
                                 .build())
-                        .build())
-                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
-                        .id("http://acplt.org/DataSpecifciations/Example/Identification")
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                .preferredNames(Arrays.asList(
+                                .preferredName(Arrays.asList(
                                         new DefaultLangString.Builder().text("Test Specification").language("de").build(),
                                         new DefaultLangString.Builder().text("TestSpecification").language("en-us").build()
                                 ))
                                 .dataType(DataTypeIEC61360.REAL_MEASURE)
                                 .definitions(new DefaultLangString.Builder().text("Dies ist eine Data Specification für Testzwecke").language("de").build())
                                 .definitions(new DefaultLangString.Builder().text("This is a DataSpecification for testing purposes").language("en-us").build())
-                                .shortNames(new DefaultLangString.Builder().text("Test Spec").language("de").build())
-                                .shortNames(new DefaultLangString.Builder().text("TestSpec").language("en-us").build())
+                                .shortName(new DefaultLangString.Builder().text("Test Spec").language("de").build())
+                                .shortName(new DefaultLangString.Builder().text("TestSpec").language("en-us").build())
                                 .unit("SpaceUnit")
                                 .unitId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()

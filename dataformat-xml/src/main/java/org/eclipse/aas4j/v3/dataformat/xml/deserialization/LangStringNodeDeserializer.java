@@ -26,8 +26,8 @@ import org.eclipse.aas4j.v3.model.impl.DefaultLangString;
 public class LangStringNodeDeserializer implements CustomJsonNodeDeserializer<LangString> {
     @Override
     public LangString readValue(JsonNode node, JsonParser parser) throws IOException {
-        String lang = node.get("lang").asText();
-        String text = node.get("").asText();
+        String lang = node.get("language").asText();
+        String text = node.get("text").asText();
         return new DefaultLangString.Builder().text(text).language(lang).build();
     }
 }

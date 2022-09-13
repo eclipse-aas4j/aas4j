@@ -58,8 +58,8 @@
           "@type" : "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataTypeIEC61360",
           "@id" : "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/RATIONAL"
         },
-        "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions" : [ ],
-        "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames" : [ ],
+        "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitionss" : [ ],
+        "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNamess" : [ ],
         "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames" : [ ]
       },
       "https://admin-shell.io/aas/3/0/RC02/DataSpecification/id" : "http://example.org/DataSpecification1"

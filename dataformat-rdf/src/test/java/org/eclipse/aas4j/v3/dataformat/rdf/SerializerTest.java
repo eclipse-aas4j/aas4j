@@ -40,8 +40,8 @@ public class SerializerTest {
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
                         .build())
-                .descriptions(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
-                .displayNames(Arrays.asList(
+                .description(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
+                .displayName(Arrays.asList(
                         new DefaultLangString.Builder().text("Anzeigename 2").language("de").build(),
                         new DefaultLangString.Builder().text("Display Name 1").language("en").build()
                         ))
@@ -49,7 +49,7 @@ public class SerializerTest {
 
         Submodel submodel = new DefaultSubmodel.Builder()
                 .descriptions(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
-                .displayNames(Arrays.asList(
+                .displayName(Arrays.asList(
                         new DefaultLangString.Builder().text("First Submodel Element name").language("en").build(),
                         new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build()
                         ))
@@ -57,17 +57,16 @@ public class SerializerTest {
                 .build();
 
         ConceptDescription conceptDescription = new DefaultConceptDescription.Builder()
-                .dataSpecifications(new DefaultReference.Builder()
+                .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
+                    .dataSpecification(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
-                                .value("https://example.org")
-                                .build())
+                            .value("https://example.org")
+                            .build())
                         .build())
-                .embeddedDataSpecifications(new DefaultDataSpecification.Builder()
-                        .id("http://example.org/DataSpecification1")
-                        .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                                .dataType(DataTypeIEC61360.RATIONAL)
-                                .build())
+                    .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
+                        .dataType(DataTypeIEC61360.RATIONAL)
                         .build())
+                    .build())
                 .build();
 
         List<AssetAdministrationShell> aasList = new ArrayList<>(Collections.singletonList(aas));

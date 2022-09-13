@@ -25,6 +25,8 @@ import java.util.Set;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -39,13 +41,13 @@ import org.xmlunit.matchers.CompareMatcher;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.eclipse.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.impl.DefaultEnvironment;
 
 public class XmlSerializerTest {
     public static final java.io.File AASFULL_FILE = new java.io.File("src/test/resources/test_demo_full_example.xml");
     public static final java.io.File AASSIMPLE_FILE = new java.io.File("src/test/resources/xmlExample.xml");
     public static final java.io.File AASSIMPLE_FILE_WITH_TEST_NAMESPACE = new java.io.File("src/test/resources/xmlExampleWithModifiedPrefix.xml");
+    public static final java.io.File AASFULL_FILE_WITH_ANNOTATED_RELATIONSHIP = new java.io.File("src/test/resources/annotated_relationship_example.xml");
+    public static final java.io.File AASFULL_FILE_WITH_QUALIFIERS = new java.io.File("src/test/resources/qualifier_example.xml");
 
     private static final Logger logger = LoggerFactory.getLogger(XmlSerializerTest.class);
 
@@ -63,6 +65,12 @@ public class XmlSerializerTest {
     public void testSerializeMinimal() throws IOException, SerializationException, SAXException {
         File file = new File("src/test/resources/minimum.xml");
         Environment environment = new DefaultEnvironment.Builder()
+                .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
+                        .id("https://acplt.org/Test_AssetAdministrationShell")
+                        .assetInformation(new DefaultAssetInformation.Builder()
+                                .assetKind(AssetKind.INSTANCE)
+                                .build())
+                        .build())
             .build();
         validateXmlSerializer(file, environment);
     }
@@ -85,6 +93,59 @@ public class XmlSerializerTest {
         validateXmlSerializer(AASFULL_FILE, AASFull.ENVIRONMENT);
     }
 
+    @Test
+    public void testConceptDescriptionAgainstXsdSchema() throws SerializationException, SAXException {
+        ConceptDescription object = AASSimple.createConceptDescriptionMaxRotationSpeed();
+        Set<String> errors = validateAgainstXsdSchema( new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build()));
+        assertTrue(errors.isEmpty());
+    }
+
+
+    @Test
+    public void testMinimalOperationAgainstXsdSchema() throws SerializationException, SAXException {
+        Submodel object = new DefaultSubmodel.Builder()
+                .id("testSubmodel")
+                .idShort("testSubmodel")
+                .submodelElements(new DefaultOperation.Builder()
+                        .idShort("operationToTest")
+                        .inoutputVariables(new DefaultOperationVariable.Builder()
+                                .value(new DefaultProperty.Builder()
+                                        .idShort("inputProperty")
+                                        .value("1")
+                                        .valueType(DataTypeDefXsd.INT)
+                                        .build())
+                                .build())
+                        .build())
+        .build();
+        String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
+        Set<String> errors = validateAgainstXsdSchema( xml );
+        assertTrue(errors.isEmpty());
+    }
+
+
+    @Test
+    public void testDocumentationSubmodelAgainstXsdSchema() throws SerializationException, SAXException {
+        Submodel object = AASSimple.createSubmodelDocumentation();
+        String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
+        Set<String> errors = validateAgainstXsdSchema( xml );
+        assertTrue(errors.isEmpty());
+    }
+
+
+    @Test
+    public void testIsCaseOfAgainstXsdSchema() throws SerializationException, SAXException {
+        ConceptDescription object = AASFull.ENVIRONMENT.getConceptDescriptions().get(0);
+        String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build());
+        Set<String> errors = validateAgainstXsdSchema( xml );
+        assertTrue(errors.isEmpty());
+    }
+
+
+
+    private Set<String> validateAgainstXsdSchema(String xml) throws SerializationException, SAXException {
+        return new XmlSchemaValidator().validateSchema(xml);
+    }
+
     private void validateXmlSerializer(File expectedFile, Environment environment)
         throws IOException, SerializationException, SAXException {
         validateXmlSerializer(expectedFile, environment, new XmlSerializer());
@@ -93,8 +154,8 @@ public class XmlSerializerTest {
     private void validateXmlSerializer(File expectedFile, Environment environment, XmlSerializer xmlSerializer)
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
-        Set<String> errors = new XmlSchemaValidator().validateSchema(actual);
-        logger.info(actual);
+        Set<String> errors = validateAgainstXsdSchema(actual);
+         logger.info(actual);
         logErrors(expectedFile.getName(), errors);
         assertTrue(errors.isEmpty());
         CompareMatcher xmlTestMatcher = CompareMatcher.isSimilarTo(expectedFile).normalizeWhitespace().ignoreComments()

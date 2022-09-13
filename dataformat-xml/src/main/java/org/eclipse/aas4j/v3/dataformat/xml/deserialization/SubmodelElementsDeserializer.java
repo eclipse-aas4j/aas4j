@@ -18,18 +18,22 @@ package org.eclipse.aas4j.v3.dataformat.xml.deserialization;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
+import org.checkerframework.checker.units.qual.A;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
 public class SubmodelElementsDeserializer extends JsonDeserializer<List<SubmodelElement>> {
@@ -54,22 +58,43 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
     }
 
     private List<SubmodelElement> createSubmodelElements(JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws IOException, JsonProcessingException {
-        JsonNode nodeSubmodelElement = getSubmodelElementsNode(treeNode);
-        if (nodeSubmodelElement.isArray()) {
-            return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) nodeSubmodelElement);
+//        JsonNode nodeSubmodelElement = getSubmodelElementsNode(treeNode);
+        if (treeNode.isArray()) {
+            return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
         } else {
-            return getSubmodelElementsFromObjectNode(parser, ctxt, nodeSubmodelElement);
+            return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
         }
     }
 
     private List<SubmodelElement> getSubmodelElementsFromObjectNode(JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement) throws IOException, JsonProcessingException {
-        SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, nodeSubmodelElement);
-        return Collections.singletonList(elem);
+
+        Iterator<String> iter = nodeSubmodelElement.fieldNames();
+        List<SubmodelElement> submodelElements = new ArrayList<SubmodelElement>();
+
+        while(iter.hasNext()) {
+            String submodelElementName = iter.next();
+            final ObjectMapper mapper = new ObjectMapper();
+            final ObjectNode node = mapper.createObjectNode();
+            node.set(submodelElementName, nodeSubmodelElement.get(submodelElementName));
+            if (nodeSubmodelElement.get(submodelElementName).isArray()) {
+                ArrayNode arrayNode = (ArrayNode) nodeSubmodelElement.get(submodelElementName);
+                for (int i = 0; i < arrayNode.size(); i++) {
+                    final ObjectNode nodeElement = mapper.createObjectNode();
+                    nodeElement.set(submodelElementName, arrayNode.get(i));
+                    submodelElements.add(getSubmodelElementFromJsonNode(parser, ctxt, nodeElement));
+                }
+            } else {
+                SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, node);
+                submodelElements.add(elem);
+            }
+        }
+
+        return submodelElements;
     }
 
     private JsonNode getSubmodelElementsNode(TreeNode temp) {
         ObjectNode objNode = (ObjectNode) temp;
-        JsonNode nodeSubmodelElement = objNode.get("submodelElement");
+        JsonNode nodeSubmodelElement = objNode.get("submodelElement"); // TODO: most likely the node will have the name of a SME subclass, e.g. "property" and not "submodelElement"
         return nodeSubmodelElement;
     }
 

@@ -16,7 +16,9 @@
 package org.eclipse.aas4j.v3.dataformat.xml.deserialization;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -24,9 +26,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
+import org.eclipse.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.aas4j.v3.model.DataElement;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
@@ -47,10 +51,23 @@ public class DataElementsDeserializer extends JsonDeserializer<List<DataElement>
         if (treeNode instanceof TextNode) {
             return Collections.emptyList();
         }
+
         ObjectNode node = (ObjectNode) treeNode;
-        ObjectNode dataElementNode = (ObjectNode) node.get("dataElement");
-        DataElement elem = createDataElementFromNode(parser, ctxt, dataElementNode);
-        return Collections.singletonList(elem);
+
+        Iterator<String> iter = node.fieldNames();
+        List<DataElement> dataElements = new ArrayList<DataElement>();
+        final ObjectMapper mapper = new ObjectMapper();
+        while (iter.hasNext()) {
+            String fieldName = iter.next();
+            ObjectNode dataElementNode = (ObjectNode) node.get(fieldName);
+            final ObjectNode nodeElement = mapper.createObjectNode();
+            nodeElement.set(fieldName, dataElementNode);
+            DataElement elem = createDataElementFromNode(parser, ctxt, nodeElement);
+            dataElements.add(elem);
+        }
+
+
+        return dataElements;
     }
 
     private DataElement createDataElementFromNode(JsonParser parser, DeserializationContext ctxt, ObjectNode dataElementNode) throws IOException, JsonProcessingException {

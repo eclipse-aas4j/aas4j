@@ -17,6 +17,8 @@ package org.eclipse.aas4j.v3.dataformat.core;
 
 import com.google.common.reflect.TypeToken;
 import org.eclipse.aas4j.v3.dataformat.core.util.MostSpecificTypeTokenComparator;
+
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -404,5 +406,27 @@ public class ReflectionHelper {
     }
 
     private ReflectionHelper() {
+    }
+
+    /**
+     * Overrides empty list fields with null
+     * @param element
+     */
+    public static void setEmptyListsToNull(Object element) {
+
+        Field[] fields = element.getClass().getDeclaredFields();
+        for (int i = 0; i < fields.length; i++) {
+            Field field = fields[i];
+            field.setAccessible(true);
+            try {
+                if (field.getType().isAssignableFrom(List.class) && field.get(element)!=null && ((List) field.get(element)).isEmpty()) {
+                    field.set(element, null);
+                }
+            } catch (IllegalAccessException e) {
+                // do nothing
+            }
+            field.setAccessible(false);
+        }
+
     }
 }

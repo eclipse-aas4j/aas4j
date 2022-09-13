@@ -22,6 +22,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.Reference;
 
@@ -29,14 +30,19 @@ public class ReferenceSerializer extends JsonSerializer<Reference> {
     private NoEntryWrapperListSerializer<Key> keyListSerializer;
 
     public ReferenceSerializer() {
-        this.keyListSerializer = new NoEntryWrapperListSerializer<>();
-        this.keyListSerializer.setOuterWrapper("keys");
+//        this.keyListSerializer = new NoEntryWrapperListSerializer<>();
+//        this.keyListSerializer.setOuterWrapper("keys");
     }
 
     @Override
     public void serialize(Reference reference, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        List<Key> keys = reference.getKeys();
-        this.keyListSerializer.serialize(keys, gen, serializers);
+        ToXmlGenerator xgen = (ToXmlGenerator) gen;
+//        xgen.setNextIsUnwrapped(true);
+//        xgen.writeObjectFieldStart("type");
+        xgen.writeString(reference.getType().name());
+
+//        List<Key> keys = reference.getKeys();
+//        this.keyListSerializer.serialize(keys, gen, serializers);
     }
 
 }

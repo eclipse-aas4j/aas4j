@@ -25,13 +25,6 @@
         <plugin.projectinfo.version>3.1.2</plugin.projectinfo.version>
         <gpg.keyname>0xDFCC34A6</gpg.keyname>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.mycila</groupId>
-            <artifactId>license-maven-plugin</artifactId>
-            <version>${plugin.license.version}</version>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -77,28 +70,6 @@
                         <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${plugin.license.version}</version>
-                <configuration>
-                    <licenseSets>
-                        <licenseSet>
-                            <header>license-header.txt</header>
-                            <includes>
-                                <include>**/*.java</include>
-                            </includes>
-                        </licenseSet>
-                    </licenseSets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>

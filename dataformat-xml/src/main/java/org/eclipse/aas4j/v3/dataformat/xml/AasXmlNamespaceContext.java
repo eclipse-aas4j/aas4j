@@ -22,7 +22,7 @@ import java.util.Map;
 public class AasXmlNamespaceContext {
 
     public static final String AAS_PREFERRED_PREFIX = "aas";
-    public static final String AAS_URI = "http://www.admin-shell.io/aas/3/0";
+    public static final String AAS_URI = "https://admin-shell.io/aas/3/0/RC02";
 
     public static final String ABAC_PREFERRED_PREFIX = "abac";
     public static final String ABAC_URI = "http://www.admin-shell.io/aas/abac/3/0";

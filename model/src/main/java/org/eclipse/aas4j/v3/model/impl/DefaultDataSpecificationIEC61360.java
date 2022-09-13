@@ -40,17 +40,17 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType")
     protected DataTypeIEC61360 dataType;
 
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions")
-    protected List<LangString> definitions = new ArrayList<>();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definition")
+    protected List<LangString> definition = new ArrayList<>();
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/levelType")
     protected LevelType levelType;
 
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames")
-    protected List<LangString> preferredNames = new ArrayList<>();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredName")
+    protected List<LangString> preferredName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames")
-    protected List<LangString> shortNames = new ArrayList<>();
+    @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortName")
+    protected List<LangString> shortName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition")
     protected String sourceOfDefinition;
@@ -81,10 +81,10 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     @Override
     public int hashCode() {
         return Objects.hash(this.dataType,
-                this.definitions,
+                this.definition,
                 this.levelType,
-                this.preferredNames,
-                this.shortNames,
+                this.preferredName,
+                this.shortName,
                 this.sourceOfDefinition,
                 this.symbol,
                 this.unit,
@@ -107,10 +107,10 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
         } else {
             DefaultDataSpecificationIEC61360 other = (DefaultDataSpecificationIEC61360) obj;
             return Objects.equals(this.dataType, other.dataType) &&
-                    Objects.equals(this.definitions, other.definitions) &&
+                    Objects.equals(this.definition, other.definition) &&
                     Objects.equals(this.levelType, other.levelType) &&
-                    Objects.equals(this.preferredNames, other.preferredNames) &&
-                    Objects.equals(this.shortNames, other.shortNames) &&
+                    Objects.equals(this.preferredName, other.preferredName) &&
+                    Objects.equals(this.shortName, other.shortName) &&
                     Objects.equals(this.sourceOfDefinition, other.sourceOfDefinition) &&
                     Objects.equals(this.symbol, other.symbol) &&
                     Objects.equals(this.unit, other.unit) &&
@@ -133,13 +133,13 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public List<LangString> getDefinitions() {
-        return definitions;
+    public List<LangString> getDefinition() {
+        return definition;
     }
 
     @Override
-    public void setDefinitions(List<LangString> definitions) {
-        this.definitions = definitions;
+    public void setDefinition(List<LangString> definition) {
+        this.definition = definition;
     }
 
     @Override
@@ -153,23 +153,23 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public List<LangString> getPreferredNames() {
-        return preferredNames;
+    public List<LangString> getPreferredName() {
+        return preferredName;
     }
 
     @Override
-    public void setPreferredNames(List<LangString> preferredNames) {
-        this.preferredNames = preferredNames;
+    public void setPreferredName(List<LangString> preferredName) {
+        this.preferredName = preferredName;
     }
 
     @Override
-    public List<LangString> getShortNames() {
-        return shortNames;
+    public List<LangString> getShortName() {
+        return shortName;
     }
 
     @Override
-    public void setShortNames(List<LangString> shortNames) {
-        this.shortNames = shortNames;
+    public void setShortName(List<LangString> shortName) {
+        this.shortName = shortName;
     }
 
     @Override
