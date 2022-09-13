@@ -62,12 +62,6 @@ public class JsonSerializerTest {
         assertTrue(file.exists());
     }
 
-    @Ignore
-    // TODO: Is '{ }' (which the serializer creates) the correct behavior or an environment with empty arrays like '{
-    //    "assetAdministrationShells": [],
-    //    "conceptDescriptions": [],
-    //    "submodels": []
-    //}' (which the test file contains)? The JSON schema does not require any of the arrays, so both versions seem to be correct.
     @Test
     public void testSerializeEmpty() throws JsonProcessingException, IOException, SerializationException, JSONException {
         validateAndCompare(new java.io.File("src/test/resources/empty_aas.json"), new DefaultEnvironment.Builder().build());

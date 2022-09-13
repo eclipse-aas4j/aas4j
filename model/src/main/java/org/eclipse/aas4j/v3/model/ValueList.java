@@ -37,7 +37,7 @@ public interface ValueList {
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
      *
-     * @return Returns the List of ValueReferencePairs for the property valueReferencePairTypes.
+     * @return Returns the List of ValueReferencePairs for the property valueReferencePairs.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC01/ValueList/valueReferencePairs")
     List<ValueReferencePair> getValueReferencePairs();
