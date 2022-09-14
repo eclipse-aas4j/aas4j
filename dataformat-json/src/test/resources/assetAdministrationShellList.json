@@ -1,7 +1,7 @@
 [
   {
     "idShort": "TestAssetAdministrationShell",
-    "descriptions": [
+    "description": [
       {
         "language": "en-us",
         "text": "An Example Asset Administration Shell for the test application"

@@ -61,7 +61,7 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
     protected List<LangString> description;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
@@ -212,7 +212,7 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
+    public void setDescription(List<LangString> description) {
         this.description = description;
     }
 
