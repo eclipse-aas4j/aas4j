@@ -17,36 +17,21 @@ package org.eclipse.aas4j.v3.dataformat.core.util;
 
 import com.google.common.reflect.TypeToken;
 import org.eclipse.aas4j.v3.dataformat.core.ReflectionHelper;
-import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Identifiable;
-import org.eclipse.aas4j.v3.model.Key;
-import org.eclipse.aas4j.v3.model.KeyTypes;
-import org.eclipse.aas4j.v3.model.ModelingKind;
-import org.eclipse.aas4j.v3.model.Operation;
-import org.eclipse.aas4j.v3.model.Referable;
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.*;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Provides utility functions related to AAS
@@ -306,8 +291,9 @@ public class AasUtils {
         }
         result += input.charAt(0);
         for (int i = 1; i < input.length(); i++) {
-            char currentChar = input.charAt(i);
-            if (Character.isUpperCase(currentChar)) {
+            char currentChar = input.charAt(i),
+                    previousChar = input.charAt(i - 1);
+            if (Character.isUpperCase(currentChar) && Character.isLowerCase(previousChar)) {
                 result += UNDERSCORE;
             }
             result += Character.toUpperCase(currentChar);

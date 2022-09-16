@@ -32,4 +32,15 @@ public class AasUtilsTest {
         Assert.assertEquals(KeyTypes.PROPERTY, reference.getKeys().get(0).getType());
         Assert.assertEquals("Temperature", reference.getKeys().get(0).getValue());
     }
+
+    @Test
+    public void testDeserializeEnumNames() {
+        final String camelCase = "AnyEnum", screamingSnakeCase = "ANY_ENUM";
+        // camel-case should result in screaming-snake-case
+        String result = AasUtils.deserializeEnumName(camelCase);
+        Assert.assertEquals(screamingSnakeCase, result);
+
+        result = AasUtils.deserializeEnumName(screamingSnakeCase);
+        Assert.assertEquals(screamingSnakeCase, result);
+    }
 }
