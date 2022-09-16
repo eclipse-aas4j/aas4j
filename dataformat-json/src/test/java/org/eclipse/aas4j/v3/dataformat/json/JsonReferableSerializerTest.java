@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.eclipse.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 public class JsonReferableSerializerTest {
 
@@ -90,6 +91,15 @@ public class JsonReferableSerializerTest {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElementList submodelElementList = (SubmodelElementList) environment.getSubmodels().get(6).getSubmodelElements().get(5);
         compare("src/test/resources/submodelElementList.json",submodelElementList);
+    }
+
+    @Test
+    public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
+        compare("src/test/resources/submodelElementListEmpty.json",
+                new DefaultSubmodelElementList.Builder()
+                        .idShort("submodelElementList")
+                        .orderRelevant(true)
+                        .build());
     }
 
     private void compare(String filePathForExpected, Referable... referable) throws IOException, SerializationException, JSONException {
