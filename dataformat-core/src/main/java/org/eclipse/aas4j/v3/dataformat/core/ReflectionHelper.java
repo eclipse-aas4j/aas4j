@@ -28,6 +28,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.ClassUtils;
+import org.eclipse.aas4j.v3.model.DataSpecificationContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,7 +77,7 @@ public class ReflectionHelper {
      * Distinct root superclasses of which classify a class to include type
      * information via the modelType property
      */
-    public static final Set<Class<?>> MODEL_TYPE_SUPERCLASSES = Set.of(Referable.class);
+    public static final Set<Class<?>> MODEL_TYPE_SUPERCLASSES = Set.of(Referable.class, DataSpecificationContent.class);
     /**
      * Expanded list of all classes that shall be annotated with the modelType
      * property.
