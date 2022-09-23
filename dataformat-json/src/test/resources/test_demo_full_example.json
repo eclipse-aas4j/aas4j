@@ -66,7 +66,7 @@
                     },
             "id": "https://acplt.org/Test_AssetAdministrationShell",
             "idShort": "TestAssetAdministrationShell",
-            "descriptions": [
+            "description": [
                     {
                         "language": "en-us",
                         "text": "An Example Asset Administration Shell for the test application"
@@ -176,7 +176,7 @@
                     },
             "id": "https://acplt.org/Test_AssetAdministrationShell_Missing",
             "idShort": "TestAssetAdministrationShell",
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
                         "text": "An Example Asset Administration Shell for the test application"
@@ -211,7 +211,7 @@
                     "type": "GlobalReference"
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
                         "text": "An Example Asset Administration Shell for the test application"
@@ -237,7 +237,7 @@
                     },
             "id": "https://acplt.org/Test_ConceptDescription_Missing",
             "idShort": "TestConceptDescription1",
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
                         "text": "An Example Asset Administration Shell for the test application"
@@ -327,7 +327,7 @@
                                 }
                             ]
                         },
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "de",
                                 "text": "Dies ist eine Data Specification für Testzwecke"
@@ -338,7 +338,7 @@
                             }
                         ],
                         "levelType": "Min",
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "de",
                                 "text": "Test Specification"
@@ -348,7 +348,7 @@
                                 "text": "TestSpecification"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "de",
                                 "text": "Test Spec"

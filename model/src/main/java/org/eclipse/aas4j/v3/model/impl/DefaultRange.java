@@ -232,7 +232,7 @@ public class DefaultRange implements Range {
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
+    public void setDescription(List<LangString> description) {
         this.description = description;
     }
 
