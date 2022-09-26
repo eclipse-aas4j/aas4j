@@ -214,11 +214,11 @@
             "description":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example concept description for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
             
@@ -240,11 +240,11 @@
             "description":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example concept description for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
             
@@ -284,7 +284,7 @@
                     },
                     "dataSpecificationContent": {
                         "modelType": "DataSpecificationIEC61360",
-                        "dataType": "RealMeasure",
+                        "dataType": "REAL_MEASURE",
                         "sourceOfDefinition": "http://acplt.org/DataSpec/ExampleDef",
                         "symbol": "SU",
                         "unit": "SpaceUnit",
@@ -300,7 +300,7 @@
                         "value": "TEST",
                         "valueFormat": "string",
                         "valueList": {
-                            "valueReferencePairTypes": [
+                            "valueReferencePairs": [
                                 {
                                     "value": "http://acplt.org/ValueId/ExampleValueId",
                                     "valueId": {
@@ -337,7 +337,7 @@
                                 "text": "This is a DataSpecification for testing purposes"
                             }
                         ],
-                        "levelType": "Min",
+                        "levelType": "Max",
                         "preferredName": [
                             {
                                 "language": "de",
@@ -422,7 +422,7 @@
                         }
                     ],
                     "idShort": "ManufacturerName",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -461,7 +461,7 @@
                             },
                     "valueType": "xs:string",
                     "idShort": "InstanceId",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -474,7 +474,7 @@
                     
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
                         "text": "An example asset identification submodel for the test application"
@@ -539,7 +539,7 @@
                             "valueType": "xs:string",
                             "category": "Constant",
                             "idShort": "ExampleProperty2",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -579,7 +579,7 @@
                             "valueType": "xs:string",
                             "category": "Constant",
                             "idShort": "ExampleProperty",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -604,7 +604,7 @@
                                 "type": "GlobalReference"
                             },
                     "idShort": "ExampleEntity",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -642,7 +642,7 @@
                                 "type": "GlobalReference"
                             },
                     "idShort": "ExampleEntity2",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -655,7 +655,7 @@
                     
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
                         "text": "An example bill of material submodel for the test application"
@@ -718,7 +718,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -736,9 +736,9 @@
                                         "value": "ExampleProperty2"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example RelationshipElement object"
@@ -781,7 +781,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -799,7 +799,7 @@
                                         "value": "ExampleProperty2"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "annotations": [
                         {
@@ -811,7 +811,7 @@
                             "idShort": "ExampleProperty3"
                         }
                     ],
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example AnnotatedRelationshipElement object"
@@ -868,7 +868,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty3",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -911,7 +911,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty1",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -956,7 +956,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty2",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -970,7 +970,7 @@
                                     }
                         }
                     ],
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Operation object"
@@ -996,7 +996,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleCapability",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Capability object"
@@ -1040,7 +1040,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example BasicEvent object"
@@ -1049,8 +1049,9 @@
                                 "language": "de",
                                 "text": "Beispiel BasicEvent Element"
                             }
-                        ]
-                    
+                        ],
+                    "direction": "input",
+                    "state": "on"
                 },
                 {
                     "modelType": "SubmodelElementCollection",
@@ -1066,7 +1067,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionOrdered object"
@@ -1103,7 +1104,7 @@
                             "valueType": "xs:string",
                             "category": "Constant",
                             "idShort": "ExampleProperty",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -1149,7 +1150,7 @@
                                         "text": "Beispielswert für ein MultiLanguageProperty-Element"
                                     }
                                 ],
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example MultiLanguageProperty object"
@@ -1178,7 +1179,7 @@
                             "valueType": "xs:int",
                             "category": "Parameter",
                             "idShort": "ExampleRange",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Range object"
@@ -1206,7 +1207,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionUnordered",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionUnordered object"
@@ -1233,7 +1234,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleBlob",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Blob object"
@@ -1248,7 +1249,7 @@
                         {
                             "modelType": "File",
                             "contentType": "application/pdf",
-                            "value": "/TestFile.pdf",
+                            "value": "file:///TestFile.pdf",
                             "semanticId":
                                     {
                                         "keys": [
@@ -1261,7 +1262,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleFile",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example File object"
@@ -1305,7 +1306,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Reference Element object"
@@ -1320,14 +1321,14 @@
                     ]
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
@@ -1357,7 +1358,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1375,7 +1376,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             }
                 },
                 {
@@ -1397,7 +1398,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1415,7 +1416,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             }
                 },
                 {
@@ -1447,7 +1448,9 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "idShort": "ExampleBasicEvent"
+                    "idShort": "ExampleBasicEvent",
+                    "direction": "output",
+                    "state": "off"
                 },
                 {
                     "modelType": "SubmodelElementCollection",
@@ -1552,7 +1555,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1570,9 +1573,9 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example RelationshipElement object"
@@ -1614,7 +1617,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -1632,7 +1635,7 @@
                                         "value": "ExampleMultiLanguageProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "annotations": [
                         {
@@ -1644,7 +1647,7 @@
                             "idShort": "ExampleProperty"
                         }
                     ],
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example AnnotatedRelationshipElement object"
@@ -1696,7 +1699,7 @@
                                         ],
                                         "category": "Constant",
                                         "idShort": "ExampleProperty3",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -1734,7 +1737,7 @@
                                 ],
                                 "category": "Constant",
                                 "idShort": "ExampleProperty1",
-                                "descriptions":  [
+                                "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -1772,7 +1775,7 @@
                                         ],
                                         "category": "Constant",
                                         "idShort": "ExampleProperty2",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -1786,7 +1789,7 @@
                                     }
                         }
                     ],
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Operation object"
@@ -1812,7 +1815,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleCapability",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Capability object"
@@ -1856,7 +1859,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example BasicEvent object"
@@ -1865,8 +1868,9 @@
                                 "language": "de",
                                 "text": "Beispiel BasicEvent Element"
                             }
-                        ]
-                    
+                        ],
+                    "direction": "input",
+                    "state": "on"
                 },
                 {
                     "modelType": "SubmodelElementCollection",
@@ -1882,7 +1886,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "descriptions":  [
+                    "description":  [
                                         {
                                             "language": "en-us",
                                             "text": "Example SubmodelElementCollectionOrdered object"
@@ -1915,7 +1919,7 @@
                             ],
                             "category": "Constant",
                             "idShort": "ExampleProperty",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -1952,7 +1956,7 @@
                                         "text": "Beispielswert für ein MultiLanguageProperty-Element"
                                     }
                                 ],
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example MultiLanguageProperty object"
@@ -1981,7 +1985,7 @@
                             "valueType": "xs:int",
                             "category": "Parameter",
                             "idShort": "ExampleRange",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Range object"
@@ -2009,7 +2013,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionUnordered",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionUnordered object"
@@ -2036,7 +2040,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleBlob",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Blob object"
@@ -2051,7 +2055,7 @@
                         {
                             "modelType": "File",
                             "contentType": "application/pdf",
-                            "value": "/TestFile.pdf",
+                            "value": "file:///TestFile.pdf",
                             "semanticId":
                                     {
                                         "keys": [
@@ -2064,7 +2068,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleFile",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example File object"
@@ -2108,7 +2112,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Reference Element object"
@@ -2123,14 +2127,14 @@
                     ]
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
@@ -2179,7 +2183,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -2189,9 +2193,9 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example RelationshipElement object"
@@ -2226,7 +2230,7 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
                     "second":
                             {
@@ -2236,9 +2240,9 @@
                                         "value": "ExampleProperty"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ModelReference"
                             },
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example AnnotatedRelationshipElement object"
@@ -2284,7 +2288,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -2317,7 +2321,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -2350,7 +2354,7 @@
                                         "valueType": "xs:string",
                                         "category": "Constant",
                                         "idShort": "ExampleProperty",
-                                        "descriptions":  [
+                                        "description":  [
                                                 {
                                                     "language": "en-us",
                                                     "text": "Example Property object"
@@ -2364,7 +2368,7 @@
                                     }
                         }
                     ],
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Operation object"
@@ -2391,7 +2395,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleCapability",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example Capability object"
@@ -2428,7 +2432,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleBasicEvent",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example BasicEvent object"
@@ -2437,8 +2441,9 @@
                                 "language": "de",
                                 "text": "Beispiel BasicEvent Element"
                             }
-                        ]
-                    
+                        ],
+                    "direction": "output",
+                    "state": "off"
                 },
                 {
                     "modelType": "SubmodelElementCollection",
@@ -2455,7 +2460,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionOrdered",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionOrdered object"
@@ -2482,7 +2487,7 @@
                             "valueType": "xs:string",
                             "category": "Constant",
                             "idShort": "ExampleProperty",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Property object"
@@ -2509,7 +2514,7 @@
                                     },
                             "category": "Constant",
                             "idShort": "ExampleMultiLanguageProperty",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example MultiLanguageProperty object"
@@ -2538,7 +2543,7 @@
                             "valueType": "xs:int",
                             "category": "Parameter",
                             "idShort": "ExampleRange",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Range object"
@@ -2567,7 +2572,7 @@
                             "valueType": "xs:int",
                             "category": "Parameter",
                             "idShort": "ExampleRange2",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Range object"
@@ -2596,7 +2601,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionUnordered",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionUnordered object"
@@ -2623,7 +2628,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleBlob",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Blob object"
@@ -2651,7 +2656,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleFile",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example File object"
@@ -2678,7 +2683,7 @@
                                     },
                             "category": "Parameter",
                             "idShort": "ExampleReferenceElement",
-                            "descriptions":  [
+                            "description":  [
                                     {
                                         "language": "en-us",
                                         "text": "Example Reference Element object"
@@ -2707,7 +2712,7 @@
                             },
                     "category": "Parameter",
                     "idShort": "ExampleSubmodelCollectionUnordered2",
-                    "descriptions":  [
+                    "description":  [
                             {
                                 "language": "en-us",
                                 "text": "Example SubmodelElementCollectionUnordered object"
@@ -2720,14 +2725,14 @@
                     
                 }
             ],
-            "descriptions":  [
+            "description":  [
                     {
                         "language": "en-us",
-                        "text": "An Example Asset Administration Shell for the test application"
+                        "text": "An example submodel for the test application"
                     },
                     {
                         "language": "de",
-                        "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
+                        "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
             
