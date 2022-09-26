@@ -289,7 +289,7 @@ public class AasUtils {
         if (input == null || input.isEmpty()) {
             return result;
         }
-        result += input.charAt(0);
+        result += Character.toUpperCase(input.charAt(0));
         for (int i = 1; i < input.length(); i++) {
             char currentChar = input.charAt(i),
                     previousChar = input.charAt(i - 1);

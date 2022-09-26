@@ -34,13 +34,18 @@ public class AasUtilsTest {
     }
 
     @Test
-    public void testDeserializeEnumNames() {
-        final String camelCase = "AnyEnum", screamingSnakeCase = "ANY_ENUM";
-        // camel-case should result in screaming-snake-case
-        String result = AasUtils.deserializeEnumName(camelCase);
-        Assert.assertEquals(screamingSnakeCase, result);
+    public void whenDeserializingEnumNames_withUpperCamelCase_shouldReturnScreamingSnakeCase() {
+        Assert.assertEquals("ANY_ENUM", AasUtils.deserializeEnumName("AnyEnum"));
+    }
 
-        result = AasUtils.deserializeEnumName(screamingSnakeCase);
-        Assert.assertEquals(screamingSnakeCase, result);
+    @Test
+    public void whenDeserializingEnumNames_withLowerCamelCase_shouldReturnScreamingSnakeCase() {
+        Assert.assertEquals("ANY_ENUM", AasUtils.deserializeEnumName("anyEnum"));
+    }
+
+    @Test
+    public void whenDeserializingEnumNames_withScreamingSnakeCase_shouldReturnUnchanged() {
+        final String name = "ANY_ENUM";
+        Assert.assertEquals(name, AasUtils.deserializeEnumName(name));
     }
 }
