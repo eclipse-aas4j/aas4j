@@ -24,6 +24,8 @@ import org.eclipse.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.aas4j.v3.dataformat.core.util.AasUtils;
 import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.aas4j.v3.model.Direction;
+import org.eclipse.aas4j.v3.model.StateOfEvent;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will
@@ -49,6 +51,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             }
         } else if (value instanceof DataTypeIEC61360) {
             gen.writeString(value.name().toUpperCase());
+        } else if (value instanceof Direction || value instanceof StateOfEvent) {
+            gen.writeString(value.name().toLowerCase());
         } else if (ReflectionHelper.ENUMS.contains(value.getClass())) {
             gen.writeString(AasUtils.serializeEnumName(value.name()));
         } else {

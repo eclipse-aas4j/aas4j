@@ -26,12 +26,12 @@ import org.eclipse.aas4j.v3.model.Submodel;
 
 public interface EnvironmentMixin {
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public Set<AssetAdministrationShell> getAssetAdministrationShells();
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public List<Submodel> getSubmodels();
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public List<ConceptDescription> getConceptDescriptions();
 }

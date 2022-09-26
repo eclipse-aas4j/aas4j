@@ -42,6 +42,7 @@ public class AASFull {
     public final static ConceptDescription CONCEPT_DESCRIPTION_3 = createConceptDescription3();
     public final static ConceptDescription CONCEPT_DESCRIPTION_4 = createConceptDescription4();
     public static final Environment ENVIRONMENT = createEnvironment();
+    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
 
     public static AssetAdministrationShell createAAS1() {
         return new DefaultAssetAdministrationShell.Builder()
@@ -1787,7 +1788,7 @@ public class AASFull {
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .build())
                         .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
