@@ -1,0 +1,17 @@
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+
+# 1) Reference with KeyElements
+<http://customer.com/aas/9175_7013_7091_9168> a <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell> ;
+    <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation> [
+        a <https://admin-shell.io/aas/3/0/RC02/AssetInformation> ;
+        <https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId> [
+          a  <https://admin-shell.io/aas/3/0/RC02/Reference> ;
+            <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> ;
+            <https://admin-shell.io/aas/3/0/RC02/Reference/key> [
+              a <https://admin-shell.io/aas/3/0/RC02/Key> ;
+              <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/GlobalReference>  ;
+              <https://admin-shell.io/aas/3/0/RC02/Key/value> "http://customer.com/assets/KHBVZJSQKIY"^^xs:string ;
+            ]
+        ]
+    ] ;
+.

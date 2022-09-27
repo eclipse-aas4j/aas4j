@@ -49,8 +49,8 @@ public class ParserTest {
         serializer.deserialize(SerializerUtil.readResourceToString("AAS_Reference_shortExample.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
         serializer.deserialize(SerializerUtil.readResourceToString("AAS_Reference_shortExample.nt"), AssetAdministrationShell.class, RDFLanguages.NTRIPLES);
         serializer.deserialize(SerializerUtil.readResourceToString("AssetAdministrationShell_Example.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        //serializer.deserialize(SerializerUtil.readResourceToString("Complete_Example.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        serializer.deserialize(SerializerUtil.readResourceToString("KapitalVerwaltungsschaleExample.ttl"), Property.class, RDFLanguages.TURTLE);
+        serializer.deserialize(SerializerUtil.readResourceToString("Complete_Example.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
+        //serializer.deserialize(SerializerUtil.readResourceToString("KapitalVerwaltungsschaleExample.ttl"), Property.class, RDFLanguages.TURTLE);
         serializer.deserialize(SerializerUtil.readResourceToString("Overall-Example.nt"), AssetAdministrationShell.class, RDFLanguages.NTRIPLES);
         serializer.deserialize(SerializerUtil.readResourceToString("ReferenceExample.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
         serializer.deserialize(SerializerUtil.readResourceToString("Submodel_SubmodelElement_Example.ttl"), Submodel.class, RDFLanguages.TURTLE);
@@ -76,29 +76,29 @@ public class ParserTest {
                 "    \"@id\" : \"https://admin-shell.io/autogen/DefaultConceptDescription/c6bd22b3-6487-49d2-a86d-e3834d22ceb9\",\n" +
                 "    \"@type\" : \"aas:ConceptDescription\",\n" +
                 "    \"isCaseOf\" : [ ],\n" +
-                "    \"https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiations\" : [ {\n" +
-                "      \"@id\" : \"https://admin-shell.io/autogen/DefaultReference/41ee5bcc-adde-4a5a-bfb5-ace237247d0c\",\n" +
-                "      \"@type\" : \"aas:Reference\",\n" +
-                "      \"https://admin-shell.io/aas/3/0/RC02/Reference/key\" : [ {\n" +
-                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultKey/234b457f-0e8f-46b3-8e73-f850a79269f1\",\n" +
-                "        \"@type\" : \"aas:Key\",\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/Key/value\" : \"https://example.org\"\n" +
-                "      } ]\n" +
-                "    } ],\n" +
                 "    \"https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension\" : [ ],\n" +
                 "    \"https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications\" : [ {\n" +
                 "      \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecification/f461858c-8981-4141-bac3-6aee56977017\",\n" +
-                "      \"@type\" : \"aas:DataSpecification\",\n" +
-                "      \"https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent\" : {\n" +
+                "      \"@type\" : \"aas:EmbeddedDataSpecification\",\n" +
+                "      \"https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecifiation\" : {\n" +
+                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultReference/41ee5bcc-adde-4a5a-bfb5-ace237247d0c\",\n" +
+                "        \"@type\" : \"aas:Reference\",\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/Reference/key\" : [ {\n" +
+                "          \"@id\" : \"https://admin-shell.io/autogen/DefaultKey/234b457f-0e8f-46b3-8e73-f850a79269f1\",\n" +
+                "          \"@type\" : \"aas:Key\",\n" +
+                "          \"https://admin-shell.io/aas/3/0/RC02/Key/value\" : \"https://example.org\"\n" +
+                "        } ]\n" +
+                "      },\n" +
+                "      \"https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent\" : {\n" +
                 "        \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecificationIEC61360/457288b3-77e1-474a-ab74-866bdcafd914\",\n" +
                 "        \"@type\" : \"iec61360:DataSpecificationIEC61360\",\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType\" : {\n" +
-                "          \"@type\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataTypeIEC61360\",\n" +
-                "          \"@id\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/RATIONAL\"\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType\" : {\n" +
+                "          \"@type\" : \"https://admin-shell.io/aas/3/0/RC02/DataTypeIEC61360\",\n" +
+                "          \"@id\" : \"https://admin-shell.io/aas/3/0/RC02/RATIONAL\"\n" +
                 "        },\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions\" : [ ],\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames\" : [ ],\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames\" : [ ]\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName\" : [ ]\n" +
                 "      },\n" +
                 "      \"https://admin-shell.io/aas/3/0/RC02/DataSpecification/id\" : \"http://example.org/DataSpecification1\"\n" +
                 "    } ]\n" +
