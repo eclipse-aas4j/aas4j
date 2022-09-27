@@ -14,14 +14,13 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
+import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.aas4j.v3.model.Qualifier;
 import org.eclipse.aas4j.v3.model.QualifierKind;
 import org.eclipse.aas4j.v3.model.Reference;
 
-import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
+import java.util.List;
+
 
 public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
@@ -48,17 +47,6 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
     }
 
     /**
-     * This function allows setting a value for valueType
-     * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for value
      * 
      * @param value desired value to be set
@@ -77,6 +65,17 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
      */
     public B valueId(Reference valueId) {
         getBuildingInstance().setValueId(valueId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for valueType
+     * 
+     * @param valueType desired value to be set
+     * @return Builder object with new value for valueType
+     */
+    public B valueType(DataTypeDefXsd valueType) {
+        getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 

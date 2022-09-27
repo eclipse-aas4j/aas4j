@@ -14,25 +14,13 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.*;
+
+import java.util.List;
 
 
 public abstract class BasicEventElementBuilder<T extends BasicEventElement, B extends BasicEventElementBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for observed
-     * 
-     * @param observed desired value to be set
-     * @return Builder object with new value for observed
-     */
-    public B observed(Reference observed) {
-        getBuildingInstance().setObserved(observed);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for direction
@@ -42,39 +30,6 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
      */
     public B direction(Direction direction) {
         getBuildingInstance().setDirection(direction);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for state
-     * 
-     * @param state desired value to be set
-     * @return Builder object with new value for state
-     */
-    public B state(StateOfEvent state) {
-        getBuildingInstance().setState(state);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for messageTopic
-     * 
-     * @param messageTopic desired value to be set
-     * @return Builder object with new value for messageTopic
-     */
-    public B messageTopic(String messageTopic) {
-        getBuildingInstance().setMessageTopic(messageTopic);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for messageBroker
-     * 
-     * @param messageBroker desired value to be set
-     * @return Builder object with new value for messageBroker
-     */
-    public B messageBroker(Reference messageBroker) {
-        getBuildingInstance().setMessageBroker(messageBroker);
         return getSelf();
     }
 
@@ -90,17 +45,6 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
     }
 
     /**
-     * This function allows setting a value for minInterval
-     * 
-     * @param minInterval desired value to be set
-     * @return Builder object with new value for minInterval
-     */
-    public B minInterval(String minInterval) {
-        getBuildingInstance().setMinInterval(minInterval);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for maxInterval
      * 
      * @param maxInterval desired value to be set
@@ -112,36 +56,79 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
     }
 
     /**
-     * This function allows setting a value for dataSpecifications
+     * This function allows setting a value for messageBroker
      * 
-     * @param dataSpecifications desired value to be set
-     * @return Builder object with new value for dataSpecifications
+     * @param messageBroker desired value to be set
+     * @return Builder object with new value for messageBroker
      */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(dataSpecifications);
+    public B messageBroker(Reference messageBroker) {
+        getBuildingInstance().setMessageBroker(messageBroker);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for messageTopic
+     * 
+     * @param messageTopic desired value to be set
+     * @return Builder object with new value for messageTopic
+     */
+    public B messageTopic(String messageTopic) {
+        getBuildingInstance().setMessageTopic(messageTopic);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for minInterval
+     * 
+     * @param minInterval desired value to be set
+     * @return Builder object with new value for minInterval
+     */
+    public B minInterval(String minInterval) {
+        getBuildingInstance().setMinInterval(minInterval);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for observed
+     * 
+     * @param observed desired value to be set
+     * @return Builder object with new value for observed
+     */
+    public B observed(Reference observed) {
+        getBuildingInstance().setObserved(observed);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for state
+     * 
+     * @param state desired value to be set
+     * @return Builder object with new value for state
+     */
+    public B state(StateOfEvent state) {
+        getBuildingInstance().setState(state);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
         return getSelf();
     }
 
     /**
      * This function allows adding a value to the List embeddedDataSpecifications
-     *
+     * 
      * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */
     public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
         getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModelingKind kind) {
-        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -179,24 +166,13 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
     }
 
     /**
-     * This function allows setting a value for qualifiers
+     * This function allows setting a value for kind
      * 
-     * @param qualifiers desired value to be set
-     * @return Builder object with new value for qualifiers
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
      */
-    public B qualifiers(List<Qualifier> qualifiers) {
-        getBuildingInstance().setQualifiers(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List qualifiers
-     * 
-     * @param qualifiers desired value to be added
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(Qualifier qualifiers) {
-        getBuildingInstance().getQualifiers().add(qualifiers);
+    public B kind(ModelingKind kind) {
+        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -212,13 +188,35 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
     }
 
     /**
-     * This function allows setting a value for idShort
+     * This function allows setting a value for checksum
      * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
+     * @param checksum desired value to be set
+     * @return Builder object with new value for checksum
      */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
+    public B checksum(String checksum) {
+        getBuildingInstance().setChecksum(checksum);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for description
+     * 
+     * @param description desired value to be set
+     * @return Builder object with new value for description
+     */
+    public B description(List<LangString> description) {
+        getBuildingInstance().setDescription(description);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List description
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for description
+     */
+    public B description(LangString description) {
+        getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
 
@@ -234,24 +232,24 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
     }
 
     /**
-     * This function allows setting a value for description
+     * This function allows adding a value to the List displayName
      * 
-     * @param description desired value to be set
-     * @return Builder object with new value for description
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayName
      */
-    public B descriptions(List<LangString> description) {
-        getBuildingInstance().setDescription(description);
+    public B displayName(LangString displayName) {
+        getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for checksum
+     * This function allows setting a value for idShort
      * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
+     * @param idShort desired value to be set
+     * @return Builder object with new value for idShort
      */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
+    public B idShort(String idShort) {
+        getBuildingInstance().setIdShort(idShort);
         return getSelf();
     }
 
@@ -274,6 +272,28 @@ public abstract class BasicEventElementBuilder<T extends BasicEventElement, B ex
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for qualifiers
+     * 
+     * @param qualifiers desired value to be set
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(List<Qualifier> qualifiers) {
+        getBuildingInstance().setQualifiers(qualifiers);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List qualifiers
+     * 
+     * @param qualifiers desired value to be added
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(Qualifier qualifiers) {
+        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 }

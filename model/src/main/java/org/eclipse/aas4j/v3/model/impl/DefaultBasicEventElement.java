@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.BasicEventElementBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.BasicEventElementBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.BasicEventElement
+ * Default implementation of package org.eclipse.aas4j.v3.model.BasicEventElement
  * 
  * A basic event element.
  */
@@ -58,8 +56,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
     protected StateOfEvent state;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
@@ -82,41 +80,42 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    protected List<LangString> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    protected List<LangString> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    public DefaultBasicEventElement() {
 
-    public DefaultBasicEventElement() {}
+        this.kind = ModelingKind.INSTANCE;
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.observed,
-            this.direction,
-            this.state,
-            this.messageTopic,
-            this.messageBroker,
+        return Objects.hash(this.direction,
             this.lastUpdate,
-            this.minInterval,
             this.maxInterval,
-            this.dataSpecifications,
-            this.kind,
+            this.messageBroker,
+            this.messageTopic,
+            this.minInterval,
+            this.observed,
+            this.state,
+            this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.qualifiers,
+            this.kind,
             this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
             this.checksum,
-            this.extensions);
+            this.description,
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -129,36 +128,26 @@ public class DefaultBasicEventElement implements BasicEventElement {
             return false;
         } else {
             DefaultBasicEventElement other = (DefaultBasicEventElement) obj;
-            return Objects.equals(this.observed, other.observed) &&
-                Objects.equals(this.direction, other.direction) &&
-                Objects.equals(this.state, other.state) &&
-                Objects.equals(this.messageTopic, other.messageTopic) &&
-                Objects.equals(this.messageBroker, other.messageBroker) &&
+            return Objects.equals(this.direction, other.direction) &&
                 Objects.equals(this.lastUpdate, other.lastUpdate) &&
-                Objects.equals(this.minInterval, other.minInterval) &&
                 Objects.equals(this.maxInterval, other.maxInterval) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
-                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.messageBroker, other.messageBroker) &&
+                Objects.equals(this.messageTopic, other.messageTopic) &&
+                Objects.equals(this.minInterval, other.minInterval) &&
+                Objects.equals(this.observed, other.observed) &&
+                Objects.equals(this.state, other.state) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
+                Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
-    }
-
-    @Override
-    public Reference getObserved() {
-        return observed;
-    }
-
-    @Override
-    public void setObserved(Reference observed) {
-        this.observed = observed;
     }
 
     @Override
@@ -172,36 +161,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public StateOfEvent getState() {
-        return state;
-    }
-
-    @Override
-    public void setState(StateOfEvent state) {
-        this.state = state;
-    }
-
-    @Override
-    public String getMessageTopic() {
-        return messageTopic;
-    }
-
-    @Override
-    public void setMessageTopic(String messageTopic) {
-        this.messageTopic = messageTopic;
-    }
-
-    @Override
-    public Reference getMessageBroker() {
-        return messageBroker;
-    }
-
-    @Override
-    public void setMessageBroker(Reference messageBroker) {
-        this.messageBroker = messageBroker;
-    }
-
-    @Override
     public String getLastUpdate() {
         return lastUpdate;
     }
@@ -209,16 +168,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @Override
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public String getMinInterval() {
-        return minInterval;
-    }
-
-    @Override
-    public void setMinInterval(String minInterval) {
-        this.minInterval = minInterval;
     }
 
     @Override
@@ -232,13 +181,63 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
+    public Reference getMessageBroker() {
+        return messageBroker;
     }
 
     @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
+    public void setMessageBroker(Reference messageBroker) {
+        this.messageBroker = messageBroker;
+    }
+
+    @Override
+    public String getMessageTopic() {
+        return messageTopic;
+    }
+
+    @Override
+    public void setMessageTopic(String messageTopic) {
+        this.messageTopic = messageTopic;
+    }
+
+    @Override
+    public String getMinInterval() {
+        return minInterval;
+    }
+
+    @Override
+    public void setMinInterval(String minInterval) {
+        this.minInterval = minInterval;
+    }
+
+    @Override
+    public Reference getObserved() {
+        return observed;
+    }
+
+    @Override
+    public void setObserved(Reference observed) {
+        this.observed = observed;
+    }
+
+    @Override
+    public StateOfEvent getState() {
+        return state;
+    }
+
+    @Override
+    public void setState(StateOfEvent state) {
+        this.state = state;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -262,13 +261,13 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
+    public ModelingKind getKind() {
+        return kind;
     }
 
     @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public void setKind(ModelingKind kind) {
+        this.kind = kind;
     }
 
     @Override
@@ -282,13 +281,23 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public String getChecksum() {
+        return checksum;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    @Override
+    public List<LangString> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangString> description) {
+        this.description = description;
     }
 
     @Override
@@ -302,23 +311,13 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public List<LangString> getDescription() {
-        return description;
+    public String getIdShort() {
+        return idShort;
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
-        this.description = description;
-    }
-
-    @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -332,13 +331,13 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
     }
 
     @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

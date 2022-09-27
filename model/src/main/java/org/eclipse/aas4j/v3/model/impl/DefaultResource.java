@@ -14,15 +14,15 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.Resource;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.ResourceBuilder;
+
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.ResourceBuilder;
-import org.eclipse.aas4j.v3.model.Resource;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Resource
+ * Default implementation of package org.eclipse.aas4j.v3.model.Resource
  * 
  * Resource represents an address to a file (a locator). The value is an URI that can represent an
  * absolute or relative path
@@ -37,12 +37,14 @@ public class DefaultResource implements Resource {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/path")
     protected String path;
 
-    public DefaultResource() {}
+    public DefaultResource() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.path,
-            this.contentType);
+        return Objects.hash(this.contentType,
+            this.path);
     }
 
     @Override
@@ -55,19 +57,9 @@ public class DefaultResource implements Resource {
             return false;
         } else {
             DefaultResource other = (DefaultResource) obj;
-            return Objects.equals(this.path, other.path) &&
-                Objects.equals(this.contentType, other.contentType);
+            return Objects.equals(this.contentType, other.contentType) &&
+                Objects.equals(this.path, other.path);
         }
-    }
-
-    @Override
-    public String getPath() {
-        return path;
-    }
-
-    @Override
-    public void setPath(String path) {
-        this.path = path;
     }
 
     @Override
@@ -78,6 +70,16 @@ public class DefaultResource implements Resource {
     @Override
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    @Override
+    public String getPath() {
+        return path;
+    }
+
+    @Override
+    public void setPath(String path) {
+        this.path = path;
     }
 
     /**

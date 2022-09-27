@@ -15,12 +15,10 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultQualifier;
+
 
 /**
  * A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the
@@ -70,25 +68,6 @@ public interface Qualifier extends HasSemantics {
     void setType(String type);
 
     /**
-     * Data type of the qualifier value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType
-     *
-     * @return Returns the DataTypeDefXsd for the property valueType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
-    DataTypeDefXsd getValueType();
-
-    /**
-     * Data type of the qualifier value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType
-     *
-     * @param valueType desired value for the property valueType.
-     */
-    void setValueType(DataTypeDefXsd valueType);
-
-    /**
      * The qualifier value is the value of the qualifier.
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/Qualifier/value
@@ -125,5 +104,24 @@ public interface Qualifier extends HasSemantics {
      * @param valueId desired value for the property valueId.
      */
     void setValueId(Reference valueId);
+
+    /**
+     * Data type of the qualifier value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType
+     *
+     * @return Returns the DataTypeDefXsd for the property valueType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
+    DataTypeDefXsd getValueType();
+
+    /**
+     * Data type of the qualifier value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType
+     *
+     * @param valueType desired value for the property valueType.
+     */
+    void setValueType(DataTypeDefXsd valueType);
 
 }

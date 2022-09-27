@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
+
+import java.util.List;
+
 
 /**
  * Element that can be extended by using data specification templates.
@@ -27,26 +26,26 @@ import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = AdministrativeInformation.class),
     @KnownSubtypes.Type(value = AssetAdministrationShell.class),
-    @KnownSubtypes.Type(value = ConceptDescription.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
+    @KnownSubtypes.Type(value = ConceptDescription.class),
     @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface HasDataSpecification {
 
-
     /**
-     * EmbeddedDataSpecifications used by the element.
+     * Embedded data specification.
      *
      * More information under
      * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
      *
-     * @return Returns the List of DataSpecifications for the property embeddedDataSpecifications.
+     * @return Returns the List of EmbeddedDataSpecifications for the property
+     *         embeddedDataSpecifications.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
     List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     /**
-     * EmbeddedDataSpecifications used by the element.
+     * Embedded data specification.
      *
      * More information under
      * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications

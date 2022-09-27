@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.AssetInformationBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.AssetInformationBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AssetInformation
+ * Default implementation of package org.eclipse.aas4j.v3.model.AssetInformation
  * 
  * In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is
  * defined.
@@ -47,14 +45,16 @@ public class DefaultAssetInformation implements AssetInformation {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
     protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
-    public DefaultAssetInformation() {}
+    public DefaultAssetInformation() {
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.assetKind,
-                this.globalAssetId,
-                this.specificAssetIds,
-                this.defaultThumbnail);
+            this.defaultThumbnail,
+            this.globalAssetId,
+            this.specificAssetIds);
     }
 
     @Override
@@ -68,9 +68,9 @@ public class DefaultAssetInformation implements AssetInformation {
         } else {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
             return Objects.equals(this.assetKind, other.assetKind) &&
-                    Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                    Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
-                    Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
+                Objects.equals(this.defaultThumbnail, other.defaultThumbnail) &&
+                Objects.equals(this.globalAssetId, other.globalAssetId) &&
+                Objects.equals(this.specificAssetIds, other.specificAssetIds);
         }
     }
 
@@ -82,6 +82,16 @@ public class DefaultAssetInformation implements AssetInformation {
     @Override
     public void setAssetKind(AssetKind assetKind) {
         this.assetKind = assetKind;
+    }
+
+    @Override
+    public Resource getDefaultThumbnail() {
+        return defaultThumbnail;
+    }
+
+    @Override
+    public void setDefaultThumbnail(Resource defaultThumbnail) {
+        this.defaultThumbnail = defaultThumbnail;
     }
 
     @Override
@@ -102,16 +112,6 @@ public class DefaultAssetInformation implements AssetInformation {
     @Override
     public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
         this.specificAssetIds = specificAssetIds;
-    }
-
-    @Override
-    public Resource getDefaultThumbnail() {
-        return defaultThumbnail;
-    }
-
-    @Override
-    public void setDefaultThumbnail(Resource defaultThumbnail) {
-        this.defaultThumbnail = defaultThumbnail;
     }
 
     /**

@@ -14,58 +14,19 @@
 
 package org.eclipse.aas4j.v3.model;
 
-
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 
-import org.eclipse.aas4j.v3.model.impl.DefaultLangString;
+import java.io.Serializable;
 
-/**
- * Strings with language tags
- */
-@KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultLangString.class)
-})
-public interface LangString {
 
-    /**
-     * Language tag conforming to BCP 47
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/LangString/language
-     *
-     * @return Returns the String for the property language.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LangString/language")
-    String getLanguage();
+@IRI("rdf:langString")
+public interface LangString extends Serializable {
 
-    /**
-     * Language tag conforming to BCP 47
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/LangString/language
-     *
-     * @param language desired value for the property language.
-     */
-    void setLanguage(String language);
+    public String getLanguage();
 
-    /**
-     * Text in the 'language'
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/LangString/text
-     *
-     * @return Returns the String for the property text.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LangString/text")
-    String getText();
+    public void setLanguage(String language);
 
-    /**
-     * Text in the 'language'
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/LangString/text
-     *
-     * @param text desired value for the property text.
-     */
-    void setText(String text);
+    public String getText();
 
+    public void setText(String text);
 }

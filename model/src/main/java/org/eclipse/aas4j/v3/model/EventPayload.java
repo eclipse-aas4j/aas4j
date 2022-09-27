@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultEventPayload;
@@ -29,6 +27,63 @@ import org.eclipse.aas4j.v3.model.impl.DefaultEventPayload;
     @KnownSubtypes.Type(value = DefaultEventPayload.class)
 })
 public interface EventPayload {
+
+    /**
+     * Reference to the referable, which defines the scope of the event.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference
+     *
+     * @return Returns the Reference for the property observableReference.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference")
+    Reference getObservableReference();
+
+    /**
+     * Reference to the referable, which defines the scope of the event.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference
+     *
+     * @param observableReference desired value for the property observableReference.
+     */
+    void setObservableReference(Reference observableReference);
+
+    /**
+     * 'semanticId' of the referable which defines the scope of the event, if available.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId
+     *
+     * @return Returns the Reference for the property observableSemanticId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId")
+    Reference getObservableSemanticId();
+
+    /**
+     * 'semanticId' of the referable which defines the scope of the event, if available.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId
+     *
+     * @param observableSemanticId desired value for the property observableSemanticId.
+     */
+    void setObservableSemanticId(Reference observableSemanticId);
+
+    /**
+     * Event specific payload.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/payload
+     *
+     * @return Returns the String for the property payload.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/payload")
+    String getPayload();
+
+    /**
+     * Event specific payload.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/payload
+     *
+     * @param payload desired value for the property payload.
+     */
+    void setPayload(String payload);
 
     /**
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
@@ -71,65 +126,6 @@ public interface EventPayload {
     void setSourceSemanticId(Reference sourceSemanticId);
 
     /**
-     * Reference to the referable, which defines the scope of the event.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference
-     *
-     * @return Returns the Reference for the property observableReference.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference")
-    Reference getObservableReference();
-
-    /**
-     * Reference to the referable, which defines the scope of the event.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableReference
-     *
-     * @param observableReference desired value for the property observableReference.
-     */
-    void setObservableReference(Reference observableReference);
-
-    /**
-     * 'semanticId' of the referable which defines the scope of the event, if available.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId
-     *
-     * @return Returns the Reference for the property observableSemanticId.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId")
-    Reference getObservableSemanticId();
-
-    /**
-     * 'semanticId' of the referable which defines the scope of the event, if available.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/observableSemanticId
-     *
-     * @param observableSemanticId desired value for the property observableSemanticId.
-     */
-    void setObservableSemanticId(Reference observableSemanticId);
-
-    /**
-     * Information for the outer message infrastructure for scheduling the event to the respective
-     * communication channel.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/topic
-     *
-     * @return Returns the String for the property topic.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/topic")
-    String getTopic();
-
-    /**
-     * Information for the outer message infrastructure for scheduling the event to the respective
-     * communication channel.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/topic
-     *
-     * @param topic desired value for the property topic.
-     */
-    void setTopic(String topic);
-
-    /**
      * Subject, who/which initiated the creation.
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/subjectId
@@ -168,22 +164,24 @@ public interface EventPayload {
     void setTimeStamp(String timeStamp);
 
     /**
-     * Event specific payload.
+     * Information for the outer message infrastructure for scheduling the event to the respective
+     * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/payload
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/topic
      *
-     * @return Returns the String for the property payload.
+     * @return Returns the String for the property topic.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/payload")
-    String getPayload();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/topic")
+    String getTopic();
 
     /**
-     * Event specific payload.
+     * Information for the outer message infrastructure for scheduling the event to the respective
+     * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/payload
+     * More information under https://admin-shell.io/aas/3/0/RC02/EventPayload/topic
      *
-     * @param payload desired value for the property payload.
+     * @param topic desired value for the property topic.
      */
-    void setPayload(String payload);
+    void setTopic(String topic);
 
 }

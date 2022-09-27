@@ -14,36 +14,38 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.EmbeddedDataSpecificationBuilder;
 
-import java.util.List;
 import java.util.Objects;
 
+
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Extension
+ * Default implementation of package org.eclipse.aas4j.v3.model.EmbeddedDataSpecification
  * 
- * Single extension of an element.
+ * Embed the content of a data specification.
  */
 
 @IRI("aas:EmbeddedDataSpecification")
 public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecification {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-//    protected DataSpecificationContent dataSpecificationContent; // TODO: also allow DataSpecificationPhysicalUnit
-    protected DataSpecificationIEC61360 dataSpecificationContent;
-
     @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
     protected Reference dataSpecification;
 
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
+    protected DataSpecificationContent dataSpecificationContent;
 
-    public DefaultEmbeddedDataSpecification() {}
+    public DefaultEmbeddedDataSpecification() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.dataSpecificationContent,
-            this.dataSpecification);
+        return Objects.hash(this.dataSpecification,
+            this.dataSpecificationContent);
     }
 
     @Override
@@ -72,19 +74,17 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     }
 
     @Override
-    public DataSpecificationIEC61360 getDataSpecificationContent() {
+    public DataSpecificationContent getDataSpecificationContent() {
         return dataSpecificationContent;
     }
 
     @Override
-    public void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
+    public void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
         this.dataSpecificationContent = dataSpecificationContent;
     }
 
-
-
     /**
-     * This builder class can be used to construct a DefaultDataSpecification bean.
+     * This builder class can be used to construct a DefaultEmbeddedDataSpecification bean.
      */
     public static class Builder extends EmbeddedDataSpecificationBuilder<DefaultEmbeddedDataSpecification, Builder> {
 

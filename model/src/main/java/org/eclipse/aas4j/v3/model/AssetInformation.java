@@ -14,22 +14,19 @@
 
 package org.eclipse.aas4j.v3.model;
 
-
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultAssetInformation;
 
-
 import java.util.List;
+
 
 /**
  * In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is
  * defined.
  */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultAssetInformation.class)
+    @KnownSubtypes.Type(value = DefaultAssetInformation.class)
 })
 public interface AssetInformation {
 
@@ -51,6 +48,25 @@ public interface AssetInformation {
      * @param assetKind desired value for the property assetKind.
      */
     void setAssetKind(AssetKind assetKind);
+
+    /**
+     * Thumbnail of the asset represented by the Asset Administration Shell.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
+     *
+     * @return Returns the Resource for the property defaultThumbnail.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
+    Resource getDefaultThumbnail();
+
+    /**
+     * Thumbnail of the asset represented by the Asset Administration Shell.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
+     *
+     * @param defaultThumbnail desired value for the property defaultThumbnail.
+     */
+    void setDefaultThumbnail(Resource defaultThumbnail);
 
     /**
      * Global identifier of the asset the AAS is representing.
@@ -75,9 +91,9 @@ public interface AssetInformation {
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds
      *
-     * @return Returns the List of SpecificAssetIds for the property specificAssetId.
+     * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
     List<SpecificAssetId> getSpecificAssetIds();
@@ -86,29 +102,10 @@ public interface AssetInformation {
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetId
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds
      *
-     * @param specificAssetIds desired value for the property specificAssetId.
+     * @param specificAssetIds desired value for the property specificAssetIds.
      */
     void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
-
-    /**
-     * Thumbnail of the asset represented by the Asset Administration Shell.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
-     *
-     * @return Returns the Resource for the property defaultThumbnail.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
-    Resource getDefaultThumbnail();
-
-    /**
-     * Thumbnail of the asset represented by the Asset Administration Shell.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
-     *
-     * @param defaultThumbnail desired value for the property defaultThumbnail.
-     */
-    void setDefaultThumbnail(Resource defaultThumbnail);
 
 }

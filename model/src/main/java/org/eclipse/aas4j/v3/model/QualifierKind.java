@@ -16,8 +16,8 @@ package org.eclipse.aas4j.v3.model;
 
 
 
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
+
 
 /**
  * Enumeration for kinds of qualifiers.

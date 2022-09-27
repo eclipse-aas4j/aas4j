@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.PropertyBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.PropertyBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Property
+ * Default implementation of package org.eclipse.aas4j.v3.model.Property
  * 
  * A property is a data element that has a single value.
  */
@@ -34,8 +32,8 @@ import org.eclipse.aas4j.v3.model.builder.PropertyBuilder;
 @IRI("aas:Property")
 public class DefaultProperty implements Property {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
@@ -67,36 +65,37 @@ public class DefaultProperty implements Property {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    protected List<LangString> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    protected List<LangString> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    public DefaultProperty() {
 
-    public DefaultProperty() {}
+        this.kind = ModelingKind.INSTANCE;
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.valueType,
-            this.value,
+        return Objects.hash(this.value,
             this.valueId,
-            this.dataSpecifications,
-            this.kind,
+            this.valueType,
+            this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.qualifiers,
+            this.kind,
             this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
             this.checksum,
-            this.extensions);
+            this.description,
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -109,31 +108,21 @@ public class DefaultProperty implements Property {
             return false;
         } else {
             DefaultProperty other = (DefaultProperty) obj;
-            return Objects.equals(this.valueType, other.valueType) &&
-                Objects.equals(this.value, other.value) &&
+            return Objects.equals(this.value, other.value) &&
                 Objects.equals(this.valueId, other.valueId) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
-                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.valueType, other.valueType) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
+                Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
-    }
-
-    @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
     }
 
     @Override
@@ -157,13 +146,23 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
+    public DataTypeDefXsd getValueType() {
+        return valueType;
     }
 
     @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
+    public void setValueType(DataTypeDefXsd valueType) {
+        this.valueType = valueType;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -187,13 +186,13 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
+    public ModelingKind getKind() {
+        return kind;
     }
 
     @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public void setKind(ModelingKind kind) {
+        this.kind = kind;
     }
 
     @Override
@@ -207,13 +206,23 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public String getChecksum() {
+        return checksum;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    @Override
+    public List<LangString> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangString> description) {
+        this.description = description;
     }
 
     @Override
@@ -227,23 +236,13 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public List<LangString> getDescription() {
-        return description;
+    public String getIdShort() {
+        return idShort;
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
-        this.description = description;
-    }
-
-    @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -257,13 +256,13 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
     }
 
     @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

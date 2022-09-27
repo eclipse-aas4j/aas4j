@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultSubmodelElementList;
+
+import java.util.List;
 
 
 /**
@@ -50,25 +49,6 @@ public interface SubmodelElementList extends SubmodelElement {
      * @param orderRelevant desired value for the property orderRelevant.
      */
     void setOrderRelevant(boolean orderRelevant);
-
-    /**
-     * Submodel element contained in the list.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
-     *
-     * @return Returns the List of SubmodelElements for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value")
-    List<SubmodelElement> getValue();
-
-    /**
-     * Submodel element contained in the list.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(List<SubmodelElement> value);
 
     /**
      * Semantic ID the submodel elements contained in the list match to.
@@ -111,6 +91,25 @@ public interface SubmodelElementList extends SubmodelElement {
      * @param typeValueListElement desired value for the property typeValueListElement.
      */
     void setTypeValueListElement(AasSubmodelElements typeValueListElement);
+
+    /**
+     * Submodel element contained in the list.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
+     *
+     * @return Returns the List of SubmodelElements for the property value.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value")
+    List<SubmodelElement> getValue();
+
+    /**
+     * Submodel element contained in the list.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
+     *
+     * @param value desired value for the property value.
+     */
+    void setValue(List<SubmodelElement> value);
 
     /**
      * The value type of the submodel element contained in the list.

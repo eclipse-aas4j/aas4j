@@ -15,12 +15,10 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultFile;
+
 
 /**
  * A File is a data element that represents an address to a file (a locator).
@@ -29,25 +27,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultFile;
     @KnownSubtypes.Type(value = DefaultFile.class)
 })
 public interface File extends DataElement {
-
-    /**
-     * Path and name of the referenced file (with file extension).
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
-     *
-     * @return Returns the String for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/File/value")
-    String getValue();
-
-    /**
-     * Path and name of the referenced file (with file extension).
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(String value);
 
     /**
      * Content type of the content of the file.
@@ -67,5 +46,24 @@ public interface File extends DataElement {
      * @param contentType desired value for the property contentType.
      */
     void setContentType(String contentType);
+
+    /**
+     * Path and name of the referenced file (with file extension).
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
+     *
+     * @return Returns the String for the property value.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/File/value")
+    String getValue();
+
+    /**
+     * Path and name of the referenced file (with file extension).
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
+     *
+     * @param value desired value for the property value.
+     */
+    void setValue(String value);
 
 }

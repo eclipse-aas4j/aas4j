@@ -14,15 +14,25 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.SpecificAssetId;
+
+import java.util.List;
 
 
 public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extends SpecificAssetIdBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
+
+    /**
+     * This function allows setting a value for externalSubjectId
+     * 
+     * @param externalSubjectId desired value to be set
+     * @return Builder object with new value for externalSubjectId
+     */
+    public B externalSubjectId(Reference externalSubjectId) {
+        getBuildingInstance().setExternalSubjectId(externalSubjectId);
+        return getSelf();
+    }
 
     /**
      * This function allows setting a value for name
@@ -43,17 +53,6 @@ public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extend
      */
     public B value(String value) {
         getBuildingInstance().setValue(value);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for externalSubjectId
-     * 
-     * @param externalSubjectId desired value to be set
-     * @return Builder object with new value for externalSubjectId
-     */
-    public B externalSubjectId(Reference externalSubjectId) {
-        getBuildingInstance().setExternalSubjectId(externalSubjectId);
         return getSelf();
     }
 

@@ -14,25 +14,13 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.*;
+
+import java.util.List;
 
 
 public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for derivedFrom
-     * 
-     * @param derivedFrom desired value to be set
-     * @return Builder object with new value for derivedFrom
-     */
-    public B derivedFrom(Reference derivedFrom) {
-        getBuildingInstance().setDerivedFrom(derivedFrom);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for assetInformation
@@ -42,6 +30,17 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
      */
     public B assetInformation(AssetInformation assetInformation) {
         getBuildingInstance().setAssetInformation(assetInformation);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for derivedFrom
+     * 
+     * @param derivedFrom desired value to be set
+     * @return Builder object with new value for derivedFrom
+     */
+    public B derivedFrom(Reference derivedFrom) {
+        getBuildingInstance().setDerivedFrom(derivedFrom);
         return getSelf();
     }
 
@@ -68,19 +67,19 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
     }
 
     /**
-     * This function allows setting a value for dataSpecifications
+     * This function allows setting a value for embeddedDataSpecifications
      * 
-     * @param dataSpecifications desired value to be set
-     * @return Builder object with new value for dataSpecifications
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
      */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(dataSpecifications);
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
         return getSelf();
     }
 
     /**
      * This function allows adding a value to the List embeddedDataSpecifications
-     *
+     * 
      * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */
@@ -88,7 +87,6 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
         getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
-
 
     /**
      * This function allows setting a value for administration
@@ -124,24 +122,13 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
     }
 
     /**
-     * This function allows setting a value for idShort
+     * This function allows setting a value for checksum
      * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
+     * @param checksum desired value to be set
+     * @return Builder object with new value for checksum
      */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for displayName
-     * 
-     * @param displayName desired value to be set
-     * @return Builder object with new value for displayName
-     */
-    public B displayName(List<LangString> displayName) {
-        getBuildingInstance().setDisplayName(displayName);
+    public B checksum(String checksum) {
+        getBuildingInstance().setChecksum(checksum);
         return getSelf();
     }
 
@@ -157,13 +144,46 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
     }
 
     /**
-     * This function allows setting a value for checksum
+     * This function allows adding a value to the List description
      * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
+     * @param description desired value to be added
+     * @return Builder object with new value for description
      */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
+    public B description(LangString description) {
+        getBuildingInstance().getDescription().add(description);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for displayName
+     * 
+     * @param displayName desired value to be set
+     * @return Builder object with new value for displayName
+     */
+    public B displayName(List<LangString> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List displayName
+     * 
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayName
+     */
+    public B displayName(LangString displayName) {
+        getBuildingInstance().getDisplayName().add(displayName);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for idShort
+     * 
+     * @param idShort desired value to be set
+     * @return Builder object with new value for idShort
+     */
+    public B idShort(String idShort) {
+        getBuildingInstance().setIdShort(idShort);
         return getSelf();
     }
 

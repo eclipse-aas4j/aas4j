@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultProperty;
@@ -29,25 +27,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultProperty;
     @KnownSubtypes.Type(value = DefaultProperty.class)
 })
 public interface Property extends DataElement {
-
-    /**
-     * Data type of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
-     *
-     * @return Returns the DataTypeDefXsd for the property valueType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Property/valueType")
-    DataTypeDefXsd getValueType();
-
-    /**
-     * Data type of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
-     *
-     * @param valueType desired value for the property valueType.
-     */
-    void setValueType(DataTypeDefXsd valueType);
 
     /**
      * The value of the property instance.
@@ -86,5 +65,24 @@ public interface Property extends DataElement {
      * @param valueId desired value for the property valueId.
      */
     void setValueId(Reference valueId);
+
+    /**
+     * Data type of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
+     *
+     * @return Returns the DataTypeDefXsd for the property valueType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Property/valueType")
+    DataTypeDefXsd getValueType();
+
+    /**
+     * Data type of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
+     *
+     * @param valueType desired value for the property valueType.
+     */
+    void setValueType(DataTypeDefXsd valueType);
 
 }

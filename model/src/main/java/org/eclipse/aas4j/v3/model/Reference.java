@@ -14,13 +14,12 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
+
+import java.util.List;
+
 
 /**
  * Reference to either a model element of the same or another AAS or to an external entity.
@@ -31,23 +30,23 @@ import org.eclipse.aas4j.v3.model.impl.DefaultReference;
 public interface Reference {
 
     /**
-     * Type of the reference.
+     * Unique references in their name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
+     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
      *
-     * @return Returns the ReferenceTypes for the property type.
+     * @return Returns the List of Keys for the property keys.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/type")
-    ReferenceTypes getType();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
+    List<Key> getKeys();
 
     /**
-     * Type of the reference.
+     * Unique references in their name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
+     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
      *
-     * @param type desired value for the property type.
+     * @param keys desired value for the property keys.
      */
-    void setType(ReferenceTypes type);
+    void setKeys(List<Key> keys);
 
     /**
      * 'semanticId' of the referenced model element ('type' = 'ModelReference').
@@ -69,22 +68,22 @@ public interface Reference {
     void setReferredSemanticId(Reference referredSemanticId);
 
     /**
-     * Unique references in their name space.
+     * Type of the reference.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
+     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
      *
-     * @return Returns the List of Keys for the property keys.
+     * @return Returns the ReferenceTypes for the property type.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
-    List<Key> getKeys();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    ReferenceTypes getType();
 
     /**
-     * Unique references in their name space.
+     * Type of the reference.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
+     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
      *
-     * @param keys desired value for the property keys.
+     * @param type desired value for the property type.
      */
-    void setKeys(List<Key> keys);
+    void setType(ReferenceTypes type);
 
 }

@@ -14,19 +14,20 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.ConceptDescription;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.EnvironmentBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.EnvironmentBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Environment
+ * Default implementation of package org.eclipse.aas4j.v3.model.Environment
  * 
  * Container for the sets of different identifiables.
  */
@@ -43,13 +44,15 @@ public class DefaultEnvironment implements Environment {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
     protected List<Submodel> submodels = new ArrayList<>();
 
-    public DefaultEnvironment() {}
+    public DefaultEnvironment() {
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.assetAdministrationShells,
-            this.submodels,
-            this.conceptDescriptions);
+            this.conceptDescriptions,
+            this.submodels);
     }
 
     @Override
@@ -63,8 +66,8 @@ public class DefaultEnvironment implements Environment {
         } else {
             DefaultEnvironment other = (DefaultEnvironment) obj;
             return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
-                Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
+                Objects.equals(this.conceptDescriptions, other.conceptDescriptions) &&
+                Objects.equals(this.submodels, other.submodels);
         }
     }
 
@@ -79,16 +82,6 @@ public class DefaultEnvironment implements Environment {
     }
 
     @Override
-    public List<Submodel> getSubmodels() {
-        return submodels;
-    }
-
-    @Override
-    public void setSubmodels(List<Submodel> submodels) {
-        this.submodels = submodels;
-    }
-
-    @Override
     public List<ConceptDescription> getConceptDescriptions() {
         return conceptDescriptions;
     }
@@ -96,6 +89,16 @@ public class DefaultEnvironment implements Environment {
     @Override
     public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
         this.conceptDescriptions = conceptDescriptions;
+    }
+
+    @Override
+    public List<Submodel> getSubmodels() {
+        return submodels;
+    }
+
+    @Override
+    public void setSubmodels(List<Submodel> submodels) {
+        this.submodels = submodels;
     }
 
     /**

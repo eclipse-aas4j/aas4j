@@ -14,22 +14,19 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.aas4j.v3.model.Extension;
+import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.ExtensionBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-
-
-import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.aas4j.v3.model.Extension;
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.ExtensionBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Extension
+ * Default implementation of package org.eclipse.aas4j.v3.model.Extension
  * 
  * Single extension of an element.
  */
@@ -55,14 +52,18 @@ public class DefaultExtension implements Extension {
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    public DefaultExtension() {}
+    public DefaultExtension() {
+
+        this.valueType = DataTypeDefXsd.STRING;
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.name,
-            this.valueType,
-            this.value,
             this.refersTo,
+            this.value,
+            this.valueType,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -78,9 +79,9 @@ public class DefaultExtension implements Extension {
         } else {
             DefaultExtension other = (DefaultExtension) obj;
             return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.valueType, other.valueType) &&
-                Objects.equals(this.value, other.value) &&
                 Objects.equals(this.refersTo, other.refersTo) &&
+                Objects.equals(this.value, other.value) &&
+                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
@@ -97,13 +98,13 @@ public class DefaultExtension implements Extension {
     }
 
     @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
+    public Reference getRefersTo() {
+        return refersTo;
     }
 
     @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
+    public void setRefersTo(Reference refersTo) {
+        this.refersTo = refersTo;
     }
 
     @Override
@@ -117,13 +118,13 @@ public class DefaultExtension implements Extension {
     }
 
     @Override
-    public Reference getRefersTo() {
-        return refersTo;
+    public DataTypeDefXsd getValueType() {
+        return valueType;
     }
 
     @Override
-    public void setRefersTo(Reference refersTo) {
-        this.refersTo = refersTo;
+    public void setValueType(DataTypeDefXsd valueType) {
+        this.valueType = valueType;
     }
 
     @Override

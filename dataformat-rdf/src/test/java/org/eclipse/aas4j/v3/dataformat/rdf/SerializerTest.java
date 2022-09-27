@@ -48,7 +48,7 @@ public class SerializerTest {
                 .build();
 
         Submodel submodel = new DefaultSubmodel.Builder()
-                .descriptions(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
+                .description(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
                 .displayName(Arrays.asList(
                         new DefaultLangString.Builder().text("First Submodel Element name").language("en").build(),
                         new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build()

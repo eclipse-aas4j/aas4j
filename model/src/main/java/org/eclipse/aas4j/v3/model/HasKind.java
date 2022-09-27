@@ -16,9 +16,9 @@ package org.eclipse.aas4j.v3.model;
 
 
 
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
+
 
 /**
  * An element with a kind is an element that can either represent a template or an instance.

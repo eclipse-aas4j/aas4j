@@ -14,32 +14,34 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.*;
 
-import java.util.List;
+import org.eclipse.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.aas4j.v3.model.Reference;
 
-public abstract class EmbeddedDataSpecificationBuilder<T extends EmbeddedDataSpecification, B extends EmbeddedDataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
-    /**
-     * This function allows setting a value for dataSpecificationContent
-     * 
-     * @param dataSpecificationContent desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B dataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
-        getBuildingInstance().setDataSpecificationContent(dataSpecificationContent);
-        return getSelf();
-    }
+public abstract class EmbeddedDataSpecificationBuilder<T extends EmbeddedDataSpecification, B extends EmbeddedDataSpecificationBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for dataSpecification
      * 
      * @param dataSpecification desired value to be set
-     * @return Builder object with new value for refersTo
+     * @return Builder object with new value for dataSpecification
      */
     public B dataSpecification(Reference dataSpecification) {
         getBuildingInstance().setDataSpecification(dataSpecification);
         return getSelf();
     }
 
+    /**
+     * This function allows setting a value for dataSpecificationContent
+     * 
+     * @param dataSpecificationContent desired value to be set
+     * @return Builder object with new value for dataSpecificationContent
+     */
+    public B dataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
+        getBuildingInstance().setDataSpecificationContent(dataSpecificationContent);
+        return getSelf();
+    }
 }

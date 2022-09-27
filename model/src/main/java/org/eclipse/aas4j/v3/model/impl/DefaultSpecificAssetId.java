@@ -14,20 +14,18 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.SpecificAssetIdBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.SpecificAssetId;
-
-import org.eclipse.aas4j.v3.model.builder.SpecificAssetIdBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.SpecificAssetId
+ * Default implementation of package org.eclipse.aas4j.v3.model.SpecificAssetId
  * 
  * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
@@ -50,13 +48,15 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
     protected String value;
 
-    public DefaultSpecificAssetId() {}
+    public DefaultSpecificAssetId() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.name,
+        return Objects.hash(this.externalSubjectId,
+            this.name,
             this.value,
-            this.externalSubjectId,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -71,12 +71,22 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
             return false;
         } else {
             DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
-            return Objects.equals(this.name, other.name) &&
+            return Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
+                Objects.equals(this.name, other.name) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
+    }
+
+    @Override
+    public Reference getExternalSubjectId() {
+        return externalSubjectId;
+    }
+
+    @Override
+    public void setExternalSubjectId(Reference externalSubjectId) {
+        this.externalSubjectId = externalSubjectId;
     }
 
     @Override
@@ -97,16 +107,6 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     @Override
     public void setValue(String value) {
         this.value = value;
-    }
-
-    @Override
-    public Reference getExternalSubjectId() {
-        return externalSubjectId;
-    }
-
-    @Override
-    public void setExternalSubjectId(Reference externalSubjectId) {
-        this.externalSubjectId = externalSubjectId;
     }
 
     @Override

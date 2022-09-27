@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultSubmodel;
+
+import java.util.List;
 
 
 /**
@@ -28,7 +27,7 @@ import org.eclipse.aas4j.v3.model.impl.DefaultSubmodel;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultSubmodel.class)
 })
-public interface Submodel extends HasDataSpecification, HasKind, HasSemantics, Identifiable, Qualifiable {
+public interface Submodel extends HasDataSpecification, Identifiable, HasSemantics, HasKind, Qualifiable {
 
     /**
      * A submodel consists of zero or more submodel elements.

@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultBlob;
@@ -30,25 +28,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultBlob;
     @KnownSubtypes.Type(value = DefaultBlob.class)
 })
 public interface Blob extends DataElement {
-
-    /**
-     * The value of the 'Blob' instance of a blob data element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Blob/value
-     *
-     * @return Returns the byte[] for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Blob/value")
-    byte[] getValue();
-
-    /**
-     * The value of the 'Blob' instance of a blob data element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Blob/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(byte[] value);
 
     /**
      * Content type of the content of the 'Blob'.
@@ -68,5 +47,24 @@ public interface Blob extends DataElement {
      * @param contentType desired value for the property contentType.
      */
     void setContentType(String contentType);
+
+    /**
+     * The value of the 'Blob' instance of a blob data element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Blob/value
+     *
+     * @return Returns the byte[] for the property value.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Blob/value")
+    byte[] getValue();
+
+    /**
+     * The value of the 'Blob' instance of a blob data element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Blob/value
+     *
+     * @param value desired value for the property value.
+     */
+    void setValue(byte[] value);
 
 }

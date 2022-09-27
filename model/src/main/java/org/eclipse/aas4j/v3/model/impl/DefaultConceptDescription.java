@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.ConceptDescriptionBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-
-import org.eclipse.aas4j.v3.model.builder.ConceptDescriptionBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.ConceptDescription
+ * Default implementation of package org.eclipse.aas4j.v3.model.ConceptDescription
  * 
  * The semantics of a property or other elements that may have a semantic description is defined by
  * a concept description.
@@ -38,8 +36,8 @@ public class DefaultConceptDescription implements ConceptDescription {
     @IRI("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
     protected List<Reference> isCaseOf = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
@@ -56,31 +54,30 @@ public class DefaultConceptDescription implements ConceptDescription {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    protected List<LangString> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    protected List<LangString> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    public DefaultConceptDescription() {
 
-    public DefaultConceptDescription() {}
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.isCaseOf,
-            this.dataSpecifications,
+            this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
             this.checksum,
+            this.description,
+            this.displayName,
+            this.idShort,
             this.extensions);
     }
 
@@ -95,14 +92,14 @@ public class DefaultConceptDescription implements ConceptDescription {
         } else {
             DefaultConceptDescription other = (DefaultConceptDescription) obj;
             return Objects.equals(this.isCaseOf, other.isCaseOf) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.extensions, other.extensions);
         }
     }
@@ -115,6 +112,16 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setIsCaseOf(List<Reference> isCaseOf) {
         this.isCaseOf = isCaseOf;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -148,13 +155,23 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public String getChecksum() {
+        return checksum;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    @Override
+    public List<LangString> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangString> description) {
+        this.description = description;
     }
 
     @Override
@@ -168,23 +185,13 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public List<LangString> getDescription() {
-        return description;
+    public String getIdShort() {
+        return idShort;
     }
 
     @Override
-    public void setDescription(List<LangString> descriptions) {
-        this.description = description;
-    }
-
-    @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -195,16 +202,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     /**

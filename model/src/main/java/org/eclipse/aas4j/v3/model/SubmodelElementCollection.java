@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+
+import java.util.Collection;
 
 
 /**
@@ -36,10 +35,10 @@ public interface SubmodelElementCollection extends SubmodelElement {
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value
      *
-     * @return Returns the List of SubmodelElements for the property value.
+     * @return Returns the Collection of SubmodelElements for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
-    List<SubmodelElement> getValue();
+    Collection<SubmodelElement> getValue();
 
     /**
      * Submodel element contained in the collection.
@@ -48,6 +47,6 @@ public interface SubmodelElementCollection extends SubmodelElement {
      *
      * @param value desired value for the property value.
      */
-    void setValue(List<SubmodelElement> value);
+    void setValue(Collection<SubmodelElement> value);
 
 }

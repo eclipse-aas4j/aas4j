@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-
-
 import org.eclipse.aas4j.v3.model.OperationVariable;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 

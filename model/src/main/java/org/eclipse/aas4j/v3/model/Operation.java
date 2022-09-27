@@ -14,13 +14,12 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultOperation;
+
+import java.util.List;
+
 
 /**
  * An operation is a submodel element with input and output variables.
@@ -29,6 +28,25 @@ import org.eclipse.aas4j.v3.model.impl.DefaultOperation;
     @KnownSubtypes.Type(value = DefaultOperation.class)
 })
 public interface Operation extends SubmodelElement {
+
+    /**
+     * Parameter that is input and output of the operation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
+     *
+     * @return Returns the List of OperationVariables for the property inoutputVariables.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables")
+    List<OperationVariable> getInoutputVariables();
+
+    /**
+     * Parameter that is input and output of the operation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
+     *
+     * @param inoutputVariables desired value for the property inoutputVariables.
+     */
+    void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
     /**
      * Input parameter of the operation.
@@ -67,24 +85,5 @@ public interface Operation extends SubmodelElement {
      * @param outputVariables desired value for the property outputVariables.
      */
     void setOutputVariables(List<OperationVariable> outputVariables);
-
-    /**
-     * Parameter that is input and output of the operation.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
-     *
-     * @return Returns the List of OperationVariables for the property inoutputVariables.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables")
-    List<OperationVariable> getInoutputVariables();
-
-    /**
-     * Parameter that is input and output of the operation.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
-     *
-     * @param inoutputVariables desired value for the property inoutputVariables.
-     */
-    void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
 }

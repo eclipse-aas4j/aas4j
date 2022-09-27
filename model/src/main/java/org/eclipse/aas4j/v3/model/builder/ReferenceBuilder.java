@@ -14,38 +14,14 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
-
-
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.ReferenceTypes;
 
+import java.util.List;
+
+
 public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for type
-     * 
-     * @param type desired value to be set
-     * @return Builder object with new value for type
-     */
-    public B type(ReferenceTypes type) {
-        getBuildingInstance().setType(type);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for referredSemanticId
-     * 
-     * @param referredSemanticId desired value to be set
-     * @return Builder object with new value for referredSemanticId
-     */
-    public B referredSemanticId(Reference referredSemanticId) {
-        getBuildingInstance().setReferredSemanticId(referredSemanticId);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for keys
@@ -66,6 +42,28 @@ public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceB
      */
     public B keys(Key keys) {
         getBuildingInstance().getKeys().add(keys);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for referredSemanticId
+     * 
+     * @param referredSemanticId desired value to be set
+     * @return Builder object with new value for referredSemanticId
+     */
+    public B referredSemanticId(Reference referredSemanticId) {
+        getBuildingInstance().setReferredSemanticId(referredSemanticId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for type
+     * 
+     * @param type desired value to be set
+     * @return Builder object with new value for type
+     */
+    public B type(ReferenceTypes type) {
+        getBuildingInstance().setType(type);
         return getSelf();
     }
 }

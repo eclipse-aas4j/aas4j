@@ -14,14 +14,12 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultEnvironment;
+
+import java.util.List;
+
 
 /**
  * Container for the sets of different identifiables.
@@ -51,25 +49,6 @@ public interface Environment {
     void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells);
 
     /**
-     * Submodel
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
-     *
-     * @return Returns the List of Submodels for the property submodels.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
-    List<Submodel> getSubmodels();
-
-    /**
-     * Submodel
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
-     *
-     * @param submodels desired value for the property submodels.
-     */
-    void setSubmodels(List<Submodel> submodels);
-
-    /**
      * Concept description
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions
@@ -88,5 +67,23 @@ public interface Environment {
      */
     void setConceptDescriptions(List<ConceptDescription> conceptDescriptions);
 
+    /**
+     * Submodel
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
+     *
+     * @return Returns the List of Submodels for the property submodels.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
+    List<Submodel> getSubmodels();
+
+    /**
+     * Submodel
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
+     *
+     * @param submodels desired value for the property submodels.
+     */
+    void setSubmodels(List<Submodel> submodels);
 
 }

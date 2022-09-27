@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultSpecificAssetId;
@@ -29,6 +27,25 @@ import org.eclipse.aas4j.v3.model.impl.DefaultSpecificAssetId;
     @KnownSubtypes.Type(value = DefaultSpecificAssetId.class)
 })
 public interface SpecificAssetId extends HasSemantics {
+
+    /**
+     * The (external) subject the key belongs to or has meaning to.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
+     *
+     * @return Returns the Reference for the property externalSubjectId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    Reference getExternalSubjectId();
+
+    /**
+     * The (external) subject the key belongs to or has meaning to.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
+     *
+     * @param externalSubjectId desired value for the property externalSubjectId.
+     */
+    void setExternalSubjectId(Reference externalSubjectId);
 
     /**
      * Name of the identifier
@@ -67,24 +84,5 @@ public interface SpecificAssetId extends HasSemantics {
      * @param value desired value for the property value.
      */
     void setValue(String value);
-
-    /**
-     * The (external) subject the key belongs to or has meaning to.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
-     *
-     * @return Returns the Reference for the property externalSubjectId.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
-    Reference getExternalSubjectId();
-
-    /**
-     * The (external) subject the key belongs to or has meaning to.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
-     *
-     * @param externalSubjectId desired value for the property externalSubjectId.
-     */
-    void setExternalSubjectId(Reference externalSubjectId);
 
 }

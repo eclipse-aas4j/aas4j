@@ -14,13 +14,12 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
-import org.eclipse.aas4j.v3.model.Reference;
-
 import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.aas4j.v3.model.Extension;
+import org.eclipse.aas4j.v3.model.Reference;
+
+import java.util.List;
+
 
 public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
@@ -36,13 +35,13 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
     }
 
     /**
-     * This function allows setting a value for valueType
+     * This function allows setting a value for refersTo
      * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
+     * @param refersTo desired value to be set
+     * @return Builder object with new value for refersTo
      */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
+    public B refersTo(Reference refersTo) {
+        getBuildingInstance().setRefersTo(refersTo);
         return getSelf();
     }
 
@@ -58,13 +57,13 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
     }
 
     /**
-     * This function allows setting a value for refersTo
+     * This function allows setting a value for valueType
      * 
-     * @param refersTo desired value to be set
-     * @return Builder object with new value for refersTo
+     * @param valueType desired value to be set
+     * @return Builder object with new value for valueType
      */
-    public B refersTo(Reference refersTo) {
-        getBuildingInstance().setRefersTo(refersTo);
+    public B valueType(DataTypeDefXsd valueType) {
+        getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 

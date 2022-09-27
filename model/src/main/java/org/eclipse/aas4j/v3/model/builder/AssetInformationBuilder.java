@@ -14,20 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-
-
-
 import org.eclipse.aas4j.v3.model.*;
-
 
 import java.util.List;
 
+
 public abstract class AssetInformationBuilder<T extends AssetInformation, B extends AssetInformationBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+    extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for assetKind
-     *
+     * 
      * @param assetKind desired value to be set
      * @return Builder object with new value for assetKind
      */
@@ -37,8 +34,19 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
+     * This function allows setting a value for defaultThumbnail
+     * 
+     * @param defaultThumbnail desired value to be set
+     * @return Builder object with new value for defaultThumbnail
+     */
+    public B defaultThumbnail(Resource defaultThumbnail) {
+        getBuildingInstance().setDefaultThumbnail(defaultThumbnail);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for globalAssetId
-     *
+     * 
      * @param globalAssetId desired value to be set
      * @return Builder object with new value for globalAssetId
      */
@@ -48,10 +56,10 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
-     * This function allows setting a value for specificAssetId
-     *
+     * This function allows setting a value for specificAssetIds
+     * 
      * @param specificAssetIds desired value to be set
-     * @return Builder object with new value for specificAssetId
+     * @return Builder object with new value for specificAssetIds
      */
     public B specificAssetIds(List<SpecificAssetId> specificAssetIds) {
         getBuildingInstance().setSpecificAssetIds(specificAssetIds);
@@ -59,24 +67,13 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
-     * This function allows adding a value to the List specificAssetId
-     *
-     * @param specificAssetId desired value to be added
-     * @return Builder object with new value for specificAssetId
+     * This function allows adding a value to the List specificAssetIds
+     * 
+     * @param specificAssetIds desired value to be added
+     * @return Builder object with new value for specificAssetIds
      */
-    public B specificAssetId(SpecificAssetId specificAssetId) {
-        getBuildingInstance().getSpecificAssetIds().add(specificAssetId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for defaultThumbnail
-     *
-     * @param defaultThumbnail desired value to be set
-     * @return Builder object with new value for defaultThumbnail
-     */
-    public B defaultThumbnail(Resource defaultThumbnail) {
-        getBuildingInstance().setDefaultThumbnail(defaultThumbnail);
+    public B specificAssetIds(SpecificAssetId specificAssetIds) {
+        getBuildingInstance().getSpecificAssetIds().add(specificAssetIds);
         return getSelf();
     }
 }

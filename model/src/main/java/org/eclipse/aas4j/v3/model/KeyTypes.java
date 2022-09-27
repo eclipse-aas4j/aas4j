@@ -16,8 +16,8 @@ package org.eclipse.aas4j.v3.model;
 
 
 
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
+
 
 /**
  * Enumeration of different key value types within a key.
@@ -87,6 +87,12 @@ public enum KeyTypes {
     */
     @IRI("https://admin-shell.io/aas/3/0/RC02/KeyTypes/GlobalReference")
     GLOBAL_REFERENCE,
+
+    /**
+     * Identifiable.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/KeyTypes/Identifiable")
+    IDENTIFIABLE,
 
     /**
      * Property with a value that can be provided in multiple languages

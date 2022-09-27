@@ -14,18 +14,16 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import java.util.Objects;
-
-
 import org.eclipse.aas4j.v3.model.OperationVariable;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-
 import org.eclipse.aas4j.v3.model.builder.OperationVariableBuilder;
 
+import java.util.Objects;
+
+
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.OperationVariable
+ * Default implementation of package org.eclipse.aas4j.v3.model.OperationVariable
  * 
  * The value of an operation variable is a submodel element that is used as input and/or output
  * variable of an operation.

@@ -14,9 +14,6 @@
 
 package org.eclipse.aas4j.v3.model;
 
-
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultMultiLanguageProperty;
@@ -37,7 +34,7 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * More information under https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value
      *
-     * @return Returns the LangStringSet for the property value.
+     * @return Returns the List of LangStrings for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
     List<LangString> getValue();

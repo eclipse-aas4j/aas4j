@@ -14,18 +14,16 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import java.util.Objects;
-
-
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.KeyTypes;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.KeyBuilder;
 
+import java.util.Objects;
 
 
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Key
+ * Default implementation of package org.eclipse.aas4j.v3.model.Key
  * 
  * A key is a reference to an element by its ID.
  */
@@ -39,7 +37,9 @@ public class DefaultKey implements Key {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Key/value")
     protected String value;
 
-    public DefaultKey() {}
+    public DefaultKey() {
+
+    }
 
     @Override
     public int hashCode() {
