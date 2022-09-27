@@ -28,5 +28,11 @@
             <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${junit-params.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

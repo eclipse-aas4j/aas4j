@@ -79,14 +79,14 @@
                      <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "OperatingManual"^^xs:string ;
                      rdfs:label "OperatingManual"^^xs:string ;
                      <https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement> [
-                                  rdf:type aas:Reference ;
-                                  <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> ;
-                                  <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
-                                               rdf:type aas:Key ;
-                                               <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/ConceptDescription> ;
-                                               <https://admin-shell.io/aas/3/0/RC02/Key/value> "https://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"^^xs:string ;
-                                           ]
-                              ] ;
+                          rdf:type aas:Reference ;
+                          <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> ;
+                          <https://admin-shell.io/aas/3/0/RC02/Reference/keys> [
+                               rdf:type aas:Key ;
+                               <https://admin-shell.io/aas/3/0/RC02/Key/type> <https://admin-shell.io/aas/3/0/RC02/KeyTypes/ConceptDescription> ;
+                               <https://admin-shell.io/aas/3/0/RC02/Key/value> "https://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"^^xs:string ;
+                          ]
+                     ] ;
                      <https://admin-shell.io/aas/3/0/RC02/HasKind/kind> <https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance> ;
                      <https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value> [
                                   rdf:type aas:SubmodelElementCollection ;
