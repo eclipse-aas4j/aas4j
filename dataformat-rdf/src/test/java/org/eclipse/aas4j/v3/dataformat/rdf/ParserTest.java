@@ -15,15 +15,22 @@
  */
 package org.eclipse.aas4j.v3.dataformat.rdf;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
+
 import org.eclipse.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.ConceptDescription;
+
 import org.apache.jena.riot.RDFLanguages;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 
 import java.io.IOException;
 
@@ -31,7 +38,7 @@ import java.io.IOException;
 public class ParserTest {
 
     @Test
-    public void parseAASEnvironmentTest() throws IOException, DeserializationException {
+    public void parseAasEnvironmentTest() throws IOException, DeserializationException {
         String aasEnvAsString = SerializerUtil.readResourceToString("example-from-serializer.jsonld");
         Environment aasEnv = new Serializer().read(aasEnvAsString);
         Assert.assertEquals(1, aasEnv.getSubmodels().size());
@@ -42,8 +49,18 @@ public class ParserTest {
         Assert.assertEquals("en", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().get(1).getLanguage());
         Assert.assertNotNull(aasEnv.getAssetAdministrationShells().get(0).getDescription().get(0).getLanguage());
 
-
     }
+
+    @Test
+    public void parseFullTurtleEnvironmentTest() throws IOException, DeserializationException {
+        String aasEnvAsString = SerializerUtil.readResourceToString("AASFull.ttl");
+        Environment environment = new Serializer().read(aasEnvAsString);
+
+        // TODO continue providing a correct AASFull Turtle representation
+        // TODO test for LangStrings
+        Assert.assertEquals(AASFull.ENVIRONMENT, environment);
+    }
+
 
     @Test
     @Parameters({"AAS_Reference_shortExample.ttl", "AssetAdministrationShell_Example.ttl",
@@ -51,7 +68,7 @@ public class ParserTest {
     public void parseAasTurtleSchemaExamplesTest(String file) throws IOException, DeserializationException {
         Serializer serializer = new Serializer();
 
-        AssetAdministrationShell aas = serializer.deserialize(SerializerUtil.readResourceToString(file), AssetAdministrationShell.class, RDFLanguages.TURTLE);
+        AssetAdministrationShell aas = serializer.deserialize(SerializerUtil.readResourceToString(file),AssetAdministrationShell.class, RDFLanguages.TURTLE);
 
         Assert.assertNotNull(aas.getAssetInformation().getAssetKind());
     }
@@ -86,7 +103,7 @@ public class ParserTest {
 
 
     @Test
-    public void serializeConceptDescription() throws IOException, DeserializationException {
+    public void deserializeConceptDescription() throws IOException, DeserializationException {
         String conceptDescription = "{\n" +
                 "  \"@context\" : {\n" +
                 "    \"aas\" : \"https://admin-shell.io/aas/3/0/RC02/\",\n" +
@@ -129,5 +146,6 @@ public class ParserTest {
 
         Assert.assertNotNull(c);
     }
+
 
 }

@@ -18,6 +18,13 @@
             <version>${revision}</version>
         </dependency>
         <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>dataformat-core</artifactId>
+            <version>${revision}</version>
+            <classifier>tests</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
             <version>${jena.version}</version>

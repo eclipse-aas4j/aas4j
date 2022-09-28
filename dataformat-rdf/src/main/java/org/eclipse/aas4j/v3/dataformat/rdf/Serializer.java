@@ -183,6 +183,7 @@ public class Serializer implements org.eclipse.aas4j.v3.dataformat.Serializer, D
      */
     public <T> T deserialize(String serialization, Class<T> valueType, Lang serializationFormat) throws DeserializationException {
         try {
+
             return new Parser().parseMessage(serialization, valueType, serializationFormat);
         }
         catch (IOException e)
