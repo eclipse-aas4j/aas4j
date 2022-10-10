@@ -14,10 +14,12 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.*;
-
 import java.util.Collection;
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElementCollection, B extends SubmodelElementCollectionBuilder<T, B>>

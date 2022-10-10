@@ -15,7 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.Resource;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class ResourceBuilder<T extends Resource, B extends ResourceBuilder<T, B>> extends ExtendableBuilder<T, B> {

@@ -14,9 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.*;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificationIEC61360, B extends DataSpecificationIEC61360Builder<T, B>>

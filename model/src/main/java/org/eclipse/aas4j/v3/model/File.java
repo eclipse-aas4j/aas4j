@@ -15,9 +15,11 @@
 package org.eclipse.aas4j.v3.model;
 
 
+
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.aas4j.v3.model.impl.DefaultFile;
+import org.eclipse.aas4j.v3.model.builder.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 /**

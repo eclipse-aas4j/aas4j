@@ -14,15 +14,14 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.aas4j.v3.model.Extension;
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.ExtensionBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.*;
 
 
 /**

@@ -14,13 +14,14 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.*;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.PropertyBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.*;
 
 
 /**
@@ -75,6 +76,8 @@ public class DefaultProperty implements Property {
     protected String idShort;
 
     public DefaultProperty() {
+
+        this.category = "VARIABLE";
 
         this.kind = ModelingKind.INSTANCE;
 

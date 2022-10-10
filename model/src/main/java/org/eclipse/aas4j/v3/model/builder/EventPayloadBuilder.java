@@ -15,8 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.EventPayload;
-import org.eclipse.aas4j.v3.model.Reference;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class EventPayloadBuilder<T extends EventPayload, B extends EventPayloadBuilder<T, B>> extends ExtendableBuilder<T, B> {

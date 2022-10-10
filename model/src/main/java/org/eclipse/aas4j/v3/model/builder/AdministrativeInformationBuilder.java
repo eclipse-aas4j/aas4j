@@ -14,10 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class AdministrativeInformationBuilder<T extends AdministrativeInformation, B extends AdministrativeInformationBuilder<T, B>>

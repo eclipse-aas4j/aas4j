@@ -14,10 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.ValueList;
-import org.eclipse.aas4j.v3.model.ValueReferencePair;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class ValueListBuilder<T extends ValueList, B extends ValueListBuilder<T, B>> extends ExtendableBuilder<T, B> {

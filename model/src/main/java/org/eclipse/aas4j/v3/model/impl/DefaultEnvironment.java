@@ -14,16 +14,14 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.ConceptDescription;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.EnvironmentBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.*;
 
 
 /**

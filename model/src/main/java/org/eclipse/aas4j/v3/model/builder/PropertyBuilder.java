@@ -14,9 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.*;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class PropertyBuilder<T extends Property, B extends PropertyBuilder<T, B>> extends ExtendableBuilder<T, B> {

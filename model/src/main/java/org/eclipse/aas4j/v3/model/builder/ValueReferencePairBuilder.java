@@ -15,8 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.ValueReferencePair;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class ValueReferencePairBuilder<T extends ValueReferencePair, B extends ValueReferencePairBuilder<T, B>>

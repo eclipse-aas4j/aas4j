@@ -14,13 +14,14 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.*;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.MultiLanguagePropertyBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.*;
 
 
 /**
@@ -72,6 +73,8 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
     protected String idShort;
 
     public DefaultMultiLanguageProperty() {
+
+        this.category = "VARIABLE";
 
         this.kind = ModelingKind.INSTANCE;
 

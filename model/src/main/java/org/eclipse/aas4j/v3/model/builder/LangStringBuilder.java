@@ -15,7 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.LangString;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class LangStringBuilder<T extends LangString, B extends LangStringBuilder<T, B>> extends ExtendableBuilder<T, B> {

@@ -15,9 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.aas4j.v3.model.Reference;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class EmbeddedDataSpecificationBuilder<T extends EmbeddedDataSpecification, B extends EmbeddedDataSpecificationBuilder<T, B>>

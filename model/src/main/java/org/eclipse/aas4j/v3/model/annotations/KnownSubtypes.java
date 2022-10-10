@@ -27,7 +27,7 @@ public @interface KnownSubtypes {
      * 
      * @return List of known implementing subtypes
      */
-    public Type[] value();
+    public KnownSubtypes.Type[] value();
 
     public @interface Type {
         Class<?> value();

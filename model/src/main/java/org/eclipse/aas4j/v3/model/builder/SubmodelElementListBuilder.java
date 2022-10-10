@@ -14,9 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.*;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, B extends SubmodelElementListBuilder<T, B>>

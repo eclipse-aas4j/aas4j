@@ -15,8 +15,9 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-import org.eclipse.aas4j.v3.model.Key;
-import org.eclipse.aas4j.v3.model.KeyTypes;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class KeyBuilder<T extends Key, B extends KeyBuilder<T, B>> extends ExtendableBuilder<T, B> {

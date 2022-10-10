@@ -14,12 +14,12 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import org.eclipse.aas4j.v3.model.OperationVariable;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.OperationVariableBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.*;
 
 
 /**

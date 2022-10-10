@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
-import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.aas4j.v3.model.Qualifier;
-import org.eclipse.aas4j.v3.model.QualifierKind;
-import org.eclipse.aas4j.v3.model.Reference;
-
 import java.util.List;
+
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 
 
 public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierBuilder<T, B>> extends ExtendableBuilder<T, B> {
