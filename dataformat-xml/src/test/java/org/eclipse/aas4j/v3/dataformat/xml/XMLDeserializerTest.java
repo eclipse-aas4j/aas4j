@@ -15,17 +15,18 @@
  */
 package org.eclipse.aas4j.v3.dataformat.xml;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.FileNotFoundException;
-
+import org.eclipse.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.Qualifier;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.eclipse.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.aas4j.v3.model.Environment;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 public class XMLDeserializerTest {
 
@@ -45,6 +46,10 @@ public class XMLDeserializerTest {
     public void deserializeQualifier() throws Exception {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_QUALIFIERS);
         Assert.assertNotNull(env);
+        String[] qualifierValues = env.getSubmodels().stream().map(Submodel::getSubmodelElements).flatMap(List::stream)
+                .map(SubmodelElement::getQualifiers).flatMap(List::stream)
+                .map(Qualifier::getValue).toArray(String[]::new);
+        Assert.assertArrayEquals(new String[]{"100", "50"}, qualifierValues);
     }
 
     @Test
