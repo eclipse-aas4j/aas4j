@@ -17,17 +17,19 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.dataformat.xml.deserialization.QualifierDeserializer;
 import org.eclipse.aas4j.v3.model.Qualifier;
 
 public interface QualifiableMixin {
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
     // TODO @JsonSerialize(using = ConstraintsSerializer.class)
-    // TODO @JsonDeserialize(using = ConstraintsDeserializer.class)
+    @JsonDeserialize(using = QualifierDeserializer.class)
     public List<Qualifier> getQualifiers();
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")

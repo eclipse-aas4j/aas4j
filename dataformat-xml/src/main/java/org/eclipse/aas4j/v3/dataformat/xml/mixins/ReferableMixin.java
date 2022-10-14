@@ -30,23 +30,23 @@ import org.eclipse.aas4j.v3.dataformat.xml.serialization.LangStringsSerializer;
 import org.eclipse.aas4j.v3.model.LangString;
 
 
-@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayNames", "description", "checksum"})
+@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayName", "description", "checksum"})
 public interface ReferableMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
 //    @JsonSerialize(using = LangStringsSerializer.class)
-    @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getDescriptions();
+    public List<LangString> getDescription();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-    public void setDescriptions(List<LangString> descriptions);
+    @JsonDeserialize(using = LangStringsDeserializer.class)
+    public void setDescription(List<LangString> descriptions);
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
 //    @JsonSerialize(using = LangStringsSerializer.class)
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getDisplayNames();
+    public List<LangString> getDisplayName();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayNames")
-    public void setDisplayNames(List<LangString> displayNames);
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
+    public void setDisplayName(List<LangString> displayNames);
 
 //    @JsonInclude(JsonInclude.Include.ALWAYS)
     public String getIdShort();
