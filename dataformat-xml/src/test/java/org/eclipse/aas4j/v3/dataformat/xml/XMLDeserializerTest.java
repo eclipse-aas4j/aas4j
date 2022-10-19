@@ -18,15 +18,13 @@ package org.eclipse.aas4j.v3.dataformat.xml;
 import org.eclipse.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.aas4j.v3.dataformat.core.AASSimple;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Qualifier;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class XMLDeserializerTest {
 
@@ -50,6 +48,20 @@ public class XMLDeserializerTest {
                 .map(SubmodelElement::getQualifiers).flatMap(List::stream)
                 .map(Qualifier::getValue).toArray(String[]::new);
         Assert.assertArrayEquals(new String[]{"100", "50"}, qualifierValues);
+    }
+
+    @Test
+    public void deserializeOperation() throws Exception {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
+        Assert.assertNotNull(env);
+        Stream<Operation> operationStream = env.getSubmodels().stream().map(Submodel::getSubmodelElements).flatMap(List::stream)
+                .filter(submodelElement -> submodelElement instanceof Operation)
+                .map(submodelElement -> (Operation) submodelElement);
+        operationStream.forEach(operation -> {
+            operation.getInputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
+            operation.getOutputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
+            operation.getInoutputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
+        });
     }
 
     @Test
