@@ -17,15 +17,22 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.aas4j.v3.model.OperationVariable;
 
 public interface OperationMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     public List<OperationVariable> getInputVariables();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+    public void setInputVariables(List<OperationVariable> inputVariables);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
     public List<OperationVariable> getInoutputVariables();

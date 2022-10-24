@@ -17,19 +17,26 @@ package org.eclipse.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
 import org.eclipse.aas4j.v3.dataformat.xml.serialization.SubmodelElementSerializer;
 import org.eclipse.aas4j.v3.model.SubmodelElement;
 
 public interface OperationVariableMixin {
-    @JsonSerialize(using = SubmodelElementSerializer.class)
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+    @JsonSerialize(using = SubmodelElementSerializer.class)
     public SubmodelElement getValue();
+
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+    @JsonDeserialize(using = SubmodelElementsDeserializer.class)
+    public void setValue(SubmodelElement submodelElement);
 
 
 }

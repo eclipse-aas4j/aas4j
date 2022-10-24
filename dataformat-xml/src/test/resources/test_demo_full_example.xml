@@ -328,6 +328,16 @@
     </aas:submodel>
     <aas:submodel>
       <aas:idShort>TestSubmodel</aas:idShort>
+      <aas:description>
+        <aas:langString>
+          <aas:language>en-us</aas:language>
+          <aas:text>An example submodel for the test application</aas:text>
+        </aas:langString>
+        <aas:langString>
+          <aas:language>de</aas:language>
+          <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
+        </aas:langString>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -451,6 +461,16 @@
           <aas:category>Parameter</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
           <aas:kind>Template</aas:kind>
+          <aas:description>
+            <aas:langString>
+              <aas:language>en-us</aas:language>
+              <aas:text>Example Operation object</aas:text>
+            </aas:langString>
+            <aas:langString>
+              <aas:language>de</aas:language>
+              <aas:text>Beispiel Operation Element</aas:text>
+            </aas:langString>
+          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>

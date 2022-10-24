@@ -18,10 +18,7 @@ package org.eclipse.aas4j.v3.dataformat.xml;
 import org.eclipse.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.aas4j.v3.dataformat.core.AASSimple;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Qualifier;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -50,6 +47,21 @@ public class XMLDeserializerTest {
                 .map(SubmodelElement::getQualifiers).flatMap(List::stream)
                 .map(Qualifier::getValue).toArray(String[]::new);
         Assert.assertArrayEquals(new String[]{"100", "50"}, qualifierValues);
+    }
+
+    @Test
+    public void deserializeOperation() throws Exception {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATION);
+        Assert.assertNotNull(env);
+
+        OperationVariable inputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInputVariables().get(0);
+        Assert.assertNotNull(inputVariable.getValue());
+
+        OperationVariable outputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getOutputVariables().get(0);
+        Assert.assertNotNull(outputVariable.getValue());
+
+        OperationVariable inoutputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInoutputVariables().get(0);
+        Assert.assertNotNull(inoutputVariable.getValue());
     }
 
     @Test
