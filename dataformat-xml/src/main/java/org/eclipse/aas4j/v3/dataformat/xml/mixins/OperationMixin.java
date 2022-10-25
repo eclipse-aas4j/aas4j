@@ -19,10 +19,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import org.eclipse.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.aas4j.v3.dataformat.xml.deserialization.OperationVariableDeserializer;
 import org.eclipse.aas4j.v3.model.OperationVariable;
 
 public interface OperationMixin {
@@ -30,13 +32,26 @@ public interface OperationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     public List<OperationVariable> getInputVariables();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+    @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setInputVariables(List<OperationVariable> inputVariables);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
+    // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
     public List<OperationVariable> getInoutputVariables();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
+    @JsonDeserialize(using = OperationVariableDeserializer.class)
+    public void setInoutputVariables(List<OperationVariable> inoutputVariables);
+
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
+    // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
     public List<OperationVariable> getOutputVariables();
+
+    @JsonDeserialize(using = OperationVariableDeserializer.class)
+    public void setOutputVariables(List<OperationVariable> outputVariables);
+
 }

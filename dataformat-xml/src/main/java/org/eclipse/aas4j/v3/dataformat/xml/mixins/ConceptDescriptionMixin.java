@@ -32,7 +32,13 @@ public interface ConceptDescriptionMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "isCaseOf")
-    @JsonDeserialize(using = ReferencesDeserializer.class)
+    // @JsonDeserialize(using = ReferencesDeserializer.class)
     public List<Reference> getIsCaseOf();
+
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "isCaseOf")
+    // @JsonDeserialize(using = ReferencesDeserializer.class)
+    public void setIsCaseOf(List<Reference> isCaseOf);
 
 }
