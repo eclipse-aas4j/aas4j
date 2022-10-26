@@ -28,8 +28,9 @@ import org.eclipse.aas4j.v3.dataformat.xml.deserialization.OperationVariableDese
 import org.eclipse.aas4j.v3.model.OperationVariable;
 
 public interface OperationMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
+
+    //@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
+    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     public List<OperationVariable> getInputVariables();
 
     //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
@@ -37,7 +38,7 @@ public interface OperationMixin {
     public void setInputVariables(List<OperationVariable> inputVariables);
 
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
+    // @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
     // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
     public List<OperationVariable> getInoutputVariables();
@@ -46,7 +47,7 @@ public interface OperationMixin {
     public void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
+    //@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
     // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
     public List<OperationVariable> getOutputVariables();

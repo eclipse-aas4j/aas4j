@@ -40,7 +40,7 @@ public interface ReferableMixin {
 //    public void setCategory(String category);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-//    @JsonSerialize(using = LangStringsSerializer.class)
+    @JsonSerialize(using = LangStringsSerializer.class)
     public List<LangString> getDescription();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
