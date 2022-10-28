@@ -1,90 +1,141 @@
-[
+{
+  "idShort": "ExampleSubmodelElementListOrdered",
+  "category": "Parameter",
+  "description": [
     {
-        "modelType": "Property",
-        "kind": "Instance",
-        "semanticId":
-                {
-                    "keys": [
-                        {
-                            "type": "GlobalReference",
-                            "value": "0173-1#02-AAO677#002"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
-        "value": "http://acplt.org/ValueId/ACPLT",
-        "valueId":
-                {
-                    "keys": [
-                        {
-                            "type": "GlobalReference",
-                            "value": "http://acplt.org/ValueId/ACPLT"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
-        "valueType": "xs:string",
-        "qualifiers": [
-            {
-                "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                "value": "100",
-                "valueType": "xs:int",
-                "kind": "ConceptQualifier"
-            },
-            {
-                "type": "http://acplt.org/Qualifier/ExampleQualifier2",
-                "value": "50",
-                "valueType": "xs:int",
-                "kind": "ConceptQualifier"
-            }
-        ],
-        "idShort": "ManufacturerName",
-        "description": [
-            {
-                "language": "en-us",
-                "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
-            },
-            {
-                "language": "de",
-                "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
-            }
-        ]
+      "language": "en-us",
+      "text": "Example SubmodelElementListOrdered object"
     },
     {
-        "modelType": "Property",
-        "kind": "Instance",
-        "semanticId":
-                {
-                    "keys": [
-                        {
-                            "type": "GlobalReference",
-                            "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
-        "value": "978-8234-234-342",
-        "valueId":
-                {
-                    "keys": [
-                        {
-                            "type": "GlobalReference",
-                            "value": "978-8234-234-342"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
-        "valueType": "xs:string",
-        "idShort": "InstanceId",
-        "description": [
-            {
-                "language": "en-us",
-                "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
-            },
-            {
-                "language": "de",
-                "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
-            }
-        ]
+      "language": "de",
+      "text": "Beispiel SubmodelElementListOrdered Element"
     }
-]
+  ],
+  "modelType": "SubmodelElementList",
+  "orderRelevant": true,
+  "semanticId":
+  {
+    "keys": [
+      {
+        "type": "GlobalReference",
+        "value": "http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered"
+      }
+    ],
+    "type": "GlobalReference"
+  },
+  "kind": "Template",
+  "typeValueListElement": "SubmodelElement",
+  "value": [
+    {
+      "idShort": "ExampleProperty",
+      "category": "Constant",
+      "description": [
+        {
+          "language": "en-us",
+          "text": "Example Property object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel Property Element"
+        }
+      ],
+      "modelType": "Property",
+      "semanticId":
+      {
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "http://acplt.org/Properties/ExampleProperty"
+          }
+        ],
+        "type": "GlobalReference"
+      },
+      "kind": "Template",
+      "valueType": "xs:string"
+    },
+    {
+      "idShort": "ExampleMultiLanguageProperty",
+      "category": "Constant",
+      "description": [
+        {
+          "language": "en-us",
+          "text": "Example MultiLanguageProperty object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel MultiLanguageProperty Element"
+        }
+      ],
+      "modelType": "MultiLanguageProperty",
+      "semanticId":
+      {
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty"
+          }
+        ],
+        "type": "GlobalReference"
+      },
+      "kind": "Template"
+    },
+    {
+      "idShort": "ExampleRange",
+      "category": "Parameter",
+      "description":
+       [
+        {
+          "language": "en-us",
+          "text": "Example Range object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel Range Element"
+        }
+      ],
+      "modelType": "Range",
+      "semanticId":
+      {
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "http://acplt.org/Ranges/ExampleRange"
+          }
+        ],
+        "type": "GlobalReference"
+      },
+      "kind": "Template",
+      "valueType": "xs:int",
+      "max": "100"
+    },
+    {
+      "idShort": "ExampleRange2",
+      "category": "Parameter",
+      "description":
+      [
+        {
+          "language": "en-us",
+          "text": "Example Range object"
+        },
+        {
+          "language": "de",
+          "text": "Beispiel Range Element"
+        }
+      ],
+      "modelType": "Range",
+      "semanticId":
+      {
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "http://acplt.org/Ranges/ExampleRange"
+          }
+        ],
+        "type": "GlobalReference"
+      },
+      "kind": "Template",
+      "valueType": "xs:int",
+      "min": "0"
+    }
+  ]
+}

@@ -56,7 +56,6 @@
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
         <plugin.jar.version>3.1.1</plugin.jar.version>
         <plugin.javadoc.version>3.3.0</plugin.javadoc.version>
-        <plugin.license.version>4.1</plugin.license.version>
         <plugin.projectinfo.version>3.1.2</plugin.projectinfo.version>
         <plugin.source.version>3.2.0</plugin.source.version>
 
