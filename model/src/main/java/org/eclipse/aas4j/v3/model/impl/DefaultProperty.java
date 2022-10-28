@@ -231,7 +231,6 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-
     public void setDisplayName(List<LangString> displayName) {
         this.displayName = displayName;
     }
