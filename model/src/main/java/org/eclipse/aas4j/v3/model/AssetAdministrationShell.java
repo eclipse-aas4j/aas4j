@@ -14,13 +14,12 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+
+import java.util.List;
+
 
 /**
  * An asset administration shell.
@@ -29,25 +28,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
     @KnownSubtypes.Type(value = DefaultAssetAdministrationShell.class)
 })
 public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
-
-    /**
-     * The reference to the AAS the AAS was derived from.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
-     *
-     * @return Returns the Reference for the property derivedFrom.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
-    Reference getDerivedFrom();
-
-    /**
-     * The reference to the AAS the AAS was derived from.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
-     *
-     * @param derivedFrom desired value for the property derivedFrom.
-     */
-    void setDerivedFrom(Reference derivedFrom);
 
     /**
      * Meta-information about the asset the AAS is representing.
@@ -69,6 +49,25 @@ public interface AssetAdministrationShell extends HasDataSpecification, Identifi
      * @param assetInformation desired value for the property assetInformation.
      */
     void setAssetInformation(AssetInformation assetInformation);
+
+    /**
+     * The reference to the AAS the AAS was derived from.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     *
+     * @return Returns the Reference for the property derivedFrom.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    Reference getDerivedFrom();
+
+    /**
+     * The reference to the AAS the AAS was derived from.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     *
+     * @param derivedFrom desired value for the property derivedFrom.
+     */
+    void setDerivedFrom(Reference derivedFrom);
 
     /**
      * References to submodels of the AAS.

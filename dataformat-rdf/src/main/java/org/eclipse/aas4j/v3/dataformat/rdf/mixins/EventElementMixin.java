@@ -17,11 +17,17 @@ package org.eclipse.aas4j.v3.dataformat.rdf.mixins;
 
 
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.eclipse.aas4j.v3.model.BasicEventElement;
+
 
 @JsonTypeName("aas:EventElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = BasicEventElement.class)
+})
 public interface EventElementMixin extends SubmodelElementMixin {
 
 }

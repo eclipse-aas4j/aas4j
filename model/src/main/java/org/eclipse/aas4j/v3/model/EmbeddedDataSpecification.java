@@ -15,62 +15,59 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 
+
 /**
- * Data Specification Template
+ * Embed the content of a data specification.
  */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultEmbeddedDataSpecification.class)
+    @KnownSubtypes.Type(value = DefaultEmbeddedDataSpecification.class)
 })
 public interface EmbeddedDataSpecification {
 
-
     /**
-     * Global reference to the data specification template used by the element.
+     * Reference to the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecification
+     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification
      *
      * @return Returns the Reference for the property dataSpecification.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecification")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
     Reference getDataSpecification();
 
     /**
-     * Global reference to the data specification template used by the element.
+     * Reference to the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecifications
+     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification
      *
      * @param dataSpecification desired value for the property dataSpecification.
      */
     void setDataSpecification(Reference dataSpecification);
 
-
     /**
-     * The content of the template without meta data
+     * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
-    DataSpecificationIEC61360 getDataSpecificationContent();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
+    DataSpecificationContent getDataSpecificationContent();
 
     /**
-     * The content of the template without meta data
+     * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @param dataSpecificationContent desired value for the property dataSpecificationContent.
      */
-    void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
+    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
 
 }

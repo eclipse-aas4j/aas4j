@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultEntity;
+
+import java.util.List;
 
 
 /**
@@ -29,27 +28,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultEntity;
     @KnownSubtypes.Type(value = DefaultEntity.class)
 })
 public interface Entity extends SubmodelElement {
-
-    /**
-     * Describes statements applicable to the entity by a set of submodel elements, typically with a
-     * qualified value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Entity/statements
-     *
-     * @return Returns the List of SubmodelElements for the property statements.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/statements")
-    List<SubmodelElement> getStatements();
-
-    /**
-     * Describes statements applicable to the entity by a set of submodel elements, typically with a
-     * qualified value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Entity/statements
-     *
-     * @param statements desired value for the property statements.
-     */
-    void setStatements(List<SubmodelElement> statements);
 
     /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
@@ -109,5 +87,26 @@ public interface Entity extends SubmodelElement {
      * @param specificAssetId desired value for the property specificAssetId.
      */
     void setSpecificAssetId(SpecificAssetId specificAssetId);
+
+    /**
+     * Describes statements applicable to the entity by a set of submodel elements, typically with a
+     * qualified value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Entity/statements
+     *
+     * @return Returns the List of SubmodelElements for the property statements.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/statements")
+    List<SubmodelElement> getStatements();
+
+    /**
+     * Describes statements applicable to the entity by a set of submodel elements, typically with a
+     * qualified value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Entity/statements
+     *
+     * @param statements desired value for the property statements.
+     */
+    void setStatements(List<SubmodelElement> statements);
 
 }

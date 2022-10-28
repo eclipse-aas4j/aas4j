@@ -20,37 +20,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.aas4j.v3.model.DataSpecificationIEC61360;
 import org.eclipse.aas4j.v3.model.LangString;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.Reference;
 
 import java.util.List;
 
-@JsonTypeName("aas:DataSpecification")
+@JsonTypeName("aas:EmbeddedDataSpecification")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
-public interface DataSpecificationMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
+public interface EmbeddedDataSpecificationMixin {
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
     public DataSpecificationIEC61360 getDataSpecificationContent();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
     public void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/administration")
-    public AdministrativeInformation getAdministrativeInformation();
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
+    public Reference getDataSpecification();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/administration")
-    public void setAdministrativeInformation(AdministrativeInformation administrativeInformation);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
+    public void setDataSpecification(Reference dataSpecification);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/id")
-    public String getId();
-
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/id")
-    public void setId(String id);
-
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/descriptions")
-    public List<LangString> getDescriptions();
-
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/DataSpecification/descriptions")
-    public void setDescriptions(List<LangString> descriptions);
 }

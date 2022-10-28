@@ -21,17 +21,12 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
+import org.eclipse.aas4j.v3.model.*;
 import org.eclipse.aas4j.v3.model.impl.DefaultEntity;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.ConceptDescription;
-import org.eclipse.aas4j.v3.model.Entity;
-import org.eclipse.aas4j.v3.model.EntityType;
-import org.eclipse.aas4j.v3.model.KeyTypes;
-import org.eclipse.aas4j.v3.model.Submodel;
 
 /**
  * Tests the following constraint:
@@ -44,6 +39,7 @@ import org.eclipse.aas4j.v3.model.Submodel;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_056 {
 	@Test
 	public void correctCategory() throws ValidationException {
@@ -94,6 +90,7 @@ public class TestAASd_056 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

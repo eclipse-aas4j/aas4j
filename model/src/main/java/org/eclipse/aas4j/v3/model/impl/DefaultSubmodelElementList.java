@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.SubmodelElementListBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.builder.SubmodelElementListBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.SubmodelElementList
+ * Default implementation of package org.eclipse.aas4j.v3.model.SubmodelElementList
  * 
  * A submodel element list is an ordered list of submodel elements.
  */
@@ -34,8 +32,8 @@ import org.eclipse.aas4j.v3.model.builder.SubmodelElementListBuilder;
 @IRI("aas:SubmodelElementList")
 public class DefaultSubmodelElementList implements SubmodelElementList {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
@@ -58,11 +56,11 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
     protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    protected List<LangString> description;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    protected List<LangString> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    protected List<LangString> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -82,29 +80,31 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement")
     protected DataTypeDefXsd valueTypeListElement;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    public DefaultSubmodelElementList() {
+        this.orderRelevant = Boolean.TRUE;
 
-    public DefaultSubmodelElementList() {}
+        this.kind = ModelingKind.INSTANCE;
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.orderRelevant,
-            this.value,
             this.semanticIdListElement,
             this.typeValueListElement,
+            this.value,
             this.valueTypeListElement,
-            this.dataSpecifications,
-            this.kind,
+            this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.qualifiers,
+            this.kind,
             this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
             this.checksum,
-            this.extensions);
+            this.description,
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -118,21 +118,21 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
         } else {
             DefaultSubmodelElementList other = (DefaultSubmodelElementList) obj;
             return Objects.equals(this.orderRelevant, other.orderRelevant) &&
-                Objects.equals(this.value, other.value) &&
                 Objects.equals(this.semanticIdListElement, other.semanticIdListElement) &&
                 Objects.equals(this.typeValueListElement, other.typeValueListElement) &&
+                Objects.equals(this.value, other.value) &&
                 Objects.equals(this.valueTypeListElement, other.valueTypeListElement) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
-                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
+                Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -144,16 +144,6 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     @Override
     public void setOrderRelevant(boolean orderRelevant) {
         this.orderRelevant = orderRelevant;
-    }
-
-    @Override
-    public List<SubmodelElement> getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(List<SubmodelElement> value) {
-        this.value = value;
     }
 
     @Override
@@ -177,6 +167,16 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
+    public List<SubmodelElement> getValue() {
+        return value;
+    }
+
+    @Override
+    public void setValue(List<SubmodelElement> value) {
+        this.value = value;
+    }
+
+    @Override
     public DataTypeDefXsd getValueTypeListElement() {
         return valueTypeListElement;
     }
@@ -187,13 +187,13 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
     }
 
     @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -217,13 +217,13 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
+    public ModelingKind getKind() {
+        return kind;
     }
 
     @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public void setKind(ModelingKind kind) {
+        this.kind = kind;
     }
 
     @Override
@@ -237,23 +237,13 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public String getChecksum() {
+        return checksum;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
-    }
-
-    @Override
-    public List<LangString> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangString> displayName) {
-        this.displayName = displayName;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     @Override
@@ -267,13 +257,23 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
+    public List<LangString> getDisplayName() {
+        return displayName;
     }
 
     @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
+    public void setDisplayName(List<LangString> displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String getIdShort() {
+        return idShort;
+    }
+
+    @Override
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -287,13 +287,13 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
     }
 
     @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

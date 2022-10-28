@@ -48,7 +48,7 @@ public class EnumSerializerTest {
         assertSerialization(DataTypeIEC61360.STRING_TRANSLATABLE, "STRING_TRANSLATABLE");
         assertSerialization(DataTypeIEC61360.TIME, "TIME");
         assertSerialization(DataTypeIEC61360.TIMESTAMP, "TIMESTAMP");
-        assertSerialization(DataTypeIEC61360.URL, "URL");
+        assertSerialization(DataTypeIEC61360.IRI, "IRI");
     }
 
     @Test

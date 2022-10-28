@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultResource;
@@ -30,25 +28,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultResource;
     @KnownSubtypes.Type(value = DefaultResource.class)
 })
 public interface Resource {
-
-    /**
-     * Path and name of the resource (with file extension).
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Resource/path
-     *
-     * @return Returns the String for the property path.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/path")
-    String getPath();
-
-    /**
-     * Path and name of the resource (with file extension).
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Resource/path
-     *
-     * @param path desired value for the property path.
-     */
-    void setPath(String path);
 
     /**
      * Content type of the content of the file.
@@ -68,5 +47,24 @@ public interface Resource {
      * @param contentType desired value for the property contentType.
      */
     void setContentType(String contentType);
+
+    /**
+     * Path and name of the resource (with file extension).
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Resource/path
+     *
+     * @return Returns the String for the property path.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    String getPath();
+
+    /**
+     * Path and name of the resource (with file extension).
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Resource/path
+     *
+     * @param path desired value for the property path.
+     */
+    void setPath(String path);
 
 }

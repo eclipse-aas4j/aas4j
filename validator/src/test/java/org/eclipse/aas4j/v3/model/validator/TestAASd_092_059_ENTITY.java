@@ -24,6 +24,7 @@ import java.util.Arrays;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.eclipse.aas4j.v3.model.Environment;
@@ -46,6 +47,7 @@ import org.eclipse.aas4j.v3.model.SubmodelElementCollection;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_092_059_ENTITY {
 	@Test
 	public void correctCategoryNoDuplicates() throws ValidationException {

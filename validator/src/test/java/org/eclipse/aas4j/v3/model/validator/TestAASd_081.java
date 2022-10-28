@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.KeyTypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -34,6 +35,7 @@ import org.junit.Test;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_081 {
 	private static final String ERRORMSG = "In case Key/type==AssetAdministrationShell Key/idType shall not be any LocalKeyType (IdShort, FragmentId).";
 

@@ -62,20 +62,20 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeSubmodels() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         compare("src/test/resources/submodelList.json", environment.getSubmodels().get(0), environment.getSubmodels().get(1));
     }
 
     @Test
-    public void testSerializeSubmodelelement() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElement() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         compare("src/test/resources/submodelElement.json",submodelElement);
     }
 
     @Test
-    public void testSerializeSubmodelelements() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElements() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement0 = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         SubmodelElement submodelElement1 = environment.getSubmodels().get(0).getSubmodelElements().get(1);
@@ -83,7 +83,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeSubmodelelementCollection() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElementCollection() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElementCollection = environment.getSubmodels().get(6).getSubmodelElements().get(5);
         compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);

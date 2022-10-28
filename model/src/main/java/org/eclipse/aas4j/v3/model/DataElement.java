@@ -16,8 +16,8 @@ package org.eclipse.aas4j.v3.model;
 
 
 
-
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
+
 
 /**
  * A data element is a submodel element that is not further composed out of other submodel elements.

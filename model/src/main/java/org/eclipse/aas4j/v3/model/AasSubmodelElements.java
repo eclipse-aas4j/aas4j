@@ -16,11 +16,11 @@ package org.eclipse.aas4j.v3.model;
 
 
 
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 
+
 /**
- * Enumeration of all referable elements within an asset administration shell.
+ * Enumeration of all possible elements of a 'SubmodelElementList'.
  */
 @IRI("aas:AasSubmodelElements")
 public enum AasSubmodelElements {
@@ -45,9 +45,8 @@ public enum AasSubmodelElements {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/Capability")
     CAPABILITY,
 
-    /**
-     * Data Element.
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/DataElement")
     DATA_ELEMENT,
 
@@ -56,9 +55,8 @@ public enum AasSubmodelElements {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/Entity")
     ENTITY,
 
-    /**
-     * Event element
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/EventElement")
     EVENT_ELEMENT,
 
@@ -67,9 +65,8 @@ public enum AasSubmodelElements {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/File")
     FILE,
 
-    /**
-     * Property with a value that can be provided in multiple languages
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/MultiLanguageProperty")
     MULTI_LANGUAGE_PROPERTY,
 
@@ -83,39 +80,33 @@ public enum AasSubmodelElements {
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/Property")
     PROPERTY,
 
-    /**
-     * Range with min and max
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/Range")
     RANGE,
 
-    /**
-     * Reference
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/ReferenceElement")
     REFERENCE_ELEMENT,
 
-    /**
-     * Relationship
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/RelationshipElement")
     RELATIONSHIP_ELEMENT,
 
-    /**
-     * Submodel Element
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/SubmodelElement")
     SUBMODEL_ELEMENT,
 
-    /**
-     * Struct of Submodel Elements
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/SubmodelElementCollection")
     SUBMODEL_ELEMENT_COLLECTION,
 
-    /**
-     * List of Submodel Elements
-     */
+    /** 
+    */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AasSubmodelElements/SubmodelElementList")
     SUBMODEL_ELEMENT_LIST;
 

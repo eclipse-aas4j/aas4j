@@ -19,6 +19,7 @@ import org.eclipse.aas4j.v3.model.*;
 import org.eclipse.aas4j.v3.model.impl.DefaultRange;
 import org.eclipse.aas4j.v3.model.impl.DefaultSubmodel;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ import static org.junit.Assert.fail;
  * @author bader, chang
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_068 {
 	@Test
 	public void wrongConceptDescriptionDatatype() throws ValidationException {

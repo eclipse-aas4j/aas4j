@@ -14,10 +14,12 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.ConceptDescription;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.Submodel;
+
 import java.util.List;
-
-
-import org.eclipse.aas4j.v3.model.*;
 
 
 public abstract class EnvironmentBuilder<T extends Environment, B extends EnvironmentBuilder<T, B>> extends ExtendableBuilder<T, B> {
@@ -45,28 +47,6 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
     }
 
     /**
-     * This function allows setting a value for submodels
-     * 
-     * @param submodels desired value to be set
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(List<Submodel> submodels) {
-        getBuildingInstance().setSubmodels(submodels);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List submodels
-     * 
-     * @param submodels desired value to be added
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(Submodel submodels) {
-        getBuildingInstance().getSubmodels().add(submodels);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for conceptDescriptions
      * 
      * @param conceptDescriptions desired value to be set
@@ -85,6 +65,28 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
      */
     public B conceptDescriptions(ConceptDescription conceptDescriptions) {
         getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for submodels
+     * 
+     * @param submodels desired value to be set
+     * @return Builder object with new value for submodels
+     */
+    public B submodels(List<Submodel> submodels) {
+        getBuildingInstance().setSubmodels(submodels);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List submodels
+     * 
+     * @param submodels desired value to be added
+     * @return Builder object with new value for submodels
+     */
+    public B submodels(Submodel submodels) {
+        getBuildingInstance().getSubmodels().add(submodels);
         return getSelf();
     }
 }

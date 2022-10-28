@@ -26,6 +26,7 @@ import org.eclipse.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -39,6 +40,7 @@ import org.junit.Test;
  * @author schnicke
  *
  */
+@Ignore("Constraint AASd_052a has been removed")
 public class TestAASd_052a {
 	@Test
 	public void correctCategories() throws ValidationException {
@@ -93,6 +95,7 @@ public class TestAASd_052a {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

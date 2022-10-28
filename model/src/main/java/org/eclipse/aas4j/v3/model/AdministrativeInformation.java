@@ -15,12 +15,10 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultAdministrativeInformation;
+
 
 /**
  * Administrative meta-information for an element like version information.
@@ -29,25 +27,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultAdministrativeInformation;
     @KnownSubtypes.Type(value = DefaultAdministrativeInformation.class)
 })
 public interface AdministrativeInformation extends HasDataSpecification {
-
-    /**
-     * Version of the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
-     *
-     * @return Returns the String for the property version.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
-    String getVersion();
-
-    /**
-     * Version of the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
-     *
-     * @param version desired value for the property version.
-     */
-    void setVersion(String version);
 
     /**
      * Revision of the element.
@@ -67,5 +46,24 @@ public interface AdministrativeInformation extends HasDataSpecification {
      * @param revision desired value for the property revision.
      */
     void setRevision(String revision);
+
+    /**
+     * Version of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     *
+     * @return Returns the String for the property version.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
+    String getVersion();
+
+    /**
+     * Version of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     *
+     * @param version desired value for the property version.
+     */
+    void setVersion(String version);
 
 }

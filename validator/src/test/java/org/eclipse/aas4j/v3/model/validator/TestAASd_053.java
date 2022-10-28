@@ -26,6 +26,7 @@ import org.eclipse.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.aas4j.v3.model.impl.DefaultRange;
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -39,6 +40,7 @@ import org.junit.Test;
  * @author schnicke
  *
  */
+@Ignore("Constraint AASd_053 has been removed")
 public class TestAASd_053 {
 	@Test
 	public void correctCategory() throws ValidationException {
@@ -89,6 +91,7 @@ public class TestAASd_053 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

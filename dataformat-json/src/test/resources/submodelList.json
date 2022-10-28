@@ -22,6 +22,7 @@
         "submodelElements": [
             {
                 "modelType": "Property",
+                "kind": "Instance",
                 "semanticId":
                         {
                             "keys": [
@@ -48,12 +49,14 @@
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier",
                         "value": "100",
-                        "valueType": "xs:int"
+                        "valueType": "xs:int",
+                        "kind": "ConceptQualifier"
                     },
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                         "value": "50",
-                        "valueType": "xs:int"
+                        "valueType": "xs:int",
+                        "kind": "ConceptQualifier"
                     }
                 ],
                 "idShort": "ManufacturerName",
@@ -70,6 +73,7 @@
             },
             {
                 "modelType": "Property",
+                "kind": "Instance",
                 "semanticId":
                         {
                             "keys": [
@@ -138,10 +142,12 @@
         "submodelElements": [
             {
                 "modelType": "Entity",
+                "kind": "Instance",
                 "entityType": "CoManagedEntity",
                 "statements": [
                     {
                         "modelType": "Property",
+                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -179,6 +185,7 @@
                     },
                     {
                         "modelType": "Property",
+                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -240,6 +247,7 @@
             {
                 "modelType": "Entity",
                 "entityType": "SelfManagedEntity",
+                "kind": "Instance",
                 "globalAssetId":
                         {
                             "keys": [

@@ -26,7 +26,7 @@ public class ConstraintTestHelper {
 
 	public static ConceptDescription createConceptDescription(String idShort, String identifier, String category) {
 		return new DefaultConceptDescription.Builder()
-				.descriptions(Arrays.asList(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()))
+				.description(Arrays.asList(new DefaultLangString.Builder().text("TestDescription").language("en-us").build()))
 				.id(identifier)
 				.category(category).idShort(idShort).build();
 	}
@@ -67,6 +67,7 @@ public class ConstraintTestHelper {
 						.value("reference")
 						.type(KeyTypes.GLOBAL_REFERENCE)
 						.build())
+				.type(ReferenceTypes.GLOBAL_REFERENCE)
 				.build();
 	}
 }

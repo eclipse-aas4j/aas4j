@@ -15,35 +15,11 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-
-
-
 import org.eclipse.aas4j.v3.model.EventPayload;
 import org.eclipse.aas4j.v3.model.Reference;
 
+
 public abstract class EventPayloadBuilder<T extends EventPayload, B extends EventPayloadBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for source
-     * 
-     * @param source desired value to be set
-     * @return Builder object with new value for source
-     */
-    public B source(Reference source) {
-        getBuildingInstance().setSource(source);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for sourceSemanticId
-     * 
-     * @param sourceSemanticId desired value to be set
-     * @return Builder object with new value for sourceSemanticId
-     */
-    public B sourceSemanticId(Reference sourceSemanticId) {
-        getBuildingInstance().setSourceSemanticId(sourceSemanticId);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for observableReference
@@ -68,13 +44,35 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
     }
 
     /**
-     * This function allows setting a value for topic
+     * This function allows setting a value for payload
      * 
-     * @param topic desired value to be set
-     * @return Builder object with new value for topic
+     * @param payload desired value to be set
+     * @return Builder object with new value for payload
      */
-    public B topic(String topic) {
-        getBuildingInstance().setTopic(topic);
+    public B payload(String payload) {
+        getBuildingInstance().setPayload(payload);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for source
+     * 
+     * @param source desired value to be set
+     * @return Builder object with new value for source
+     */
+    public B source(Reference source) {
+        getBuildingInstance().setSource(source);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for sourceSemanticId
+     * 
+     * @param sourceSemanticId desired value to be set
+     * @return Builder object with new value for sourceSemanticId
+     */
+    public B sourceSemanticId(Reference sourceSemanticId) {
+        getBuildingInstance().setSourceSemanticId(sourceSemanticId);
         return getSelf();
     }
 
@@ -101,13 +99,13 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
     }
 
     /**
-     * This function allows setting a value for payload
+     * This function allows setting a value for topic
      * 
-     * @param payload desired value to be set
-     * @return Builder object with new value for payload
+     * @param topic desired value to be set
+     * @return Builder object with new value for topic
      */
-    public B payload(String payload) {
-        getBuildingInstance().setPayload(payload);
+    public B topic(String topic) {
+        getBuildingInstance().setTopic(topic);
         return getSelf();
     }
 }

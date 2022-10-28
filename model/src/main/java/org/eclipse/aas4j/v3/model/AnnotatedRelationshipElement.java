@@ -14,12 +14,11 @@
 
 package org.eclipse.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
+
+import java.util.List;
 
 
 /**

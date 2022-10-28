@@ -14,22 +14,20 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.aas4j.v3.model.Qualifier;
+import org.eclipse.aas4j.v3.model.QualifierKind;
+import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.QualifierBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.Qualifier;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-import org.eclipse.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.aas4j.v3.model.QualifierKind;
-import org.eclipse.aas4j.v3.model.Reference;
-
-import org.eclipse.aas4j.v3.model.builder.QualifierBuilder;
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Qualifier
+ * Default implementation of package org.eclipse.aas4j.v3.model.Qualifier
  * 
  * A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the
  * element.
@@ -59,15 +57,18 @@ public class DefaultQualifier implements Qualifier {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
     protected DataTypeDefXsd valueType;
 
-    public DefaultQualifier() {}
+    public DefaultQualifier() {
+        this.kind = QualifierKind.CONCEPT_QUALIFIER;
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.kind,
             this.type,
-            this.valueType,
             this.value,
             this.valueId,
+            this.valueType,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -84,9 +85,9 @@ public class DefaultQualifier implements Qualifier {
             DefaultQualifier other = (DefaultQualifier) obj;
             return Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.type, other.type) &&
-                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.value, other.value) &&
                 Objects.equals(this.valueId, other.valueId) &&
+                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
@@ -113,16 +114,6 @@ public class DefaultQualifier implements Qualifier {
     }
 
     @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
-    }
-
-    @Override
     public String getValue() {
         return value;
     }
@@ -140,6 +131,16 @@ public class DefaultQualifier implements Qualifier {
     @Override
     public void setValueId(Reference valueId) {
         this.valueId = valueId;
+    }
+
+    @Override
+    public DataTypeDefXsd getValueType() {
+        return valueType;
+    }
+
+    @Override
+    public void setValueType(DataTypeDefXsd valueType) {
+        this.valueType = valueType;
     }
 
     @Override

@@ -14,51 +14,36 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.LangString;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.LangStringBuilder;
+
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.LangString;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-
-
-import org.eclipse.aas4j.v3.model.builder.LangStringBuilder;
-
-/**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.LangString
- * 
- * Strings with language tags
- */
-
-@IRI("aas:LangString")
+@IRI("rdf:langString")
 public class DefaultLangString implements LangString {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LangString/language")
-    protected String language;
+    protected String language = null;
+    protected String text = null;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LangString/text")
-    protected String text;
-
-    public DefaultLangString() {}
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.language,
-            this.text);
+    public DefaultLangString() {
+        super();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
+    public DefaultLangString(String textAndLanguage) {
+        if (textAndLanguage.contains("@")) {
+            String[] splitString = textAndLanguage.split("@");
+            this.text = splitString[0];
+            this.language = splitString[1];
         } else {
-            DefaultLangString other = (DefaultLangString) obj;
-            return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+            this.text = textAndLanguage;
         }
+    }
+
+    public DefaultLangString(String text, String language) {
+        this.text = text;
+        this.language = language;
     }
 
     @Override
@@ -79,6 +64,34 @@ public class DefaultLangString implements LangString {
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else {
+            DefaultLangString other = (DefaultLangString) obj;
+            return Objects.equals(this.language, other.language) && Objects.equals(this.text, other.text);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.language, this.text);
+    }
+
+    @Override
+    public String toString() {
+        String result = this.text;
+        if (this.language != null && !this.language.isEmpty()) {
+            return "\"" + result + "\"@" + this.language;
+        }
+        return result;
     }
 
     /**

@@ -39,7 +39,7 @@ public class EnumDeserializerTest {
         assertDeserialization("STRING_TRANSLATABLE", DataTypeIEC61360.STRING_TRANSLATABLE);
         assertDeserialization("TIME", DataTypeIEC61360.TIME);
         assertDeserialization("TIMESTAMP", DataTypeIEC61360.TIMESTAMP);
-        assertDeserialization("URL", DataTypeIEC61360.URL);
+        assertDeserialization("IRI", DataTypeIEC61360.IRI);
     }
 
     @Test

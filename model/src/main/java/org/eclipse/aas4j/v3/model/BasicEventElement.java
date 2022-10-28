@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultBasicEventElement;
@@ -29,27 +27,6 @@ import org.eclipse.aas4j.v3.model.impl.DefaultBasicEventElement;
     @KnownSubtypes.Type(value = DefaultBasicEventElement.class)
 })
 public interface BasicEventElement extends EventElement {
-
-    /**
-     * Reference to the 'Referable', which defines the scope of the event. Can be
-     * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed
-     *
-     * @return Returns the Reference for the property observed.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed")
-    Reference getObserved();
-
-    /**
-     * Reference to the 'Referable', which defines the scope of the event. Can be
-     * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed
-     *
-     * @param observed desired value for the property observed.
-     */
-    void setObserved(Reference observed);
 
     /**
      * Direction of event.
@@ -71,44 +48,42 @@ public interface BasicEventElement extends EventElement {
     void setDirection(Direction direction);
 
     /**
-     * State of event.
+     * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate
      *
-     * @return Returns the StateOfEvent for the property state.
+     * @return Returns the String for the property lastUpdate.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
-    StateOfEvent getState();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate")
+    String getLastUpdate();
 
     /**
-     * State of event.
+     * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate
      *
-     * @param state desired value for the property state.
+     * @param lastUpdate desired value for the property lastUpdate.
      */
-    void setState(StateOfEvent state);
+    void setLastUpdate(String lastUpdate);
 
     /**
-     * Information for the outer message infrastructure for scheduling the event to the respective
-     * communication channel.
+     * For input direction: not applicable.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval
      *
-     * @return Returns the String for the property messageTopic.
+     * @return Returns the String for the property maxInterval.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic")
-    String getMessageTopic();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval")
+    String getMaxInterval();
 
     /**
-     * Information for the outer message infrastructure for scheduling the event to the respective
-     * communication channel.
+     * For input direction: not applicable.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval
      *
-     * @param messageTopic desired value for the property messageTopic.
+     * @param maxInterval desired value for the property maxInterval.
      */
-    void setMessageTopic(String messageTopic);
+    void setMaxInterval(String maxInterval);
 
     /**
      * Information, which outer message infrastructure shall handle messages for the 'EventElement'.
@@ -134,23 +109,25 @@ public interface BasicEventElement extends EventElement {
     void setMessageBroker(Reference messageBroker);
 
     /**
-     * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
+     * Information for the outer message infrastructure for scheduling the event to the respective
+     * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic
      *
-     * @return Returns the String for the property lastUpdate.
+     * @return Returns the String for the property messageTopic.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate")
-    String getLastUpdate();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic")
+    String getMessageTopic();
 
     /**
-     * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
+     * Information for the outer message infrastructure for scheduling the event to the respective
+     * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic
      *
-     * @param lastUpdate desired value for the property lastUpdate.
+     * @param messageTopic desired value for the property messageTopic.
      */
-    void setLastUpdate(String lastUpdate);
+    void setMessageTopic(String messageTopic);
 
     /**
      * For input direction, reports on the maximum frequency, the software entity behind the respective
@@ -174,22 +151,43 @@ public interface BasicEventElement extends EventElement {
     void setMinInterval(String minInterval);
 
     /**
-     * For input direction: not applicable.
+     * Reference to the 'Referable', which defines the scope of the event. Can be
+     * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed
      *
-     * @return Returns the String for the property maxInterval.
+     * @return Returns the Reference for the property observed.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval")
-    String getMaxInterval();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed")
+    Reference getObserved();
 
     /**
-     * For input direction: not applicable.
+     * Reference to the 'Referable', which defines the scope of the event. Can be
+     * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed
      *
-     * @param maxInterval desired value for the property maxInterval.
+     * @param observed desired value for the property observed.
      */
-    void setMaxInterval(String maxInterval);
+    void setObserved(Reference observed);
+
+    /**
+     * State of event.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state
+     *
+     * @return Returns the StateOfEvent for the property state.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
+    StateOfEvent getState();
+
+    /**
+     * State of event.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state
+     *
+     * @param state desired value for the property state.
+     */
+    void setState(StateOfEvent state);
 
 }

@@ -89,7 +89,7 @@ public class TestAASd_090 {
 		return new DefaultFile.Builder()
 				.idShort("idShort1")
 				.category("DOESNTMATTER")
-				.contentType("application/json").value("test.json")
+				.contentType("application/json").value("file:///test.json")
 				.build();
 	}
 	

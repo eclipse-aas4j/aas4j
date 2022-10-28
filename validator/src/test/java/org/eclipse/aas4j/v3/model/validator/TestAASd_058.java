@@ -21,13 +21,10 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Capability;
-import org.eclipse.aas4j.v3.model.ConceptDescription;
-import org.eclipse.aas4j.v3.model.KeyTypes;
-import org.eclipse.aas4j.v3.model.Submodel;
 import org.eclipse.aas4j.v3.model.impl.DefaultCapability;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.aas4j.v3.model.impl.DefaultReference;
@@ -43,6 +40,7 @@ import org.eclipse.aas4j.v3.model.impl.DefaultReference;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_058 {
 	@Test
 	public void correctCategory() throws ValidationException {
@@ -92,6 +90,7 @@ public class TestAASd_058 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

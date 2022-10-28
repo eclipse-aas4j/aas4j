@@ -15,32 +15,39 @@
 package org.eclipse.aas4j.v3.model.builder;
 
 
-
-
 import org.eclipse.aas4j.v3.model.LangString;
 
 
 public abstract class LangStringBuilder<T extends LangString, B extends LangStringBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     /**
+     * 
+     * This function allows setting a value for text
+     * 
+     * @param text desired value to be set
+     * 
+     * @return Builder object with new value for text
+     * 
+     */
+
+    public B text(String text) {
+        getBuildingInstance().setText(text);
+        return getSelf();
+    }
+
+    /**
+     * 
      * This function allows setting a value for language
      * 
      * @param language desired value to be set
+     * 
      * @return Builder object with new value for language
+     * 
      */
+
     public B language(String language) {
         getBuildingInstance().setLanguage(language);
         return getSelf();
     }
 
-    /**
-     * This function allows setting a value for text
-     * 
-     * @param text desired value to be set
-     * @return Builder object with new value for text
-     */
-    public B text(String text) {
-        getBuildingInstance().setText(text);
-        return getSelf();
-    }
 }

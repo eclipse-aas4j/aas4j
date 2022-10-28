@@ -14,18 +14,16 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import java.util.Objects;
-
-
+import org.eclipse.aas4j.v3.model.EventPayload;
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.EventPayloadBuilder;
 
-import org.eclipse.aas4j.v3.model.EventPayload;
+import java.util.Objects;
 
 
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.EventPayload
+ * Default implementation of package org.eclipse.aas4j.v3.model.EventPayload
  * 
  * Defines the necessary information of an event instance sent out or received.
  */
@@ -57,18 +55,20 @@ public class DefaultEventPayload implements EventPayload {
     @IRI("https://admin-shell.io/aas/3/0/RC02/EventPayload/topic")
     protected String topic;
 
-    public DefaultEventPayload() {}
+    public DefaultEventPayload() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.source,
-            this.sourceSemanticId,
-            this.observableReference,
+        return Objects.hash(this.observableReference,
             this.observableSemanticId,
-            this.topic,
+            this.payload,
+            this.source,
+            this.sourceSemanticId,
             this.subjectId,
             this.timeStamp,
-            this.payload);
+            this.topic);
     }
 
     @Override
@@ -81,35 +81,15 @@ public class DefaultEventPayload implements EventPayload {
             return false;
         } else {
             DefaultEventPayload other = (DefaultEventPayload) obj;
-            return Objects.equals(this.source, other.source) &&
-                Objects.equals(this.sourceSemanticId, other.sourceSemanticId) &&
-                Objects.equals(this.observableReference, other.observableReference) &&
+            return Objects.equals(this.observableReference, other.observableReference) &&
                 Objects.equals(this.observableSemanticId, other.observableSemanticId) &&
-                Objects.equals(this.topic, other.topic) &&
+                Objects.equals(this.payload, other.payload) &&
+                Objects.equals(this.source, other.source) &&
+                Objects.equals(this.sourceSemanticId, other.sourceSemanticId) &&
                 Objects.equals(this.subjectId, other.subjectId) &&
                 Objects.equals(this.timeStamp, other.timeStamp) &&
-                Objects.equals(this.payload, other.payload);
+                Objects.equals(this.topic, other.topic);
         }
-    }
-
-    @Override
-    public Reference getSource() {
-        return source;
-    }
-
-    @Override
-    public void setSource(Reference source) {
-        this.source = source;
-    }
-
-    @Override
-    public Reference getSourceSemanticId() {
-        return sourceSemanticId;
-    }
-
-    @Override
-    public void setSourceSemanticId(Reference sourceSemanticId) {
-        this.sourceSemanticId = sourceSemanticId;
     }
 
     @Override
@@ -133,13 +113,33 @@ public class DefaultEventPayload implements EventPayload {
     }
 
     @Override
-    public String getTopic() {
-        return topic;
+    public String getPayload() {
+        return payload;
     }
 
     @Override
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+    @Override
+    public Reference getSource() {
+        return source;
+    }
+
+    @Override
+    public void setSource(Reference source) {
+        this.source = source;
+    }
+
+    @Override
+    public Reference getSourceSemanticId() {
+        return sourceSemanticId;
+    }
+
+    @Override
+    public void setSourceSemanticId(Reference sourceSemanticId) {
+        this.sourceSemanticId = sourceSemanticId;
     }
 
     @Override
@@ -163,13 +163,13 @@ public class DefaultEventPayload implements EventPayload {
     }
 
     @Override
-    public String getPayload() {
-        return payload;
+    public String getTopic() {
+        return topic;
     }
 
     @Override
-    public void setPayload(String payload) {
-        this.payload = payload;
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     /**

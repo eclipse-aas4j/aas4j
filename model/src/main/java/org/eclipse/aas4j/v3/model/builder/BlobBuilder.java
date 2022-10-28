@@ -14,24 +14,12 @@
 
 package org.eclipse.aas4j.v3.model.builder;
 
+import org.eclipse.aas4j.v3.model.*;
+
 import java.util.List;
 
 
-import org.eclipse.aas4j.v3.model.*;
-
-
 public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for value
-     * 
-     * @param value desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B value(byte[] value) {
-        getBuildingInstance().setValue(value);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for contentType
@@ -45,36 +33,35 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> e
     }
 
     /**
-     * This function allows setting a value for dataSpecifications
+     * This function allows setting a value for value
      * 
-     * @param dataSpecifications desired value to be set
-     * @return Builder object with new value for dataSpecifications
+     * @param value desired value to be set
+     * @return Builder object with new value for value
      */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(dataSpecifications);
+    public B value(byte[] value) {
+        getBuildingInstance().setValue(value);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
         return getSelf();
     }
 
     /**
      * This function allows adding a value to the List embeddedDataSpecifications
-     *
+     * 
      * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */
     public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
         getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModelingKind kind) {
-        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -112,24 +99,13 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> e
     }
 
     /**
-     * This function allows setting a value for qualifiers
+     * This function allows setting a value for kind
      * 
-     * @param qualifiers desired value to be set
-     * @return Builder object with new value for qualifiers
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
      */
-    public B qualifiers(List<Qualifier> qualifiers) {
-        getBuildingInstance().setQualifiers(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List qualifiers
-     * 
-     * @param qualifiers desired value to be added
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(Qualifier qualifiers) {
-        getBuildingInstance().getQualifiers().add(qualifiers);
+    public B kind(ModelingKind kind) {
+        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -145,13 +121,35 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> e
     }
 
     /**
-     * This function allows setting a value for idShort
+     * This function allows setting a value for checksum
      * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
+     * @param checksum desired value to be set
+     * @return Builder object with new value for checksum
      */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
+    public B checksum(String checksum) {
+        getBuildingInstance().setChecksum(checksum);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for description
+     * 
+     * @param description desired value to be set
+     * @return Builder object with new value for description
+     */
+    public B description(List<LangString> description) {
+        getBuildingInstance().setDescription(description);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List description
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for description
+     */
+    public B description(LangString description) {
+        getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
 
@@ -167,24 +165,24 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> e
     }
 
     /**
-     * This function allows setting a value for description
+     * This function allows adding a value to the List displayName
      * 
-     * @param description desired value to be set
-     * @return Builder object with new value for description
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayName
      */
-    public B descriptions(List<LangString> description) {
-        getBuildingInstance().setDescription(description);
+    public B displayName(LangString displayName) {
+        getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for checksum
+     * This function allows setting a value for idShort
      * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
+     * @param idShort desired value to be set
+     * @return Builder object with new value for idShort
      */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
+    public B idShort(String idShort) {
+        getBuildingInstance().setIdShort(idShort);
         return getSelf();
     }
 
@@ -207,6 +205,28 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>> e
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for qualifiers
+     * 
+     * @param qualifiers desired value to be set
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(List<Qualifier> qualifiers) {
+        getBuildingInstance().setQualifiers(qualifiers);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List qualifiers
+     * 
+     * @param qualifiers desired value to be added
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(Qualifier qualifiers) {
+        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 }

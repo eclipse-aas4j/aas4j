@@ -19,10 +19,12 @@ package org.eclipse.aas4j.v3.model.validator;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.eclipse.aas4j.v3.model.ConceptDescription;
-import org.eclipse.aas4j.v3.model.LangString;
-import org.eclipse.aas4j.v3.model.impl.DefaultLangString;
+
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.impl.*;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 /**
  * Tests the following constraint:
@@ -37,7 +39,7 @@ import org.junit.Test;
  * @author schnicke
  *
  */
-public class TestAASd_074 {
+public class TestAASc_008 {
 
 	@Test
 	public void conceptDescriptionEnglishDefinition() throws ValidationException {
@@ -58,7 +60,7 @@ public class TestAASd_074 {
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 			assertTrue(e.getMessage().endsWith(
-					"For all ConceptDescriptions except for ConceptDescriptions of category VALUE using data specification template IEC61360 (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0) - DataSpecificationIEC61360/definition is mandatory and shall be defined at least in English."));
+					"For all ConceptDescriptions except for ConceptDescriptions of category VALUE using data specification template IEC61360 (https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition) - DataSpecificationIEC61360/definition is mandatory and shall be defined at least in English."));
 		}
 	}
 
@@ -82,24 +84,25 @@ public class TestAASd_074 {
 		ConceptDescription cd = ConstraintTestHelper.createConceptDescription("idShort1", "id",
 				"QUALIFIER");
 
-//		DataSpecificationIEC61360 urlDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
-//				.preferredName(new LangString("ds", "en"))
-//				.definition(definition)
-//				.definition(new LangString("test", "de"))
-//				.dataType(DataTypeIEC61360.URL)
-//				.build();
+		DataSpecificationIEC61360 urlDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+				.preferredName(new DefaultLangString.Builder().language("en").text("ds").build())
+				.definition(definition)
+				.definition(new DefaultLangString.Builder().language("de").text("test").build())
+				.dataType(DataTypeIEC61360.IRI)
+				.build();
 		
-//		EmbeddedDataSpecification urlDataTypeEDS = new DefaultEmbeddedDataSpecification.Builder()
-//				.dataSpecificationContent(urlDataTypeDS)
-//				.dataSpecification(new DefaultReference.Builder()
-//						.key(new DefaultKey.Builder()
-//								.idType(KeyType.CUSTOM)
-//								.value("foo_key")
-//								.build())
-//						.build())
-//				.build();
+		EmbeddedDataSpecification urlDataTypeEDS = new DefaultEmbeddedDataSpecification.Builder()
+				.dataSpecificationContent(urlDataTypeDS)
+				.dataSpecification(new DefaultReference.Builder()
+						.keys(new DefaultKey.Builder()
+								.value("foo_key")
+								.type(KeyTypes.GLOBAL_REFERENCE)
+								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
+						.build())
+				.build();
 
-//		cd.setEmbeddedDataSpecifications(Arrays.asList(urlDataTypeEDS));
+		cd.setEmbeddedDataSpecifications(Arrays.asList(urlDataTypeEDS));
 		return cd;
 	}
 }

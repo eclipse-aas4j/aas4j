@@ -15,12 +15,10 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
-
 import org.eclipse.aas4j.v3.model.impl.DefaultRange;
+
 
 /**
  * A range data element is a data element that defines a range with min and max.
@@ -31,23 +29,23 @@ import org.eclipse.aas4j.v3.model.impl.DefaultRange;
 public interface Range extends DataElement {
 
     /**
-     * Data type of the min und max
+     * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
+     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
      *
-     * @return Returns the DataTypeDefXsd for the property valueType.
+     * @return Returns the String for the property max.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/valueType")
-    DataTypeDefXsd getValueType();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/max")
+    String getMax();
 
     /**
-     * Data type of the min und max
+     * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
+     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
      *
-     * @param valueType desired value for the property valueType.
+     * @param max desired value for the property max.
      */
-    void setValueType(DataTypeDefXsd valueType);
+    void setMax(String max);
 
     /**
      * The minimum value of the range.
@@ -69,22 +67,22 @@ public interface Range extends DataElement {
     void setMin(String min);
 
     /**
-     * The maximum value of the range.
+     * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
+     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
      *
-     * @return Returns the String for the property max.
+     * @return Returns the DataTypeDefXsd for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/max")
-    String getMax();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/valueType")
+    DataTypeDefXsd getValueType();
 
     /**
-     * The maximum value of the range.
+     * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
+     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
      *
-     * @param max desired value for the property max.
+     * @param valueType desired value for the property valueType.
      */
-    void setMax(String max);
+    void setValueType(DataTypeDefXsd valueType);
 
 }

@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import org.eclipse.aas4j.v3.model.ConceptDescription;
 import org.eclipse.aas4j.v3.model.LangString;
 import org.eclipse.aas4j.v3.model.impl.DefaultLangString;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -35,6 +36,8 @@ import org.junit.Test;
  * @author schnicke
  *
  */
+
+@Ignore("Constraint has been removed")
 public class TestAASd_076 {
 
 	@Test

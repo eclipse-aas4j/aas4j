@@ -14,21 +14,18 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.AdministrativeInformationBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.aas4j.v3.model.Reference;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.AdministrativeInformationBuilder;
-
-
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AdministrativeInformation
+ * Default implementation of package org.eclipse.aas4j.v3.model.AdministrativeInformation
  * 
  * Administrative meta-information for an element like version information.
  */
@@ -42,19 +39,18 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
     protected String version;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
-
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    public DefaultAdministrativeInformation() {}
+    public DefaultAdministrativeInformation() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.version,
-            this.revision,
-            this.dataSpecifications);
+        return Objects.hash(this.revision,
+            this.version,
+            this.embeddedDataSpecifications);
     }
 
     @Override
@@ -67,20 +63,10 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
             return false;
         } else {
             DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
-            return Objects.equals(this.version, other.version) &&
-                Objects.equals(this.revision, other.revision) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications);
+            return Objects.equals(this.revision, other.revision) &&
+                Objects.equals(this.version, other.version) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
         }
-    }
-
-    @Override
-    public String getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override
@@ -91,6 +77,16 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @Override
     public void setRevision(String revision) {
         this.revision = revision;
+    }
+
+    @Override
+    public String getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override

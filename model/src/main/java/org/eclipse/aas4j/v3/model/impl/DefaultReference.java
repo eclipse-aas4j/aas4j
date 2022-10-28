@@ -14,21 +14,19 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 import org.eclipse.aas4j.v3.model.Key;
 import org.eclipse.aas4j.v3.model.Reference;
 import org.eclipse.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.builder.ReferenceBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.Reference
+ * Default implementation of package org.eclipse.aas4j.v3.model.Reference
  * 
  * Reference to either a model element of the same or another AAS or to an external entity.
  */
@@ -45,13 +43,15 @@ public class DefaultReference implements Reference {
     @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/type")
     protected ReferenceTypes type;
 
-    public DefaultReference() {}
+    public DefaultReference() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.type,
+        return Objects.hash(this.keys,
             this.referredSemanticId,
-            this.keys);
+            this.type);
     }
 
     @Override
@@ -64,20 +64,20 @@ public class DefaultReference implements Reference {
             return false;
         } else {
             DefaultReference other = (DefaultReference) obj;
-            return Objects.equals(this.type, other.type) &&
+            return Objects.equals(this.keys, other.keys) &&
                 Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                Objects.equals(this.keys, other.keys);
+                Objects.equals(this.type, other.type);
         }
     }
 
     @Override
-    public ReferenceTypes getType() {
-        return type;
+    public List<Key> getKeys() {
+        return keys;
     }
 
     @Override
-    public void setType(ReferenceTypes type) {
-        this.type = type;
+    public void setKeys(List<Key> keys) {
+        this.keys = keys;
     }
 
     @Override
@@ -91,13 +91,13 @@ public class DefaultReference implements Reference {
     }
 
     @Override
-    public List<Key> getKeys() {
-        return keys;
+    public ReferenceTypes getType() {
+        return type;
     }
 
     @Override
-    public void setKeys(List<Key> keys) {
-        this.keys = keys;
+    public void setType(ReferenceTypes type) {
+        this.type = type;
     }
 
     /**

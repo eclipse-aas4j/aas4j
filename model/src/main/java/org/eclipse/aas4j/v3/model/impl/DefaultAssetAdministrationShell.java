@@ -14,19 +14,17 @@
 
 package org.eclipse.aas4j.v3.model.impl;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
+import org.eclipse.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-import org.eclipse.aas4j.v3.model.*;
-import org.eclipse.aas4j.v3.model.annotations.IRI;
-import org.eclipse.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
-
-
-
 /**
- * Default implementation of package org.eclipse.aas4j.v3.rc02.model.AssetAdministrationShell
+ * Default implementation of package org.eclipse.aas4j.v3.model.AssetAdministrationShell
  * 
  * An asset administration shell.
  */
@@ -43,8 +41,8 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels")
     protected List<Reference> submodels = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifications")
-    protected List<Reference> dataSpecifications = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
@@ -62,32 +60,31 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     protected String checksum;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description;
+    protected List<LangString> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName;
+    protected List<LangString> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+    public DefaultAssetAdministrationShell() {
 
-    public DefaultAssetAdministrationShell() {}
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.derivedFrom,
-            this.assetInformation,
+        return Objects.hash(this.assetInformation,
+            this.derivedFrom,
             this.submodels,
-            this.dataSpecifications,
+            this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
             this.checksum,
+            this.description,
+            this.displayName,
+            this.idShort,
             this.extensions);
     }
 
@@ -101,29 +98,19 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
             return false;
         } else {
             DefaultAssetAdministrationShell other = (DefaultAssetAdministrationShell) obj;
-            return Objects.equals(this.derivedFrom, other.derivedFrom) &&
-                Objects.equals(this.assetInformation, other.assetInformation) &&
+            return Objects.equals(this.assetInformation, other.assetInformation) &&
+                Objects.equals(this.derivedFrom, other.derivedFrom) &&
                 Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.dataSpecifications, other.dataSpecifications) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.checksum, other.checksum) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.extensions, other.extensions);
         }
-    }
-
-    @Override
-    public Reference getDerivedFrom() {
-        return derivedFrom;
-    }
-
-    @Override
-    public void setDerivedFrom(Reference derivedFrom) {
-        this.derivedFrom = derivedFrom;
     }
 
     @Override
@@ -134,6 +121,16 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setAssetInformation(AssetInformation assetInformation) {
         this.assetInformation = assetInformation;
+    }
+
+    @Override
+    public Reference getDerivedFrom() {
+        return derivedFrom;
+    }
+
+    @Override
+    public void setDerivedFrom(Reference derivedFrom) {
+        this.derivedFrom = derivedFrom;
     }
 
     @Override
@@ -187,23 +184,13 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public String getChecksum() {
+        return checksum;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
-    }
-
-    @Override
-    public List<LangString> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangString> displayName) {
-        this.displayName = displayName;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     @Override
@@ -217,13 +204,23 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
+    public List<LangString> getDisplayName() {
+        return displayName;
     }
 
     @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
+    public void setDisplayName(List<LangString> displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
+    public String getIdShort() {
+        return idShort;
+    }
+
+    @Override
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override

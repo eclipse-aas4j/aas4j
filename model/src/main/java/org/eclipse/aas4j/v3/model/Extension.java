@@ -15,8 +15,6 @@
 package org.eclipse.aas4j.v3.model;
 
 
-
-
 import org.eclipse.aas4j.v3.model.annotations.IRI;
 import org.eclipse.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.aas4j.v3.model.impl.DefaultExtension;
@@ -50,23 +48,23 @@ public interface Extension extends HasSemantics {
     void setName(String name);
 
     /**
-     * Type of the value of the extension.
+     * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
      *
-     * @return Returns the DataTypeDefXsd for the property valueType.
+     * @return Returns the Reference for the property refersTo.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/valueType")
-    DataTypeDefXsd getValueType();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/refersTo")
+    Reference getRefersTo();
 
     /**
-     * Type of the value of the extension.
+     * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
      *
-     * @param valueType desired value for the property valueType.
+     * @param refersTo desired value for the property refersTo.
      */
-    void setValueType(DataTypeDefXsd valueType);
+    void setRefersTo(Reference refersTo);
 
     /**
      * Value of the extension
@@ -88,22 +86,22 @@ public interface Extension extends HasSemantics {
     void setValue(String value);
 
     /**
-     * Reference to an element the extension refers to.
+     * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
      *
-     * @return Returns the Reference for the property refersTo.
+     * @return Returns the DataTypeDefXsd for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/refersTo")
-    Reference getRefersTo();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/valueType")
+    DataTypeDefXsd getValueType();
 
     /**
-     * Reference to an element the extension refers to.
+     * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
      *
-     * @param refersTo desired value for the property refersTo.
+     * @param valueType desired value for the property valueType.
      */
-    void setRefersTo(Reference refersTo);
+    void setValueType(DataTypeDefXsd valueType);
 
 }
