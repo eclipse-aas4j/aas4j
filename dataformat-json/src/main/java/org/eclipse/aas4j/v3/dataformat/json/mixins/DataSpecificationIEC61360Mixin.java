@@ -26,12 +26,6 @@ import java.util.List;
 
 public interface DataSpecificationIEC61360Mixin {
 
-    @JsonProperty("definitions")
-    public List<LangString> getDefinition();
-
-    @JsonProperty("definitions")
-    public void setDefinition(List<LangString> definition);
-
     @JsonProperty("levelType")
     public List<LevelType> getLevelTypes();
 

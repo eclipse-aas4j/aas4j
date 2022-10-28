@@ -72,8 +72,8 @@ public class Serializer implements org.eclipse.aas4j.v3.dataformat.Serializer, D
         addKnownNamespace("owl", "http://www.w3.org/2002/07/owl#");
         addKnownNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
         addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/RC02/");
-        addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
-        addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
+        //addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
+        //addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
 
     }
 
@@ -183,6 +183,7 @@ public class Serializer implements org.eclipse.aas4j.v3.dataformat.Serializer, D
      */
     public <T> T deserialize(String serialization, Class<T> valueType, Lang serializationFormat) throws DeserializationException {
         try {
+
             return new Parser().parseMessage(serialization, valueType, serializationFormat);
         }
         catch (IOException e)

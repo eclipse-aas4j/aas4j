@@ -1,6 +1,8 @@
 
 {
     "modelType": "Property",
+    "kind": "Instance",
+    "category": "VARIABLE",
     "semanticId":
             {
                 "keys": [
@@ -27,16 +29,18 @@
         {
             "type": "http://acplt.org/Qualifier/ExampleQualifier",
             "value": "100",
-            "valueType": "xs:int"
+            "valueType": "xs:int",
+            "kind": "ConceptQualifier"
         },
         {
             "type": "http://acplt.org/Qualifier/ExampleQualifier2",
             "value": "50",
-            "valueType": "xs:int"
+            "valueType": "xs:int",
+            "kind": "ConceptQualifier"
         }
     ],
     "idShort": "ManufacturerName",
-    "descriptions": [
+    "description": [
         {
             "language": "en-us",
             "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."

@@ -31,7 +31,7 @@ import static org.junit.Assert.fail;
  * @author schnicke
  *
  */
-public class TestAASd_072 {
+public class TestAASc_006 {
 
 	// TODO: reactivate after the ConceptDescription have been added correctly
 	/*

@@ -15,18 +15,31 @@
  */
 package org.eclipse.aas4j.v3.dataformat.rdf;
 
+
 import org.eclipse.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.aas4j.v3.model.*;
+import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.ConceptDescription;
+
 import org.apache.jena.riot.RDFLanguages;
+
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 
 import java.io.IOException;
 
+@RunWith(JUnitParamsRunner.class)
 public class ParserTest {
 
     @Test
-    public void parseAASEnvironmentTest() throws IOException, DeserializationException {
+    public void parseAasEnvironmentTest() throws IOException, DeserializationException {
         String aasEnvAsString = SerializerUtil.readResourceToString("example-from-serializer.jsonld");
         Environment aasEnv = new Serializer().read(aasEnvAsString);
         Assert.assertEquals(1, aasEnv.getSubmodels().size());
@@ -37,24 +50,50 @@ public class ParserTest {
         Assert.assertEquals("en", aasEnv.getAssetAdministrationShells().get(0).getDisplayName().get(1).getLanguage());
         Assert.assertNotNull(aasEnv.getAssetAdministrationShells().get(0).getDescription().get(0).getLanguage());
 
-
     }
 
     @Test
-    public void parseAllSchemaExamplesTest() throws IOException, DeserializationException {
+    @Ignore
+    public void parseFullTurtleEnvironmentTest() throws IOException, DeserializationException {
+        String aasEnvAsString = SerializerUtil.readResourceToString("AASFull.ttl");
+        Environment environment = new Serializer().read(aasEnvAsString);
+
+        // TODO continue providing a correct AASFull Turtle representation
+        // TODO test for LangStrings
+        Assert.assertEquals(AASFull.ENVIRONMENT, environment);
+    }
+
+
+    @Test
+    @Parameters({"AAS_Reference_shortExample.ttl", "AssetAdministrationShell_Example.ttl",
+            "Complete_Example.ttl", "ReferenceExample.ttl" /*, "KapitalVerwaltungsschaleExample.ttl"*/})
+    public void parseAasTurtleSchemaExamplesTest(String file) throws IOException, DeserializationException {
+        Serializer serializer = new Serializer();
+
+        AssetAdministrationShell aas = serializer.deserialize(SerializerUtil.readResourceToString(file),AssetAdministrationShell.class, RDFLanguages.TURTLE);
+
+        Assert.assertNotNull(aas.getAssetInformation().getAssetKind());
+    }
+
+    @Test
+    @Parameters({ "AAS_Reference_shortExample.nt",  "Overall-Example.nt"})
+    public void parseAasNtriplesSchemaExamplesTest(String file) throws IOException, DeserializationException {
+        Serializer serializer = new Serializer();
+
+        AssetAdministrationShell aas = serializer.deserialize(SerializerUtil.readResourceToString(file), AssetAdministrationShell.class, RDFLanguages.TURTLE);
+
+        Assert.assertNotNull(aas.getAssetInformation().getAssetKind());
+    }
+
+    @Test
+    @Parameters({"Submodel_SubmodelElement_Example.ttl"})
+    public void parseSubmodelSchemaExamplesTest(String file) throws IOException, DeserializationException {
         Serializer serializer = new Serializer();
         //These work
 
+        Submodel submodel = serializer.deserialize(SerializerUtil.readResourceToString(file), Submodel.class, RDFLanguages.TURTLE);
 
-        serializer.deserialize(SerializerUtil.readResourceToString("AAS_Reference_shortExample.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        serializer.deserialize(SerializerUtil.readResourceToString("AAS_Reference_shortExample.nt"), AssetAdministrationShell.class, RDFLanguages.NTRIPLES);
-        serializer.deserialize(SerializerUtil.readResourceToString("AssetAdministrationShell_Example.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        //serializer.deserialize(SerializerUtil.readResourceToString("Complete_Example.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        serializer.deserialize(SerializerUtil.readResourceToString("KapitalVerwaltungsschaleExample.ttl"), Property.class, RDFLanguages.TURTLE);
-        serializer.deserialize(SerializerUtil.readResourceToString("Overall-Example.nt"), AssetAdministrationShell.class, RDFLanguages.NTRIPLES);
-        serializer.deserialize(SerializerUtil.readResourceToString("ReferenceExample.ttl"), AssetAdministrationShell.class, RDFLanguages.TURTLE);
-        serializer.deserialize(SerializerUtil.readResourceToString("Submodel_SubmodelElement_Example.ttl"), Submodel.class, RDFLanguages.TURTLE);
-
+        Assert.assertNotNull(submodel.getSubmodelElements().get(0).getIdShort());
 
 
         //The following examples do not work yet, as they are semantically problematic
@@ -66,7 +105,7 @@ public class ParserTest {
 
 
     @Test
-    public void serializeConceptDescription() throws IOException, DeserializationException {
+    public void deserializeConceptDescription() throws IOException, DeserializationException {
         String conceptDescription = "{\n" +
                 "  \"@context\" : {\n" +
                 "    \"aas\" : \"https://admin-shell.io/aas/3/0/RC02/\",\n" +
@@ -76,29 +115,29 @@ public class ParserTest {
                 "    \"@id\" : \"https://admin-shell.io/autogen/DefaultConceptDescription/c6bd22b3-6487-49d2-a86d-e3834d22ceb9\",\n" +
                 "    \"@type\" : \"aas:ConceptDescription\",\n" +
                 "    \"isCaseOf\" : [ ],\n" +
-                "    \"https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiations\" : [ {\n" +
-                "      \"@id\" : \"https://admin-shell.io/autogen/DefaultReference/41ee5bcc-adde-4a5a-bfb5-ace237247d0c\",\n" +
-                "      \"@type\" : \"aas:Reference\",\n" +
-                "      \"https://admin-shell.io/aas/3/0/RC02/Reference/key\" : [ {\n" +
-                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultKey/234b457f-0e8f-46b3-8e73-f850a79269f1\",\n" +
-                "        \"@type\" : \"aas:Key\",\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/Key/value\" : \"https://example.org\"\n" +
-                "      } ]\n" +
-                "    } ],\n" +
                 "    \"https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension\" : [ ],\n" +
                 "    \"https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications\" : [ {\n" +
                 "      \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecification/f461858c-8981-4141-bac3-6aee56977017\",\n" +
-                "      \"@type\" : \"aas:DataSpecification\",\n" +
-                "      \"https://admin-shell.io/aas/3/0/RC02/DataSpecification/dataSpecificationContent\" : {\n" +
+                "      \"@type\" : \"aas:EmbeddedDataSpecification\",\n" +
+                "      \"https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecifiation\" : {\n" +
+                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultReference/41ee5bcc-adde-4a5a-bfb5-ace237247d0c\",\n" +
+                "        \"@type\" : \"aas:Reference\",\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/Reference/key\" : [ {\n" +
+                "          \"@id\" : \"https://admin-shell.io/autogen/DefaultKey/234b457f-0e8f-46b3-8e73-f850a79269f1\",\n" +
+                "          \"@type\" : \"aas:Key\",\n" +
+                "          \"https://admin-shell.io/aas/3/0/RC02/Key/value\" : \"https://example.org\"\n" +
+                "        } ]\n" +
+                "      },\n" +
+                "      \"https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent\" : {\n" +
                 "        \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecificationIEC61360/457288b3-77e1-474a-ab74-866bdcafd914\",\n" +
                 "        \"@type\" : \"iec61360:DataSpecificationIEC61360\",\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/dataType\" : {\n" +
-                "          \"@type\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataTypeIEC61360\",\n" +
-                "          \"@id\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/RATIONAL\"\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType\" : {\n" +
+                "          \"@type\" : \"https://admin-shell.io/aas/3/0/RC02/DataTypeIEC61360\",\n" +
+                "          \"@id\" : \"https://admin-shell.io/aas/3/0/RC02/RATIONAL\"\n" +
                 "        },\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/definitions\" : [ ],\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/preferredNames\" : [ ],\n" +
-                "        \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataSpecificationIEC61360/shortNames\" : [ ]\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName\" : [ ]\n" +
                 "      },\n" +
                 "      \"https://admin-shell.io/aas/3/0/RC02/DataSpecification/id\" : \"http://example.org/DataSpecification1\"\n" +
                 "    } ]\n" +
@@ -109,5 +148,6 @@ public class ParserTest {
 
         Assert.assertNotNull(c);
     }
+
 
 }

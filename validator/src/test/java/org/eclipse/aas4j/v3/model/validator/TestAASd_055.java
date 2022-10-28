@@ -24,6 +24,7 @@ import java.util.Arrays;
 import org.eclipse.aas4j.v3.model.*;
 import org.eclipse.aas4j.v3.model.impl.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -38,6 +39,7 @@ import org.junit.Test;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_055 {
 
 	private final static String ERRORMSG = "If the semanticId of a RelationshipElement or an AnnotatedRelationshipElement submodel element references a ConceptDescription then the ConceptDescription/category shall be one of following values: RELATIONSHIP.";
@@ -128,6 +130,7 @@ public class TestAASd_055 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}
@@ -147,6 +150,7 @@ public class TestAASd_055 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

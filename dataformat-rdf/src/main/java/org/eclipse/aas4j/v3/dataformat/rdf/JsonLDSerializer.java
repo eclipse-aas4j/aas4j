@@ -96,8 +96,8 @@ public class JsonLDSerializer extends BeanSerializer {
     private void filterContextWrtBean(Object bean, Map<String, String> filteredContext) {
         //Some default entries for AAS
         filteredContext.put("aas", "https://admin-shell.io/aas/3/0/RC02/");
-        filteredContext.put("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
-        filteredContext.put("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
+        //filteredContext.put("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
+        //filteredContext.put("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
 
         if(bean == null || bean.getClass().getName().equals("com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl") || bean.getClass().getName().equals("org.apache.jena.ext.xerces.jaxp.datatype.XMLGregorianCalendarImpl") || bean.getClass() == BigInteger.class) return; // XMLGregorianCalendarImpl causes infinite recursion
 

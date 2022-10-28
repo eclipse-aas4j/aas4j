@@ -38,6 +38,7 @@ import static org.junit.Assert.fail;
  *
  */
 
+@Ignore("Constraint has been removed")
 public class TestAASd_66a {
 
     @Test
@@ -111,6 +112,7 @@ public class TestAASd_66a {
                         .value("1234")
                         .type(KeyTypes.GLOBAL_REFERENCE)
                         .build())
+                .type(ReferenceTypes.GLOBAL_REFERENCE)
                 .build();
 
 //        DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()

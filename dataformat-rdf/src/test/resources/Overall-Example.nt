@@ -195,10 +195,10 @@ _:Key14  <https://admin-shell.io/aas/3/0/RC02/Key/value> "0173-1#05-AAA650#002"^
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <https://admin-shell.io/aas/3/0/RC02/Referable/idShort> "Document"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <http://www.w3.org/2000/01/rdf-schema#label> "Document"^^<http://www.w3.org/2001/XMLSchema#string> .
 <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <https://admin-shell.io/aas/3/0/RC02/Identifiable/id> "https://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"^^<http://www.w3.org/2001/XMLSchema#string> .
-<http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications> <urn:EmbeddedDataSpecification3>  .
-<urn:EmbeddedDataSpecification3>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification> .
-<urn:EmbeddedDataSpecification3>  <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification> _:DataSpecification3   .
-<urn:EmbeddedDataSpecification3>  <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent> <http://customer.com/aas/iec-data-specifications-content-3> .
+<http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> <https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications> _:EmbeddedDataSpecification3  .
+_:EmbeddedDataSpecification3  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification> .
+_:EmbeddedDataSpecification3  <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification> _:DataSpecification3   .
+_:EmbeddedDataSpecification3  <https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent> <http://customer.com/aas/iec-data-specifications-content-3> .
 _:DataSpecification3   <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://admin-shell.io/aas/3/0/RC02/Reference> .
 _:DataSpecification3   <https://admin-shell.io/aas/3/0/RC02/Reference/type> <https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference> .
 _:DataSpecification3   <https://admin-shell.io/aas/3/0/RC02/Reference/keys> _:Key15  .

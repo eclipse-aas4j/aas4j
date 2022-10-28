@@ -22,6 +22,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.aas4j.v3.model.Environment;
+import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.aas4j.v3.model.Referable;
+import org.eclipse.aas4j.v3.model.Submodel;
+import org.eclipse.aas4j.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.aas4j.v3.model.SubmodelElementCollection;
 import org.json.JSONException;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -30,11 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.eclipse.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Referable;
-import org.eclipse.aas4j.v3.model.Submodel;
-import org.eclipse.aas4j.v3.model.SubmodelElement;
+import org.eclipse.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 public class JsonReferableSerializerTest {
 
@@ -62,31 +65,47 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeSubmodels() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         compare("src/test/resources/submodelList.json", environment.getSubmodels().get(0), environment.getSubmodels().get(1));
     }
 
     @Test
-    public void testSerializeSubmodelelement() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElement() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         compare("src/test/resources/submodelElement.json",submodelElement);
     }
 
     @Test
-    public void testSerializeSubmodelelements() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElements() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
         SubmodelElement submodelElement0 = environment.getSubmodels().get(0).getSubmodelElements().get(0);
         SubmodelElement submodelElement1 = environment.getSubmodels().get(0).getSubmodelElements().get(1);
-        compare("src/test/resources/submodelElementList.json",submodelElement0,submodelElement1);
+        compare("src/test/resources/listOfSubmodelElements.json",submodelElement0,submodelElement1);
     }
 
     @Test
-    public void testSerializeSubmodelelementCollection() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElementCollection() throws IOException, SerializationException, JSONException {
         Environment environment = AASFull.ENVIRONMENT;
-        SubmodelElement submodelElementCollection = environment.getSubmodels().get(6).getSubmodelElements().get(5);
+        SubmodelElementCollection submodelElementCollection = (SubmodelElementCollection) environment.getSubmodels().get(6).getSubmodelElements().get(6);
         compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);
+    }
+
+    @Test
+    public void testSerializeSubmodelElementList() throws IOException, SerializationException, JSONException {
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElementList submodelElementList = (SubmodelElementList) environment.getSubmodels().get(6).getSubmodelElements().get(5);
+        compare("src/test/resources/submodelElementList.json",submodelElementList);
+    }
+
+    @Test
+    public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
+        compare("src/test/resources/submodelElementListEmpty.json",
+                new DefaultSubmodelElementList.Builder()
+                        .idShort("submodelElementList")
+                        .orderRelevant(true)
+                        .build());
     }
 
     private void compare(String filePathForExpected, Referable... referable) throws IOException, SerializationException, JSONException {

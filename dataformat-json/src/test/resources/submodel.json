@@ -22,6 +22,8 @@
     "submodelElements": [
         {
             "modelType": "Property",
+            "category": "VARIABLE",
+            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -48,16 +50,18 @@
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
                     "value": "100",
-                    "valueType": "xs:int"
+                    "valueType": "xs:int",
+                    "kind": "ConceptQualifier"
                 },
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                     "value": "50",
-                    "valueType": "xs:int"
+                    "valueType": "xs:int",
+                    "kind": "ConceptQualifier"
                 }
             ],
             "idShort": "ManufacturerName",
-            "descriptions": [
+            "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -70,6 +74,8 @@
         },
         {
             "modelType": "Property",
+            "category": "VARIABLE",
+            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -93,7 +99,7 @@
                     },
             "valueType": "xs:string",
             "idShort": "InstanceId",
-            "descriptions": [
+            "description": [
                 {
                     "language": "en-us",
                     "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -105,7 +111,7 @@
             ]
         }
     ],
-    "descriptions": [
+    "description": [
         {
             "language": "en-us",
             "text": "An example asset identification submodel for the test application"

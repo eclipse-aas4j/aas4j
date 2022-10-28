@@ -13,13 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.aas4j.v3.dataformat.json.mixins;
+package org.eclipse.aas4j.v3.dataformat.rdf.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.eclipse.aas4j.v3.model.Reference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.eclipse.aas4j.v3.model.*;
 
-public interface BasicEventMixin {
+import java.util.List;
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    public Reference getObserved();
+@JsonTypeName("aas:DataSpecificationContent")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = DataSpecificationIEC61360.class)
+})
+public interface DataSpecificationContentMixin {
+
 }

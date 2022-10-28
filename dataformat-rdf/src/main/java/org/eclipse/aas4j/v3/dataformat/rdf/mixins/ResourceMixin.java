@@ -15,17 +15,26 @@
  */
 package org.eclipse.aas4j.v3.dataformat.rdf.mixins;
 
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.eclipse.aas4j.v3.model.BasicEventElement;
+import org.eclipse.aas4j.v3.model.Key;
+import org.eclipse.aas4j.v3.model.ReferenceTypes;
 
-@JsonTypeName("aas:Event")
+import java.util.List;
+
+@JsonTypeName("aas:Resource")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
-@JsonSubTypes({
-    @JsonSubTypes.Type(value = BasicEventElement.class)
-})
-public interface EventMixin extends SubmodelElementMixin {
+public interface ResourceMixin {
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    String getContentType();
 
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    void setContentType(String contentType);
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    String getPath();
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    void setPath(String path);
 }

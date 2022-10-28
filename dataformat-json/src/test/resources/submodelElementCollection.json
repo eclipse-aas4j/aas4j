@@ -1,14 +1,14 @@
 {
-  "idShort": "ExampleSubmodelCollectionOrdered",
+  "idShort": "ExampleSubmodelElementCollection",
   "category": "Parameter",
-  "descriptions": [
+  "description": [
     {
       "language": "en-us",
-      "text": "Example SubmodelElementCollectionOrdered object"
+      "text": "Example SubmodelElementCollection object"
     },
     {
       "language": "de",
-      "text": "Beispiel SubmodelElementCollectionOrdered Element"
+      "text": "Beispiel SubmodelElementCollection Element"
     }
   ],
   "modelType": "SubmodelElementCollection",
@@ -17,123 +17,70 @@
     "keys": [
       {
         "type": "GlobalReference",
-        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered"
+        "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
       }
     ],
     "type": "GlobalReference"
   },
   "kind": "Template",
-  "value": [
-    {
-      "idShort": "ExampleProperty",
-      "category": "Constant",
-      "descriptions": [
-        {
-          "language": "en-us",
-          "text": "Example Property object"
-        },
-        {
-          "language": "de",
-          "text": "Beispiel Property Element"
-        }
-      ],
-      "modelType": "Property",
-      "semanticId":
-      {
-        "keys": [
-          {
-            "type": "GlobalReference",
-            "value": "http://acplt.org/Properties/ExampleProperty"
-          }
-        ],
-        "type": "GlobalReference"
-      },
-      "kind": "Template",
-      "valueType": "xs:string"
+  "value": [ {
+    "modelType" : "Blob",
+    "contentType" : "application/pdf",
+    "kind" : "Template",
+    "semanticId" : {
+      "keys" : [ {
+        "type" : "GlobalReference",
+        "value" : "http://acplt.org/Blobs/ExampleBlob"
+      } ],
+      "type" : "GlobalReference"
     },
-    {
-      "idShort": "ExampleMultiLanguageProperty",
-      "category": "Constant",
-      "descriptions": [
-        {
-          "language": "en-us",
-          "text": "Example MultiLanguageProperty object"
-        },
-        {
-          "language": "de",
-          "text": "Beispiel MultiLanguageProperty Element"
-        }
-      ],
-      "modelType": "MultiLanguageProperty",
-      "semanticId":
-      {
-        "keys": [
-          {
-            "type": "GlobalReference",
-            "value": "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty"
-          }
-        ],
-        "type": "GlobalReference"
-      },
-      "kind": "Template"
+    "category" : "Parameter",
+    "description" : [ {
+      "language" : "en-us",
+      "text" : "Example Blob object"
+    }, {
+      "language" : "de",
+      "text" : "Beispiel Blob Element"
+    } ],
+    "idShort" : "ExampleBlob"
+  }, {
+    "modelType" : "File",
+    "contentType" : "application/pdf",
+    "kind" : "Template",
+    "semanticId" : {
+      "keys" : [ {
+        "type" : "GlobalReference",
+        "value" : "http://acplt.org/Files/ExampleFile"
+      } ],
+      "type" : "GlobalReference"
     },
-    {
-      "idShort": "ExampleRange",
-      "category": "Parameter",
-      "descriptions":
-       [
-        {
-          "language": "en-us",
-          "text": "Example Range object"
-        },
-        {
-          "language": "de",
-          "text": "Beispiel Range Element"
-        }
-      ],
-      "modelType": "Range",
-      "semanticId":
-      {
-        "keys": [
-          {
-            "type": "GlobalReference",
-            "value": "http://acplt.org/Ranges/ExampleRange"
-          }
-        ],
-        "type": "GlobalReference"
-      },
-      "kind": "Template",
-      "valueType": "xs:int",
-      "max": "100"
+    "category" : "Parameter",
+    "description" : [ {
+      "language" : "en-us",
+      "text" : "Example File object"
+    }, {
+      "language" : "de",
+      "text" : "Beispiel File Element"
+    } ],
+    "idShort" : "ExampleFile"
+  }, {
+    "modelType" : "ReferenceElement",
+    "kind" : "Template",
+    "semanticId" : {
+      "keys" : [ {
+        "type" : "GlobalReference",
+        "value" : "http://acplt.org/ReferenceElements/ExampleReferenceElement"
+      } ],
+      "type" : "GlobalReference"
     },
-    {
-      "idShort": "ExampleRange2",
-      "category": "Parameter",
-      "descriptions":
-      [
-        {
-          "language": "en-us",
-          "text": "Example Range object"
-        },
-        {
-          "language": "de",
-          "text": "Beispiel Range Element"
-        }
-      ],
-      "modelType": "Range",
-      "semanticId":
-      {
-        "keys": [
-          {
-            "type": "GlobalReference",
-            "value": "http://acplt.org/Ranges/ExampleRange"
-          }
-        ],
-        "type": "GlobalReference"
-      },
-      "kind": "Template",
-      "valueType": "xs:int",
-      "min": "0"
-    }
-  ]
+    "category" : "Parameter",
+    "description" : [ {
+      "language" : "en-us",
+      "text" : "Example Reference Element object"
+    }, {
+      "language" : "de",
+      "text" : "Beispiel Reference Element Element"
+    } ],
+    "idShort" : "ExampleReferenceElement"
+  } ]
 }

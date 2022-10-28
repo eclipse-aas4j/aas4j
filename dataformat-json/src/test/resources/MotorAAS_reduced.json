@@ -146,12 +146,17 @@
             "id": "0173-1#02-BAA120#008",
             "embeddedDataSpecifications": [
                 {
-                    "id": "0173-1#02-BAA120#008",
                     "dataSpecification": {
-                        "keys": [],
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "de",
@@ -196,17 +201,17 @@
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
             "embeddedDataSpecifications": [
                 {
-                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://adminshell.io/DataSpecificationTemplates/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "DE",

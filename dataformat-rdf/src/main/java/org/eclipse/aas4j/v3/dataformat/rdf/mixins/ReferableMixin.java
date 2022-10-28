@@ -38,17 +38,17 @@ public interface ReferableMixin {
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/category")
     void setCategory(String category);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    List<LangString> getDescriptions();
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    List<LangString> getDescription();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/descriptions")
-    void setDescriptions(List<LangString> descriptions);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    void setDescription(List<LangString> description);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
-    List<LangString> getDisplayNames();
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    List<LangString> getDisplayName();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayNames")
-    void setDisplayNames(List<LangString> displayNames);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    void setDisplayName(List<LangString> displayName);
 
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     String getIdShort();

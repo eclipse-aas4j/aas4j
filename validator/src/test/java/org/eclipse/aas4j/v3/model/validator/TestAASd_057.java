@@ -21,14 +21,10 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
+import org.eclipse.aas4j.v3.model.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import org.eclipse.aas4j.v3.model.Environment;
-import org.eclipse.aas4j.v3.model.Blob;
-import org.eclipse.aas4j.v3.model.ConceptDescription;
-import org.eclipse.aas4j.v3.model.File;
-import org.eclipse.aas4j.v3.model.KeyTypes;
-import org.eclipse.aas4j.v3.model.Submodel;
 import org.eclipse.aas4j.v3.model.impl.DefaultBlob;
 import org.eclipse.aas4j.v3.model.impl.DefaultFile;
 import org.eclipse.aas4j.v3.model.impl.DefaultKey;
@@ -44,6 +40,7 @@ import org.eclipse.aas4j.v3.model.impl.DefaultReference;
  * @author schnicke
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_057 {
 
 	private final static String ERRORMSG = "The semanticId of a File or Blob submodel element shall only reference a ConceptDescription with the category DOCUMENT.";
@@ -127,12 +124,13 @@ public class TestAASd_057 {
 	private File createFile(String idShort, String conceptDescriptionId) {
 		return new DefaultFile.Builder()
 				.idShort(idShort)
-				.contentType("application/json").value("test.json")
+				.contentType("application/json").value("file:///test.json")
 				.semanticId(new DefaultReference.Builder()
 						.keys(new DefaultKey.Builder()
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}
@@ -147,6 +145,7 @@ public class TestAASd_057 {
 								.value(conceptDescriptionId)
 								.type(KeyTypes.CONCEPT_DESCRIPTION)
 								.build())
+						.type(ReferenceTypes.GLOBAL_REFERENCE)
 						.build())
 				.build();
 	}

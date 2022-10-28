@@ -67,6 +67,7 @@ public class ConstraintTestHelper {
 						.value("reference")
 						.type(KeyTypes.GLOBAL_REFERENCE)
 						.build())
+				.type(ReferenceTypes.GLOBAL_REFERENCE)
 				.build();
 	}
 }

@@ -22,6 +22,8 @@
         "submodelElements": [
             {
                 "modelType": "Property",
+                "kind": "Instance",
+                "category": "VARIABLE",
                 "semanticId":
                         {
                             "keys": [
@@ -48,16 +50,18 @@
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier",
                         "value": "100",
-                        "valueType": "xs:int"
+                        "valueType": "xs:int",
+                        "kind": "ConceptQualifier"
                     },
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                         "value": "50",
-                        "valueType": "xs:int"
+                        "valueType": "xs:int",
+                        "kind": "ConceptQualifier"
                     }
                 ],
                 "idShort": "ManufacturerName",
-                "descriptions": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -70,6 +74,8 @@
             },
             {
                 "modelType": "Property",
+                "kind": "Instance",
+                "category": "VARIABLE",
                 "semanticId":
                         {
                             "keys": [
@@ -93,7 +99,7 @@
                         },
                 "valueType": "xs:string",
                 "idShort": "InstanceId",
-                "descriptions": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -105,7 +111,7 @@
                 ]
             }
         ],
-        "descriptions": [
+        "description": [
             {
                 "language": "en-us",
                 "text": "An example asset identification submodel for the test application"
@@ -138,10 +144,12 @@
         "submodelElements": [
             {
                 "modelType": "Entity",
+                "kind": "Instance",
                 "entityType": "CoManagedEntity",
                 "statements": [
                     {
                         "modelType": "Property",
+                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -166,7 +174,7 @@
                         "valueType": "xs:string",
                         "category": "Constant",
                         "idShort": "ExampleProperty2",
-                        "descriptions": [
+                        "description": [
                             {
                                 "language": "en-us",
                                 "text": "Example Property object"
@@ -179,6 +187,7 @@
                     },
                     {
                         "modelType": "Property",
+                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -203,7 +212,7 @@
                         "valueType": "xs:string",
                         "category": "Constant",
                         "idShort": "ExampleProperty",
-                        "descriptions": [
+                        "description": [
                             {
                                 "language": "en-us",
                                 "text": "Example Property object"
@@ -226,7 +235,7 @@
                             "type": "GlobalReference"
                         },
                 "idShort": "ExampleEntity",
-                "descriptions": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -240,6 +249,7 @@
             {
                 "modelType": "Entity",
                 "entityType": "SelfManagedEntity",
+                "kind": "Instance",
                 "globalAssetId":
                         {
                             "keys": [
@@ -261,7 +271,7 @@
                             "type": "GlobalReference"
                         },
                 "idShort": "ExampleEntity2",
-                "descriptions": [
+                "description": [
                     {
                         "language": "en-us",
                         "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
@@ -273,7 +283,7 @@
                 ]
             }
         ],
-        "descriptions": [
+        "description": [
             {
                 "language": "en-us",
                 "text": "An example bill of material submodel for the test application"

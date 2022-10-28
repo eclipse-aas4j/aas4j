@@ -19,14 +19,18 @@ package org.eclipse.aas4j.v3.dataformat.rdf.mixins;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.eclipse.aas4j.v3.model.Reference;
+import org.eclipse.aas4j.v3.model.ValueReferencePair;
 
-@JsonTypeName("aas:BasicEvent")
+import java.util.List;
+
+
+@JsonTypeName("aas:ValueList")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
-public interface BasicEventMixin extends EventMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEvent/observed")
-    Reference getObserved();
+public interface ValueListMixin {
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEvent/observed")
-    void setObserved(Reference observed);
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    List<ValueReferencePair> getValueReferencePairs();
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    void setValueReferencePairs(List<ValueReferencePair> valueReferencePairs);
 }

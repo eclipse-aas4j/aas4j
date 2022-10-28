@@ -265,6 +265,7 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     @Override
     public void setDisplayName(List<LangString> displayName) {
         this.displayName = displayName;
+
     }
 
     @Override

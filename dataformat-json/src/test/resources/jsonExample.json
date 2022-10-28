@@ -48,7 +48,7 @@
                 ],
                 "thumbnail": {
                     "contentType": "image/png",
-                    "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
+                    "path": "file:///master/verwaltungsschale-detail-part1.png"
                 }
             },
             "submodels": [
@@ -87,31 +87,31 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
+            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-
-                        "dataType": "StringTranslatable",
+                        "modelType": "DataSpecificationIEC61360",
+                        "dataType": "STRING_TRANSLATABLE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "EN",
                                 "text": "SprachabhängigerTiteldesDokuments."
                             }
                         ],
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "EN",
                                 "text": "Title"
@@ -121,7 +121,7 @@
                                 "text": "Titel"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "Title"
@@ -131,8 +131,7 @@
                                 "text": "Titel"
                             }
                         ]
-                    },
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
+                    }
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
@@ -140,30 +139,31 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
+            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-                        "dataType": "String",
+                        "modelType": "DataSpecificationIEC61360",
+                        "dataType": "STRING",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "EN",
                                 "text": "A file representing the document version. In addition to the mandatory PDF file, other files can be specified."
                             }
                         ],
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "EN",
                                 "text": "DigitalFile"
@@ -173,7 +173,7 @@
                                 "text": "DigitalFile"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "DigitalFile"
@@ -183,8 +183,7 @@
                                 "text": "DigitaleDatei"
                             }
                         ]
-                    },
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
+                    }
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
@@ -192,21 +191,21 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-                        "dataType": "RealMeasure",
+                        "modelType": "DataSpecificationIEC61360",
+                        "dataType": "REAL_MEASURE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
                         "unitId":
@@ -219,7 +218,7 @@
                             ],
                             "type": "GlobalReference"
                         },
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "de",
                                 "text": "HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf"
@@ -229,7 +228,7 @@
                                 "text": "Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated"
                             }
                         ],
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "de",
                                 "text": "max.Drehzahl"
@@ -239,8 +238,7 @@
                                 "text": "Max.rotationspeed"
                             }
                         ]
-                    },
-                    "id": "0173-1#02-BAA120#008"
+                    }
                 }
             ],
             "administration":
@@ -254,21 +252,21 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-                        "dataType": "RealMeasure",
+                        "modelType": "DataSpecificationIEC61360",
+                        "dataType": "REAL_MEASURE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
                         "unitId":
@@ -281,7 +279,7 @@
                             ],
                             "type": "GlobalReference"
                         },
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "DE",
                                 "text": "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird"
@@ -291,7 +289,7 @@
                                 "text": "Actual rotationspeed with which the motor or feedingunit is operated"
                             }
                         ],
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "DE",
                                 "text": "AktuelleDrehzahl"
@@ -301,7 +299,7 @@
                                 "text": "Actualrotationspeed"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "DE",
                                 "text": "AktuelleDrehzahl"
@@ -311,8 +309,7 @@
                                 "text": "ActualRotationSpeed"
                             }
                         ]
-                    },
-                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895"
+                    }
                 }
             ],
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
@@ -321,36 +318,37 @@
         },
         {
             "modelType": "ConceptDescription",
-            "dataSpecifications": [
-            {
-                "keys": [
-                    {
-                        "type": "GlobalReference",
-                        "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
-                    }
-                ],
-                "type": "GlobalReference"
-            } ],
+            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
                     "dataSpecificationContent":
                     {
-                        "dataType": "String",
+                        "modelType": "DataSpecificationIEC61360",
+                        "dataType": "STRING",
                         "sourceOfDefinition": "[ISO15519-1:2010]",
                         "unit": "ExampleString",
-                        "definitions": [
+                        "definition": [
                             {
                                 "language": "EN",
                                 "text": "Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann."
                             }
                         ],
-                        "preferredNames": [
+                        "preferredName": [
                             {
                                 "language": "EN",
                                 "text": "Document"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "Document"
@@ -360,8 +358,7 @@
                                 "text": "Dokument"
                             }
                         ]
-                    },
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
+                    }
                 }
             ],
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
@@ -428,6 +425,7 @@
                     "value": [
                         {
                             "modelType": "Property",
+                            "category": "VARIABLE",
                             "kind": "Instance",
                             "semanticId":
                             {
@@ -445,8 +443,9 @@
                         },
                         {
                             "modelType": "File",
+                            "category": "VARIABLE",
                             "contentType": "application/pdf",
-                            "value": "/aasx/OperatingManual.pdf",
+                            "value": "file:///aasx/OperatingManual.pdf",
                             "kind": "Instance",
                             "semanticId":
                             {

@@ -169,7 +169,7 @@ class Parser {
             Arrays.stream(methods).filter(method -> {
                 String name = method.getName();
                 //Filter out irrelevant methods
-                return name.startsWith("set") && !name.equals("setProperty") && !name.equals("setComment") && !name.equals("setLabel") && !name.equals("setId");
+                return name.startsWith("set") && !name.equals("setProperty") && !name.equals("setComment") && !name.equals("setLabel"); // && !name.equals("setId");
             }).forEach(method -> {
                 //Remove "set" part
                 String reducedName = method.getName().substring(3);

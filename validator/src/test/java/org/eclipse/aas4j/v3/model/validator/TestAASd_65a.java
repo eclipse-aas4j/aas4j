@@ -38,6 +38,7 @@ import java.util.ArrayList;
  * @author bader, chang
  *
  */
+@Ignore("Constraint has been removed")
 public class TestAASd_65a {
 
     @Ignore

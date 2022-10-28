@@ -19,15 +19,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.aas4j.v3.model.Key;
+import org.eclipse.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.aas4j.v3.model.annotations.IRI;
 
 import java.util.List;
 
 @JsonTypeName("aas:Reference")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ReferenceMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
     List<Key> getKeys();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
     void setKeys(List<Key> keys);
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    ReferenceTypes getType();
+
+    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    void setType(ReferenceTypes type);
 }

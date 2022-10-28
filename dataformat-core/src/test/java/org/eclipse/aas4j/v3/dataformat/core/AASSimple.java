@@ -97,6 +97,7 @@ public class AASSimple {
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY = "Variable";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
+    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
 
     public AASSimple() {
     }
@@ -285,7 +286,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
@@ -311,7 +312,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
@@ -343,7 +344,7 @@ public class AASSimple {
                                 .dataSpecification(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                                .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
@@ -377,7 +378,7 @@ public class AASSimple {
                                 .dataSpecification(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                                .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
                                         .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
@@ -412,7 +413,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value("http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0")
+                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())

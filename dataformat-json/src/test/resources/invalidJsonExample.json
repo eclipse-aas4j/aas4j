@@ -207,17 +207,17 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
             "embeddedDataSpecifications": [
                 {
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "EN",
@@ -257,17 +257,17 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
             "embeddedDataSpecifications": [
                 {
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "EN",
@@ -312,17 +312,17 @@
             "id": "0173-1#02-BAA120#008",
             "embeddedDataSpecifications": [
                 {
-                    "id": "0173-1#02-BAA120#008",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "de",
@@ -366,17 +366,17 @@
             "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
             "embeddedDataSpecifications": [
                 {
-                    "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                             {
                                 "language": "DE",
@@ -428,17 +428,17 @@
             "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
             "embeddedDataSpecifications": [
                 {
-                    "id": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document",
                     "dataSpecification": {
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
                         "type": "GlobalReference"
                     },
                     "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
                         "preferredName": [
                         ],
                         "shortName": [
