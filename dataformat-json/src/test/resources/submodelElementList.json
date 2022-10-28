@@ -1,6 +1,6 @@
 {
   "idShort": "ExampleSubmodelElementListOrdered",
-  "category": "Parameter",
+  "category": "PARAMETER",
   "description": [
     {
       "language": "en-us",
@@ -28,7 +28,7 @@
   "value": [
     {
       "idShort": "ExampleProperty",
-      "category": "Constant",
+      "category": "CONSTANT",
       "description": [
         {
           "language": "en-us",
@@ -55,7 +55,7 @@
     },
     {
       "idShort": "ExampleMultiLanguageProperty",
-      "category": "Constant",
+      "category": "CONSTANT",
       "description": [
         {
           "language": "en-us",
@@ -81,7 +81,7 @@
     },
     {
       "idShort": "ExampleRange",
-      "category": "Parameter",
+      "category": "PARAMETER",
       "description":
        [
         {
@@ -110,7 +110,7 @@
     },
     {
       "idShort": "ExampleRange2",
-      "category": "Parameter",
+      "category": "PARAMETER",
       "description":
       [
         {

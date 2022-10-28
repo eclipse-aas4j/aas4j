@@ -172,7 +172,7 @@
                                     "type": "GlobalReference"
                                 },
                         "valueType": "xs:string",
-                        "category": "Constant",
+                        "category": "CONSTANT",
                         "idShort": "ExampleProperty2",
                         "description": [
                             {
@@ -210,7 +210,7 @@
                                     "type": "GlobalReference"
                                 },
                         "valueType": "xs:string",
-                        "category": "Constant",
+                        "category": "CONSTANT",
                         "idShort": "ExampleProperty",
                         "description": [
                             {

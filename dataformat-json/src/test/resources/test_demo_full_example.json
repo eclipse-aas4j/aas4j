@@ -549,7 +549,7 @@
                                         "type": "GlobalReference"
                                     },
                             "valueType": "xs:string",
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleProperty2",
                             "description":  [
                                     {
@@ -591,7 +591,7 @@
                                         "type": "GlobalReference"
                                     },
                             "valueType": "xs:string",
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleProperty",
                             "description":  [
                                     {
@@ -716,7 +716,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleRelationshipElement",
                     "first":
                             {
@@ -780,7 +780,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleAnnotatedRelationshipElement",
                     "first":
                             {
@@ -824,7 +824,7 @@
                             "kind": "Instance",
                             "value": "some example annotation",
                             "valueType": "xs:string",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleProperty3"
                         }
                     ],
@@ -853,7 +853,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleOperation",
                     "inoutputVariables": [
                         {
@@ -883,7 +883,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty3",
                                         "description":  [
                                                 {
@@ -927,7 +927,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty1",
                                         "description":  [
                                                 {
@@ -972,7 +972,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty2",
                                         "description":  [
                                                 {
@@ -1013,7 +1013,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleCapability",
                     "description":  [
                             {
@@ -1060,7 +1060,7 @@
                             },
                     "direction": "input",
                     "state": "on",
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleBasicEvent",
                     "description":  [
                             {
@@ -1088,7 +1088,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "description":  [
@@ -1129,7 +1129,7 @@
                                         "type": "GlobalReference"
                                     },
                             "valueType": "xs:string",
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleProperty",
                             "description":  [
                                     {
@@ -1167,7 +1167,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleMultiLanguageProperty",
                             "value":  [
                                     {
@@ -1208,7 +1208,7 @@
                             "max": "100",
                             "min": "0",
                             "valueType": "xs:int",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleRange",
                             "description":  [
                                     {
@@ -1238,7 +1238,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementCollection",
                     "description":  [
                             {
@@ -1267,7 +1267,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleBlob",
                             "description":  [
                                     {
@@ -1297,7 +1297,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleFile",
                             "description":  [
                                     {
@@ -1325,7 +1325,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleReferenceElement",
                             "value":
                                     {
@@ -1602,7 +1602,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleRelationshipElement",
                     "first":
                             {
@@ -1666,7 +1666,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleAnnotatedRelationshipElement",
                     "first":
                             {
@@ -1711,7 +1711,7 @@
                             "category": "VARIABLE",
                             "value": "some example annotation",
                             "valueType": "xs:string",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleProperty"
                         }
                     ],
@@ -1740,7 +1740,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleOperation",
                     "inoutputVariables": [
                         {
@@ -1767,7 +1767,7 @@
                                                 "kind": "ConceptQualifier"
                                             }
                                         ],
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty3",
                                         "description":  [
                                                 {
@@ -1807,7 +1807,7 @@
                                         "kind": "ConceptQualifier"
                                     }
                                 ],
-                                "category": "Constant",
+                                "category": "CONSTANT",
                                 "idShort": "ExampleProperty1",
                                 "description":  [
                                     {
@@ -1847,7 +1847,7 @@
                                                 "kind": "ConceptQualifier"
                                             }
                                         ],
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty2",
                                         "description":  [
                                                 {
@@ -1889,7 +1889,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleCapability",
                     "description":  [
                             {
@@ -1935,7 +1935,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleBasicEvent",
                     "direction": "input",
                     "state": "on",
@@ -1966,7 +1966,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "description":  [
@@ -2004,7 +2004,7 @@
                                     "kind": "ConceptQualifier"
                                 }
                             ],
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleProperty",
                             "description":  [
                                     {
@@ -2032,7 +2032,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleMultiLanguageProperty",
                             "value":  [
                                     {
@@ -2072,7 +2072,7 @@
                             "max": "100",
                             "min": "0",
                             "valueType": "xs:int",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleRange",
                             "description":  [
                                     {
@@ -2102,7 +2102,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementCollection",
                     "description":  [
                             {
@@ -2131,7 +2131,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleBlob",
                             "description":  [
                                     {
@@ -2160,7 +2160,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleFile",
                             "description":  [
                                     {
@@ -2187,7 +2187,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleReferenceElement",
                             "value": {
                                 "keys": [
@@ -2267,7 +2267,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleRelationshipElement",
                     "first":
                             {
@@ -2330,7 +2330,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleAnnotatedRelationshipElement",
                     "first":
                             {
@@ -2392,7 +2392,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleOperation",
                     "inoutputVariables": [
                         {
@@ -2411,7 +2411,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty",
                                         "description":  [
                                                 {
@@ -2444,7 +2444,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty",
                                         "description":  [
                                                 {
@@ -2477,7 +2477,7 @@
                                                     "type": "GlobalReference"
                                                 },
                                         "valueType": "xs:string",
-                                        "category": "Constant",
+                                        "category": "CONSTANT",
                                         "idShort": "ExampleProperty",
                                         "description":  [
                                                 {
@@ -2518,7 +2518,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleCapability",
                     "description":  [
                             {
@@ -2563,7 +2563,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleBasicEvent",
                     "direction": "output",
                     "state": "off",
@@ -2593,7 +2593,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementListOrdered",
                     "orderRelevant": true,
                     "description":  [
@@ -2622,7 +2622,7 @@
                                         "type": "GlobalReference"
                                     },
                             "valueType": "xs:string",
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleProperty",
                             "description":  [
                                     {
@@ -2649,7 +2649,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Constant",
+                            "category": "CONSTANT",
                             "idShort": "ExampleMultiLanguageProperty",
                             "description":  [
                                     {
@@ -2678,7 +2678,7 @@
                                     },
                             "max": "100",
                             "valueType": "xs:int",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleRange",
                             "description":  [
                                     {
@@ -2707,7 +2707,7 @@
                                     },
                             "min": "0",
                             "valueType": "xs:int",
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleRange2",
                             "description":  [
                                     {
@@ -2736,7 +2736,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementCollection",
                     "description":  [
                             {
@@ -2763,7 +2763,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleBlob",
                             "description":  [
                                     {
@@ -2791,7 +2791,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleFile",
                             "description":  [
                                     {
@@ -2818,7 +2818,7 @@
                                         ],
                                         "type": "GlobalReference"
                                     },
-                            "category": "Parameter",
+                            "category": "PARAMETER",
                             "idShort": "ExampleReferenceElement",
                             "description":  [
                                     {
@@ -2847,7 +2847,7 @@
                                 ],
                                 "type": "GlobalReference"
                             },
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "ExampleSubmodelElementCollection2",
                     "description":  [
                             {

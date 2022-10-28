@@ -102,7 +102,7 @@
                         "type": "GlobalReference"
                     },
                     "idShort": "MaxRotationSpeed",
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "value": "5000",
                     "valueType": "xs:integer"
                 }

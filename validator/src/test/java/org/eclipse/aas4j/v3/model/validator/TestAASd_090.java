@@ -42,17 +42,17 @@ import org.junit.Test;
 public class TestAASd_090 {
 	@Test
 	public void correctCategoryConstant() throws ValidationException {
-		ShaclValidator.getInstance().validate(createProperty("idShort1", "Constant"));
+		ShaclValidator.getInstance().validate(createProperty("idShort1", "CONSTANT"));
 	}
 
 	@Test
 	public void correctCategoryParameter() throws ValidationException {
-		ShaclValidator.getInstance().validate(createProperty("idShort1", "Parameter"));
+		ShaclValidator.getInstance().validate(createProperty("idShort1", "PARAMETER"));
 	}
 
 	@Test
 	public void correctCategoryVariable() throws ValidationException {
-		ShaclValidator.getInstance().validate(createProperty("idShort1", "Variable"));
+		ShaclValidator.getInstance().validate(createProperty("idShort1", "VARIABLE"));
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class TestAASd_090 {
 			fail();
 		} catch (ValidationException e) {
 			assertTrue(e.getMessage().endsWith(
-					"For data elements DataElement/category shall be one of the following values: Constant, Parameter or Variable. Exception: File and Blob data elements."));
+					"For data elements Referable/category shall be one of the following values: CONSTANT, PARAMETER or VARIABLE. Exception: File and Blob data elements."));
 		}
 	}
 

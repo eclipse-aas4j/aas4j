@@ -397,7 +397,7 @@
                     },
                     "value": "5000",
                     "valueType": "xs:integer",
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "idShort": "MaxRotationSpeed"
                 }
             ]
@@ -484,7 +484,7 @@
                     },
                     "value": "4370",
                     "valueType": "xs:integer",
-                    "category": "Variable",
+                    "category": "VARIABLE",
                     "idShort": "RotationSpeed"
                 }
             ]

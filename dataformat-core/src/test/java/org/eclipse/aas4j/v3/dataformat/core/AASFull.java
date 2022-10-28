@@ -296,7 +296,7 @@ public class AASFull {
                                 .build())
                         .statements(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty2")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -320,7 +320,7 @@ public class AASFull {
                                 .build())
                         .statements(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -391,7 +391,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultRelationshipElement.Builder()
                         .idShort("ExampleRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel RelationshipElement Element").language("de").build()
@@ -436,7 +436,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultAnnotatedRelationshipElement.Builder()
                         .idShort("ExampleAnnotatedRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
@@ -481,7 +481,7 @@ public class AASFull {
                         .annotations(new DefaultProperty.Builder()
                                 .kind(ModelingKind.INSTANCE)
                                 .idShort("ExampleProperty3")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .value("some example annotation")
                                 .valueType(DataTypeDefXsd.STRING)
                                 .build())
@@ -489,7 +489,7 @@ public class AASFull {
                 .submodelElements(new DefaultOperation.Builder()
                         .idShort("ExampleOperation")
                         .kind(ModelingKind.TEMPLATE)
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Operation Element").language("de").build()
@@ -504,7 +504,7 @@ public class AASFull {
                         .inputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty1")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -530,7 +530,7 @@ public class AASFull {
                         .outputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty2")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -556,7 +556,7 @@ public class AASFull {
                         .inoutputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty3")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -582,7 +582,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultCapability.Builder()
                         .idShort("ExampleCapability")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Capability Element").language("de").build()
@@ -597,7 +597,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultBasicEventElement.Builder()
                         .idShort("ExampleBasicEvent")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .direction(Direction.INPUT)
                         .state(StateOfEvent.ON)
                         .description(Arrays.asList(
@@ -629,7 +629,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelElementListOrdered")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .orderRelevant(true)
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example ExampleSubmodelElementListOrdered object").language("en-us").build(),
@@ -645,7 +645,7 @@ public class AASFull {
                         .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -669,7 +669,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .value(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example value of a MultiLanguageProperty element").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispielswert für ein MultiLanguageProperty-Element").language("de").build()
@@ -695,7 +695,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Range Element").language("de").build()
@@ -714,7 +714,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
@@ -728,7 +728,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultBlob.Builder()
                                 .idShort("ExampleBlob")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Blob Element").language("de").build()
@@ -744,7 +744,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultFile.Builder()
                                 .idShort("ExampleFile")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel File Element").language("de").build()
@@ -761,7 +761,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultReferenceElement.Builder()
                                 .idShort("ExampleReferenceElement")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Reference Element Element").language("de").build()
@@ -960,7 +960,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultRelationshipElement.Builder()
                         .idShort("ExampleRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel RelationshipElement Element").language("de").build()
@@ -1005,7 +1005,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultAnnotatedRelationshipElement.Builder()
                         .idShort("ExampleAnnotatedRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
@@ -1050,7 +1050,7 @@ public class AASFull {
                         .annotations(new DefaultProperty.Builder()
                                 .kind(ModelingKind.INSTANCE)
                                 .idShort("ExampleProperty")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .value("some example annotation")
                                 .valueType(DataTypeDefXsd.STRING)
                                 .build())
@@ -1058,7 +1058,7 @@ public class AASFull {
                 .submodelElements(new DefaultOperation.Builder()
                         .idShort("ExampleOperation")
                         .kind(ModelingKind.TEMPLATE)
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Operation Element").language("de").build()
@@ -1073,7 +1073,7 @@ public class AASFull {
                         .inputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty1")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1096,7 +1096,7 @@ public class AASFull {
                         .outputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty2")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1119,7 +1119,7 @@ public class AASFull {
                         .inoutputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty3")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1142,7 +1142,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultCapability.Builder()
                         .idShort("ExampleCapability")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Capability Element").language("de").build()
@@ -1157,7 +1157,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultBasicEventElement.Builder()
                         .idShort("ExampleBasicEvent")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .direction(Direction.INPUT)
                         .state(StateOfEvent.ON)
                         .description(Arrays.asList(
@@ -1189,7 +1189,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelElementListOrdered")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .orderRelevant(true)
                         .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .description(Arrays.asList(
@@ -1205,7 +1205,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1226,7 +1226,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .value(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example value of a MultiLanguageProperty element").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispielswert für ein MultiLanguageProperty-Element").language("de").build()
@@ -1245,7 +1245,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Range Element").language("de").build()
@@ -1264,7 +1264,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
@@ -1278,7 +1278,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultBlob.Builder()
                                 .idShort("ExampleBlob")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Blob Element").language("de").build()
@@ -1295,7 +1295,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultFile.Builder()
                                 .idShort("ExampleFile")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel File Element").language("de").build()
@@ -1312,7 +1312,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultReferenceElement.Builder()
                                 .idShort("ExampleReferenceElement")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Reference Element Element").language("de").build()
@@ -1367,7 +1367,7 @@ public class AASFull {
                 .kind(ModelingKind.TEMPLATE)
                 .submodelElements(new DefaultRelationshipElement.Builder()
                         .idShort("ExampleRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel RelationshipElement Element").language("de").build()
@@ -1413,7 +1413,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultAnnotatedRelationshipElement.Builder()
                         .idShort("ExampleAnnotatedRelationshipElement")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
@@ -1460,7 +1460,7 @@ public class AASFull {
                 .submodelElements(new DefaultOperation.Builder()
                         .idShort("ExampleOperation")
                         .kind(ModelingKind.TEMPLATE)
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Operation Element").language("de").build()
@@ -1476,7 +1476,7 @@ public class AASFull {
                         .inputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1496,7 +1496,7 @@ public class AASFull {
                         .outputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1516,7 +1516,7 @@ public class AASFull {
                         .inoutputVariables(new DefaultOperationVariable.Builder()
                                 .value(new DefaultProperty.Builder()
                                         .idShort("ExampleProperty")
-                                        .category("Constant")
+                                        .category("CONSTANT")
                                         .description(Arrays.asList(
                                                 new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1536,7 +1536,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultCapability.Builder()
                         .idShort("ExampleCapability")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel Capability Element").language("de").build()
@@ -1552,7 +1552,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultBasicEventElement.Builder()
                         .idShort("ExampleBasicEvent")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .direction(Direction.OUTPUT)
                         .state(StateOfEvent.OFF)
                         .description(Arrays.asList(
@@ -1585,7 +1585,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelElementListOrdered")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .orderRelevant(true)
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementListOrdered object").language("en-us").build(),
@@ -1602,7 +1602,7 @@ public class AASFull {
                         .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Property Element").language("de").build()
@@ -1620,7 +1620,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
-                                .category("Constant")
+                                .category("CONSTANT")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example MultiLanguageProperty object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel MultiLanguageProperty Element").language("de").build()
@@ -1636,7 +1636,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Range Element").language("de").build()
@@ -1655,7 +1655,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange2")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Range Element").language("de").build()
@@ -1675,7 +1675,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
@@ -1690,7 +1690,7 @@ public class AASFull {
                         .kind(ModelingKind.TEMPLATE)
                         .value(new DefaultBlob.Builder()
                                 .idShort("ExampleBlob")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Blob Element").language("de").build()
@@ -1707,7 +1707,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultFile.Builder()
                                 .idShort("ExampleFile")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel File Element").language("de").build()
@@ -1725,7 +1725,7 @@ public class AASFull {
                                 .build())
                         .value(new DefaultReferenceElement.Builder()
                                 .idShort("ExampleReferenceElement")
-                                .category("Parameter")
+                                .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangString.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangString.Builder().text("Beispiel Reference Element Element").language("de").build()
@@ -1742,7 +1742,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection2")
-                        .category("Parameter")
+                        .category("PARAMETER")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()

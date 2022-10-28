@@ -1,6 +1,6 @@
 {
   "idShort": "ExampleSubmodelElementCollection",
-  "category": "Parameter",
+  "category": "PARAMETER",
   "description": [
     {
       "language": "en-us",
@@ -34,7 +34,7 @@
       } ],
       "type" : "GlobalReference"
     },
-    "category" : "Parameter",
+    "category" : "PARAMETER",
     "description" : [ {
       "language" : "en-us",
       "text" : "Example Blob object"
@@ -54,7 +54,7 @@
       } ],
       "type" : "GlobalReference"
     },
-    "category" : "Parameter",
+    "category" : "PARAMETER",
     "description" : [ {
       "language" : "en-us",
       "text" : "Example File object"
@@ -73,7 +73,7 @@
       } ],
       "type" : "GlobalReference"
     },
-    "category" : "Parameter",
+    "category" : "PARAMETER",
     "description" : [ {
       "language" : "en-us",
       "text" : "Example Reference Element object"

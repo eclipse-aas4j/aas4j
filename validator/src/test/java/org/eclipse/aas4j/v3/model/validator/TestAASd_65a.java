@@ -82,7 +82,7 @@ public class TestAASd_65a {
 //                .dataSpecification( ConstraintTestHelper.createDummyReference() )
 //                .build();
 
-        ConceptDescription cd = ConstraintTestHelper.createConceptDescription("Concept-Description", "http://example.org/MultilanguageCD", "constant");
+        ConceptDescription cd = ConstraintTestHelper.createConceptDescription("Concept-Description", "http://example.org/MultilanguageCD", "CONSTANT");
         cd.setCategory("VALUE");
 //        cd.setEmbeddedDataSpecifications(new ArrayList<>(){{ add(embeddedDataSpecification) ; }} );
 
@@ -146,7 +146,7 @@ public class TestAASd_65a {
 //                .dataSpecification( ConstraintTestHelper.createDummyReference() )
 //                .build();
 
-        ConceptDescription cd = ConstraintTestHelper.createConceptDescription("Concept-Description", "http://example.org/MultilanguageCD", "constant");
+        ConceptDescription cd = ConstraintTestHelper.createConceptDescription("Concept-Description", "http://example.org/MultilanguageCD", "CONSTANT");
         cd.setCategory("VALUE");
 //        cd.setEmbeddedDataSpecifications(new ArrayList<>(){{ add(embeddedDataSpecification) ; }} );
 
