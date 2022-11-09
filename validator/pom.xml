@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>dataformat-parent</artifactId>
-        <groupId>org.eclipse.aas4j</groupId>
+        <groupId>org.eclipse.digitaltwin.aas4j</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
