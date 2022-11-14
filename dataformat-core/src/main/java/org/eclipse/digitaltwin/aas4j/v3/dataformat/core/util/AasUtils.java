@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
 import com.google.common.reflect.TypeToken;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.slf4j.Logger;
@@ -42,13 +41,16 @@ public class AasUtils {
 
     private static final char UNDERSCORE = '_';
     private static final String KEY_REGEX_GROUP_TYPE = "type";
-    private static final String KEY_REGEX_GROUP_ID_TYPE = "idtype";
     private static final String KEY_REGEX_GROUP_VALUE = "value";
     private static final Pattern KEY_REGEX = Pattern.compile(
-            String.format("\\((?<%s>\\w+)\\)\\[(?<%s>\\w+)\\](?<%s>.*)",
+            String.format("\\((?<%s>\\w+)\\)(?<%s>.*)",
                     KEY_REGEX_GROUP_TYPE,
-                    KEY_REGEX_GROUP_ID_TYPE,
                     KEY_REGEX_GROUP_VALUE));
+    private static final String REFERENCE_REGEX_GROUP_TYPE = "value";
+    private static final Pattern REFERENCE_TYPE_PREFIX_REGEX = Pattern.compile(
+            String.format("\\[(?<%s>[a-zA-Z]+)\\].*", REFERENCE_REGEX_GROUP_TYPE));
+
+    private static final String REFERENCE_ELEMENT_DELIMITER = ", ";
 
     private AasUtils() {
     }
@@ -57,23 +59,22 @@ public class AasUtils {
      * Formats a Reference as string
      *
      * @param reference Reference to serialize
-     * @return string representation of the reference for serialization, null if
-     * reference is null
+     * @return string representation of the reference for serialization, null if reference is null
      */
     public static String asString(Reference reference) {
         if (reference == null) {
             return null;
         }
-        return reference.getKeys().stream()
-                .map(x -> String.format("(%s)[%s]%s",
-                serializeEnumName(x.getType().name()),
-                x.getValue()))
-                .collect(Collectors.joining(","));
+        return String.format("[%s]%s", reference.getType(),
+                reference.getKeys().stream()
+                        .map(x -> String.format("(%s)%s",
+                        serializeEnumName(x.getType().name()),
+                        x.getValue()))
+                        .collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
     }
 
     /**
-     * Parses a given string as Reference. If the given string is not a valid
-     * reference, null is returned.
+     * Parses a given string as Reference. If the given string is not a valid reference, null is returned.
      *
      * @param value String representation of the reference
      * @return parsed Reference or null is given value is not a valid Reference
@@ -85,9 +86,8 @@ public class AasUtils {
     }
 
     /**
-     * Parses a given string as Reference using the provided implementation of
-     * Reference and Key interface. If the given string is not a valid
-     * reference, null is returned.
+     * Parses a given string as Reference using the provided implementation of Reference and Key interface. If the given
+     * string is not a valid reference, null is returned.
      *
      * @param value String representation of the reference
      * @param referenceType implementation type of Reference interface
@@ -95,28 +95,81 @@ public class AasUtils {
      * @return parsed Reference or null is given value is not a valid Reference
      */
     public static Reference parseReference(String value, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
-        if (value == null || value.isBlank()) {
+        String reference = value;
+        if (reference == null || reference.isBlank()) {
             return null;
         }
         try {
             Reference result = referenceType.getConstructor().newInstance();
-            result.setKeys(Stream.of(value.split(",")).map(x -> parseKey(x)).collect(Collectors.toList()));
-            // TODO: ReferenceType is ignored
-            //  result.setType(Stream.of(value.split(",")).map(x -> parseReferenceType(x)).collect(Collectors.toList()));
+            // check if optional [<ReferenceTypes>] is present, if so, check for consistency
+            Matcher matcher = REFERENCE_TYPE_PREFIX_REGEX.matcher(reference);
+            if (matcher.find()) {
+                result.setType(ReferenceTypes.valueOf(deserializeEnumName(matcher.group(REFERENCE_REGEX_GROUP_TYPE))));
+                reference = reference.substring(reference.indexOf(serializeEnumName(result.getType().name())) + 1);
+
+            }
+            result.setKeys(Stream.of(reference.split(REFERENCE_ELEMENT_DELIMITER))
+                    .map(x -> parseKey(x))
+                    .collect(Collectors.toList()));
+            if (!result.getKeys().isEmpty()) {
+                if (result.getType() == null) {
+                    // deduct from first element
+                    result.setType(result.getKeys().get(0).getType() == KeyTypes.GLOBAL_REFERENCE
+                            ? ReferenceTypes.GLOBAL_REFERENCE
+                            : ReferenceTypes.MODEL_REFERENCE);
+                } else {
+                    // validate against first element
+                    if (!isCompatible(result.getKeys().get(0).getType(), result.getType())) {
+                        throw new IllegalArgumentException(String.format("invalid reference - reference type '%s' is not compatible with type of first key elemenet '%s'",
+                                result.getType(), result.getKeys().get(0)));
+                    }
+                }
+            }
+            // check that keys following SubmodelElementList have valid index (i.e. are number >= 0)
+            validateSubmodelElementListKeyValues(result.getKeys());
             return result;
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
         }
     }
 
+    private static void validateSubmodelElementListKeyValues(List<Key> keys) {
+        if (keys == null || keys.size() <= 1) {
+            return;
+        }
+        for (int i = 0; i < keys.size() - 1; i++) {
+            if (keys.get(i).getType() == KeyTypes.SUBMODEL_ELEMENT_LIST) {
+                try {
+                    if (Integer.parseInt(keys.get(i + 1).getValue()) < 0) {
+                        throw new IllegalArgumentException(String.format("invalid value for key with index %d, expected integer values >= 0, but found '%s'",
+                                i, keys.get(i + 1).getValue()));
+                    }
+                } catch (NumberFormatException ex) {
+                    throw new IllegalArgumentException(String.format("invalid value for key with index %d, expected integer values >= 0, but found '%s'",
+                            i, keys.get(i + 1).getValue()));
+                }
+            }
+        }
+    }
+
+    private static boolean isCompatible(KeyTypes keyType, ReferenceTypes referenceType) {
+        if (keyType == null && referenceType == null) {
+            return true;
+        }
+        if (keyType == null ^ referenceType == null) {
+            return false;
+        }
+        return referenceType == ReferenceTypes.GLOBAL_REFERENCE
+                ? keyType == KeyTypes.GLOBAL_REFERENCE
+                : keyType != KeyTypes.GLOBAL_REFERENCE;
+    }
+
     /**
-     * Gets property with given name as defined in type of given parent or null
-     * if not defined
+     * Gets property with given name as defined in type of given parent or null if not defined
      *
      * @param parent parent object
      * @param propertyName name of the property
-     * @return property with given name as defined in type of given parent or
-     * null if not defined
+     * @return property with given name as defined in type of given parent or null if not defined
      */
     public static PropertyDescriptor getProperty(Object parent, String propertyName) {
         if (parent == null || propertyName == null || propertyName.isBlank()) {
@@ -139,13 +192,11 @@ public class AasUtils {
     }
 
     /**
-     * Gets property with given name as defined in given type or null if not
-     * defined
+     * Gets property with given name as defined in given type or null if not defined
      *
      * @param type type containing the property
      * @param propertyName name of the property
-     * @return property with given name as defined in given type or null if not
-     * defined
+     * @return property with given name as defined in given type or null if not defined
      */
     public static PropertyDescriptor getProperty(Class<?> type, String propertyName) {
         if (type == null || propertyName == null || propertyName.isBlank()) {
@@ -158,8 +209,7 @@ public class AasUtils {
     }
 
     /**
-     * Parses a given string as Key. If the given string is not a valid key,
-     * null is returned.
+     * Parses a given string as Key. If the given string is not a valid key, null is returned.
      *
      * @param value String representation of the key
      * @return parsed Key or null is given value is not a valid Key
@@ -167,9 +217,8 @@ public class AasUtils {
     public static Key parseKey(String value) {
         Matcher matcher = KEY_REGEX.matcher(value);
         if (matcher.find()) {
-            KeyTypes keyType = KeyTypes.valueOf(deserializeEnumName(matcher.group(KEY_REGEX_GROUP_ID_TYPE)));
             return new DefaultKey.Builder()
-                    .type(keyType)
+                    .type(KeyTypes.valueOf(deserializeEnumName(matcher.group(KEY_REGEX_GROUP_TYPE))))
                     .value(matcher.group(KEY_REGEX_GROUP_VALUE))
                     .build();
         }
@@ -177,22 +226,23 @@ public class AasUtils {
     }
 
     /**
-     * Checks if a reference is a local reference or not. This functionality may
-     * not be 100% correct as since v3.0RC01 of the AAS specification there no
-     * longer is an isLocal property to check this and no alternative way to
-     * determine whether a reference is local or not is introduced. This method
-     * only checks for the presence of any Key with type GLOBAL_REFERENCE.
-     * Another approach would be to actually try resolving the reference
-     * locally.
+     * Checks if a reference is a local reference or not. This functionality may not be 100% correct as since v3.0RC01
+     * of the AAS specification there no longer is an isLocal property to check this and no alternative way to determine
+     * whether a reference is local or not is introduced. This method only checks for the presence of any Key with type
+     * GLOBAL_REFERENCE. Another approach would be to actually try resolving the reference locally.
      *
      * @param reference The reference to check
-     * @param environment The environment context the reference resides. In
-     * current implementation this is not used
-     * @return true if the reference is a local reference to the given
-     * environment, false otherwise
+     * @param environment The environment context the reference resides. In current implementation this is not used
+     * @return true if the reference is a local reference to the given environment, false otherwise
      */
     public static boolean isLocal(Reference reference, Environment environment) {
-        return !reference.getKeys().stream().anyMatch(x -> x.getType() == KeyTypes.GLOBAL_REFERENCE);
+        if (reference == null) {
+            throw new IllegalArgumentException("reference must be non-null");
+        }
+        if (reference.getKeys() == null || reference.getKeys().isEmpty()) {
+            throw new IllegalArgumentException("reference must contain at least one key");
+        }
+        return reference.getKeys().get(0).getType() != KeyTypes.GLOBAL_REFERENCE;
     }
 
     public static List<Submodel> getSubmodelTemplates(AssetAdministrationShell aas, Environment environment) {
@@ -208,8 +258,7 @@ public class AasUtils {
     }
 
     /**
-     * Creates a reference for an Identifiable instance using provided
-     * implementation types for reference and key
+     * Creates a reference for an Identifiable instance using provided implementation types for reference and key
      *
      * @param identifiable the identifiable to create the reference for
      * @param referenceType implementation type of Reference interface
@@ -219,6 +268,7 @@ public class AasUtils {
     public static Reference toReference(Identifiable identifiable, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
         try {
             Reference reference = referenceType.getConstructor().newInstance();
+            reference.setType(ReferenceTypes.MODEL_REFERENCE);
             Key key = keyType.getConstructor().newInstance();
             key.setType(referableToKeyType(identifiable));
             key.setValue(identifiable.getId());
@@ -243,9 +293,8 @@ public class AasUtils {
      * Gets the KeyElements type matching the provided Referable
      *
      * @param referable The referable to convert to KeyElements type
-     * @return the most specific KeyElements type representing the Referable,
-     * i.e. abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT are never
-     * returned; null if there is no corresponding KeyElements type
+     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
+     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
      */
     public static KeyTypes referableToKeyType(Referable referable) {
         Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
@@ -305,9 +354,8 @@ public class AasUtils {
      * Gets a Java interface representing the type provided by key.
      *
      * @param key The KeyElements type
-     * @return a Java interface representing the provided KeyElements type or
-     * null if no matching Class/interface could be found. It also returns
-     * abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
+     * @return a Java interface representing the provided KeyElements type or null if no matching Class/interface could
+     * be found. It also returns abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
      */
     public static Class<?> keyTypeToClass(KeyTypes key) {
         return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
@@ -317,19 +365,18 @@ public class AasUtils {
     }
 
     /**
-     * Creates a reference for an element given a potential parent using
-     * provided implementation types for reference and key
+     * Creates a reference for an element given a potential parent using provided implementation types for reference and
+     * key
      *
-     * @param parent Reference to the parent. Can only be null when element is
-     * instance of Identifiable, otherwise result will always be null
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
      * @param element the element to create a reference for
      * @param referenceType implementation type of Reference interface
      * @param keyType implementation type of Key interface
      *
-     * @return A reference representing the element or null if either element is
-     * null or parent is null and element not an instance of Identifiable. In
-     * case element is an instance of Identifiable, the returned reference will
-     * only contain one key pointing directly to the element.
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
      */
     public static Reference toReference(Reference parent, Referable element, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
         if (element == null) {
@@ -355,13 +402,12 @@ public class AasUtils {
     /**
      * Creates a reference for an element given a potential parent
      *
-     * @param parent Reference to the parent. Can only be null when element is
-     * instance of Identifiable, otherwise result will always be null
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
      * @param element the element to create a reference for
-     * @return A reference representing the element or null if either element is
-     * null or parent is null and element not an instance of Identifiable. In
-     * case element is an instance of Identifiable, the returned reference will
-     * only contain one key pointing directly to the element.
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
      */
     public static Reference toReference(Reference parent, Referable element) {
         return toReference(parent,
@@ -375,8 +421,7 @@ public class AasUtils {
      *
      * @param ref1 reference 1
      * @param ref2 reference 2
-     * @return returns true if both references are refering to the same element,
-     * otherwise false
+     * @return returns true if both references are refering to the same element, otherwise false
      */
     public static boolean sameAs(Reference ref1, Reference ref2) {
         boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
@@ -418,8 +463,7 @@ public class AasUtils {
     }
 
     /**
-     * Creates a deep-copy clone of a reference using provided implementation
-     * types for reference and key
+     * Creates a deep-copy clone of a reference using provided implementation types for reference and key
      *
      * @param reference the reference to clone
      * @param referenceType implementation type of Reference interface
@@ -434,6 +478,7 @@ public class AasUtils {
         try {
             Reference result = referenceType.getConstructor().newInstance();
             List<Key> newKeys = new ArrayList<>();
+            result.setType(reference.getType());
             for (Key key : reference.getKeys()) {
                 Key newKey = keyType.getConstructor().newInstance();
                 newKey.setType(key.getType());
@@ -448,15 +493,13 @@ public class AasUtils {
     }
 
     /**
-     * Resolves a Reference within an AssetAdministrationShellEnvironment and
-     * returns the targeted object if available, null otherwise
+     * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted object if available,
+     * null otherwise
      *
      *
      * @param reference The reference to resolve
-     * @param env The AssetAdministrationShellEnvironment to resolve the
-     * reference against
-     * @return returns an instance of T if the reference could successfully be
-     * resolved, otherwise null
+     * @param env The AssetAdministrationShellEnvironment to resolve the reference against
+     * @return returns an instance of T if the reference could successfully be resolved, otherwise null
      * @throws IllegalArgumentException if something goes wrong while resolving
      */
     public static Referable resolve(Reference reference, Environment env) {
@@ -464,18 +507,14 @@ public class AasUtils {
     }
 
     /**
-     * Resolves a Reference within an AssetAdministrationShellEnvironment and
-     * returns the targeted object if available, null otherwise
+     * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted object if available,
+     * null otherwise
      *
-     * @param <T> sub-type of Referable of the targeted type. If unknown use
-     * Referable.class
+     * @param <T> sub-type of Referable of the targeted type. If unknown use Referable.class
      * @param reference The reference to resolve
-     * @param env The AssetAdministrationShellEnvironment to resolve the
-     * reference against
-     * @param type desired return type, use Referable.class is unknwon/not
-     * needed
-     * @return returns an instance of T if the reference could successfully be
-     * resolved, otherwise null
+     * @param env The AssetAdministrationShellEnvironment to resolve the reference against
+     * @param type desired return type, use Referable.class is unknwon/not needed
+     * @return returns an instance of T if the reference could successfully be resolved, otherwise null
      * @throws IllegalArgumentException if something goes wrong while resolving
      */
     public static <T extends Referable> T resolve(Reference reference, Environment env, Class<T> type) {
@@ -527,40 +566,53 @@ public class AasUtils {
             Key key = reference.getKeys().get(i);
             Class<?> keyType = keyTypeToClass(key.getType());
             if (keyType != null) {
-                Collection collection;
-                // operation needs special handling because of nested values               
-                if (Operation.class.isAssignableFrom(current.getClass())) {
-                    Operation operation = (Operation) current;
-
-                    collection = Stream.of(operation.getInputVariables().stream(),
-                            operation.getOutputVariables().stream(),
-                            operation.getInoutputVariables().stream())
-                            .flatMap(x -> x.map(y -> y.getValue()))
-                            .collect(Collectors.toSet());
-                } else {
-                    List<PropertyDescriptor> matchingProperties = getAasProperties(current.getClass()).stream()
-                            .filter(x -> Collection.class.isAssignableFrom(x.getReadMethod().getReturnType()))
-                            .filter(x -> TypeToken.of(x.getReadMethod().getGenericReturnType())
-                            .resolveType(Collection.class.getTypeParameters()[0])
-                            .isSupertypeOf(keyType))
-                            .collect(Collectors.toList());
-                    if (matchingProperties.isEmpty()) {
-                        throw new IllegalArgumentException(String.format("error resolving reference - could not find matching property for type %s in class %s",
-                                keyType.getSimpleName(),
-                                current.getClass().getSimpleName()));
-                    }
-                    if (matchingProperties.size() > 1) {
-                        throw new IllegalArgumentException(String.format("error resolving reference - found %d possible property paths for class %s (%s)",
-                                matchingProperties.size(),
-                                current.getClass().getSimpleName(),
-                                matchingProperties.stream()
-                                        .map(x -> x.getName())
-                                        .collect(Collectors.joining(", "))));
-                    }
+                if (SubmodelElementList.class.isAssignableFrom(current.getClass())) {
                     try {
-                        collection = (Collection) matchingProperties.get(0).getReadMethod().invoke(current);
-                    } catch (Exception ex) {
-                        throw new IllegalArgumentException("error resolving reference", ex);
+                        current = ((SubmodelElementList) current).getValue().get(Integer.parseInt(key.getValue()));
+                    } catch (NumberFormatException ex) {
+                        throw new IllegalArgumentException(String.format("invalid value for key with index %d, expected integer values >= 0, but found '%s'",
+                                i, key.getValue()));
+                    } catch (IndexOutOfBoundsException ex) {
+                        throw new IllegalArgumentException(String.format("index out of bounds exception for key with index %d, expected integer values >= 0 and < %d, but found '%s'",
+                                i,
+                                ((SubmodelElementList) current).getValue().size(),
+                                key.getValue()));
+                    }
+                } else {
+                    Collection collection;
+                    // operation needs special handling because of nested values               
+                    if (Operation.class.isAssignableFrom(current.getClass())) {
+                        Operation operation = (Operation) current;
+                        collection = Stream.of(operation.getInputVariables().stream(),
+                                operation.getOutputVariables().stream(),
+                                operation.getInoutputVariables().stream())
+                                .flatMap(x -> x.map(y -> y.getValue()))
+                                .collect(Collectors.toSet());
+                    } else {
+                        List<PropertyDescriptor> matchingProperties = getAasProperties(current.getClass()).stream()
+                                .filter(x -> Collection.class.isAssignableFrom(x.getReadMethod().getReturnType()))
+                                .filter(x -> TypeToken.of(x.getReadMethod().getGenericReturnType())
+                                .resolveType(Collection.class.getTypeParameters()[0])
+                                .isSupertypeOf(keyType))
+                                .collect(Collectors.toList());
+                        if (matchingProperties.isEmpty()) {
+                            throw new IllegalArgumentException(String.format("error resolving reference - could not find matching property for type %s in class %s",
+                                    keyType.getSimpleName(),
+                                    current.getClass().getSimpleName()));
+                        }
+                        if (matchingProperties.size() > 1) {
+                            throw new IllegalArgumentException(String.format("error resolving reference - found %d possible property paths for class %s (%s)",
+                                    matchingProperties.size(),
+                                    current.getClass().getSimpleName(),
+                                    matchingProperties.stream()
+                                            .map(x -> x.getName())
+                                            .collect(Collectors.joining(", "))));
+                        }
+                        try {
+                            collection = (Collection) matchingProperties.get(0).getReadMethod().invoke(current);
+                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                            throw new IllegalArgumentException("error resolving reference", ex);
+                        }
                     }
                     Optional next = collection.stream()
                             .filter(x -> ((Referable) x).getIdShort().equals(key.getValue()))
@@ -576,14 +628,12 @@ public class AasUtils {
     }
 
     /**
-     * Gets a list of all properties defined for a class implementing at least
-     * one AAS interface.
+     * Gets a list of all properties defined for a class implementing at least one AAS interface.
      *
-     * @param type A class implementing at least one AAS interface. If it is
-     * does not implement any AAS interface the result will be an empty list
-     * @return a list of all properties defined in any of AAS interface
-     * implemented by type. If type does not implement any AAS interface an
-     * empty list is returned.
+     * @param type A class implementing at least one AAS interface. If it is does not implement any AAS interface the
+     * result will be an empty list
+     * @return a list of all properties defined in any of AAS interface implemented by type. If type does not implement
+     * any AAS interface an empty list is returned.
      */
     public static List<PropertyDescriptor> getAasProperties(Class<?> type) {
         Class<?> aasType = ReflectionHelper.getAasInterface(type);
