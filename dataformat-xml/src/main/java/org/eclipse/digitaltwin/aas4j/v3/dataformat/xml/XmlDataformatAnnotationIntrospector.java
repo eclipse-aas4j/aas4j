@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 
 /**
  * This class helps to dynamically decide how to de-/serialize classes and
