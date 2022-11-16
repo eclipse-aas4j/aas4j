@@ -1,0 +1,53 @@
+
+{
+    "modelType": "Property",
+    "kind": "Instance",
+    "category": "VARIABLE",
+    "semanticId":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "0173-1#02-AAO677#002"
+                    }
+                ],
+                "type": "GlobalReference"
+            },
+    "value": "http://acplt.org/ValueId/ACPLT",
+    "valueId":
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "http://acplt.org/ValueId/ACPLT"
+                    }
+                ],
+                "type": "GlobalReference"
+            },
+    "valueType": "xs:string",
+    "qualifiers": [
+        {
+            "type": "http://acplt.org/Qualifier/ExampleQualifier",
+            "value": "100",
+            "valueType": "xs:int",
+            "kind": "ConceptQualifier"
+        },
+        {
+            "type": "http://acplt.org/Qualifier/ExampleQualifier2",
+            "value": "50",
+            "valueType": "xs:int",
+            "kind": "ConceptQualifier"
+        }
+    ],
+    "idShort": "ManufacturerName",
+    "description": [
+        {
+            "language": "en-us",
+            "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
+        },
+        {
+            "language": "de",
+            "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+        }
+    ]
+}

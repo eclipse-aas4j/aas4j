@@ -127,7 +127,7 @@ public class Examples {
     public static final ExampleData<List<SubmodelElement>> SUBMODEL_ELEMENT_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0),
                     AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(1)),
-            "SubmodElelement-List.json");
+            "SubmodelElement-List.json");
     
     public static final ExampleData<List<Submodel>> SUBMODEL_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0),
