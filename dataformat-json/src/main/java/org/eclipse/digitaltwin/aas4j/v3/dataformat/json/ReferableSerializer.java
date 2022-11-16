@@ -15,10 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.util.Collection;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-
-import java.util.List;
 
 /**
  * Serializer Interface for serialization of referables
@@ -40,6 +39,6 @@ public interface ReferableSerializer {
      * @return the string representation of the list of referables
      * @throws SerializationException if serialization fails
      */
-    String write(List<Referable> referables) throws SerializationException;
+    String write(Collection<? extends Referable> referables) throws SerializationException;
 
 }

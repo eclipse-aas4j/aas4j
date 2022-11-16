@@ -16,27 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-
 public interface AssetInformationMixin {
-
-    @JsonProperty("thumbnail")
-    public void setDefaultThumbnail(File value);
-
-    @JsonProperty("thumbnail")
-    public File getDefaultThumbnail();
-
-    @JsonProperty("billOfMaterial")
-    public List<Submodel> getBillOfMaterials();
-
-    @JsonProperty("billOfMaterial")
-    public void setBillOfMaterials(List<Submodel> billOfMaterials);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public AssetKind getAssetKind();

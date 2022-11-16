@@ -32,8 +32,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Class for validating a serialized instance of
- * AssetAdministrationShellEnvironment against a json-schema.
+ * Class for validating a serialized instance of AssetAdministrationShellEnvironment against a json-schema.
  */
 public class JsonSchemaValidator implements SchemaValidator {
 
@@ -46,8 +45,7 @@ public class JsonSchemaValidator implements SchemaValidator {
     /**
      * validates against default schema
      *
-     * @param serialized AssetAdministrationShellEnvironment, serialized as json
-     * string
+     * @param serialized AssetAdministrationShellEnvironment, serialized as json string
      * @return Set of messages to display validation results
      */
     @Override
@@ -62,10 +60,8 @@ public class JsonSchemaValidator implements SchemaValidator {
     /**
      * validates against custom schema
      *
-     * @param serialized AssetAdministrationShellEnvironment, serialized as json
-     * string
-     * @param serializedSchema Custom json-schema serialized as String that must
-     * extend the default aas-schema
+     * @param serialized AssetAdministrationShellEnvironment, serialized as json string
+     * @param serializedSchema Custom json-schema serialized as String that must extend the default aas-schema
      * @return Set of messages to display validation results
      */
     public Set<String> validateSchema(String serialized, String serializedSchema) {

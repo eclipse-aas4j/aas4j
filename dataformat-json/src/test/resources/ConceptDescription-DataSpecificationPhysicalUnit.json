@@ -1,0 +1,45 @@
+{
+    "modelType": "ConceptDescription",
+    "id": "https://example.org/ConceptDescription",
+    "category": "PROPERTY",
+    "embeddedDataSpecifications": [
+        {
+            "dataSpecification":
+                    {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
+            "dataSpecificationContent":
+                    {
+                        "modelType": "DataSpecificationPhysicalUnit",
+                        "conversionFactor": "1.0",
+                        "dinNotation": "din-notation",
+                        "eceCode": "ece-code",
+                        "eceName": "ece-name",
+                        "nistName": "nist-name",
+                        "registrationAuthorityId": "registration-authority-id",
+                        "siName": "si-name",
+                        "siNotation": "si-notation",
+                        "sourceOfDefinition": "source-of-definition",
+                        "supplier": "supplier",
+                        "unitName": "unit-name",
+                        "unitSymbol": "unit-symbol",
+                        "definition": [
+                            {
+                                "language": "en",
+                                "text": "definition-en"
+                            },
+                            {
+                                "language": "de",
+                                "text": "definition-de"
+                            }
+                        ]
+                    }
+        }
+    ]
+}

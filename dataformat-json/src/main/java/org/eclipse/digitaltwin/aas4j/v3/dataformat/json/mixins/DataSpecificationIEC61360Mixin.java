@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-// TODO import io.adminshell.aas.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
@@ -29,9 +28,8 @@ public interface DataSpecificationIEC61360Mixin {
     @JsonProperty("levelType")
     public List<LevelType> getLevelTypes();
 
-    // TODO
-    // @JsonProperty("levelType")
-    // public void setLevelTypes(List<LevelType> levelTypes);
+    @JsonProperty("levelType")
+    public void setLevelTypes(List<LevelType> levelTypes);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")
@@ -39,10 +37,4 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JsonProperty("preferredName")
     public void setPreferredName(List<LangString> preferredName);
-
-    @JsonProperty("shortName")
-    public List<LangString> getShortName();
-
-    @JsonProperty("shortName")
-    public void setShortName(List<LangString> shortName);
 }

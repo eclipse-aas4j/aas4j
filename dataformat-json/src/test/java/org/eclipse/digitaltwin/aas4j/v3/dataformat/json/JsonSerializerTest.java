@@ -20,10 +20,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Set;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.json.JSONException;
 import org.junit.Rule;
@@ -37,12 +35,11 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 
 public class JsonSerializerTest {
-    public static final java.io.File AASSIMPLE_FILE = new java.io.File("src/test/resources/jsonExample.json");
-    public static final java.io.File AASFULL_FILE = new java.io.File("src/test/resources/test_demo_full_example.json");
 
     private static final Logger logger = LoggerFactory.getLogger(JsonSerializerTest.class);
 
@@ -63,22 +60,22 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeEmpty() throws JsonProcessingException, IOException, SerializationException, JSONException {
-        validateAndCompare(new java.io.File("src/test/resources/empty_aas.json"), new DefaultEnvironment.Builder().build());
+        validateAndCompare(Examples.ENVIRONMENT_EMPTY);
     }
 
     @Test
     public void testSerializeSimpleExample() throws SerializationException, JSONException, IOException {
-        validateAndCompare(AASSIMPLE_FILE, AASSimple.ENVIRONMENT);
+        validateAndCompare(Examples.EXAMPLE_SIMPLE);
     }
 
     @Test
     public void testSerializeFullExample() throws SerializationException, JSONException, IOException {
-        validateAndCompare(AASFULL_FILE, AASFull.ENVIRONMENT);
+        validateAndCompare(Examples.EXAMPLE_FULL);
     }
 
-    private void validateAndCompare(File expectedFile, Environment environment) throws IOException, SerializationException, JSONException {
-        String expected = Files.readString(expectedFile.toPath());
-        String actual = new JsonSerializer().write(environment);
+    private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
+        String expected = exampleData.fileContent();
+        String actual = new JsonSerializer().write(exampleData.getModel());
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());

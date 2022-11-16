@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import java.util.List;
 
@@ -27,12 +26,4 @@ public interface ConceptDescriptionMixin {
 
     @JsonProperty("isCaseOf")
     public void setIsCaseOfs(List<Reference> isCaseOfs);
-//
-//    @JsonProperty("embeddedDataSpecifications")
-//    public List<DataSpecification> getEmbeddedDataSpecifications();
-//
-//    @JsonProperty("embeddedDataSpecifications")
-//    @JsonDeserialize(using = DataSpecificationDeserializer.class)
-
-    // TODO public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 }

@@ -83,7 +83,7 @@ public class CustomProperty implements Property {
 					&& Objects.equals(this.description, other.description)
 					&& Objects.equals(this.displayName, other.displayName)
 					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
-					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
 					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
 		}
 	}

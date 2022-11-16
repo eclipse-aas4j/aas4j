@@ -42,11 +42,11 @@ public class JsonValidationTest {
 
     @Test
     @Parameters({
-            "src/test/resources/empty_aas.json",
-            "src/test/resources/jsonExample.json",
+            "src/test/resources/Environment-Empty.json",
+            "src/test/resources/Example-Simple.json",
             "src/test/resources/MotorAAS.json",
-            "src/test/resources/MotorAAS_reduced.json",
-            "src/test/resources/test_demo_full_example.json"
+            "src/test/resources/MotorAAS-Reduced.json",
+            "src/test/resources/Example-Full.json"
     })
     public void validateValidJson(String file) throws IOException {
         String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
@@ -56,7 +56,7 @@ public class JsonValidationTest {
     }
 
     @Test
-    @Parameters({"src/test/resources/invalidJsonExample.json"})
+    @Parameters({"src/test/resources/Environment-Invalid.json"})
     public void validateInvalidJson(String file) throws IOException {
         String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
         Set<String> errors = validator.validateSchema(serializedEnvironment);

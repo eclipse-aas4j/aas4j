@@ -20,5 +20,5 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public interface FileMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getMimeType();
+    public String getContentType();
 }

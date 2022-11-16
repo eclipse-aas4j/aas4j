@@ -46,7 +46,7 @@
                         }
                     }
                 ],
-                "thumbnail": {
+                "defaultThumbnail": {
                     "contentType": "image/png",
                     "path": "file:///master/verwaltungsschale-detail-part1.png"
                 }

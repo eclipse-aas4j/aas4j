@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
 import com.google.common.reflect.TypeToken;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.MostSpecificTypeTokenComparator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

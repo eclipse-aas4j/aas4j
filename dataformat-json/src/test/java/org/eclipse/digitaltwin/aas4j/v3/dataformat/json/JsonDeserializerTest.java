@@ -15,44 +15,40 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
+import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class JsonDeserializerTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(JsonDeserializerTest.class);
-
     @Test
     public void testReadFromFile() throws Exception {
-        new JsonDeserializer().read(JsonSerializerTest.AASFULL_FILE);
+        new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream());
     }
 
     @Test
     public void testSimpleExample() throws Exception {
-        Environment env = new JsonDeserializer().read(JsonSerializerTest.AASSIMPLE_FILE);
-        Assert.assertEquals(AASSimple.ENVIRONMENT, env);
+        Environment expected = Examples.EXAMPLE_SIMPLE.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXAMPLE_SIMPLE.fileContentStream());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testFullExample() throws Exception {
-        Environment env = new JsonDeserializer().read(JsonSerializerTest.AASFULL_FILE);
-        Assert.assertEquals(AASFull.ENVIRONMENT, env);
+        Environment expected = Examples.EXAMPLE_FULL.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream());
+        Assert.assertEquals(expected, actual);
     }
 
     @Test

@@ -16,12 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -29,10 +27,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-// TODO import io.adminshell.aas.v3.dataformat.core.deserialization.EmbeddedDataSpecificationDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 /**
@@ -42,9 +38,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
-    // TODO
-    protected static Map<Class<?>, com.fasterxml.jackson.databind.JsonDeserializer> customDeserializers = Map.of(
-           /* EmbeddedDataSpecification.class, new EmbeddedDataSpecificationDeserializer() */);
 
     public JsonDeserializer() {
         initTypeResolver();
@@ -58,22 +51,14 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
                 .annotationIntrospector(new ReflectionAnnotationIntrospector())
                 .addModule(buildEnumModule())
                 .addModule(buildImplementationModule())
-                .addModule(buildCustomDeserializerModule())
                 .build();
         ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-    protected SimpleModule buildCustomDeserializerModule() {
-        SimpleModule module = new SimpleModule();
-        customDeserializers.forEach(module::addDeserializer);
-        return module;
     }
 
     private void initTypeResolver() {
         typeResolver = new SimpleAbstractTypeResolver();
         ReflectionHelper.DEFAULT_IMPLEMENTATIONS
                 .stream()
-                .filter(x -> !customDeserializers.containsKey(x.getInterfaceType()))
                 .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
     }
 
@@ -92,9 +77,7 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
     @Override
     public Environment read(String value) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(value), Environment.class);
-            return mapper.treeToValue(new ObjectMapper().readTree(value), Environment.class);
+            return mapper.readValue(value, Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
         }
@@ -109,9 +92,7 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
     @Override
     public <T extends Referable> T readReferable(String referable, Class<T> outputClass) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(referable), outputClass);
-            return mapper.treeToValue(new ObjectMapper().readTree(referable), outputClass);
+            return mapper.readValue(referable, outputClass);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing Referable", ex);
         }
@@ -120,10 +101,8 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer {
     @Override
     public <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            // String parsed = mapper.writeValueAsString(ModelTypeProcessor.preprocess(referables)) ;
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(referables)) ;
-            return mapper.readValue(parsed,new TypeReference<List<T>>(){});
+            return mapper.readValue(referables, new TypeReference<List<T>>() {
+            });
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of Referable", ex);
         }
