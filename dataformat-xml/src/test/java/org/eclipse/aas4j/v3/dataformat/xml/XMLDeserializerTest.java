@@ -24,7 +24,6 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class XMLDeserializerTest {
 
@@ -52,16 +51,17 @@ public class XMLDeserializerTest {
 
     @Test
     public void deserializeOperation() throws Exception {
-        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATION);
         Assert.assertNotNull(env);
-        Stream<Operation> operationStream = env.getSubmodels().stream().map(Submodel::getSubmodelElements).flatMap(List::stream)
-                .filter(submodelElement -> submodelElement instanceof Operation)
-                .map(submodelElement -> (Operation) submodelElement);
-        operationStream.forEach(operation -> {
-            operation.getInputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
-            operation.getOutputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
-            operation.getInoutputVariables().forEach(operationVariable -> Assert.assertNotNull(operationVariable.getValue()));
-        });
+
+        OperationVariable inputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInputVariables().get(0);
+        Assert.assertNotNull(inputVariable.getValue());
+
+        OperationVariable outputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getOutputVariables().get(0);
+        Assert.assertNotNull(outputVariable.getValue());
+
+        OperationVariable inoutputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInoutputVariables().get(0);
+        Assert.assertNotNull(inoutputVariable.getValue());
     }
 
     @Test

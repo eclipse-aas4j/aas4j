@@ -45,6 +45,7 @@ public class XmlSerializerTest {
     public static final java.io.File AASSIMPLE_FILE_WITH_TEST_NAMESPACE = new java.io.File("src/test/resources/xmlExampleWithModifiedPrefix.xml");
     public static final java.io.File AASFULL_FILE_WITH_ANNOTATED_RELATIONSHIP = new java.io.File("src/test/resources/annotated_relationship_example.xml");
     public static final java.io.File AASFULL_FILE_WITH_QUALIFIERS = new java.io.File("src/test/resources/qualifier_example.xml");
+    public static final java.io.File AASFULL_FILE_WITH_OPERATION = new java.io.File("src/test/resources/operation_example.xml");
 
     public static final java.io.File AASFULL_FILE_WITH_OPERATIONS = new java.io.File("src/test/resources/operation_example.xml");
 
