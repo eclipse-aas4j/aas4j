@@ -171,16 +171,6 @@
           </aas:key>
         </aas:keys>
       </aas:semanticId>
-      <aas:description>
-        <aas:langString>
-          <aas:language>en-us</aas:language>
-          <aas:text>An example asset identification submodel for the test application</aas:text>
-        </aas:langString>
-        <aas:langString>
-          <aas:language>de</aas:language>
-          <aas:text>Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung</aas:text>
-        </aas:langString>
-      </aas:description>
       <aas:submodelElements>
         <aas:property>
           <aas:idShort>ManufacturerName</aas:idShort>
@@ -226,29 +216,9 @@
               </aas:key>
             </aas:keys>
           </aas:valueId>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:property>
         <aas:property>
           <aas:idShort>InstanceId</aas:idShort>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
-            </aas:langString>
-          </aas:description>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
@@ -308,16 +278,6 @@
           </aas:key>
         </aas:keys>
       </aas:semanticId>
-      <aas:description>
-        <aas:langString>
-          <aas:language>en-us</aas:language>
-          <aas:text>An example bill of material submodel for the test application</aas:text>
-        </aas:langString>
-        <aas:langString>
-          <aas:language>de</aas:language>
-          <aas:text>Ein Beispiel-BillofMaterial-Submodel für eine Test-Anwendung</aas:text>
-        </aas:langString>
-      </aas:description>
       <aas:submodelElements>
         <aas:entity>
           <aas:idShort>ExampleEntity</aas:idShort>
@@ -374,16 +334,6 @@
                   </aas:key>
                 </aas:keys>
               </aas:valueId>
-              <aas:description>
-                <aas:langString>
-                  <aas:language>en-us</aas:language>
-                  <aas:text>Example Property object</aas:text>
-                </aas:langString>
-                <aas:langString>
-                  <aas:language>de</aas:language>
-                  <aas:text>Beispiel Property Element</aas:text>
-                </aas:langString>
-              </aas:description>
             </aas:property>
             <aas:property>
               <aas:category>Constant</aas:category>
@@ -418,29 +368,9 @@
                   </aas:key>
                 </aas:keys>
               </aas:valueId>
-              <aas:description>
-                <aas:langString>
-                  <aas:language>en-us</aas:language>
-                  <aas:text>Example Property object</aas:text>
-                </aas:langString>
-                <aas:langString>
-                  <aas:language>de</aas:language>
-                  <aas:text>Beispiel Property Element</aas:text>
-                </aas:langString>
-              </aas:description>
             </aas:property>
           </aas:statements>
           <aas:entityType>CoManagedEntity</aas:entityType>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:entity>
         <aas:entity>
           <aas:idShort>ExampleEntity2</aas:idShort>
@@ -473,16 +403,6 @@
               </aas:key>
             </aas:keys>
           </aas:globalAssetId>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:entity>
       </aas:submodelElements>
     </aas:submodel>
@@ -513,16 +433,6 @@
           </aas:key>
         </aas:keys>
       </aas:semanticId>
-      <aas:description>
-        <aas:langString>
-          <aas:language>en-us</aas:language>
-          <aas:text>An example submodel for the test application</aas:text>
-        </aas:langString>
-        <aas:langString>
-          <aas:language>de</aas:language>
-          <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
-        </aas:langString>
-      </aas:description>
       <aas:submodelElements>
         <aas:relationshipElement>
           <aas:category>Parameter</aas:category>
@@ -580,16 +490,6 @@
               </aas:key>
             </aas:keys>
           </aas:second>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Example RelationshipElement object</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Beispiel RelationshipElement Element</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:relationshipElement>
         <aas:annotatedRelationshipElement>
           <aas:category>Parameter</aas:category>
@@ -656,16 +556,6 @@
               <aas:value>some example annotation</aas:value>
             </aas:property>
           </aas:annotations>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Example AnnotatedRelationshipElement object</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Beispiel AnnotatedRelationshipElement Element</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:annotatedRelationshipElement>
         <aas:operation>
           <aas:category>Parameter</aas:category>
@@ -726,16 +616,6 @@
                       </aas:key>
                     </aas:keys>
                   </aas:valueId>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -776,16 +656,6 @@
                       </aas:key>
                     </aas:keys>
                   </aas:valueId>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -826,30 +696,10 @@
                       </aas:key>
                     </aas:keys>
                   </aas:valueId>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
           </aas:inoutputVariables>
-          <aas:description>
-            <aas:langString>
-              <aas:language>en-us</aas:language>
-              <aas:text>Example Operation object</aas:text>
-            </aas:langString>
-            <aas:langString>
-              <aas:language>de</aas:language>
-              <aas:text>Beispiel Operation Element</aas:text>
-            </aas:langString>
-          </aas:description>
         </aas:operation>
         <aas:capability>
           <aas:category>Parameter</aas:category>
@@ -972,16 +822,6 @@
                   </aas:key>
                 </aas:keys>
               </aas:valueId>
-              <aas:description>
-                <aas:langString>
-                  <aas:language>en-us</aas:language>
-                  <aas:text>Example Property object</aas:text>
-                </aas:langString>
-                <aas:langString>
-                  <aas:language>de</aas:language>
-                  <aas:text>Beispiel Property Element</aas:text>
-                </aas:langString>
-              </aas:description>
             </aas:property>
             <aas:multiLanguageProperty>
               <aas:category>Constant</aas:category>
@@ -1527,16 +1367,6 @@
                   </aas:qualifiers>
                   <aas:valueType>xs:string</aas:valueType>
                   <aas:value>exampleValue</aas:value>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -1574,16 +1404,6 @@
                   </aas:qualifiers>
                   <aas:valueType>xs:string</aas:valueType>
                   <aas:value>exampleValue</aas:value>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -1621,16 +1441,6 @@
                   </aas:qualifiers>
                   <aas:valueType>xs:string</aas:valueType>
                   <aas:value>exampleValue</aas:value>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -1754,16 +1564,6 @@
               </aas:qualifiers>
               <aas:valueType>xs:string</aas:valueType>
               <aas:value>exampleValue</aas:value>
-              <aas:description>
-                <aas:langString>
-                  <aas:language>en-us</aas:language>
-                  <aas:text>Example Property object</aas:text>
-                </aas:langString>
-                <aas:langString>
-                  <aas:language>de</aas:language>
-                  <aas:text>Beispiel Property Element</aas:text>
-                </aas:langString>
-              </aas:description>
             </aas:property>
             <aas:multiLanguageProperty>
               <aas:category>Constant</aas:category>
@@ -2105,16 +1905,6 @@
                     </aas:keys>
                   </aas:semanticId>
                   <aas:valueType>xs:string</aas:valueType>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -2146,16 +1936,6 @@
                     </aas:keys>
                   </aas:semanticId>
                   <aas:valueType>xs:string</aas:valueType>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
@@ -2187,16 +1967,6 @@
                     </aas:keys>
                   </aas:semanticId>
                   <aas:valueType>xs:string</aas:valueType>
-                  <aas:description>
-                    <aas:langString>
-                      <aas:language>en-us</aas:language>
-                      <aas:text>Example Property object</aas:text>
-                    </aas:langString>
-                    <aas:langString>
-                      <aas:language>de</aas:language>
-                      <aas:text>Beispiel Property Element</aas:text>
-                    </aas:langString>
-                  </aas:description>
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
