@@ -39,7 +39,7 @@ import org.eclipse.aas4j.v3.model.Submodel;
 public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
     private static final String[] SCHEMA_LOCATION = {"xsi:schemaLocation",
-        "https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd"};
+        "https://admin-shell.io/aas/3/0/RC02 AAS.xsd"};
 
     private static final QName AASENV_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "environment");
     private static final QName AASLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "assetAdministrationShells");

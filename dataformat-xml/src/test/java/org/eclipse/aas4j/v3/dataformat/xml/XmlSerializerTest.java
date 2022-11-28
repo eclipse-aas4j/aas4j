@@ -155,7 +155,7 @@ public class XmlSerializerTest {
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
         Set<String> errors = validateAgainstXsdSchema(actual);
-         logger.info(actual);
+        logger.debug(actual);
         logErrors(expectedFile.getName(), errors);
         assertTrue(errors.isEmpty());
         CompareMatcher xmlTestMatcher = CompareMatcher.isSimilarTo(expectedFile).normalizeWhitespace().ignoreComments()

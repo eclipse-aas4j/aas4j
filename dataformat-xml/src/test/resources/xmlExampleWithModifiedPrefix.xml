@@ -1,4 +1,6 @@
-<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd">
   <test:assetAdministrationShells>
     <test:assetAdministrationShell>
       <test:idShort>ExampleMotor</test:idShort>
