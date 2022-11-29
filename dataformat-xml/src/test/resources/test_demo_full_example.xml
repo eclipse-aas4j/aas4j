@@ -5,6 +5,16 @@
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>TestAssetAdministrationShell</aas:idShort>
+      <aas:description>
+        <aas:langString>
+          <aas:language>en-us</aas:language>
+          <aas:text>An Example Asset Administration Shell for the test application</aas:text>
+        </aas:langString>
+        <aas:langString>
+          <aas:language>de</aas:language>
+          <aas:text>Ein Beispiel-Verwaltungsschale für eine Test-Anwendung</aas:text>
+        </aas:langString>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -115,6 +125,16 @@
     </aas:assetAdministrationShell>
     <aas:assetAdministrationShell>
       <aas:idShort>TestAssetAdministrationShell</aas:idShort>
+      <aas:description>
+        <aas:langString>
+          <aas:language>en-us</aas:language>
+          <aas:text>An Example Asset Administration Shell for the test application</aas:text>
+        </aas:langString>
+        <aas:langString>
+          <aas:language>de</aas:language>
+          <aas:text>Ein Beispiel-Verwaltungsschale für eine Test-Anwendung</aas:text>
+        </aas:langString>
+      </aas:description>
       <aas:administration>
         <aas:version>0.9</aas:version>
         <aas:revision>0</aas:revision>
@@ -304,7 +324,7 @@
           </aas:semanticId>
           <aas:statements>
             <aas:property>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleProperty2</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -338,7 +358,7 @@
               </aas:valueId>
             </aas:property>
             <aas:property>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -437,7 +457,7 @@
       </aas:semanticId>
       <aas:submodelElements>
         <aas:relationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -466,8 +486,8 @@
                 <aas:value>https://acplt.org/Test_Submodel</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -494,7 +514,7 @@
           </aas:second>
         </aas:relationshipElement>
         <aas:annotatedRelationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -523,8 +543,8 @@
                 <aas:value>https://acplt.org/Test_Submodel</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -551,7 +571,7 @@
           </aas:second>
           <aas:annotations>
             <aas:property>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleProperty3</aas:idShort>
               <aas:kind>Instance</aas:kind>
               <aas:valueType>xs:string</aas:valueType>
@@ -560,7 +580,7 @@
           </aas:annotations>
         </aas:annotatedRelationshipElement>
         <aas:operation>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -586,7 +606,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty1</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -626,7 +646,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty2</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -666,7 +686,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty3</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -704,7 +724,7 @@
           </aas:inoutputVariables>
         </aas:operation>
         <aas:capability>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -727,7 +747,7 @@
           </aas:semanticId>
         </aas:capability>
         <aas:basicEventElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -749,15 +769,15 @@
             </aas:keys>
           </aas:semanticId>
           <aas:observed>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>Submodel</aas:type>
                 <aas:value>https://acplt.org/Test_Submodel</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -765,20 +785,20 @@
               </aas:key>
             </aas:keys>
           </aas:observed>
-          <aas:direction>Input</aas:direction>
-          <aas:state>On</aas:state>
+          <aas:direction>input</aas:direction>
+          <aas:state>on</aas:state>
         </aas:basicEventElement>
-        <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
+        <aas:submodelElementList>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementListOrdered</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
+              <aas:text>Example ExampleSubmodelElementListOrdered object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
+              <aas:text>Beispiel ExampleSubmodelElementListOrdered Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:semanticId>
@@ -786,13 +806,13 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
           <aas:value>
             <aas:property>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -826,7 +846,7 @@
               </aas:valueId>
             </aas:property>
             <aas:multiLanguageProperty>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -868,7 +888,7 @@
               </aas:valueId>
             </aas:multiLanguageProperty>
             <aas:range>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -894,18 +914,19 @@
               <aas:max>100</aas:max>
             </aas:range>
           </aas:value>
-        </aas:submodelElementCollection>
+          <aas:typeValueListElement>Property</aas:typeValueListElement>
+        </aas:submodelElementList>
         <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementCollection</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
+              <aas:text>Example SubmodelElementCollection object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementCollection Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:semanticId>
@@ -913,13 +934,13 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
           <aas:value>
             <aas:blob>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -944,7 +965,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:blob>
             <aas:file>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -969,7 +990,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:file>
             <aas:referenceElement>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -998,8 +1019,8 @@
                     <aas:value>https://acplt.org/Test_Submodel</aas:value>
                   </aas:key>
                   <aas:key>
-                    <aas:type>SubmodelElementCollection</aas:type>
-                    <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                    <aas:type>SubmodelElementList</aas:type>
+                    <aas:value>ExampleSubmodelElementListOrdered</aas:value>
                   </aas:key>
                   <aas:key>
                     <aas:type>Property</aas:type>
@@ -1027,8 +1048,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Mandatory</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListUnordered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -1044,8 +1065,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Mandatory</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListUnordered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>MultiLanguageProperty</aas:type>
@@ -1065,11 +1086,11 @@
               </aas:key>
               <aas:key>
                 <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:value>ExampleSubmodelElementCollection</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>Property</aas:type>
-                <aas:value>ExampleProperty</aas:value>
+                <aas:type>Blob</aas:type>
+                <aas:value>ExampleBlob</aas:value>
               </aas:key>
             </aas:keys>
           </aas:first>
@@ -1081,8 +1102,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Mandatory</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListUnordered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>MultiLanguageProperty</aas:type>
@@ -1101,15 +1122,15 @@
         <aas:basicEventElement>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
           <aas:observed>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>Submodel</aas:type>
                 <aas:value>https://acplt.org/Test_Submodel_Mandatory</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListUnordered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -1117,11 +1138,12 @@
               </aas:key>
             </aas:keys>
           </aas:observed>
-          <aas:direction>Output</aas:direction>
-          <aas:state>Off</aas:state>
+          <aas:direction>output</aas:direction>
+          <aas:state>off</aas:state>
         </aas:basicEventElement>
-        <aas:submodelElementCollection>
-          <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
+        <aas:submodelElementList>
+          <aas:idShort>ExampleSubmodelElementListUnordered</aas:idShort>
+          <aas:orderRelevant>false</aas:orderRelevant>
           <aas:value>
             <aas:property>
               <aas:idShort>ExampleProperty</aas:idShort>
@@ -1135,9 +1157,10 @@
               <aas:valueType>xs:int</aas:valueType>
             </aas:range>
           </aas:value>
-        </aas:submodelElementCollection>
+          <aas:typeValueListElement>Property</aas:typeValueListElement>
+        </aas:submodelElementList>
         <aas:submodelElementCollection>
-          <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
+          <aas:idShort>ExampleSubmodelElementCollection</aas:idShort>
           <aas:value>
             <aas:blob>
               <aas:idShort>ExampleBlob</aas:idShort>
@@ -1153,7 +1176,7 @@
           </aas:value>
         </aas:submodelElementCollection>
         <aas:submodelElementCollection>
-          <aas:idShort>ExampleSubmodelCollectionUnordered2</aas:idShort>
+          <aas:idShort>ExampleSubmodelElementCollection2</aas:idShort>
         </aas:submodelElementCollection>
       </aas:submodelElements>
     </aas:submodel>
@@ -1163,7 +1186,7 @@
       <aas:kind>Instance</aas:kind>
     </aas:submodel>
     <aas:submodel>
-      <aas:idShort>TestSubmodel</aas:idShort>
+      <aas:idShort>TestSubmodelMissing</aas:idShort>
       <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
@@ -1191,7 +1214,7 @@
       </aas:semanticId>
       <aas:submodelElements>
         <aas:relationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1220,8 +1243,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Missing</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -1237,8 +1260,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Missing</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>MultiLanguageProperty</aas:type>
@@ -1248,7 +1271,7 @@
           </aas:second>
         </aas:relationshipElement>
         <aas:annotatedRelationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1277,8 +1300,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Missing</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -1294,8 +1317,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Missing</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>MultiLanguageProperty</aas:type>
@@ -1305,7 +1328,7 @@
           </aas:second>
           <aas:annotations>
             <aas:property>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
               <aas:kind>Instance</aas:kind>
               <aas:valueType>xs:string</aas:valueType>
@@ -1314,7 +1337,7 @@
           </aas:annotations>
         </aas:annotatedRelationshipElement>
         <aas:operation>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1340,7 +1363,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty1</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1377,7 +1400,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty2</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1414,7 +1437,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty3</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1449,7 +1472,7 @@
           </aas:inoutputVariables>
         </aas:operation>
         <aas:capability>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1472,7 +1495,7 @@
           </aas:semanticId>
         </aas:capability>
         <aas:basicEventElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1501,8 +1524,8 @@
                 <aas:value>https://acplt.org/Test_Submodel_Missing</aas:value>
               </aas:key>
               <aas:key>
-                <aas:type>SubmodelElementCollection</aas:type>
-                <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                <aas:type>SubmodelElementList</aas:type>
+                <aas:value>ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
@@ -1510,20 +1533,20 @@
               </aas:key>
             </aas:keys>
           </aas:observed>
-          <aas:direction>Input</aas:direction>
-          <aas:state>On</aas:state>
+          <aas:direction>input</aas:direction>
+          <aas:state>on</aas:state>
         </aas:basicEventElement>
-        <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
+        <aas:submodelElementList>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementListOrdered</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
+              <aas:text>Example SubmodelElementListOrdered object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementListOrdered Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:semanticId>
@@ -1531,13 +1554,14 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
+          <aas:orderRelevant>true</aas:orderRelevant>
           <aas:value>
             <aas:property>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1568,7 +1592,7 @@
               <aas:value>exampleValue</aas:value>
             </aas:property>
             <aas:multiLanguageProperty>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1601,7 +1625,7 @@
               </aas:value>
             </aas:multiLanguageProperty>
             <aas:range>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1627,18 +1651,19 @@
               <aas:max>100</aas:max>
             </aas:range>
           </aas:value>
-        </aas:submodelElementCollection>
+          <aas:typeValueListElement>Property</aas:typeValueListElement>
+        </aas:submodelElementList>
         <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementCollection</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
+              <aas:text>Example SubmodelElementCollection object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementCollection Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:semanticId>
@@ -1646,13 +1671,13 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
           <aas:value>
             <aas:blob>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1677,7 +1702,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:blob>
             <aas:file>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1702,7 +1727,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:file>
             <aas:referenceElement>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -1724,7 +1749,7 @@
                 </aas:keys>
               </aas:semanticId>
               <aas:value>
-                <aas:type>GlobalReference</aas:type>
+                <aas:type>ModelReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>Submodel</aas:type>
@@ -1732,11 +1757,11 @@
                   </aas:key>
                   <aas:key>
                     <aas:type>SubmodelElementCollection</aas:type>
-                    <aas:value>ExampleSubmodelCollectionOrdered</aas:value>
+                    <aas:value>ExampleSubmodelElementCollection</aas:value>
                   </aas:key>
                   <aas:key>
-                    <aas:type>Property</aas:type>
-                    <aas:value>ExampleProperty</aas:value>
+                    <aas:type>File</aas:type>
+                    <aas:value>ExampleFile</aas:value>
                   </aas:key>
                 </aas:keys>
               </aas:value>
@@ -1746,7 +1771,7 @@
       </aas:submodelElements>
     </aas:submodel>
     <aas:submodel>
-      <aas:idShort>TestSubmodel</aas:idShort>
+      <aas:idShort>TestSubmodelTemplate</aas:idShort>
       <aas:description>
         <aas:langString>
           <aas:language>en-us</aas:language>
@@ -1774,7 +1799,7 @@
       </aas:semanticId>
       <aas:submodelElements>
         <aas:relationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1800,6 +1825,14 @@
             <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
+                <aas:type>Submodel</aas:type>
+                <aas:value>https://acplt.org/Test_Submodel_Template</aas:value>
+              </aas:key>
+              <aas:key>
+                <aas:type>Operation</aas:type>
+                <aas:value>ExampleOperation</aas:value>
+              </aas:key>
+              <aas:key>
                 <aas:type>Property</aas:type>
                 <aas:value>ExampleProperty</aas:value>
               </aas:key>
@@ -1809,6 +1842,14 @@
             <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
+                <aas:type>Submodel</aas:type>
+                <aas:value>https://acplt.org/Test_Submodel_Template</aas:value>
+              </aas:key>
+              <aas:key>
+                <aas:type>Operation</aas:type>
+                <aas:value>ExampleOperation</aas:value>
+              </aas:key>
+              <aas:key>
                 <aas:type>Property</aas:type>
                 <aas:value>ExampleProperty</aas:value>
               </aas:key>
@@ -1816,7 +1857,7 @@
           </aas:second>
         </aas:relationshipElement>
         <aas:annotatedRelationshipElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleAnnotatedRelationshipElement</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1842,6 +1883,14 @@
             <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
+                <aas:type>Submodel</aas:type>
+                <aas:value>https://acplt.org/Test_Submodel_Template</aas:value>
+              </aas:key>
+              <aas:key>
+                <aas:type>Operation</aas:type>
+                <aas:value>ExampleOperation</aas:value>
+              </aas:key>
+              <aas:key>
                 <aas:type>Property</aas:type>
                 <aas:value>ExampleProperty</aas:value>
               </aas:key>
@@ -1851,6 +1900,14 @@
             <aas:type>ModelReference</aas:type>
             <aas:keys>
               <aas:key>
+                <aas:type>Submodel</aas:type>
+                <aas:value>https://acplt.org/Test_Submodel_Template</aas:value>
+              </aas:key>
+              <aas:key>
+                <aas:type>Operation</aas:type>
+                <aas:value>ExampleOperation</aas:value>
+              </aas:key>
+              <aas:key>
                 <aas:type>Property</aas:type>
                 <aas:value>ExampleProperty</aas:value>
               </aas:key>
@@ -1858,7 +1915,7 @@
           </aas:second>
         </aas:annotatedRelationshipElement>
         <aas:operation>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleOperation</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1884,7 +1941,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1915,7 +1972,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1946,7 +2003,7 @@
             <aas:operationVariable>
               <aas:value>
                 <aas:property>
-                  <aas:category>Constant</aas:category>
+                  <aas:category>CONSTANT</aas:category>
                   <aas:idShort>ExampleProperty</aas:idShort>
                   <aas:description>
                     <aas:langString>
@@ -1975,7 +2032,7 @@
           </aas:inoutputVariables>
         </aas:operation>
         <aas:capability>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleCapability</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -1999,7 +2056,7 @@
           </aas:semanticId>
         </aas:capability>
         <aas:basicEventElement>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>ExampleBasicEvent</aas:idShort>
           <aas:description>
             <aas:langString>
@@ -2022,28 +2079,36 @@
             </aas:keys>
           </aas:semanticId>
           <aas:observed>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ModelReference</aas:type>
             <aas:keys>
+              <aas:key>
+                <aas:type>Submodel</aas:type>
+                <aas:value>https://acplt.org/Test_Submodel_Template</aas:value>
+              </aas:key>
+              <aas:key>
+                <aas:type>Operation</aas:type>
+                <aas:value>ExampleOperation</aas:value>
+              </aas:key>
               <aas:key>
                 <aas:type>Property</aas:type>
                 <aas:value>ExampleProperty</aas:value>
               </aas:key>
             </aas:keys>
           </aas:observed>
-          <aas:direction>Output</aas:direction>
-          <aas:state>Off</aas:state>
+          <aas:direction>output</aas:direction>
+          <aas:state>off</aas:state>
         </aas:basicEventElement>
-        <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionOrdered</aas:idShort>
+        <aas:submodelElementList>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementListOrdered</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionOrdered object</aas:text>
+              <aas:text>Example SubmodelElementListOrdered object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionOrdered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementListOrdered Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:kind>Template</aas:kind>
@@ -2052,13 +2117,13 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionOrdered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
           <aas:value>
             <aas:property>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2083,7 +2148,7 @@
               <aas:valueType>xs:string</aas:valueType>
             </aas:property>
             <aas:multiLanguageProperty>
-              <aas:category>Constant</aas:category>
+              <aas:category>CONSTANT</aas:category>
               <aas:idShort>ExampleMultiLanguageProperty</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2107,7 +2172,7 @@
               </aas:semanticId>
             </aas:multiLanguageProperty>
             <aas:range>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleRange</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2133,7 +2198,7 @@
               <aas:max>100</aas:max>
             </aas:range>
             <aas:range>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleRange2</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2159,18 +2224,19 @@
               <aas:min>0</aas:min>
             </aas:range>
           </aas:value>
-        </aas:submodelElementCollection>
+          <aas:typeValueListElement>Property</aas:typeValueListElement>
+        </aas:submodelElementList>
         <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionUnordered</aas:idShort>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementCollection</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
+              <aas:text>Example SubmodelElementCollection object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementCollection Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:kind>Template</aas:kind>
@@ -2179,13 +2245,13 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
           <aas:value>
             <aas:blob>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleBlob</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2210,7 +2276,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:blob>
             <aas:file>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleFile</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2235,7 +2301,7 @@
               <aas:contentType>application/pdf</aas:contentType>
             </aas:file>
             <aas:referenceElement>
-              <aas:category>Parameter</aas:category>
+              <aas:category>PARAMETER</aas:category>
               <aas:idShort>ExampleReferenceElement</aas:idShort>
               <aas:description>
                 <aas:langString>
@@ -2261,16 +2327,16 @@
           </aas:value>
         </aas:submodelElementCollection>
         <aas:submodelElementCollection>
-          <aas:category>Parameter</aas:category>
-          <aas:idShort>ExampleSubmodelCollectionUnordered2</aas:idShort>
+          <aas:category>PARAMETER</aas:category>
+          <aas:idShort>ExampleSubmodelElementCollection2</aas:idShort>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
-              <aas:text>Example SubmodelElementCollectionUnordered object</aas:text>
+              <aas:text>Example SubmodelElementCollection object</aas:text>
             </aas:langString>
             <aas:langString>
               <aas:language>de</aas:language>
-              <aas:text>Beispiel SubmodelElementCollectionUnordered Element</aas:text>
+              <aas:text>Beispiel SubmodelElementCollection Element</aas:text>
             </aas:langString>
           </aas:description>
           <aas:kind>Template</aas:kind>
@@ -2279,7 +2345,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollectionUnordered</aas:value>
+                <aas:value>http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection</aas:value>
               </aas:key>
             </aas:keys>
           </aas:semanticId>
@@ -2311,7 +2377,7 @@
           <aas:keys>
             <aas:key>
               <aas:type>GlobalReference</aas:type>
-              <aas:value>http://acplt.org/DataSpecifications/ConceptDescriptions/TestConceptDescription</aas:value>
+              <aas:value>http://acplt.org/DataSpecifications/Conceptdescription/TestConceptDescription</aas:value>
             </aas:key>
           </aas:keys>
         </aas:reference>
@@ -2353,7 +2419,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>

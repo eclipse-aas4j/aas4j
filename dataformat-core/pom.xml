@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.eclipse.aas4j</groupId>
+        <groupId>org.eclipse.digitaltwin.aas4j</groupId>
         <artifactId>dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
@@ -41,6 +41,16 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${junit-params.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>

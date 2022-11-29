@@ -1026,8 +1026,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="direction_t">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="Input"/>
-			<xs:enumeration value="Output"/>
+			<xs:enumeration value="input"/>
+			<xs:enumeration value="output"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="entityType_t">
@@ -1093,8 +1093,8 @@
 	</xs:simpleType>
 	<xs:simpleType name="stateOfEvent_t">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="On"/>
-			<xs:enumeration value="Off"/>
+			<xs:enumeration value="on"/>
+			<xs:enumeration value="off"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="administrativeInformation_t">

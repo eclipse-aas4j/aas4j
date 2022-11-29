@@ -96,7 +96,7 @@
       </test:semanticId>
       <test:submodelElements>
         <test:property>
-          <test:category>Parameter</test:category>
+          <test:category>PARAMETER</test:category>
           <test:idShort>MaxRotationSpeed</test:idShort>
           <test:kind>Instance</test:kind>
           <test:semanticId>
@@ -171,7 +171,7 @@
       <test:kind>Instance</test:kind>
       <test:submodelElements>
         <test:property>
-          <test:category>Variable</test:category>
+          <test:category>VARIABLE</test:category>
           <test:idShort>RotationSpeed</test:idShort>
           <test:kind>Instance</test:kind>
           <test:semanticId>
@@ -200,7 +200,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -250,7 +250,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -305,7 +305,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -359,7 +359,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -422,7 +422,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>

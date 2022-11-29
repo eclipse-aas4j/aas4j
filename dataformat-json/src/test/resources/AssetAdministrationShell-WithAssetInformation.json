@@ -1,0 +1,35 @@
+{
+    "modelType": "AssetAdministrationShell",
+    "id": "https://example.org/AssetAdministrationShell",
+    "assetInformation":
+            {
+                "assetKind": "Instance",
+                "globalAssetId":
+                        {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "https://example.org/Asset"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        },
+                "specificAssetIds": [{
+                        "name": "ExampleAssetId",
+                        "value": "ExampleValue",
+                        "externalSubjectId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "https://example.org/ExternalSubject"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        }
+                    }],
+                "defaultThumbnail": {
+                    "path": "file:/example.jpg",
+                    "contentType": "image/jpeg"
+                }
+            }    
+} 

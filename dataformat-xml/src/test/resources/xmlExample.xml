@@ -97,7 +97,7 @@
       </aas:semanticId>
       <aas:submodelElements>
         <aas:property>
-          <aas:category>Parameter</aas:category>
+          <aas:category>PARAMETER</aas:category>
           <aas:idShort>MaxRotationSpeed</aas:idShort>
           <aas:kind>Instance</aas:kind>
           <aas:semanticId>
@@ -172,7 +172,7 @@
       <aas:kind>Instance</aas:kind>
       <aas:submodelElements>
         <aas:property>
-          <aas:category>Variable</aas:category>
+          <aas:category>VARIABLE</aas:category>
           <aas:idShort>RotationSpeed</aas:idShort>
           <aas:kind>Instance</aas:kind>
           <aas:semanticId>
@@ -201,7 +201,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -251,7 +251,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -306,7 +306,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -360,7 +360,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -423,7 +423,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
