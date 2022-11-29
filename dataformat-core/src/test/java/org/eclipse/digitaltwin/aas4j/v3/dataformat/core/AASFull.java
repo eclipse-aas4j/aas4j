@@ -751,7 +751,7 @@ public class AASFull {
                                 .max("100")
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AasSubmodelElements.PROPERTY)
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -950,7 +950,7 @@ public class AASFull {
                                 .max(null)
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AasSubmodelElements.PROPERTY) // TODO
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -1303,7 +1303,7 @@ public class AASFull {
                                 .max("100")
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AasSubmodelElements.PROPERTY) // TODO
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -1715,7 +1715,7 @@ public class AASFull {
                                 .max(null)
                                 .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AasSubmodelElements.PROPERTY) // TODO
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")

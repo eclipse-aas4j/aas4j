@@ -914,7 +914,7 @@
               <aas:max>100</aas:max>
             </aas:range>
           </aas:value>
-          <aas:typeValueListElement>Property</aas:typeValueListElement>
+          <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
         </aas:submodelElementList>
         <aas:submodelElementCollection>
           <aas:category>PARAMETER</aas:category>
@@ -1157,7 +1157,7 @@
               <aas:valueType>xs:int</aas:valueType>
             </aas:range>
           </aas:value>
-          <aas:typeValueListElement>Property</aas:typeValueListElement>
+          <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
         </aas:submodelElementList>
         <aas:submodelElementCollection>
           <aas:idShort>ExampleSubmodelElementCollection</aas:idShort>
@@ -1651,7 +1651,7 @@
               <aas:max>100</aas:max>
             </aas:range>
           </aas:value>
-          <aas:typeValueListElement>Property</aas:typeValueListElement>
+          <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
         </aas:submodelElementList>
         <aas:submodelElementCollection>
           <aas:category>PARAMETER</aas:category>
@@ -2224,7 +2224,7 @@
               <aas:min>0</aas:min>
             </aas:range>
           </aas:value>
-          <aas:typeValueListElement>Property</aas:typeValueListElement>
+          <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
         </aas:submodelElementList>
         <aas:submodelElementCollection>
           <aas:category>PARAMETER</aas:category>
