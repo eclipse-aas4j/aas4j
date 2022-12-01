@@ -17,26 +17,19 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 
 @JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayName", "description", "checksum"})
 public interface ReferableMixin {
-
-//    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "category")
-//    public String getCategory();
-//
-//    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "category")
-//    public void setCategory(String category);
-
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
     @JsonSerialize(using = LangStringsSerializer.class)
     public List<LangString> getDescription();
@@ -46,13 +39,11 @@ public interface ReferableMixin {
     public void setDescription(List<LangString> descriptions);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
-//    @JsonSerialize(using = LangStringsSerializer.class)
     @JsonDeserialize(using = LangStringsDeserializer.class)
     public List<LangString> getDisplayName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
     public void setDisplayName(List<LangString> displayNames);
 
-//    @JsonInclude(JsonInclude.Include.ALWAYS)
     public String getIdShort();
 }

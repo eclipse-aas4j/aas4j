@@ -17,21 +17,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public class ReferenceSerializer extends JsonSerializer<Reference> {
-    private NoEntryWrapperListSerializer<Key> keyListSerializer;
-
-    public ReferenceSerializer() {
-//        this.keyListSerializer = new NoEntryWrapperListSerializer<>();
-//        this.keyListSerializer.setOuterWrapper("keys");
-    }
 
     @Override
     public void serialize(Reference reference, JsonGenerator gen, SerializerProvider serializers) throws IOException {

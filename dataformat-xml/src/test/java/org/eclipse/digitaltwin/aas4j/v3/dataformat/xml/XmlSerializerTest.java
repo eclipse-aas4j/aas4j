@@ -27,13 +27,18 @@ import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -41,7 +46,6 @@ import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
-import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
@@ -195,37 +199,30 @@ public class XmlSerializerTest {
     }
 
     private boolean ignoreDefaults(Node node) {
-        try {
-            if (node.getLocalName() != null
-                    && node.getLocalName().equals("kind")
-                    && node.getFirstChild().getNodeValue().equals("Instance")) {
-                return false;
-            }
-        } catch (Exception e) { /* do nothing */ }
+        if (node.getLocalName() != null
+                && node.getLocalName().equals("kind")
+                && node.getFirstChild().getNodeValue().equals("Instance")) {
+            return false;
+        }
 
-        try {
-            if (node.getLocalName() != null
-                    && node.getLocalName().equals("category")
-                    && node.getFirstChild().getNodeValue().equals("VARIABLE")) {
-                return false;
-            }
-        } catch (Exception e) { /* do nothing */ }
+        if (node.getLocalName() != null
+                && node.getLocalName().equals("category")
+                && node.getFirstChild().getNodeValue().equals("VARIABLE")) {
+            return false;
+        }
 
-        try {
-            if (node.getLocalName() != null
-                    && node.getLocalName().equals("category")
-                    && node.getFirstChild().getNodeValue().equals("PROPERTY")) { // TODO: only for ConceptDescriptions
-                return false;
-            }
-        } catch (Exception e) { /* do nothing */ }
+		if (node.getLocalName() != null 
+				&& node.getLocalName().equals("category") 
+				&& node.getFirstChild().getNodeValue().equals("PROPERTY")) { // TODO: only for ConceptDescriptions
+			return false;
+		}
 
-        try {
-            if (node.getLocalName() != null
-                    && node.getLocalName().equals("orderRelevant")
-                    && node.getFirstChild().getNodeValue().equals("true")) {
-                return false;
-            }
-        } catch (Exception e) { /* do nothing */ }
+		if (node.getLocalName() != null 
+				&& node.getLocalName().equals("orderRelevant") 
+				&& node.getFirstChild().getNodeValue().equals("true")) {
+			return false;
+		}
+		
         return true;
     }
 

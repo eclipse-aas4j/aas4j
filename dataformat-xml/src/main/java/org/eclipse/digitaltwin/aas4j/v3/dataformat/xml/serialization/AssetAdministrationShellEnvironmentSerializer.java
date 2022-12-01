@@ -24,17 +24,17 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
 public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
@@ -48,8 +48,6 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
     private static final QName CONCEPTDICTIONARY_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "conceptDescription");
     private static final QName SUBMODELLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "submodels");
     private static final QName SUBMODEL_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "submodel");
-    private static final QName ASSETLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "assets");
-    private static final QName ASSET_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "asset");
 
     private Map<String, String> namespacePrefixes;
 

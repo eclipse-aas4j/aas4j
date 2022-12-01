@@ -15,18 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
+import java.io.IOException;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 
 /**
@@ -34,10 +31,7 @@ import java.io.IOException;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-// TODO: solve EmbeddedDataSpecifiction issue
 public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIEC61360> {
-
-    private static final Logger logger = LoggerFactory.getLogger(EmbeddedDataSpecificationSerializer.class);
 
     @Override
     public void serialize(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider)
@@ -45,9 +39,7 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
         if (data == null) {
             return;
         }
-//        generator.writeFieldName(PROP_DATA_SPECIFICATION_CONTENT);
         generator.writeStartObject();
-        // TODO: Add field name according to template type
         generator.writeObjectField("dataSpecificationIec61360", data);
         generator.writeEndObject();
 

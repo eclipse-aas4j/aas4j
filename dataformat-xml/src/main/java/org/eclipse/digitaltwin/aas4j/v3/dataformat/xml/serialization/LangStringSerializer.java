@@ -20,13 +20,13 @@ import java.lang.reflect.Field;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
 public class LangStringSerializer extends JsonSerializer<LangString> {
 
@@ -38,13 +38,11 @@ public class LangStringSerializer extends JsonSerializer<LangString> {
         try {
             Field nextName = xgen.getClass().getDeclaredField("_nextName");
             nextName.setAccessible(true);
-            QName next = (QName) nextName.get(xgen);
-
             xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langString"));
 
             serializeLangString(xgen, langString);
 
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+		} catch (NoSuchFieldException e) {
             // serialize it without changing the namespaces
             serializeLangString(xgen, langString);
         }

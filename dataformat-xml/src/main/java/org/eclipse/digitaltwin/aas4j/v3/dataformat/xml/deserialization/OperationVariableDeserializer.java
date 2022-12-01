@@ -16,6 +16,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -23,21 +29,9 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 
 public class OperationVariableDeserializer extends JsonDeserializer<List<OperationVariable>> {
-
-
-    public OperationVariableDeserializer() {
-    }
-
 
     @Override
     public List<OperationVariable> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
@@ -60,7 +54,7 @@ public class OperationVariableDeserializer extends JsonDeserializer<List<Operati
     private List<OperationVariable> createOperationVariablesFromArrayNode(JsonParser parser, ObjectNode node) throws IOException {
         ArrayNode content = (ArrayNode) node.get("operationVariable");
 
-        return (List<OperationVariable>) DeserializationHelper.createInstancesFromArrayNode(parser, content, OperationVariable.class);
+        return DeserializationHelper.createInstancesFromArrayNode(parser, content, OperationVariable.class);
     }
 
 

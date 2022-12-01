@@ -17,13 +17,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Key;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 
 public class KeySerializer extends JsonSerializer<Key> {
 
@@ -32,7 +31,6 @@ public class KeySerializer extends JsonSerializer<Key> {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeObjectFieldStart("key");
 
-        String keyTypeValue = AasUtils.serializeEnumName(key.getType().toString());
         xgen.setNextIsAttribute(false);
         xgen.writeFieldName("type");
         xgen.writeString(key.getType().name());

@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
 
 @JsonPropertyOrder({
