@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
 
 @JsonPropertyOrder({
@@ -25,7 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
         "semanticId", "supplementalSemanticIds", // --> HasSemantics
         "qualifier",  // --> Qualifiable
         "dataSpecifications", "embeddedDataSpecifications", // --> HasDataSpecifications
+        "orderRelevant", // --> SME-List
         "valueType", "value", "valueId" // --> Property
+        , "semanticIdListElement", "typeValueListElement", "valueTypeListElement" // --> SME-List
         , "statements", "entityType", "globalAssetId", "specificAssetId" // --> Entity
         , "first", "second", "annotations" // --> (Annotated)RelationsShipElement
         , "inputVariables", "outputVariables", "inoutputVariables" // --> Operation

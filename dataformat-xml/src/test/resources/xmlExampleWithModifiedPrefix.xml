@@ -1,4 +1,6 @@
-<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd">
   <test:assetAdministrationShells>
     <test:assetAdministrationShell>
       <test:idShort>ExampleMotor</test:idShort>
@@ -94,7 +96,7 @@
       </test:semanticId>
       <test:submodelElements>
         <test:property>
-          <test:category>Parameter</test:category>
+          <test:category>PARAMETER</test:category>
           <test:idShort>MaxRotationSpeed</test:idShort>
           <test:kind>Instance</test:kind>
           <test:semanticId>
@@ -169,7 +171,7 @@
       <test:kind>Instance</test:kind>
       <test:submodelElements>
         <test:property>
-          <test:category>Variable</test:category>
+          <test:category>VARIABLE</test:category>
           <test:idShort>RotationSpeed</test:idShort>
           <test:kind>Instance</test:kind>
           <test:semanticId>
@@ -198,7 +200,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -248,7 +250,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -303,7 +305,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -357,7 +359,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -420,7 +422,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
+                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>

@@ -18,15 +18,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import javax.xml.namespace.QName;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import javax.xml.namespace.QName;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
 
@@ -46,7 +46,6 @@ public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
                 return ;
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            // TODO: report exception
             throw new IOException(e);
         }
 

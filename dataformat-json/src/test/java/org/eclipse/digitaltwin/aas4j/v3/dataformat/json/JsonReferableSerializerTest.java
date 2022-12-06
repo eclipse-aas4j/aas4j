@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 import org.json.JSONException;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
@@ -51,6 +52,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
+    @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
     public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }

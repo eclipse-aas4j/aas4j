@@ -15,6 +15,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -37,7 +38,7 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     protected Reference dataSpecification;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-    protected DataSpecificationContent dataSpecificationContent;
+    protected DataSpecificationIEC61360 dataSpecificationContent;
 
     public DefaultEmbeddedDataSpecification() {
 
@@ -75,12 +76,12 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     }
 
     @Override
-    public DataSpecificationContent getDataSpecificationContent() {
+    public DataSpecificationIEC61360 getDataSpecificationContent() {
         return dataSpecificationContent;
     }
 
     @Override
-    public void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
+    public void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
         this.dataSpecificationContent = dataSpecificationContent;
     }
 

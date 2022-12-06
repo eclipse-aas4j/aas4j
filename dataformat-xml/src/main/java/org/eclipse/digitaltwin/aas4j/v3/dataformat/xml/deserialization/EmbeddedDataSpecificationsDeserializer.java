@@ -15,29 +15,23 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
+import java.io.IOException;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DataSpecificationManager;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIEC61360;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DataSpecificationManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIEC61360;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-
-// TODO fix the EmbeddedDataSpecification issue
-public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<List<DataSpecificationContent>> {
+public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIEC61360> {
 
     @Override
-    public List<DataSpecificationContent> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DataSpecificationIEC61360 deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
@@ -46,22 +40,13 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Lis
         return createEmbeddedDataSpecificationsFromContent(parser, node);
     }
 
-    private JsonNode getReferenceNode(JsonParser parser, JsonNode node) throws JsonMappingException {
-        if (!node.has(DataSpecificationManager.PROP_DATA_SPECIFICATION)) {
-            throw new JsonMappingException(parser, String.format("data specification must contain node '%s'", DataSpecificationManager.PROP_DATA_SPECIFICATION));
-        }
-        JsonNode nodeDataSpecification = node.get(DataSpecificationManager.PROP_DATA_SPECIFICATION);
-        return nodeDataSpecification;
-    }
 
-    private List<DataSpecificationContent> createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
+    private DataSpecificationIEC61360 createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
         JsonNode nodeContent = node.get(DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT);
-        JsonNode specificationNode = nodeContent.get("dataSpecificationIEC61360");
-        DataSpecificationContent content = createDefaultDataSpecificationIEC61360FromNode(parser, specificationNode);
-        return Collections.singletonList(content);
+		return createDefaultDataSpecificationIEC61360FromNode(parser, nodeContent);
     }
 
-    private DataSpecificationContent createDefaultDataSpecificationIEC61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
+    private DataSpecificationIEC61360 createDefaultDataSpecificationIEC61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
         return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIEC61360.class);
     }
 

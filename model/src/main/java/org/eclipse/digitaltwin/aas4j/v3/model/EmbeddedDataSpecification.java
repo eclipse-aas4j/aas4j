@@ -58,7 +58,8 @@ public interface EmbeddedDataSpecification {
      * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-    DataSpecificationContent getDataSpecificationContent();
+//    DataSpecificationContent getDataSpecificationContent();
+    DataSpecificationIEC61360 getDataSpecificationContent();
 
     /**
      * Actual content of the data specification
@@ -68,6 +69,7 @@ public interface EmbeddedDataSpecification {
      *
      * @param dataSpecificationContent desired value for the property dataSpecificationContent.
      */
-    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
+//    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
+    void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
 
 }

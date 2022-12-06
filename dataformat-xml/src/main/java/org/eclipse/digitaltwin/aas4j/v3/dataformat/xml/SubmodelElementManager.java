@@ -43,6 +43,7 @@ public class SubmodelElementManager {
         CLASS_TO_NAME.put(DefaultOperationVariable.class, "operationVariable");
         CLASS_TO_NAME.put(DefaultLangString.class, "langString");
         CLASS_TO_NAME.put(DefaultSubmodelElementCollection.class, "submodelElementCollection");
+        CLASS_TO_NAME.put(DefaultSubmodelElementList.class, "submodelElementList");
         NAME_TO_CLASS = CLASS_TO_NAME.entrySet().stream().collect(Collectors.toMap(x -> x.getValue(), x -> x.getKey()));
     }
 

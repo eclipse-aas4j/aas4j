@@ -59,7 +59,7 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
         String[] order = super.findSerializationPropertyOrder(ac);
         if (order == null) {
             order = new String[] {
-                "extensions", "idShort", "displayNames", "category", "descriptions", "administration", "identification", "kind", "semanticId",
+                "extensions", "idShort", "displayName", "category", "description", "administration", "identification", "kind", "semanticId",
                 "qualifiers", "embeddedDataSpecification", "dataSpecifications", "isCaseOf", "security", "derivedFrom", "submodels", "assetInformation", "views", "externalSubjectId", "key", "allowDuplicates", "ordered", "valueId", "value",
                 "max", "min", "type", "valueType", "mimeType", "first", "second", "annotations", "revision", "version", "defaultThumbnail", "globalAssetId", "externalAssetId", "entityType", "statements", "assetKind", "billOfMaterials",
                 "specificAssetIds", "observed", "inoutputVariables", "inputVariables", "outputVariables", "submodelElements", "containedElements"

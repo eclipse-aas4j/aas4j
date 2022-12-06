@@ -15,20 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.io.FileNotFoundException;
-import java.util.List;
 
 public class XMLDeserializerTest {
 
@@ -56,7 +56,7 @@ public class XMLDeserializerTest {
 
     @Test
     public void deserializeOperation() throws Exception {
-        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATION);
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
         Assert.assertNotNull(env);
 
         OperationVariable inputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInputVariables().get(0);

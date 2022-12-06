@@ -13,20 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
-
-@JsonPropertyOrder({"language", "text"})
-public interface LangStringMixin {
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "language")
-    public String getLanguage();
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "text")
-    public String getText();
+public class ValueReferencePairsDeserializer extends NoEntryWrapperListDeserializer<ValueReferencePair> {
+    public ValueReferencePairsDeserializer() {
+        super("valueReferencePair", new ValueReferencePairNodeDeserializer());
+    }
 }
