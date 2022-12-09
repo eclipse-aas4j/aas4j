@@ -30,6 +30,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -47,19 +50,20 @@ public class AASXDeserializerTest {
 
     @Test
     public void testRoundTrip() throws SerializationException, IOException, InvalidFormatException, DeserializationException, ParserConfigurationException, SAXException {
+
         List<InMemoryFile> fileList = new ArrayList<>();
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "/aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
         fileList.add(inMemoryFile);
 
         File file = tempFolder.newFile("output.aasx");
 
-        new AASXSerializer().write(AASSimple.ENVIRONMENT, fileList, new FileOutputStream(file));
+        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
 
         InputStream in = new FileInputStream(file);
         AASXDeserializer deserializer = new AASXDeserializer(in);
 
-        assertEquals(AASSimple.ENVIRONMENT, deserializer.read());
+        assertEquals(AASSimple.createEnvironment(), deserializer.read());
         assertEquals(fileList, deserializer.getRelatedFiles());
     }
 }

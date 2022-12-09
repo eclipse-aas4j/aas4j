@@ -40,15 +40,15 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 
 public class AASXSerializerTest {
 
-    private static final String XML_PATH = "aasx/xml/content.xml";
-    private static final String ORIGIN_PATH = "aasx/aasx-origin";
+    private static final String XML_PATH_URI = "file:///aasx/xml/content.xml";
+    private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
 
     private List<InMemoryFile> fileList = new ArrayList<>();
 
     @Before
     public void setup() throws IOException {
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
-        InMemoryFile file = new InMemoryFile(operationManualContent, "aasx/OperatingManual.pdf");
+        InMemoryFile file = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
         fileList.add(file);
     }
 
@@ -61,7 +61,7 @@ public class AASXSerializerTest {
         // This stream keeps the output of the AASXFactory only in memory
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-        new AASXSerializer().write(AASSimple.ENVIRONMENT, fileList, out);
+        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, out);
 
         validateAASX(out);
     }
@@ -73,7 +73,7 @@ public class AASXSerializerTest {
         ArrayList<String> filePaths = new ArrayList<>();
 
         while ((zipEntry = in.getNextEntry()) != null) {
-            if (zipEntry.getName().equals(XML_PATH)) {
+            if (zipEntry.getName().equals(XML_PATH_URI)) {
 
                 // Read the first 5 bytes of the XML file to make sure it is in fact XML file
                 // No further test of XML file necessary as XML-Converter is tested separately
@@ -84,11 +84,11 @@ public class AASXSerializerTest {
             }
 
             // Write the paths of all files contained in the .aasx into filePaths
-            filePaths.add(zipEntry.getName());
+            filePaths.add("file:///" + zipEntry.getName());
         }
 
-        assertTrue(filePaths.contains(XML_PATH));
-        assertTrue(filePaths.contains(ORIGIN_PATH));
+        assertTrue(filePaths.contains(XML_PATH_URI));
+        assertTrue(filePaths.contains(ORIGIN_PATH_URI));
 
         // Check if all expected files are present
         // Needs to strip the first slash of the paths, as ZipEntry gives paths without

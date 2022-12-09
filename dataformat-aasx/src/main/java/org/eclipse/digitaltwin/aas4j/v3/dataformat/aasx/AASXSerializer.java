@@ -15,6 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -37,7 +38,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
@@ -120,8 +120,8 @@ public class AASXSerializer {
             PackagePart xmlPart) {
 
         for (Submodel sm : submodelList) {
-            for (File file : findFileElements(sm.getSubmodelElements())) {
-                String filePath = file.getValue();
+            for (org.eclipse.digitaltwin.aas4j.v3.model.File file : findFileElements(sm.getSubmodelElements())) {
+                String filePath = AASXUtils.getPathFromURL(file.getValue());
                 try {
                     InMemoryFile content = findFileByPath(files, filePath);
                     logger.trace("Writing file '" + filePath + "' to .aasx.");
@@ -210,12 +210,12 @@ public class AASXSerializer {
      * @param elements the Elements to be searched for File elements
      * @return the found Files
      */
-    private Collection<File> findFileElements(Collection<SubmodelElement> elements) {
-        Collection<File> files = new ArrayList<>();
+    private Collection<org.eclipse.digitaltwin.aas4j.v3.model.File> findFileElements(Collection<SubmodelElement> elements) {
+        Collection<org.eclipse.digitaltwin.aas4j.v3.model.File> files = new ArrayList<>();
 
         for (SubmodelElement element : elements) {
-            if (element instanceof File) {
-                files.add((File) element);
+            if (element instanceof org.eclipse.digitaltwin.aas4j.v3.model.File) {
+                files.add((org.eclipse.digitaltwin.aas4j.v3.model.File) element);
             } else if (element instanceof SubmodelElementCollection) {
                 // Recursive call to deal with SubmodelElementCollections
                 files.addAll(findFileElements(((SubmodelElementCollection) element).getValue()));
@@ -244,7 +244,7 @@ public class AASXSerializer {
      */
     private InMemoryFile findFileByPath(Collection<InMemoryFile> files, String path) {
         for (InMemoryFile file : files) {
-            if (preparePath(file.getPath()).equals(path)) {
+            if (AASXUtils.getPathFromURL(file.getPath()).equals(path)) {
                 return file;
             }
         }
@@ -252,51 +252,17 @@ public class AASXSerializer {
     }
 
     /**
-     * Removes the serverpart from a path and ensures it starts with a slash
+     * Removes the serverpart from a path and ensures it starts with "file://"
      * 
      * @param path the path to be prepared
      * @return the prepared path
      */
     private String preparePath(String path) {
-        String newPath = getPathFromURL(path);
-        if (!newPath.startsWith("/")) {
-            newPath = "/" + newPath;
+        String newPath = AASXUtils.getPathFromURL(path);
+        if (!newPath.startsWith("file://")) {
+            newPath = "file://" + newPath;
         }
         return newPath;
     }
 
-    /**
-     * Gets the path from a URL e.g "http://localhost:8080/path/to/test.file"
-     * results in "/path/to/test.file"
-     * 
-     * @param url
-     * @return the path from the URL
-     */
-    private String getPathFromURL(String url) {
-        if (url == null) {
-            return null;
-        }
-
-        if (url.contains("://")) {
-
-            // Find the ":" and and remove the "http://" from the url
-            int index = url.indexOf(":") + 3;
-            url = url.substring(index);
-
-            // Find the first "/" from the URL (now without the "http://") and remove
-            // everything before that
-            index = url.indexOf("/");
-            url = url.substring(index);
-
-            // Recursive call to deal with more than one server parts
-            // (e.g. basyx://127.0.0.1:6998//https://localhost/test/)
-            return getPathFromURL(url);
-        } else {
-            // Make sure the path has a / at the start
-            if (!url.startsWith("/")) {
-                url = "/" + url;
-            }
-            return url;
-        }
-    }
 }
