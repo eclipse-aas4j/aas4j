@@ -47,7 +47,7 @@ public class AASXDeserializer {
     private static final String XML_TYPE = "http://www.admin-shell.io/aasx/relationships/aas-spec";
     private static final String AASX_ORIGIN = "/aasx/aasx-origin";
 
-    private XmlDeserializer deserializer = new XmlDeserializer();
+    private final XmlDeserializer deserializer;
 
     private Environment environment;
     private final OPCPackage aasxRoot;
@@ -61,6 +61,7 @@ public class AASXDeserializer {
      */
     public AASXDeserializer(InputStream inputStream) throws InvalidFormatException, IOException {
         aasxRoot = OPCPackage.open(inputStream);
+        this.deserializer = new XmlDeserializer();
     }
 
     /**

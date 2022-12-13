@@ -61,12 +61,13 @@ public class AASXSerializer {
 
     private static final String AASSUPPL_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aas-suppl";
 
-    private Serializer xmlSerializer = new XmlSerializer();
+    private final Serializer xmlSerializer;
 
     /**
      * Default constructor
      */
     public AASXSerializer() {
+        this.xmlSerializer = new XmlSerializer();
     }
 
     /**
