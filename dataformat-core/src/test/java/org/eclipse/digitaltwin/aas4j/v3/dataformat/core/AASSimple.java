@@ -15,16 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
@@ -41,6 +32,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.List;
 
 public class AASSimple {
 
@@ -465,4 +460,11 @@ public class AASSimple {
                 .conceptDescriptions(createConceptDescriptionDocument())
                 .build();
     }
+
+    @Test
+    public void testAasSimpleExtensionsInitialized() {
+        List<Extension> extensions = AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0).getExtensions();
+        Assert.assertTrue(extensions != null);
+    }
+
 }

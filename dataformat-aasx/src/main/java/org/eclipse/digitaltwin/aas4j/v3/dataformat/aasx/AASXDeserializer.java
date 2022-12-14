@@ -160,12 +160,7 @@ public class AASXDeserializer {
         for (SubmodelElement element : elements) {
             if (element instanceof File) {
                 File file = (File) element;
-                // If the path contains a "://", we can assume, that the Path is a link to an
-                // other server
-                // e.g. http://localhost:8080/aasx/...
-                if (!file.getValue().contains("://")) {
-                    paths.add(file.getValue());
-                }
+                paths.add(file.getValue());
             } else if (element instanceof SubmodelElementCollection) {
                 SubmodelElementCollection collection = (SubmodelElementCollection) element;
                 paths.addAll(parseElements(collection.getValue()));
@@ -192,7 +187,7 @@ public class AASXDeserializer {
     }
 
     private InMemoryFile readFile(OPCPackage aasxRoot, String filePath) throws InvalidFormatException, IOException {
-        PackagePart part = aasxRoot.getPart(PackagingURIHelper.createPartName(filePath));
+        PackagePart part = aasxRoot.getPart(PackagingURIHelper.createPartName(AASXUtils.getPathFromURL(filePath)));
         InputStream stream = part.getInputStream();
         return new InMemoryFile(stream.readAllBytes(), filePath);
     }
