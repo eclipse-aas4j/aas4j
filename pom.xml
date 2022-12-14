@@ -35,16 +35,14 @@
         <module>dataformat-core</module>
         <module>dataformat-json</module>
         <module>dataformat-xml</module>
-        <module>dataformat-rdf</module>
-        <module>validator</module>
     </modules>
     <properties>
-        <revision.major>0</revision.major>
-        <revision.minor>2</revision.minor>
+        <revision.major>1</revision.major>
+        <revision.minor>0</revision.minor>
         <revision.patch>0</revision.patch>
-        <revision.suffix>-SNAPSHOT</revision.suffix>
+        <revision.suffix>-milestone-01</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>1.3.RC02-SNAPSHOT</model.version>
+        <model.version>1.0.0-milestone-01</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -158,24 +156,44 @@
     <profiles>
         <profile>
             <id>MavenCentral</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${plugin.gpg.version}</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+			<build>
+				<plugins>
+					<!-- Signing the artifacts -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+						  <execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+							  <goal>sign</goal>
+							</goals>
+							<configuration>
+							  <gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							  </gpgArguments>
+							</configuration>
+						  </execution>
+						</executions>
+					</plugin>
+					
+					<!-- Upload to Maven Central -->
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.8</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 
             <!-- Central Repository deployment configuration -->
             <distributionManagement>
