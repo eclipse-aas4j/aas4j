@@ -5,7 +5,7 @@ You can download and build the repository by yourself by following these steps:
 - Clone the GitHub repository:
 
 ```sh
-        git clone https://github.com/admin-shell-io/java-serializer.git
+        git clone https://github.com/eclipse-aas4j/aas4j.git
 ```
 
 - Use [Maven](https://maven.apache.org/) to build the project
@@ -25,4 +25,4 @@ You can download and build the repository by yourself by following these steps:
 >        <revision>1.1.0</revision>
 >        <model.version>${revision}</model.version>
 > ```
-> If you change the version of your local built, the `model.version` is also set to the updated artifact version from the [java-model](https://github.com/admin-shell-io/java-model) project. For the same version number, both artifacts are compatible.
+> If you change the version of your local built, the `model.version` is also set to the updated artifact version from the [java-model](https://github.com/eclipse-aas4j/aas4j/tree/main/model) project. For the same version number, both artifacts are compatible.

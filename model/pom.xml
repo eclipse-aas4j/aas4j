@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>dataformat-parent</artifactId>
-        <groupId>org.eclipse.aas4j</groupId>
+        <groupId>org.eclipse.digitaltwin.aas4j</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>model</artifactId>
+    <version>${model.version}</version>
 
     <!-- Description, name, URL, developers, and scm are required by Sonatype for the Central Repository release -->
     <description>This project includes a Java representation of the classes defined in the Asset Administration Shell ontology.</description>
@@ -16,22 +17,13 @@
 
 
     <properties>
-        <revision>1.1.1</revision>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <plugin.flatten.version>1.2.2</plugin.flatten.version>
         <plugin.javadoc.version>3.2.0</plugin.javadoc.version>
-        <plugin.license.version>4.1</plugin.license.version>
         <plugin.projectinfo.version>3.1.2</plugin.projectinfo.version>
         <gpg.keyname>0xDFCC34A6</gpg.keyname>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.mycila</groupId>
-            <artifactId>license-maven-plugin</artifactId>
-            <version>${plugin.license.version}</version>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -77,28 +69,6 @@
                         <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${plugin.license.version}</version>
-                <configuration>
-                    <licenseSets>
-                        <licenseSet>
-                            <header>license-header.txt</header>
-                            <includes>
-                                <include>**/*.java</include>
-                            </includes>
-                        </licenseSet>
-                    </licenseSets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>

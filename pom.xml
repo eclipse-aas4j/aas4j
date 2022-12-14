@@ -25,27 +25,26 @@
     </scm>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.eclipse.aas4j</groupId>
+    <groupId>org.eclipse.digitaltwin.aas4j</groupId>
     <artifactId>dataformat-parent</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
+        <module>model</module>
         <module>dataformat-aasx</module>
-        <module>dataformat-aml</module>
         <module>dataformat-core</module>
         <module>dataformat-json</module>
         <module>dataformat-xml</module>
         <module>dataformat-rdf</module>
-        <module>dataformat-uanodeset</module>
         <module>validator</module>
     </modules>
     <properties>
-        <revision.major>1</revision.major>
+        <revision.major>0</revision.major>
         <revision.minor>2</revision.minor>
-        <revision.patch>1</revision.patch>
-        <revision.suffix></revision.suffix>
+        <revision.patch>0</revision.patch>
+        <revision.suffix>-SNAPSHOT</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>[${revision.major}.${revision.minor},)</model.version>
+        <model.version>1.3.RC02-SNAPSHOT</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -57,7 +56,6 @@
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
         <plugin.jar.version>3.1.1</plugin.jar.version>
         <plugin.javadoc.version>3.3.0</plugin.javadoc.version>
-        <plugin.license.version>4.1</plugin.license.version>
         <plugin.projectinfo.version>3.1.2</plugin.projectinfo.version>
         <plugin.source.version>3.2.0</plugin.source.version>
 
@@ -84,6 +82,7 @@
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
         <xmlunit.version>2.8.2</xmlunit.version>
+        <mockito.version>4.8.0</mockito.version>
     </properties>
     <build>
         <plugins>
@@ -125,32 +124,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>${plugin.projectinfo.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>${plugin.license.version}</version>
-                <configuration>
-                    <licenseSets>
-                        <licenseSet>
-                            <header>license-header.txt</header>
-                            <includes>
-                                <include>**/src/**/*.java</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/target/generated/**/*.java</exclude>
-                                <exclude>**/src/main/java/org/opcfoundation/ua/_2008/_02/types/*.java</exclude>
-                            </excludes>
-                        </licenseSet>
-                    </licenseSets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -243,6 +216,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-compress</artifactId>
                 <version>${commons-compress.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -125,7 +125,7 @@
                         ]
                     },
                     "idShort": "MaxRotationSpeed",
-                    "category": "Parameter",
+                    "category": "PARAMETER",
                     "value": "5000",
                     "valueType": "integer"
                 }
@@ -192,7 +192,7 @@
                             },
                             "idShort": "DigitalFile_PDF",
                             "mimeType": "application/pdf",
-                            "value": "/aasx/OperatingManual.pdf"
+                            "value": "file:///aasx/OperatingManual.pdf"
                         }
                     ]
                 }

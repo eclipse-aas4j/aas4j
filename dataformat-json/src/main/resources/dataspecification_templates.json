@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "DataSpecificationTemplates",
+  "$id": "http://www.admin-shell.io/schema/json/dataspecfication_templates/V3.0RC02",
+  "type": "object",
+  "definitions": {
+    "DataSpecificationIEC61360": {
+      "allOf": [
+        {
+          "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/DataSpecificationContent"
+        },
+        {
+          "properties": {
+            "preferredName": {
+              "type": "array",
+              "items": {
+                "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
+              }
+            },
+            "shortName": {
+              "type": "array",
+              "items": {
+                "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
+              }
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unitId": {
+              "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/Reference"
+            },
+            "sourceOfDefinition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "symbol": {
+              "type": "string",
+              "minLength": 1
+            },
+            "dataType": {
+              "$ref": "#/definitions/DataTypeIEC61360"
+            },
+            "definition": {
+              "type": "array",
+              "items": {
+                "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
+              }
+            },
+            "valueFormat": {
+              "type": "string",
+              "minLength": 1
+            },
+            "valueList": {
+              "$ref": "#/definitions/ValueList"
+            },
+            "value": {
+              "type": "string"
+            },
+            "valueId": {
+              "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/Reference"
+            },
+            "levelType": {
+              "$ref": "#/definitions/LevelType"
+            }
+          },
+          "required": [
+            "preferredName"
+          ]
+        }
+      ]
+    },
+    "DataSpecificationPhysicalUnit": {
+      "allOf": [
+        {
+          "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/DataSpecificationContent"
+        },
+        {
+          "properties": {
+            "unitName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "unitSymbol": {
+              "type": "string",
+              "minLength": 1
+            },
+            "definition": {
+              "type": "array",
+              "items": {
+                "$ref": "http://www.admin-shell.io/schema/json/V3.0RC02#/definitions/LangString"
+              }
+            },
+            "siNotation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "siName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "dinNotation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "eceName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "eceCode": {
+              "type": "string",
+              "minLength": 1
+            },
+            "nistName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sourceOfDefinition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "conversionFactor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "registrationAuthorityId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "supplier": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "unitName",
+            "unitSymbol",
+            "definition"
+          ]
+        }
+      ]
+    },
+    "DataTypeIEC61360": {
+      "type": "string",
+      "enum": [
+        "DATE",
+        "STRING",
+        "STRING_TRANSLATABLE",
+        "INTEGER_MEASURE",
+        "INTEGER_COUNT",
+        "INTEGER_CURRENCY",
+        "REAL_MEASURE",
+        "REAL_COUNT",
+        "REAL_CURRENCY",
+        "BOOLEAN",
+        "URL",
+        "RATIONAL",
+        "RATIONAL_MEASURE",
+        "TIME",
+        "TIMESTAMP"
+      ]
+    },
+    "LevelType": {
+      "type": "string",
+      "enum": [
+        "Min",
+        "Max",
+        "Nom",
+        "Typ"
+      ]
+    },
+    "ValueList": {
+      "type": "object",
+      "properties": {
+        "valueReferencePair": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValueReferencePair"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "valueReferencePair"
+      ]
+    },
+    "ValueReferencePair": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "valueId": {
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "required": [
+        "value",
+        "valueId"
+      ]
+    }
+  }
+}

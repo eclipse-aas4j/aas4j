@@ -1,0 +1,262 @@
+{
+    "assetAdministrationShells": [
+        {
+            "modelType": "AssetAdministrationShell",
+            "idShort": "ExampleMotor",
+            "id": "http://customer.com/aas/9175_7013_7091_9168",
+            "assetInformation": {
+                "assetKind": "Instance",
+                "globalAssetId": {
+                    "keys": [
+                        {
+                            "type": "AssetAdministrationShell",
+                            "value": "http://customer.com/assets/KHBVZJSQKIY"
+                        }
+                    ],
+                    "type": "GlobalReference"
+                },
+                "specificAssetIds": [
+                    {
+                        "name": "EquipmentID",
+                        "value": "538fd1b3-f99f-4a52-9c75-72e9fa921270",
+                        "externalSubjectId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "http://customer.com/Systems/ERP/012"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        }
+                    },
+                    {
+                        "name": "DeviceID",
+                        "value": "QjYgPggjwkiHk4RrQiYSLg==",
+                        "externalSubjectId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "http://customer.com/Systems/IoT/1"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        }
+                    }
+                ],
+                "thumbnail": {
+                    "modelType": "File",
+                    "kind": "Instance",
+                    "idShort": "thumbnail",
+                    "mimeType": "image/png",
+                    "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
+                }
+            },
+            "submodels": [
+                {
+                    "keys": [
+                        {
+                            "type": "Submodel",
+                            "value": "http.//i40.customer.com/type/1/1/7A7104BDAB57E184"
+                        }
+                    ],
+                    "type": "GlobalReference"
+                },
+                {
+                    "keys": [
+                        {
+                            "type": "Submodel",
+                            "value": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"
+                        }
+                    ],
+                    "type": "GlobalReference"
+                }
+            ]
+        }
+    ],
+    "submodels": [
+        {
+            "modelType": "Submodel",
+            "semanticId": {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "0173-1#01-AFZ615#016"
+                    }
+                ],
+                "type": "GlobalReference"
+            },
+            "kind": "Instance",
+            "idShort": "TechnicalData",
+            "id": "http://i40.customer.com/type/1/1/7A7104BDAB57E184",
+            "submodelElements": [
+                {
+                    "modelType": "Property",
+                    "kind": "Instance",
+                    "semanticId": {
+                        "keys": [
+                            {
+                                "type": "ConceptDescription",
+                                "value": "0173-1#02-BAA120#008"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
+                    "idShort": "MaxRotationSpeed",
+                    "category": "PARAMETER",
+                    "value": "5000",
+                    "valueType": "xs:integer"
+                }
+            ]
+        },
+        {
+            "modelType": "Submodel",
+            "kind": "Instance",
+            "idShort": "OperationalData",
+            "id": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935",
+            "submodelElements": [
+                {
+                    "modelType": "Property",
+                    "kind": "Instance",
+                    "semanticId": {
+                        "keys": [
+                            {
+                                "type": "ConceptDescription",
+                                "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
+                    "idShort": "RotationSpeed",
+                    "category": "Variable",
+                    "value": "4370",
+                    "valueType": "xs:integer"
+                }
+            ]
+        }
+    ],
+    "conceptDescriptions": [
+        {
+            "modelType": "ConceptDescription",
+            "idShort": "MaxRotationSpeed",
+            "category": "PROPERTY",
+            "administration": {
+                "version": "0",
+                "revision": "2"
+            },
+            "id": "0173-1#02-BAA120#008",
+            "embeddedDataSpecifications": [
+                {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
+                    "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
+                        "preferredName": [
+                            {
+                                "language": "de",
+                                "text": "max.Drehzahl"
+                            },
+                            {
+                                "language": "en",
+                                "text": "Max.rotationspeed"
+                            }
+                        ],
+                        "shortName": [],
+                        "unit": "1/min",
+                        "unitId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "0173-1#05-AAA650#002"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        },
+                        "sourceOfDefinition": "",
+                        "dataType": "RealMeasure",
+                        "definition": [
+                            {
+                                "language": "de",
+                                "text": "HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf"
+                            },
+                            {
+                                "language": "en",
+                                "text": "Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "modelType": "ConceptDescription",
+            "idShort": "RotationSpeed",
+            "category": "PROPERTY",
+            "id": "http://customer.com/cd/1/1/18EBD56F6B43D895",
+            "embeddedDataSpecifications": [
+                {
+                    "dataSpecification": {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                            }
+                        ],
+                        "type": "GlobalReference"
+                    },
+                    "dataSpecificationContent": {
+                        "modelType": "DataSpecificationIEC61360",
+                        "preferredName": [
+                            {
+                                "language": "DE",
+                                "text": "AktuelleDrehzahl"
+                            },
+                            {
+                                "language": "EN",
+                                "text": "Actualrotationspeed"
+                            }
+                        ],
+                        "shortName": [
+                            {
+                                "language": "DE",
+                                "text": "AktuelleDrehzahl"
+                            },
+                            {
+                                "language": "EN",
+                                "text": "ActualRotationSpeed"
+                            }
+                        ],
+                        "unit": "1/min",
+                        "unitId": {
+                            "keys": [
+                                {
+                                    "type": "GlobalReference",
+                                    "value": "0173-1#05-AAA650#002"
+                                }
+                            ],
+                            "type": "GlobalReference"
+                        },
+                        "sourceOfDefinition": "",
+                        "dataType": "RealMeasure",
+                        "definition": [
+                            {
+                                "language": "DE",
+                                "text": "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird"
+                            },
+                            {
+                                "language": "EN",
+                                "text": "Actual rotationspeed with which the motor or feedingunit is operated"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
