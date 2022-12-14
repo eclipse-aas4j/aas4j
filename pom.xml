@@ -46,7 +46,6 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <gpg.keyname>0xDFCC34A6</gpg.keyname>
 
         <plugin.compiler.version>3.8.1</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
