@@ -160,12 +160,7 @@ public class AASXDeserializer {
         for (SubmodelElement element : elements) {
             if (element instanceof File) {
                 File file = (File) element;
-//                // If the path contains a "://", we can assume, that the Path is a link to an
-//                // other server
-//                // e.g. http://localhost:8080/aasx/...
-//                if (!file.getValue().contains("://")) {
-                    paths.add(file.getValue());
-//                }
+                paths.add(file.getValue());
             } else if (element instanceof SubmodelElementCollection) {
                 SubmodelElementCollection collection = (SubmodelElementCollection) element;
                 paths.addAll(parseElements(collection.getValue()));

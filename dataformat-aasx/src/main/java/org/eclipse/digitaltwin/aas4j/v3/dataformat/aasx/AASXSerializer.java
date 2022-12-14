@@ -15,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -31,16 +30,19 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.apache.poi.openxml4j.opc.RelationshipSource;
 import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 
 /**
  * This class can be used to generate an .aasx file from Metamodel Objects and
@@ -117,10 +119,10 @@ public class AASXSerializer {
      * @param xmlPart the Part the files should be related to
      */
     private void storeFilesInAASX(List<Submodel> submodelList, Collection<InMemoryFile> files, OPCPackage rootPackage,
-            PackagePart xmlPart) {
+                                  PackagePart xmlPart) {
 
         for (Submodel sm : submodelList) {
-            for (org.eclipse.digitaltwin.aas4j.v3.model.File file : findFileElements(sm.getSubmodelElements())) {
+            for (File file : findFileElements(sm.getSubmodelElements())) {
                 String filePath = AASXUtils.getPathFromURL(file.getValue());
                 try {
                     InMemoryFile content = findFileByPath(files, filePath);
@@ -210,12 +212,12 @@ public class AASXSerializer {
      * @param elements the Elements to be searched for File elements
      * @return the found Files
      */
-    private Collection<org.eclipse.digitaltwin.aas4j.v3.model.File> findFileElements(Collection<SubmodelElement> elements) {
-        Collection<org.eclipse.digitaltwin.aas4j.v3.model.File> files = new ArrayList<>();
+    private Collection<File> findFileElements(Collection<SubmodelElement> elements) {
+        Collection<File> files = new ArrayList<>();
 
         for (SubmodelElement element : elements) {
-            if (element instanceof org.eclipse.digitaltwin.aas4j.v3.model.File) {
-                files.add((org.eclipse.digitaltwin.aas4j.v3.model.File) element);
+            if (element instanceof File) {
+                files.add((File) element);
             } else if (element instanceof SubmodelElementCollection) {
                 // Recursive call to deal with SubmodelElementCollections
                 files.addAll(findFileElements(((SubmodelElementCollection) element).getValue()));
