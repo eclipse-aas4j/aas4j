@@ -1,8 +1,10 @@
-:warning:  **Attention** - this project is the new home for the 
-AAS libraries for java previously available in [admin-shell-io](https://github.com/admin-shell-io).
-# Eclipse AAS4J (:construction: migration in progress, initial contribution)
+# Eclipse AAS4J
+
+> :newspaper: The _`Eclipse AAS4J 1.0.0-milestone-01`_ release is available on Maven Central Repository and includes the following artifacts implementing the _AAS Specs – Part 1 V3.RC02_: `dataformat-core`, `dataformat-aasx`, `dataformat-xml`, `dataformat-json`, `dataformat-parent`, and `model'.
 
 [Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 'Details of the Asset Administration Shell' published on [Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
+
+Note: AAS libraries for java previously available in [admin-shell-io](https://github.com/admin-shell-io).
 
 # Project Structure
 
