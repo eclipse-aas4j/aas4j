@@ -81,6 +81,7 @@ public class XMLDeserializerTest {
 		boolean aas = Objects.equals(expected.getAssetAdministrationShells() , other.getAssetAdministrationShells());
 		boolean submodel = Objects.equals(expected.getSubmodels(), other.getSubmodels());
 		boolean conceptDescription = Objects.equals(expected.getConceptDescriptions(), other.getConceptDescriptions());
+	    		System.out.println("Length: " + expected.getSubmodels() + ", " + other.getSubmodels());
 		System.out.println(aas + ", " + submodel + ", " + conceptDescription);
 		assertTrue(aas && submodel && conceptDescription);
     }
