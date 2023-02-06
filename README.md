@@ -46,7 +46,7 @@ or by integrating the respective modules as dependencies from [Maven Central](ht
   <version>latest-version</version>
 <dependency>
 ```
-
+ 
 ## Dataformat Library Project Structure
 
 The project contains several modules:
