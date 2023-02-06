@@ -80,10 +80,13 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
     }
 
     @Override
-    public String write(Collection<? extends Referable> referables) throws SerializationException {
-        if (referables == null || referables.isEmpty()) {
+	public String write(Collection<? extends Referable> referables) throws SerializationException {
+		if (referables == null) {
             return null;
-        }
+		} else if (referables.isEmpty()) {
+			return "[]";
+		}
+
         try {
             return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.iterator().next().getClass()))
                     .writeValueAsString(referables);
