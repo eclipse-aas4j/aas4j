@@ -15,24 +15,22 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.google.common.reflect.TypeToken;
-import java.util.Collection;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-
-import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
 
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
@@ -84,7 +82,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
 		if (referables == null) {
             return null;
 		} else if (referables.isEmpty()) {
-			return "[]";
+			return mapper.createArrayNode().toString();
 		}
 
         try {
