@@ -15,8 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -71,7 +74,14 @@ public class XMLDeserializerTest {
 
     @Test
     public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
-        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-        Assert.assertEquals(AASFull.ENVIRONMENT, env);
+        Environment other = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+
+		Environment expected = AASFull.ENVIRONMENT;
+
+		boolean aas = Objects.equals(expected.getAssetAdministrationShells() , other.getAssetAdministrationShells());
+		boolean submodel = Objects.equals(expected.getSubmodels(), other.getSubmodels());
+		boolean conceptDescription = Objects.equals(expected.getConceptDescriptions(), other.getConceptDescriptions());
+		System.out.println(aas + ", " + submodel + ", " + conceptDescription);
+		assertTrue(aas && submodel && conceptDescription);
     }
 }
