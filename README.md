@@ -44,7 +44,7 @@ or by integrating the respective modules as dependencies from [Maven Central](ht
   <groupId>org.eclipse.digitaltwin.aas4j</groupId>
   <artifactId>dataformat-json</artifactId>
   <version>latest-version</version>
-<dependency>
+</dependency>
 ```
 
 ## Dataformat Library Project Structure
@@ -62,7 +62,144 @@ The project contains several modules:
 
 Additionally, the sources that are used for generating the static documentation using [DocFX](https://dotnet.github.io/docfx/) in the `gh-pages` branch are located in the `docs` folder.
 
+# Simple Example
 
+```
+
+package com.example;
+
+import java.util.Arrays;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultQualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
+
+public class Example {
+
+    public void create() throws Exception {
+        DefaultAssetAdministrationShell shell = new DefaultAssetAdministrationShell.Builder()
+                .id("https://example.org/AssetAdministrationShell")
+                .submodels(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.SUBMODEL)
+                                .value("http://acplt.org/Submodels/Assets/TestAsset/Identification")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .build();
+
+        DefaultSubmodel submodel = new DefaultSubmodel.Builder()
+                .idShort("Identification")
+                .description(Arrays.asList(
+                        new DefaultLangString.Builder()
+                                .text("An example asset identification submodel for the test application")
+                                .language("en-us").build(),
+                        new DefaultLangString.Builder()
+                                .text("Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung")
+                                .language("de")
+                                .build()))
+                .id("http://acplt.org/Submodels/Assets/TestAsset/Identification")
+                .administration(new DefaultAdministrativeInformation.Builder()
+                        .version("0.9")
+                        .revision("0")
+                        .build())
+                .kind(ModelingKind.INSTANCE)
+                .semanticId(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.SUBMODEL)
+                                .value("http://acplt.org/SubmodelTemplates/AssetIdentification")
+                                .build())
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
+                        .build())
+                .submodelElements(new DefaultProperty.Builder()
+                        .idShort("ManufacturerName")
+                        .description(Arrays.asList(
+                                new DefaultLangString.Builder().text(
+                                        "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.")
+                                        .language("en-us").build(),
+                                new DefaultLangString.Builder().text(
+                                        "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist")
+                                        .language("de").build()))
+                        .semanticId(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value("0173-1#02-AAO677#002")
+                                        .build())
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .build())
+                        .qualifiers(new DefaultQualifier.Builder()
+                                .value("100")
+                                .type("http://acplt.org/Qualifier/ExampleQualifier")
+                                .valueType(DataTypeDefXsd.INT)
+                                .build())
+                        .qualifiers(new DefaultQualifier.Builder()
+                                .value("50")
+                                .type("http://acplt.org/Qualifier/ExampleQualifier2")
+                                .valueType(DataTypeDefXsd.INT)
+                                .build())
+                        .value("http://acplt.org/ValueId/ACPLT")
+                        .valueType(DataTypeDefXsd.STRING)
+                        .valueId(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value("http://acplt.org/ValueId/ACPLT")
+                                        .build())
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .build())
+                        .build())
+                .submodelElements(new DefaultProperty.Builder()
+                        .idShort("InstanceId")
+                        .description(Arrays.asList(
+                                new DefaultLangString.Builder().text(
+                                        "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.")
+                                        .language("en-us").build(),
+                                new DefaultLangString.Builder().text(
+                                        "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist")
+                                        .language("de").build()))
+                        .semanticId(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value("http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber")
+                                        .build())
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .build())
+                        .value("978-8234-234-342")
+                        .valueType(DataTypeDefXsd.STRING)
+                        .valueId(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value("978-8234-234-342")
+                                        .build())
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .build())
+                        .build())
+                .build();
+
+        DefaultEnvironment env = new DefaultEnvironment.Builder().assetAdministrationShells(shell)
+                .submodels(submodel).build();
+
+        // searialize to json
+        String json_shell = new JsonSerializer().write(env);
+
+        // searialize to xml
+        String xml_shell = new XmlSerializer().write(env);
+
+    }
+}
+
+```
 
 # How to Contribute
 
