@@ -243,6 +243,10 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultProperty.Builder()
                         .idShort("ManufacturerName")
+                        .displayName(
+                                new DefaultLangString.Builder().text("Manufacturer Name").language("en-us").build()
+                        )
+                        .checksum("someCheckSum")
                         .description(Arrays.asList(
                                 new DefaultLangString.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangString.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()

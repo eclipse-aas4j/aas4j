@@ -43,6 +43,7 @@ public interface ReferableMixin {
     public List<LangString> getDisplayName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
+    @JsonSerialize(using = LangStringsSerializer.class)
     public void setDisplayName(List<LangString> displayNames);
 
     public String getIdShort();

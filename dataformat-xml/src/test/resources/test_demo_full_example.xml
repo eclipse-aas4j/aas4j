@@ -196,6 +196,12 @@
       <aas:submodelElements>
         <aas:property>
           <aas:idShort>ManufacturerName</aas:idShort>
+          <aas:displayName>
+            <aas:langString>
+              <aas:language>en-us</aas:language>
+              <aas:text>Manufacturer Name</aas:text>
+            </aas:langString>
+          </aas:displayName>
           <aas:description>
             <aas:langString>
               <aas:language>en-us</aas:language>
@@ -206,6 +212,7 @@
               <aas:text>Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist</aas:text>
             </aas:langString>
           </aas:description>
+          <aas:checksum>someCheckSum</aas:checksum>
           <aas:semanticId>
             <aas:type>GlobalReference</aas:type>
             <aas:keys>
