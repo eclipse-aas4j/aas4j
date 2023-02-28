@@ -36,11 +36,13 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 
 public class XmlSerializer implements Serializer {
+    protected final XmlFactory xmlFactory;
     protected XmlMapper mapper;
     protected Map<String, String> namespacePrefixes;
 
@@ -49,12 +51,17 @@ public class XmlSerializer implements Serializer {
     }
 
     public XmlSerializer(Map<String, String> namespacePrefixes) {
+        this(new XmlFactory(), namespacePrefixes);
+    }
+
+    public XmlSerializer(XmlFactory xmlFactory, Map<String, String> namespacePrefixes) {
+        this.xmlFactory = xmlFactory;
         this.namespacePrefixes = namespacePrefixes;
         buildMapper();
     }
 
     protected void buildMapper() {
-        mapper = XmlMapper.builder()
+        mapper = XmlMapper.builder(xmlFactory)
                 .enable(SerializationFeature.INDENT_OUTPUT)
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)

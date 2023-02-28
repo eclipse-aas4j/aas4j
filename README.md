@@ -37,11 +37,11 @@ root:
 `mvn clean package`
 
 
-or by integrating the respective modules as dependencies from Maven Central Repository, for instance:
+or by integrating the respective modules as dependencies from [Maven Central](https://search.maven.org/search?q=aas4j) Repository, for instance:
 
 ```
 <dependency>
-  <groupId>org.eclipse.aas4j</groupId>
+  <groupId>org.eclipse.digitaltwin.aas4j</groupId>
   <artifactId>dataformat-json</artifactId>
   <version>latest-version</version>
 <dependency>
