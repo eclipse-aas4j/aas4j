@@ -61,6 +61,13 @@
                     }
                 ],
                 "idShort": "ManufacturerName",
+                "checksum": "someCheckSum",
+                "displayName": [
+                    {
+                        "language": "en-us",
+                        "text": "Manufacturer Name"
+                    }
+                ],
                 "description": [
                     {
                         "language": "en-us",
