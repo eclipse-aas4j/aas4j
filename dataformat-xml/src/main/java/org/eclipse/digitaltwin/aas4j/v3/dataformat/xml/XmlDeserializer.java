@@ -31,10 +31,12 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class XmlDeserializer implements Deserializer {
 
+    protected final XmlFactory xmlFactory;
     protected XmlMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
 	@SuppressWarnings("rawtypes")
@@ -42,12 +44,18 @@ public class XmlDeserializer implements Deserializer {
             SubmodelElement.class, new SubmodelElementDeserializer());
 
     public XmlDeserializer() {
+        this(new XmlFactory());
+    }
+
+    public XmlDeserializer(XmlFactory xmlFactory) {
+        this.xmlFactory = xmlFactory;
         initTypeResolver();
         buildMapper();
     }
 
     protected void buildMapper() {
-        mapper = XmlMapper.builder().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+        mapper = XmlMapper.builder(xmlFactory)
+                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
                 .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .annotationIntrospector(new XmlDataformatAnnotationIntrospector())

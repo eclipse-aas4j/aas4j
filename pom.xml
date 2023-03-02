@@ -42,7 +42,7 @@
         <revision.patch>0</revision.patch>
         <revision.suffix>-milestone-02-SNAPSHOT</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>1.0.0-milestone-01</model.version>
+        <model.version>1.0.0-milestone-02-SNAPSHOT</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

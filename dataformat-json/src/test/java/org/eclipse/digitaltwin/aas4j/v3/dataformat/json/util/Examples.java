@@ -127,16 +127,16 @@ public class Examples {
     public static final ExampleData<List<SubmodelElement>> SUBMODEL_ELEMENT_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0),
                     AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(1)),
-            "SubmodelElement-List.json");
+            "submodelelement-list.json");
     
     public static final ExampleData<List<Submodel>> SUBMODEL_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0),
                     AASFull.ENVIRONMENT.getSubmodels().get(1)),
             "Submodel-List.json");
 
-    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0), "Submodel.json");
+    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0), "submodel.json");
 
-    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
+    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0), "submodelElement.json");
 
     public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection)AASFull.ENVIRONMENT.getSubmodels().get(6).getSubmodelElements().get(6), "SubmodelElementCollection.json");
 

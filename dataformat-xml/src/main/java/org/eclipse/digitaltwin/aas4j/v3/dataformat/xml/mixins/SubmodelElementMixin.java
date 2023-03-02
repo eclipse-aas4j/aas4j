@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 @JsonPropertyOrder({
-        "hasExtensions", "category", "idShort", "displayNames", "description", "checksum", // --> Referable
+        "hasExtensions", "category", "idShort", "displayName", "description", "checksum", // --> Referable
         "kind", // --> HasKind
         "semanticId", "supplementalSemanticIds", // --> HasSemantics
         "qualifier",  // --> Qualifiable
