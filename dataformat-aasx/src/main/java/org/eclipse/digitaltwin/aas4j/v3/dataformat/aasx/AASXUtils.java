@@ -7,7 +7,7 @@ public class AASXUtils {
      * Gets the path from a URL e.g "http://localhost:8080/path/to/test.file"
      * results in "/path/to/test.file"
      *
-     * @param url
+     * @param url URL to get the path for
      * @return the path from the URL
      */
     public static String getPathFromURL(String url) {
