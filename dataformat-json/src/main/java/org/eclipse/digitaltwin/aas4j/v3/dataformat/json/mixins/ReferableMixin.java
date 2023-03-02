@@ -25,9 +25,6 @@ import java.util.Set;
 
 public interface ReferableMixin {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public Set<AssetAdministrationShell> getIdShort();
-
     @JsonProperty("description")
     public List<LangString> getDescription();
 

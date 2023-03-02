@@ -117,7 +117,7 @@ public interface ReferableDeserializer {
      * @param outputClass most specific class of the given Referable
      * @param <T> type of the returned element
      * @return an instance of a list of the referables
-     * @throws DeserializationException
+     * @throws DeserializationException if deserialization of referable fails
      */
     <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException;
 

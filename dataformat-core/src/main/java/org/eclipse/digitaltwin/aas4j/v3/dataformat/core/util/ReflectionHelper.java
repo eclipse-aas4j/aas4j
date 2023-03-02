@@ -175,6 +175,7 @@ public class ReflectionHelper {
      * class is no aas interface or does not have default implementation
      *
      * @param interfaceType the interface to check
+     * @param <T> the implementing class
      * @return the default implementation type for given interfaceType or null
      * if the class is no aas interface or does not have default implementation
      */
@@ -410,7 +411,7 @@ public class ReflectionHelper {
 
     /**
      * Overrides empty list fields with null
-     * @param element
+     * @param element to perform the empty-to-null conversion on
      */
     public static void setEmptyListsToNull(Object element) {
 

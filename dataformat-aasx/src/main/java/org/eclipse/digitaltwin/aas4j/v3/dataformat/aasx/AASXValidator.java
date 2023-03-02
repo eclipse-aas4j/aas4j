@@ -41,8 +41,8 @@ public class AASXValidator {
      * Calls XML-Validator
      * 
      * @return Set of Strings containing message on AASX-XML-Validation result
-     * @throws IOException
-     * @throws InvalidFormatException
+     * @throws IOException failure during filehandling
+     * @throws InvalidFormatException specified URI is invalid
      */
     public Set<String> validateSchema() throws IOException, InvalidFormatException {
         String file = deserializer.getXMLResourceString();

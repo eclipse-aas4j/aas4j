@@ -76,7 +76,7 @@
                         "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "AssetAdministrationShell",
@@ -186,7 +186,7 @@
                         "text": "Ein Beispiel-Verwaltungsschale für eine Test-Anwendung"
                     }
                 ]
-            
+
         }
     ],
     "conceptDescriptions": [
@@ -221,7 +221,7 @@
                         "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "ConceptDescription",
@@ -249,7 +249,7 @@
                         "text": "Ein Beispiel-ConceptDescription für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "ConceptDescription",
@@ -429,6 +429,13 @@
                         }
                     ],
                     "idShort": "ManufacturerName",
+                    "displayName": [
+                        {
+                          "language": "en-us",
+                          "text": "Manufacturer Name"
+                        }
+                    ],
+                    "checksum": "someCheckSum",
                     "description":  [
                             {
                                 "language": "en-us",
@@ -439,7 +446,7 @@
                                 "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Property",
@@ -480,7 +487,7 @@
                                 "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                             }
                         ]
-                    
+
                 }
             ],
             "description":  [
@@ -493,7 +500,7 @@
                         "text": "Ein Beispiel-Identifikations-Submodel für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "Submodel",
@@ -628,7 +635,7 @@
                                 "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Entity",
@@ -667,7 +674,7 @@
                                 "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
                             }
                         ]
-                    
+
                 }
             ],
             "description":  [
@@ -680,7 +687,7 @@
                         "text": "Ein Beispiel-BillofMaterial-Submodel für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "Submodel",
@@ -764,7 +771,7 @@
                                 "text": "Beispiel RelationshipElement Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "AnnotatedRelationshipElement",
@@ -838,7 +845,7 @@
                                 "text": "Beispiel AnnotatedRelationshipElement Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Operation",
@@ -998,7 +1005,7 @@
                                 "text": "Beispiel Operation Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Capability",
@@ -1025,7 +1032,7 @@
                                 "text": "Beispiel Capability Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "BasicEventElement",
@@ -1252,7 +1259,7 @@
                         ],
                     "value": [
                         {
-                            "modelType": "Blob",   
+                            "modelType": "Blob",
                             "kind": "Instance",
 
                             "contentType": "application/pdf",
@@ -1370,7 +1377,7 @@
                         "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "Submodel",
@@ -1650,7 +1657,7 @@
                                 "text": "Beispiel RelationshipElement Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "AnnotatedRelationshipElement",
@@ -1725,7 +1732,7 @@
                                 "text": "Beispiel AnnotatedRelationshipElement Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Operation",
@@ -1873,7 +1880,7 @@
                                 "text": "Beispiel Operation Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Capability",
@@ -1901,7 +1908,7 @@
                                 "text": "Beispiel Capability Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "BasicEventElement",
@@ -2231,7 +2238,7 @@
                         "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
-            
+
         },
         {
             "modelType": "Submodel",
@@ -2503,7 +2510,7 @@
                                 "text": "Beispiel Operation Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "Capability",
@@ -2530,7 +2537,7 @@
                                 "text": "Beispiel Capability Element"
                             }
                         ]
-                    
+
                 },
                 {
                     "modelType": "BasicEventElement",
@@ -2859,7 +2866,7 @@
                                 "text": "Beispiel SubmodelElementCollection Element"
                             }
                         ]
-                    
+
                 }
             ],
             "description":  [
@@ -2872,7 +2879,7 @@
                         "text": "Ein Beispiel-Teilmodell für eine Test-Anwendung"
                     }
                 ]
-            
+
         }
     ]
 }
