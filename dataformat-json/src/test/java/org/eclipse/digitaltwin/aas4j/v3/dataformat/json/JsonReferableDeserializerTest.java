@@ -18,9 +18,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
@@ -88,4 +90,11 @@ public class JsonReferableDeserializerTest {
         SubmodelElementCollection actual = new JsonDeserializer().readReferable(Examples.SUBMODEL_ELEMENT_COLLECTION.fileContentStream(), SubmodelElementCollection.class);
         assertEquals(expected, actual);
     }
+
+	@Test
+	public void testReadEmptyReferableList() throws DeserializationException {
+		List<Referable> emptyList = Collections.emptyList();
+		List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
+		assertEquals(emptyList, deserialized);
+	}
 }

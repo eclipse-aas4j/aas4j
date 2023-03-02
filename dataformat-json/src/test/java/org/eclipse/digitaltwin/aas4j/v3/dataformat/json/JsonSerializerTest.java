@@ -20,6 +20,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
@@ -38,6 +40,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 public class JsonSerializerTest {
 
@@ -72,6 +75,13 @@ public class JsonSerializerTest {
     public void testSerializeFullExample() throws SerializationException, JSONException, IOException {
         validateAndCompare(Examples.EXAMPLE_FULL);
     }
+
+	@Test
+	public void testSerializeEmptyReferableList() throws SerializationException {
+		List<Referable> emptyList = Collections.emptyList();
+		String serialized = new JsonSerializer().write(emptyList);
+		assertEquals("[]", serialized);
+	}
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
