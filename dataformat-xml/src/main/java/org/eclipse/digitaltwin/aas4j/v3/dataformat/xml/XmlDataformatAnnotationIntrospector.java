@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 import java.util.Collection;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
 import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
@@ -45,8 +46,8 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
     }
 
     @Override
-    public String findNamespace(Annotated ann) {
-        String ns = super.findNamespace(ann);
+    public String findNamespace(MapperConfig<?> config, Annotated ann) {
+        String ns = super.findNamespace(null, ann);
         if (ns == null) {
             return myDefaultNamespace;
         } else {
