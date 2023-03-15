@@ -78,7 +78,7 @@
         <shacl.version>1.3.2</shacl.version>
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
-        <xmlunit.version>2.8.2</xmlunit.version>
+        <xmlunit.version>2.9.1</xmlunit.version>
         <mockito.version>4.8.0</mockito.version>
     </properties>
     <build>
