@@ -32,17 +32,17 @@ public interface Submodel extends HasDataSpecification, Identifiable, HasSemanti
     /**
      * A submodel consists of zero or more submodel elements.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements
+     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
      *
      * @return Returns the List of SubmodelElements for the property submodelElements.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements")
+    @IRI("https://admin-shell.io/aas/3/0/Submodel/submodelElements")
     List<SubmodelElement> getSubmodelElements();
 
     /**
      * A submodel consists of zero or more submodel elements.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements
+     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
      *
      * @param submodelElements desired value for the property submodelElements.
      */

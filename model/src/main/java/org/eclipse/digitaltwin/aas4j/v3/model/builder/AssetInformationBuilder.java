@@ -14,7 +14,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
 
 import java.util.List;
 
@@ -34,6 +37,17 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
+     * This function allows setting a value for assetType
+     * 
+     * @param assetType desired value to be set
+     * @return Builder object with new value for assetType
+     */
+    public B assetType(String assetType) {
+        getBuildingInstance().setAssetType(assetType);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for defaultThumbnail
      * 
      * @param defaultThumbnail desired value to be set
@@ -45,13 +59,13 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
-     * This function allows setting a value for globalAssetId
+     * This function allows setting a value for globalAssetID
      * 
-     * @param globalAssetId desired value to be set
-     * @return Builder object with new value for globalAssetId
+     * @param globalAssetID desired value to be set
+     * @return Builder object with new value for globalAssetID
      */
-    public B globalAssetId(Reference globalAssetId) {
-        getBuildingInstance().setGlobalAssetId(globalAssetId);
+    public B globalAssetID(String globalAssetID) {
+        getBuildingInstance().setGlobalAssetID(globalAssetID);
         return getSelf();
     }
 
@@ -61,7 +75,7 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
      * @param specificAssetIds desired value to be set
      * @return Builder object with new value for specificAssetIds
      */
-    public B specificAssetIds(List<SpecificAssetId> specificAssetIds) {
+    public B specificAssetIds(List<SpecificAssetID> specificAssetIds) {
         getBuildingInstance().setSpecificAssetIds(specificAssetIds);
         return getSelf();
     }
@@ -72,7 +86,7 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
      * @param specificAssetIds desired value to be added
      * @return Builder object with new value for specificAssetIds
      */
-    public B specificAssetIds(SpecificAssetId specificAssetIds) {
+    public B specificAssetIds(SpecificAssetID specificAssetIds) {
         getBuildingInstance().getSpecificAssetIds().add(specificAssetIds);
         return getSelf();
     }

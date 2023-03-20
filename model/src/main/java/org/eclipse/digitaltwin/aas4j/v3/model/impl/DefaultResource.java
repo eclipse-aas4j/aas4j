@@ -31,10 +31,10 @@ import java.util.Objects;
 @IRI("aas:Resource")
 public class DefaultResource implements Resource {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
     protected String contentType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    @IRI("https://admin-shell.io/aas/3/0/Resource/path")
     protected String path;
 
     public DefaultResource() {

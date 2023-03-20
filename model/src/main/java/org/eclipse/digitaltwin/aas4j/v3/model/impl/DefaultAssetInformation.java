@@ -14,7 +14,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
 
@@ -33,17 +36,20 @@ import java.util.Objects;
 @IRI("aas:AssetInformation")
 public class DefaultAssetInformation implements AssetInformation {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetKind")
     protected AssetKind assetKind;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetType")
+    protected String assetType;
+
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail")
     protected Resource defaultThumbnail;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
-    protected Reference globalAssetId;
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID")
+    protected String globalAssetID;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
-    protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
+    protected List<SpecificAssetID> specificAssetIds = new ArrayList<>();
 
     public DefaultAssetInformation() {
 
@@ -52,8 +58,9 @@ public class DefaultAssetInformation implements AssetInformation {
     @Override
     public int hashCode() {
         return Objects.hash(this.assetKind,
+            this.assetType,
             this.defaultThumbnail,
-            this.globalAssetId,
+            this.globalAssetID,
             this.specificAssetIds);
     }
 
@@ -68,8 +75,9 @@ public class DefaultAssetInformation implements AssetInformation {
         } else {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
             return Objects.equals(this.assetKind, other.assetKind) &&
+                Objects.equals(this.assetType, other.assetType) &&
                 Objects.equals(this.defaultThumbnail, other.defaultThumbnail) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
+                Objects.equals(this.globalAssetID, other.globalAssetID) &&
                 Objects.equals(this.specificAssetIds, other.specificAssetIds);
         }
     }
@@ -85,6 +93,16 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
+    public String getAssetType() {
+        return assetType;
+    }
+
+    @Override
+    public void setAssetType(String assetType) {
+        this.assetType = assetType;
+    }
+
+    @Override
     public Resource getDefaultThumbnail() {
         return defaultThumbnail;
     }
@@ -95,22 +113,22 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public Reference getGlobalAssetId() {
-        return globalAssetId;
+    public String getGlobalAssetID() {
+        return globalAssetID;
     }
 
     @Override
-    public void setGlobalAssetId(Reference globalAssetId) {
-        this.globalAssetId = globalAssetId;
+    public void setGlobalAssetID(String globalAssetID) {
+        this.globalAssetID = globalAssetID;
     }
 
     @Override
-    public List<SpecificAssetId> getSpecificAssetIds() {
+    public List<SpecificAssetID> getSpecificAssetIds() {
         return specificAssetIds;
     }
 
     @Override
-    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
+    public void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds) {
         this.specificAssetIds = specificAssetIds;
     }
 

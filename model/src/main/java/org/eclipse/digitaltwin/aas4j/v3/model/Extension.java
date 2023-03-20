@@ -14,10 +14,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
+
+import java.util.List;
 
 
 /**
@@ -31,17 +32,17 @@ public interface Extension extends HasSemantics {
     /**
      * Name of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/name
+     * More information under https://admin-shell.io/aas/3/0/Extension/name
      *
      * @return Returns the String for the property name.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/name")
+    @IRI("https://admin-shell.io/aas/3/0/Extension/name")
     String getName();
 
     /**
      * Name of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/name
+     * More information under https://admin-shell.io/aas/3/0/Extension/name
      *
      * @param name desired value for the property name.
      */
@@ -50,36 +51,36 @@ public interface Extension extends HasSemantics {
     /**
      * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
      *
-     * @return Returns the Reference for the property refersTo.
+     * @return Returns the List of References for the property refersTo.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/refersTo")
-    Reference getRefersTo();
+    @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
+    List<Reference> getRefersTo();
 
     /**
      * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
      *
      * @param refersTo desired value for the property refersTo.
      */
-    void setRefersTo(Reference refersTo);
+    void setRefersTo(List<Reference> refersTo);
 
     /**
      * Value of the extension
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/value
+     * More information under https://admin-shell.io/aas/3/0/Extension/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/value")
+    @IRI("https://admin-shell.io/aas/3/0/Extension/value")
     String getValue();
 
     /**
      * Value of the extension
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/value
+     * More information under https://admin-shell.io/aas/3/0/Extension/value
      *
      * @param value desired value for the property value.
      */
@@ -88,20 +89,20 @@ public interface Extension extends HasSemantics {
     /**
      * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/0/Extension/valueType
      *
-     * @return Returns the DataTypeDefXsd for the property valueType.
+     * @return Returns the DataTypeDefXSD for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Extension/valueType")
-    DataTypeDefXsd getValueType();
+    @IRI("https://admin-shell.io/aas/3/0/Extension/valueType")
+    DataTypeDefXSD getValueType();
 
     /**
      * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/0/Extension/valueType
      *
      * @param valueType desired value for the property valueType.
      */
-    void setValueType(DataTypeDefXsd valueType);
+    void setValueType(DataTypeDefXSD valueType);
 
 }

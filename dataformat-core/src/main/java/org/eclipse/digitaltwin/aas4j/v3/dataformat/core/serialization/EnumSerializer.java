@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
@@ -38,11 +38,11 @@ public class EnumSerializer extends JsonSerializer<Enum> {
 
     @Override
     public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        if (value instanceof DataTypeDefXsd) {
+        if (value instanceof DataTypeDefXSD) {
             // only for the DataTypeDefXsd notation
-            if (value.equals(DataTypeDefXsd.ANY_URI)) {
+            if (value.equals(DataTypeDefXSD.ANY_URI)) {
                 gen.writeString("xs:anyURI");
-            } else if (value.equals(DataTypeDefXsd.NON_NEGATIVE_INTEGER)) {
+            } else if (value.equals(DataTypeDefXSD.NON_NEGATIVE_INTEGER)) {
                 gen.writeString("xs:NonNegativeInteger");
             } else {
                 // pattern: 'xs:' + camelCase

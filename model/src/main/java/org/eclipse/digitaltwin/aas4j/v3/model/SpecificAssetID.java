@@ -17,50 +17,50 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
 
 
 /**
  * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultSpecificAssetId.class)
+    @KnownSubtypes.Type(value = DefaultSpecificAssetID.class)
 })
-public interface SpecificAssetId extends HasSemantics {
+public interface SpecificAssetID extends HasSemantics {
 
     /**
      * The (external) subject the key belongs to or has meaning to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID
      *
-     * @return Returns the Reference for the property externalSubjectId.
+     * @return Returns the Reference for the property externalSubjectID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
-    Reference getExternalSubjectId();
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID")
+    Reference getExternalSubjectID();
 
     /**
      * The (external) subject the key belongs to or has meaning to.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID
      *
-     * @param externalSubjectId desired value for the property externalSubjectId.
+     * @param externalSubjectID desired value for the property externalSubjectID.
      */
-    void setExternalSubjectId(Reference externalSubjectId);
+    void setExternalSubjectID(Reference externalSubjectID);
 
     /**
      * Name of the identifier
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/name
      *
      * @return Returns the String for the property name.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/name")
     String getName();
 
     /**
      * Name of the identifier
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/name
      *
      * @param name desired value for the property name.
      */
@@ -69,17 +69,17 @@ public interface SpecificAssetId extends HasSemantics {
     /**
      * The value of the specific asset identifier with the corresponding name.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/value")
     String getValue();
 
     /**
      * The value of the specific asset identifier with the corresponding name.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/value
      *
      * @param value desired value for the property value.
      */

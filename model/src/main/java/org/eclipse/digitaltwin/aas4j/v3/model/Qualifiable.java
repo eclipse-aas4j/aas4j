@@ -32,17 +32,17 @@ public interface Qualifiable {
     /**
      * Additional qualification of a qualifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers
+     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
      *
      * @return Returns the List of Qualifiers for the property qualifiers.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     List<Qualifier> getQualifiers();
 
     /**
      * Additional qualification of a qualifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers
+     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
      *
      * @param qualifiers desired value for the property qualifiers.
      */

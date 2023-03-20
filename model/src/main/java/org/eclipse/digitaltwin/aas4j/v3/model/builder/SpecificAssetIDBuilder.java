@@ -15,22 +15,22 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
 
 import java.util.List;
 
 
-public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extends SpecificAssetIdBuilder<T, B>>
+public abstract class SpecificAssetIDBuilder<T extends SpecificAssetID, B extends SpecificAssetIDBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for externalSubjectId
+     * This function allows setting a value for externalSubjectID
      * 
-     * @param externalSubjectId desired value to be set
-     * @return Builder object with new value for externalSubjectId
+     * @param externalSubjectID desired value to be set
+     * @return Builder object with new value for externalSubjectID
      */
-    public B externalSubjectId(Reference externalSubjectId) {
-        getBuildingInstance().setExternalSubjectId(externalSubjectId);
+    public B externalSubjectID(Reference externalSubjectID) {
+        getBuildingInstance().setExternalSubjectID(externalSubjectID);
         return getSelf();
     }
 
@@ -57,13 +57,13 @@ public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extend
     }
 
     /**
-     * This function allows setting a value for semanticId
+     * This function allows setting a value for semanticID
      * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
+     * @param semanticID desired value to be set
+     * @return Builder object with new value for semanticID
      */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
+    public B semanticID(Reference semanticID) {
+        getBuildingInstance().setSemanticID(semanticID);
         return getSelf();
     }
 

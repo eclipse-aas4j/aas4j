@@ -46,13 +46,13 @@ public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceB
     }
 
     /**
-     * This function allows setting a value for referredSemanticId
+     * This function allows setting a value for referredSemanticID
      * 
-     * @param referredSemanticId desired value to be set
-     * @return Builder object with new value for referredSemanticId
+     * @param referredSemanticID desired value to be set
+     * @return Builder object with new value for referredSemanticID
      */
-    public B referredSemanticId(Reference referredSemanticId) {
-        getBuildingInstance().setReferredSemanticId(referredSemanticId);
+    public B referredSemanticID(Reference referredSemanticID) {
+        getBuildingInstance().setReferredSemanticID(referredSemanticID);
         return getSelf();
     }
 

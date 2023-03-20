@@ -32,7 +32,7 @@ import java.util.Objects;
 @IRI("aas:OperationVariable")
 public class DefaultOperationVariable implements OperationVariable {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/OperationVariable/value")
+    @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
     protected SubmodelElement value;
 
     public DefaultOperationVariable() {}

@@ -32,19 +32,17 @@ public interface AssetAdministrationShell extends HasDataSpecification, Identifi
     /**
      * Meta-information about the asset the AAS is representing.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
      *
      * @return Returns the AssetInformation for the property assetInformation.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
     AssetInformation getAssetInformation();
 
     /**
      * Meta-information about the asset the AAS is representing.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
      *
      * @param assetInformation desired value for the property assetInformation.
      */
@@ -53,17 +51,17 @@ public interface AssetAdministrationShell extends HasDataSpecification, Identifi
     /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
      *
      * @return Returns the Reference for the property derivedFrom.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
     Reference getDerivedFrom();
 
     /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
      *
      * @param derivedFrom desired value for the property derivedFrom.
      */
@@ -72,17 +70,17 @@ public interface AssetAdministrationShell extends HasDataSpecification, Identifi
     /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
      *
      * @return Returns the List of References for the property submodels.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels")
     List<Reference> getSubmodels();
 
     /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
      *
      * @param submodels desired value for the property submodels.
      */

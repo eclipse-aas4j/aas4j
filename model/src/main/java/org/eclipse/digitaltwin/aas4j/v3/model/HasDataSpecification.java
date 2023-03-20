@@ -36,19 +36,19 @@ public interface HasDataSpecification {
      * Embedded data specification.
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     * https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications
      *
      * @return Returns the List of EmbeddedDataSpecifications for the property
      *         embeddedDataSpecifications.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     /**
      * Embedded data specification.
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     * https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications
      *
      * @param embeddedDataSpecifications desired value for the property embeddedDataSpecifications.
      */

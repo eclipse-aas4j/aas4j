@@ -33,24 +33,35 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
     }
 
     /**
-     * This function allows setting a value for globalAssetId
+     * This function allows setting a value for globalAssetID
      * 
-     * @param globalAssetId desired value to be set
-     * @return Builder object with new value for globalAssetId
+     * @param globalAssetID desired value to be set
+     * @return Builder object with new value for globalAssetID
      */
-    public B globalAssetId(Reference globalAssetId) {
-        getBuildingInstance().setGlobalAssetId(globalAssetId);
+    public B globalAssetID(String globalAssetID) {
+        getBuildingInstance().setGlobalAssetID(globalAssetID);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for specificAssetId
+     * This function allows setting a value for specificAssetIds
      * 
-     * @param specificAssetId desired value to be set
-     * @return Builder object with new value for specificAssetId
+     * @param specificAssetIds desired value to be set
+     * @return Builder object with new value for specificAssetIds
      */
-    public B specificAssetId(SpecificAssetId specificAssetId) {
-        getBuildingInstance().setSpecificAssetId(specificAssetId);
+    public B specificAssetIds(List<SpecificAssetID> specificAssetIds) {
+        getBuildingInstance().setSpecificAssetIds(specificAssetIds);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List specificAssetIds
+     * 
+     * @param specificAssetIds desired value to be added
+     * @return Builder object with new value for specificAssetIds
+     */
+    public B specificAssetIds(SpecificAssetID specificAssetIds) {
+        getBuildingInstance().getSpecificAssetIds().add(specificAssetIds);
         return getSelf();
     }
 
@@ -99,13 +110,13 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
     }
 
     /**
-     * This function allows setting a value for semanticId
+     * This function allows setting a value for semanticID
      * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
+     * @param semanticID desired value to be set
+     * @return Builder object with new value for semanticID
      */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
+    public B semanticID(Reference semanticID) {
+        getBuildingInstance().setSemanticID(semanticID);
         return getSelf();
     }
 
@@ -132,17 +143,6 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
     }
 
     /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModelingKind kind) {
-        getBuildingInstance().setKind(kind);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for category
      * 
      * @param category desired value to be set
@@ -154,23 +154,12 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
     }
 
     /**
-     * This function allows setting a value for checksum
-     * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
-     */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for description
      * 
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
+    public B description(List<LangStringTextType> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }
@@ -181,7 +170,7 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
      * @param description desired value to be added
      * @return Builder object with new value for description
      */
-    public B description(LangString description) {
+    public B description(LangStringTextType description) {
         getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
@@ -192,7 +181,7 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
+    public B displayName(List<LangStringNameType> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -203,7 +192,7 @@ public abstract class EntityBuilder<T extends Entity, B extends EntityBuilder<T,
      * @param displayName desired value to be added
      * @return Builder object with new value for displayName
      */
-    public B displayName(LangString displayName) {
+    public B displayName(LangStringNameType displayName) {
         getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }

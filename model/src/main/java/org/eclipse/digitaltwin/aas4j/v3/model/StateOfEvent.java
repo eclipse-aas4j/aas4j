@@ -28,13 +28,13 @@ public enum StateOfEvent {
     /**
      * Event is off.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/StateOfEvent/Off")
+    @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/Off")
     OFF,
 
     /**
      * Event is on
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/StateOfEvent/On")
+    @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/On")
     ON;
 
 }

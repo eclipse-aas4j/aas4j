@@ -16,12 +16,24 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
 
 
 public abstract class AdministrativeInformationBuilder<T extends AdministrativeInformation, B extends AdministrativeInformationBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
+
+    /**
+     * This function allows setting a value for creator
+     * 
+     * @param creator desired value to be set
+     * @return Builder object with new value for creator
+     */
+    public B creator(Reference creator) {
+        getBuildingInstance().setCreator(creator);
+        return getSelf();
+    }
 
     /**
      * This function allows setting a value for revision
@@ -31,6 +43,17 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
      */
     public B revision(String revision) {
         getBuildingInstance().setRevision(revision);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for templateID
+     * 
+     * @param templateID desired value to be set
+     * @return Builder object with new value for templateID
+     */
+    public B templateID(String templateID) {
+        getBuildingInstance().setTemplateID(templateID);
         return getSelf();
     }
 

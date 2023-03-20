@@ -33,17 +33,17 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Data Type
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/dataType
      *
      * @return Returns the DataTypeIEC61360 for the property dataType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/dataType")
     DataTypeIEC61360 getDataType();
 
     /**
      * Data Type
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/dataType
      *
      * @param dataType desired value for the property dataType.
      */
@@ -52,36 +52,36 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Definition in different languages
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/definition
      *
-     * @return Returns the List of LangStrings for the property definition.
+     * @return Returns the List of LangStringDefinitionTypeIEC61360s for the property definition.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition")
-    List<LangString> getDefinition();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/definition")
+    List<LangStringDefinitionTypeIEC61360> getDefinition();
 
     /**
      * Definition in different languages
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/definition
      *
      * @param definition desired value for the property definition.
      */
-    void setDefinition(List<LangString> definition);
+    void setDefinition(List<LangStringDefinitionTypeIEC61360> definition);
 
     /**
      * Set of levels.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/levelType
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/levelType
      *
      * @return Returns the LevelType for the property levelType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/levelType")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/levelType")
     LevelType getLevelType();
 
     /**
      * Set of levels.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/levelType
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/levelType
      *
      * @param levelType desired value for the property levelType.
      */
@@ -90,59 +90,57 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Preferred name
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/preferredName
      *
-     * @return Returns the List of LangStrings for the property preferredName.
+     * @return Returns the List of LangStringPreferredNameTypeIEC61360s for the property preferredName.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName")
-    List<LangString> getPreferredName();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/preferredName")
+    List<LangStringPreferredNameTypeIEC61360> getPreferredName();
 
     /**
      * Preferred name
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/preferredName
      *
      * @param preferredName desired value for the property preferredName.
      */
-    void setPreferredName(List<LangString> preferredName);
+    void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName);
 
     /**
      * Short name
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/shortName
      *
-     * @return Returns the List of LangStrings for the property shortName.
+     * @return Returns the List of LangStringShortNameTypeIEC61360s for the property shortName.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName")
-    List<LangString> getShortName();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/shortName")
+    List<LangStringShortNameTypeIEC61360> getShortName();
 
     /**
      * Short name
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/shortName
      *
      * @param shortName desired value for the property shortName.
      */
-    void setShortName(List<LangString> shortName);
+    void setShortName(List<LangStringShortNameTypeIEC61360> shortName);
 
     /**
      * Source of definition
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition
+     * https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/sourceOfDefinition
      *
      * @return Returns the String for the property sourceOfDefinition.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/sourceOfDefinition")
     String getSourceOfDefinition();
 
     /**
      * Source of definition
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition
+     * https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/sourceOfDefinition
      *
      * @param sourceOfDefinition desired value for the property sourceOfDefinition.
      */
@@ -151,17 +149,17 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Symbol
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/symbol
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/symbol
      *
      * @return Returns the String for the property symbol.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/symbol")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/symbol")
     String getSymbol();
 
     /**
      * Symbol
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/symbol
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/symbol
      *
      * @param symbol desired value for the property symbol.
      */
@@ -170,17 +168,17 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Unit
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unit
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unit
      *
      * @return Returns the String for the property unit.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unit")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unit")
     String getUnit();
 
     /**
      * Unit
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unit
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unit
      *
      * @param unit desired value for the property unit.
      */
@@ -189,36 +187,36 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Unique unit id
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unitId
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unitID
      *
-     * @return Returns the Reference for the property unitId.
+     * @return Returns the Reference for the property unitID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unitId")
-    Reference getUnitId();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unitID")
+    Reference getUnitID();
 
     /**
      * Unique unit id
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unitId
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unitID
      *
-     * @param unitId desired value for the property unitId.
+     * @param unitID desired value for the property unitID.
      */
-    void setUnitId(Reference unitId);
+    void setUnitID(Reference unitID);
 
     /**
      * Value
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/value
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/value")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/value")
     String getValue();
 
     /**
      * Value
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/value
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/value
      *
      * @param value desired value for the property value.
      */
@@ -227,17 +225,17 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * Value Format
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueFormat
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueFormat
      *
      * @return Returns the String for the property valueFormat.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueFormat")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueFormat")
     String getValueFormat();
 
     /**
      * Value Format
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueFormat
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueFormat
      *
      * @param valueFormat desired value for the property valueFormat.
      */
@@ -246,17 +244,17 @@ public interface DataSpecificationIEC61360 extends DataSpecificationContent {
     /**
      * List of allowed values
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueList
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueList
      *
      * @return Returns the ValueList for the property valueList.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueList")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueList")
     ValueList getValueList();
 
     /**
      * List of allowed values
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueList
+     * More information under https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueList
      *
      * @param valueList desired value for the property valueList.
      */

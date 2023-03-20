@@ -33,18 +33,18 @@ public interface SubmodelElementList extends SubmodelElement {
      * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
      * representing a set or a bag.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/orderRelevant
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant
      *
      * @return Returns the boolean for the property orderRelevant.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/orderRelevant")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant")
     boolean getOrderRelevant();
 
     /**
      * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
      * representing a set or a bag.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/orderRelevant
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant
      *
      * @param orderRelevant desired value for the property orderRelevant.
      */
@@ -53,59 +53,55 @@ public interface SubmodelElementList extends SubmodelElement {
     /**
      * Semantic ID the submodel elements contained in the list match to.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIDListElement
      *
-     * @return Returns the Reference for the property semanticIdListElement.
+     * @return Returns the Reference for the property semanticIDListElement.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement")
-    Reference getSemanticIdListElement();
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIDListElement")
+    Reference getSemanticIDListElement();
 
     /**
      * Semantic ID the submodel elements contained in the list match to.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIDListElement
      *
-     * @param semanticIdListElement desired value for the property semanticIdListElement.
+     * @param semanticIDListElement desired value for the property semanticIDListElement.
      */
-    void setSemanticIdListElement(Reference semanticIdListElement);
+    void setSemanticIDListElement(Reference semanticIDListElement);
 
     /**
      * The submodel element type of the submodel elements contained in the list.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/typeValueListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement
      *
-     * @return Returns the AasSubmodelElements for the property typeValueListElement.
+     * @return Returns the AASSubmodelElements for the property typeValueListElement.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/typeValueListElement")
-    AasSubmodelElements getTypeValueListElement();
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement")
+    AASSubmodelElements getTypeValueListElement();
 
     /**
      * The submodel element type of the submodel elements contained in the list.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/typeValueListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement
      *
      * @param typeValueListElement desired value for the property typeValueListElement.
      */
-    void setTypeValueListElement(AasSubmodelElements typeValueListElement);
+    void setTypeValueListElement(AASSubmodelElements typeValueListElement);
 
     /**
      * Submodel element contained in the list.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
      *
      * @return Returns the List of SubmodelElements for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
     List<SubmodelElement> getValue();
 
     /**
      * Submodel element contained in the list.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
      *
      * @param value desired value for the property value.
      */
@@ -114,22 +110,20 @@ public interface SubmodelElementList extends SubmodelElement {
     /**
      * The value type of the submodel element contained in the list.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement
      *
-     * @return Returns the DataTypeDefXsd for the property valueTypeListElement.
+     * @return Returns the DataTypeDefXSD for the property valueTypeListElement.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement")
-    DataTypeDefXsd getValueTypeListElement();
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement")
+    DataTypeDefXSD getValueTypeListElement();
 
     /**
      * The value type of the submodel element contained in the list.
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement
      *
      * @param valueTypeListElement desired value for the property valueTypeListElement.
      */
-    void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
+    void setValueTypeListElement(DataTypeDefXSD valueTypeListElement);
 
 }

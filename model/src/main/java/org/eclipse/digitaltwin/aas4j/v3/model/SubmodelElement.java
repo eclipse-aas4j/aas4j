@@ -32,6 +32,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
     @KnownSubtypes.Type(value = SubmodelElementCollection.class),
     @KnownSubtypes.Type(value = SubmodelElementList.class)
 })
-public interface SubmodelElement extends HasDataSpecification, HasSemantics, HasKind, Referable, Qualifiable {
+public interface SubmodelElement extends HasDataSpecification, HasSemantics, Referable, Qualifiable {
 
 }

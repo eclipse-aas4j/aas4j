@@ -39,7 +39,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param definition desired value to be set
      * @return Builder object with new value for definition
      */
-    public B definition(List<LangString> definition) {
+    public B definition(List<LangStringDefinitionTypeIEC61360> definition) {
         getBuildingInstance().setDefinition(definition);
         return getSelf();
     }
@@ -50,7 +50,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param definition desired value to be added
      * @return Builder object with new value for definition
      */
-    public B definition(LangString definition) {
+    public B definition(LangStringDefinitionTypeIEC61360 definition) {
         getBuildingInstance().getDefinition().add(definition);
         return getSelf();
     }
@@ -72,7 +72,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param preferredName desired value to be set
      * @return Builder object with new value for preferredName
      */
-    public B preferredName(List<LangString> preferredName) {
+    public B preferredName(List<LangStringPreferredNameTypeIEC61360> preferredName) {
         getBuildingInstance().setPreferredName(preferredName);
         return getSelf();
     }
@@ -83,7 +83,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param preferredName desired value to be added
      * @return Builder object with new value for preferredName
      */
-    public B preferredName(LangString preferredName) {
+    public B preferredName(LangStringPreferredNameTypeIEC61360 preferredName) {
         getBuildingInstance().getPreferredName().add(preferredName);
         return getSelf();
     }
@@ -94,7 +94,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param shortName desired value to be set
      * @return Builder object with new value for shortName
      */
-    public B shortName(List<LangString> shortName) {
+    public B shortName(List<LangStringShortNameTypeIEC61360> shortName) {
         getBuildingInstance().setShortName(shortName);
         return getSelf();
     }
@@ -105,7 +105,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param shortName desired value to be added
      * @return Builder object with new value for shortName
      */
-    public B shortName(LangString shortName) {
+    public B shortName(LangStringShortNameTypeIEC61360 shortName) {
         getBuildingInstance().getShortName().add(shortName);
         return getSelf();
     }
@@ -144,13 +144,13 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
     }
 
     /**
-     * This function allows setting a value for unitId
+     * This function allows setting a value for unitID
      * 
-     * @param unitId desired value to be set
-     * @return Builder object with new value for unitId
+     * @param unitID desired value to be set
+     * @return Builder object with new value for unitID
      */
-    public B unitId(Reference unitId) {
-        getBuildingInstance().setUnitId(unitId);
+    public B unitID(Reference unitID) {
+        getBuildingInstance().setUnitID(unitID);
         return getSelf();
     }
 

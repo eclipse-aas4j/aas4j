@@ -16,7 +16,6 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
@@ -41,7 +40,7 @@ public abstract class EmbeddedDataSpecificationBuilder<T extends EmbeddedDataSpe
      * @param dataSpecificationContent desired value to be set
      * @return Builder object with new value for dataSpecificationContent
      */
-    public B dataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent) {
+    public B dataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
         getBuildingInstance().setDataSpecificationContent(dataSpecificationContent);
         return getSelf();
     }

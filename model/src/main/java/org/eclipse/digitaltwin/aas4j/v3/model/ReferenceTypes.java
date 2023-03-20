@@ -20,21 +20,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
 
 /**
- * ReferenceTypes
+ * Reference types
  */
 @IRI("aas:ReferenceTypes")
 public enum ReferenceTypes {
 
     /**
-     * GlobalReference.
+     * External reference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference")
-    GLOBAL_REFERENCE,
+    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ExternalReference")
+    EXTERNAL_REFERENCE,
 
     /**
-     * ModelReference
+     * Model reference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference")
+    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ModelReference")
     MODEL_REFERENCE;
 
 }

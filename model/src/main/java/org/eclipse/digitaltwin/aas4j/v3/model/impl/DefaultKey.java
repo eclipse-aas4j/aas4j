@@ -31,10 +31,10 @@ import java.util.Objects;
 @IRI("aas:Key")
 public class DefaultKey implements Key {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/type")
+    @IRI("https://admin-shell.io/aas/3/0/Key/type")
     protected KeyTypes type;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/value")
+    @IRI("https://admin-shell.io/aas/3/0/Key/value")
     protected String value;
 
     public DefaultKey() {

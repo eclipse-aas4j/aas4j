@@ -22,19 +22,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 /**
  * Enumeration for denoting whether an element is a template or an instance.
  */
-@IRI("aas:ModelingKind")
-public enum ModelingKind {
+@IRI("aas:ModellingKind")
+public enum ModellingKind {
 
     /**
-     * Concrete, clearly identifiable component of a certain template.
+     * Concrete, clearly identifiable element instance. Its creation and validation may be guided by a
+     * corresponding element template.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance")
+    @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Instance")
     INSTANCE,
 
     /**
-     * Software element which specifies the common attributes shared by all instances of the template.
+     * Specification of the common features of a structured element in sufficient detail that such a
+     * instance can be instantiated using it
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ModelingKind/Template")
+    @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Template")
     TEMPLATE;
 
 }

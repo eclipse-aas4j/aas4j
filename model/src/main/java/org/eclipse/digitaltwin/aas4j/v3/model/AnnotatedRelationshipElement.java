@@ -34,20 +34,18 @@ public interface AnnotatedRelationshipElement extends RelationshipElement {
      * A data element that represents an annotation that holds for the relationship between the two
      * elements
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AnnotatedRelationshipElement/annotations
+     * More information under https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
      *
      * @return Returns the List of DataElements for the property annotations.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AnnotatedRelationshipElement/annotations")
+    @IRI("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations")
     List<DataElement> getAnnotations();
 
     /**
      * A data element that represents an annotation that holds for the relationship between the two
      * elements
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AnnotatedRelationshipElement/annotations
+     * More information under https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
      *
      * @param annotations desired value for the property annotations.
      */

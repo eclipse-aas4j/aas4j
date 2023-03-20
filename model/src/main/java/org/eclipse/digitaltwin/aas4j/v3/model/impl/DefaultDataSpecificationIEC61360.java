@@ -34,40 +34,40 @@ import java.util.Objects;
 @IRI("aas:DataSpecificationIEC61360")
 public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC61360 {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/dataType")
     protected DataTypeIEC61360 dataType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition")
-    protected List<LangString> definition = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/definition")
+    protected List<LangStringDefinitionTypeIEC61360> definition = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/levelType")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/levelType")
     protected LevelType levelType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName")
-    protected List<LangString> preferredName = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/preferredName")
+    protected List<LangStringPreferredNameTypeIEC61360> preferredName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName")
-    protected List<LangString> shortName = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/shortName")
+    protected List<LangStringShortNameTypeIEC61360> shortName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/sourceOfDefinition")
     protected String sourceOfDefinition;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/symbol")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/symbol")
     protected String symbol;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unit")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unit")
     protected String unit;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unitId")
-    protected Reference unitId;
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/unitID")
+    protected Reference unitID;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/value")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueFormat")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueFormat")
     protected String valueFormat;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueList")
+    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIEC61360/valueList")
     protected ValueList valueList;
 
     public DefaultDataSpecificationIEC61360() {
@@ -84,7 +84,7 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
             this.sourceOfDefinition,
             this.symbol,
             this.unit,
-            this.unitId,
+            this.unitID,
             this.value,
             this.valueFormat,
             this.valueList);
@@ -108,7 +108,7 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
                 Objects.equals(this.sourceOfDefinition, other.sourceOfDefinition) &&
                 Objects.equals(this.symbol, other.symbol) &&
                 Objects.equals(this.unit, other.unit) &&
-                Objects.equals(this.unitId, other.unitId) &&
+                Objects.equals(this.unitID, other.unitID) &&
                 Objects.equals(this.value, other.value) &&
                 Objects.equals(this.valueFormat, other.valueFormat) &&
                 Objects.equals(this.valueList, other.valueList);
@@ -126,12 +126,12 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public List<LangString> getDefinition() {
+    public List<LangStringDefinitionTypeIEC61360> getDefinition() {
         return definition;
     }
 
     @Override
-    public void setDefinition(List<LangString> definition) {
+    public void setDefinition(List<LangStringDefinitionTypeIEC61360> definition) {
         this.definition = definition;
     }
 
@@ -146,22 +146,22 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public List<LangString> getPreferredName() {
+    public List<LangStringPreferredNameTypeIEC61360> getPreferredName() {
         return preferredName;
     }
 
     @Override
-    public void setPreferredName(List<LangString> preferredName) {
+    public void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName) {
         this.preferredName = preferredName;
     }
 
     @Override
-    public List<LangString> getShortName() {
+    public List<LangStringShortNameTypeIEC61360> getShortName() {
         return shortName;
     }
 
     @Override
-    public void setShortName(List<LangString> shortName) {
+    public void setShortName(List<LangStringShortNameTypeIEC61360> shortName) {
         this.shortName = shortName;
     }
 
@@ -196,13 +196,13 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public Reference getUnitId() {
-        return unitId;
+    public Reference getUnitID() {
+        return unitID;
     }
 
     @Override
-    public void setUnitId(Reference unitId) {
-        this.unitId = unitId;
+    public void setUnitID(Reference unitID) {
+        this.unitID = unitID;
     }
 
     @Override

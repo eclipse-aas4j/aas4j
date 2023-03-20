@@ -28,7 +28,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param value desired value to be set
      * @return Builder object with new value for value
      */
-    public B value(List<LangString> value) {
+    public B value(List<LangStringTextType> value) {
         getBuildingInstance().setValue(value);
         return getSelf();
     }
@@ -39,19 +39,19 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param value desired value to be added
      * @return Builder object with new value for value
      */
-    public B value(LangString value) {
+    public B value(LangStringTextType value) {
         getBuildingInstance().getValue().add(value);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for valueId
+     * This function allows setting a value for valueID
      * 
-     * @param valueId desired value to be set
-     * @return Builder object with new value for valueId
+     * @param valueID desired value to be set
+     * @return Builder object with new value for valueID
      */
-    public B valueId(Reference valueId) {
-        getBuildingInstance().setValueId(valueId);
+    public B valueID(Reference valueID) {
+        getBuildingInstance().setValueID(valueID);
         return getSelf();
     }
 
@@ -78,13 +78,13 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for semanticId
+     * This function allows setting a value for semanticID
      * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
+     * @param semanticID desired value to be set
+     * @return Builder object with new value for semanticID
      */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
+    public B semanticID(Reference semanticID) {
+        getBuildingInstance().setSemanticID(semanticID);
         return getSelf();
     }
 
@@ -111,17 +111,6 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModelingKind kind) {
-        getBuildingInstance().setKind(kind);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for category
      * 
      * @param category desired value to be set
@@ -133,23 +122,12 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
     }
 
     /**
-     * This function allows setting a value for checksum
-     * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
-     */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for description
      * 
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
+    public B description(List<LangStringTextType> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }
@@ -160,7 +138,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param description desired value to be added
      * @return Builder object with new value for description
      */
-    public B description(LangString description) {
+    public B description(LangStringTextType description) {
         getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
@@ -171,7 +149,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
+    public B displayName(List<LangStringNameType> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -182,7 +160,7 @@ public abstract class MultiLanguagePropertyBuilder<T extends MultiLanguageProper
      * @param displayName desired value to be added
      * @return Builder object with new value for displayName
      */
-    public B displayName(LangString displayName) {
+    public B displayName(LangStringNameType displayName) {
         getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }

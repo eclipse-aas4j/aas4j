@@ -35,13 +35,13 @@ import java.util.Objects;
 @IRI("aas:Environment")
 public class DefaultEnvironment implements Environment {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
+    @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
     protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
+    @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
     protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
+    @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
     protected List<Submodel> submodels = new ArrayList<>();
 
     public DefaultEnvironment() {

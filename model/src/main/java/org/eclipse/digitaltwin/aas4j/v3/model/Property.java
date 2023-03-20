@@ -31,17 +31,17 @@ public interface Property extends DataElement {
     /**
      * The value of the property instance.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/value
+     * More information under https://admin-shell.io/aas/3/0/Property/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Property/value")
+    @IRI("https://admin-shell.io/aas/3/0/Property/value")
     String getValue();
 
     /**
      * The value of the property instance.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/value
+     * More information under https://admin-shell.io/aas/3/0/Property/value
      *
      * @param value desired value for the property value.
      */
@@ -50,39 +50,39 @@ public interface Property extends DataElement {
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueId
+     * More information under https://admin-shell.io/aas/3/0/Property/valueID
      *
-     * @return Returns the Reference for the property valueId.
+     * @return Returns the Reference for the property valueID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Property/valueId")
-    Reference getValueId();
+    @IRI("https://admin-shell.io/aas/3/0/Property/valueID")
+    Reference getValueID();
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueId
+     * More information under https://admin-shell.io/aas/3/0/Property/valueID
      *
-     * @param valueId desired value for the property valueId.
+     * @param valueID desired value for the property valueID.
      */
-    void setValueId(Reference valueId);
+    void setValueID(Reference valueID);
 
     /**
      * Data type of the value
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
+     * More information under https://admin-shell.io/aas/3/0/Property/valueType
      *
-     * @return Returns the DataTypeDefXsd for the property valueType.
+     * @return Returns the DataTypeDefXSD for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Property/valueType")
-    DataTypeDefXsd getValueType();
+    @IRI("https://admin-shell.io/aas/3/0/Property/valueType")
+    DataTypeDefXSD getValueType();
 
     /**
      * Data type of the value
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Property/valueType
+     * More information under https://admin-shell.io/aas/3/0/Property/valueType
      *
      * @param valueType desired value for the property valueType.
      */
-    void setValueType(DataTypeDefXsd valueType);
+    void setValueType(DataTypeDefXSD valueType);
 
 }

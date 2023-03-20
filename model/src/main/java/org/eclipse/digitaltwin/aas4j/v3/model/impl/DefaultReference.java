@@ -34,13 +34,13 @@ import java.util.Objects;
 @IRI("aas:Reference")
 public class DefaultReference implements Reference {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
+    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
     protected List<Key> keys = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/referredSemanticId")
-    protected Reference referredSemanticId;
+    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticID")
+    protected Reference referredSemanticID;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    @IRI("https://admin-shell.io/aas/3/0/Reference/type")
     protected ReferenceTypes type;
 
     public DefaultReference() {
@@ -50,7 +50,7 @@ public class DefaultReference implements Reference {
     @Override
     public int hashCode() {
         return Objects.hash(this.keys,
-            this.referredSemanticId,
+            this.referredSemanticID,
             this.type);
     }
 
@@ -65,7 +65,7 @@ public class DefaultReference implements Reference {
         } else {
             DefaultReference other = (DefaultReference) obj;
             return Objects.equals(this.keys, other.keys) &&
-                Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
+                Objects.equals(this.referredSemanticID, other.referredSemanticID) &&
                 Objects.equals(this.type, other.type);
         }
     }
@@ -81,13 +81,13 @@ public class DefaultReference implements Reference {
     }
 
     @Override
-    public Reference getReferredSemanticId() {
-        return referredSemanticId;
+    public Reference getReferredSemanticID() {
+        return referredSemanticID;
     }
 
     @Override
-    public void setReferredSemanticId(Reference referredSemanticId) {
-        this.referredSemanticId = referredSemanticId;
+    public void setReferredSemanticID(Reference referredSemanticID) {
+        this.referredSemanticID = referredSemanticID;
     }
 
     @Override

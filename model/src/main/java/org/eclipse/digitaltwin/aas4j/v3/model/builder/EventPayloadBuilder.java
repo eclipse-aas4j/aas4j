@@ -33,13 +33,13 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
     }
 
     /**
-     * This function allows setting a value for observableSemanticId
+     * This function allows setting a value for observableSemanticID
      * 
-     * @param observableSemanticId desired value to be set
-     * @return Builder object with new value for observableSemanticId
+     * @param observableSemanticID desired value to be set
+     * @return Builder object with new value for observableSemanticID
      */
-    public B observableSemanticId(Reference observableSemanticId) {
-        getBuildingInstance().setObservableSemanticId(observableSemanticId);
+    public B observableSemanticID(Reference observableSemanticID) {
+        getBuildingInstance().setObservableSemanticID(observableSemanticID);
         return getSelf();
     }
 
@@ -49,7 +49,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
      * @param payload desired value to be set
      * @return Builder object with new value for payload
      */
-    public B payload(String payload) {
+    public B payload(byte[] payload) {
         getBuildingInstance().setPayload(payload);
         return getSelf();
     }
@@ -66,24 +66,24 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
     }
 
     /**
-     * This function allows setting a value for sourceSemanticId
+     * This function allows setting a value for sourceSemanticID
      * 
-     * @param sourceSemanticId desired value to be set
-     * @return Builder object with new value for sourceSemanticId
+     * @param sourceSemanticID desired value to be set
+     * @return Builder object with new value for sourceSemanticID
      */
-    public B sourceSemanticId(Reference sourceSemanticId) {
-        getBuildingInstance().setSourceSemanticId(sourceSemanticId);
+    public B sourceSemanticID(Reference sourceSemanticID) {
+        getBuildingInstance().setSourceSemanticID(sourceSemanticID);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for subjectId
+     * This function allows setting a value for subjectID
      * 
-     * @param subjectId desired value to be set
-     * @return Builder object with new value for subjectId
+     * @param subjectID desired value to be set
+     * @return Builder object with new value for subjectID
      */
-    public B subjectId(Reference subjectId) {
-        getBuildingInstance().setSubjectId(subjectId);
+    public B subjectID(Reference subjectID) {
+        getBuildingInstance().setSubjectID(subjectID);
         return getSelf();
     }
 

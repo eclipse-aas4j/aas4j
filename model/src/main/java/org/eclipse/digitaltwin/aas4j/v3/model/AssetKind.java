@@ -26,16 +26,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum AssetKind {
 
     /**
-     * concrete, clearly identifiable component of a certain type
+     * Instance asset
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetKind/Instance")
+    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
     INSTANCE,
 
     /**
-     * hardware or software element which specifies the common attributes shared by all instances of the
-     * type
+     * Neither a type asset nor an instance asset
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetKind/Type")
+    @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
+    NOT_APPLICABLE,
+
+    /**
+     * Type asset
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
     TYPE;
 
 }
