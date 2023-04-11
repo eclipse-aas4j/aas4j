@@ -1,7 +1,6 @@
 [
     {
         "modelType": "Property",
-        "kind": "Instance",
         "category": "VARIABLE",
         "semanticId":
                 {
@@ -11,7 +10,7 @@
                             "value": "0173-1#02-AAO677#002"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "value": "http://acplt.org/ValueId/ACPLT",
         "valueId":
@@ -22,7 +21,7 @@
                             "value": "http://acplt.org/ValueId/ACPLT"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "valueType": "xs:string",
         "qualifiers": [
@@ -53,7 +52,6 @@
     },
     {
         "modelType": "Property",
-        "kind": "Instance",
         "category": "VARIABLE",
         "semanticId":
                 {
@@ -63,7 +61,7 @@
                             "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "value": "978-8234-234-342",
         "valueId":
@@ -74,10 +72,29 @@
                             "value": "978-8234-234-342"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "valueType": "xs:string",
         "idShort": "InstanceId",
+        "supplementalSemanticIds": [
+            {
+                "keys": [
+                    {
+                        "type": "GlobalReference",
+                        "value": "something_random_bd061acd"
+                    }
+                ],
+                "type": "ExternalReference"
+            },
+            {
+                "keys": [{
+                    "type": "GlobalReference",
+                    "value": "something_random_e14ad770"
+                }],
+                "type": "ExternalReference"
+            }
+
+        ],
         "description": [
             {
                 "language": "en-us",

@@ -10,12 +10,12 @@
                         "value": "http://acplt.org/SubmodelTemplates/AssetIdentification"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
     "administration":
             {
-                "revision": "0",
-                "version": "0.9"
+                "revision": "9",
+                "version": "0"
             },
     "id": "http://acplt.org/Submodels/Assets/TestAsset/Identification",
     "idShort": "Identification",
@@ -23,7 +23,6 @@
         {
             "modelType": "Property",
             "category": "VARIABLE",
-            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -32,7 +31,7 @@
                                 "value": "0173-1#02-AAO677#002"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "value": "http://acplt.org/ValueId/ACPLT",
             "valueId":
@@ -43,7 +42,7 @@
                                 "value": "http://acplt.org/ValueId/ACPLT"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "valueType": "xs:string",
             "qualifiers": [
@@ -75,7 +74,6 @@
         {
             "modelType": "Property",
             "category": "VARIABLE",
-            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -84,9 +82,28 @@
                                 "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "value": "978-8234-234-342",
+            "supplementalSemanticIds": [
+                {
+                    "keys": [
+                        {
+                            "type": "GlobalReference",
+                            "value": "something_random_bd061acd"
+                        }
+                    ],
+                    "type": "ExternalReference"
+                },
+                {
+                    "keys": [{
+                        "type": "GlobalReference",
+                        "value": "something_random_e14ad770"
+                    }],
+                    "type": "ExternalReference"
+                }
+
+            ],
             "valueId":
                     {
                         "keys": [
@@ -95,7 +112,7 @@
                                 "value": "978-8234-234-342"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "valueType": "xs:string",
             "idShort": "InstanceId",

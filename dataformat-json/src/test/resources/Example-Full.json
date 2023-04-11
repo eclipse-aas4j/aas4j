@@ -398,7 +398,7 @@
               {
                 "type": "GlobalReference",
                 "value": "something_random_bd061acd"
-              },
+              }
             ],
             "type": "ExternalReference"
             },
