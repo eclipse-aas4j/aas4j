@@ -15,16 +15,14 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
+
+import java.io.IOException;
+import java.util.List;
 
 public class LangStringsSerializer extends NoEntryWrapperListSerializer<LangString> {
 

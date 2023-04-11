@@ -15,17 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+
+import java.util.List;
 
 public interface MultiLanguagePropertyMixin {
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getValue();
+    public List<LangStringTextType> getValue();
 }

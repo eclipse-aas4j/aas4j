@@ -15,21 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import java.util.Map;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
-// TODO import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -39,6 +24,17 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
+import java.util.Map;
 
 
 public class XmlSerializer implements Serializer {
