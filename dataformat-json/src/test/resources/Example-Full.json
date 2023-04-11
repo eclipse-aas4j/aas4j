@@ -137,7 +137,6 @@
   "conceptDescriptions": [
     {
       "modelType": "ConceptDescription",
-      "category": "PROPERTY",
       "administration": {
         "revision": "9",
         "version": "0"
@@ -168,7 +167,6 @@
     },
     {
       "modelType": "ConceptDescription",
-      "category": "PROPERTY",
       "id": "https://acplt.org/Test_ConceptDescription_Mandatory",
       "idShort": "Test_ConceptDescription_Mandatory"
     },
@@ -326,7 +324,6 @@
         {
           "modelType": "Property",
           "kind": "Instance",
-          "category": "VARIABLE",
           "semanticId": {
             "keys": [
               {
@@ -482,6 +479,7 @@
                 "type": "ExternalReference"
               },
               "value": "http://acplt.org/ValueId/ExampleValue2",
+              "category": "CONSTANT",
               "valueId": {
                 "keys": [
                   {
@@ -1359,21 +1357,15 @@
           "value": [
             {
               "modelType": "Property",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "valueType": "xs:string",
               "idShort": "ExampleProperty"
             },
             {
               "modelType": "MultiLanguageProperty",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "idShort": "ExampleMultiLanguageProperty"
             },
             {
               "modelType": "Range",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "valueType": "xs:int",
               "idShort": "ExampleRange"
             }
@@ -1386,22 +1378,16 @@
           "value": [
             {
               "modelType": "Blob",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "contentType": "application/pdf",
               "idShort": "ExampleBlob"
             },
             {
               "modelType": "File",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "contentType": "application/pdf",
               "idShort": "ExampleFile"
             },
             {
               "modelType": "ReferenceElement",
-              "kind": "Instance",
-              "category": "VARIABLE",
               "idShort": "ExampleReferenceElement"
             }
           ]
@@ -1548,8 +1534,7 @@
           "annotations": [
             {
               "modelType": "Property",
-              "kind": "Instance",
-              "category": "VARIABLE",
+              "category": "PARAMETER",
               "value": "some example annotation",
               "valueType": "xs:string",
               "idShort": "ExampleProperty"

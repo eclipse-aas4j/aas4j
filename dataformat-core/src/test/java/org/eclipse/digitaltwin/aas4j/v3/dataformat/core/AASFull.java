@@ -15,14 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+
 import java.util.Arrays;
 import java.util.Base64;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.AASSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 public class AASFull {
 
@@ -212,6 +209,7 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultProperty.Builder()
                         .idShort("InstanceId")
+                        .category("VARIABLE")
                         .description(Arrays.asList(
                                 new DefaultLangStringTextType.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()
@@ -1760,6 +1758,7 @@ public class AASFull {
                         new DefaultLangStringTextType.Builder().text("An example concept description for the test application").language("en-us").build(),
                         new DefaultLangStringTextType.Builder().text("Ein Beispiel-ConceptDescription für eine Test-Anwendung").language("de").build()
                 ))
+                .category("PROPERTY")
                 .id("https://acplt.org/Test_ConceptDescription_Missing")
                 .administration(new DefaultAdministrativeInformation.Builder()
                         .version("0")
