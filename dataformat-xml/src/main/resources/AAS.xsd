@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://admin-shell.io/aas/3/0" elementFormDefault="qualified" targetNamespace="https://admin-shell.io/aas/3/0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns="https://admin-shell.io/aas/3/0"
+		   elementFormDefault="qualified"
+		   targetNamespace="https://admin-shell.io/aas/3/0">
 	<xs:group name="abstractLangString">
 		<xs:sequence>
 			<xs:element name="language">
@@ -1339,4 +1342,5 @@
 			<xs:group ref="valueReferencePair"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="environment" type="environment_t"/>
 </xs:schema>
