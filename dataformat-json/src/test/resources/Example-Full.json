@@ -278,12 +278,6 @@
                 "text": "This is a DataSpecification for testing purposes"
               }
             ],
-            "levelType": {
-              "max": true,
-              "min": false,
-              "nom": false,
-              "typ": false
-            },
             "preferredName": [
               {
                 "language": "de",

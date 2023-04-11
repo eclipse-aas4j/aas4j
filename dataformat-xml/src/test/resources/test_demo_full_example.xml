@@ -2441,12 +2441,6 @@
                 </aas:valueReferencePairs>
               </aas:valueList>
               <aas:value>TEST</aas:value>
-              <aas:levelType>
-                  <aas:min>false</aas:min>
-                  <aas:nom>false</aas:nom>
-                  <aas:typ>false</aas:typ>
-                  <aas:max>true</aas:max>
-              </aas:levelType>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
         </aas:embeddedDataSpecification>
