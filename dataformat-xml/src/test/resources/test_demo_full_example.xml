@@ -234,6 +234,26 @@
               </aas:key>
             </aas:keys>
           </aas:semanticId>
+          <aas:supplementalSemanticIds>
+            <aas:reference>
+              <aas:type>ExternalReference</aas:type>
+              <aas:keys>
+                <aas:key>
+                  <aas:type>GlobalReference</aas:type>
+                  <aas:value>something_random_e14ad770</aas:value>
+                </aas:key>
+              </aas:keys>
+            </aas:reference>
+            <aas:reference>
+              <aas:type>ExternalReference</aas:type>
+              <aas:keys>
+                <aas:key>
+                  <aas:type>GlobalReference</aas:type>
+                  <aas:value>something_random_bd061acd</aas:value>
+                </aas:key>
+              </aas:keys>
+            </aas:reference>
+          </aas:supplementalSemanticIds>
           <aas:valueType>xs:string</aas:valueType>
           <aas:value>978-8234-234-342</aas:value>
           <aas:valueId>

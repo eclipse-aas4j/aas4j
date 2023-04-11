@@ -392,6 +392,25 @@
             ],
             "type": "ExternalReference"
           },
+          "supplementalSemanticIds": [
+            {
+              "keys": [
+              {
+                "type": "GlobalReference",
+                "value": "something_random_bd061acd"
+              },
+            ],
+            "type": "ExternalReference"
+            },
+            {
+              "keys": [{
+                "type": "GlobalReference",
+                "value": "something_random_e14ad770"
+              }],
+              "type": "ExternalReference"
+            }
+
+          ],
           "value": "978-8234-234-342",
           "valueId": {
             "keys": [
