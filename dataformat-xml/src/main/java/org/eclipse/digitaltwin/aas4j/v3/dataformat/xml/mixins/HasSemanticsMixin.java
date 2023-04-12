@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-@JsonPropertyOrder({ "value", "valueID" })
-public interface ValueReferencePairMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	public Reference getValueID();
+public interface HasSemanticsMixin {
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticId")
+	void setSemanticID(Reference semanticID);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "supplementalSemanticIds")
+	@JsonDeserialize(using = ReferencesDeserializer.class)
+	void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);
 }

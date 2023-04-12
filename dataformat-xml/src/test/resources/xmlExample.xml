@@ -77,7 +77,6 @@
     <aas:submodel>
       <aas:idShort>TechnicalData</aas:idShort>
       <aas:id>http://i40.customer.com/type/1/1/7A7104BDAB57E184</aas:id>
-      <aas:kind>Instance</aas:kind>
       <aas:semanticId>
         <aas:type>ExternalReference</aas:type>
         <aas:keys>

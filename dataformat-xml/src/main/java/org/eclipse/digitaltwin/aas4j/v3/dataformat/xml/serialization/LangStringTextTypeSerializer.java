@@ -15,21 +15,24 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
+import java.io.IOException;
+import java.lang.reflect.Field;
+
+import javax.xml.namespace.QName;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 
-import javax.xml.namespace.QName;
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-public class LangStringSerializer extends JsonSerializer<LangString> {
+public class LangStringTextTypeSerializer extends JsonSerializer<LangStringTextType> {
 
 
     @Override
-    public void serialize(LangString langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+	public void serialize(LangStringTextType langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
 
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         try {
@@ -37,18 +40,16 @@ public class LangStringSerializer extends JsonSerializer<LangString> {
             nextName.setAccessible(true);
             xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langString"));
 
-            serializeLangString(xgen, langString);
+            serializeLangStringTextType(xgen, langString);
 
 		} catch (NoSuchFieldException e) {
             // serialize it without changing the namespaces
-            serializeLangString(xgen, langString);
+            serializeLangStringTextType(xgen, langString);
         }
 
     }
 
-    private void serializeLangString(ToXmlGenerator xgen, LangString langString) throws IOException {
-
-
+	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringTextType langString) throws IOException {
         xgen.writeStartObject();
         xgen.writeFieldName("language");
         xgen.writeString(langString.getLanguage());

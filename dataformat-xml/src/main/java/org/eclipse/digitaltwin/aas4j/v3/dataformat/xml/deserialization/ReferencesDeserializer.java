@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
@@ -28,13 +30,12 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
 public class ReferencesDeserializer extends JsonDeserializer<List<Reference>> {
 
     @Override
     public List<Reference> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
+		treeNode = treeNode.get("reference");
         if (treeNode.isArray()) {
             return createReferencesFromArray(parser, (ArrayNode) treeNode);
         } else {

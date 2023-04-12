@@ -21,11 +21,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-@JsonPropertyOrder({ "value", "valueID" })
-public interface ValueReferencePairMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	public Reference getValueID();
+@JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
+public interface SpecificAssetIDMixin {
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
+    public String getName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     public String getValue();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
+	public Reference getExternalSubjectID();
 }

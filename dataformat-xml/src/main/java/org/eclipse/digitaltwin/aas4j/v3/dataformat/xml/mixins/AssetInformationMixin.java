@@ -17,32 +17,32 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({ "assetKind", "globalAssetId", "specificAssetIds", "defaultThumbnail"})
 public interface AssetInformationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-    public List<SpecificAssetId> getSpecificAssetIds();
+	public List<SpecificAssetID> getSpecificAssetIds();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
+	public void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
-    public Reference getGlobalAssetId();
+	public Reference getGlobalAssetID();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
-    public void setGlobalAssetId(Reference globalAssetId);
+	public void setGlobalAssetID(Reference globalAssetId);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelRef")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "billOfMaterials")
