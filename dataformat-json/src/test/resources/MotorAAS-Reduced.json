@@ -37,7 +37,6 @@
                 ],
                 "thumbnail": {
                     "modelType": "File",
-                    "kind": "Instance",
                     "idShort": "thumbnail",
                     "mimeType": "image/png",
                     "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
@@ -83,7 +82,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
@@ -108,7 +106,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
@@ -116,7 +113,7 @@
                                 "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "RotationSpeed",
                     "category": "Variable",
