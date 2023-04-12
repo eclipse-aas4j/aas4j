@@ -374,7 +374,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -383,7 +382,7 @@
                                 "value": "0173-1#02-BAA120#008"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "value": "5000",
                     "valueType": "xs:integer",
@@ -400,7 +399,6 @@
             "submodelElements": [
                 {
                     "modelType":"SubmodelElementCollection",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -409,14 +407,13 @@
                                 "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "OperatingManual",
                     "value": [
                         {
                             "modelType": "Property",
                             "category": "VARIABLE",
-                            "kind": "Instance",
                             "semanticId":
                             {
                                 "keys": [
@@ -425,7 +422,7 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "value": "OperatingManual",
                             "valueType": "xs:string",
@@ -436,7 +433,6 @@
                             "category": "VARIABLE",
                             "contentType": "application/pdf",
                             "value": "file:///aasx/OperatingManual.pdf",
-                            "kind": "Instance",
                             "semanticId":
                             {
                                 "keys": [
@@ -445,7 +441,7 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "idShort": "DigitalFile_PDF"
                         }
@@ -461,7 +457,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -470,7 +465,7 @@
                                 "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "value": "4370",
                     "valueType": "xs:integer",
