@@ -15,53 +15,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import javax.xml.namespace.QName;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringNameTypeSerializer extends JsonSerializer<LangStringNameType> {
+public class LangStringNameTypeSerializer extends AbstractLangStringSerializer<LangStringNameType> {
+
+	public LangStringNameTypeSerializer() {
+		super("langStringNameType");
+	}
 
 
-    @Override
-	public void serialize(LangStringNameType langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        try {
-            Field nextName = xgen.getClass().getDeclaredField("_nextName");
-            nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringNameType"));
-
-            serializeLangStringTextType(xgen, langString);
-
-		} catch (NoSuchFieldException e) {
-            // serialize it without changing the namespaces
-            serializeLangStringTextType(xgen, langString);
-        }
-
-    }
-
-	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringNameType langString) throws IOException {
-        xgen.writeStartObject();
-        xgen.writeFieldName("language");
-        xgen.writeString(langString.getLanguage());
-
-        xgen.writeFieldName("text");
-        xgen.writeString(langString.getText());
-
-        xgen.writeEndObject();
-    }
 }

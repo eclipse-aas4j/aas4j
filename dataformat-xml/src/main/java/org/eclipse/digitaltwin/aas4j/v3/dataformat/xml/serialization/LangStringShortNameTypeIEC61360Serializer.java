@@ -15,53 +15,17 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import javax.xml.namespace.QName;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
-
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringShortNameTypeIEC61360Serializer extends JsonSerializer<LangStringShortNameTypeIEC61360> {
+public class LangStringShortNameTypeIEC61360Serializer extends AbstractLangStringSerializer<LangStringShortNameTypeIEC61360> {
 
+	public LangStringShortNameTypeIEC61360Serializer() {
+		super("langStringShortNameTypeIec61360");
+	}
 
-    @Override
-	public void serialize(LangStringShortNameTypeIEC61360 langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        try {
-            Field nextName = xgen.getClass().getDeclaredField("_nextName");
-            nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringShortNameTypeIec61360"));
-
-            serializeLangStringTextType(xgen, langString);
-
-		} catch (NoSuchFieldException e) {
-            // serialize it without changing the namespaces
-            serializeLangStringTextType(xgen, langString);
-        }
-
-    }
-
-	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringShortNameTypeIEC61360 langString) throws IOException {
-        xgen.writeStartObject();
-        xgen.writeFieldName("language");
-        xgen.writeString(langString.getLanguage());
-
-        xgen.writeFieldName("text");
-        xgen.writeString(langString.getText());
-
-        xgen.writeEndObject();
-    }
 }

@@ -15,45 +15,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
-
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringsPreferredNameTypeIEC61360Serializer extends NoEntryWrapperListSerializer<LangStringPreferredNameTypeIEC61360> {
+public class LangStringsPreferredNameTypeIEC61360Serializer extends AbstractLangStringsSerializer<LangStringPreferredNameTypeIEC61360> {
 
-	private LangStringPreferredNameTypeIEC61360Serializer ser = new LangStringPreferredNameTypeIEC61360Serializer();
-
-	@Override
-	public void serialize(List<LangStringPreferredNameTypeIEC61360> langStrings, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-		ToXmlGenerator xgen = (ToXmlGenerator) gen;
-		xgen.writeStartObject();
-		for (LangStringPreferredNameTypeIEC61360 element : langStrings) {
-			ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
-															// <statements />, which is not allowed according to the schema
-			xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
-			ser.serialize(element, xgen, serializers);
-		}
-		xgen.writeEndObject();
-
+	public LangStringsPreferredNameTypeIEC61360Serializer() {
+		super(new LangStringPreferredNameTypeIEC61360Serializer());
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Class<List<LangStringPreferredNameTypeIEC61360>> handledType() {
-		return (Class<List<LangStringPreferredNameTypeIEC61360>>) (Object) List.class;
-	}
 
 }

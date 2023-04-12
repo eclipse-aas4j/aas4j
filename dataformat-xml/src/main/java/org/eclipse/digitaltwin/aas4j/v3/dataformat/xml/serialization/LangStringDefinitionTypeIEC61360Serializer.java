@@ -15,53 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import javax.xml.namespace.QName;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
-
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringDefinitionTypeIEC61360Serializer extends JsonSerializer<LangStringDefinitionTypeIEC61360> {
+public class LangStringDefinitionTypeIEC61360Serializer extends AbstractLangStringSerializer<LangStringDefinitionTypeIEC61360> {
 
-
-    @Override
-	public void serialize(LangStringDefinitionTypeIEC61360 langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        try {
-            Field nextName = xgen.getClass().getDeclaredField("_nextName");
-            nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringDefinitionTypeIec61360"));
-
-            serializeLangStringTextType(xgen, langString);
-
-		} catch (NoSuchFieldException e) {
-            // serialize it without changing the namespaces
-            serializeLangStringTextType(xgen, langString);
-        }
-
-    }
-
-	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringDefinitionTypeIEC61360 langString) throws IOException {
-        xgen.writeStartObject();
-        xgen.writeFieldName("language");
-        xgen.writeString(langString.getLanguage());
-
-        xgen.writeFieldName("text");
-        xgen.writeString(langString.getText());
-
-        xgen.writeEndObject();
-    }
+	public LangStringDefinitionTypeIEC61360Serializer() {
+		super("langStringDefinitionTypeIec61360");
+	}
 }

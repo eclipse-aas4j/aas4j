@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,48 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import javax.xml.namespace.QName;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+/**
+ * 
+ * @author schnicke
+ *
+ */
+public class LangStringTextTypeSerializer extends AbstractLangStringSerializer<LangStringTextType> {
 
-public class LangStringTextTypeSerializer extends JsonSerializer<LangStringTextType> {
-
-
-    @Override
-	public void serialize(LangStringTextType langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        try {
-            Field nextName = xgen.getClass().getDeclaredField("_nextName");
-            nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringTextType"));
-
-            serializeLangStringTextType(xgen, langString);
-
-		} catch (NoSuchFieldException e) {
-            // serialize it without changing the namespaces
-            serializeLangStringTextType(xgen, langString);
-        }
-
-    }
-
-	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringTextType langString) throws IOException {
-        xgen.writeStartObject();
-        xgen.writeFieldName("language");
-        xgen.writeString(langString.getLanguage());
-
-        xgen.writeFieldName("text");
-        xgen.writeString(langString.getText());
-
-        xgen.writeEndObject();
-    }
+	public LangStringTextTypeSerializer() {
+		super("langStringTextType");
+	}
 }
