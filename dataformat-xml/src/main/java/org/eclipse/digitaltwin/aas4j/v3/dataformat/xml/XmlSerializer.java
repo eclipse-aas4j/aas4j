@@ -22,9 +22,17 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringDefinitionTypeIEC61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringNameTypeSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringPreferredNameTypeIEC61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringShortNameTypeIEC61360Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringTextTypeSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
@@ -82,8 +90,10 @@ public class XmlSerializer implements Serializer {
         }
         module.addSerializer(Environment.class, aasEnvSerializer);
 		module.addSerializer(LangStringTextType.class, new LangStringTextTypeSerializer());
-		// module.addSerializer(LangStringNameType.class, new
-		// LangStringTextTypeSerializer());
+		module.addSerializer(LangStringNameType.class, new LangStringNameTypeSerializer());
+		module.addSerializer(LangStringDefinitionTypeIEC61360.class, new LangStringDefinitionTypeIEC61360Serializer());
+		module.addSerializer(LangStringPreferredNameTypeIEC61360.class, new LangStringPreferredNameTypeIEC61360Serializer());
+		module.addSerializer(LangStringShortNameTypeIEC61360.class, new LangStringShortNameTypeIEC61360Serializer());
 		module.addSerializer(OperationVariable.class, new OperationVariableSerializer());
         return module;
     }

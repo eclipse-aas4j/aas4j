@@ -22,6 +22,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringDefinitionTypeIEC61360Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringPreferredNameTypeIEC61360Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringShortNameTypeIEC61360Deserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsDefinitionTypeIEC61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsPreferredNameTypeIEC61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsShortNameTypeIEC61360Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
@@ -38,10 +41,9 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 @JsonPropertyOrder({"preferredName", "shortName", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definition", "valueFormat", "valueList", "value", "valueId", "levelType"})
 public interface DataSpecificationIEC61360Mixin {
 
-	// @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName =
-	// "definition")
-	// @JsonSerialize(using = LangStringsSerializer.class)
-	// public List<LangStringDefinitionTypeIEC61360> getDefinition();
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
+	@JsonSerialize(using = LangStringsDefinitionTypeIEC61360Serializer.class)
+	public List<LangStringDefinitionTypeIEC61360> getDefinition();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
 	@JsonDeserialize(using = LangStringDefinitionTypeIEC61360Deserializer.class)
@@ -50,19 +52,17 @@ public interface DataSpecificationIEC61360Mixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     public LevelType getLevelType();
 
-	// @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName =
-	// "preferredName")
-	// @JsonSerialize(using = LangStringsSerializer.class)
-	// public List<LangStringPreferredNameTypeIEC61360> getPreferredName();
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
+	@JsonSerialize(using = LangStringsPreferredNameTypeIEC61360Serializer.class)
+	public List<LangStringPreferredNameTypeIEC61360> getPreferredName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
 	@JsonDeserialize(using = LangStringPreferredNameTypeIEC61360Deserializer.class)
     public void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName);
 
-	// @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName =
-	// "shortName")
-	// @JsonSerialize(using = LangStringsSerializer.class)
-	// public List<LangStringShortNameTypeIEC61360> getShortName();
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
+	@JsonSerialize(using = LangStringsShortNameTypeIEC61360Serializer.class)
+	public List<LangStringShortNameTypeIEC61360> getShortName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
 	@JsonDeserialize(using = LangStringShortNameTypeIEC61360Deserializer.class)
@@ -94,7 +94,6 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
     public Reference getValueId();
-
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
     @JsonSerialize(using = EnumSerializer.class)

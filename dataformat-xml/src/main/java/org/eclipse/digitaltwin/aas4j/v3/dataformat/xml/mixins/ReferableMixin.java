@@ -20,7 +20,8 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringNameTypeDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringTextTypeDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringTextTypeSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsNameTypeSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsTextTypeSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 @JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayName", "description", "checksum"})
 public interface ReferableMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-	@JsonSerialize(using = LangStringTextTypeSerializer.class)
+	@JsonSerialize(using = LangStringsTextTypeSerializer.class)
     public List<LangStringTextType> getDescription();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
@@ -44,10 +45,9 @@ public interface ReferableMixin {
 	@JsonDeserialize(using = LangStringNameTypeDeserializer.class)
     public List<LangStringNameType> getDisplayName();
 
-	// @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName =
-	// "displayName")
-	// @JsonSerialize(using = LangStringNameTypeSerializer.class)
-	// public void setDisplayName(List<LangStringNameType> displayNames);
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
+	@JsonSerialize(using = LangStringsNameTypeSerializer.class)
+	public void setDisplayName(List<LangStringNameType> displayNames);
 
     public String getIdShort();
 }

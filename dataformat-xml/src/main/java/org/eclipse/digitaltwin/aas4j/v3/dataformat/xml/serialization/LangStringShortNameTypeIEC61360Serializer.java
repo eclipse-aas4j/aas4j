@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,24 +21,29 @@ import java.lang.reflect.Field;
 import javax.xml.namespace.QName;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class LangStringTextTypeSerializer extends JsonSerializer<LangStringTextType> {
+/**
+ * 
+ * @author schnicke
+ *
+ */
+public class LangStringShortNameTypeIEC61360Serializer extends JsonSerializer<LangStringShortNameTypeIEC61360> {
 
 
     @Override
-	public void serialize(LangStringTextType langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+	public void serialize(LangStringShortNameTypeIEC61360 langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
 
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         try {
             Field nextName = xgen.getClass().getDeclaredField("_nextName");
             nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringTextType"));
+			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langStringShortNameTypeIec61360"));
 
             serializeLangStringTextType(xgen, langString);
 
@@ -49,7 +54,7 @@ public class LangStringTextTypeSerializer extends JsonSerializer<LangStringTextT
 
     }
 
-	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringTextType langString) throws IOException {
+	private void serializeLangStringTextType(ToXmlGenerator xgen, LangStringShortNameTypeIEC61360 langString) throws IOException {
         xgen.writeStartObject();
         xgen.writeFieldName("language");
         xgen.writeString(langString.getLanguage());
