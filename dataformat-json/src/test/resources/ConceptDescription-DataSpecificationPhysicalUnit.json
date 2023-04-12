@@ -12,7 +12,7 @@
                                 "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "dataSpecificationContent":
                     {

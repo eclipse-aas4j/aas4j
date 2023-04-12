@@ -17,8 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 import java.util.List;
@@ -33,8 +32,8 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")
-    public List<LangString> getPreferredName();
+    public List<LangStringPreferredNameTypeIEC61360> getPreferredName();
 
     @JsonProperty("preferredName")
-    public void setPreferredName(List<LangString> preferredName);
+    public void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName);
 }

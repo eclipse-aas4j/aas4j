@@ -28,18 +28,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationPhysicalUnit;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangString;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
 
 public class Examples {
 
@@ -59,18 +49,12 @@ public class Examples {
                     .id("https://example.org/AssetAdministrationShell")
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.INSTANCE)
-                            .globalAssetId(new DefaultReference.Builder()
-                                    .type(ReferenceTypes.GLOBAL_REFERENCE)
-                                    .keys(new DefaultKey.Builder()
-                                            .type(KeyTypes.GLOBAL_REFERENCE)
-                                            .value("https://example.org/Asset")
-                                            .build())
-                                    .build())
-                            .specificAssetIds(new DefaultSpecificAssetId.Builder()
+                            .globalAssetID("https://example.org/Asset")
+                            .specificAssetIds(new DefaultSpecificAssetID.Builder()
                                     .name("ExampleAssetId")
                                     .value("ExampleValue")
-                                    .externalSubjectId(new DefaultReference.Builder()
-                                            .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                    .externalSubjectID(new DefaultReference.Builder()
+                                            .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                             .keys(new DefaultKey.Builder()
                                                     .type(KeyTypes.GLOBAL_REFERENCE)
                                                     .value("https://example.org/ExternalSubject")
@@ -92,7 +76,7 @@ public class Examples {
                     .id("https://example.org/ConceptDescription")
                     .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
                             .dataSpecification(new DefaultReference.Builder()
-                                    .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                     .keys(new DefaultKey.Builder()
                                             .type(KeyTypes.GLOBAL_REFERENCE)
                                             .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02")
@@ -127,16 +111,16 @@ public class Examples {
     public static final ExampleData<List<SubmodelElement>> SUBMODEL_ELEMENT_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0),
                     AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(1)),
-            "submodelelement-list.json");
+            "SubmodelElement-List.json");
     
     public static final ExampleData<List<Submodel>> SUBMODEL_LIST_OF = ExampleData.of(
             List.of(AASFull.ENVIRONMENT.getSubmodels().get(0),
                     AASFull.ENVIRONMENT.getSubmodels().get(1)),
             "Submodel-List.json");
 
-    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0), "submodel.json");
+    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0), "Submodel.json");
 
-    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0), "submodelElement.json");
+    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.ENVIRONMENT.getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
 
     public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection)AASFull.ENVIRONMENT.getSubmodels().get(6).getSubmodelElements().get(6), "SubmodelElementCollection.json");
 
