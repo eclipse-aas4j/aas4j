@@ -47,7 +47,7 @@ public class XMLDeserializerTest {
 
 		System.out.println("--- Expected: \n" + new Gson().toJson(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0)));
 
-		System.out.println("--- Received: \n" + new Gson().toJson(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0)));
+		System.out.println("--- Received: \n" + new Gson().toJson(env.getAssetAdministrationShells().get(0)));
 
 		Assert.assertEquals(AASSimple.ENVIRONMENT.getAssetAdministrationShells(), env.getAssetAdministrationShells());
 	}
