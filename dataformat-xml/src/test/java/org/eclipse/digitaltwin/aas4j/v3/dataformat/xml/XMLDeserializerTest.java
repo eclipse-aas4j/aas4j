@@ -45,13 +45,12 @@ public class XMLDeserializerTest {
 	public void deserializeAASSimpleAAS() throws Exception {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		System.out.println("--- Expected: \n" + new Gson().toJson(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0)));
+		System.out.println("--- Expected: \n" + new Gson().toJson(AASSimple.createEnvironment().getAssetAdministrationShells().get(0)));
 
 		System.out.println("--- Received: \n" + new Gson().toJson(env.getAssetAdministrationShells().get(0)));
 
 		Assert.assertEquals(AASSimple.ENVIRONMENT.getAssetAdministrationShells(), env.getAssetAdministrationShells());
 	}
-
 
 	@Test
 	public void deserializeAASSimpleSubmodel() throws Exception {
