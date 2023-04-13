@@ -27,7 +27,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public interface MultiLanguagePropertyMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "langStringTextType")
     @JsonDeserialize(using = LangStringsTextTypeDeserializer.class)
     public List<LangStringTextType> getValue();
 

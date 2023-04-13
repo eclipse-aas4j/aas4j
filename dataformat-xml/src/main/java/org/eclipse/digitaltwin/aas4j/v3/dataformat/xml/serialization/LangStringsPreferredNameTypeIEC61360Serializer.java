@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC6136
 public class LangStringsPreferredNameTypeIEC61360Serializer extends AbstractLangStringsSerializer<LangStringPreferredNameTypeIEC61360> {
 
 	public LangStringsPreferredNameTypeIEC61360Serializer() {
-		super(new LangStringPreferredNameTypeIEC61360Serializer());
+		super(new AbstractLangStringSerializer<>("langStringPreferredNameTypeIec61360"));
 	}
 
 

@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
 public class LangStringsDefinitionTypeIEC61360Serializer extends AbstractLangStringsSerializer<LangStringDefinitionTypeIEC61360> {
 
 	public LangStringsDefinitionTypeIEC61360Serializer() {
-		super(new LangStringDefinitionTypeIEC61360Serializer());
+		super(new AbstractLangStringSerializer<>("langStringDefinitionTypeIec61360"));
 	}
 
 }

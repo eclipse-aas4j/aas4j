@@ -33,7 +33,7 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
  */
 public class LangStringsNameTypeSerializer extends NoEntryWrapperListSerializer<LangStringNameType> {
 
-	private LangStringNameTypeSerializer ser = new LangStringNameTypeSerializer();
+	private AbstractLangStringSerializer<LangStringNameType> ser = new AbstractLangStringSerializer<>("langStringNameType");
 
 	@Override
 	public void serialize(List<LangStringNameType> langStrings, JsonGenerator gen, SerializerProvider serializers) throws IOException {

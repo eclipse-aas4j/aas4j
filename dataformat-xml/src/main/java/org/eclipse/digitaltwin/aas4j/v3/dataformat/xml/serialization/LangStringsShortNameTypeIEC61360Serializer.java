@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
 public class LangStringsShortNameTypeIEC61360Serializer extends AbstractLangStringsSerializer<LangStringShortNameTypeIEC61360> {
 
 	public LangStringsShortNameTypeIEC61360Serializer() {
-		super(new LangStringShortNameTypeIEC61360Serializer());
+		super(new AbstractLangStringSerializer<>("langStringShortNameTypeIec61360"));
 	}
 
 

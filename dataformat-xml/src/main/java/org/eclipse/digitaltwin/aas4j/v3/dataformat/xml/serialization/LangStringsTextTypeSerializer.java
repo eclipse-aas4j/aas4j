@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 public class LangStringsTextTypeSerializer extends AbstractLangStringsSerializer<LangStringTextType> {
 
 	public LangStringsTextTypeSerializer() {
-		super(new LangStringTextTypeSerializer());
+		super(new AbstractLangStringSerializer<>("langStringTextType"));
 	}
 
 
