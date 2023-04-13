@@ -73,11 +73,11 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     protected String idShort;
 
     public DefaultAssetAdministrationShell() {
+		System.out.println("Constructor called");
 		submodels = new ArrayList<>();
 		embeddedDataSpecifications = new ArrayList<>();
 		extensions = new ArrayList<>();
 		description = new ArrayList<>();
-		displayName = new ArrayList<>();
     }
 
     @Override
