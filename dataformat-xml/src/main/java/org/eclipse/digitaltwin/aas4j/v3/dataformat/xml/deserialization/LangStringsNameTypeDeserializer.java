@@ -13,23 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 
 /**
  * 
  * @author schnicke
  *
- * @param <T>
  */
-public abstract class AbstractLangStringDeserializer<T extends AbstractLangString> extends NoEntryWrapperListDeserializer<T> {
+public class LangStringsNameTypeDeserializer extends AbstractLangStringsDeserializer<LangStringNameType> {
 
-	protected static LangStringContentDeserializer deserializer = new LangStringContentDeserializer();
 
-	public AbstractLangStringDeserializer(String elementName, CustomJsonNodeDeserializer<T> nodeDeserializer) {
-		super(elementName, nodeDeserializer);
+	public LangStringsNameTypeDeserializer() {
+		super("langStringNameType");
 	}
 
+	@Override
+	protected LangStringNameType createLangStringInstance(LangStringContent content) {
+		return new DefaultLangStringNameType.Builder().language(content.getLanguage()).text(content.getText()).build();
+	}
 }

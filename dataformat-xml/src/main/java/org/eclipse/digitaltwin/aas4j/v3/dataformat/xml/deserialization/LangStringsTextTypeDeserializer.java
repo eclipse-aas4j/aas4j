@@ -15,28 +15,19 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
+public class LangStringsTextTypeDeserializer extends AbstractLangStringsDeserializer<LangStringTextType> {
 
-public class LangStringTextTypeDeserializer extends AbstractLangStringDeserializer<LangStringTextType> {
 
-	private static class LangStringTextTypeNodeDeserializer implements CustomJsonNodeDeserializer<LangStringTextType> {
-
-		@Override
-		public LangStringTextType readValue(JsonNode node, JsonParser parser) throws IOException {
-			LangStringContent content = deserializer.readValue(node, parser);
-			return new DefaultLangStringTextType.Builder().language(content.getLanguage()).text(content.getText()).build();
-		}
-
+	public LangStringsTextTypeDeserializer() {
+		super("langStringTextType");
 	}
 
-	public LangStringTextTypeDeserializer() {
-		super("langStringTextType", new LangStringTextTypeNodeDeserializer());
-    }
+	@Override
+	protected LangStringTextType createLangStringInstance(LangStringContent content) {
+		return new DefaultLangStringTextType.Builder().language(content.getLanguage()).text(content.getText()).build();
+	}
 }

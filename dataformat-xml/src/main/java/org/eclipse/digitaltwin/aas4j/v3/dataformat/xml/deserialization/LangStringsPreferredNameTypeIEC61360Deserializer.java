@@ -15,33 +15,23 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIEC61360;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringPreferredNameTypeIEC61360Deserializer extends AbstractLangStringDeserializer<LangStringPreferredNameTypeIEC61360> {
-
-	private static class LangStringPreferredNameTypeIEC61360NodeDeserializer implements CustomJsonNodeDeserializer<LangStringPreferredNameTypeIEC61360> {
-
-		@Override
-		public LangStringPreferredNameTypeIEC61360 readValue(JsonNode node, JsonParser parser) throws IOException {
-			LangStringContent content = deserializer.readValue(node, parser);
-			return new DefaultLangStringPreferredNameTypeIEC61360.Builder().language(content.getLanguage()).text(content.getText()).build();
-		}
-
+public class LangStringsPreferredNameTypeIEC61360Deserializer extends AbstractLangStringsDeserializer<LangStringPreferredNameTypeIEC61360> {
+	public LangStringsPreferredNameTypeIEC61360Deserializer() {
+		super("langStringPreferredNameTypeIec61360");
 	}
 
-    public LangStringPreferredNameTypeIEC61360Deserializer() {
-		super("langStringPreferredNameTypeIec61360", new LangStringPreferredNameTypeIEC61360NodeDeserializer());
-    }
+	@Override
+	protected LangStringPreferredNameTypeIEC61360 createLangStringInstance(LangStringContent content) {
+		return new DefaultLangStringPreferredNameTypeIEC61360.Builder().language(content.getLanguage()).text(content.getText()).build();
+
+	}
 }
