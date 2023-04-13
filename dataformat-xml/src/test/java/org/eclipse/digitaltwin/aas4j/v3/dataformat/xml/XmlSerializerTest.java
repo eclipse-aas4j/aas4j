@@ -16,11 +16,29 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,14 +51,6 @@ import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
 import org.xmlunit.matchers.CompareMatcher;
 import org.xmlunit.util.Predicate;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import static org.junit.Assert.assertTrue;
 
 
 public class XmlSerializerTest {
@@ -123,6 +133,14 @@ public class XmlSerializerTest {
         Set<String> errors = validateAgainstXsdSchema( xml );
         assertTrue(errors.isEmpty());
     }
+
+	@Test
+	public void testGYear() throws SerializationException, SAXException {
+		Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
+		String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
+		Set<String> errors = validateAgainstXsdSchema(xml);
+		assertTrue(errors.isEmpty());
+	}
 
 
     @Test
