@@ -25,12 +25,12 @@
         "value": "https://acplt.org/TestAssetAdministrationShell2"
       }
     ],
-    "type": "GlobalReference"
+    "type": "ExternalReference"
   },
   "assetInformation":
   {
     "assetKind": "Instance",
-    "globalAssetId":"https://acplt.org/Test_Asset",
+    "globalAssetId":"https://acplt.org/Test_Asset"
   },
   "submodels": [
     {

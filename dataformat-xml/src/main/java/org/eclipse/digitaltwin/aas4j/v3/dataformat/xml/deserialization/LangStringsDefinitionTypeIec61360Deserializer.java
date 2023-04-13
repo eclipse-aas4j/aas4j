@@ -16,23 +16,23 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringsDefinitionTypeIEC61360Deserializer extends AbstractLangStringsDeserializer<LangStringDefinitionTypeIEC61360> {
+public class LangStringsDefinitionTypeIec61360Deserializer extends AbstractLangStringsDeserializer<LangStringDefinitionTypeIec61360> {
 
 
-	public LangStringsDefinitionTypeIEC61360Deserializer() {
+	public LangStringsDefinitionTypeIec61360Deserializer() {
 		super("langStringDefinitionTypeIec61360");
 	}
 
 	@Override
-	protected LangStringDefinitionTypeIEC61360 createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringDefinitionTypeIEC61360.Builder().language(content.getLanguage()).text(content.getText()).build();
+	protected LangStringDefinitionTypeIec61360 createLangStringInstance(LangStringContent content) {
+		return new DefaultLangStringDefinitionTypeIec61360.Builder().language(content.getLanguage()).text(content.getText()).build();
 	}
 }

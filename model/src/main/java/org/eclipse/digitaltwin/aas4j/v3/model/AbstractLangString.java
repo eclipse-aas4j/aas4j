@@ -24,9 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
  * Strings with language tags
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = LangStringDefinitionTypeIEC61360.class),
-    @KnownSubtypes.Type(value = LangStringPreferredNameTypeIEC61360.class),
-    @KnownSubtypes.Type(value = LangStringShortNameTypeIEC61360.class),
+    @KnownSubtypes.Type(value = LangStringDefinitionTypeIec61360.class),
+    @KnownSubtypes.Type(value = LangStringPreferredNameTypeIec61360.class),
+    @KnownSubtypes.Type(value = LangStringShortNameTypeIec61360.class),
     @KnownSubtypes.Type(value = LangStringNameType.class),
     @KnownSubtypes.Type(value = LangStringTextType.class)
 })

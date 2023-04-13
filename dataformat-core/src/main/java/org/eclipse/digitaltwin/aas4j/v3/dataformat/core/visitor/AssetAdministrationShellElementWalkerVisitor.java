@@ -185,7 +185,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     };
 
     @Override
-    public default void visit(LangStringPreferredNameTypeIEC61360 langString){
+    public default void visit(LangStringPreferredNameTypeIec61360 langString){
         if (langString == null){
             return;
         }
@@ -193,7 +193,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     };
 
     @Override
-    public default void visit(LangStringDefinitionTypeIEC61360 langString){
+    public default void visit(LangStringDefinitionTypeIec61360 langString){
         if (langString == null){
             return;
         }

@@ -17,13 +17,13 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 
 
 /**
@@ -31,10 +31,10 @@ import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIEC61360> {
+public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIec61360> {
 
     @Override
-    public void serialize(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider)
+    public void serialize(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider)
             throws IOException {
         if (data == null) {
             return;
@@ -46,7 +46,7 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
     }
 
     @Override
-    public void serializeWithType(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider,
+    public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
             TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }

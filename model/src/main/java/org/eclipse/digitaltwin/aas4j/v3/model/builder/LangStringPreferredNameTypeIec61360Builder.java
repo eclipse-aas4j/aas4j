@@ -15,10 +15,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
 
-public abstract class LangStringPreferredNameTypeIEC61360Builder<T extends LangStringPreferredNameTypeIEC61360, B extends LangStringPreferredNameTypeIEC61360Builder<T, B>>
+public abstract class LangStringPreferredNameTypeIec61360Builder<T extends LangStringPreferredNameTypeIec61360, B extends LangStringPreferredNameTypeIec61360Builder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**

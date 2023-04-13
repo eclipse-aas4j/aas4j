@@ -224,13 +224,13 @@ public interface AssetAdministrationShellElementVisitor {
     public default void visit(LangStringNameType langString) {
     }
 
-    public default void visit(LangStringDefinitionTypeIEC61360 langString) {
+    public default void visit(LangStringDefinitionTypeIec61360 langString) {
     }
 
     public default void visit(LangStringTextType langString) {
     }
 
-    public default void visit(LangStringPreferredNameTypeIEC61360 langString) {
+    public default void visit(LangStringPreferredNameTypeIec61360 langString) {
     }
 
     public default void visit(MultiLanguageProperty multiLanguageProperty) {

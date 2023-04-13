@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-/**
- * 
- * @author schnicke
- *
- */
-public class LangStringsShortNameTypeIEC61360Serializer extends AbstractLangStringsSerializer<LangStringShortNameTypeIEC61360> {
+public interface PropertyMixin {
 
-	public LangStringsShortNameTypeIEC61360Serializer() {
-		super(new AbstractLangStringSerializer<>("langStringShortNameTypeIec61360"));
-	}
+    @JsonProperty("valueId")
+    public Reference getValueID();
 
-
+    @JsonProperty("valueId")
+    void setValueID(Reference valueID);
 }

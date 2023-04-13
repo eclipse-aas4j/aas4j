@@ -78,7 +78,6 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -130,7 +129,6 @@
         },
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -309,7 +307,6 @@
         },
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -413,7 +410,6 @@
                     "value": [
                         {
                             "modelType": "Property",
-                            "category": "VARIABLE",
                             "semanticId":
                             {
                                 "keys": [
@@ -430,7 +426,6 @@
                         },
                         {
                             "modelType": "File",
-                            "category": "VARIABLE",
                             "contentType": "application/pdf",
                             "value": "file:///aasx/OperatingManual.pdf",
                             "semanticId":

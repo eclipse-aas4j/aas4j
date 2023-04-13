@@ -20,7 +20,7 @@ import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 
@@ -52,7 +52,7 @@ public class EnumSerializer extends JsonSerializer<Enum> {
                 String enum_string = AasUtils.serializeEnumName(value.name());
                 gen.writeString("xs:" + enum_string.substring(0, 1).toLowerCase() + enum_string.substring(1));
             }
-        } else if (value instanceof DataTypeIEC61360) {
+        } else if (value instanceof DataTypeIec61360) {
             gen.writeString(value.name().toUpperCase());
         } else if (value instanceof Direction || value instanceof StateOfEvent) {
             gen.writeString(value.name().toLowerCase());

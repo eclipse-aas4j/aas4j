@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 
-public interface QualifierMixin {
+/**
+ * 
+ * @author schnicke
+ *
+ */
+public class LangStringsDefinitionTypeIec61360Serializer extends AbstractLangStringsSerializer<LangStringDefinitionTypeIec61360> {
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getType();
+	public LangStringsDefinitionTypeIec61360Serializer() {
+		super(new AbstractLangStringSerializer<>("langStringDefinitionTypeIec61360"));
+	}
 
-    @JsonProperty("valueId")
-    public Reference getValueID();
-
-    @JsonProperty("valueId")
-    void setValueID(Reference valueID);
 }

@@ -16,22 +16,22 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
 
 /**
  * 
  * @author schnicke
  *
  */
-public class LangStringsShortNameTypeIEC61360Deserializer extends AbstractLangStringsDeserializer<LangStringShortNameTypeIEC61360> {
-
-    public LangStringsShortNameTypeIEC61360Deserializer() {
-		super("langStringShortNameTypeIec61360");
-    }
+public class LangStringsPreferredNameTypeIec61360Deserializer extends AbstractLangStringsDeserializer<LangStringPreferredNameTypeIec61360> {
+	public LangStringsPreferredNameTypeIec61360Deserializer() {
+		super("langStringPreferredNameTypeIec61360");
+	}
 
 	@Override
-	protected LangStringShortNameTypeIEC61360 createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringShortNameTypeIEC61360.Builder().language(content.getLanguage()).text(content.getText()).build();
+	protected LangStringPreferredNameTypeIec61360 createLangStringInstance(LangStringContent content) {
+		return new DefaultLangStringPreferredNameTypeIec61360.Builder().language(content.getLanguage()).text(content.getText()).build();
+
 	}
 }

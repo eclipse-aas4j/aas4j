@@ -22,7 +22,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 /**  
 */
 @IRI("aas:DataTypeIEC61360")
-public enum DataTypeIEC61360 {
+public enum DataTypeIec61360 {
 
     /**
      * values containing the content of a file. Values may be binaries.

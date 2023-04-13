@@ -14,22 +14,22 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringPreferredNameTypeIEC61360Builder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
 
 import java.util.Objects;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 
 
 /**
  * Default implementation of package
- * org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360
+ * org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360
  * 
- * String with length 255 maximum and minimum 1 characters and with language tags
+ * String with length 18 maximum and minimum 1 characters and with language tags
  */
 
-@IRI("aas:LangStringPreferredNameTypeIEC61360")
-public class DefaultLangStringPreferredNameTypeIEC61360 implements LangStringPreferredNameTypeIEC61360 {
+@IRI("aas:LangStringShortNameTypeIEC61360")
+public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNameTypeIec61360 {
 
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
     protected String language;
@@ -37,7 +37,7 @@ public class DefaultLangStringPreferredNameTypeIEC61360 implements LangStringPre
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
     protected String text;
 
-    public DefaultLangStringPreferredNameTypeIEC61360() {
+    public DefaultLangStringShortNameTypeIec61360() {
 
     }
 
@@ -56,7 +56,7 @@ public class DefaultLangStringPreferredNameTypeIEC61360 implements LangStringPre
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultLangStringPreferredNameTypeIEC61360 other = (DefaultLangStringPreferredNameTypeIEC61360) obj;
+            DefaultLangStringShortNameTypeIec61360 other = (DefaultLangStringShortNameTypeIec61360) obj;
             return Objects.equals(this.language, other.language) &&
                 Objects.equals(this.text, other.text);
         }
@@ -83,9 +83,9 @@ public class DefaultLangStringPreferredNameTypeIEC61360 implements LangStringPre
     }
 
     /**
-     * This builder class can be used to construct a DefaultLangStringPreferredNameTypeIEC61360 bean.
+     * This builder class can be used to construct a DefaultLangStringShortNameTypeIec61360 bean.
      */
-    public static class Builder extends LangStringPreferredNameTypeIEC61360Builder<DefaultLangStringPreferredNameTypeIEC61360, Builder> {
+    public static class Builder extends LangStringShortNameTypeIec61360Builder<DefaultLangStringShortNameTypeIec61360, Builder> {
 
         @Override
         protected Builder getSelf() {
@@ -93,8 +93,8 @@ public class DefaultLangStringPreferredNameTypeIEC61360 implements LangStringPre
         }
 
         @Override
-        protected DefaultLangStringPreferredNameTypeIEC61360 newBuildingInstance() {
-            return new DefaultLangStringPreferredNameTypeIEC61360();
+        protected DefaultLangStringShortNameTypeIec61360 newBuildingInstance() {
+            return new DefaultLangStringShortNameTypeIec61360();
         }
     }
 }

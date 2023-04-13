@@ -19,7 +19,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import java.util.List;
 
 
-public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificationIEC61360, B extends DataSpecificationIEC61360Builder<T, B>>
+public abstract class DataSpecificationIec61360Builder<T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**
@@ -28,7 +28,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param dataType desired value to be set
      * @return Builder object with new value for dataType
      */
-    public B dataType(DataTypeIEC61360 dataType) {
+    public B dataType(DataTypeIec61360 dataType) {
         getBuildingInstance().setDataType(dataType);
         return getSelf();
     }
@@ -39,7 +39,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param definition desired value to be set
      * @return Builder object with new value for definition
      */
-    public B definition(List<LangStringDefinitionTypeIEC61360> definition) {
+    public B definition(List<LangStringDefinitionTypeIec61360> definition) {
         getBuildingInstance().setDefinition(definition);
         return getSelf();
     }
@@ -50,7 +50,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param definition desired value to be added
      * @return Builder object with new value for definition
      */
-    public B definition(LangStringDefinitionTypeIEC61360 definition) {
+    public B definition(LangStringDefinitionTypeIec61360 definition) {
         getBuildingInstance().getDefinition().add(definition);
         return getSelf();
     }
@@ -72,7 +72,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param preferredName desired value to be set
      * @return Builder object with new value for preferredName
      */
-    public B preferredName(List<LangStringPreferredNameTypeIEC61360> preferredName) {
+    public B preferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
         getBuildingInstance().setPreferredName(preferredName);
         return getSelf();
     }
@@ -83,7 +83,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param preferredName desired value to be added
      * @return Builder object with new value for preferredName
      */
-    public B preferredName(LangStringPreferredNameTypeIEC61360 preferredName) {
+    public B preferredName(LangStringPreferredNameTypeIec61360 preferredName) {
         getBuildingInstance().getPreferredName().add(preferredName);
         return getSelf();
     }
@@ -94,7 +94,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param shortName desired value to be set
      * @return Builder object with new value for shortName
      */
-    public B shortName(List<LangStringShortNameTypeIEC61360> shortName) {
+    public B shortName(List<LangStringShortNameTypeIec61360> shortName) {
         getBuildingInstance().setShortName(shortName);
         return getSelf();
     }
@@ -105,7 +105,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param shortName desired value to be added
      * @return Builder object with new value for shortName
      */
-    public B shortName(LangStringShortNameTypeIEC61360 shortName) {
+    public B shortName(LangStringShortNameTypeIec61360 shortName) {
         getBuildingInstance().getShortName().add(shortName);
         return getSelf();
     }

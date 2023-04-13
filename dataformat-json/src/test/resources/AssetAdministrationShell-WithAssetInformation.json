@@ -4,7 +4,7 @@
     "assetInformation":
             {
                 "assetKind": "Instance",
-                "globalAssetId":"https://example.org/Asset"
+                "globalAssetId":"https://example.org/Asset",
                 "specificAssetIds": [{
                         "name": "ExampleAssetId",
                         "value": "ExampleValue",

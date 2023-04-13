@@ -19,16 +19,16 @@ import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDefinitionTypeIEC61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsPreferredNameTypeIEC61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsShortNameTypeIEC61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsDefinitionTypeIEC61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsPreferredNameTypeIEC61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsShortNameTypeIEC61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDefinitionTypeIec61360Deserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsPreferredNameTypeIec61360Deserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsShortNameTypeIec61360Deserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsDefinitionTypeIec61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsPreferredNameTypeIec61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsShortNameTypeIec61360Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
@@ -39,34 +39,36 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({"preferredName", "shortName", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definition", "valueFormat", "valueList", "value", "valueId", "levelType"})
-public interface DataSpecificationIEC61360Mixin {
+public interface DataSpecificationIec61360Mixin {
 
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
-	@JsonSerialize(using = LangStringsDefinitionTypeIEC61360Serializer.class)
-	public List<LangStringDefinitionTypeIEC61360> getDefinition();
+	@JsonSerialize(using = LangStringsDefinitionTypeIec61360Serializer.class)
+	public List<LangStringDefinitionTypeIec61360> getDefinition();
+
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
-	@JsonDeserialize(using = LangStringsDefinitionTypeIEC61360Deserializer.class)
-    public void setDefinition(List<LangStringDefinitionTypeIEC61360> definition);
+	@JsonDeserialize(using = LangStringsDefinitionTypeIec61360Deserializer.class)
+    public void setDefinition(List<LangStringDefinitionTypeIec61360> definition);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     public LevelType getLevelType();
 
+
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
-	@JsonSerialize(using = LangStringsPreferredNameTypeIEC61360Serializer.class)
-	public List<LangStringPreferredNameTypeIEC61360> getPreferredName();
+	@JsonSerialize(using = LangStringsPreferredNameTypeIec61360Serializer.class)
+	public List<LangStringPreferredNameTypeIec61360> getPreferredName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
-	@JsonDeserialize(using = LangStringsPreferredNameTypeIEC61360Deserializer.class)
-    public void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName);
+	@JsonDeserialize(using = LangStringsPreferredNameTypeIec61360Deserializer.class)
+    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
-	@JsonSerialize(using = LangStringsShortNameTypeIEC61360Serializer.class)
-	public List<LangStringShortNameTypeIEC61360> getShortName();
+	@JsonSerialize(using = LangStringsShortNameTypeIec61360Serializer.class)
+	public List<LangStringShortNameTypeIec61360> getShortName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
-	@JsonDeserialize(using = LangStringsShortNameTypeIEC61360Deserializer.class)
-    public void setShortName(List<LangStringShortNameTypeIEC61360> shortName);
+	@JsonDeserialize(using = LangStringsShortNameTypeIec61360Deserializer.class)
+    public void setShortName(List<LangStringShortNameTypeIec61360> shortName);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "sourceOfDefinition")
     public String getSourceOfDefinition();
@@ -97,7 +99,7 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
     @JsonSerialize(using = EnumSerializer.class)
-    public DataTypeIEC61360 getDataType();
+    public DataTypeIec61360 getDataType();
 
 
 
