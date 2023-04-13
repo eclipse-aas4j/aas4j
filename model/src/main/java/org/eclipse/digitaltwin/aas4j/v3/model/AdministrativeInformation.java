@@ -29,38 +29,76 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformat
 public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
+     * The subject ID of the subject responsible for making the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
+     *
+     * @return Returns the Reference for the property creator.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/creator")
+    Reference getCreator();
+
+    /**
+     * The subject ID of the subject responsible for making the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
+     *
+     * @param creator desired value for the property creator.
+     */
+    void setCreator(Reference creator);
+
+    /**
      * Revision of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
      *
      * @return Returns the String for the property revision.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision")
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/revision")
     String getRevision();
 
     /**
      * Revision of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
      *
      * @param revision desired value for the property revision.
      */
     void setRevision(String revision);
 
     /**
+     * Identifier of the template that guided the creation of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateID
+     *
+     * @return Returns the String for the property templateID.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateID")
+    String getTemplateID();
+
+    /**
+     * Identifier of the template that guided the creation of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateID
+     *
+     * @param templateID desired value for the property templateID.
+     */
+    void setTemplateID(String templateID);
+
+    /**
      * Version of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
      *
      * @return Returns the String for the property version.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/version")
     String getVersion();
 
     /**
      * Version of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
      *
      * @param version desired value for the property version.
      */

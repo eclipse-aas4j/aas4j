@@ -1,28 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02"
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd">
+                 xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>ExampleMotor</aas:idShort>
       <aas:id>http://customer.com/aas/9175_7013_7091_9168</aas:id>
       <aas:assetInformation>
         <aas:assetKind>Instance</aas:assetKind>
-        <aas:globalAssetId>
-          <aas:type>GlobalReference</aas:type>
-          <aas:keys>
-            <aas:key>
-              <aas:type>AssetAdministrationShell</aas:type>
-              <aas:value>http://customer.com/assets/KHBVZJSQKIY</aas:value>
-            </aas:key>
-          </aas:keys>
-        </aas:globalAssetId>
+        <aas:globalAssetId>http://customer.com/assets/KHBVZJSQKIY</aas:globalAssetId>
         <aas:specificAssetIds>
           <aas:specificAssetId>
             <aas:name>EquipmentID</aas:name>
             <aas:value>538fd1b3-f99f-4a52-9c75-72e9fa921270</aas:value>
             <aas:externalSubjectId>
-              <aas:type>GlobalReference</aas:type>
+              <aas:type>ExternalReference</aas:type>
               <aas:keys>
                 <aas:key>
                   <aas:type>GlobalReference</aas:type>
@@ -35,7 +27,7 @@
             <aas:name>DeviceID</aas:name>
             <aas:value>QjYgPggjwkiHk4RrQiYSLg==</aas:value>
             <aas:externalSubjectId>
-              <aas:type>GlobalReference</aas:type>
+              <aas:type>ExternalReference</aas:type>
               <aas:keys>
                 <aas:key>
                   <aas:type>GlobalReference</aas:type>
@@ -52,7 +44,7 @@
       </aas:assetInformation>
       <aas:submodels>
         <aas:reference>
-          <aas:type>GlobalReference</aas:type>
+          <aas:type>ExternalReference</aas:type>
           <aas:keys>
             <aas:key>
               <aas:type>Submodel</aas:type>
@@ -61,7 +53,7 @@
           </aas:keys>
         </aas:reference>
         <aas:reference>
-          <aas:type>GlobalReference</aas:type>
+          <aas:type>ExternalReference</aas:type>
           <aas:keys>
             <aas:key>
               <aas:type>Submodel</aas:type>
@@ -70,7 +62,7 @@
           </aas:keys>
         </aas:reference>
         <aas:reference>
-          <aas:type>GlobalReference</aas:type>
+          <aas:type>ExternalReference</aas:type>
           <aas:keys>
             <aas:key>
               <aas:type>Submodel</aas:type>
@@ -85,9 +77,8 @@
     <aas:submodel>
       <aas:idShort>TechnicalData</aas:idShort>
       <aas:id>http://i40.customer.com/type/1/1/7A7104BDAB57E184</aas:id>
-      <aas:kind>Instance</aas:kind>
       <aas:semanticId>
-        <aas:type>GlobalReference</aas:type>
+        <aas:type>ExternalReference</aas:type>
         <aas:keys>
           <aas:key>
             <aas:type>GlobalReference</aas:type>
@@ -99,9 +90,8 @@
         <aas:property>
           <aas:category>PARAMETER</aas:category>
           <aas:idShort>MaxRotationSpeed</aas:idShort>
-          <aas:kind>Instance</aas:kind>
           <aas:semanticId>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>ConceptDescription</aas:type>
@@ -121,9 +111,8 @@
       <aas:submodelElements>
         <aas:submodelElementCollection>
           <aas:idShort>OperatingManual</aas:idShort>
-          <aas:kind>Instance</aas:kind>
           <aas:semanticId>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>ConceptDescription</aas:type>
@@ -134,9 +123,8 @@
           <aas:value>
             <aas:property>
               <aas:idShort>Title</aas:idShort>
-              <aas:kind>Instance</aas:kind>
               <aas:semanticId>
-                <aas:type>GlobalReference</aas:type>
+                <aas:type>ExternalReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>ConceptDescription</aas:type>
@@ -149,9 +137,8 @@
             </aas:property>
             <aas:file>
               <aas:idShort>DigitalFile_PDF</aas:idShort>
-              <aas:kind>Instance</aas:kind>
               <aas:semanticId>
-                <aas:type>GlobalReference</aas:type>
+                <aas:type>ExternalReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>ConceptDescription</aas:type>
@@ -174,9 +161,8 @@
         <aas:property>
           <aas:category>VARIABLE</aas:category>
           <aas:idShort>RotationSpeed</aas:idShort>
-          <aas:kind>Instance</aas:kind>
           <aas:semanticId>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>ConceptDescription</aas:type>
@@ -197,7 +183,7 @@
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
           <aas:dataSpecification>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -208,33 +194,33 @@
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
-                <aas:langString>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Title</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>Titel</aas:text>
-                </aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
               </aas:preferredName>
               <aas:shortName>
-                <aas:langString>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Title</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringShortNameTypeIec61360>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>Titel</aas:text>
-                </aas:langString>
+                </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>ExampleString</aas:unit>
               <aas:sourceOfDefinition>ExampleString</aas:sourceOfDefinition>
               <aas:dataType>STRING_TRANSLATABLE</aas:dataType>
               <aas:definition>
-                <aas:langString>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>SprachabhängigerTiteldesDokuments.</aas:text>
-                </aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
@@ -247,7 +233,7 @@
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
           <aas:dataSpecification>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -258,33 +244,33 @@
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
-                <aas:langString>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>DigitalFile</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>DigitalFile</aas:text>
-                </aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
               </aas:preferredName>
               <aas:shortName>
-                <aas:langString>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>DigitalFile</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringShortNameTypeIec61360>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>DigitaleDatei</aas:text>
-                </aas:langString>
+                </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>ExampleString</aas:unit>
               <aas:sourceOfDefinition>ExampleString</aas:sourceOfDefinition>
               <aas:dataType>STRING</aas:dataType>
               <aas:definition>
-                <aas:langString>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>A file representing the document version. In addition to the mandatory PDF file, other files can be specified.</aas:text>
-                </aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
@@ -296,13 +282,13 @@
       <aas:idShort>MaxRotationSpeed</aas:idShort>
       <aas:administration>
         <aas:version>2</aas:version>
-        <aas:revision>2.1</aas:revision>
+        <aas:revision>1</aas:revision>
       </aas:administration>
       <aas:id>0173-1#02-BAA120#008</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
           <aas:dataSpecification>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -313,18 +299,18 @@
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
-                <aas:langString>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>de</aas:language>
                   <aas:text>max.Drehzahl</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>en</aas:language>
                   <aas:text>Max.rotationspeed</aas:text>
-                </aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
               </aas:preferredName>
               <aas:unit>1/min</aas:unit>
               <aas:unitId>
-                <aas:type>GlobalReference</aas:type>
+                <aas:type>ExternalReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>GlobalReference</aas:type>
@@ -335,14 +321,14 @@
               <aas:sourceOfDefinition>ExampleString</aas:sourceOfDefinition>
               <aas:dataType>REAL_MEASURE</aas:dataType>
               <aas:definition>
-                <aas:langString>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>de</aas:language>
                   <aas:text>HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated</aas:text>
-                </aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
@@ -356,7 +342,7 @@
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
           <aas:dataSpecification>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -367,28 +353,28 @@
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
-                <aas:langString>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>AktuelleDrehzahl</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Actualrotationspeed</aas:text>
-                </aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
               </aas:preferredName>
               <aas:shortName>
-                <aas:langString>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>AktuelleDrehzahl</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringShortNameTypeIec61360>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
-                  <aas:text>ActualRotationSpeed</aas:text>
-                </aas:langString>
+                  <aas:text>ActRotationSpeed</aas:text>
+                </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>1/min</aas:unit>
               <aas:unitId>
-                <aas:type>GlobalReference</aas:type>
+                <aas:type>ExternalReference</aas:type>
                 <aas:keys>
                   <aas:key>
                     <aas:type>GlobalReference</aas:type>
@@ -399,14 +385,14 @@
               <aas:sourceOfDefinition>ExampleString</aas:sourceOfDefinition>
               <aas:dataType>REAL_MEASURE</aas:dataType>
               <aas:definition>
-                <aas:langString>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Actual rotationspeed with which the motor or feedingunit is operated</aas:text>
-                </aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
@@ -419,7 +405,7 @@
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
           <aas:dataSpecification>
-            <aas:type>GlobalReference</aas:type>
+            <aas:type>ExternalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -430,29 +416,29 @@
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
-                <aas:langString>
+                <aas:langStringPreferredNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Document</aas:text>
-                </aas:langString>
+                </aas:langStringPreferredNameTypeIec61360>
               </aas:preferredName>
               <aas:shortName>
-                <aas:langString>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Document</aas:text>
-                </aas:langString>
-                <aas:langString>
+                </aas:langStringShortNameTypeIec61360>
+                <aas:langStringShortNameTypeIec61360>
                   <aas:language>DE</aas:language>
                   <aas:text>Dokument</aas:text>
-                </aas:langString>
+                </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>ExampleString</aas:unit>
               <aas:sourceOfDefinition>[ISO15519-1:2010]</aas:sourceOfDefinition>
               <aas:dataType>STRING</aas:dataType>
               <aas:definition>
-                <aas:langString>
+                <aas:langStringDefinitionTypeIec61360>
                   <aas:language>EN</aas:language>
                   <aas:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</aas:text>
-                </aas:langString>
+                </aas:langStringDefinitionTypeIec61360>
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>

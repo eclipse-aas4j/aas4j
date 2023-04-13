@@ -14,13 +14,20 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
 
 
 /**
@@ -32,44 +39,40 @@ import java.util.Objects;
 @IRI("aas:AssetAdministrationShell")
 public class DefaultAssetAdministrationShell implements AssetAdministrationShell {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
     protected AssetInformation assetInformation;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
     protected Reference derivedFrom;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels")
     protected List<Reference> submodels = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/administration")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/administration")
     protected AdministrativeInformation administration;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/id")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
     protected String id;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
-    protected String checksum;
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+    protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+    protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName = new ArrayList<>();
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
     public DefaultAssetAdministrationShell() {
-
     }
 
     @Override
@@ -81,7 +84,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
             this.administration,
             this.id,
             this.category,
-            this.checksum,
             this.description,
             this.displayName,
             this.idShort,
@@ -105,7 +107,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.checksum, other.checksum) &&
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
@@ -184,32 +185,22 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
-
-    @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

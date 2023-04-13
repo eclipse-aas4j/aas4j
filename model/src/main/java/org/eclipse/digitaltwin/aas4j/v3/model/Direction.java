@@ -28,13 +28,13 @@ public enum Direction {
     /**
      * Input direction.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Direction/Input")
+    @IRI("https://admin-shell.io/aas/3/0/Direction/Input")
     INPUT,
 
     /**
      * Output direction
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Direction/Output")
+    @IRI("https://admin-shell.io/aas/3/0/Direction/Output")
     OUTPUT;
 
 }

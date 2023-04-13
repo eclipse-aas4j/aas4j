@@ -6,16 +6,7 @@
             "assetInformation":
             {
                 "assetKind": "Instance",
-                "globalAssetId":
-                {
-                    "keys": [
-                        {
-                            "type": "AssetAdministrationShell",
-                            "value": "http://customer.com/assets/KHBVZJSQKIY"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
+                "globalAssetId":"http://customer.com/assets/KHBVZJSQKIY",
                 "specificAssetIds": [
                     {
                         "name": "EquipmentID",
@@ -28,7 +19,7 @@
                                     "value": "http://customer.com/Systems/ERP/012"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         }
                     },
                     {
@@ -42,7 +33,7 @@
                                     "value": "http://customer.com/Systems/IoT/1"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         }
                     }
                 ],
@@ -59,7 +50,7 @@
                             "value": "http://i40.customer.com/type/1/1/7A7104BDAB57E184"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
                 {
                     "keys": [
@@ -68,7 +59,7 @@
                             "value": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
                 {
                     "keys": [
@@ -77,7 +68,7 @@
                             "value": "http://i40.customer.com/type/1/1/1A7B62B529F19152"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 }
             ],
             "id": "http://customer.com/aas/9175_7013_7091_9168",
@@ -87,7 +78,6 @@
     "conceptDescriptions": [
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -97,11 +87,11 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent":
                     {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "dataType": "STRING_TRANSLATABLE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
@@ -139,7 +129,6 @@
         },
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -149,11 +138,11 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent":
                     {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "dataType": "STRING",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "ExampleString",
@@ -200,11 +189,11 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent":
                     {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "dataType": "REAL_MEASURE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
@@ -216,7 +205,7 @@
                                     "value": "0173-1#05-AAA650#002"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                         "definition": [
                             {
@@ -243,7 +232,7 @@
             ],
             "administration":
             {
-                "revision": "2.1",
+                "revision": "1",
                 "version": "2"
             },
             "id": "0173-1#02-BAA120#008",
@@ -261,11 +250,11 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent":
                     {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "dataType": "REAL_MEASURE",
                         "sourceOfDefinition": "ExampleString",
                         "unit": "1/min",
@@ -277,7 +266,7 @@
                                     "value": "0173-1#05-AAA650#002"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                         "definition": [
                             {
@@ -306,7 +295,7 @@
                             },
                             {
                                 "language": "EN",
-                                "text": "ActualRotationSpeed"
+                                "text": "ActRotationSpeed"
                             }
                         ]
                     }
@@ -318,7 +307,6 @@
         },
         {
             "modelType": "ConceptDescription",
-            "category": "PROPERTY",
             "embeddedDataSpecifications": [
                 {
                     "dataSpecification": {
@@ -328,11 +316,11 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent":
                     {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "dataType": "STRING",
                         "sourceOfDefinition": "[ISO15519-1:2010]",
                         "unit": "ExampleString",
@@ -368,7 +356,6 @@
     "submodels": [
         {
             "modelType": "Submodel",
-            "kind": "Instance",
             "semanticId":
             {
                 "keys": [
@@ -377,14 +364,13 @@
                         "value": "0173-1#01-AFZ615#016"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
             "id": "http://i40.customer.com/type/1/1/7A7104BDAB57E184",
             "idShort": "TechnicalData",
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -393,7 +379,7 @@
                                 "value": "0173-1#02-BAA120#008"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "value": "5000",
                     "valueType": "xs:integer",
@@ -410,7 +396,6 @@
             "submodelElements": [
                 {
                     "modelType":"SubmodelElementCollection",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -419,14 +404,12 @@
                                 "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "OperatingManual",
                     "value": [
                         {
                             "modelType": "Property",
-                            "category": "VARIABLE",
-                            "kind": "Instance",
                             "semanticId":
                             {
                                 "keys": [
@@ -435,7 +418,7 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "value": "OperatingManual",
                             "valueType": "xs:string",
@@ -443,10 +426,8 @@
                         },
                         {
                             "modelType": "File",
-                            "category": "VARIABLE",
                             "contentType": "application/pdf",
                             "value": "file:///aasx/OperatingManual.pdf",
-                            "kind": "Instance",
                             "semanticId":
                             {
                                 "keys": [
@@ -455,7 +436,7 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "idShort": "DigitalFile_PDF"
                         }
@@ -471,7 +452,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId":
                     {
                         "keys": [
@@ -480,7 +460,7 @@
                                 "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "value": "4370",
                     "valueType": "xs:integer",

@@ -14,7 +14,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -58,13 +58,13 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
     }
 
     /**
-     * This function allows setting a value for valueId
+     * This function allows setting a value for valueID
      * 
-     * @param valueId desired value to be set
-     * @return Builder object with new value for valueId
+     * @param valueID desired value to be set
+     * @return Builder object with new value for valueID
      */
-    public B valueId(Reference valueId) {
-        getBuildingInstance().setValueId(valueId);
+    public B valueID(Reference valueID) {
+        getBuildingInstance().setValueID(valueID);
         return getSelf();
     }
 
@@ -74,19 +74,19 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
      * @param valueType desired value to be set
      * @return Builder object with new value for valueType
      */
-    public B valueType(DataTypeDefXsd valueType) {
+    public B valueType(DataTypeDefXSD valueType) {
         getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for semanticId
+     * This function allows setting a value for semanticID
      * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
+     * @param semanticID desired value to be set
+     * @return Builder object with new value for semanticID
      */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
+    public B semanticID(Reference semanticID) {
+        getBuildingInstance().setSemanticID(semanticID);
         return getSelf();
     }
 

@@ -14,8 +14,8 @@
     "modelType": "AssetAdministrationShell",
     "id": "https://acplt.org/Test_AssetAdministrationShell",
     "administration": {
-      "version": "0.9",
-      "revision": "0"
+      "version": "0",
+      "revision": "9"
     },
     "derivedFrom": {
       "keys": [
@@ -24,19 +24,11 @@
           "value": "https://acplt.org/TestAssetAdministrationShell2"
         }
       ],
-      "type": "GlobalReference"
+      "type": "ExternalReference"
     },
     "assetInformation": {
       "assetKind": "Instance",
-      "globalAssetId": {
-        "keys": [
-          {
-            "type": "AssetAdministrationShell",
-            "value": "https://acplt.org/Test_Asset"
-          }
-        ],
-        "type": "GlobalReference"
-      }
+      "globalAssetId": "https://acplt.org/Test_Asset"
     },
     "submodels": [
       {
@@ -46,7 +38,7 @@
             "value": "https://acplt.org/Test_Submodel"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -55,7 +47,7 @@
             "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -64,7 +56,7 @@
             "value": "http://acplt.org/Submodels/Assets/TestAsset/Identification"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     ]
   },
@@ -74,15 +66,7 @@
     "id": "https://acplt.org/Test_AssetAdministrationShell_Mandatory",
     "assetInformation": {
       "assetKind": "Instance",
-      "globalAssetId": {
-        "keys": [
-          {
-            "type": "AssetAdministrationShell",
-            "value": "https://acplt.org/Test_Asset_Mandatory"
-          }
-        ],
-        "type": "GlobalReference"
-      }
+      "globalAssetId": "https://acplt.org/Test_Asset_Mandatory"
     },
     "submodels": [
       {
@@ -92,7 +76,7 @@
             "value": "https://acplt.org/Test_Submodel_Mandatory"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -101,7 +85,7 @@
             "value": "https://acplt.org/Test_Submodel2_Mandatory"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     ]
   }

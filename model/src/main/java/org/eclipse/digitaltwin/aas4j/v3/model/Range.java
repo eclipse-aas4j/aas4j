@@ -31,17 +31,17 @@ public interface Range extends DataElement {
     /**
      * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
+     * More information under https://admin-shell.io/aas/3/0/Range/max
      *
      * @return Returns the String for the property max.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/max")
+    @IRI("https://admin-shell.io/aas/3/0/Range/max")
     String getMax();
 
     /**
      * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/max
+     * More information under https://admin-shell.io/aas/3/0/Range/max
      *
      * @param max desired value for the property max.
      */
@@ -50,17 +50,17 @@ public interface Range extends DataElement {
     /**
      * The minimum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/min
+     * More information under https://admin-shell.io/aas/3/0/Range/min
      *
      * @return Returns the String for the property min.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/min")
+    @IRI("https://admin-shell.io/aas/3/0/Range/min")
     String getMin();
 
     /**
      * The minimum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/min
+     * More information under https://admin-shell.io/aas/3/0/Range/min
      *
      * @param min desired value for the property min.
      */
@@ -69,20 +69,20 @@ public interface Range extends DataElement {
     /**
      * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
+     * More information under https://admin-shell.io/aas/3/0/Range/valueType
      *
-     * @return Returns the DataTypeDefXsd for the property valueType.
+     * @return Returns the DataTypeDefXSD for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Range/valueType")
-    DataTypeDefXsd getValueType();
+    @IRI("https://admin-shell.io/aas/3/0/Range/valueType")
+    DataTypeDefXSD getValueType();
 
     /**
      * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Range/valueType
+     * More information under https://admin-shell.io/aas/3/0/Range/valueType
      *
      * @param valueType desired value for the property valueType.
      */
-    void setValueType(DataTypeDefXsd valueType);
+    void setValueType(DataTypeDefXSD valueType);
 
 }

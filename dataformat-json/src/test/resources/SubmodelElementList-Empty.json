@@ -1,6 +1,5 @@
 {
   "modelType" : "SubmodelElementList",
   "idShort" : "submodelElementList",
-  "orderRelevant" : true,
-  "kind": "Instance"
+  "orderRelevant" : true
 }

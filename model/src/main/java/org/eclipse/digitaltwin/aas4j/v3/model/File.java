@@ -31,17 +31,17 @@ public interface File extends DataElement {
     /**
      * Content type of the content of the file.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/contentType
+     * More information under https://admin-shell.io/aas/3/0/File/contentType
      *
      * @return Returns the String for the property contentType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/File/contentType")
+    @IRI("https://admin-shell.io/aas/3/0/File/contentType")
     String getContentType();
 
     /**
      * Content type of the content of the file.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/contentType
+     * More information under https://admin-shell.io/aas/3/0/File/contentType
      *
      * @param contentType desired value for the property contentType.
      */
@@ -50,17 +50,17 @@ public interface File extends DataElement {
     /**
      * Path and name of the referenced file (with file extension).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
+     * More information under https://admin-shell.io/aas/3/0/File/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/File/value")
+    @IRI("https://admin-shell.io/aas/3/0/File/value")
     String getValue();
 
     /**
      * Path and name of the referenced file (with file extension).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/File/value
+     * More information under https://admin-shell.io/aas/3/0/File/value
      *
      * @param value desired value for the property value.
      */

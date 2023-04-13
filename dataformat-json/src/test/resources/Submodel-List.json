@@ -10,20 +10,18 @@
                             "value": "http://acplt.org/SubmodelTemplates/AssetIdentification"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "administration":
                 {
-                    "revision": "0",
-                    "version": "0.9"
+                    "revision": "9",
+                    "version": "0"
                 },
         "id": "http://acplt.org/Submodels/Assets/TestAsset/Identification",
         "idShort": "Identification",
         "submodelElements": [
             {
                 "modelType": "Property",
-                "kind": "Instance",
-                "category": "VARIABLE",
                 "semanticId":
                         {
                             "keys": [
@@ -32,7 +30,7 @@
                                     "value": "0173-1#02-AAO677#002"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                 "value": "http://acplt.org/ValueId/ACPLT",
                 "valueId":
@@ -43,25 +41,22 @@
                                     "value": "http://acplt.org/ValueId/ACPLT"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                 "valueType": "xs:string",
                 "qualifiers": [
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier",
                         "value": "100",
-                        "valueType": "xs:int",
-                        "kind": "ConceptQualifier"
+                        "valueType": "xs:int"
                     },
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                         "value": "50",
-                        "valueType": "xs:int",
-                        "kind": "ConceptQualifier"
+                        "valueType": "xs:int"
                     }
                 ],
                 "idShort": "ManufacturerName",
-                "checksum": "someCheckSum",
                 "displayName": [
                     {
                         "language": "en-us",
@@ -81,7 +76,6 @@
             },
             {
                 "modelType": "Property",
-                "kind": "Instance",
                 "category": "VARIABLE",
                 "semanticId":
                         {
@@ -91,7 +85,7 @@
                                     "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                 "value": "978-8234-234-342",
                 "valueId":
@@ -102,8 +96,27 @@
                                     "value": "978-8234-234-342"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
+                "supplementalSemanticIds": [
+                    {
+                        "keys": [
+                            {
+                                "type": "GlobalReference",
+                                "value": "something_random_e14ad770"
+                            }
+                        ],
+                        "type": "ExternalReference"
+                    },
+                    {
+                        "keys": [{
+                            "type": "GlobalReference",
+                            "value": "something_random_bd061acd"
+                        }],
+                        "type": "ExternalReference"
+                    }
+
+                ],
                 "valueType": "xs:string",
                 "idShort": "InstanceId",
                 "description": [
@@ -140,23 +153,21 @@
                             "value": "http://acplt.org/SubmodelTemplates/BillOfMaterial"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
         "administration":
                 {
-                    "version": "0.9"
+                    "version": "0"
                 },
         "id": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial",
         "idShort": "BillOfMaterial",
         "submodelElements": [
             {
                 "modelType": "Entity",
-                "kind": "Instance",
                 "entityType": "CoManagedEntity",
                 "statements": [
                     {
                         "modelType": "Property",
-                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -165,7 +176,7 @@
                                             "value": "http://acplt.org/Properties/ExampleProperty"
                                         }
                                     ],
-                                    "type": "GlobalReference"
+                                    "type": "ExternalReference"
                                 },
                         "value": "http://acplt.org/ValueId/ExampleValue2",
                         "valueId":
@@ -176,7 +187,7 @@
                                             "value": "http://acplt.org/ValueId/ExampleValue2"
                                         }
                                     ],
-                                    "type": "GlobalReference"
+                                    "type": "ExternalReference"
                                 },
                         "valueType": "xs:string",
                         "category": "CONSTANT",
@@ -194,7 +205,6 @@
                     },
                     {
                         "modelType": "Property",
-                        "kind": "Instance",
                         "semanticId":
                                 {
                                     "keys": [
@@ -203,7 +213,7 @@
                                             "value": "http://acplt.org/Properties/ExampleProperty"
                                         }
                                     ],
-                                    "type": "GlobalReference"
+                                    "type": "ExternalReference"
                                 },
                         "value": "http://acplt.org/ValueId/ExampleValueId",
                         "valueId":
@@ -214,7 +224,7 @@
                                             "value": "http://acplt.org/ValueId/ExampleValueId"
                                         }
                                     ],
-                                    "type": "GlobalReference"
+                                    "type": "ExternalReference"
                                 },
                         "valueType": "xs:string",
                         "category": "CONSTANT",
@@ -239,7 +249,7 @@
                                     "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                 "idShort": "ExampleEntity",
                 "description": [
@@ -256,17 +266,7 @@
             {
                 "modelType": "Entity",
                 "entityType": "SelfManagedEntity",
-                "kind": "Instance",
-                "globalAssetId":
-                        {
-                            "keys": [
-                                {
-                                    "type": "AssetAdministrationShell",
-                                    "value": "https://acplt.org/Test_Asset2"
-                                }
-                            ],
-                            "type": "GlobalReference"
-                        },
+                "globalAssetId":"https://acplt.org/Test_Asset2",
                 "semanticId":
                         {
                             "keys": [
@@ -275,7 +275,7 @@
                                     "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
                 "idShort": "ExampleEntity2",
                 "description": [

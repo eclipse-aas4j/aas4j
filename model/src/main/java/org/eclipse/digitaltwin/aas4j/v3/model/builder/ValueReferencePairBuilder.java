@@ -34,13 +34,13 @@ public abstract class ValueReferencePairBuilder<T extends ValueReferencePair, B 
     }
 
     /**
-     * This function allows setting a value for valueId
+     * This function allows setting a value for valueID
      * 
-     * @param valueId desired value to be set
-     * @return Builder object with new value for valueId
+     * @param valueID desired value to be set
+     * @return Builder object with new value for valueID
      */
-    public B valueId(Reference valueId) {
-        getBuildingInstance().setValueId(valueId);
+    public B valueID(Reference valueID) {
+        getBuildingInstance().setValueID(valueID);
         return getSelf();
     }
 }

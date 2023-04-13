@@ -1,8 +1,6 @@
 
 {
     "modelType": "Property",
-    "kind": "Instance",
-    "category": "VARIABLE",
     "semanticId":
             {
                 "keys": [
@@ -11,7 +9,7 @@
                         "value": "0173-1#02-AAO677#002"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
     "value": "http://acplt.org/ValueId/ACPLT",
     "valueId":
@@ -22,21 +20,19 @@
                         "value": "http://acplt.org/ValueId/ACPLT"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
     "valueType": "xs:string",
     "qualifiers": [
         {
             "type": "http://acplt.org/Qualifier/ExampleQualifier",
             "value": "100",
-            "valueType": "xs:int",
-            "kind": "ConceptQualifier"
+            "valueType": "xs:int"
         },
         {
             "type": "http://acplt.org/Qualifier/ExampleQualifier2",
             "value": "50",
-            "valueType": "xs:int",
-            "kind": "ConceptQualifier"
+            "valueType": "xs:int"
         }
     ],
     "idShort": "ManufacturerName",
@@ -48,6 +44,12 @@
         {
             "language": "de",
             "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+        }
+    ],
+    "displayName": [
+        {
+            "language": "en-us",
+            "text": "Manufacturer Name"
         }
     ]
 }

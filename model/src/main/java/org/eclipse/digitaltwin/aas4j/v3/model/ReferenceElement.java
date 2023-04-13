@@ -33,18 +33,18 @@ public interface ReferenceElement extends DataElement {
      * Global reference to an external object or entity or a logical reference to another element within
      * the same or another AAS (i.e. a model reference to a Referable).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value
+     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
      *
      * @return Returns the Reference for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value")
+    @IRI("https://admin-shell.io/aas/3/0/ReferenceElement/value")
     Reference getValue();
 
     /**
      * Global reference to an external object or entity or a logical reference to another element within
      * the same or another AAS (i.e. a model reference to a Referable).
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value
+     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
      *
      * @param value desired value for the property value.
      */

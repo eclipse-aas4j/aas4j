@@ -115,7 +115,7 @@ public class AasUtils {
                 if (result.getType() == null) {
                     // deduct from first element
                     result.setType(result.getKeys().get(0).getType() == KeyTypes.GLOBAL_REFERENCE
-                            ? ReferenceTypes.GLOBAL_REFERENCE
+                            ? ReferenceTypes.EXTERNAL_REFERENCE
                             : ReferenceTypes.MODEL_REFERENCE);
                 } else {
                     // validate against first element
@@ -159,7 +159,7 @@ public class AasUtils {
         if (keyType == null ^ referenceType == null) {
             return false;
         }
-        return referenceType == ReferenceTypes.GLOBAL_REFERENCE
+        return referenceType == ReferenceTypes.EXTERNAL_REFERENCE
                 ? keyType == KeyTypes.GLOBAL_REFERENCE
                 : keyType != KeyTypes.GLOBAL_REFERENCE;
     }
@@ -249,7 +249,7 @@ public class AasUtils {
         return aas.getSubmodels().stream()
                 .map(ref -> resolve(ref, environment, Submodel.class))
                 .filter(sm -> sm != null)
-                .filter(sm -> sm.getKind() != ModelingKind.INSTANCE)
+                .filter(sm -> sm.getKind() != ModellingKind.INSTANCE)
                 .collect(Collectors.toList());
     }
 

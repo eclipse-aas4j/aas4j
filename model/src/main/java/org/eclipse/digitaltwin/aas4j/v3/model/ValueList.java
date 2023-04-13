@@ -32,17 +32,17 @@ public interface ValueList {
     /**
      * A pair of a value together with its global unique id.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
+     * More information under https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs
      *
      * @return Returns the List of ValueReferencePairs for the property valueReferencePairs.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
     List<ValueReferencePair> getValueReferencePairs();
 
     /**
      * A pair of a value together with its global unique id.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
+     * More information under https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs
      *
      * @param valueReferencePairs desired value for the property valueReferencePairs.
      */

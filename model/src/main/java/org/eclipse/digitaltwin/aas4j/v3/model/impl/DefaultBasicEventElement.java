@@ -32,66 +32,58 @@ import java.util.Objects;
 @IRI("aas:BasicEventElement")
 public class DefaultBasicEventElement implements BasicEventElement {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/direction")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/direction")
     protected Direction direction;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate")
     protected String lastUpdate;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval")
     protected String maxInterval;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageBroker")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker")
     protected Reference messageBroker;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic")
     protected String messageTopic;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/minInterval")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/minInterval")
     protected String minInterval;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/observed")
     protected Reference observed;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
+    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/state")
     protected StateOfEvent state;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
-    protected ModelingKind kind;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    protected Reference semanticID;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
-    protected Reference semanticId;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
-    protected String checksum;
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+    protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+    protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName = new ArrayList<>();
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
     public DefaultBasicEventElement() {
-
-        this.kind = ModelingKind.INSTANCE;
 
     }
 
@@ -106,11 +98,9 @@ public class DefaultBasicEventElement implements BasicEventElement {
             this.observed,
             this.state,
             this.embeddedDataSpecifications,
-            this.semanticId,
+            this.semanticID,
             this.supplementalSemanticIds,
-            this.kind,
             this.category,
-            this.checksum,
             this.description,
             this.displayName,
             this.idShort,
@@ -137,11 +127,9 @@ public class DefaultBasicEventElement implements BasicEventElement {
                 Objects.equals(this.observed, other.observed) &&
                 Objects.equals(this.state, other.state) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.semanticID, other.semanticID) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.checksum, other.checksum) &&
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
@@ -241,13 +229,13 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public Reference getSemanticId() {
-        return semanticId;
+    public Reference getSemanticID() {
+        return semanticID;
     }
 
     @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
+    public void setSemanticID(Reference semanticID) {
+        this.semanticID = semanticID;
     }
 
     @Override
@@ -261,16 +249,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
-    }
-
-    @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
-    }
-
-    @Override
     public String getCategory() {
         return category;
     }
@@ -281,32 +259,22 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
-
-    @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

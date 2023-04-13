@@ -17,15 +17,16 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization;
 
 import java.io.IOException;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
+import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will
@@ -38,18 +39,20 @@ public class EnumSerializer extends JsonSerializer<Enum> {
 
     @Override
     public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        if (value instanceof DataTypeDefXsd) {
+        if (value instanceof DataTypeDefXSD) {
             // only for the DataTypeDefXsd notation
-            if (value.equals(DataTypeDefXsd.ANY_URI)) {
+            if (value.equals(DataTypeDefXSD.ANY_URI)) {
                 gen.writeString("xs:anyURI");
-            } else if (value.equals(DataTypeDefXsd.NON_NEGATIVE_INTEGER)) {
-                gen.writeString("xs:NonNegativeInteger");
+            } else if (value.equals(DataTypeDefXSD.NON_NEGATIVE_INTEGER)) {
+                gen.writeString("xs:nonNegativeInteger");
+            } else if(isTimeRelatedValue(value)) {
+				handleTimeRelatedValue(gen, value);
             } else {
                 // pattern: 'xs:' + camelCase
                 String enum_string = AasUtils.serializeEnumName(value.name());
                 gen.writeString("xs:" + enum_string.substring(0, 1).toLowerCase() + enum_string.substring(1));
             }
-        } else if (value instanceof DataTypeIEC61360) {
+        } else if (value instanceof DataTypeIec61360) {
             gen.writeString(value.name().toUpperCase());
         } else if (value instanceof Direction || value instanceof StateOfEvent) {
             gen.writeString(value.name().toLowerCase());
@@ -59,5 +62,16 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             provider.findValueSerializer(Enum.class).serialize(value, gen, provider);
         }
     }
+
+	private void handleTimeRelatedValue(JsonGenerator gen, Enum value) throws IOException {
+		String enum_string = AasUtils.serializeEnumName(value.name());
+		String adaptedEnumString = "xs:g" + enum_string.substring(1, 2).toUpperCase() + enum_string.substring(2);
+		gen.writeString(adaptedEnumString);
+	}
+
+	private boolean isTimeRelatedValue(Enum value) {
+		String enum_string = AasUtils.serializeEnumName(value.name());
+		return enum_string.startsWith("G");
+	}
 
 }

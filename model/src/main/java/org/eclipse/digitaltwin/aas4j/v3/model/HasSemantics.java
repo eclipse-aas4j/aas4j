@@ -24,7 +24,7 @@ import java.util.List;
  * Element that can have a semantic definition plus some supplemental semantic definitions.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SpecificAssetId.class),
+    @KnownSubtypes.Type(value = SpecificAssetID.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class),
     @KnownSubtypes.Type(value = Extension.class),
@@ -36,39 +36,39 @@ public interface HasSemantics {
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticID
      *
-     * @return Returns the Reference for the property semanticId.
+     * @return Returns the Reference for the property semanticID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
-    Reference getSemanticId();
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    Reference getSemanticID();
 
     /**
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticID
      *
-     * @param semanticId desired value for the property semanticId.
+     * @param semanticID desired value for the property semanticID.
      */
-    void setSemanticId(Reference semanticId);
+    void setSemanticID(Reference semanticID);
 
     /**
      * Identifier of a supplemental semantic definition of the element. It is called supplemental
      * semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds
      *
      * @return Returns the List of References for the property supplementalSemanticIds.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     List<Reference> getSupplementalSemanticIds();
 
     /**
      * Identifier of a supplemental semantic definition of the element. It is called supplemental
      * semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds
      *
      * @param supplementalSemanticIds desired value for the property supplementalSemanticIds.
      */

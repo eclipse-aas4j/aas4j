@@ -24,7 +24,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.json.JSONException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -35,12 +40,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 public class JsonSerializerTest {
 
@@ -57,7 +56,7 @@ public class JsonSerializerTest {
     @Test
     public void testWriteToFile() throws JsonProcessingException, IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
-        new JsonSerializer().write(file, AASSimple.ENVIRONMENT);
+		new JsonSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 

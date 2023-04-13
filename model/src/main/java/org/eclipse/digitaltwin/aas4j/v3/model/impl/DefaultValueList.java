@@ -33,7 +33,7 @@ import java.util.Objects;
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
     protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
     public DefaultValueList() {}

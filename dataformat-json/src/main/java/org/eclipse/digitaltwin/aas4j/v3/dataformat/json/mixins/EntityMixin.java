@@ -16,10 +16,17 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 
 public interface EntityMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public EntityType getEntityType();
+
+    @JsonProperty("globalAssetId")
+    public String getGlobalAssetID();
+
+    @JsonProperty("globalAssetId")
+    public void setGlobalAssetID(String globalAssetID);
 }

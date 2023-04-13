@@ -16,7 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -28,5 +28,5 @@ public interface ResourceMixin {
     public String getPath();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "contentType")
-    public DataTypeDefXsd getContentType();
+	public DataTypeDefXSD getContentType();
 }

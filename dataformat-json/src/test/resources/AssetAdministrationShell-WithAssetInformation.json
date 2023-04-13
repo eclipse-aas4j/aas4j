@@ -4,16 +4,7 @@
     "assetInformation":
             {
                 "assetKind": "Instance",
-                "globalAssetId":
-                        {
-                            "keys": [
-                                {
-                                    "type": "GlobalReference",
-                                    "value": "https://example.org/Asset"
-                                }
-                            ],
-                            "type": "GlobalReference"
-                        },
+                "globalAssetId":"https://example.org/Asset",
                 "specificAssetIds": [{
                         "name": "ExampleAssetId",
                         "value": "ExampleValue",
@@ -24,7 +15,7 @@
                                     "value": "https://example.org/ExternalSubject"
                                 }
                             ],
-                            "type": "GlobalReference"
+                          "type": "ExternalReference"
                         }
                     }],
                 "defaultThumbnail": {

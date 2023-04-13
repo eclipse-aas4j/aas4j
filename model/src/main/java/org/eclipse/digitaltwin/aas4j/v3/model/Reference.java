@@ -32,55 +32,55 @@ public interface Reference {
     /**
      * Unique references in their name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
+     * More information under https://admin-shell.io/aas/3/0/Reference/keys
      *
      * @return Returns the List of Keys for the property keys.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
+    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
     List<Key> getKeys();
 
     /**
      * Unique references in their name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/keys
+     * More information under https://admin-shell.io/aas/3/0/Reference/keys
      *
      * @param keys desired value for the property keys.
      */
     void setKeys(List<Key> keys);
 
     /**
-     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+     * 'semanticID' of the referenced model element ('type' = 'ModelReference').
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/referredSemanticId
+     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticID
      *
-     * @return Returns the Reference for the property referredSemanticId.
+     * @return Returns the Reference for the property referredSemanticID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/referredSemanticId")
-    Reference getReferredSemanticId();
+    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticID")
+    Reference getReferredSemanticID();
 
     /**
-     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+     * 'semanticID' of the referenced model element ('type' = 'ModelReference').
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/referredSemanticId
+     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticID
      *
-     * @param referredSemanticId desired value for the property referredSemanticId.
+     * @param referredSemanticID desired value for the property referredSemanticID.
      */
-    void setReferredSemanticId(Reference referredSemanticId);
+    void setReferredSemanticID(Reference referredSemanticID);
 
     /**
      * Type of the reference.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
+     * More information under https://admin-shell.io/aas/3/0/Reference/type
      *
      * @return Returns the ReferenceTypes for the property type.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    @IRI("https://admin-shell.io/aas/3/0/Reference/type")
     ReferenceTypes getType();
 
     /**
      * Type of the reference.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Reference/type
+     * More information under https://admin-shell.io/aas/3/0/Reference/type
      *
      * @param type desired value for the property type.
      */

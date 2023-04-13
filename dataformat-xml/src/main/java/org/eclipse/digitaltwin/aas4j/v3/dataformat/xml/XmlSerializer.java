@@ -22,12 +22,8 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
-// TODO import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -83,7 +79,6 @@ public class XmlSerializer implements Serializer {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer();
         }
         module.addSerializer(Environment.class, aasEnvSerializer);
-        module.addSerializer(LangString.class, new LangStringSerializer());
 		module.addSerializer(OperationVariable.class, new OperationVariableSerializer());
         return module;
     }

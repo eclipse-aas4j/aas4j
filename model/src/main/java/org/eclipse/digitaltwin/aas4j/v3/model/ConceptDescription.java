@@ -33,17 +33,17 @@ public interface ConceptDescription extends HasDataSpecification, Identifiable {
     /**
      * Reference to an external definition the concept is compatible to or was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf
+     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
      *
      * @return Returns the List of References for the property isCaseOf.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
+    @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
     List<Reference> getIsCaseOf();
 
     /**
      * Reference to an external definition the concept is compatible to or was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf
+     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
      *
      * @param isCaseOf desired value for the property isCaseOf.
      */

@@ -15,32 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.visitor;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.HasDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.HasExtensions;
-import org.eclipse.digitaltwin.aas4j.v3.model.HasSemantics;
-import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
-import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifiable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdministrationShellElementVisitor {
 
@@ -69,7 +44,6 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (assetInformation == null) {
             return;
         }
-        visit(assetInformation.getGlobalAssetId());
         assetInformation.getSpecificAssetIds().forEach(x -> visit(x));
         visit(assetInformation.getDefaultThumbnail());
         AssetAdministrationShellElementVisitor.super.visit(assetInformation);
@@ -124,7 +98,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticId());
+        visit(hasSemantics.getSemanticID());
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
 
@@ -138,11 +112,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetId specificAssetId) {
+    public default void visit(SpecificAssetID specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectId());
+        visit(specificAssetId.getExternalSubjectID());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -152,7 +126,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueId());
+        visit(multiLanguageProperty.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -170,7 +144,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueId());
+        visit(property.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -188,7 +162,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueId());
+        visit(qualifier.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 
@@ -201,6 +175,38 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         referable.getDisplayName().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
+
+    @Override
+    public default void visit(LangStringNameType langString){
+        if (langString == null){
+            return;
+        }
+        AssetAdministrationShellElementVisitor.super.visit(langString);
+    };
+
+    @Override
+    public default void visit(LangStringPreferredNameTypeIec61360 langString){
+        if (langString == null){
+            return;
+        }
+        AssetAdministrationShellElementVisitor.super.visit(langString);
+    };
+
+    @Override
+    public default void visit(LangStringDefinitionTypeIec61360 langString){
+        if (langString == null){
+            return;
+        }
+        AssetAdministrationShellElementVisitor.super.visit(langString);
+    };
+
+    @Override
+    public default void visit(LangStringTextType langString){
+        if (langString == null){
+            return;
+        }
+        AssetAdministrationShellElementVisitor.super.visit(langString);
+    };
 
     @Override
     public default void visit(Reference reference) {
@@ -235,8 +241,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (entity == null) {
             return;
         }
-        visit(entity.getGlobalAssetId());
-        visit(entity.getSpecificAssetId());
+        entity.getSpecificAssetIds().forEach(x -> visit(x));
         entity.getStatements().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(entity);
     }
@@ -246,7 +251,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (extension == null) {
             return;
         }
-        visit(extension.getRefersTo());
+        extension.getRefersTo().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(extension);
     }
 

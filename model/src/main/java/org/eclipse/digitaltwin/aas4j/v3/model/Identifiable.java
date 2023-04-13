@@ -33,17 +33,17 @@ public interface Identifiable extends Referable {
     /**
      * Administrative information of an identifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Identifiable/administration
+     * More information under https://admin-shell.io/aas/3/0/Identifiable/administration
      *
      * @return Returns the AdministrativeInformation for the property administration.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/administration")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/administration")
     AdministrativeInformation getAdministration();
 
     /**
      * Administrative information of an identifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Identifiable/administration
+     * More information under https://admin-shell.io/aas/3/0/Identifiable/administration
      *
      * @param administration desired value for the property administration.
      */
@@ -52,17 +52,17 @@ public interface Identifiable extends Referable {
     /**
      * The globally unique identification of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Identifiable/id
+     * More information under https://admin-shell.io/aas/3/0/Identifiable/id
      *
      * @return Returns the String for the property id.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/id")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
     String getId();
 
     /**
      * The globally unique identification of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Identifiable/id
+     * More information under https://admin-shell.io/aas/3/0/Identifiable/id
      *
      * @param id desired value for the property id.
      */

@@ -15,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -29,6 +28,7 @@ import org.junit.runner.RunWith;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(JUnitParamsRunner.class)
 public class JsonValidationTest {
@@ -49,21 +49,20 @@ public class JsonValidationTest {
             "src/test/resources/Example-Full.json"
     })
     public void validateValidJson(String file) throws IOException {
-        String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
-        Set<String> errors = validator.validateSchema(serializedEnvironment);
-        System.out.println("Validating: " + file);
-        assertTrue(errors.isEmpty());
+        assertTrue(validate(file).isEmpty());
     }
 
     @Test
     @Parameters({"src/test/resources/Environment-Invalid.json"})
     public void validateInvalidJson(String file) throws IOException {
-        String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
-        Set<String> errors = validator.validateSchema(serializedEnvironment);
+        assertFalse(validate(file).isEmpty());
+    }
+
+    private Set<String> validate(String file) throws IOException {
+        String json = new String(Files.readAllBytes(Paths.get(file)));
+        Set<String> result = validator.validateSchema(json);
         System.out.println("Validating: " + file);
-        for (String s : errors) {
-            System.out.println(s);
-        }
-        assertEquals(2, errors.size());
+        result.forEach(System.out::println);
+        return result;
     }
 }

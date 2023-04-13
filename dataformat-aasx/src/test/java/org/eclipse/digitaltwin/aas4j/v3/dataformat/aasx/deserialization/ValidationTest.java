@@ -29,17 +29,16 @@ import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXValidator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.xml.sax.SAXException;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 
 public class ValidationTest {
 
@@ -55,7 +54,7 @@ public class ValidationTest {
 
         File file = tempFolder.newFile("output.aasx");
 
-        new AASXSerializer().write(AASSimple.ENVIRONMENT, fileList, new FileOutputStream(file));
+		new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
 
         InputStream in = new FileInputStream(file);
         AASXValidator v = new AASXValidator(in);

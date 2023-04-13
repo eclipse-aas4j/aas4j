@@ -16,9 +16,17 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface QualifierMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public String getType();
+
+    @JsonProperty("valueId")
+    public Reference getValueID();
+
+    @JsonProperty("valueId")
+    void setValueID(Reference valueID);
 }

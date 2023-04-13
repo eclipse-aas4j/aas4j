@@ -33,17 +33,17 @@ public interface SubmodelElementCollection extends SubmodelElement {
     /**
      * Submodel element contained in the collection.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
      *
      * @return Returns the Collection of SubmodelElements for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
     Collection<SubmodelElement> getValue();
 
     /**
      * Submodel element contained in the collection.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value
+     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
      *
      * @param value desired value for the property value.
      */

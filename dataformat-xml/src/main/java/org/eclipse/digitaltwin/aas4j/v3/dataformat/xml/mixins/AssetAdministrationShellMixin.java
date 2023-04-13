@@ -29,7 +29,7 @@ public interface AssetAdministrationShellMixin {
 
 
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-    public String getId();
+	public String getID();
 
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")

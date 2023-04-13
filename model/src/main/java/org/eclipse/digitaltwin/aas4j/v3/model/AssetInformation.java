@@ -33,36 +33,57 @@ public interface AssetInformation {
     /**
      * Denotes whether the Asset is of kind 'Type' or 'Instance'.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetKind
      *
      * @return Returns the AssetKind for the property assetKind.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetKind")
     AssetKind getAssetKind();
 
     /**
      * Denotes whether the Asset is of kind 'Type' or 'Instance'.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetKind
      *
      * @param assetKind desired value for the property assetKind.
      */
     void setAssetKind(AssetKind assetKind);
 
     /**
+     * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
+     * under consideration as identified by 'globalAssetID'.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
+     *
+     * @return Returns the String for the property assetType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetType")
+    String getAssetType();
+
+    /**
+     * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
+     * under consideration as identified by 'globalAssetID'.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
+     *
+     * @param assetType desired value for the property assetType.
+     */
+    void setAssetType(String assetType);
+
+    /**
      * Thumbnail of the asset represented by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail
      *
      * @return Returns the Resource for the property defaultThumbnail.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail")
     Resource getDefaultThumbnail();
 
     /**
      * Thumbnail of the asset represented by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail
      *
      * @param defaultThumbnail desired value for the property defaultThumbnail.
      */
@@ -71,41 +92,41 @@ public interface AssetInformation {
     /**
      * Global identifier of the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID
      *
-     * @return Returns the Reference for the property globalAssetId.
+     * @return Returns the String for the property globalAssetID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
-    Reference getGlobalAssetId();
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID")
+    String getGlobalAssetID();
 
     /**
      * Global identifier of the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID
      *
-     * @param globalAssetId desired value for the property globalAssetId.
+     * @param globalAssetID desired value for the property globalAssetID.
      */
-    void setGlobalAssetId(Reference globalAssetId);
+    void setGlobalAssetID(String globalAssetID);
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
      *
-     * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
+     * @return Returns the List of SpecificAssetIDs for the property specificAssetIds.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
-    List<SpecificAssetId> getSpecificAssetIds();
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
+    List<SpecificAssetID> getSpecificAssetIds();
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
      *
      * @param specificAssetIds desired value for the property specificAssetIds.
      */
-    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
+    void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds);
 
 }

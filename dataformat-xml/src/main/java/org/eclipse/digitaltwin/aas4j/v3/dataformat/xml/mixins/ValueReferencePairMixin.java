@@ -15,16 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({"value", "valueId"})
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@JsonPropertyOrder({ "value", "valueID" })
 public interface ValueReferencePairMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-    public Reference getValueId();
+	public Reference getValueID();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     public String getValue();

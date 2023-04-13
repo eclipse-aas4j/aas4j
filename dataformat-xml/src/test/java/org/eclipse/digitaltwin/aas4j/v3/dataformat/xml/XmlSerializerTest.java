@@ -29,7 +29,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
@@ -69,7 +69,7 @@ public class XmlSerializerTest {
     @Test
     public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.xml");
-        new XmlSerializer().write(file, AASSimple.ENVIRONMENT);
+		new XmlSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
@@ -92,17 +92,17 @@ public class XmlSerializerTest {
         Map<String, String> nsPrefixes = new HashMap<>(AasXmlNamespaceContext.PREFERRED_PREFIX_CONTEXT);
         nsPrefixes.put("test", nsPrefixes.get("aas"));
         nsPrefixes.remove("aas");
-        validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.ENVIRONMENT, new XmlSerializer(nsPrefixes));
+		validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.createEnvironment(), new XmlSerializer(nsPrefixes));
     }
 
     @Test
     public void testSerializeSimple() throws SerializationException, SAXException {
-        validateXmlSerializer(AASSIMPLE_FILE, AASSimple.ENVIRONMENT);
+		validateXmlSerializer(AASSIMPLE_FILE, AASSimple.createEnvironment());
     }
 
     @Test
     public void testSerializeFull() throws SerializationException, SAXException {
-        validateXmlSerializer(AASFULL_FILE, AASFull.ENVIRONMENT);
+		validateXmlSerializer(AASFULL_FILE, AASFull.createEnvironment());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class XmlSerializerTest {
                                 .value(new DefaultProperty.Builder()
                                         .idShort("inputProperty")
                                         .value("1")
-                                        .valueType(DataTypeDefXsd.INT)
+                                        .valueType(DataTypeDefXSD.INT)
                                         .build())
                                 .build())
                         .build())
@@ -133,6 +133,14 @@ public class XmlSerializerTest {
         Set<String> errors = validateAgainstXsdSchema( xml );
         assertTrue(errors.isEmpty());
     }
+
+	@Test
+	public void testGYear() throws SerializationException, SAXException {
+		Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
+		String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
+		Set<String> errors = validateAgainstXsdSchema(xml);
+		assertTrue(errors.isEmpty());
+	}
 
 
     @Test
@@ -146,7 +154,7 @@ public class XmlSerializerTest {
 
     @Test
     public void testIsCaseOfAgainstXsdSchema() throws SerializationException, SAXException {
-        ConceptDescription object = AASFull.ENVIRONMENT.getConceptDescriptions().get(0);
+		ConceptDescription object = AASFull.createEnvironment().getConceptDescriptions().get(0);
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build());
         Set<String> errors = validateAgainstXsdSchema( xml );
         assertTrue(errors.isEmpty());

@@ -29,14 +29,14 @@ public enum EntityType {
      * For co-managed entities there is no separate AAS. Co-managed entities need to be part of a
      * self-managed entity.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EntityType/CoManagedEntity")
+    @IRI("https://admin-shell.io/aas/3/0/EntityType/CoManagedEntity")
     CO_MANAGED_ENTITY,
 
     /**
      * Self-Managed Entities have their own AAS but can be part of the bill of material of a composite
      * self-managed entity.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EntityType/SelfManagedEntity")
+    @IRI("https://admin-shell.io/aas/3/0/EntityType/SelfManagedEntity")
     SELF_MANAGED_ENTITY;
 
 }

@@ -10,20 +10,18 @@
                         "value": "http://acplt.org/SubmodelTemplates/AssetIdentification"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
     "administration":
             {
-                "revision": "0",
-                "version": "0.9"
+                "revision": "9",
+                "version": "0"
             },
     "id": "http://acplt.org/Submodels/Assets/TestAsset/Identification",
     "idShort": "Identification",
     "submodelElements": [
         {
             "modelType": "Property",
-            "category": "VARIABLE",
-            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -32,7 +30,7 @@
                                 "value": "0173-1#02-AAO677#002"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "value": "http://acplt.org/ValueId/ACPLT",
             "valueId":
@@ -43,39 +41,41 @@
                                 "value": "http://acplt.org/ValueId/ACPLT"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "valueType": "xs:string",
             "qualifiers": [
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
                     "value": "100",
-                    "valueType": "xs:int",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:int"
                 },
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                     "value": "50",
-                    "valueType": "xs:int",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:int"
                 }
             ],
             "idShort": "ManufacturerName",
             "description": [
-                    {
-                        "language": "en-us",
-                        "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
-                    },
-                    {
-                        "language": "de",
-                        "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
-                    }
-                ]
+                {
+                    "language": "en-us",
+                    "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
+                },
+                {
+                    "language": "de",
+                    "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+                }
+            ],
+            "displayName": [
+                {
+                    "language": "en-us",
+                    "text": "Manufacturer Name"
+                }
+            ]
         },
         {
             "modelType": "Property",
-            "category": "VARIABLE",
-            "kind": "Instance",
             "semanticId":
                     {
                         "keys": [
@@ -84,9 +84,28 @@
                                 "value": "http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "value": "978-8234-234-342",
+            "supplementalSemanticIds": [
+                {
+                    "keys": [
+                        {
+                            "type": "GlobalReference",
+                            "value": "something_random_e14ad770"
+                        }
+                    ],
+                    "type": "ExternalReference"
+                },
+                {
+                    "keys": [{
+                            "type": "GlobalReference",
+                            "value": "something_random_bd061acd"
+                        }],
+                    "type": "ExternalReference"
+                }
+
+            ],
             "valueId":
                     {
                         "keys": [
@@ -95,9 +114,10 @@
                                 "value": "978-8234-234-342"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
             "valueType": "xs:string",
+            "category": "VARIABLE",
             "idShort": "InstanceId",
             "description": [
                 {

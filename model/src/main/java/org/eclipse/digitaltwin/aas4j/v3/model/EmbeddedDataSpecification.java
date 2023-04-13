@@ -31,19 +31,17 @@ public interface EmbeddedDataSpecification {
     /**
      * Reference to the data specification
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification
+     * More information under https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
      *
      * @return Returns the Reference for the property dataSpecification.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
+    @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification")
     Reference getDataSpecification();
 
     /**
      * Reference to the data specification
      *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification
+     * More information under https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
      *
      * @param dataSpecification desired value for the property dataSpecification.
      */
@@ -53,23 +51,21 @@ public interface EmbeddedDataSpecification {
      * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-//    DataSpecificationContent getDataSpecificationContent();
-    DataSpecificationIEC61360 getDataSpecificationContent();
+    @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
+    DataSpecificationContent getDataSpecificationContent();
 
     /**
      * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @param dataSpecificationContent desired value for the property dataSpecificationContent.
      */
-//    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
-    void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
+    void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent);
 
 }

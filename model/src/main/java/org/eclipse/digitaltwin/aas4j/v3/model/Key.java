@@ -31,17 +31,17 @@ public interface Key {
     /**
      * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Key/type
+     * More information under https://admin-shell.io/aas/3/0/Key/type
      *
      * @return Returns the KeyTypes for the property type.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/type")
+    @IRI("https://admin-shell.io/aas/3/0/Key/type")
     KeyTypes getType();
 
     /**
      * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Key/type
+     * More information under https://admin-shell.io/aas/3/0/Key/type
      *
      * @param type desired value for the property type.
      */
@@ -50,17 +50,17 @@ public interface Key {
     /**
      * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Key/value
+     * More information under https://admin-shell.io/aas/3/0/Key/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/value")
+    @IRI("https://admin-shell.io/aas/3/0/Key/value")
     String getValue();
 
     /**
      * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Key/value
+     * More information under https://admin-shell.io/aas/3/0/Key/value
      *
      * @param value desired value for the property value.
      */
