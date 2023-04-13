@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlFactory;
@@ -62,6 +63,7 @@ public class XmlDeserializer implements Deserializer {
                 .addModule(buildImplementationModule())
                 .addModule(buildCustomDeserializerModule())
                 .addModule(buildEnumModule())
+				.configure(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS, false)
                 .build();
         ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
     }
