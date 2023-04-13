@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
 public interface DataSpecificationIec61360Mixin {
@@ -37,4 +38,9 @@ public interface DataSpecificationIec61360Mixin {
     @JsonProperty("preferredName")
     public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
+    @JsonProperty("unitId")
+    public Reference getUnitID();
+
+    public @JsonProperty("unitId")
+    void setUnitID(Reference unitID);
 }

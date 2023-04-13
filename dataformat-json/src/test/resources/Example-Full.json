@@ -192,7 +192,6 @@
     },
     {
       "modelType": "ConceptDescription",
-      "category": "PROPERTY",
       "administration": {
         "revision": "9",
         "version": "0"
@@ -323,7 +322,6 @@
       "submodelElements": [
         {
           "modelType": "Property",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -348,14 +346,12 @@
             {
               "type": "http://acplt.org/Qualifier/ExampleQualifier",
               "value": "100",
-              "valueType": "xs:int",
-              "kind": "ConceptQualifier"
+              "valueType": "xs:int"
             },
             {
               "type": "http://acplt.org/Qualifier/ExampleQualifier2",
               "value": "50",
-              "valueType": "xs:int",
-              "kind": "ConceptQualifier"
+              "valueType": "xs:int"
             }
           ],
           "idShort": "ManufacturerName",
@@ -378,7 +374,6 @@
         },
         {
           "modelType": "Property",
-          "kind": "Instance",
           "category": "VARIABLE",
           "semanticId": {
             "keys": [
@@ -394,7 +389,7 @@
               "keys": [
               {
                 "type": "GlobalReference",
-                "value": "something_random_bd061acd"
+                "value": "something_random_e14ad770"
               }
             ],
             "type": "ExternalReference"
@@ -402,7 +397,7 @@
             {
               "keys": [{
                 "type": "GlobalReference",
-                "value": "something_random_e14ad770"
+                "value": "something_random_bd061acd"
               }],
               "type": "ExternalReference"
             }
@@ -463,12 +458,10 @@
       "submodelElements": [
         {
           "modelType": "Entity",
-          "kind": "Instance",
           "entityType": "CoManagedEntity",
           "statements": [
             {
               "modelType": "Property",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -504,7 +497,6 @@
             },
             {
               "modelType": "Property",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -526,6 +518,7 @@
               },
               "valueType": "xs:string",
               "idShort": "ExampleProperty",
+              "category": "CONSTANT",
               "description": [
                 {
                   "language": "en-us",
@@ -561,7 +554,6 @@
         },
         {
           "modelType": "Entity",
-          "kind": "Instance",
           "entityType": "SelfManagedEntity",
           "globalAssetId": "https://acplt.org/Test_Asset2",
           "semanticId": {
@@ -618,7 +610,6 @@
       "submodelElements": [
         {
           "modelType": "RelationshipElement",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -677,7 +668,6 @@
         },
         {
           "modelType": "AnnotatedRelationshipElement",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -726,7 +716,6 @@
           "annotations": [
             {
               "modelType": "Property",
-              "kind": "Instance",
               "value": "some example annotation",
               "valueType": "xs:string",
               "category": "PARAMETER",
@@ -746,7 +735,6 @@
         },
         {
           "modelType": "Operation",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -762,7 +750,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -802,7 +789,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -842,7 +828,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -891,7 +876,6 @@
         },
         {
           "modelType": "Capability",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -916,7 +900,6 @@
         },
         {
           "modelType": "BasicEventElement",
-          "kind": "Instance",
           "observed": {
             "keys": [
               {
@@ -960,7 +943,6 @@
         },
         {
           "modelType": "SubmodelElementList",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -987,7 +969,6 @@
           "value": [
             {
               "modelType": "Property",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1023,7 +1004,6 @@
             },
             {
               "modelType": "MultiLanguageProperty",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1067,7 +1047,6 @@
             },
             {
               "modelType": "Range",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1097,7 +1076,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -1122,7 +1100,6 @@
           "value": [
             {
               "modelType": "Blob",
-              "kind": "Instance",
               "contentType": "application/pdf",
               "value": "AQIDBAU=",
               "semanticId": {
@@ -1149,7 +1126,6 @@
             },
             {
               "modelType": "File",
-              "kind": "Instance",
               "contentType": "application/pdf",
               "value": "file:///TestFile.pdf",
               "semanticId": {
@@ -1176,7 +1152,6 @@
             },
             {
               "modelType": "ReferenceElement",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1238,7 +1213,6 @@
       "submodelElements": [
         {
           "modelType": "RelationshipElement",
-          "kind": "Instance",
           "idShort": "ExampleRelationshipElement",
           "first": {
             "keys": [
@@ -1277,7 +1251,6 @@
         },
         {
           "modelType": "AnnotatedRelationshipElement",
-          "kind": "Instance",
           "idShort": "ExampleAnnotatedRelationshipElement",
           "first": {
             "keys": [
@@ -1316,17 +1289,14 @@
         },
         {
           "modelType": "Operation",
-          "kind": "Template",
           "idShort": "ExampleOperation"
         },
         {
           "modelType": "Capability",
-          "kind": "Instance",
           "idShort": "ExampleCapability"
         },
         {
           "modelType": "BasicEventElement",
-          "kind": "Instance",
           "observed": {
             "keys": [
               {
@@ -1350,7 +1320,6 @@
         },
         {
           "modelType": "SubmodelElementList",
-          "kind": "Instance",
           "idShort": "ExampleSubmodelElementListUnordered",
           "orderRelevant": false,
           "typeValueListElement": "SubmodelElement",
@@ -1373,7 +1342,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Instance",
           "idShort": "ExampleSubmodelElementCollection",
           "value": [
             {
@@ -1394,7 +1362,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Instance",
           "idShort": "ExampleSubmodelElementCollection2"
         }
       ]
@@ -1426,7 +1393,6 @@
       "submodelElements": [
         {
           "modelType": "RelationshipElement",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -1485,7 +1451,6 @@
         },
         {
           "modelType": "AnnotatedRelationshipElement",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -1553,7 +1518,6 @@
         },
         {
           "modelType": "Operation",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -1569,7 +1533,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -1584,8 +1547,7 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:string"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1607,7 +1569,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -1622,8 +1583,7 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:string"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1645,7 +1605,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Instance",
                 "semanticId": {
                   "keys": [
                     {
@@ -1660,8 +1619,7 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:string"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1692,7 +1650,6 @@
         },
         {
           "modelType": "Capability",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -1717,7 +1674,6 @@
         },
         {
           "modelType": "BasicEventElement",
-          "kind": "Instance",
           "observed": {
             "keys": [
               {
@@ -1760,7 +1716,6 @@
           ]
         },
         {
-          "kind": "Instance",
           "modelType": "SubmodelElementList",
           "semanticId": {
             "keys": [
@@ -1788,7 +1743,6 @@
           "value": [
             {
               "modelType": "Property",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1803,8 +1757,7 @@
               "qualifiers": [
                 {
                   "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                  "valueType": "xs:string",
-                  "kind": "ConceptQualifier"
+                  "valueType": "xs:string"
                 }
               ],
               "category": "CONSTANT",
@@ -1822,7 +1775,6 @@
             },
             {
               "modelType": "MultiLanguageProperty",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1857,7 +1809,6 @@
             },
             {
               "modelType": "Range",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -1887,7 +1838,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Instance",
           "semanticId": {
             "keys": [
               {
@@ -1912,7 +1862,6 @@
           "value": [
             {
               "modelType": "Blob",
-              "kind": "Instance",
               "contentType": "application/pdf",
               "value": "AQIDBAU=",
               "semanticId": {
@@ -1939,7 +1888,6 @@
             },
             {
               "modelType": "File",
-              "kind": "Instance",
               "contentType": "application/pdf",
               "value": "file:///TestFile.pdf",
               "semanticId": {
@@ -1966,7 +1914,6 @@
             },
             {
               "modelType": "ReferenceElement",
-              "kind": "Instance",
               "semanticId": {
                 "keys": [
                   {
@@ -2041,7 +1988,6 @@
       "submodelElements": [
         {
           "modelType": "RelationshipElement",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2100,7 +2046,6 @@
         },
         {
           "modelType": "AnnotatedRelationshipElement",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2159,7 +2104,6 @@
         },
         {
           "modelType": "Operation",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2175,7 +2119,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Template",
                 "semanticId": {
                   "keys": [
                     {
@@ -2205,7 +2148,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Template",
                 "semanticId": {
                   "keys": [
                     {
@@ -2235,7 +2177,6 @@
             {
               "value": {
                 "modelType": "Property",
-                "kind": "Template",
                 "semanticId": {
                   "keys": [
                     {
@@ -2274,7 +2215,6 @@
         },
         {
           "modelType": "Capability",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2316,7 +2256,6 @@
             ],
             "type": "ModelReference"
           },
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2343,7 +2282,6 @@
         },
         {
           "modelType": "SubmodelElementList",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2370,7 +2308,6 @@
           "value": [
             {
               "modelType": "Property",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2396,7 +2333,6 @@
             },
             {
               "modelType": "MultiLanguageProperty",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2421,7 +2357,6 @@
             },
             {
               "modelType": "Range",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2448,7 +2383,6 @@
             },
             {
               "modelType": "Range",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2477,7 +2411,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {
@@ -2503,7 +2436,6 @@
             {
               "modelType": "Blob",
               "contentType": "application/pdf",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2529,7 +2461,6 @@
             {
               "modelType": "File",
               "contentType": "application/pdf",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2554,7 +2485,6 @@
             },
             {
               "modelType": "ReferenceElement",
-              "kind": "Template",
               "semanticId": {
                 "keys": [
                   {
@@ -2581,7 +2511,6 @@
         },
         {
           "modelType": "SubmodelElementCollection",
-          "kind": "Template",
           "semanticId": {
             "keys": [
               {

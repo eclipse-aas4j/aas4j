@@ -22,7 +22,6 @@
     "submodelElements": [
         {
             "modelType": "Property",
-            "category": "VARIABLE",
             "semanticId":
                     {
                         "keys": [
@@ -49,31 +48,34 @@
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
                     "value": "100",
-                    "valueType": "xs:int",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:int"
                 },
                 {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                     "value": "50",
-                    "valueType": "xs:int",
-                    "kind": "ConceptQualifier"
+                    "valueType": "xs:int"
                 }
             ],
             "idShort": "ManufacturerName",
             "description": [
-                    {
-                        "language": "en-us",
-                        "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
-                    },
-                    {
-                        "language": "de",
-                        "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
-                    }
-                ]
+                {
+                    "language": "en-us",
+                    "text": "Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation."
+                },
+                {
+                    "language": "de",
+                    "text": "Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist"
+                }
+            ],
+            "displayName": [
+                {
+                    "language": "en-us",
+                    "text": "Manufacturer Name"
+                }
+            ]
         },
         {
             "modelType": "Property",
-            "category": "VARIABLE",
             "semanticId":
                     {
                         "keys": [
@@ -90,16 +92,16 @@
                     "keys": [
                         {
                             "type": "GlobalReference",
-                            "value": "something_random_bd061acd"
+                            "value": "something_random_e14ad770"
                         }
                     ],
                     "type": "ExternalReference"
                 },
                 {
                     "keys": [{
-                        "type": "GlobalReference",
-                        "value": "something_random_e14ad770"
-                    }],
+                            "type": "GlobalReference",
+                            "value": "something_random_bd061acd"
+                        }],
                     "type": "ExternalReference"
                 }
 
@@ -115,6 +117,7 @@
                         "type": "ExternalReference"
                     },
             "valueType": "xs:string",
+            "category": "VARIABLE",
             "idShort": "InstanceId",
             "description": [
                 {

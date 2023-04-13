@@ -22,7 +22,6 @@
         "submodelElements": [
             {
                 "modelType": "Property",
-                "category": "VARIABLE",
                 "semanticId":
                         {
                             "keys": [
@@ -49,14 +48,12 @@
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier",
                         "value": "100",
-                        "valueType": "xs:int",
-                        "kind": "ConceptQualifier"
+                        "valueType": "xs:int"
                     },
                     {
                         "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                         "value": "50",
-                        "valueType": "xs:int",
-                        "kind": "ConceptQualifier"
+                        "valueType": "xs:int"
                     }
                 ],
                 "idShort": "ManufacturerName",
@@ -106,7 +103,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "something_random_bd061acd"
+                                "value": "something_random_e14ad770"
                             }
                         ],
                         "type": "ExternalReference"
@@ -114,7 +111,7 @@
                     {
                         "keys": [{
                             "type": "GlobalReference",
-                            "value": "something_random_e14ad770"
+                            "value": "something_random_bd061acd"
                         }],
                         "type": "ExternalReference"
                     }

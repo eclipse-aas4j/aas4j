@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright 2023 jab.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,22 +16,12 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-public interface MultiLanguagePropertyMixin {
+public interface HasSemanticsMixin {
+	@JsonProperty("semanticId")
+	public Reference getSemanticID();
 
-    @JsonProperty("value")
-    public List<LangStringTextType> getValue();
-
-    @JsonProperty("value")
-    public void setValue(LangStringTextType value);
-
-    @JsonProperty("valueId")
-    public Reference getValueID();
-
-    @JsonProperty("valueId")
-    public void setValueID(Reference valueID);
+        @JsonProperty("semanticId")
+	public void setSemanticID(Reference semanticID);
 }
