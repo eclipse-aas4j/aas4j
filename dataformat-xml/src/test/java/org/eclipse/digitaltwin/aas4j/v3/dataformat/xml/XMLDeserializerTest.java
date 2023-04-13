@@ -30,40 +30,34 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.gson.Gson;
-
 public class XMLDeserializerTest {
 
 	@Test
 	public void deserializeAASSimple() throws FileNotFoundException, DeserializationException {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		Assert.assertEquals(AASSimple.ENVIRONMENT, env);
+		Assert.assertEquals(AASSimple.createEnvironment(), env);
 	}
 
     @Test
 	public void deserializeAASSimpleAAS() throws Exception {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		System.out.println("--- Expected: \n" + new Gson().toJson(AASSimple.createEnvironment().getAssetAdministrationShells().get(0)));
-
-		System.out.println("--- Received: \n" + new Gson().toJson(env.getAssetAdministrationShells().get(0)));
-
-		Assert.assertEquals(AASSimple.ENVIRONMENT.getAssetAdministrationShells(), env.getAssetAdministrationShells());
+		Assert.assertEquals(AASSimple.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
 	}
 
 	@Test
 	public void deserializeAASSimpleSubmodel() throws Exception {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		Assert.assertEquals(AASSimple.ENVIRONMENT.getSubmodels(), env.getSubmodels());
+		Assert.assertEquals(AASSimple.createEnvironment().getSubmodels(), env.getSubmodels());
 	}
 
 	@Test
 	public void deserializeAASSimpleConceptDescription() throws Exception {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 		
-		Assert.assertEquals(AASSimple.ENVIRONMENT.getConceptDescriptions(), env.getConceptDescriptions());
+		Assert.assertEquals(AASSimple.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
 	}
 
     @Test
@@ -100,26 +94,26 @@ public class XMLDeserializerTest {
     @Test
     public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-        Assert.assertEquals(AASFull.ENVIRONMENT, env);
+		Assert.assertEquals(AASFull.createEnvironment(), env);
     }
 
 	@Test
 	public void deserializeAASFullAAS() throws FileNotFoundException, DeserializationException {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-		Assert.assertEquals(AASFull.ENVIRONMENT.getAssetAdministrationShells(), env.getAssetAdministrationShells());
+		Assert.assertEquals(AASFull.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
 	}
 
 	@Test
 	public void deserializeAASFullSubmodel() throws FileNotFoundException, DeserializationException {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
 
-		Assert.assertEquals(AASFull.ENVIRONMENT.getSubmodels(), env.getSubmodels());
+		Assert.assertEquals(AASFull.createEnvironment().getSubmodels(), env.getSubmodels());
 	}
 
 	@Test
 	public void deserializeAASFullConceptDescription() throws FileNotFoundException, DeserializationException {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
 
-		Assert.assertEquals(AASFull.ENVIRONMENT.getConceptDescriptions(), env.getConceptDescriptions());
+		Assert.assertEquals(AASFull.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
 	}
 }

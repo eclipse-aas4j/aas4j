@@ -69,7 +69,7 @@ public class XmlSerializerTest {
     @Test
     public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.xml");
-        new XmlSerializer().write(file, AASSimple.ENVIRONMENT);
+		new XmlSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
@@ -92,17 +92,17 @@ public class XmlSerializerTest {
         Map<String, String> nsPrefixes = new HashMap<>(AasXmlNamespaceContext.PREFERRED_PREFIX_CONTEXT);
         nsPrefixes.put("test", nsPrefixes.get("aas"));
         nsPrefixes.remove("aas");
-        validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.ENVIRONMENT, new XmlSerializer(nsPrefixes));
+		validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.createEnvironment(), new XmlSerializer(nsPrefixes));
     }
 
     @Test
     public void testSerializeSimple() throws SerializationException, SAXException {
-        validateXmlSerializer(AASSIMPLE_FILE, AASSimple.ENVIRONMENT);
+		validateXmlSerializer(AASSIMPLE_FILE, AASSimple.createEnvironment());
     }
 
     @Test
     public void testSerializeFull() throws SerializationException, SAXException {
-        validateXmlSerializer(AASFULL_FILE, AASFull.ENVIRONMENT);
+		validateXmlSerializer(AASFULL_FILE, AASFull.createEnvironment());
     }
 
     @Test
@@ -154,7 +154,7 @@ public class XmlSerializerTest {
 
     @Test
     public void testIsCaseOfAgainstXsdSchema() throws SerializationException, SAXException {
-        ConceptDescription object = AASFull.ENVIRONMENT.getConceptDescriptions().get(0);
+		ConceptDescription object = AASFull.createEnvironment().getConceptDescriptions().get(0);
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build());
         Set<String> errors = validateAgainstXsdSchema( xml );
         assertTrue(errors.isEmpty());
