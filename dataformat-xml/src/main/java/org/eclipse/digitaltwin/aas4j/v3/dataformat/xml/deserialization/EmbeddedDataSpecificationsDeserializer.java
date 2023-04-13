@@ -18,8 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 import java.io.IOException;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DataSpecificationManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,11 +26,14 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 
-public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIEC61360> {
+public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIec61360> {
+
+    private static final String PROP_DATA_SPECIFICATION_CONTENT = "dataSpecificationIec61360";
 
     @Override
-    public DataSpecificationIEC61360 deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DataSpecificationIec61360 deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
@@ -41,13 +43,13 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Dat
     }
 
 
-    private DataSpecificationIEC61360 createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
-        JsonNode nodeContent = node.get(DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT);
-		return createDefaultDataSpecificationIEC61360FromNode(parser, nodeContent);
+    private DataSpecificationIec61360 createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
+        JsonNode nodeContent = node.get(PROP_DATA_SPECIFICATION_CONTENT);
+		return createDefaultDataSpecificationIec61360FromNode(parser, nodeContent);
     }
 
-    private DataSpecificationIEC61360 createDefaultDataSpecificationIEC61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIEC61360.class);
+    private DataSpecificationIec61360 createDefaultDataSpecificationIec61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
+        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIec61360.class);
     }
 
 }

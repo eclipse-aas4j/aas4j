@@ -32,30 +32,30 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
     @JsonSerialize(using = LangStringsSerializer.class)
-    public List<LangStringDefinitionTypeIEC61360> getDefinition();
+    public List<LangStringDefinitionTypeIec61360> getDefinition();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public void setDefinition(List<LangStringDefinitionTypeIEC61360> definition);
+    public void setDefinition(List<LangStringDefinitionTypeIec61360> definition);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     public LevelType getLevelType();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
     @JsonSerialize(using = LangStringsSerializer.class)
-    public List<LangStringPreferredNameTypeIEC61360> getPreferredName();
+    public List<LangStringPreferredNameTypeIec61360> getPreferredName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public void setPreferredName(List<LangStringPreferredNameTypeIEC61360> preferredName);
+    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
     @JsonSerialize(using = LangStringsSerializer.class)
-    public List<LangStringShortNameTypeIEC61360> getShortName();
+    public List<LangStringShortNameTypeIec61360> getShortName();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
     @JsonDeserialize(using = LangStringsDeserializer.class)
-    public void setShortName(List<LangStringShortNameTypeIEC61360> shortName);
+    public void setShortName(List<LangStringShortNameTypeIec61360> shortName);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "sourceOfDefinition")
     public String getSourceOfDefinition();
@@ -87,7 +87,7 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
     @JsonSerialize(using = EnumSerializer.class)
-    public DataTypeIEC61360 getDataType();
+    public DataTypeIec61360 getDataType();
 
 
 

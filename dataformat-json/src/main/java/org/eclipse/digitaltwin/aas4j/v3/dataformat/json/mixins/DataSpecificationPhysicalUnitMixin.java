@@ -17,9 +17,9 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIEC61360;
 
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 
 public interface DataSpecificationPhysicalUnitMixin {
 
@@ -31,10 +31,10 @@ public interface DataSpecificationPhysicalUnitMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("definition")
-    public List<LangStringDefinitionTypeIEC61360> getDefinition();
+    public List<LangStringDefinitionTypeIec61360> getDefinition();
 
     @JsonProperty("definition")
-    public void setDefinition(List<LangStringDefinitionTypeIEC61360> definition);
+    public void setDefinition(List<LangStringDefinitionTypeIec61360> definition);
 
     @JsonProperty("dinNotation")
     public List<String> getDinNotations();
