@@ -73,11 +73,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     protected String idShort;
 
     public DefaultAssetAdministrationShell() {
-		System.out.println("Constructor called");
-		submodels = new ArrayList<>();
-		embeddedDataSpecifications = new ArrayList<>();
-		extensions = new ArrayList<>();
-		description = new ArrayList<>();
     }
 
     @Override
@@ -226,12 +221,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
 
     @Override
     public void setExtensions(List<Extension> extensions) {
-		System.out.println("Setting extension " + extensions);
-
-		if (extensions != null) {
-			System.out.println("Extension size" + extensions.size());
-		}
-
         this.extensions = extensions;
     }
 

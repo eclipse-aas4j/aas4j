@@ -57,7 +57,6 @@ public class XmlDeserializer implements Deserializer {
         mapper = XmlMapper.builder(xmlFactory)
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
                 .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-				.enable(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .annotationIntrospector(new XmlDataformatAnnotationIntrospector())
                 .addModule(buildImplementationModule())
