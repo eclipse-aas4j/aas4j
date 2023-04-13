@@ -39,7 +39,7 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
     private static final String[] SCHEMA_LOCATION = {"xsi:schemaLocation",
-        "https://admin-shell.io/aas/3/0/RC02 AAS.xsd"};
+			"https://admin-shell.io/aas/3/0 AAS.xsd" };
 
     private static final QName AASENV_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "environment");
     private static final QName AASLIST_TAGNAME = new QName(AasXmlNamespaceContext.AAS_URI, "assetAdministrationShells");

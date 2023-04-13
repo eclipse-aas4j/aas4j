@@ -214,6 +214,7 @@
           </aas:valueId>
         </aas:property>
         <aas:property>
+          <aas:category>VARIABLE</aas:category>
           <aas:idShort>InstanceId</aas:idShort>
           <aas:description>
             <aas:langStringTextType>
@@ -794,6 +795,7 @@
               </aas:key>
             </aas:keys>
           </aas:semanticId>
+          <aas:orderRelevant>true</aas:orderRelevant>
           <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
           <aas:value>
             <aas:property>
@@ -2093,6 +2095,7 @@
               </aas:key>
             </aas:keys>
           </aas:semanticId>
+          <aas:orderRelevant>true</aas:orderRelevant>
           <aas:typeValueListElement>SubmodelElement</aas:typeValueListElement>
           <aas:value>
             <aas:property>
@@ -2351,6 +2354,7 @@
       <aas:id>https://acplt.org/Test_ConceptDescription_Mandatory</aas:id>
     </aas:conceptDescription>
     <aas:conceptDescription>
+      <aas:category>PROPERTY</aas:category>
       <aas:idShort>TestConceptDescription1</aas:idShort>
       <aas:description>
         <aas:langStringTextType>

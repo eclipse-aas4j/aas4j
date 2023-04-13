@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,22 +18,21 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-@JsonPropertyOrder({ "hasExtension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels"})
-public interface AssetAdministrationShellMixin {
+public interface HasSemanticsMixin {
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticId")
+	void setSemanticID(Reference semanticID);
 
+	@JsonDeserialize(using = ReferencesDeserializer.class)
+	void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-	public String getID();
-
-
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
-    public List<Reference> getSubmodels();
-
+	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "supplementalSemanticIds")
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+	List<Reference> getSupplementalSemanticIds();
 }

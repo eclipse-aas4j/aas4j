@@ -15,16 +15,23 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsTextTypeDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 public interface MultiLanguagePropertyMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonDeserialize(using = LangStringsDeserializer.class)
+	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "langStringTextType")
+    @JsonDeserialize(using = LangStringsTextTypeDeserializer.class)
     public List<LangStringTextType> getValue();
+
+	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
+	void setValueID(Reference valueID);
 }

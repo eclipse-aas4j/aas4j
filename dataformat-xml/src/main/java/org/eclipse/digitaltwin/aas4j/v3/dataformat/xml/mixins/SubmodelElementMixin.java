@@ -21,12 +21,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
         "hasExtensions", "category", "idShort", "displayName", "description", "checksum", // --> Referable
         "kind", // --> HasKind
-        "semanticId", "supplementalSemanticIds", // --> HasSemantics
+		"semanticId", "supplementalSemanticIds", "reference", // --> HasSemantics
         "qualifier",  // --> Qualifiable
         "dataSpecifications", "embeddedDataSpecifications", // --> HasDataSpecifications
-        "orderRelevant", // --> SME-List
+		"orderRelevant", "semanticIdListElement", "typeValueListElement", "valueTypeListElement", // --> SME-List
         "valueType", "value", "valueId" // --> Property
-        , "semanticIdListElement", "typeValueListElement", "valueTypeListElement" // --> SME-List
         , "statements", "entityType", "globalAssetId", "specificAssetId" // --> Entity
         , "first", "second", "annotations" // --> (Annotated)RelationsShipElement
         , "inputVariables", "outputVariables", "inoutputVariables" // --> Operation
