@@ -18,8 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import org.apache.commons.lang3.builder.RecursiveToStringStyle;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
@@ -31,6 +29,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.google.gson.Gson;
 
 public class XMLDeserializerTest {
 
@@ -45,9 +45,9 @@ public class XMLDeserializerTest {
 	public void deserializeAASSimpleAAS() throws Exception {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		System.out.println("--- Expected: \n" + new ReflectionToStringBuilder(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0), new RecursiveToStringStyle()));
+		System.out.println("--- Expected: \n" + new Gson().toJson(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0)));
 
-		System.out.println("--- Received: \n" + new ReflectionToStringBuilder(env.getAssetAdministrationShells().get(0), new RecursiveToStringStyle()));
+		System.out.println("--- Received: \n" + new Gson().toJson(AASSimple.ENVIRONMENT.getAssetAdministrationShells().get(0)));
 
 		Assert.assertEquals(AASSimple.ENVIRONMENT.getAssetAdministrationShells(), env.getAssetAdministrationShells());
 	}
