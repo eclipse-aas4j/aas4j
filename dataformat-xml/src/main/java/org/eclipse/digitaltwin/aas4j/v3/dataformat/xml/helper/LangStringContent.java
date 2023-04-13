@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper;
 
-public class LangStringsDeserializer extends NoEntryWrapperListDeserializer<LangString> {
-    public LangStringsDeserializer() {
-        super("langString", new LangStringNodeDeserializer());
-    }
+/**
+ * 
+ * @author schnicke
+ *
+ */
+public class LangStringContent {
+	private String language;
+	private String text;
+
+	public LangStringContent(String language, String text) {
+		this.language = language;
+		this.text = text;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public String getText() {
+		return text;
+	}
+
 }

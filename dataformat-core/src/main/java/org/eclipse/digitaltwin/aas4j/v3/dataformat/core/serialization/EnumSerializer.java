@@ -17,15 +17,16 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization;
 
 import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will
@@ -43,7 +44,9 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             if (value.equals(DataTypeDefXSD.ANY_URI)) {
                 gen.writeString("xs:anyURI");
             } else if (value.equals(DataTypeDefXSD.NON_NEGATIVE_INTEGER)) {
-                gen.writeString("xs:NonNegativeInteger");
+                gen.writeString("xs:nonNegativeInteger");
+            } else if(isTimeRelatedValue(value)) {
+				handleTimeRelatedValue(gen, value);
             } else {
                 // pattern: 'xs:' + camelCase
                 String enum_string = AasUtils.serializeEnumName(value.name());
@@ -59,5 +62,16 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             provider.findValueSerializer(Enum.class).serialize(value, gen, provider);
         }
     }
+
+	private void handleTimeRelatedValue(JsonGenerator gen, Enum value) throws IOException {
+		String enum_string = AasUtils.serializeEnumName(value.name());
+		String adaptedEnumString = "xs:g" + enum_string.substring(1, 2).toUpperCase() + enum_string.substring(2);
+		gen.writeString(adaptedEnumString);
+	}
+
+	private boolean isTimeRelatedValue(Enum value) {
+		String enum_string = AasUtils.serializeEnumName(value.name());
+		return enum_string.startsWith("G");
+	}
 
 }

@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <test:environment xmlns:test="https://admin-shell.io/aas/3/0"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
@@ -76,7 +77,6 @@
     <test:submodel>
       <test:idShort>TechnicalData</test:idShort>
       <test:id>http://i40.customer.com/type/1/1/7A7104BDAB57E184</test:id>
-      <test:kind>Instance</test:kind>
       <test:semanticId>
         <test:type>ExternalReference</test:type>
         <test:keys>
@@ -369,7 +369,7 @@
                 </test:langStringShortNameTypeIec61360>
                 <test:langStringShortNameTypeIec61360>
                   <test:language>EN</test:language>
-                  <test:text>ActualRotationSpeed</test:text>
+                  <test:text>ActRotationSpeed</test:text>
                 </test:langStringShortNameTypeIec61360>
               </test:shortName>
               <test:unit>1/min</test:unit>

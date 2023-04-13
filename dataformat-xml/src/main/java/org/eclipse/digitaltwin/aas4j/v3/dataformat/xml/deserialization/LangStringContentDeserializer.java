@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import java.io.IOException;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
 
-@JsonPropertyOrder({ "value", "valueID" })
-public interface ValueReferencePairMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	public Reference getValueID();
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+public class LangStringContentDeserializer implements CustomJsonNodeDeserializer<LangStringContent> {
+    @Override
+	public LangStringContent readValue(JsonNode node, JsonParser parser) throws IOException {
+        String lang = node.get("language").asText();
+        String text = node.get("text").asText();
+		return new LangStringContent(lang, text);
+    }
 }

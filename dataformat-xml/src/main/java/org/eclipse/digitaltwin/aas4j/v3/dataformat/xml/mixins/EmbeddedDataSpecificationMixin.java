@@ -18,13 +18,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.EmbeddedDataSpecificationsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 
 @JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
 public interface EmbeddedDataSpecificationMixin {
@@ -37,10 +39,10 @@ public interface EmbeddedDataSpecificationMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
     @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
-    public DataSpecificationIec61360 getDataSpecificationContent();
+	public DataSpecificationContent getDataSpecificationContent();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
     @JsonDeserialize(using = EmbeddedDataSpecificationsDeserializer.class)
-    public void setDataSpecificationContent(DataSpecificationIec61360 dataSpecificationIec61360);
+	public void setDataSpecificationContent(DataSpecificationContent dataSpecificationIEC61360);
 
 }
