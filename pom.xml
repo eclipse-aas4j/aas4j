@@ -70,7 +70,7 @@
         <jena.version>4.1.0</jena.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <json-schema-validator.version>1.0.56</json-schema-validator.version>
-        <junit.version>4.13</junit.version>
+        <junit.version>4.13.2</junit.version>
         <junit-params.version>1.1.1</junit-params.version>
         <moxy.version>2.7.8</moxy.version>
         <poi.version>4.1.2</poi.version>
