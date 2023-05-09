@@ -40,9 +40,9 @@
         <revision.major>1</revision.major>
         <revision.minor>0</revision.minor>
         <revision.patch>0</revision.patch>
-        <revision.suffix>-milestone-03</revision.suffix>
+        <revision.suffix>-milestone-03.1</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>1.0.0-milestone-03</model.version>
+        <model.version>1.0.0-milestone-03.1</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
