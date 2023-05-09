@@ -40,5 +40,5 @@ Refer to [ticket #3](https://github.com/eclipse-digitaltwin/aas4j/issues/11) - d
 - Reintroduce OPC UA 
 - Reintroduce AML
 
-`
+> Note: all issues and pull request addressing this part will be labelled as `label:V.1.1.0`
 
