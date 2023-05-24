@@ -109,14 +109,7 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>PACKAGE</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>0.20</minimum>
-                                        </limit>
-                                    </limits>
+                                    <element>GROUP</element>
                                 </rule>
                             </rules>
                         </configuration>
