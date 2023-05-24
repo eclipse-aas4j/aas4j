@@ -17,7 +17,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import static org.junit.Assert.assertEquals;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
@@ -55,7 +54,7 @@ public class JsonDeserializerTest {
     @Test
     public void testCustomImplementationClass() throws Exception {
 		String json = new JsonSerializer().write(AASSimple.createEnvironment());
-        Deserializer deserializer = new JsonDeserializer();
+        JsonDeserializer deserializer = new JsonDeserializer();
         Environment environment = deserializer.read(json);
         checkImplementationClasses(environment, DefaultSubmodel.class, DefaultProperty.class);
         deserializer.useImplementation(Submodel.class, CustomSubmodel.class);

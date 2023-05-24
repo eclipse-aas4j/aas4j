@@ -18,6 +18,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,7 +32,6 @@ import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
 import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
@@ -46,6 +47,8 @@ public class AASXDeserializer {
 
     private static final String XML_TYPE = "http://www.admin-shell.io/aasx/relationships/aas-spec";
     private static final String AASX_ORIGIN = "/aasx/aasx-origin";
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
 
     private final XmlDeserializer deserializer;
 
@@ -126,7 +129,7 @@ public class AASXDeserializer {
         // Read the content from the PackagePart
         InputStream stream = xmlPart.getInputStream();
         StringWriter writer = new StringWriter();
-        IOUtils.copy(stream, writer, Serializer.DEFAULT_CHARSET);
+        IOUtils.copy(stream, writer, DEFAULT_CHARSET);
         return writer.toString();
     }
 
@@ -134,7 +137,7 @@ public class AASXDeserializer {
      * Load the referenced filepaths in the submodels such as PDF, PNG files from
      * the package
      * 
-     * @return a map of the folder name and folder path, the folder holds the files
+     * @return a list of the folder name and folder path, the folder holds the files
      * @throws IOException if creating input streams for aasx fails
      * @throws InvalidFormatException if aasx package format is invalid
      * @throws DeserializationException if deserialization of the serialized aas environment fails
