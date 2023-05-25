@@ -15,10 +15,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
@@ -37,10 +39,12 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 
-public class XmlSerializer implements Serializer {
+public class XmlSerializer {
     protected final XmlFactory xmlFactory;
     protected XmlMapper mapper;
     protected Map<String, String> namespacePrefixes;
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
 
     public XmlSerializer() {
         this(null);
@@ -89,7 +93,15 @@ public class XmlSerializer implements Serializer {
         return module;
     }
 
-    @Override
+    /**
+     * Serializes a given instance of AssetAdministrationShellEnvironment to
+     * string
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to
+     * serialize
+     * @return the string representation of the environment
+     * @throws SerializationException if serialization fails
+     */
     public String write(Environment aasEnvironment) throws SerializationException {
         try {
             ObjectWriter writer = mapper.writer();
@@ -97,5 +109,74 @@ public class XmlSerializer implements Serializer {
         } catch (JsonProcessingException ex) {
             throw new SerializationException("serialization failed", ex);
         }
+    }
+
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using DEFAULT_CHARSET
+     *
+     * @param out the Outputstream to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
+        write(out, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using given charset
+     *
+     * @param out the Outputstream to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Charset charset, Environment aasEnvironment)
+            throws IOException, SerializationException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(out, charset)) {
+            writer.write(write(aasEnvironment));
+        }
+    }
+
+    // Note that the AAS also defines a file class
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using DEFAULT_CHARSET
+     *
+     * @param file the java.io.File to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Charset charset, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        try (OutputStream out = new FileOutputStream(file)) {
+            write(out, charset, aasEnvironment);
+        }
+    }
+
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using given charset
+     *
+     * @param file the java.io.File to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        write(file, DEFAULT_CHARSET, aasEnvironment);
     }
 }

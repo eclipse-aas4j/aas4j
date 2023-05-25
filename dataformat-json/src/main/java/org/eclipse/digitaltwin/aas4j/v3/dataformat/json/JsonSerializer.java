@@ -15,11 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
@@ -35,9 +37,11 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
  */
-public class JsonSerializer implements Serializer, ReferableSerializer {
+public class JsonSerializer {
 
     protected JsonMapper mapper;
+
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public JsonSerializer() {
         buildMapper();
@@ -59,7 +63,15 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
         return module;
     }
 
-    @Override
+    /**
+     * Serializes a given instance of AssetAdministrationShellEnvironment to
+     * string
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to
+     * serialize
+     * @return the string representation of the environment
+     * @throws SerializationException if serialization fails
+     */
     public String write(Environment aasEnvironment) throws SerializationException {
         try {
             return mapper.writeValueAsString(aasEnvironment);
@@ -68,7 +80,82 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
         }
     }
 
-    @Override
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using DEFAULT_CHARSET
+     *
+     * @param out the Outputstream to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
+        write(out, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using given charset
+     *
+     * @param out the Outputstream to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Charset charset, Environment aasEnvironment)
+            throws IOException, SerializationException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(out, charset)) {
+            writer.write(write(aasEnvironment));
+        }
+    }
+
+    // Note that the AAS also defines a file class
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using DEFAULT_CHARSET
+     *
+     * @param file the java.io.File to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Charset charset, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        try (OutputStream out = new FileOutputStream(file)) {
+            write(out, charset, aasEnvironment);
+        }
+    }
+
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using given charset
+     *
+     * @param file the java.io.File to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        write(file, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of a Referable to string
+     *
+     * @param referable the referable to serialize
+     * @return the string representation of the referable
+     * @throws SerializationException if serialization fails
+     */
     public String write(Referable referable) throws SerializationException {
         try {
             return mapper.writeValueAsString(referable);
@@ -77,8 +164,13 @@ public class JsonSerializer implements Serializer, ReferableSerializer {
         }
     }
 
-    @Override
-	public String write(Collection<? extends Referable> referables) throws SerializationException {
+    /**
+     *
+     * @param referables the referables to serialize
+     * @return the string representation of the list of referables
+     * @throws SerializationException if serialization fails
+     */
+    public String write(Collection<? extends Referable> referables) throws SerializationException {
 		if (referables == null) {
             return null;
 		} else if (referables.isEmpty()) {

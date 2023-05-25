@@ -91,8 +91,6 @@ public interface AssetAdministrationShellElementVisitor {
         Class<?> type = hasKind.getClass();
         if (Submodel.class.isAssignableFrom(type)) {
             visit((Submodel) hasKind);
-        } else if (SubmodelElement.class.isAssignableFrom(type)) {
-            visit((SubmodelElement) hasKind);
         }
     }
 

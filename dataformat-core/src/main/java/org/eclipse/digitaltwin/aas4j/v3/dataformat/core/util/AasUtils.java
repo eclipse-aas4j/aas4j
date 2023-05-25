@@ -68,8 +68,8 @@ public class AasUtils {
         return String.format("[%s]%s", reference.getType(),
                 reference.getKeys().stream()
                         .map(x -> String.format("(%s)%s",
-                        serializeEnumName(x.getType().name()),
-                        x.getValue()))
+                                serializeEnumName(x.getType().name()),
+                                x.getValue()))
                         .collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
     }
 
@@ -580,20 +580,20 @@ public class AasUtils {
                     }
                 } else {
                     Collection collection;
-                    // operation needs special handling because of nested values               
+                    // operation needs special handling because of nested values
                     if (Operation.class.isAssignableFrom(current.getClass())) {
                         Operation operation = (Operation) current;
                         collection = Stream.of(operation.getInputVariables().stream(),
-                                operation.getOutputVariables().stream(),
-                                operation.getInoutputVariables().stream())
+                                        operation.getOutputVariables().stream(),
+                                        operation.getInoutputVariables().stream())
                                 .flatMap(x -> x.map(y -> y.getValue()))
                                 .collect(Collectors.toSet());
                     } else {
                         List<PropertyDescriptor> matchingProperties = getAasProperties(current.getClass()).stream()
                                 .filter(x -> Collection.class.isAssignableFrom(x.getReadMethod().getReturnType()))
                                 .filter(x -> TypeToken.of(x.getReadMethod().getGenericReturnType())
-                                .resolveType(Collection.class.getTypeParameters()[0])
-                                .isSupertypeOf(keyType))
+                                        .resolveType(Collection.class.getTypeParameters()[0])
+                                        .isSupertypeOf(keyType))
                                 .collect(Collectors.toList());
                         if (matchingProperties.isEmpty()) {
                             throw new IllegalArgumentException(String.format("error resolving reference - could not find matching property for type %s in class %s",

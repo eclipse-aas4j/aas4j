@@ -99,6 +99,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(hasSemantics.getSemanticID());
+        hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
 

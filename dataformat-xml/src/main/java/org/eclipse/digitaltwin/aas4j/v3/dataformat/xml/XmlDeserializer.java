@@ -15,10 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementDeserializer;
@@ -34,7 +37,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-public class XmlDeserializer implements Deserializer {
+public class XmlDeserializer {
 
     protected final XmlFactory xmlFactory;
     protected XmlMapper mapper;
@@ -42,6 +45,9 @@ public class XmlDeserializer implements Deserializer {
 	@SuppressWarnings("rawtypes")
 	protected static Map<Class<?>, JsonDeserializer> customDeserializers = Map.of(
             SubmodelElement.class, new SubmodelElementDeserializer());
+
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
 
     public XmlDeserializer() {
         this(new XmlFactory());
@@ -93,7 +99,15 @@ public class XmlDeserializer implements Deserializer {
         return module;
     }
 
-    @Override
+    /**
+     * Deserializes a given string into an instance of
+     * AssetAdministrationShellEnvironment
+     *
+     * @param value a string representation of the
+     * AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
     public Environment read(String value) throws DeserializationException {
         try {
             return mapper.readValue(value, Environment.class);
@@ -102,7 +116,82 @@ public class XmlDeserializer implements Deserializer {
         }
     }
 
-    @Override
+    /**
+     * Deserializes a given InputStream into an instance of
+     * AssetAdministrationShellEnvironment using DEFAULT_CHARSET
+     *
+     * @param src an InputStream containing the string representation of the
+     * AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(InputStream src) throws DeserializationException {
+        return read(src, DEFAULT_CHARSET);
+    }
+
+
+    /**
+     * Deserializes a given InputStream into an instance of
+     * AssetAdministrationShellEnvironment using a given charset
+     *
+     * @param src An InputStream containing the string representation of the
+     * AssetAdministrationShellEnvironment
+     * @param charset the charset to use for deserialization
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(InputStream src, Charset charset) throws DeserializationException {
+        return read(new BufferedReader(
+                new InputStreamReader(src, charset))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())));
+    }
+
+    /**
+     * Deserializes a given File into an instance of
+     * AssetAdministrationShellEnvironment using DEFAULT_CHARSET
+     *
+     * @param file A java.io.File containing the string representation of the
+     * AssetAdministrationShellEnvironment
+     * @param charset the charset to use for deserialization
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws FileNotFoundException if file is not present
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(java.io.File file, Charset charset)
+            throws FileNotFoundException, DeserializationException {
+        return read(new FileInputStream(file), charset);
+    }
+
+    /**
+     * Deserializes a given File into an instance of
+     * AssetAdministrationShellEnvironment using a given charset
+     *
+     * @param file a java.io.File containing the string representation of the
+     * AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws FileNotFoundException if the file is not present
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
+        return read(file, DEFAULT_CHARSET);
+    }
+
+    /**
+     * Enables usage of custom implementation to be used for deserialization
+     * instead of default implementation, e.g. defining a custom implementation
+     * of the Submodel interface {@code class
+     * CustomSubmodel implements Submodel {}} and calling
+     * {@code useImplementation(Submodel.class, CustomSubmodel.class);} will
+     * result in all instances of Submodel will be deserialized as
+     * CustomSubmodel. Subsequent class with the same aasInterface parameter
+     * will override the effects of all previous calls.
+     *
+     * @param <T> the type of the interface to replace
+     * @param aasInterface the class of the interface to replace
+     * @param implementation the class implementing the interface that should be
+     * used for deserialization.
+     */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
         buildMapper();

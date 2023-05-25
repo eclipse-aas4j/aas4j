@@ -17,6 +17,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -41,7 +43,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 
 /**
@@ -63,7 +64,9 @@ public class AASXSerializer {
 
     private static final String AASSUPPL_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aas-suppl";
 
-    private final Serializer xmlSerializer;
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
+    private final XmlSerializer xmlSerializer;
 
     /**
      * Default constructor
@@ -77,7 +80,7 @@ public class AASXSerializer {
      * 
      * @param xmlSerializer a custom serializer used for serializing the aas environment
      */
-    public AASXSerializer(Serializer xmlSerializer) {
+    public AASXSerializer(XmlSerializer xmlSerializer) {
         this.xmlSerializer = xmlSerializer;
     }
 
@@ -104,7 +107,7 @@ public class AASXSerializer {
         String xml = xmlSerializer.write(environment);
 
         // Save the XML to aasx/xml/content.xml
-        PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(Serializer.DEFAULT_CHARSET));
+        PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
 
         storeFilesInAASX(environment.getSubmodels(), files, rootPackage, xmlPart);
 
@@ -198,7 +201,7 @@ public class AASXSerializer {
      * @param content the content to be written to the part
      */
     private void writeDataToPart(PackagePart part, byte[] content) {
-        try (OutputStream ostream = part.getOutputStream();) {
+        try (OutputStream ostream = part.getOutputStream()) {
             ostream.write(content);
             ostream.flush();
         } catch (Exception e) {
