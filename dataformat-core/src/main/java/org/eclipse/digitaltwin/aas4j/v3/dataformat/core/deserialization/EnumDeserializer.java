@@ -21,7 +21,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
 
 /**
  * Deserializes enum values converting element names from UpperCamelCase to
@@ -29,7 +28,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.AasUtils;
  *
  * @param <T> Type of enum to deserialize
  */
-public class EnumDeserializer<T extends Enum> extends JsonDeserializer<T> {
+public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
 
     protected final Class<T> type;
 
@@ -47,7 +46,30 @@ public class EnumDeserializer<T extends Enum> extends JsonDeserializer<T> {
             value = value.substring(0, 1).toUpperCase() + value.substring(1);
         }
 
-        return (T) Enum.valueOf(type, AasUtils.deserializeEnumName(value));
+		return Enum.valueOf(type, deserializeEnumName(value));
     }
+
+	/**
+	 * Translates an enum value from CamelCase to SCREAMING_SNAKE_CASE
+	 *
+	 * @param input
+	 *            input name in CamelCase
+	 * @return name in SCREAMING_SNAKE_CASE
+	 */
+	public static String deserializeEnumName(String input) {
+		String result = "";
+		if (input == null || input.isEmpty()) {
+			return result;
+		}
+		result += Character.toUpperCase(input.charAt(0));
+		for (int i = 1; i < input.length(); i++) {
+			char currentChar = input.charAt(i), previousChar = input.charAt(i - 1);
+			if (Character.isUpperCase(currentChar) && Character.isLowerCase(previousChar)) {
+				result += "_";
+			}
+			result += Character.toUpperCase(currentChar);
+		}
+		return result;
+	}
 
 }

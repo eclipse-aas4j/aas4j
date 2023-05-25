@@ -80,10 +80,8 @@ public class AASSimple {
     private static final String TITEL = "Titel";
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
     private static final String TITLE = "Title";
-    private static final String SERVO_DC_MOTOR = "ServoDCMotor";
     private static final String FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "file:///master/verwaltungsschale-detail-part1.png";
     private static final String IMAGE_PNG = "image/png";
-    private static final String THUMBNAIL = "thumbnail";
     private static final String HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1 = "http://customer.com/Systems/IoT/1";
     private static final String QJ_YG_PGGJWKI_HK4_RR_QI_YS_LG = "QjYgPggjwkiHk4RrQiYSLg==";
     private static final String DEVICE_ID = "DeviceID";
@@ -113,7 +111,6 @@ public class AASSimple {
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT = TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUE = "OperatingManual";
-    private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUETYPE = "langString";
     private static final String SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE;
     private static final String SUBMODEL_DOCUMENTATION_FILE_ID_SHORT = "DigitalFile_PDF";
     private static final String SUBMODEL_DOCUMENTATION_FILE_contentType = "application/pdf";
@@ -126,7 +123,6 @@ public class AASSimple {
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT = ROTATION_SPEED;
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY = "VARIABLE";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
-    private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
     public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
 
     public AASSimple() {

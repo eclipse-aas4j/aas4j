@@ -1,7 +1,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import java.io.IOException;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
@@ -11,7 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
 
 public class EnumSerializerTest {
 
@@ -63,7 +64,7 @@ public class EnumSerializerTest {
         assertSerialization(StateOfEvent.OFF, "off");
     }
 
-    private void assertSerialization(Enum value, String expected) {
+	private void assertSerialization(Enum<?> value, String expected) {
         this.serializationOutput.setLength(0);
         try {
             this.enumSerializer.serialize(value, jsonGeneratorMock, serializerProviderMock);

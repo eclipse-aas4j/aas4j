@@ -18,23 +18,18 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import java.io.IOException;
 import java.util.Collection;
 
-import org.json.JSONException;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.skyscreamer.jsonassert.JSONCompareMode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.json.JSONException;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 
 public class JsonReferableSerializerTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(JsonReferableSerializerTest.class);
 
     @Test
     public void testSerializeAAS() throws IOException, SerializationException, JSONException {
@@ -92,7 +87,8 @@ public class JsonReferableSerializerTest {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
-    private void compare(ExampleData exampleData) throws IOException, SerializationException, JSONException {
+	@SuppressWarnings("unchecked")
+	private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = null;
         if (Environment.class.isAssignableFrom(exampleData.getModel().getClass())) {
@@ -100,10 +96,9 @@ public class JsonReferableSerializerTest {
         } else if (Referable.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = new JsonSerializer().write((Referable) exampleData.getModel());
         } else if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())
-                && ((Collection) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
+				&& ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
             actual = new JsonSerializer().write((Collection<Referable>) exampleData.getModel());
         }
-        logger.info(actual);
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
     }

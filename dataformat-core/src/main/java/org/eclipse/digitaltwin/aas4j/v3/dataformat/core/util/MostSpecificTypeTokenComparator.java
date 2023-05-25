@@ -15,16 +15,17 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import com.google.common.reflect.TypeToken;
 import java.util.Comparator;
+
+import com.google.common.reflect.TypeToken;
 
 /**
  * Comparator comparing two TypeToken regarding which type is more specific.
  */
-public class MostSpecificTypeTokenComparator implements Comparator<TypeToken> {
+public class MostSpecificTypeTokenComparator implements Comparator<TypeToken<?>> {
 
     @Override
-    public int compare(TypeToken x, TypeToken y) {
+	public int compare(TypeToken<?> x, TypeToken<?> y) {
         if (x.isSubtypeOf(y)) {
             if (y.isSubtypeOf(x)) {
                 return 0;
