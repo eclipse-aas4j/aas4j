@@ -1,4 +1,4 @@
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal;
 
 public class AASXUtils {
 
