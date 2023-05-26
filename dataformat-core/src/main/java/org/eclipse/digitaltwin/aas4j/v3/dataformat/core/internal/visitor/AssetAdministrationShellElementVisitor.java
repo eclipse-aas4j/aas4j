@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.visitor;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
