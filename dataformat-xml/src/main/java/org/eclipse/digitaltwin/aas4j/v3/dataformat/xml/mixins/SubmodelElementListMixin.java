@@ -17,8 +17,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.AASSubmodelElements;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;

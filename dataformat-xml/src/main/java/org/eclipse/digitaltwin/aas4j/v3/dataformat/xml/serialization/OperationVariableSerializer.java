@@ -17,7 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
 import com.fasterxml.jackson.core.JsonGenerator;

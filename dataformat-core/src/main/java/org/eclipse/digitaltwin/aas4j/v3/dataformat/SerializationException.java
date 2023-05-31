@@ -15,6 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat;
 
+@SuppressWarnings("serial")
 public class SerializationException extends Exception {
 
     public SerializationException(String msg) {

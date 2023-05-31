@@ -15,8 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import com.google.common.reflect.TypeToken;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +24,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.apache.commons.lang3.ClassUtils;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import com.google.common.reflect.TypeToken;
+
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassInfoList;
@@ -90,7 +92,8 @@ public class ReflectionHelper {
     /**
      * List of all interfaces classes defined by the AAS.
      */
-    public static final Set<Class> INTERFACES;
+	@SuppressWarnings("rawtypes")
+	public static final Set<Class> INTERFACES;
     /**
      * Expanded list of all mixin classes defined in the
      * JSON_MIXINS_PACKAGE_NAME package together with the corresponding class
@@ -107,7 +110,8 @@ public class ReflectionHelper {
      * DEFAULT_IMPLEMENTATION_PACKAGE_NAME package together with the interface
      * from the MODEL_PACKAGE_NAME package they are implementing.
      */
-    public static final List<ImplementationInfo> DEFAULT_IMPLEMENTATIONS;
+	@SuppressWarnings("rawtypes")
+	public static final List<ImplementationInfo> DEFAULT_IMPLEMENTATIONS;
     /**
      * List of interfaces from the MODEL_PACKAGE_NAME package that are known to
      * not have any default implementation and therefore are excluded
@@ -117,7 +121,8 @@ public class ReflectionHelper {
     /**
      * List of enums from the MODEL_PACKAGE_NAME package.
      */
-    public static final List<Class<Enum>> ENUMS;
+	@SuppressWarnings("rawtypes")
+	public static final List<Class<Enum>> ENUMS;
 
     public static class ImplementationInfo<T> {
 
@@ -179,7 +184,8 @@ public class ReflectionHelper {
      * @return the default implementation type for given interfaceType or null
      * if the class is no aas interface or does not have default implementation
      */
-    public static <T> Class<? extends T> getDefaultImplementation(Class<T> interfaceType) {
+	@SuppressWarnings("unchecked")
+	public static <T> Class<? extends T> getDefaultImplementation(Class<T> interfaceType) {
         if (isDefaultImplementation(interfaceType)) {
             return interfaceType;
         }
@@ -300,7 +306,7 @@ public class ReflectionHelper {
         XML_MIXINS = scanMixins(modelScan, XML_MIXINS_PACKAGE_NAME);
         DEFAULT_IMPLEMENTATIONS = scanDefaultImplementations(modelScan);
         INTERFACES = scanAasInterfaces();
-        ENUMS = modelScan.getAllEnums().loadClasses(Enum.class);
+		ENUMS = modelScan.getAllEnums().loadClasses(Enum.class);
         INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION = getInterfacesWithoutDefaultImplementation(modelScan);
     }
 
@@ -323,12 +329,13 @@ public class ReflectionHelper {
         return result;
     }
 
-    private static List<ImplementationInfo> scanDefaultImplementations(ScanResult modelScan) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private static List<ImplementationInfo> scanDefaultImplementations(ScanResult modelScan) {
         ScanResult defaulImplementationScan = new ClassGraph()
                 .enableClassInfo()
                 .acceptPackagesNonRecursive(DEFAULT_IMPLEMENTATION_PACKAGE_NAME)
                 .scan();
-        List<ImplementationInfo> defaultImplementations = new ArrayList<>();
+		List<ImplementationInfo> defaultImplementations = new ArrayList<>();
         defaulImplementationScan.getAllClasses()
                 .filter(x -> x.getSimpleName().startsWith(DEFAULT_IMPLEMENTATION_PREFIX))
                 .loadClasses()
@@ -340,7 +347,7 @@ public class ReflectionHelper {
                         logger.warn("could not find interface realized by default implementation class '{}'", x.getSimpleName());
                     } else {
                         Class<?> implementedClass = interfaceClassInfos.get(0).loadClass();
-                        defaultImplementations.add(new ImplementationInfo(implementedClass, x));
+						defaultImplementations.add(new ImplementationInfo(implementedClass, x));
                         logger.debug("using default implementation class '{}' for interface '{}'",
                                 x.getSimpleName(),
                                 interfaceClassInfos.get(0).getName());
@@ -350,7 +357,8 @@ public class ReflectionHelper {
         return defaultImplementations;
     }
 
-    private static Set<Class> scanAasInterfaces() {
+	@SuppressWarnings("rawtypes")
+	private static Set<Class> scanAasInterfaces() {
         return DEFAULT_IMPLEMENTATIONS.stream().map(x -> x.interfaceType).collect(Collectors.toSet());
     }
 
@@ -420,7 +428,7 @@ public class ReflectionHelper {
             Field field = fields[i];
             field.setAccessible(true);
             try {
-                if (field.getType().isAssignableFrom(List.class) && field.get(element)!=null && ((List) field.get(element)).isEmpty()) {
+                if (field.getType().isAssignableFrom(List.class) && field.get(element)!=null && ((List<?>) field.get(element)).isEmpty()) {
                     field.set(element, null);
                 }
             } catch (IllegalAccessException e) {

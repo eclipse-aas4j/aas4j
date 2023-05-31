@@ -32,6 +32,7 @@ import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
 import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
