@@ -70,7 +70,7 @@
         <jaxb-rich-contract.version>2.1.0</jaxb-rich-contract.version>
         <jena.version>4.1.0</jena.version>
         <jsonassert.version>1.5.1</jsonassert.version>
-        <json-schema-validator.version>1.0.56</json-schema-validator.version>
+        <json-schema-validator.version>1.0.83</json-schema-validator.version>
         <junit.version>4.13.2</junit.version>
         <junit-params.version>1.1.1</junit-params.version>
         <moxy.version>2.7.8</moxy.version>
