@@ -53,7 +53,7 @@
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
         <plugin.jar.version>3.3.0</plugin.jar.version>
         <plugin.javadoc.version>3.5.0</plugin.javadoc.version>
-        <plugin.projectinfo.version>3.4.3</plugin.projectinfo.version>
+        <plugin.projectinfo.version>3.4.4</plugin.projectinfo.version>
         <plugin.source.version>3.3.0</plugin.source.version>
         <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
 
