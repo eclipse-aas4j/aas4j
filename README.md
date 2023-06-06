@@ -64,6 +64,15 @@ and OPC UA for which however no longer up-to-date specifications exist. Implemen
 
 Additionally, the sources that are used for generating the static documentation using [DocFX](https://dotnet.github.io/docfx/) in the `gh-pages` branch are located in the `docs` folder.
 
+## Support
+
+Current status of the project is *incubating*. 
+
+If you find any issue, please, file it at https://github.com/eclipse-aas4j/aas4j/issues. **Note** that some issues might affect the AAS specifications that are not addressed here but at the corrsponding workstreams (AAS in Details) for the Industrial Digital Twin Association (IDTA).
+
+You can contact us via our mailing list (aas4j-dev@eclipse.org).
+
+Feel free also to (subscribe to our mailing list)[https://accounts.eclipse.org/mailing-list/aas4j-dev]
 
 
 # How to Contribute
