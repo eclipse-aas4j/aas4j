@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -34,37 +35,37 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
      *
-     * @return Returns the List of LangStringTextTypes for the property value.
+     * @return Returns the List of LangStringTextTypes for the property values.
      */
     @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/value")
-    List<LangStringTextType> getValue();
+    List<LangStringTextType> getValues();
 
     /**
      * The value of the property instance.
      *
      * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
      *
-     * @param value desired value for the property value.
+     * @param values desired value for the property values.
      */
-    void setValue(List<LangStringTextType> value);
+    void setValues(List<LangStringTextType> values);
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID
+     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
      *
-     * @return Returns the Reference for the property valueID.
+     * @return Returns the Reference for the property valueId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID")
-    Reference getValueID();
+    @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId")
+    Reference getValueId();
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID
+     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
      *
-     * @param valueID desired value for the property valueID.
+     * @param valueId desired value for the property valueId.
      */
-    void setValueID(Reference valueID);
+    void setValueId(Reference valueId);
 
 }

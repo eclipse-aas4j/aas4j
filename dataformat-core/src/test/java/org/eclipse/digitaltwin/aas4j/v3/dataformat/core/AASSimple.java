@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +21,7 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
@@ -43,7 +44,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTyp
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 import org.junit.Assert;
@@ -144,11 +145,11 @@ public class AASSimple {
                 .id(AAS_IDENTIFIER)
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetID(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
-                        .specificAssetIds(new DefaultSpecificAssetID.Builder()
+                        .globalAssetId(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
+                        .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                 .name(EQUIPMENT_ID)
                                 .value(_538FD1B3_F99F_4A52_9C75_72E9FA921270)
-                                .externalSubjectID(new DefaultReference.Builder()
+                                .externalSubjectId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_ERP_012)
@@ -156,10 +157,10 @@ public class AASSimple {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .build())
-                        .specificAssetIds(new DefaultSpecificAssetID.Builder()
+                        .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                 .name(DEVICE_ID)
                                 .value(QJ_YG_PGGJWKI_HK4_RR_QI_YS_LG)
-                                .externalSubjectID(new DefaultReference.Builder()
+                                .externalSubjectId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1)
@@ -200,7 +201,7 @@ public class AASSimple {
 
     public static Submodel createSubmodelTechnicalData() {
         return new DefaultSubmodel.Builder()
-                .semanticID(new DefaultReference.Builder()
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID)
@@ -210,7 +211,7 @@ public class AASSimple {
                 .idShort(SUBMODEL_TECHNICAL_DATA_ID_SHORT)
                 .id(SUBMODEL_TECHNICAL_DATA_ID)
                 .submodelElements(new DefaultProperty.Builder()
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID_PROPERTY)
@@ -220,7 +221,7 @@ public class AASSimple {
                         .idShort(SUBMODEL_TECHNICAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_TECHNICAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_TECHNICAL_DATA_PROPERTY_VALUE)
-                        .valueType(DataTypeDefXSD.INTEGER)
+                        .valueType(DataTypeDefXsd.INTEGER)
                         .build())
                 .build();
     }
@@ -231,7 +232,7 @@ public class AASSimple {
                 .idShort(SUBMODEL_OPERATIONAL_DATA_ID_SHORT)
                 .id(SUBMODEL_OPERATIONAL_DATA_ID)
                 .submodelElements(new DefaultProperty.Builder()
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_OPERATIONAL_DATA_SEMANTIC_ID_PROPERTY)
@@ -241,7 +242,7 @@ public class AASSimple {
                         .idShort(SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY)
                         .value(SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE)
-                        .valueType(DataTypeDefXSD.INTEGER)
+                        .valueType(DataTypeDefXsd.INTEGER)
                         .build())
                 .build();
     }
@@ -252,7 +253,7 @@ public class AASSimple {
                 .idShort(SUBMODEL_DOCUMENTATION_ID_SHORT)
                 .id(SUBMODEL_DOCUMENTATION_ID)
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_SEMANTIC_ID)
@@ -261,7 +262,7 @@ public class AASSimple {
                                 .build())
                         .idShort(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_ID_SHORT)
                         .value(new DefaultProperty.Builder()
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID)
@@ -270,10 +271,10 @@ public class AASSimple {
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT)
                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_VALUE)
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultFile.Builder()
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID)
@@ -364,7 +365,7 @@ public class AASSimple {
                                         .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(MAX_DREHZAHL).language("de").build())
                                         .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(MAX_ROTATIONSPEED).language("en").build())
                                         .unit(_1_MIN)
-                                        .unitID(new DefaultReference.Builder()
+                                        .unitId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value(_0173_1_05_AAA650_002)
@@ -401,7 +402,7 @@ public class AASSimple {
                                                 .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
                                                 .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(ACTUAL_ROTATION_SPEED).language("EN").build())
                                                 .unit(_1_MIN)
-                                                .unitID(new DefaultReference.Builder()
+                                                .unitId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value(_0173_1_05_AAA650_002)

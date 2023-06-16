@@ -1,5 +1,6 @@
 /*
  * Copyright 2022 jab.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 
 public class Examples {
 
@@ -50,11 +51,11 @@ public class Examples {
                     .id("https://example.org/AssetAdministrationShell")
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.INSTANCE)
-                            .globalAssetID("https://example.org/Asset")
-                            .specificAssetIds(new DefaultSpecificAssetID.Builder()
+                            .globalAssetId("https://example.org/Asset")
+                            .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                     .name("ExampleAssetId")
                                     .value("ExampleValue")
-                                    .externalSubjectID(new DefaultReference.Builder()
+                                    .externalSubjectId(new DefaultReference.Builder()
                                             .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                             .keys(new DefaultKey.Builder()
                                                     .type(KeyTypes.GLOBAL_REFERENCE)

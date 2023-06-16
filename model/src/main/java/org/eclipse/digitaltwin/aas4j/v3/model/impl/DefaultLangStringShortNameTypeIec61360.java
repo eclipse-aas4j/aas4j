@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -14,11 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
 
 import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 
 
 /**
@@ -28,7 +29,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
  * String with length 18 maximum and minimum 1 characters and with language tags
  */
 
-@IRI("aas:LangStringShortNameTypeIEC61360")
+@IRI("aas:LangStringShortNameTypeIec61360")
 public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNameTypeIec61360 {
 
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
@@ -37,9 +38,7 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
     protected String text;
 
-    public DefaultLangStringShortNameTypeIec61360() {
-
-    }
+    public DefaultLangStringShortNameTypeIec61360() {}
 
     @Override
     public int hashCode() {
@@ -80,6 +79,14 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultLangStringShortNameTypeIec61360 ("
+                + ")"
+
+        );
     }
 
     /**

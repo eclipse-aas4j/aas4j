@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -26,8 +27,8 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = AdministrativeInformation.class),
     @KnownSubtypes.Type(value = AssetAdministrationShell.class),
-    @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = ConceptDescription.class),
+    @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface HasDataSpecification {

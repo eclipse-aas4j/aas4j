@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -25,13 +26,13 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for creator
+     * This function allows setting a value for version
      * 
-     * @param creator desired value to be set
-     * @return Builder object with new value for creator
+     * @param version desired value to be set
+     * @return Builder object with new value for version
      */
-    public B creator(Reference creator) {
-        getBuildingInstance().setCreator(creator);
+    public B version(String version) {
+        getBuildingInstance().setVersion(version);
         return getSelf();
     }
 
@@ -47,24 +48,24 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
     }
 
     /**
-     * This function allows setting a value for templateID
+     * This function allows setting a value for creator
      * 
-     * @param templateID desired value to be set
-     * @return Builder object with new value for templateID
+     * @param creator desired value to be set
+     * @return Builder object with new value for creator
      */
-    public B templateID(String templateID) {
-        getBuildingInstance().setTemplateID(templateID);
+    public B creator(Reference creator) {
+        getBuildingInstance().setCreator(creator);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for version
+     * This function allows setting a value for templateId
      * 
-     * @param version desired value to be set
-     * @return Builder object with new value for version
+     * @param templateId desired value to be set
+     * @return Builder object with new value for templateId
      */
-    public B version(String version) {
-        getBuildingInstance().setVersion(version);
+    public B templateId(String templateId) {
+        getBuildingInstance().setTemplateId(templateId);
         return getSelf();
     }
 

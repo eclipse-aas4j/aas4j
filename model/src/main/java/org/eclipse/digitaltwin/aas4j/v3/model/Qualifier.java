@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -68,6 +69,25 @@ public interface Qualifier extends HasSemantics {
     void setType(String type);
 
     /**
+     * Data type of the qualifier value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
+     *
+     * @return Returns the DataTypeDefXsd for the property valueType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
+    DataTypeDefXsd getValueType();
+
+    /**
+     * Data type of the qualifier value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
+     *
+     * @param valueType desired value for the property valueType.
+     */
+    void setValueType(DataTypeDefXsd valueType);
+
+    /**
      * The qualifier value is the value of the qualifier.
      *
      * More information under https://admin-shell.io/aas/3/0/Qualifier/value
@@ -89,39 +109,20 @@ public interface Qualifier extends HasSemantics {
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueID
+     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueId
      *
-     * @return Returns the Reference for the property valueID.
+     * @return Returns the Reference for the property valueId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueID")
-    Reference getValueID();
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueId")
+    Reference getValueId();
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueID
+     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueId
      *
-     * @param valueID desired value for the property valueID.
+     * @param valueId desired value for the property valueId.
      */
-    void setValueID(Reference valueID);
-
-    /**
-     * Data type of the qualifier value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
-     *
-     * @return Returns the DataTypeDefXSD for the property valueType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
-    DataTypeDefXSD getValueType();
-
-    /**
-     * Data type of the qualifier value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
-     *
-     * @param valueType desired value for the property valueType.
-     */
-    void setValueType(DataTypeDefXSD valueType);
+    void setValueId(Reference valueId);
 
 }

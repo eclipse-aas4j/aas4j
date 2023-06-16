@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -36,9 +37,7 @@ public class DefaultLangStringNameType implements LangStringNameType {
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
     protected String text;
 
-    public DefaultLangStringNameType() {
-
-    }
+    public DefaultLangStringNameType() {}
 
     @Override
     public int hashCode() {
@@ -79,6 +78,14 @@ public class DefaultLangStringNameType implements LangStringNameType {
     @Override
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultLangStringNameType ("
+                + ")"
+
+        );
     }
 
     /**

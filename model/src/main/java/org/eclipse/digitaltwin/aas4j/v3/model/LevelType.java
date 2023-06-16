@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -28,25 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLevelType;
     @KnownSubtypes.Type(value = DefaultLevelType.class)
 })
 public interface LevelType {
-
-    /**
-     * Maximum of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/LevelType/max
-     *
-     * @return Returns the boolean for the property max.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/LevelType/max")
-    boolean getMax();
-
-    /**
-     * Maximum of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/LevelType/max
-     *
-     * @param max desired value for the property max.
-     */
-    void setMax(boolean max);
 
     /**
      * Minimum of the value
@@ -104,5 +86,24 @@ public interface LevelType {
      * @param typ desired value for the property typ.
      */
     void setTyp(boolean typ);
+
+    /**
+     * Maximum of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/LevelType/max
+     *
+     * @return Returns the boolean for the property max.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/LevelType/max")
+    boolean getMax();
+
+    /**
+     * Maximum of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/LevelType/max
+     *
+     * @param max desired value for the property max.
+     */
+    void setMax(boolean max);
 
 }

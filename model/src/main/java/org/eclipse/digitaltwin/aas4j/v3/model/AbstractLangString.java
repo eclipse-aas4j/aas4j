@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -24,9 +25,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
  * Strings with language tags
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = LangStringDefinitionTypeIec61360.class),
     @KnownSubtypes.Type(value = LangStringPreferredNameTypeIec61360.class),
     @KnownSubtypes.Type(value = LangStringShortNameTypeIec61360.class),
+    @KnownSubtypes.Type(value = LangStringDefinitionTypeIec61360.class),
     @KnownSubtypes.Type(value = LangStringNameType.class),
     @KnownSubtypes.Type(value = LangStringTextType.class)
 })

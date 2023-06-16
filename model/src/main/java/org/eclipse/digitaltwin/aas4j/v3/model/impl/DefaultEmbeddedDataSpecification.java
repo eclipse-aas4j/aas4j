@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -39,9 +40,7 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
     protected DataSpecificationContent dataSpecificationContent;
 
-    public DefaultEmbeddedDataSpecification() {
-
-    }
+    public DefaultEmbeddedDataSpecification() {}
 
     @Override
     public int hashCode() {
@@ -82,6 +81,14 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     @Override
     public void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
         this.dataSpecificationContent = dataSpecificationContent;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultEmbeddedDataSpecification (" + "dataSpecification=%s,"
+                + "dataSpecificationContent=%s,"
+                + ")",
+            this.dataSpecification, this.dataSpecificationContent);
     }
 
     /**

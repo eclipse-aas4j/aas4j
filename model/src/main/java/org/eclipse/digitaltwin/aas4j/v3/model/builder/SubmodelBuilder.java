@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -66,6 +67,50 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
     }
 
     /**
+     * This function allows setting a value for kind
+     * 
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
+     */
+    public B kind(ModellingKind kind) {
+        getBuildingInstance().setKind(kind);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for semanticId
+     * 
+     * @param semanticId desired value to be set
+     * @return Builder object with new value for semanticId
+     */
+    public B semanticId(Reference semanticId) {
+        getBuildingInstance().setSemanticId(semanticId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be set
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be added
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
+        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for administration
      * 
      * @param administration desired value to be set
@@ -99,50 +144,6 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
     }
 
     /**
-     * This function allows setting a value for description
-     * 
-     * @param description desired value to be set
-     * @return Builder object with new value for description
-     */
-    public B description(List<LangStringTextType> description) {
-        getBuildingInstance().setDescription(description);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List description
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for description
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescription().add(description);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for displayName
-     * 
-     * @param displayName desired value to be set
-     * @return Builder object with new value for displayName
-     */
-    public B displayName(List<LangStringNameType> displayName) {
-        getBuildingInstance().setDisplayName(displayName);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List displayName
-     * 
-     * @param displayName desired value to be added
-     * @return Builder object with new value for displayName
-     */
-    public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().getDisplayName().add(displayName);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for idShort
      * 
      * @param idShort desired value to be set
@@ -150,6 +151,50 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
      */
     public B idShort(String idShort) {
         getBuildingInstance().setIdShort(idShort);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for displayNames
+     * 
+     * @param displayNames desired value to be set
+     * @return Builder object with new value for displayNames
+     */
+    public B displayNames(List<LangStringNameType> displayNames) {
+        getBuildingInstance().setDisplayNames(displayNames);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List displayNames
+     * 
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayNames
+     */
+    public B displayName(LangStringNameType displayName) {
+        getBuildingInstance().getDisplayNames().add(displayName);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for descriptions
+     * 
+     * @param descriptions desired value to be set
+     * @return Builder object with new value for descriptions
+     */
+    public B descriptions(List<LangStringTextType> descriptions) {
+        getBuildingInstance().setDescriptions(descriptions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List descriptions
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for descriptions
+     */
+    public B description(LangStringTextType description) {
+        getBuildingInstance().getDescriptions().add(description);
         return getSelf();
     }
 
@@ -172,50 +217,6 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for semanticID
-     * 
-     * @param semanticID desired value to be set
-     * @return Builder object with new value for semanticID
-     */
-    public B semanticID(Reference semanticID) {
-        getBuildingInstance().setSemanticID(semanticID);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be set
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be added
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
-        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModellingKind kind) {
-        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 

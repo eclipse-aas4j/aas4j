@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +72,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (conceptDescription == null) {
             return;
         }
-        conceptDescription.getIsCaseOf().forEach(x -> visit(x));
+        conceptDescription.getIsCaseOfs().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(conceptDescription);
     }
 
@@ -98,7 +99,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticID());
+        visit(hasSemantics.getSemanticId());
         hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
@@ -113,11 +114,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetID specificAssetId) {
+    public default void visit(SpecificAssetId specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectID());
+        visit(specificAssetId.getExternalSubjectId());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -126,8 +127,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (multiLanguageProperty == null) {
             return;
         }
-        multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueID());
+        multiLanguageProperty.getValues().forEach(x -> visit(x));
+        visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -145,7 +146,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueID());
+        visit(property.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -163,7 +164,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueID());
+        visit(qualifier.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 
@@ -172,8 +173,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescription().forEach(x -> visit(x));
-        referable.getDisplayName().forEach(x -> visit(x));
+        referable.getDescriptions().forEach(x -> visit(x));
+        referable.getDisplayNames().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 
@@ -252,7 +253,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (extension == null) {
             return;
         }
-        extension.getRefersTo().forEach(x -> visit(x));
+        extension.getRefersTos().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(extension);
     }
 
@@ -281,7 +282,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (submodelElementCollection == null) {
             return;
         }
-        submodelElementCollection.getValue().forEach(x -> visit(x));
+        submodelElementCollection.getValues().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(submodelElementCollection);
     }
 

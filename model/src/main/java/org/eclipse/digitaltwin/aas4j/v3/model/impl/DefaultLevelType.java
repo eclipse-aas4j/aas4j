@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -43,16 +44,14 @@ public class DefaultLevelType implements LevelType {
     @IRI("https://admin-shell.io/aas/3/0/LevelType/typ")
     protected boolean typ;
 
-    public DefaultLevelType() {
-
-    }
+    public DefaultLevelType() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.max,
-            this.min,
+        return Objects.hash(this.min,
             this.nom,
-            this.typ);
+            this.typ,
+            this.max);
     }
 
     @Override
@@ -65,21 +64,11 @@ public class DefaultLevelType implements LevelType {
             return false;
         } else {
             DefaultLevelType other = (DefaultLevelType) obj;
-            return Objects.equals(this.max, other.max) &&
-                Objects.equals(this.min, other.min) &&
+            return Objects.equals(this.min, other.min) &&
                 Objects.equals(this.nom, other.nom) &&
-                Objects.equals(this.typ, other.typ);
+                Objects.equals(this.typ, other.typ) &&
+                Objects.equals(this.max, other.max);
         }
-    }
-
-    @Override
-    public boolean getMax() {
-        return max;
-    }
-
-    @Override
-    public void setMax(boolean max) {
-        this.max = max;
     }
 
     @Override
@@ -110,6 +99,26 @@ public class DefaultLevelType implements LevelType {
     @Override
     public void setTyp(boolean typ) {
         this.typ = typ;
+    }
+
+    @Override
+    public boolean getMax() {
+        return max;
+    }
+
+    @Override
+    public void setMax(boolean max) {
+        this.max = max;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultLevelType (" + "min=%s,"
+                + "nom=%s,"
+                + "typ=%s,"
+                + "max=%s,"
+                + ")",
+            this.min, this.nom, this.typ, this.max);
     }
 
     /**

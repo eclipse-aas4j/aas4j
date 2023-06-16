@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +21,8 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.AASSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
@@ -48,14 +49,14 @@ public interface SubmodelElementListMixin {
     public void setSemanticIdListElement(Reference semanticIdListElement);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typeValueListElement")
-	public AASSubmodelElements getTypeValueListElement();
+	public AasSubmodelElements getTypeValueListElement();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typeValueListElement")
-	public void setTypeValueListElement(AASSubmodelElements typeValueListElement);
+	public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueTypeListElement")
-	public DataTypeDefXSD getValueTypeListElement();
+	public DataTypeDefXsd getValueTypeListElement();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueTypeListElement")
-	public void setValueTypeListElement(DataTypeDefXSD valueTypeListElement);
+	public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 }

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +36,7 @@ public class CustomProperty implements Property {
 
 	protected Reference valueId;
 
-	protected DataTypeDefXSD valueType;
+	protected DataTypeDefXsd valueType;
 
 	protected List<Qualifier> qualifiers;
 
@@ -82,12 +83,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public DataTypeDefXSD getValueType() {
+	final public DataTypeDefXsd getValueType() {
 		return this.valueType;
 	}
 
 	@Override
-	final public void setValueType(DataTypeDefXSD dataType) {
+	final public void setValueType(DataTypeDefXsd dataType) {
 		this.valueType = dataType;
 	}
 
@@ -102,12 +103,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getValueID() {
+	final public Reference getValueId() {
 		return valueId;
 	}
 
 	@Override
-	final public void setValueID(Reference valueId) {
+	final public void setValueId(Reference valueId) {
 		this.valueId = valueId;
 	}
 
@@ -122,22 +123,22 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangStringTextType> getDescription() {
+	final public List<LangStringTextType> getDescriptions() {
 		return description;
 	}
 
 	@Override
-	final public void setDescription(List<LangStringTextType> description) {
+	final public void setDescriptions(List<LangStringTextType> description) {
 		this.description = description;
 	}
 
 	@Override
-	final public List<LangStringNameType> getDisplayName() {
+	final public List<LangStringNameType> getDisplayNames() {
 		return displayName;
 	}
 
 	@Override
-	final public void setDisplayName(List<LangStringNameType> displayName) {
+	final public void setDisplayNames(List<LangStringNameType> displayName) {
 		this.displayName = displayName;
 	}
 
@@ -172,12 +173,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getSemanticID() {
+	final public Reference getSemanticId() {
 		return semanticId;
 	}
 
 	@Override
-	final public void setSemanticID(Reference semanticId) {
+	final public void setSemanticId(Reference semanticId) {
 		this.semanticId = semanticId;
 	}
 

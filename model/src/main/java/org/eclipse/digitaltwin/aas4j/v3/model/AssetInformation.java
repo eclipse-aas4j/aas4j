@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -50,8 +51,48 @@ public interface AssetInformation {
     void setAssetKind(AssetKind assetKind);
 
     /**
+     * Global identifier of the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId
+     *
+     * @return Returns the String for the property globalAssetId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId")
+    String getGlobalAssetId();
+
+    /**
+     * Global identifier of the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId
+     *
+     * @param globalAssetId desired value for the property globalAssetId.
+     */
+    void setGlobalAssetId(String globalAssetId);
+
+    /**
+     * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
+     * number etc.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
+     *
+     * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
+    List<SpecificAssetId> getSpecificAssetIds();
+
+    /**
+     * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
+     * number etc.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
+     *
+     * @param specificAssetIds desired value for the property specificAssetIds.
+     */
+    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
+
+    /**
      * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
-     * under consideration as identified by 'globalAssetID'.
+     * under consideration as identified by 'globalAssetId'.
      *
      * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
      *
@@ -62,7 +103,7 @@ public interface AssetInformation {
 
     /**
      * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
-     * under consideration as identified by 'globalAssetID'.
+     * under consideration as identified by 'globalAssetId'.
      *
      * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
      *
@@ -88,45 +129,5 @@ public interface AssetInformation {
      * @param defaultThumbnail desired value for the property defaultThumbnail.
      */
     void setDefaultThumbnail(Resource defaultThumbnail);
-
-    /**
-     * Global identifier of the asset the AAS is representing.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID
-     *
-     * @return Returns the String for the property globalAssetID.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID")
-    String getGlobalAssetID();
-
-    /**
-     * Global identifier of the asset the AAS is representing.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetID
-     *
-     * @param globalAssetID desired value for the property globalAssetID.
-     */
-    void setGlobalAssetID(String globalAssetID);
-
-    /**
-     * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
-     * number etc.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
-     *
-     * @return Returns the List of SpecificAssetIDs for the property specificAssetIds.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
-    List<SpecificAssetID> getSpecificAssetIds();
-
-    /**
-     * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
-     * number etc.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
-     *
-     * @param specificAssetIds desired value for the property specificAssetIds.
-     */
-    void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds);
 
 }
