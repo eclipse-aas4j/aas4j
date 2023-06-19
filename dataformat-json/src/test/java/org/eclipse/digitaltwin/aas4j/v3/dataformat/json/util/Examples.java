@@ -22,6 +22,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -34,9 +35,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
 
 public class Examples {
 
-	public static final ExampleData<Environment> EXAMPLE_FULL = ExampleData.of(AASFull.createEnvironment(), "Example-Full.json");
+    public static final ExampleData<Environment> EXAMPLE_FULL = ExampleData.of(AASFull.createEnvironment(), "Example-Full.json");
 
-	public static final ExampleData<Environment> EXAMPLE_SIMPLE = ExampleData.of(AASSimple.createEnvironment(), "Example-Simple.json");
+    public static final ExampleData<Environment> EXAMPLE_SIMPLE = ExampleData.of(AASSimple.createEnvironment(), "Example-Simple.json");
 
     public static final ExampleData<Environment> ENVIRONMENT_EMPTY = ExampleData.of(new DefaultEnvironment.Builder().build(), "Environment-Empty.json");
 
@@ -70,8 +71,30 @@ public class Examples {
                     .build(),
             "AssetAdministrationShell-WithAssetInformation.json");
 
-	public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL = ExampleData.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0), "AssetAdministrationShell.json");
-    
+    public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS = ExampleData.of(
+            new DefaultAssetAdministrationShell.Builder()
+                    .id("https://example.org/AssetAdministrationShell")
+                    .extensions(new DefaultExtension.Builder()
+                            .name("CustomId")
+                            .valueType(DataTypeDefXSD.STRING)
+                            .value("lore_ipsum_you_know...")
+                            .semanticID(new DefaultReference.Builder()
+                                    .type(ReferenceTypes.MODEL_REFERENCE)
+                                    .keys(new DefaultKey.Builder()
+                                            .type(KeyTypes.CONCEPT_DESCRIPTION)
+                                            .value("my_custom_id")
+                                            .build())
+                                    .build())
+                            .build())
+                    .assetInformation(new DefaultAssetInformation.Builder()
+                            .assetKind(AssetKind.INSTANCE)
+                            .globalAssetID("https://acplt.org/Test_Asset")
+                            .build())
+                    .build(),
+            "AssetAdministrationShell-WithExtensions.json");
+
+    public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL = ExampleData.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0), "AssetAdministrationShell.json");
+
     public static final ExampleData<ConceptDescription> CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT = ExampleData.of(
             new DefaultConceptDescription.Builder()
                     .id("https://example.org/ConceptDescription")
@@ -83,28 +106,28 @@ public class Examples {
                                             .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02")
                                             .build())
                                     .build())
-//                            .dataSpecificationContent(new DefaultDataSpecificationPhysicalUnit.Builder()
-//                                    .conversionFactor("1.0")
-//                                    .eceCode("ece-code")
-//                                    .eceName("ece-name")
-//                                    .definition(new DefaultLangString.Builder()
-//                                            .language("en")
-//                                            .text("definition-en")
-//                                            .build())
-//                                    .definition(new DefaultLangString.Builder()
-//                                            .language("de")
-//                                            .text("definition-de")
-//                                            .build())
-//                                    .nistName("nist-name")
-//                                    .dinNotation("din-notation")
-//                                    .siName("si-name")
-//                                    .registrationAuthorityId("registration-authority-id")
-//                                    .siNotation("si-notation")
-//                                    .sourceOfDefinition("source-of-definition")
-//                                    .supplier("supplier")
-//                                    .unitName("unit-name")
-//                                    .unitSymbol("unit-symbol")
-//                                    .build())
+                            //                            .dataSpecificationContent(new DefaultDataSpecificationPhysicalUnit.Builder()
+                            //                                    .conversionFactor("1.0")
+                            //                                    .eceCode("ece-code")
+                            //                                    .eceName("ece-name")
+                            //                                    .definition(new DefaultLangString.Builder()
+                            //                                            .language("en")
+                            //                                            .text("definition-en")
+                            //                                            .build())
+                            //                                    .definition(new DefaultLangString.Builder()
+                            //                                            .language("de")
+                            //                                            .text("definition-de")
+                            //                                            .build())
+                            //                                    .nistName("nist-name")
+                            //                                    .dinNotation("din-notation")
+                            //                                    .siName("si-name")
+                            //                                    .registrationAuthorityId("registration-authority-id")
+                            //                                    .siNotation("si-notation")
+                            //                                    .sourceOfDefinition("source-of-definition")
+                            //                                    .supplier("supplier")
+                            //                                    .unitName("unit-name")
+                            //                                    .unitSymbol("unit-symbol")
+                            //                                    .build())
                             .build())
                     .build(),
             "ConceptDescription-DataSpecificationPhysicalUnit.json");
@@ -113,24 +136,24 @@ public class Examples {
             List.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0),
                     AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(1)),
             "SubmodelElement-List.json");
-    
+
     public static final ExampleData<List<Submodel>> SUBMODEL_LIST_OF = ExampleData.of(
             List.of(AASFull.createEnvironment().getSubmodels().get(0),
                     AASFull.createEnvironment().getSubmodels().get(1)),
             "Submodel-List.json");
 
-	public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0), "Submodel.json");
+    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0), "Submodel.json");
 
-	public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
+    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
 
-	public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(6),
-			"SubmodelElementCollection.json");
+    public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(6),
+            "SubmodelElementCollection.json");
 
     public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST_EMPTY = ExampleData.of(
             new DefaultSubmodelElementList.Builder()
                     .idShort("submodelElementList")
                     .orderRelevant(true)
                     .build(), "SubmodelElementList-Empty.json");
-    
-	public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
+
+    public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
 }

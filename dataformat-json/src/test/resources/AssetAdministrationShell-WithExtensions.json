@@ -1,66 +1,26 @@
 {
-  "embeddedDataSpecifications": null,
-  "extensions": [
-    {
-      "semanticId": {
-        "type": "ModelReference",
-        "keys": [
-          {
-            "type": "ConceptDescription",
-            "value": "my_custom_id"
-          }
-        ],
-        "referredSemanticId": null
-      },
-      "supplementalSemanticIds": null,
-      "name": "CustomId",
-      "valueType": "xs:string",
-      "value": "lore_ipsum_you_know...",
-      "refersTo": null
-    }
-  ],
-  "category": null,
-  "idShort": "ShellWithExtension",
-  "modelType": "AssetAdministrationShell",
-  "administration": {
-    "embeddedDataSpecifications": null,
-    "version": "1",
-    "revision": "1.0",
-    "creator": {
-      "type": "ExternalReference",
-      "keys": [
+    "modelType": "AssetAdministrationShell",
+    "id": "https://example.org/AssetAdministrationShell",
+    "extensions": [
         {
-          "type": "GlobalReference",
-          "value": "https://example.com"
+            "semanticId":
+                    {
+                        "type": "ModelReference",
+                        "keys": [
+                            {
+                                "type": "ConceptDescription",
+                                "value": "my_custom_id"
+                            }
+                        ]
+                    },
+            "name": "CustomId",
+            "valueType": "xs:string",
+            "value": "lore_ipsum_you_know..."
         }
-      ],
-      "referredSemanticId": null
-    },
-    "templateId": null
-  },
-  "id": "https://example.com/ShellWithExtension:1",
-  "derivedFrom": null,
-  "assetInformation": {
-    "assetKind": "Type",
-    "globalAssetId": "https://example.com/ShellWithExtension",
-    "specificAssetIds": null,
-    "assetType": null,
-    "defaultThumbnail": null
-  },
-  "submodels": [
-    {
-      "type": "ModelReference",
-      "keys": [
-        {
-          "type": "AssetAdministrationShell",
-          "value": "https://example.com/ShellWithExtension"
-        },
-        {
-          "type": "Submodel",
-          "value": "https://example.com/Submodel1"
-        }
-      ],
-      "referredSemanticId": null
-    }
-  ]
+    ],
+    "assetInformation":
+            {
+                "assetKind": "Instance",
+                "globalAssetId": "https://acplt.org/Test_Asset"
+            }
 }

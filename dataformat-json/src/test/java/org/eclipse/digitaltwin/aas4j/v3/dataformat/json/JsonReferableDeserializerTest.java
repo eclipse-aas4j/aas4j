@@ -15,6 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.File;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ import org.junit.Test;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.junit.Assert;
 
 public class JsonReferableDeserializerTest {
 
@@ -91,10 +94,17 @@ public class JsonReferableDeserializerTest {
         assertEquals(expected, actual);
     }
 
-	@Test
-	public void testReadEmptyReferableList() throws DeserializationException {
-		List<Referable> emptyList = Collections.emptyList();
-		List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
-		assertEquals(emptyList, deserialized);
-	}
+    @Test
+    public void testReadEmptyReferableList() throws DeserializationException {
+        List<Referable> emptyList = Collections.emptyList();
+        List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
+        assertEquals(emptyList, deserialized);
+    }
+
+    @Test
+    public void testDeserializationOfShellWithExtensions() throws Exception {
+        AssetAdministrationShell expected = Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS.getModel();
+        AssetAdministrationShell actual = new JsonDeserializer().readReferable(Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS.fileContentStream(), AssetAdministrationShell.class);
+        assertEquals(expected, actual);
+    }
 }

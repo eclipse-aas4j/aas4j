@@ -37,8 +37,13 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeWithAssetInformation() throws SerializationException, JSONException, IOException {
+    public void testSerializeAASWithAssetInformation() throws SerializationException, JSONException, IOException {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
+    }
+
+    @Test
+    public void testSerializeAASWithExtensions() throws SerializationException, JSONException, IOException {
+        compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS);
     }
 
     @Test
@@ -87,8 +92,8 @@ public class JsonReferableSerializerTest {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
-	@SuppressWarnings("unchecked")
-	private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
+    @SuppressWarnings("unchecked")
+    private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = null;
         if (Environment.class.isAssignableFrom(exampleData.getModel().getClass())) {
@@ -96,7 +101,7 @@ public class JsonReferableSerializerTest {
         } else if (Referable.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = new JsonSerializer().write((Referable) exampleData.getModel());
         } else if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())
-				&& ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
+                && ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
             actual = new JsonSerializer().write((Collection<Referable>) exampleData.getModel());
         }
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
