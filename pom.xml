@@ -59,7 +59,7 @@
 
         <classgraph.version>4.8.160</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
-        <commons-io.version>2.12.0</commons-io.version>
+        <commons-io.version>2.13.0</commons-io.version>
         <commons-compress.version>1.23.0</commons-compress.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <guava.version>30.1.1-jre</guava.version>
