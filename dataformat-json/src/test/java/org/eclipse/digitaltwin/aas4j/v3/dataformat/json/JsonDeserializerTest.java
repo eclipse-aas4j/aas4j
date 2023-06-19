@@ -30,6 +30,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+
 public class JsonDeserializerTest {
 
     @Test
@@ -65,6 +67,16 @@ public class JsonDeserializerTest {
         environment = deserializer.read(json);
         checkImplementationClasses(environment, CustomSubmodel2.class, CustomProperty.class);
     }
+
+    @Test
+    public void testDeserializationOfShellWithExtensions() throws Exception {
+        File testJson = new File("src/test/resources/AssetAdministrationShell-WithExtensions.json");
+        Environment deserializedObjects = new JsonDeserializer().read(testJson);
+
+        int size = deserializedObjects.getAssetAdministrationShells().get(0).getExtensions().size();
+        Assert.assertEquals(1, size);
+    }
+
 
     private void checkImplementationClasses(Environment environment,
             Class<? extends Submodel> submodelImpl, Class<? extends Property> propertyImpl) {
