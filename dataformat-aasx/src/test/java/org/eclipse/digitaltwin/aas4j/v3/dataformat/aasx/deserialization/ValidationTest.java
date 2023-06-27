@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,16 +30,17 @@ import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXValidator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.xml.sax.SAXException;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 
 public class ValidationTest {
 
@@ -49,12 +51,12 @@ public class ValidationTest {
     public void validateXmlInsideAasx() throws SerializationException, IOException, InvalidFormatException, DeserializationException, ParserConfigurationException, SAXException {
         List<InMemoryFile> fileList = new ArrayList<>();
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "/aasx/OperatingManual.pdf");
         fileList.add(inMemoryFile);
 
         File file = tempFolder.newFile("output.aasx");
 
-		new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
+        new AASXSerializer().write(AASSimple.ENVIRONMENT, fileList, new FileOutputStream(file));
 
         InputStream in = new FileInputStream(file);
         AASXValidator v = new AASXValidator(in);

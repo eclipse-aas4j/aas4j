@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,19 +31,17 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.apache.poi.openxml4j.opc.RelationshipSource;
 import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 
 /**
  * This class can be used to generate an .aasx file from Metamodel Objects and
@@ -66,15 +62,12 @@ public class AASXSerializer {
 
     private static final String AASSUPPL_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aas-suppl";
 
-    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-
-    private final XmlSerializer xmlSerializer;
+    private Serializer xmlSerializer = new XmlSerializer();
 
     /**
      * Default constructor
      */
     public AASXSerializer() {
-        this.xmlSerializer = new XmlSerializer();
     }
 
     /**
@@ -82,7 +75,7 @@ public class AASXSerializer {
      * 
      * @param xmlSerializer a custom serializer used for serializing the aas environment
      */
-    public AASXSerializer(XmlSerializer xmlSerializer) {
+    public AASXSerializer(Serializer xmlSerializer) {
         this.xmlSerializer = xmlSerializer;
     }
 
@@ -109,7 +102,7 @@ public class AASXSerializer {
         String xml = xmlSerializer.write(environment);
 
         // Save the XML to aasx/xml/content.xml
-        PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
+        PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(Serializer.DEFAULT_CHARSET));
 
         storeFilesInAASX(environment.getSubmodels(), files, rootPackage, xmlPart);
 
@@ -125,11 +118,11 @@ public class AASXSerializer {
      * @param xmlPart the Part the files should be related to
      */
     private void storeFilesInAASX(List<Submodel> submodelList, Collection<InMemoryFile> files, OPCPackage rootPackage,
-                                  PackagePart xmlPart) {
+            PackagePart xmlPart) {
 
         for (Submodel sm : submodelList) {
             for (File file : findFileElements(sm.getSubmodelElements())) {
-                String filePath = AASXUtils.getPathFromURL(file.getValue());
+                String filePath = file.getValue();
                 try {
                     InMemoryFile content = findFileByPath(files, filePath);
                     logger.trace("Writing file '" + filePath + "' to .aasx.");
@@ -203,7 +196,7 @@ public class AASXSerializer {
      * @param content the content to be written to the part
      */
     private void writeDataToPart(PackagePart part, byte[] content) {
-        try (OutputStream ostream = part.getOutputStream()) {
+        try (OutputStream ostream = part.getOutputStream();) {
             ostream.write(content);
             ostream.flush();
         } catch (Exception e) {
@@ -226,7 +219,7 @@ public class AASXSerializer {
                 files.add((File) element);
             } else if (element instanceof SubmodelElementCollection) {
                 // Recursive call to deal with SubmodelElementCollections
-                files.addAll(findFileElements(((SubmodelElementCollection) element).getValues()));
+                files.addAll(findFileElements(((SubmodelElementCollection) element).getValue()));
             }
         }
 
@@ -252,7 +245,7 @@ public class AASXSerializer {
      */
     private InMemoryFile findFileByPath(Collection<InMemoryFile> files, String path) {
         for (InMemoryFile file : files) {
-            if (AASXUtils.getPathFromURL(file.getPath()).equals(path)) {
+            if (preparePath(file.getPath()).equals(path)) {
                 return file;
             }
         }
@@ -260,17 +253,51 @@ public class AASXSerializer {
     }
 
     /**
-     * Removes the serverpart from a path and ensures it starts with "file://"
+     * Removes the serverpart from a path and ensures it starts with a slash
      * 
      * @param path the path to be prepared
      * @return the prepared path
      */
     private String preparePath(String path) {
-        String newPath = AASXUtils.getPathFromURL(path);
-        if (!newPath.startsWith("file://")) {
-            newPath = "file://" + newPath;
+        String newPath = getPathFromURL(path);
+        if (!newPath.startsWith("/")) {
+            newPath = "/" + newPath;
         }
         return newPath;
     }
 
+    /**
+     * Gets the path from a URL e.g "http://localhost:8080/path/to/test.file"
+     * results in "/path/to/test.file"
+     * 
+     * @param url
+     * @return the path from the URL
+     */
+    private String getPathFromURL(String url) {
+        if (url == null) {
+            return null;
+        }
+
+        if (url.contains("://")) {
+
+            // Find the ":" and and remove the "http://" from the url
+            int index = url.indexOf(":") + 3;
+            url = url.substring(index);
+
+            // Find the first "/" from the URL (now without the "http://") and remove
+            // everything before that
+            index = url.indexOf("/");
+            url = url.substring(index);
+
+            // Recursive call to deal with more than one server parts
+            // (e.g. basyx://127.0.0.1:6998//https://localhost/test/)
+            return getPathFromURL(url);
+        } else {
+            // Make sure the path has a / at the start
+            if (!url.startsWith("/")) {
+                url = "/" + url;
+            }
+            return url;
+        }
+    }
 }

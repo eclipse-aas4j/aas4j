@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,20 +48,19 @@ public class AASXDeserializerTest {
 
     @Test
     public void testRoundTrip() throws SerializationException, IOException, InvalidFormatException, DeserializationException, ParserConfigurationException, SAXException {
-
         List<InMemoryFile> fileList = new ArrayList<>();
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "/aasx/OperatingManual.pdf");
         fileList.add(inMemoryFile);
 
         File file = tempFolder.newFile("output.aasx");
 
-        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
+        new AASXSerializer().write(AASSimple.ENVIRONMENT, fileList, new FileOutputStream(file));
 
         InputStream in = new FileInputStream(file);
         AASXDeserializer deserializer = new AASXDeserializer(in);
 
-        assertEquals(AASSimple.createEnvironment(), deserializer.read());
+        assertEquals(AASSimple.ENVIRONMENT, deserializer.read());
         assertEquals(fileList, deserializer.getRelatedFiles());
     }
 }
