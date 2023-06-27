@@ -30,23 +30,30 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.vaadin.external.google</groupId>
-		    <artifactId>android-json</artifactId>
-		    <version>${vaadin.version}</version>
-		</dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+            <version>${vaadin.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-        	<groupId>org.eclipse.digitaltwin.aas4j</groupId>
-        	<artifactId>model</artifactId>
-        	<version>${revision}</version>
+            <groupId>org.eclipse.digitaltwin.aas4j</groupId>
+            <artifactId>model</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.networknt</groupId>
@@ -65,7 +72,7 @@
             <version>${jsonassert.version}</version>
             <scope>test</scope>
         </dependency>
-      	<dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>

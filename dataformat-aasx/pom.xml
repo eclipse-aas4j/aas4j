@@ -13,12 +13,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>${groupId}</groupId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dataformat-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-xml</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>${groupId}</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
             <classifier>tests</classifier>
@@ -34,20 +39,19 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-       <dependency>
-        	<groupId>org.eclipse.digitaltwin.aas4j</groupId>
-        	<artifactId>model</artifactId>
-        	<version>${revision}</version>
+        <dependency>
+            <groupId>org.eclipse.digitaltwin.aas4j</groupId>
+            <artifactId>model</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
-            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>
