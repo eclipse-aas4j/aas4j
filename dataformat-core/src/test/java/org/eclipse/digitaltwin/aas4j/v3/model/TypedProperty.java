@@ -15,6 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+
 public interface TypedProperty extends Property {
     
 }
