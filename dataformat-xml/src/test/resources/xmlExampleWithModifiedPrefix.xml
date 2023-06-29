@@ -1,20 +1,25 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<test:environment xmlns:test="https://admin-shell.io/aas/3/0"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
+<test:environment xmlns:test="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
   <test:assetAdministrationShells>
     <test:assetAdministrationShell>
       <test:idShort>ExampleMotor</test:idShort>
       <test:id>http://customer.com/aas/9175_7013_7091_9168</test:id>
       <test:assetInformation>
         <test:assetKind>Instance</test:assetKind>
-        <test:globalAssetId>http://customer.com/assets/KHBVZJSQKIY</test:globalAssetId>
+        <test:globalAssetId>
+          <test:type>GlobalReference</test:type>
+          <test:keys>
+            <test:key>
+              <test:type>AssetAdministrationShell</test:type>
+              <test:value>http://customer.com/assets/KHBVZJSQKIY</test:value>
+            </test:key>
+          </test:keys>
+        </test:globalAssetId>
         <test:specificAssetIds>
           <test:specificAssetId>
             <test:name>EquipmentID</test:name>
             <test:value>538fd1b3-f99f-4a52-9c75-72e9fa921270</test:value>
             <test:externalSubjectId>
-              <test:type>ExternalReference</test:type>
+              <test:type>GlobalReference</test:type>
               <test:keys>
                 <test:key>
                   <test:type>GlobalReference</test:type>
@@ -27,7 +32,7 @@
             <test:name>DeviceID</test:name>
             <test:value>QjYgPggjwkiHk4RrQiYSLg==</test:value>
             <test:externalSubjectId>
-              <test:type>ExternalReference</test:type>
+              <test:type>GlobalReference</test:type>
               <test:keys>
                 <test:key>
                   <test:type>GlobalReference</test:type>
@@ -44,7 +49,7 @@
       </test:assetInformation>
       <test:submodels>
         <test:reference>
-          <test:type>ExternalReference</test:type>
+          <test:type>GlobalReference</test:type>
           <test:keys>
             <test:key>
               <test:type>Submodel</test:type>
@@ -53,7 +58,7 @@
           </test:keys>
         </test:reference>
         <test:reference>
-          <test:type>ExternalReference</test:type>
+          <test:type>GlobalReference</test:type>
           <test:keys>
             <test:key>
               <test:type>Submodel</test:type>
@@ -62,7 +67,7 @@
           </test:keys>
         </test:reference>
         <test:reference>
-          <test:type>ExternalReference</test:type>
+          <test:type>GlobalReference</test:type>
           <test:keys>
             <test:key>
               <test:type>Submodel</test:type>
@@ -77,8 +82,9 @@
     <test:submodel>
       <test:idShort>TechnicalData</test:idShort>
       <test:id>http://i40.customer.com/type/1/1/7A7104BDAB57E184</test:id>
+      <test:kind>Instance</test:kind>
       <test:semanticId>
-        <test:type>ExternalReference</test:type>
+        <test:type>GlobalReference</test:type>
         <test:keys>
           <test:key>
             <test:type>GlobalReference</test:type>
@@ -88,10 +94,11 @@
       </test:semanticId>
       <test:submodelElements>
         <test:property>
-          <test:category>PARAMETER</test:category>
+          <test:category>Parameter</test:category>
           <test:idShort>MaxRotationSpeed</test:idShort>
+          <test:kind>Instance</test:kind>
           <test:semanticId>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>ConceptDescription</test:type>
@@ -111,8 +118,9 @@
       <test:submodelElements>
         <test:submodelElementCollection>
           <test:idShort>OperatingManual</test:idShort>
+          <test:kind>Instance</test:kind>
           <test:semanticId>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>ConceptDescription</test:type>
@@ -123,8 +131,9 @@
           <test:value>
             <test:property>
               <test:idShort>Title</test:idShort>
+              <test:kind>Instance</test:kind>
               <test:semanticId>
-                <test:type>ExternalReference</test:type>
+                <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
                     <test:type>ConceptDescription</test:type>
@@ -137,8 +146,9 @@
             </test:property>
             <test:file>
               <test:idShort>DigitalFile_PDF</test:idShort>
+              <test:kind>Instance</test:kind>
               <test:semanticId>
-                <test:type>ExternalReference</test:type>
+                <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
                     <test:type>ConceptDescription</test:type>
@@ -159,10 +169,11 @@
       <test:kind>Instance</test:kind>
       <test:submodelElements>
         <test:property>
-          <test:category>VARIABLE</test:category>
+          <test:category>Variable</test:category>
           <test:idShort>RotationSpeed</test:idShort>
+          <test:kind>Instance</test:kind>
           <test:semanticId>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>ConceptDescription</test:type>
@@ -183,44 +194,44 @@
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
           <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
-                <test:langStringPreferredNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Title</test:text>
-                </test:langStringPreferredNameTypeIec61360>
-                <test:langStringPreferredNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>Titel</test:text>
-                </test:langStringPreferredNameTypeIec61360>
+                </test:langString>
               </test:preferredName>
               <test:shortName>
-                <test:langStringShortNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Title</test:text>
-                </test:langStringShortNameTypeIec61360>
-                <test:langStringShortNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>Titel</test:text>
-                </test:langStringShortNameTypeIec61360>
+                </test:langString>
               </test:shortName>
               <test:unit>ExampleString</test:unit>
               <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>STRING_TRANSLATABLE</test:dataType>
               <test:definition>
-                <test:langStringDefinitionTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>SprachabhängigerTiteldesDokuments.</test:text>
-                </test:langStringDefinitionTypeIec61360>
+                </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
@@ -233,44 +244,44 @@
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
           <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
-                <test:langStringPreferredNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>DigitalFile</test:text>
-                </test:langStringPreferredNameTypeIec61360>
-                <test:langStringPreferredNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>DigitalFile</test:text>
-                </test:langStringPreferredNameTypeIec61360>
+                </test:langString>
               </test:preferredName>
               <test:shortName>
-                <test:langStringShortNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>DigitalFile</test:text>
-                </test:langStringShortNameTypeIec61360>
-                <test:langStringShortNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>DigitaleDatei</test:text>
-                </test:langStringShortNameTypeIec61360>
+                </test:langString>
               </test:shortName>
               <test:unit>ExampleString</test:unit>
               <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>STRING</test:dataType>
               <test:definition>
-                <test:langStringDefinitionTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>A file representing the document version. In addition to the mandatory PDF file, other files can be specified.</test:text>
-                </test:langStringDefinitionTypeIec61360>
+                </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
@@ -282,35 +293,35 @@
       <test:idShort>MaxRotationSpeed</test:idShort>
       <test:administration>
         <test:version>2</test:version>
-        <test:revision>1</test:revision>
+        <test:revision>2.1</test:revision>
       </test:administration>
       <test:id>0173-1#02-BAA120#008</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
           <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
-                <test:langStringPreferredNameTypeIec61360>
+                <test:langString>
                   <test:language>de</test:language>
                   <test:text>max.Drehzahl</test:text>
-                </test:langStringPreferredNameTypeIec61360>
-                <test:langStringPreferredNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>en</test:language>
                   <test:text>Max.rotationspeed</test:text>
-                </test:langStringPreferredNameTypeIec61360>
+                </test:langString>
               </test:preferredName>
               <test:unit>1/min</test:unit>
               <test:unitId>
-                <test:type>ExternalReference</test:type>
+                <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
                     <test:type>GlobalReference</test:type>
@@ -321,14 +332,14 @@
               <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>REAL_MEASURE</test:dataType>
               <test:definition>
-                <test:langStringDefinitionTypeIec61360>
+                <test:langString>
                   <test:language>de</test:language>
                   <test:text>HöchstezulässigeDrehzahl,mitwelcherderMotoroderdieSpeiseinheitbetriebenwerdendarf</test:text>
-                </test:langStringDefinitionTypeIec61360>
-                <test:langStringDefinitionTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Greatestpermissiblerotationspeedwithwhichthemotororfeedingunitmaybeoperated</test:text>
-                </test:langStringDefinitionTypeIec61360>
+                </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
@@ -342,39 +353,39 @@
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
           <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
-                <test:langStringPreferredNameTypeIec61360>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>AktuelleDrehzahl</test:text>
-                </test:langStringPreferredNameTypeIec61360>
-                <test:langStringPreferredNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Actualrotationspeed</test:text>
-                </test:langStringPreferredNameTypeIec61360>
+                </test:langString>
               </test:preferredName>
               <test:shortName>
-                <test:langStringShortNameTypeIec61360>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>AktuelleDrehzahl</test:text>
-                </test:langStringShortNameTypeIec61360>
-                <test:langStringShortNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>EN</test:language>
-                  <test:text>ActRotationSpeed</test:text>
-                </test:langStringShortNameTypeIec61360>
+                  <test:text>ActualRotationSpeed</test:text>
+                </test:langString>
               </test:shortName>
               <test:unit>1/min</test:unit>
               <test:unitId>
-                <test:type>ExternalReference</test:type>
+                <test:type>GlobalReference</test:type>
                 <test:keys>
                   <test:key>
                     <test:type>GlobalReference</test:type>
@@ -385,14 +396,14 @@
               <test:sourceOfDefinition>ExampleString</test:sourceOfDefinition>
               <test:dataType>REAL_MEASURE</test:dataType>
               <test:definition>
-                <test:langStringDefinitionTypeIec61360>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird</test:text>
-                </test:langStringDefinitionTypeIec61360>
-                <test:langStringDefinitionTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Actual rotationspeed with which the motor or feedingunit is operated</test:text>
-                </test:langStringDefinitionTypeIec61360>
+                </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
@@ -405,40 +416,40 @@
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
           <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
+            <test:type>GlobalReference</test:type>
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</test:value>
+                <test:value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
-                <test:langStringPreferredNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Document</test:text>
-                </test:langStringPreferredNameTypeIec61360>
+                </test:langString>
               </test:preferredName>
               <test:shortName>
-                <test:langStringShortNameTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Document</test:text>
-                </test:langStringShortNameTypeIec61360>
-                <test:langStringShortNameTypeIec61360>
+                </test:langString>
+                <test:langString>
                   <test:language>DE</test:language>
                   <test:text>Dokument</test:text>
-                </test:langStringShortNameTypeIec61360>
+                </test:langString>
               </test:shortName>
               <test:unit>ExampleString</test:unit>
               <test:sourceOfDefinition>[ISO15519-1:2010]</test:sourceOfDefinition>
               <test:dataType>STRING</test:dataType>
               <test:definition>
-                <test:langStringDefinitionTypeIec61360>
+                <test:langString>
                   <test:language>EN</test:language>
                   <test:text>Feste und geordnete Menge von für die Verwendung durch Personen bestimmte Informationen, die verwaltet und als Einheit zwischen Benutzern und System ausgetauscht werden kann.</test:text>
-                </test:langStringDefinitionTypeIec61360>
+                </test:langString>
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>

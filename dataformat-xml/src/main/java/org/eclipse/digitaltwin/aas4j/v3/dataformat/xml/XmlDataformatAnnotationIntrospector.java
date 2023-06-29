@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import java.util.Collection;
 
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 
 /**
  * This class helps to dynamically decide how to de-/serialize classes and
@@ -45,9 +46,8 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
         myDefaultNamespace = AasXmlNamespaceContext.AAS_URI;
     }
 
-    @Override
     public String findNamespace(MapperConfig<?> config, Annotated ann) {
-        String ns = super.findNamespace(null, ann);
+        String ns = super.findNamespace(config, ann);
         if (ns == null) {
             return myDefaultNamespace;
         } else {
@@ -60,7 +60,7 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
         String[] order = super.findSerializationPropertyOrder(ac);
         if (order == null) {
             order = new String[] {
-                "extensions", "idShort", "displayName", "category", "description", "administration", "identification", "kind", "semanticId",
+                "extensions", "idShort", "displayNames", "category", "descriptions", "administration", "identification", "kind", "semanticId",
                 "qualifiers", "embeddedDataSpecification", "dataSpecifications", "isCaseOf", "security", "derivedFrom", "submodels", "assetInformation", "views", "externalSubjectId", "key", "allowDuplicates", "ordered", "valueId", "value",
                 "max", "min", "type", "valueType", "mimeType", "first", "second", "annotations", "revision", "version", "defaultThumbnail", "globalAssetId", "externalAssetId", "entityType", "statements", "assetKind", "billOfMaterials",
                 "specificAssetIds", "observed", "inoutputVariables", "inputVariables", "outputVariables", "submodelElements", "containedElements"

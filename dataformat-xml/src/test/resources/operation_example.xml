@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0
-                                  AAS.xsd">
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02
+                 AAS.xsd">
     <aas:submodels>
         <aas:submodel>
             <aas:idShort>TestSubmodel</aas:idShort>
             <aas:description>
-                <aas:langStringTextType>
+                <aas:langString>
                     <aas:language>en-us</aas:language>
                     <aas:text>An example submodel for the test application</aas:text>
-                </aas:langStringTextType>
-                <aas:langStringTextType>
+                </aas:langString>
+                <aas:langString>
                     <aas:language>de</aas:language>
                     <aas:text>Ein Beispiel-Teilmodell für eine Test-Anwendung</aas:text>
-                </aas:langStringTextType>
+                </aas:langString>
             </aas:description>
             <aas:administration>
-                <aas:version>0</aas:version>
-                <aas:revision>9</aas:revision>
+                <aas:version>0.9</aas:version>
+                <aas:revision>0</aas:revision>
             </aas:administration>
             <aas:id>https://acplt.org/Test_Submodel</aas:id>
             <aas:kind>Instance</aas:kind>
             <aas:semanticId>
-                <aas:type>ExternalReference</aas:type>
+                <aas:type>GlobalReference</aas:type>
                 <aas:keys>
                     <aas:key>
                         <aas:type>GlobalReference</aas:type>
@@ -35,17 +35,18 @@
                     <aas:category>Parameter</aas:category>
                     <aas:idShort>ExampleOperation</aas:idShort>
                     <aas:description>
-                        <aas:langStringTextType>
+                        <aas:langString>
                             <aas:language>en-us</aas:language>
                             <aas:text>Example Operation object</aas:text>
-                        </aas:langStringTextType>
-                        <aas:langStringTextType>
+                        </aas:langString>
+                        <aas:langString>
                             <aas:language>de</aas:language>
                             <aas:text>Beispiel Operation Element</aas:text>
-                        </aas:langStringTextType>
+                        </aas:langString>
                     </aas:description>
+                    <aas:kind>Template</aas:kind>
                     <aas:semanticId>
-                        <aas:type>ExternalReference</aas:type>
+                        <aas:type>GlobalReference</aas:type>
                         <aas:keys>
                             <aas:key>
                                 <aas:type>GlobalReference</aas:type>
@@ -60,7 +61,7 @@
                                     <aas:category>Constant</aas:category>
                                     <aas:idShort>ExampleProperty1</aas:idShort>
                                     <aas:semanticId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -71,7 +72,7 @@
                                     <aas:valueType>xs:string</aas:valueType>
                                     <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
                                     <aas:valueId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -88,7 +89,7 @@
                                     <aas:category>Variable</aas:category>
                                     <aas:idShort>ExampleProperty2</aas:idShort>
                                     <aas:semanticId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -99,7 +100,7 @@
                                     <aas:valueType>xs:string</aas:valueType>
                                     <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
                                     <aas:valueId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -118,7 +119,7 @@
                                     <aas:category>Constant</aas:category>
                                     <aas:idShort>ExampleProperty2</aas:idShort>
                                     <aas:semanticId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -129,7 +130,7 @@
                                     <aas:valueType>xs:string</aas:valueType>
                                     <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
                                     <aas:valueId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -148,7 +149,7 @@
                                     <aas:category>Constant</aas:category>
                                     <aas:idShort>ExampleProperty3</aas:idShort>
                                     <aas:semanticId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>
@@ -159,7 +160,7 @@
                                     <aas:valueType>xs:string</aas:valueType>
                                     <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
                                     <aas:valueId>
-                                        <aas:type>ExternalReference</aas:type>
+                                        <aas:type>GlobalReference</aas:type>
                                         <aas:keys>
                                             <aas:key>
                                                 <aas:type>GlobalReference</aas:type>

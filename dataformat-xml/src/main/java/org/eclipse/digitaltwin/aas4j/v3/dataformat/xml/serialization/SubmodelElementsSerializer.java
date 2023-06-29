@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +24,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public class SubmodelElementsSerializer extends JsonSerializer<List<SubmodelElement>> {

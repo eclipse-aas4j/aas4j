@@ -14,20 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.util.List;
+import java.io.IOException;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangString;
 
-public interface MultiLanguagePropertyMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-//    @JsonSerialize(using = LangStringsSerializer.class)
-    @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getValue();
+public class LangStringNodeDeserializer implements CustomJsonNodeDeserializer<LangString> {
+    @Override
+    public LangString readValue(JsonNode node, JsonParser parser) throws IOException {
+        String lang = node.get("language").asText();
+        String text = node.get("text").asText();
+        return new DefaultLangString.Builder().text(text).language(lang).build();
+    }
 }

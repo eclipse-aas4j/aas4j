@@ -17,36 +17,32 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import org.eclipse.digitaltwin.aas4j.v3.model.Key;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+public class ReferenceSerializer extends JsonSerializer<Reference> {
+    private NoEntryWrapperListSerializer<Key> keyListSerializer;
 
-public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
-
-    SubmodelElementSerializer ser = new SubmodelElementSerializer();
-
-    public DataElementsSerializer(SubmodelElementSerializer ser) {
-        this.ser = ser;
-    }
-
-    public DataElementsSerializer() {
+    public ReferenceSerializer() {
+//        this.keyListSerializer = new NoEntryWrapperListSerializer<>();
+//        this.keyListSerializer.setOuterWrapper("keys");
     }
 
     @Override
-    public void serialize(List<SubmodelElement> value, JsonGenerator gen, SerializerProvider serializers)
-            throws IOException {
+    public void serialize(Reference reference, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        xgen.writeStartObject();
-        for (SubmodelElement element : value) {
-            xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
-            ser.serialize(element, xgen, serializers);
-        }
-        xgen.writeEndObject();
+//        xgen.setNextIsUnwrapped(true);
+//        xgen.writeObjectFieldStart("type");
+        xgen.writeString(reference.getType().name());
+
+//        List<Key> keys = reference.getKeys();
+//        this.keyListSerializer.serialize(keys, gen, serializers);
     }
+
 }

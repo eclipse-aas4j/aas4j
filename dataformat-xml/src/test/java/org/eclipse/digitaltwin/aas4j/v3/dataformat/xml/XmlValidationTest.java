@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +47,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified.xml", "src/test/resources/test_demo_full_example.xml" })
+    @Parameters({"src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified V2.0.xml"})
     // import from admin-shell.io -> is actually V3
     // -> fix name, as soon as it is fixed externally
     public void validateValidXml(String file) throws IOException {
@@ -56,7 +57,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid.xml" })
+    @Parameters({"src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid_V2.0.xml"})
     public void validateInvalidXml(String file) throws IOException {
         Set<String> errors = validateXmlFile(file);
         logErrors(file, errors);

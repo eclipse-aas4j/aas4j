@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,60 +16,45 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+
 import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDefinitionTypeIec61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsPreferredNameTypeIec61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsShortNameTypeIec61360Deserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsDefinitionTypeIec61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsPreferredNameTypeIec61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringsShortNameTypeIec61360Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
-
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 @JsonPropertyOrder({"preferredName", "shortName", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definition", "valueFormat", "valueList", "value", "valueId", "levelType"})
-public interface DataSpecificationIec61360Mixin {
+//@JacksonXmlRootElement(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationIec61360")
+public interface DataSpecificationIEC61360Mixin {
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
-	@JsonSerialize(using = LangStringsDefinitionTypeIec61360Serializer.class)
-	public List<LangStringDefinitionTypeIec61360> getDefinition();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
+    public List<LangString> getDefinition();
 
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
-	@JsonDeserialize(using = LangStringsDefinitionTypeIec61360Deserializer.class)
-    public void setDefinition(List<LangStringDefinitionTypeIec61360> definition);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
+    public void setDefinition(List<LangString> definition);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
     public LevelType getLevelType();
 
+    // TODO
+//    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "levelType")
+    // public void setLevelTypes(List<LevelType> levelTypes);
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
-	@JsonSerialize(using = LangStringsPreferredNameTypeIec61360Serializer.class)
-	public List<LangStringPreferredNameTypeIec61360> getPreferredName();
+//    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
+    public List<LangString> getPreferredName();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
-	@JsonDeserialize(using = LangStringsPreferredNameTypeIec61360Deserializer.class)
-    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "preferredName")
+    public void setPreferredName(List<LangString> preferredName);
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
-	@JsonSerialize(using = LangStringsShortNameTypeIec61360Serializer.class)
-	public List<LangStringShortNameTypeIec61360> getShortName();
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
+    public List<LangString> getShortName();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
-	@JsonDeserialize(using = LangStringsShortNameTypeIec61360Deserializer.class)
-    public void setShortName(List<LangStringShortNameTypeIec61360> shortName);
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "shortName")
+    public void setShortName(List<LangString> shortName);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "sourceOfDefinition")
     public String getSourceOfDefinition();
@@ -80,7 +66,7 @@ public interface DataSpecificationIec61360Mixin {
     public String getUnit();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "unitId")
-	public Reference getUnitID();
+    public Reference getUnitId();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueFormat")
     public String getValueFormat();
@@ -91,16 +77,11 @@ public interface DataSpecificationIec61360Mixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueList")
     public ValueList getValueList();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueList")
-    public void setValueList(ValueList valueList);
-
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
     public Reference getValueId();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
     @JsonSerialize(using = EnumSerializer.class)
-    public DataTypeIec61360 getDataType();
-
-
+    public DataTypeIEC61360 getDataType();
 
 }

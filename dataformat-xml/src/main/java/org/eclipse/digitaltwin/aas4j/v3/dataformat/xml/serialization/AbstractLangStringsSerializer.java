@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- *
+
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 
 import com.fasterxml.jackson.core.JsonGenerator;

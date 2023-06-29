@@ -16,37 +16,37 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+
 import java.io.IOException;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+public class LangStringsSerializer extends NoEntryWrapperListSerializer<LangString> {
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
-public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
-
-    SubmodelElementSerializer ser = new SubmodelElementSerializer();
-
-    public DataElementsSerializer(SubmodelElementSerializer ser) {
-        this.ser = ser;
-    }
-
-    public DataElementsSerializer() {
-    }
+    private LangStringSerializer ser = new LangStringSerializer();
 
     @Override
-    public void serialize(List<SubmodelElement> value, JsonGenerator gen, SerializerProvider serializers)
-            throws IOException {
+    public void serialize(List<LangString> langStrings, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeStartObject();
-        for (SubmodelElement element : value) {
+        for (LangString element : langStrings) {
+            ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to <statements />, which is not allowed according to the schema
             xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
             ser.serialize(element, xgen, serializers);
         }
         xgen.writeEndObject();
+
     }
+
+    @Override
+    public Class<List<LangString>> handledType() {
+        return (Class<List<LangString>>)(Object)List.class;
+    }
+
 }

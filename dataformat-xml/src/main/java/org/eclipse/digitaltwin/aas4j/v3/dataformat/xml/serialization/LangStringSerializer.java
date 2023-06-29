@@ -19,42 +19,49 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
+import javax.xml.namespace.QName;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
-import javax.xml.namespace.QName;
+public class LangStringSerializer extends JsonSerializer<LangString> {
 
-public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
 
     @Override
-    public void serialize(SubmodelElement value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
+    public void serialize(LangString langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
 
+        ToXmlGenerator xgen = (ToXmlGenerator) gen;
         try {
             Field nextName = xgen.getClass().getDeclaredField("_nextName");
             nextName.setAccessible(true);
             QName next = (QName) nextName.get(xgen);
 
-            String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
+            xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, "langString"));
 
-            if (next.getLocalPart().equals(name)) {
-                xgen.writeObject(value); // only write the plain object without a deduplicate wrapping field
-                return ;
-            }
+            serializeLangString(xgen, langString);
+
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            // TODO: report exception
-            throw new IOException(e);
+            // serialize it without changing the namespaces
+            serializeLangString(xgen, langString);
         }
 
+    }
+
+    private void serializeLangString(ToXmlGenerator xgen, LangString langString) throws IOException {
+
+
         xgen.writeStartObject();
-        String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
-        xgen.writeFieldName(name);
-        xgen.writeObject(value);
+        xgen.writeFieldName("language");
+        xgen.writeString(langString.getLanguage());
+
+        xgen.writeFieldName("text");
+        xgen.writeString(langString.getText());
+
         xgen.writeEndObject();
     }
 }

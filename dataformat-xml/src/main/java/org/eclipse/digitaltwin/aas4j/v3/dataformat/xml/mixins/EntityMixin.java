@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +18,25 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
 public interface EntityMixin {
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
+    public SpecificAssetId getExternalAssetId();
+
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
-	@JsonInclude(JsonInclude.Include.NON_NULL)
+//    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = SubmodelElementsSerializer.class)
     @JsonDeserialize(using = SubmodelElementsDeserializer.class)
     public List<SubmodelElement> getStatements();
-
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
-	void setGlobalAssetID(String globalAssetID);
 }

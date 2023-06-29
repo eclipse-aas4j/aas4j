@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0/RC02" xmlns:IEC61360="http://www.admin-shell.io/IEC61360/3/0" xmlns:abac="http://www.admin-shell.io/aas/abac/3/0" xmlns:aas_common="http://www.admin-shell.io/aas_common/3/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://admin-shell.io/aas/3/0/RC02 AAS.xsd http://www.admin-shell.io/IEC61360/3/0 IEC61360.xsd http://www.admin-shell.io/aas/abac/3/0 AAS_ABAC.xsd">
   <aas:submodels>
     <aas:submodel>
       <aas:idShort>TestSubmodel</aas:idShort>
@@ -13,7 +13,7 @@
         <aas:property>
           <aas:idShort>ManufacturerName</aas:idShort>
           <aas:semanticId>
-            <aas:type>ExternalReference</aas:type>
+            <aas:type>GlobalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
@@ -36,7 +36,7 @@
           <aas:valueType>xs:string</aas:valueType>
           <aas:value>http://acplt.org/ValueId/ACPLT</aas:value>
           <aas:valueId>
-            <aas:type>ExternalReference</aas:type>
+            <aas:type>GlobalReference</aas:type>
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>

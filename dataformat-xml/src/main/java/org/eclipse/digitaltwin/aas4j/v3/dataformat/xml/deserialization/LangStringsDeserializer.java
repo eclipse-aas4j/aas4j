@@ -14,20 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.util.List;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
-public interface MultiLanguagePropertyMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-//    @JsonSerialize(using = LangStringsSerializer.class)
-    @JsonDeserialize(using = LangStringsDeserializer.class)
-    public List<LangString> getValue();
+public class LangStringsDeserializer extends NoEntryWrapperListDeserializer<LangString> {
+    public LangStringsDeserializer() {
+        super("langString", new LangStringNodeDeserializer());
+    }
 }

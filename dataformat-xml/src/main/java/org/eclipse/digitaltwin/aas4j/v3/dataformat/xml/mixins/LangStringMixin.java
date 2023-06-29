@@ -16,25 +16,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
-public interface OperationVariableMixin {
-
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonSerialize(using = SubmodelElementSerializer.class)
-    public SubmodelElement getValue();
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonDeserialize(using = SubmodelElementDeserializer.class)
-    public void setValue(SubmodelElement submodelElement);
+@JsonPropertyOrder({"language", "text"})
+public interface LangStringMixin {
 
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "language")
+    public String getLanguage();
 
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "text")
+    public String getText();
 }

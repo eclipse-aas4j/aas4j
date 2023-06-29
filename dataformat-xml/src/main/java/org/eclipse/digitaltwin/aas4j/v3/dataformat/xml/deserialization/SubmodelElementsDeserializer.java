@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +22,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
@@ -33,6 +32,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 public class SubmodelElementsDeserializer extends JsonDeserializer<List<SubmodelElement>> {
 
@@ -56,7 +57,8 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
     }
 
     private List<SubmodelElement> createSubmodelElements(JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws IOException, JsonProcessingException {
-		if (treeNode.isArray()) {
+//        JsonNode nodeSubmodelElement = getSubmodelElementsNode(treeNode);
+        if (treeNode.isArray()) {
             return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
         } else {
             return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
@@ -89,6 +91,12 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
         return submodelElements;
     }
 
+    private JsonNode getSubmodelElementsNode(TreeNode temp) {
+        ObjectNode objNode = (ObjectNode) temp;
+        JsonNode nodeSubmodelElement = objNode.get("submodelElement"); // TODO: most likely the node will have the name of a SME subclass, e.g. "property" and not "submodelElement"
+        return nodeSubmodelElement;
+    }
+
     private List<SubmodelElement> getSubmodelElementsFromArrayNode(JsonParser parser, DeserializationContext ctxt, ArrayNode arrayNode) throws IOException, JsonProcessingException {
         List<SubmodelElement> elements = new ArrayList<>();
         for (int i = 0; i < arrayNode.size(); i++) {
@@ -101,7 +109,8 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
 
     private SubmodelElement getSubmodelElementFromJsonNode(JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement) throws IOException, JsonProcessingException {
         JsonParser parserReference = parser.getCodec().getFactory().getCodec().treeAsTokens(nodeSubmodelElement);
-		return deserializer.deserialize(parserReference, ctxt);
+        SubmodelElement elem = deserializer.deserialize(parserReference, ctxt);
+        return elem;
     }
 
 }
