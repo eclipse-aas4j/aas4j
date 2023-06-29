@@ -21,7 +21,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <plugin.flatten.version>1.5.0</plugin.flatten.version>
         <plugin.javadoc.version>3.5.0</plugin.javadoc.version>
+        <plugin.license.version>4.1</plugin.license.version>
         <plugin.projectinfo.version>3.4.5</plugin.projectinfo.version>
+        <gpg.keyname>0xDFCC34A6</gpg.keyname>
     </properties>
     <build>
         <plugins>

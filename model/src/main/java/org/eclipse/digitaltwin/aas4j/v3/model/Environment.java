@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,58 +33,58 @@ public interface Environment {
     /**
      * Asset administration shell
      *
-     * More information under https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells
      *
      * @return Returns the List of AssetAdministrationShells for the property assetAdministrationShells.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
     List<AssetAdministrationShell> getAssetAdministrationShells();
 
     /**
      * Asset administration shell
      *
-     * More information under https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells
      *
      * @param assetAdministrationShells desired value for the property assetAdministrationShells.
      */
     void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells);
 
     /**
-     * Submodel
-     *
-     * More information under https://admin-shell.io/aas/3/0/Environment/submodels
-     *
-     * @return Returns the List of Submodels for the property submodels.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
-    List<Submodel> getSubmodels();
-
-    /**
-     * Submodel
-     *
-     * More information under https://admin-shell.io/aas/3/0/Environment/submodels
-     *
-     * @param submodels desired value for the property submodels.
-     */
-    void setSubmodels(List<Submodel> submodels);
-
-    /**
      * Concept description
      *
-     * More information under https://admin-shell.io/aas/3/0/Environment/conceptDescriptions
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions
      *
      * @return Returns the List of ConceptDescriptions for the property conceptDescriptions.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
     List<ConceptDescription> getConceptDescriptions();
 
     /**
      * Concept description
      *
-     * More information under https://admin-shell.io/aas/3/0/Environment/conceptDescriptions
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions
      *
      * @param conceptDescriptions desired value for the property conceptDescriptions.
      */
     void setConceptDescriptions(List<ConceptDescription> conceptDescriptions);
+
+    /**
+     * Submodel
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
+     *
+     * @return Returns the List of Submodels for the property submodels.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
+    List<Submodel> getSubmodels();
+
+    /**
+     * Submodel
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Environment/submodels
+     *
+     * @param submodels desired value for the property submodels.
+     */
+    void setSubmodels(List<Submodel> submodels);
 
 }

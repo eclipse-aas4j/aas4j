@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -27,21 +27,16 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum AssetKind {
 
     /**
-     * Instance asset
+     * concrete, clearly identifiable component of a certain type
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetKind/Instance")
     INSTANCE,
 
     /**
-     * Neither a type asset nor an instance asset
+     * hardware or software element which specifies the common attributes shared by all instances of the
+     * type
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
-    NOT_APPLICABLE,
-
-    /**
-     * Type asset
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetKind/Type")
     TYPE;
 
 }

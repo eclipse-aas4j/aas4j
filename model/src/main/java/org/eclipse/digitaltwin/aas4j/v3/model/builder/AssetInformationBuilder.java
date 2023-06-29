@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -15,10 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 import java.util.List;
 
@@ -38,12 +35,23 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
     }
 
     /**
+     * This function allows setting a value for defaultThumbnail
+     * 
+     * @param defaultThumbnail desired value to be set
+     * @return Builder object with new value for defaultThumbnail
+     */
+    public B defaultThumbnail(Resource defaultThumbnail) {
+        getBuildingInstance().setDefaultThumbnail(defaultThumbnail);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for globalAssetId
      * 
      * @param globalAssetId desired value to be set
      * @return Builder object with new value for globalAssetId
      */
-    public B globalAssetId(String globalAssetId) {
+    public B globalAssetId(Reference globalAssetId) {
         getBuildingInstance().setGlobalAssetId(globalAssetId);
         return getSelf();
     }
@@ -67,28 +75,6 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
      */
     public B specificAssetIds(SpecificAssetId specificAssetIds) {
         getBuildingInstance().getSpecificAssetIds().add(specificAssetIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for assetType
-     * 
-     * @param assetType desired value to be set
-     * @return Builder object with new value for assetType
-     */
-    public B assetType(String assetType) {
-        getBuildingInstance().setAssetType(assetType);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for defaultThumbnail
-     * 
-     * @param defaultThumbnail desired value to be set
-     * @return Builder object with new value for defaultThumbnail
-     */
-    public B defaultThumbnail(Resource defaultThumbnail) {
-        getBuildingInstance().setDefaultThumbnail(defaultThumbnail);
         return getSelf();
     }
 }

@@ -15,31 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
+import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 
-
-public abstract class ResourceBuilder<T extends Resource, B extends ResourceBuilder<T, B>> extends ExtendableBuilder<T, B> {
+public abstract class DescriptorBuilder<T extends Descriptor, B extends DescriptorBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for contentType
+     * This function allows setting a value for endpoints
      * 
-     * @param contentType desired value to be set
-     * @return Builder object with new value for contentType
+     * @param endpoints desired value to be set
+     * @return Builder object with new value for endpoints
      */
-    public B contentType(String contentType) {
-        getBuildingInstance().setContentType(contentType);
+    public B endpoints(List<Endpoint> endpoints) {
+        getBuildingInstance().setEndpoints(endpoints);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for path
+     * This function allows adding a value to the List endpoints
      * 
-     * @param path desired value to be set
-     * @return Builder object with new value for path
+     * @param endpoints desired value to be added
+     * @return Builder object with new value for endpoints
      */
-    public B path(String path) {
-        getBuildingInstance().setPath(path);
+    public B endpoints(Endpoint endpoints) {
+        getBuildingInstance().getEndpoints().add(endpoints);
         return getSelf();
     }
 }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -37,18 +37,18 @@ public interface HasSemantics {
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId
      *
      * @return Returns the Reference for the property semanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
     Reference getSemanticId();
 
     /**
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId
      *
      * @param semanticId desired value for the property semanticId.
      */
@@ -58,18 +58,18 @@ public interface HasSemantics {
      * Identifier of a supplemental semantic definition of the element. It is called supplemental
      * semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds
+     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds
      *
      * @return Returns the List of References for the property supplementalSemanticIds.
      */
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
     List<Reference> getSupplementalSemanticIds();
 
     /**
      * Identifier of a supplemental semantic definition of the element. It is called supplemental
      * semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds
+     * More information under https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds
      *
      * @param supplementalSemanticIds desired value for the property supplementalSemanticIds.
      */

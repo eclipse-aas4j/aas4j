@@ -15,27 +15,35 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
+import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDescriptor;
 
 /**
- * Direction
- */
-@IRI("aas:Direction")
-public enum Direction {
+*/
+@KnownSubtypes({
+    @KnownSubtypes.Type(value = DefaultDescriptor.class),
+    @KnownSubtypes.Type(value = SubmodelDescriptor.class)
+})
+public interface Descriptor {
 
     /**
-     * Input direction.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Descriptor/endpoints
+     *
+     * @return Returns the List of Endpoints for the property endpoints.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Direction/Input")
-    INPUT,
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Descriptor/endpoints")
+    List<Endpoint> getEndpoints();
 
     /**
-     * Output direction
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Descriptor/endpoints
+     *
+     * @param endpoints desired value for the property endpoints.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Direction/Output")
-    OUTPUT;
+    void setEndpoints(List<Endpoint> endpoints);
 
 }

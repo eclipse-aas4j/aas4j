@@ -15,14 +15,25 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 
 import java.util.List;
 
 
-public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionBuilder<T, B>> extends ExtendableBuilder<T, B> {
+public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extends SpecificAssetIdBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
+
+    /**
+     * This function allows setting a value for externalSubjectId
+     * 
+     * @param externalSubjectId desired value to be set
+     * @return Builder object with new value for externalSubjectId
+     */
+    public B externalSubjectId(Reference externalSubjectId) {
+        getBuildingInstance().setExternalSubjectId(externalSubjectId);
+        return getSelf();
+    }
 
     /**
      * This function allows setting a value for name
@@ -36,17 +47,6 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
     }
 
     /**
-     * This function allows setting a value for refersTo
-     * 
-     * @param refersTo desired value to be set
-     * @return Builder object with new value for refersTo
-     */
-    public B refersTo(Reference refersTo) {
-        getBuildingInstance().setRefersTo(refersTo);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for value
      * 
      * @param value desired value to be set
@@ -54,17 +54,6 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
      */
     public B value(String value) {
         getBuildingInstance().setValue(value);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for valueType
-     * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 

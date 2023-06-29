@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ ** Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -18,6 +18,9 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 
 public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRelationshipElement, B extends AnnotatedRelationshipElementBuilder<T, B>>
@@ -67,10 +70,22 @@ public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRel
         return getSelf();
     }
 
+
     /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
+     * This function allows adding a value to the List embeddedDataSpecifications
+     *
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     *
+     * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */
     public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
@@ -79,13 +94,13 @@ public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRel
     }
 
     /**
-     * This function allows adding a value to the List embeddedDataSpecifications
+     * This function allows setting a value for kind
      * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
      */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+    public B kind(ModelingKind kind) {
+        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -167,46 +182,35 @@ public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRel
     }
 
     /**
-     * This function allows setting a value for displayNames
+     * This function allows setting a value for displayName
      * 
-     * @param displayNames desired value to be set
-     * @return Builder object with new value for displayNames
+     * @param displayName desired value to be set
+     * @return Builder object with new value for displayName
      */
-    public B displayNames(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayNames(displayNames);
+    public B displayName(List<LangString> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List displayNames
+     * This function allows setting a value for description
      * 
-     * @param displayName desired value to be added
-     * @return Builder object with new value for displayNames
+     * @param description desired value to be set
+     * @return Builder object with new value for description
      */
-    public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().getDisplayNames().add(displayName);
+    public B description(List<LangString> description) {
+        getBuildingInstance().setDescription(description);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for descriptions
+     * This function allows setting a value for checksum
      * 
-     * @param descriptions desired value to be set
-     * @return Builder object with new value for descriptions
+     * @param checksum desired value to be set
+     * @return Builder object with new value for checksum
      */
-    public B descriptions(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescriptions(descriptions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List descriptions
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for descriptions
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescriptions().add(description);
+    public B checksum(String checksum) {
+        getBuildingInstance().setChecksum(checksum);
         return getSelf();
     }
 

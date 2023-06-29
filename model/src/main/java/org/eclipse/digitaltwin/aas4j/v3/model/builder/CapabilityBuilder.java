@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -78,24 +78,13 @@ public abstract class CapabilityBuilder<T extends Capability, B extends Capabili
     }
 
     /**
-     * This function allows setting a value for qualifiers
+     * This function allows setting a value for kind
      * 
-     * @param qualifiers desired value to be set
-     * @return Builder object with new value for qualifiers
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
      */
-    public B qualifiers(List<Qualifier> qualifiers) {
-        getBuildingInstance().setQualifiers(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List qualifiers
-     * 
-     * @param qualifiers desired value to be added
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(Qualifier qualifiers) {
-        getBuildingInstance().getQualifiers().add(qualifiers);
+    public B kind(ModelingKind kind) {
+        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 
@@ -111,6 +100,61 @@ public abstract class CapabilityBuilder<T extends Capability, B extends Capabili
     }
 
     /**
+     * This function allows setting a value for checksum
+     * 
+     * @param checksum desired value to be set
+     * @return Builder object with new value for checksum
+     */
+    public B checksum(String checksum) {
+        getBuildingInstance().setChecksum(checksum);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for description
+     * 
+     * @param description desired value to be set
+     * @return Builder object with new value for description
+     */
+    public B description(List<LangString> description) {
+        getBuildingInstance().setDescription(description);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List description
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for description
+     */
+    public B description(LangString description) {
+        getBuildingInstance().getDescription().add(description);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for displayName
+     * 
+     * @param displayName desired value to be set
+     * @return Builder object with new value for displayName
+     */
+    public B displayName(List<LangString> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List displayName
+     * 
+     * @param displayName desired value to be added
+     * @return Builder object with new value for displayName
+     */
+    public B displayName(LangString displayName) {
+        getBuildingInstance().getDisplayName().add(displayName);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for idShort
      * 
      * @param idShort desired value to be set
@@ -118,50 +162,6 @@ public abstract class CapabilityBuilder<T extends Capability, B extends Capabili
      */
     public B idShort(String idShort) {
         getBuildingInstance().setIdShort(idShort);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for displayNames
-     * 
-     * @param displayNames desired value to be set
-     * @return Builder object with new value for displayNames
-     */
-    public B displayNames(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayNames(displayNames);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List displayNames
-     * 
-     * @param displayName desired value to be added
-     * @return Builder object with new value for displayNames
-     */
-    public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().getDisplayNames().add(displayName);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for descriptions
-     * 
-     * @param descriptions desired value to be set
-     * @return Builder object with new value for descriptions
-     */
-    public B descriptions(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescriptions(descriptions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List descriptions
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for descriptions
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescriptions().add(description);
         return getSelf();
     }
 
@@ -184,6 +184,28 @@ public abstract class CapabilityBuilder<T extends Capability, B extends Capabili
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for qualifiers
+     * 
+     * @param qualifiers desired value to be set
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(List<Qualifier> qualifiers) {
+        getBuildingInstance().setQualifiers(qualifiers);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List qualifiers
+     * 
+     * @param qualifiers desired value to be added
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(Qualifier qualifiers) {
+        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 }
