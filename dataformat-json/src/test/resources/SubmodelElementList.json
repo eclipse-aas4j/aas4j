@@ -21,8 +21,9 @@
         "value": "http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered"
       }
     ],
-    "type": "ExternalReference"
+    "type": "GlobalReference"
   },
+  "kind": "Template",
   "typeValueListElement": "SubmodelElement",
   "value": [
     {
@@ -47,8 +48,9 @@
             "value": "http://acplt.org/Properties/ExampleProperty"
           }
         ],
-        "type": "ExternalReference"
+        "type": "GlobalReference"
       },
+      "kind": "Template",
       "valueType": "xs:string"
     },
     {
@@ -73,14 +75,15 @@
             "value": "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty"
           }
         ],
-        "type": "ExternalReference"
-      }
+        "type": "GlobalReference"
+      },
+      "kind": "Template"
     },
     {
       "idShort": "ExampleRange",
       "category": "PARAMETER",
       "description":
-       [
+      [
         {
           "language": "en-us",
           "text": "Example Range object"
@@ -99,8 +102,9 @@
             "value": "http://acplt.org/Ranges/ExampleRange"
           }
         ],
-        "type": "ExternalReference"
+        "type": "GlobalReference"
       },
+      "kind": "Template",
       "valueType": "xs:int",
       "max": "100"
     },
@@ -127,8 +131,9 @@
             "value": "http://acplt.org/Ranges/ExampleRange"
           }
         ],
-        "type": "ExternalReference"
+        "type": "GlobalReference"
       },
+      "kind": "Template",
       "valueType": "xs:int",
       "min": "0"
     }

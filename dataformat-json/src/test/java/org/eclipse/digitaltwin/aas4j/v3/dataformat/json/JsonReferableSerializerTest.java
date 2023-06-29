@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,92 +16,125 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
+import java.nio.file.Files;
+import java.sql.Ref;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.json.JSONException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+
+import static org.junit.Assert.assertTrue;
 
 public class JsonReferableSerializerTest {
 
-    @Test
-    public void testSerializeAAS() throws IOException, SerializationException, JSONException {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL);
-    }
+    private static final Logger logger = LoggerFactory.getLogger(JsonReferableSerializerTest.class);
 
     @Test
-    public void testSerializeWithAssetInformation() throws SerializationException, JSONException, IOException {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
+    public void testSerializeAAS() throws IOException, SerializationException, JSONException {
+        Environment environment = AASFull.ENVIRONMENT;
+        AssetAdministrationShell assetAdministrationShell = environment.getAssetAdministrationShells().get(0);
+        compare("src/test/resources/assetAdministrationShell.json",assetAdministrationShell);
     }
 
     @Test
     public void testSerializeAASs() throws IOException, SerializationException, JSONException {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
-    }
-
-    @Test
-    @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
-    public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
-        compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
+        Environment environment = AASFull.ENVIRONMENT;
+        compare("src/test/resources/assetAdministrationShellList.json",
+                environment.getAssetAdministrationShells().get(0), environment.getAssetAdministrationShells().get(1));
     }
 
     @Test
     public void testSerializeSubmodel() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL);
+        Environment environment = AASFull.ENVIRONMENT;
+        Submodel submodel = environment.getSubmodels().get(0);
+        compare("src/test/resources/submodel.json",submodel);
     }
 
     @Test
     public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
+        Environment environment = AASFull.ENVIRONMENT;
+        compare("src/test/resources/submodelList.json", environment.getSubmodels().get(0), environment.getSubmodels().get(1));
+    }
+
+    @Test
+    public void testSerializeSubmodelAsReferable() throws SerializationException {
+        JsonSerializer serializer = new JsonSerializer();
+
+        List<Referable> submodels = new ArrayList<>();
+        submodels.add(AASFull.ENVIRONMENT.getSubmodels().get(0));
+        submodels.add(AASFull.ENVIRONMENT.getSubmodels().get(1));
+        submodels.add(AASFull.ENVIRONMENT.getSubmodels().get(2));
+
+        String serializedReferenceArray = serializer.writeReferables(submodels);
+
+        assertTrue(serializedReferenceArray.contains("\"http://acplt.org/Submodels/Assets/TestAsset/Identification\""));
     }
 
     @Test
     public void testSerializeSubmodelElement() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT);
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElement submodelElement = environment.getSubmodels().get(0).getSubmodelElements().get(0);
+        compare("src/test/resources/submodelElement.json",submodelElement);
     }
 
     @Test
     public void testSerializeSubmodelElements() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElement submodelElement0 = environment.getSubmodels().get(0).getSubmodelElements().get(0);
+        SubmodelElement submodelElement1 = environment.getSubmodels().get(0).getSubmodelElements().get(1);
+        compare("src/test/resources/listOfSubmodelElements.json",submodelElement0,submodelElement1);
     }
 
     @Test
     public void testSerializeSubmodelElementCollection() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT_COLLECTION);
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElementCollection submodelElementCollection = (SubmodelElementCollection) environment.getSubmodels().get(6).getSubmodelElements().get(6);
+        compare("src/test/resources/submodelElementCollection.json",submodelElementCollection);
     }
 
     @Test
     public void testSerializeSubmodelElementList() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT_LIST);
+        Environment environment = AASFull.ENVIRONMENT;
+        SubmodelElementList submodelElementList = (SubmodelElementList) environment.getSubmodels().get(6).getSubmodelElements().get(5);
+        compare("src/test/resources/submodelElementList.json",submodelElementList);
     }
 
     @Test
     public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
+        compare("src/test/resources/submodelElementListEmpty.json",
+                new DefaultSubmodelElementList.Builder()
+                        .idShort("submodelElementList")
+                        .orderRelevant(true)
+                        .build());
     }
 
-	@SuppressWarnings("unchecked")
-	private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
-        String expected = exampleData.fileContent();
-        String actual = null;
-        if (Environment.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = new JsonSerializer().write((Environment) exampleData.getModel());
-        } else if (Referable.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = new JsonSerializer().write((Referable) exampleData.getModel());
-        } else if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())
-				&& ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
-            actual = new JsonSerializer().write((Collection<Referable>) exampleData.getModel());
+    private void compare(String filePathForExpected, Referable... referable) throws IOException, SerializationException, JSONException {
+        File fileExpected = new File(filePathForExpected);
+        String expected = Files.readString(fileExpected.toPath());
+        String actual;
+        if(referable.length>1){
+            actual = new JsonSerializer().writeReferables(List.of(referable));
+        } else {
+            actual = new JsonSerializer().writeReferable(Arrays.stream(referable).findFirst().get());
         }
+        logger.info(actual);
+
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+
     }
 
 }

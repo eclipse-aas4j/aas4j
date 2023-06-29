@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 
 public interface HasExtensionsMixin {
 
-    @JsonProperty("extension")
+    @JsonProperty("extensions")
     public List<Extension> getExtensions();
 
-    @JsonProperty("extension")
+    @JsonProperty("extensions")
     public void setExtensions(List<Extension> extensions);
 }

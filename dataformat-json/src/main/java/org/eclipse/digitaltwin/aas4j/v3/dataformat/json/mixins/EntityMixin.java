@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +19,16 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 
 public interface EntityMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public EntityType getEntityType();
 
-    @JsonProperty("globalAssetId")
-    public String getGlobalAssetID();
+    @JsonProperty("specificAssetIds")
+    public SpecificAssetId getExternalAssetId();
 
-    @JsonProperty("globalAssetId")
-    public void setGlobalAssetID(String globalAssetID);
+    @JsonProperty("specificAssetIds")
+    public void setExternalAssetId(SpecificAssetId externalAssetId);
 }

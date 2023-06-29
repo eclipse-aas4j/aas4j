@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +16,31 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ReferableMixin {
 
-    @JsonProperty("description")
-    public List<LangStringTextType> getDescription();
+    @JsonProperty("idShort")
+    public String getIdShort();
+
+    @JsonProperty("idShort")
+    public void setIdShort(String idShort);
 
     @JsonProperty("description")
-    public void setDescription(List<LangStringTextType> description);
+    public List<LangString> getDescription();
+
+    @JsonProperty("description")
+    public void setDescription(List<LangString> description);
 
     @JsonProperty("displayName")
-    public List<LangStringNameType> getDisplayName();
+    public List<LangString> getDisplayName();
 
     @JsonProperty("displayName")
-    public void setDisplayName(List<LangStringNameType> displayNames);
+    public void setDisplayName(List<LangString> displayName);
 }

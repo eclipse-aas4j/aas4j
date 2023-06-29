@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +17,16 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface MultiLanguagePropertyMixin {
 
     @JsonProperty("value")
-    public List<LangStringTextType> getValue();
+    public List<LangString> getValue();
 
     @JsonProperty("value")
-    public void setValue(LangStringTextType value);
-
-    @JsonProperty("valueId")
-    public Reference getValueID();
-
-    @JsonProperty("valueId")
-    public void setValueID(Reference valueID);
+    public void setValue(LangString value);
 }

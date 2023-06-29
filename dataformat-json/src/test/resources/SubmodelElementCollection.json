@@ -20,17 +20,19 @@
         "value": "http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection"
       }
     ],
-    "type": "ExternalReference"
+    "type": "GlobalReference"
   },
+  "kind": "Template",
   "value": [ {
     "modelType" : "Blob",
     "contentType" : "application/pdf",
+    "kind" : "Template",
     "semanticId" : {
       "keys" : [ {
         "type" : "GlobalReference",
         "value" : "http://acplt.org/Blobs/ExampleBlob"
       } ],
-      "type": "ExternalReference"
+      "type" : "GlobalReference"
     },
     "category" : "PARAMETER",
     "description" : [ {
@@ -44,12 +46,13 @@
   }, {
     "modelType" : "File",
     "contentType" : "application/pdf",
+    "kind" : "Template",
     "semanticId" : {
       "keys" : [ {
         "type" : "GlobalReference",
         "value" : "http://acplt.org/Files/ExampleFile"
       } ],
-      "type": "ExternalReference"
+      "type" : "GlobalReference"
     },
     "category" : "PARAMETER",
     "description" : [ {
@@ -62,12 +65,13 @@
     "idShort" : "ExampleFile"
   }, {
     "modelType" : "ReferenceElement",
+    "kind" : "Template",
     "semanticId" : {
       "keys" : [ {
         "type" : "GlobalReference",
         "value" : "http://acplt.org/ReferenceElements/ExampleReferenceElement"
       } ],
-      "type": "ExternalReference"
+      "type" : "GlobalReference"
     },
     "category" : "PARAMETER",
     "description" : [ {

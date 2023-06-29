@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +17,28 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
 public interface AssetInformationMixin {
 
+    @JsonProperty("thumbnail")
+    public void setDefaultThumbnail(File value);
+
+    @JsonProperty("thumbnail")
+    public File getDefaultThumbnail();
+
+    @JsonProperty("billOfMaterial")
+    public List<Submodel> getBillOfMaterials();
+
+    @JsonProperty("billOfMaterial")
+    public void setBillOfMaterials(List<Submodel> billOfMaterials);
+
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public AssetKind getAssetKind();
-
-    @JsonProperty("globalAssetId")
-    public String getGlobalAssetID();
-
-    @JsonProperty("globalAssetId")
-    public void setGlobalAssetID(String globalAssetID);
 }
