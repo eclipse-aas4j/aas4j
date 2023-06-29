@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,39 +16,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class AASSimple {
 
@@ -59,7 +29,7 @@ public class AASSimple {
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document";
     private static final String ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED = "Actual rotationspeed with which the motor or feedingunit is operated";
     private static final String AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD = "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird";
-    private static final String ACTUAL_ROTATION_SPEED = "ActRotationSpeed";
+    private static final String ACTUAL_ROTATION_SPEED = "ActualRotationSpeed";
     private static final String ACTUALROTATIONSPEED = "Actualrotationspeed";
     private static final String AKTUELLE_DREHZAHL = "AktuelleDrehzahl";
     private static final String _1_MIN = "1/min";
@@ -81,8 +51,10 @@ public class AASSimple {
     private static final String TITEL = "Titel";
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
     private static final String TITLE = "Title";
+    private static final String SERVO_DC_MOTOR = "ServoDCMotor";
     private static final String FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "file:///master/verwaltungsschale-detail-part1.png";
     private static final String IMAGE_PNG = "image/png";
+    private static final String THUMBNAIL = "thumbnail";
     private static final String HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1 = "http://customer.com/Systems/IoT/1";
     private static final String QJ_YG_PGGJWKI_HK4_RR_QI_YS_LG = "QjYgPggjwkiHk4RrQiYSLg==";
     private static final String DEVICE_ID = "DeviceID";
@@ -112,6 +84,7 @@ public class AASSimple {
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT = TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUE = "OperatingManual";
+    private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUETYPE = "langString";
     private static final String SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE;
     private static final String SUBMODEL_DOCUMENTATION_FILE_ID_SHORT = "DigitalFile_PDF";
     private static final String SUBMODEL_DOCUMENTATION_FILE_contentType = "application/pdf";
@@ -124,6 +97,7 @@ public class AASSimple {
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT = ROTATION_SPEED;
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY = "VARIABLE";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
+    private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
     public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
 
     public AASSimple() {
@@ -138,6 +112,7 @@ public class AASSimple {
     public static final ConceptDescription CONCEPT_DESCRIPTION_MAXROTATIONSPEED = createConceptDescriptionMaxRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_ROTATIONSPEED = createConceptDescriptionRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_DOCUMENT = createConceptDescriptionDocument();
+    public static final Environment ENVIRONMENT = createEnvironment();
 
     public static AssetAdministrationShell createAAS() {
         return new DefaultAssetAdministrationShell.Builder()
@@ -145,7 +120,13 @@ public class AASSimple {
                 .id(AAS_IDENTIFIER)
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetId(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
+                        .globalAssetId(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.ASSET_ADMINISTRATION_SHELL)
+                                        .value(HTTP_CUSTOMER_COM_ASSETS_KHBVZJSQKIY)
+                                        .build())
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
+                                .build())
                         .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                 .name(EQUIPMENT_ID)
                                 .value(_538FD1B3_F99F_4A52_9C75_72E9FA921270)
@@ -154,7 +135,7 @@ public class AASSimple {
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_ERP_012)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .build())
                         .specificAssetIds(new DefaultSpecificAssetId.Builder()
@@ -165,7 +146,7 @@ public class AASSimple {
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .build())
                         .defaultThumbnail(new DefaultResource.Builder()
@@ -178,7 +159,7 @@ public class AASSimple {
                                 .type(KeyTypes.SUBMODEL)
                                 .value(SUBMODEL_TECHNICAL_DATA_ID)
                                 .build())
-                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
                 .submodels(
                         new DefaultReference.Builder()
@@ -186,18 +167,19 @@ public class AASSimple {
                                         .type(KeyTypes.SUBMODEL)
                                         .value(SUBMODEL_OPERATIONAL_DATA_ID)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                 .submodels(
                         new DefaultReference.Builder()
-                                .keys(new DefaultKey.Builder()
-                                        .type(KeyTypes.SUBMODEL)
-                                        .value(SUBMODEL_DOCUMENTATION_ID)
-                                        .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                .build())
+                            .keys(new DefaultKey.Builder()
+                                    .type(KeyTypes.SUBMODEL)
+                                    .value(SUBMODEL_DOCUMENTATION_ID)
+                                    .build())
+                            .type(ReferenceTypes.GLOBAL_REFERENCE)
+                            .build())
                 .build();
     }
+
 
     public static Submodel createSubmodelTechnicalData() {
         return new DefaultSubmodel.Builder()
@@ -206,17 +188,19 @@ public class AASSimple {
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID)
                                 .build())
-                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                         .build())
+                .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_TECHNICAL_DATA_ID_SHORT)
                 .id(SUBMODEL_TECHNICAL_DATA_ID)
                 .submodelElements(new DefaultProperty.Builder()
+                        .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_TECHNICAL_DATA_SEMANTIC_ID_PROPERTY)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .idShort(SUBMODEL_TECHNICAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_TECHNICAL_DATA_PROPERTY_CATEGORY)
@@ -228,16 +212,17 @@ public class AASSimple {
 
     public static Submodel createSubmodelOperationalData() {
         return new DefaultSubmodel.Builder()
-                .kind(ModellingKind.INSTANCE)
+                .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_OPERATIONAL_DATA_ID_SHORT)
                 .id(SUBMODEL_OPERATIONAL_DATA_ID)
                 .submodelElements(new DefaultProperty.Builder()
+                        .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_OPERATIONAL_DATA_SEMANTIC_ID_PROPERTY)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .idShort(SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT)
                         .category(SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY)
@@ -249,37 +234,40 @@ public class AASSimple {
 
     public static Submodel createSubmodelDocumentation() {
         return new DefaultSubmodel.Builder()
-                .kind(ModellingKind.INSTANCE)
+                .kind(ModelingKind.INSTANCE)
                 .idShort(SUBMODEL_DOCUMENTATION_ID_SHORT)
                 .id(SUBMODEL_DOCUMENTATION_ID)
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
+                        .kind(ModelingKind.INSTANCE)
                         .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.CONCEPT_DESCRIPTION)
                                         .value(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_SEMANTIC_ID)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .idShort(SUBMODEL_DOCUMENTATION_ELEMENTCOLLECTION_ID_SHORT)
                         .value(new DefaultProperty.Builder()
+                                .kind(ModelingKind.INSTANCE)
                                 .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT)
                                 .value(SUBMODEL_DOCUMENTATION_PROPERTY_VALUE)
                                 .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultFile.Builder()
+                                .kind(ModelingKind.INSTANCE)
                                 .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                                 .value(SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .idShort(SUBMODEL_DOCUMENTATION_FILE_ID_SHORT)
                                 .contentType(SUBMODEL_DOCUMENTATION_FILE_contentType)
@@ -301,17 +289,17 @@ public class AASSimple {
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
-                        .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
-                                .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(TITLE).language("EN").build())
-                                .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(TITEL).language("DE").build())
-                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(TITLE).language("EN").build())
-                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(TITEL).language("DE").build())
+                        .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
+                                .preferredName(new DefaultLangString.Builder().text(TITLE).language("EN").build())
+                                .preferredName(new DefaultLangString.Builder().text(TITEL).language("DE").build())
+                                .shortName(new DefaultLangString.Builder().text(TITLE).language("EN").build())
+                                .shortName(new DefaultLangString.Builder().text(TITEL).language("DE").build())
                                 .unit("ExampleString")
                                 .sourceOfDefinition("ExampleString")
-                                .dataType(DataTypeIec61360.STRING_TRANSLATABLE)
-                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(SPRACHABHÄNGIGER_TITELDES_DOKUMENTS).language("EN").build())
+                                .dataType(DataTypeIEC61360.STRING_TRANSLATABLE)
+                                .definition(new DefaultLangString.Builder().text(SPRACHABHÄNGIGER_TITELDES_DOKUMENTS).language("EN").build())
                                 .build())
                         .build())
                 .build();
@@ -327,18 +315,18 @@ public class AASSimple {
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
                         .dataSpecificationContent(
-                                new DefaultDataSpecificationIec61360.Builder()
-                                        .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(DIGITAL_FILE).language("EN").build())
-                                        .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(DIGITAL_FILE).language("EN").build())
-                                        .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(DIGITAL_FILE).language("EN").build())
-                                        .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(DIGITALE_DATEI).language("DE").build())
+                                new DefaultDataSpecificationIEC61360.Builder()
+                                        .preferredName(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .preferredName(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .shortName(new DefaultLangString.Builder().text(DIGITAL_FILE).language("EN").build())
+                                        .shortName(new DefaultLangString.Builder().text(DIGITALE_DATEI).language("DE").build())
                                         .unit("ExampleString")
                                         .sourceOfDefinition("ExampleString")
-                                        .dataType(DataTypeIec61360.STRING)
-                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(DIGITAL_FILE_DEFINITION).language("EN").build())
+                                        .dataType(DataTypeIEC61360.STRING)
+                                        .definition(new DefaultLangString.Builder().text(DIGITAL_FILE_DEFINITION).language("EN").build())
                                         .build())
                         .build())
                 .build();
@@ -349,7 +337,7 @@ public class AASSimple {
                 .idShort(MAX_ROTATION_SPEED).category(PROPERTY)
                 .administration(new DefaultAdministrativeInformation.Builder()
                         .version("2")
-                        .revision("1")
+                        .revision("2.1")
                         .build())
                 .id(_0173_1_02_BAA120_008)
                 .embeddedDataSpecifications(
@@ -359,23 +347,23 @@ public class AASSimple {
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
-                                .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
-                                        .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(MAX_DREHZAHL).language("de").build())
-                                        .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(MAX_ROTATIONSPEED).language("en").build())
+                                .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
+                                        .preferredName(new DefaultLangString.Builder().text(MAX_DREHZAHL).language("de").build())
+                                        .preferredName(new DefaultLangString.Builder().text(MAX_ROTATIONSPEED).language("en").build())
                                         .unit(_1_MIN)
                                         .unitId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value(_0173_1_05_AAA650_002)
                                                         .build())
-                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                 .build())
                                         .sourceOfDefinition("ExampleString")
-                                        .dataType(DataTypeIec61360.REAL_MEASURE)
-                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(MAX_ROTATE_DEF_DE).language("de").build())
-                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(MAX_ROTATE_DEF_EN).language("EN").build())
+                                        .dataType(DataTypeIEC61360.REAL_MEASURE)
+                                        .definition(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_DE).language("de").build())
+                                        .definition(new DefaultLangString.Builder().text(MAX_ROTATE_DEF_EN).language("EN").build())
                                         .build())
                                 .build())
                 .build();
@@ -393,26 +381,26 @@ public class AASSimple {
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                         .build())
                                 .dataSpecificationContent(
-                                        new DefaultDataSpecificationIec61360.Builder()
-                                                .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
-                                                .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(ACTUALROTATIONSPEED).language("EN").build())
-                                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
-                                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(ACTUAL_ROTATION_SPEED).language("EN").build())
+                                        new DefaultDataSpecificationIEC61360.Builder()
+                                                .preferredName(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
+                                                .preferredName(new DefaultLangString.Builder().text(ACTUALROTATIONSPEED).language("EN").build())
+                                                .shortName(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL).language("DE").build())
+                                                .shortName(new DefaultLangString.Builder().text(ACTUAL_ROTATION_SPEED).language("EN").build())
                                                 .unit(_1_MIN)
                                                 .unitId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value(_0173_1_05_AAA650_002)
                                                                 .build())
-                                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                        .type(ReferenceTypes.GLOBAL_REFERENCE)
                                                         .build())
                                                 .sourceOfDefinition("ExampleString")
-                                                .dataType(DataTypeIec61360.REAL_MEASURE)
-                                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD).language("DE").build())
-                                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED).language("EN").build())
+                                                .dataType(DataTypeIEC61360.REAL_MEASURE)
+                                                .definition(new DefaultLangString.Builder().text(AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD).language("DE").build())
+                                                .definition(new DefaultLangString.Builder().text(ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED).language("EN").build())
                                                 .build())
                                 .build())
                 .build();
@@ -428,16 +416,16 @@ public class AASSimple {
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
                                         .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .type(ReferenceTypes.GLOBAL_REFERENCE)
                                 .build())
-                        .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
-                                .preferredName(new DefaultLangStringPreferredNameTypeIec61360.Builder().text(DOCUMENT).language("EN").build())
-                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(DOCUMENT).language("EN").build())
-                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text(DOKUMENT).language("DE").build())
+                        .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
+                                .preferredName(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())
+                                .shortName(new DefaultLangString.Builder().text(DOCUMENT).language("EN").build())
+                                .shortName(new DefaultLangString.Builder().text(DOKUMENT).language("DE").build())
                                 .unit("ExampleString")
                                 .sourceOfDefinition(ISO15519_1_2010)
-                                .dataType(DataTypeIec61360.STRING)
-                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text(DOCUMENT_DEF).language("EN").build())
+                                .dataType(DataTypeIEC61360.STRING)
+                                .definition(new DefaultLangString.Builder().text(DOCUMENT_DEF).language("EN").build())
                                 .build())
                         .build())
                 .build();
@@ -456,11 +444,4 @@ public class AASSimple {
                 .conceptDescriptions(createConceptDescriptionDocument())
                 .build();
     }
-
-    @Test
-    public void testAasSimpleExtensionsInitialized() {
-		List<Extension> extensions = AASSimple.createEnvironment().getAssetAdministrationShells().get(0).getExtensions();
-        Assert.assertTrue(extensions != null);
-    }
-
 }
