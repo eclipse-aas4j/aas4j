@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -36,22 +36,24 @@ import java.util.Objects;
 @IRI("aas:Environment")
 public class DefaultEnvironment implements Environment {
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
     protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
     protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
     protected List<Submodel> submodels = new ArrayList<>();
 
-    public DefaultEnvironment() {}
+    public DefaultEnvironment() {
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.assetAdministrationShells,
-            this.submodels,
-            this.conceptDescriptions);
+            this.conceptDescriptions,
+            this.submodels);
     }
 
     @Override
@@ -65,8 +67,8 @@ public class DefaultEnvironment implements Environment {
         } else {
             DefaultEnvironment other = (DefaultEnvironment) obj;
             return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
-                Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
+                Objects.equals(this.conceptDescriptions, other.conceptDescriptions) &&
+                Objects.equals(this.submodels, other.submodels);
         }
     }
 
@@ -81,16 +83,6 @@ public class DefaultEnvironment implements Environment {
     }
 
     @Override
-    public List<Submodel> getSubmodels() {
-        return submodels;
-    }
-
-    @Override
-    public void setSubmodels(List<Submodel> submodels) {
-        this.submodels = submodels;
-    }
-
-    @Override
     public List<ConceptDescription> getConceptDescriptions() {
         return conceptDescriptions;
     }
@@ -100,13 +92,14 @@ public class DefaultEnvironment implements Environment {
         this.conceptDescriptions = conceptDescriptions;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultEnvironment (" + "assetAdministrationShells=%s,"
-                + "submodels=%s,"
-                + "conceptDescriptions=%s,"
-                + ")",
-            this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
+    @Override
+    public List<Submodel> getSubmodels() {
+        return submodels;
+    }
+
+    @Override
+    public void setSubmodels(List<Submodel> submodels) {
+        this.submodels = submodels;
     }
 
     /**

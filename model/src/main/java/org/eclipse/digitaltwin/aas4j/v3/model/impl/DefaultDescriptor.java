@@ -4,9 +4,9 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -15,32 +15,27 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
+import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationVariableBuilder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.DescriptorBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@IRI("aas:Descriptor")
+public class DefaultDescriptor implements Descriptor {
 
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable
- * 
- * The value of an operation variable is a submodel element that is used as input and/or output
- * variable of an operation.
- */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Descriptor/endpoints")
+    protected List<Endpoint> endpoints = new ArrayList<>();
 
-@IRI("aas:OperationVariable")
-public class DefaultOperationVariable implements OperationVariable {
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/OperationVariable/value")
-    protected SubmodelElement value;
-
-    public DefaultOperationVariable() {}
+    public DefaultDescriptor() {
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.value);
+        return Objects.hash(this.endpoints);
     }
 
     @Override
@@ -52,25 +47,25 @@ public class DefaultOperationVariable implements OperationVariable {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultOperationVariable other = (DefaultOperationVariable) obj;
-            return Objects.equals(this.value, other.value);
+            DefaultDescriptor other = (DefaultDescriptor) obj;
+            return Objects.equals(this.endpoints, other.endpoints);
         }
     }
 
     @Override
-    public SubmodelElement getValue() {
-        return value;
+    public List<Endpoint> getEndpoints() {
+        return endpoints;
     }
 
     @Override
-    public void setValue(SubmodelElement value) {
-        this.value = value;
+    public void setEndpoints(List<Endpoint> endpoints) {
+        this.endpoints = endpoints;
     }
 
     /**
-     * This builder class can be used to construct a DefaultOperationVariable bean.
+     * This builder class can be used to construct a DefaultDescriptor bean.
      */
-    public static class Builder extends OperationVariableBuilder<DefaultOperationVariable, Builder> {
+    public static class Builder extends DescriptorBuilder<DefaultDescriptor, Builder> {
 
         @Override
         protected Builder getSelf() {
@@ -78,8 +73,8 @@ public class DefaultOperationVariable implements OperationVariable {
         }
 
         @Override
-        protected DefaultOperationVariable newBuildingInstance() {
-            return new DefaultOperationVariable();
+        protected DefaultDescriptor newBuildingInstance() {
+            return new DefaultDescriptor();
         }
     }
 }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -32,13 +32,15 @@ import java.util.Objects;
 @IRI("aas:Key")
 public class DefaultKey implements Key {
 
-    @IRI("https://admin-shell.io/aas/3/0/Key/type")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/type")
     protected KeyTypes type;
 
-    @IRI("https://admin-shell.io/aas/3/0/Key/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/value")
     protected String value;
 
-    public DefaultKey() {}
+    public DefaultKey() {
+
+    }
 
     @Override
     public int hashCode() {
@@ -79,14 +81,6 @@ public class DefaultKey implements Key {
     @Override
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultKey (" + "type=%s,"
-                + "value=%s,"
-                + ")",
-            this.type, this.value);
     }
 
     /**

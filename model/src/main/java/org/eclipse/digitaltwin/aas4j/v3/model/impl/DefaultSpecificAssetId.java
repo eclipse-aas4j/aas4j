@@ -15,12 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.QualifierBuilder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIdBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +26,13 @@ import java.util.Objects;
 
 
 /**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Qualifier
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId
  * 
- * A qualifier is a type-value-pair that makes additional statements w.r.t. the value of the
- * element.
+ * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
 
-@IRI("aas:Qualifier")
-public class DefaultQualifier implements Qualifier {
+@IRI("aas:SpecificAssetId")
+public class DefaultSpecificAssetId implements SpecificAssetId {
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
     protected Reference semanticId;
@@ -43,33 +40,24 @@ public class DefaultQualifier implements Qualifier {
     @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/kind")
-    protected QualifierKind kind;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    protected Reference externalSubjectId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/type")
-    protected String type;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueId")
-    protected Reference valueId;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
-    protected DataTypeDefXsd valueType;
-
-    public DefaultQualifier() {
-        this.kind = QualifierKind.CONCEPT_QUALIFIER;
+    public DefaultSpecificAssetId() {
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.kind,
-            this.type,
+        return Objects.hash(this.externalSubjectId,
+            this.name,
             this.value,
-            this.valueId,
-            this.valueType,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -83,35 +71,33 @@ public class DefaultQualifier implements Qualifier {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultQualifier other = (DefaultQualifier) obj;
-            return Objects.equals(this.kind, other.kind) &&
-                Objects.equals(this.type, other.type) &&
+            DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
+            return Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
+                Objects.equals(this.name, other.name) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueId, other.valueId) &&
-                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
     }
 
     @Override
-    public QualifierKind getKind() {
-        return kind;
+    public Reference getExternalSubjectId() {
+        return externalSubjectId;
     }
 
     @Override
-    public void setKind(QualifierKind kind) {
-        this.kind = kind;
+    public void setExternalSubjectId(Reference externalSubjectId) {
+        this.externalSubjectId = externalSubjectId;
     }
 
     @Override
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -122,26 +108,6 @@ public class DefaultQualifier implements Qualifier {
     @Override
     public void setValue(String value) {
         this.value = value;
-    }
-
-    @Override
-    public Reference getValueId() {
-        return valueId;
-    }
-
-    @Override
-    public void setValueId(Reference valueId) {
-        this.valueId = valueId;
-    }
-
-    @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
     }
 
     @Override
@@ -165,9 +131,9 @@ public class DefaultQualifier implements Qualifier {
     }
 
     /**
-     * This builder class can be used to construct a DefaultQualifier bean.
+     * This builder class can be used to construct a DefaultSpecificAssetId bean.
      */
-    public static class Builder extends QualifierBuilder<DefaultQualifier, Builder> {
+    public static class Builder extends SpecificAssetIdBuilder<DefaultSpecificAssetId, Builder> {
 
         @Override
         protected Builder getSelf() {
@@ -175,8 +141,8 @@ public class DefaultQualifier implements Qualifier {
         }
 
         @Override
-        protected DefaultQualifier newBuildingInstance() {
-            return new DefaultQualifier();
+        protected DefaultSpecificAssetId newBuildingInstance() {
+            return new DefaultSpecificAssetId();
         }
     }
 }

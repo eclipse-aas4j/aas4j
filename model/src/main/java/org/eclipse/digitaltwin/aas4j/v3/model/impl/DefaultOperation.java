@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,58 +33,70 @@ import java.util.Objects;
 @IRI("aas:Operation")
 public class DefaultOperation implements Operation {
 
-    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
+    protected ModelingKind kind;
+
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables")
     protected List<OperationVariable> inoutputVariables = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inputVariables")
     protected List<OperationVariable> inputVariables = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/outputVariables")
     protected List<OperationVariable> outputVariables = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
-    protected List<LangStringTextType> descriptions = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
+    protected String checksum;
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
-    protected List<LangStringNameType> displayNames = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    protected List<LangString> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    protected List<LangString> displayName = new ArrayList<>();
+
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
 
-    public DefaultOperation() {}
+    public DefaultOperation() {
+
+        this.kind = ModelingKind.INSTANCE;
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.inputVariables,
+        return Objects.hash(this.inoutputVariables,
+            this.inputVariables,
             this.outputVariables,
-            this.inoutputVariables,
             this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.qualifiers,
+            this.kind,
             this.category,
+            this.checksum,
+            this.description,
+            this.displayName,
             this.idShort,
-            this.displayNames,
-            this.descriptions,
-            this.extensions);
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -97,19 +109,31 @@ public class DefaultOperation implements Operation {
             return false;
         } else {
             DefaultOperation other = (DefaultOperation) obj;
-            return Objects.equals(this.inputVariables, other.inputVariables) &&
+            return Objects.equals(this.inoutputVariables, other.inoutputVariables) &&
+                Objects.equals(this.inputVariables, other.inputVariables) &&
                 Objects.equals(this.outputVariables, other.outputVariables) &&
-                Objects.equals(this.inoutputVariables, other.inoutputVariables) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
+                Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.category, other.category) &&
+                Objects.equals(this.checksum, other.checksum) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayNames, other.displayNames) &&
-                Objects.equals(this.descriptions, other.descriptions) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
+    }
+
+    @Override
+    public List<OperationVariable> getInoutputVariables() {
+        return inoutputVariables;
+    }
+
+    @Override
+    public void setInoutputVariables(List<OperationVariable> inoutputVariables) {
+        this.inoutputVariables = inoutputVariables;
     }
 
     @Override
@@ -130,16 +154,6 @@ public class DefaultOperation implements Operation {
     @Override
     public void setOutputVariables(List<OperationVariable> outputVariables) {
         this.outputVariables = outputVariables;
-    }
-
-    @Override
-    public List<OperationVariable> getInoutputVariables() {
-        return inoutputVariables;
-    }
-
-    @Override
-    public void setInoutputVariables(List<OperationVariable> inoutputVariables) {
-        this.inoutputVariables = inoutputVariables;
     }
 
     @Override
@@ -173,13 +187,13 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
+    public ModelingKind getKind() {
+        return kind;
     }
 
     @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public void setKind(ModelingKind kind) {
+        this.kind = kind;
     }
 
     @Override
@@ -193,6 +207,36 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
+    public String getChecksum() {
+        return checksum;
+    }
+
+    @Override
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    @Override
+    public List<LangString> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangString> description) {
+        this.description = description;
+    }
+
+    @Override
+    public List<LangString> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangString> displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
     public String getIdShort() {
         return idShort;
     }
@@ -200,26 +244,6 @@ public class DefaultOperation implements Operation {
     @Override
     public void setIdShort(String idShort) {
         this.idShort = idShort;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayNames() {
-        return displayNames;
-    }
-
-    @Override
-    public void setDisplayNames(List<LangStringNameType> displayNames) {
-        this.displayNames = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescriptions() {
-        return descriptions;
-    }
-
-    @Override
-    public void setDescriptions(List<LangStringTextType> descriptions) {
-        this.descriptions = descriptions;
     }
 
     @Override
@@ -232,13 +256,14 @@ public class DefaultOperation implements Operation {
         this.extensions = extensions;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultOperation (" + "inputVariables=%s,"
-                + "outputVariables=%s,"
-                + "inoutputVariables=%s,"
-                + ")",
-            this.inputVariables, this.outputVariables, this.inoutputVariables);
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**
