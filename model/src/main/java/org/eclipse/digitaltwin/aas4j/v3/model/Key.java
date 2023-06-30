@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -32,17 +32,17 @@ public interface Key {
     /**
      * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/0/Key/type
+     * More information under https://admin-shell.io/aas/3/0/RC02/Key/type
      *
      * @return Returns the KeyTypes for the property type.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Key/type")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/type")
     KeyTypes getType();
 
     /**
      * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/0/Key/type
+     * More information under https://admin-shell.io/aas/3/0/RC02/Key/type
      *
      * @param type desired value for the property type.
      */
@@ -51,17 +51,17 @@ public interface Key {
     /**
      * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/0/Key/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/Key/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Key/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Key/value")
     String getValue();
 
     /**
      * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/0/Key/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/Key/value
      *
      * @param value desired value for the property value.
      */

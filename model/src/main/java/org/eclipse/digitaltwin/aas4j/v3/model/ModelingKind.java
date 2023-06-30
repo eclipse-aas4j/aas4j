@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -23,21 +23,19 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 /**
  * Enumeration for denoting whether an element is a template or an instance.
  */
-@IRI("aas:ModellingKind")
-public enum ModellingKind {
+@IRI("aas:ModelingKind")
+public enum ModelingKind {
 
     /**
-     * Concrete, clearly identifiable element instance. Its creation and validation may be guided by a
-     * corresponding element template.
+     * Concrete, clearly identifiable component of a certain template.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Instance")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ModelingKind/Instance")
     INSTANCE,
 
     /**
-     * Specification of the common features of a structured element in sufficient detail that such a
-     * instance can be instantiated using it
+     * Software element which specifies the common attributes shared by all instances of the template.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Template")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ModelingKind/Template")
     TEMPLATE;
 
 }

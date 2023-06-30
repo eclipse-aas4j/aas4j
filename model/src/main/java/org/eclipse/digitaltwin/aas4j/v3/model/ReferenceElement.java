@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,18 +34,18 @@ public interface ReferenceElement extends DataElement {
      * Global reference to an external object or entity or a logical reference to another element within
      * the same or another AAS (i.e. a model reference to a Referable).
      *
-     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value
      *
      * @return Returns the Reference for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ReferenceElement/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value")
     Reference getValue();
 
     /**
      * Global reference to an external object or entity or a logical reference to another element within
      * the same or another AAS (i.e. a model reference to a Referable).
      *
-     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/ReferenceElement/value
      *
      * @param value desired value for the property value.
      */

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,13 +33,15 @@ import java.util.Objects;
 @IRI("aas:ValueReferencePair")
 public class DefaultValueReferencePair implements ValueReferencePair {
 
-    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/valueId")
     protected Reference valueId;
 
-    public DefaultValueReferencePair() {}
+    public DefaultValueReferencePair() {
+
+    }
 
     @Override
     public int hashCode() {
@@ -80,14 +82,6 @@ public class DefaultValueReferencePair implements ValueReferencePair {
     @Override
     public void setValueId(Reference valueId) {
         this.valueId = valueId;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultValueReferencePair (" + "value=%s,"
-                + "valueId=%s,"
-                + ")",
-            this.value, this.valueId);
     }
 
     /**

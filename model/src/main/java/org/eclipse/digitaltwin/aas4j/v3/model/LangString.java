@@ -15,33 +15,19 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
+import java.io.Serializable;
 
-/**
- * Enumeration for kinds of qualifiers.
- */
-@IRI("aas:QualifierKind")
-public enum QualifierKind {
 
-    /**
-     * qualifies the semantic definition the element is referring to ('semanticId')
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/ConceptQualifier")
-    CONCEPT_QUALIFIER,
+@IRI("rdf:langString")
+public interface LangString extends Serializable {
 
-    /**
-     * qualifies the elements within a specific submodel on concept level.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/TemplateQualifier")
-    TEMPLATE_QUALIFIER,
+    public String getLanguage();
 
-    /**
-     * qualifies the value of the element and can change during run-time.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/ValueQualifier")
-    VALUE_QUALIFIER;
+    public void setLanguage(String language);
 
+    public String getText();
+
+    public void setText(String text);
 }

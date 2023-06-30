@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -25,8 +25,8 @@ import java.util.List;
  * An element that is referable by its 'idShort'.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SubmodelElement.class),
-    @KnownSubtypes.Type(value = Identifiable.class)
+    @KnownSubtypes.Type(value = Identifiable.class),
+    @KnownSubtypes.Type(value = SubmodelElement.class)
 })
 public interface Referable extends HasExtensions {
 
@@ -34,80 +34,101 @@ public interface Referable extends HasExtensions {
      * The category is a value that gives further meta information w.r.t. to the class of the element.
      * It affects the expected existence of attributes and the applicability of constraints.
      *
-     * More information under https://admin-shell.io/aas/3/0/Referable/category
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/category
      *
      * @return Returns the String for the property category.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
     String getCategory();
 
     /**
      * The category is a value that gives further meta information w.r.t. to the class of the element.
      * It affects the expected existence of attributes and the applicability of constraints.
      *
-     * More information under https://admin-shell.io/aas/3/0/Referable/category
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/category
      *
      * @param category desired value for the property category.
      */
     void setCategory(String category);
 
     /**
+     * Checksum to be used to determine if an Referable (including its aggregated child elements) has
+     * changed.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/checksum
+     *
+     * @return Returns the String for the property checksum.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
+    String getChecksum();
+
+    /**
+     * Checksum to be used to determine if an Referable (including its aggregated child elements) has
+     * changed.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/checksum
+     *
+     * @param checksum desired value for the property checksum.
+     */
+    void setChecksum(String checksum);
+
+    /**
+     * Description or comments on the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/description
+     *
+     * @return Returns the List of LangStrings for the property description.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    List<LangString> getDescription();
+
+    /**
+     * Description or comments on the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/description
+     *
+     * @param description desired value for the property description.
+     */
+    void setDescription(List<LangString> description);
+
+    /**
+     * Display name. Can be provided in several languages.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/displayName
+     *
+     * @return Returns the List of LangStrings for the property displayName.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    List<LangString> getDisplayName();
+
+    /**
+     * Display name. Can be provided in several languages.
+     *
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/displayName
+     *
+     * @param displayName desired value for the property displayName.
+     */
+    void setDisplayName(List<LangString> displayName);
+
+    /**
      * In case of identifiables this attribute is a short name of the element. In case of referable this
      * ID is an identifying string of the element within its name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/Referable/idShort
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/idShort
      *
      * @return Returns the String for the property idShort.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     String getIdShort();
 
     /**
      * In case of identifiables this attribute is a short name of the element. In case of referable this
      * ID is an identifying string of the element within its name space.
      *
-     * More information under https://admin-shell.io/aas/3/0/Referable/idShort
+     * More information under https://admin-shell.io/aas/3/0/RC02/Referable/idShort
      *
      * @param idShort desired value for the property idShort.
      */
     void setIdShort(String idShort);
-
-    /**
-     * Display name. Can be provided in several languages.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
-     *
-     * @return Returns the List of LangStringNameTypes for the property displayNames.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
-    List<LangStringNameType> getDisplayNames();
-
-    /**
-     * Display name. Can be provided in several languages.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
-     *
-     * @param displayNames desired value for the property displayNames.
-     */
-    void setDisplayNames(List<LangStringNameType> displayNames);
-
-    /**
-     * Description or comments on the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/description
-     *
-     * @return Returns the List of LangStringTextTypes for the property descriptions.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
-    List<LangStringTextType> getDescriptions();
-
-    /**
-     * Description or comments on the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/description
-     *
-     * @param descriptions desired value for the property descriptions.
-     */
-    void setDescriptions(List<LangStringTextType> descriptions);
 
 }

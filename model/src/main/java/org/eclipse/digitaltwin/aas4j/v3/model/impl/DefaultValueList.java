@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,7 +34,7 @@ import java.util.Objects;
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-    @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
     protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
     public DefaultValueList() {}
@@ -66,13 +66,6 @@ public class DefaultValueList implements ValueList {
     @Override
     public void setValueReferencePairs(List<ValueReferencePair> valueReferencePairs) {
         this.valueReferencePairs = valueReferencePairs;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultValueList (" + "valueReferencePairs=%s,"
-                + ")",
-            this.valueReferencePairs);
     }
 
     /**

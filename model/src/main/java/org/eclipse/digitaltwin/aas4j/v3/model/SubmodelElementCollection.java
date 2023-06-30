@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
- * 
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -19,7 +19,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 
-import java.util.List;
+import java.util.Collection;
 
 
 /**
@@ -34,20 +34,20 @@ public interface SubmodelElementCollection extends SubmodelElement {
     /**
      * Submodel element contained in the collection.
      *
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value
      *
-     * @return Returns the List of SubmodelElements for the property values.
+     * @return Returns the Collection of SubmodelElements for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
-    List<SubmodelElement> getValues();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
+    Collection<SubmodelElement> getValue();
 
     /**
      * Submodel element contained in the collection.
      *
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value
      *
-     * @param values desired value for the property values.
+     * @param value desired value for the property value.
      */
-    void setValues(List<SubmodelElement> values);
+    void setValue(Collection<SubmodelElement> value);
 
 }
