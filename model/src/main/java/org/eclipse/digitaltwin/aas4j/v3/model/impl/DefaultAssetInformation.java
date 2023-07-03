@@ -41,7 +41,7 @@ public class DefaultAssetInformation implements AssetInformation {
     protected Resource defaultThumbnail;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
-    protected Reference globalAssetId;
+    protected String globalAssetId;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
     protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
@@ -96,12 +96,12 @@ public class DefaultAssetInformation implements AssetInformation {
     }
 
     @Override
-    public Reference getGlobalAssetId() {
+    public String getGlobalAssetId() {
         return globalAssetId;
     }
 
     @Override
-    public void setGlobalAssetId(Reference globalAssetId) {
+    public void setGlobalAssetId(String globalAssetId) {
         this.globalAssetId = globalAssetId;
     }
 

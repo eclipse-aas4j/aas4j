@@ -31,6 +31,6 @@ public interface EmbeddedDataSpecificationMixin {
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
     @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
-    public DataSpecificationIEC61360 getDataSpecificationContent();
+    public DataSpecificationIec61360 getDataSpecificationContent();
 
 }

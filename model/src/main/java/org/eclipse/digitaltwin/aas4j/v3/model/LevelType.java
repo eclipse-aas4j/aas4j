@@ -23,26 +23,30 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 /**  
 */
 @IRI("aas:LevelType")
-public enum LevelType {
+public interface LevelType {
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LevelType/Max")
-    MAX,
+    
+    public boolean getMin();
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LevelType/Min")
-    MIN,
+    
+    public void setMin(boolean min);
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LevelType/Nom")
-    NOM,
+    
+    public boolean getNom();
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/LevelType/Typ")
-    TYP;
+    
+    public void setNom(boolean nom);
+
+    
+    public boolean getTyp();
+
+    
+    public void setTyp(boolean typ);
+
+    
+    public boolean getMax();
+
+    
+    public void setMax(boolean max);
 
 }

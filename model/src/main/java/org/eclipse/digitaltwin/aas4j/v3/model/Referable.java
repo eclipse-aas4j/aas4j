@@ -80,7 +80,7 @@ public interface Referable extends HasExtensions {
      * @return Returns the List of LangStrings for the property description.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    List<LangString> getDescription();
+    List<LangStringTextType> getDescription();
 
     /**
      * Description or comments on the element.
@@ -89,7 +89,7 @@ public interface Referable extends HasExtensions {
      *
      * @param description desired value for the property description.
      */
-    void setDescription(List<LangString> description);
+    void setDescription(List<LangStringTextType> description);
 
     /**
      * Display name. Can be provided in several languages.
@@ -99,7 +99,7 @@ public interface Referable extends HasExtensions {
      * @return Returns the List of LangStrings for the property displayName.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    List<LangString> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
     /**
      * Display name. Can be provided in several languages.
@@ -108,7 +108,7 @@ public interface Referable extends HasExtensions {
      *
      * @param displayName desired value for the property displayName.
      */
-    void setDisplayName(List<LangString> displayName);
+    void setDisplayName(List<LangStringNameType> displayName);
 
     /**
      * In case of identifiables this attribute is a short name of the element. In case of referable this

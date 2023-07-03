@@ -27,7 +27,7 @@ import java.util.List;
 @JsonTypeName("aas:DataSpecificationContent")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = DataSpecificationIEC61360.class)
+        @JsonSubTypes.Type(value = DataSpecificationIec61360.class)
 })
 public interface DataSpecificationContentMixin {
 

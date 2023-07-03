@@ -19,7 +19,8 @@ import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 
@@ -43,7 +44,7 @@ public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B 
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
+    public B description(List<LangStringTextType> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }
@@ -54,7 +55,7 @@ public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B 
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
+    public B displayName(List<LangStringNameType> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }

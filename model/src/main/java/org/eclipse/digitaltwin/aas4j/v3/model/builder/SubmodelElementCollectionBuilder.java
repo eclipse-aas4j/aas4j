@@ -140,7 +140,7 @@ public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElement
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
+    public B description(List<LangStringTextType> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }
@@ -151,7 +151,7 @@ public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElement
      * @param description desired value to be added
      * @return Builder object with new value for description
      */
-    public B description(LangString description) {
+    public B description(LangStringTextType description) {
         getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
@@ -162,7 +162,7 @@ public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElement
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
+    public B displayName(List<LangStringNameType> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -173,7 +173,7 @@ public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElement
      * @param displayName desired value to be added
      * @return Builder object with new value for displayName
      */
-    public B displayName(LangString displayName) {
+    public B displayName(LangStringNameType displayName) {
         getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }

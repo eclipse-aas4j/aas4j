@@ -19,7 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.junit.Before;
@@ -46,7 +46,7 @@ public class JsonReferenceDeserializerTest {
         JsonSerializer serializer = new JsonSerializer();
         reference_string = serializer.writeReference(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
         reference_list_string = serializer.writeReferences(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
-//        valueReferencePair_string = serializer.write(((DataSpecificationIEC61360) AASFull.ENVIRONMENT.getConceptDescriptions().get(3).getEmbeddedDataSpecifications().get(0).getDataSpecificationContent()).getValueList().getValueReferencePairs().get(0));
+//        valueReferencePair_string = serializer.write(((DataSpecificationIec61360) AASFull.ENVIRONMENT.getConceptDescriptions().get(3).getEmbeddedDataSpecifications().get(0).getDataSpecificationContent()).getValueList().getValueReferencePairs().get(0));
     }
 
 
@@ -89,7 +89,7 @@ public class JsonReferenceDeserializerTest {
 
         List<Reference> referenceList = deserializer.readReferences(reference_list_string);
 
-        assertTrue(referenceList.get(0).getType().equals(ReferenceTypes.GLOBAL_REFERENCE));
+        assertTrue(referenceList.get(0).getType().equals(ReferenceTypes.EXTERNAL_REFERENCE));
     }
 
 

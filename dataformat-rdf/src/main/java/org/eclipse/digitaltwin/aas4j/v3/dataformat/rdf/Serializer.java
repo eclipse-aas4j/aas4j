@@ -73,7 +73,7 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
         addKnownNamespace("owl", "http://www.w3.org/2002/07/owl#");
         addKnownNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
         addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/RC02/");
-        //addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
+        //addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0/RC02/");
         //addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
 
     }

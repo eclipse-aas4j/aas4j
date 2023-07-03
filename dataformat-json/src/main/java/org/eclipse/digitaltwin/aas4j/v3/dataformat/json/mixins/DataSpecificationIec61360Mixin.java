@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 import java.util.List;
 
-public interface DataSpecificationIEC61360Mixin {
+public interface DataSpecificationIec61360Mixin {
 
     @JsonProperty("levelType")
     public List<LevelType> getLevelTypes();

@@ -187,7 +187,7 @@ public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRel
      * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangString> displayName) {
+    public B displayName(List<LangStringNameType> displayName) {
         getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
@@ -198,7 +198,7 @@ public abstract class AnnotatedRelationshipElementBuilder<T extends AnnotatedRel
      * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangString> description) {
+    public B description(List<LangStringTextType> description) {
         getBuildingInstance().setDescription(description);
         return getSelf();
     }

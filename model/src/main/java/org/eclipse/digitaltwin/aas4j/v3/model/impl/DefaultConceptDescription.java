@@ -56,10 +56,10 @@ public class DefaultConceptDescription implements ConceptDescription {
     protected String checksum;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description = new ArrayList<>();
+    protected List<LangStringTextType> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName = new ArrayList<>();
+    protected List<LangStringNameType> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -168,22 +168,22 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

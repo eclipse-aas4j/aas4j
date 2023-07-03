@@ -37,7 +37,7 @@ public class DefaultEntity implements Entity {
     protected EntityType entityType;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/globalAssetId")
-    protected Reference globalAssetId;
+    protected String globalAssetId;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/specificAssetId")
     protected SpecificAssetId specificAssetId;
@@ -70,10 +70,10 @@ public class DefaultEntity implements Entity {
     protected String checksum;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    protected List<LangString> description = new ArrayList<>();
+    protected List<LangStringTextType> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    protected List<LangString> displayName = new ArrayList<>();
+    protected List<LangStringNameType> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
     protected String idShort;
@@ -142,12 +142,12 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public Reference getGlobalAssetId() {
+    public String getGlobalAssetId() {
         return globalAssetId;
     }
 
     @Override
-    public void setGlobalAssetId(Reference globalAssetId) {
+    public void setGlobalAssetId(String globalAssetId) {
         this.globalAssetId = globalAssetId;
     }
 
@@ -232,22 +232,22 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

@@ -33,10 +33,10 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     protected AdministrativeInformation administration;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/description")
-    protected List<LangString> description;
+    protected List<LangStringTextType> description;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/displayName")
-    protected List<LangString> displayName;
+    protected List<LangStringNameType> displayName;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/idShort")
     protected String idShort;
@@ -103,22 +103,22 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     }
 
     @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

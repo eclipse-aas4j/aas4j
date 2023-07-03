@@ -16,14 +16,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -49,9 +42,9 @@ public class CustomProperty implements Property {
 
 	protected String category;
 
-	protected List<LangString> description;
+	protected List<LangStringTextType> description;
 
-	protected List<LangString> displayName;
+	protected List<LangStringNameType> displayName;
 
 	protected String idShort;
 
@@ -130,12 +123,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDescription() {
+	final public List<LangStringTextType> getDescription() {
 		return description;
 	}
 
 	@Override
-	final public void setDescription(List<LangString> description) {
+	final public void setDescription(List<LangStringTextType> description) {
 		this.description = description;
 	}
 
@@ -150,12 +143,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDisplayName() {
+	final public List<LangStringNameType> getDisplayName() {
 		return displayName;
 	}
 
 	@Override
-	final public void setDisplayName(List<LangString> displayName) {
+	final public void setDisplayName(List<LangStringNameType> displayName) {
 		this.displayName = displayName;
 	}
 

@@ -29,8 +29,8 @@ public enum ReferenceTypes {
     /**
      * GlobalReference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/GlobalReference")
-    GLOBAL_REFERENCE,
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ExternalReference")
+    EXTERNAL_REFERENCE,
 
     /**
      * ModelReference

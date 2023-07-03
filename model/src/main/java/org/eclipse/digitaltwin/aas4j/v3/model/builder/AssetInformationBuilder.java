@@ -51,7 +51,7 @@ public abstract class AssetInformationBuilder<T extends AssetInformation, B exte
      * @param globalAssetId desired value to be set
      * @return Builder object with new value for globalAssetId
      */
-    public B globalAssetId(Reference globalAssetId) {
+    public B globalAssetId(String globalAssetId) {
         getBuildingInstance().setGlobalAssetId(globalAssetId);
         return getSelf();
     }

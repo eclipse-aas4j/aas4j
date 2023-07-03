@@ -77,7 +77,7 @@ public interface AssetInformation {
      * @return Returns the Reference for the property globalAssetId.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
-    Reference getGlobalAssetId();
+    String getGlobalAssetId();
 
     /**
      * Global identifier of the asset the AAS is representing.
@@ -86,7 +86,7 @@ public interface AssetInformation {
      *
      * @param globalAssetId desired value for the property globalAssetId.
      */
-    void setGlobalAssetId(Reference globalAssetId);
+    void setGlobalAssetId(String globalAssetId);
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial

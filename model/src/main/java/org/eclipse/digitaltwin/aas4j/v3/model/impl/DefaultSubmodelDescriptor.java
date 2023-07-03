@@ -21,7 +21,8 @@ import java.util.Objects;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -37,10 +38,10 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     protected AdministrativeInformation administration;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/description")
-    protected List<LangString> description;
+    protected List<LangStringTextType> description;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/displayName")
-    protected List<LangString> displayName;
+    protected List<LangStringNameType> displayName;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/idShort")
     protected String idShort;
@@ -96,22 +97,22 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     }
 
     @Override
-    public List<LangString> getDescription() {
+    public List<LangStringTextType> getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(List<LangString> description) {
+    public void setDescription(List<LangStringTextType> description) {
         this.description = description;
     }
 
     @Override
-    public List<LangString> getDisplayName() {
+    public List<LangStringNameType> getDisplayName() {
         return displayName;
     }
 
     @Override
-    public void setDisplayName(List<LangString> displayName) {
+    public void setDisplayName(List<LangStringNameType> displayName) {
         this.displayName = displayName;
     }
 

@@ -19,7 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 import org.junit.Assert;
@@ -41,21 +41,21 @@ public class EnumDeserializerTest {
     }
 
     @Test
-    public void whenSerializingEnum_usingDataTypeIEC61360_shouldReturnUpperCase() {
-        assertDeserialization("BOOLEAN", DataTypeIEC61360.BOOLEAN);
-        assertDeserialization("DATE", DataTypeIEC61360.DATE);
-        assertDeserialization("INTEGER_CURRENCY", DataTypeIEC61360.INTEGER_CURRENCY);
-        assertDeserialization("INTEGER_COUNT", DataTypeIEC61360.INTEGER_COUNT);
-        assertDeserialization("INTEGER_MEASURE", DataTypeIEC61360.INTEGER_MEASURE);
-        assertDeserialization("RATIONAL", DataTypeIEC61360.RATIONAL);
-        assertDeserialization("RATIONAL_MEASURE", DataTypeIEC61360.RATIONAL_MEASURE);
-        assertDeserialization("REAL_COUNT", DataTypeIEC61360.REAL_COUNT);
-        assertDeserialization("REAL_MEASURE", DataTypeIEC61360.REAL_MEASURE);
-        assertDeserialization("STRING", DataTypeIEC61360.STRING);
-        assertDeserialization("STRING_TRANSLATABLE", DataTypeIEC61360.STRING_TRANSLATABLE);
-        assertDeserialization("TIME", DataTypeIEC61360.TIME);
-        assertDeserialization("TIMESTAMP", DataTypeIEC61360.TIMESTAMP);
-        assertDeserialization("IRI", DataTypeIEC61360.IRI);
+    public void whenSerializingEnum_usingDataTypeIec61360_shouldReturnUpperCase() {
+        assertDeserialization("BOOLEAN", DataTypeIec61360.BOOLEAN);
+        assertDeserialization("DATE", DataTypeIec61360.DATE);
+        assertDeserialization("INTEGER_CURRENCY", DataTypeIec61360.INTEGER_CURRENCY);
+        assertDeserialization("INTEGER_COUNT", DataTypeIec61360.INTEGER_COUNT);
+        assertDeserialization("INTEGER_MEASURE", DataTypeIec61360.INTEGER_MEASURE);
+        assertDeserialization("RATIONAL", DataTypeIec61360.RATIONAL);
+        assertDeserialization("RATIONAL_MEASURE", DataTypeIec61360.RATIONAL_MEASURE);
+        assertDeserialization("REAL_COUNT", DataTypeIec61360.REAL_COUNT);
+        assertDeserialization("REAL_MEASURE", DataTypeIec61360.REAL_MEASURE);
+        assertDeserialization("STRING", DataTypeIec61360.STRING);
+        assertDeserialization("STRING_TRANSLATABLE", DataTypeIec61360.STRING_TRANSLATABLE);
+        assertDeserialization("TIME", DataTypeIec61360.TIME);
+        assertDeserialization("TIMESTAMP", DataTypeIec61360.TIMESTAMP);
+        assertDeserialization("IRI", DataTypeIec61360.IRI);
     }
 
     @Test

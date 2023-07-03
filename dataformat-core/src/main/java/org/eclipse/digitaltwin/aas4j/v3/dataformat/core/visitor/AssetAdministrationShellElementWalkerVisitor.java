@@ -47,7 +47,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (assetInformation == null) {
             return;
         }
-        visit(assetInformation.getGlobalAssetId());
+        //visit(assetInformation.getGlobalAssetId());
         assetInformation.getSpecificAssetIds().forEach(x -> visit(x));
         visit(assetInformation.getDefaultThumbnail());
         AssetAdministrationShellElementVisitor.super.visit(assetInformation);
@@ -129,7 +129,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (multiLanguageProperty == null) {
             return;
         }
-        multiLanguageProperty.getValue().forEach(x -> visit(x));
+        //multiLanguageProperty.getValue().forEach(x -> visit(x));
         visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
@@ -175,8 +175,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescription().forEach(x -> visit(x));
-        referable.getDisplayName().forEach(x -> visit(x));
+        // referable.getDescription().forEach(x -> visit(x));
+        // referable.getDisplayName().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 
@@ -213,7 +213,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (entity == null) {
             return;
         }
-        visit(entity.getGlobalAssetId());
+        //visit(entity.getGlobalAssetId());
         visit(entity.getSpecificAssetId());
         entity.getStatements().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(entity);

@@ -23,7 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
-public interface SpecificAssetIdMixin {
+public interface SpecificAssetIDMixin {
     
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
     public String getName();

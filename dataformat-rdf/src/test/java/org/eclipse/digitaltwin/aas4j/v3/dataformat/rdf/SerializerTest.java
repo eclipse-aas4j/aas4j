@@ -24,7 +24,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -70,8 +70,8 @@ public class SerializerTest {
                             .value("https://example.org")
                             .build())
                         .build())
-                    .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                        .dataType(DataTypeIEC61360.RATIONAL)
+                    .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
+                        .dataType(DataTypeIec61360.RATIONAL)
                         .build())
                     .build())
                 .build();

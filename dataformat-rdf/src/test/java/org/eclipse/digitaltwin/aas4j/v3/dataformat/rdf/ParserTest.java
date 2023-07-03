@@ -111,7 +111,7 @@ public class ParserTest {
                 "  \"@context\" : {\n" +
                 "    \"aas\" : \"https://admin-shell.io/aas/3/0/RC02/\",\n" +
                 "    \"phys_unit\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/\",\n" +
-                "    \"iec61360\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/\"\n" +
+                "    \"iec61360\" : \"https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0/RC02/\"\n" +
                 "  },\n" +
                 "    \"@id\" : \"https://admin-shell.io/autogen/DefaultConceptDescription/c6bd22b3-6487-49d2-a86d-e3834d22ceb9\",\n" +
                 "    \"@type\" : \"aas:ConceptDescription\",\n" +
@@ -130,15 +130,15 @@ public class ParserTest {
                 "        } ]\n" +
                 "      },\n" +
                 "      \"https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent\" : {\n" +
-                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecificationIEC61360/457288b3-77e1-474a-ab74-866bdcafd914\",\n" +
-                "        \"@type\" : \"iec61360:DataSpecificationIEC61360\",\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType\" : {\n" +
-                "          \"@type\" : \"https://admin-shell.io/aas/3/0/RC02/DataTypeIEC61360\",\n" +
+                "        \"@id\" : \"https://admin-shell.io/autogen/DefaultDataSpecificationIec61360/457288b3-77e1-474a-ab74-866bdcafd914\",\n" +
+                "        \"@type\" : \"iec61360:DataSpecificationIec61360\",\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/dataType\" : {\n" +
+                "          \"@type\" : \"https://admin-shell.io/aas/3/0/RC02/DataTypeIec61360\",\n" +
                 "          \"@id\" : \"https://admin-shell.io/aas/3/0/RC02/RATIONAL\"\n" +
                 "        },\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition\" : [ ],\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName\" : [ ],\n" +
-                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName\" : [ ]\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/definition\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/preferredName\" : [ ],\n" +
+                "        \"https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/shortName\" : [ ]\n" +
                 "      },\n" +
                 "      \"https://admin-shell.io/aas/3/0/RC02/DataSpecification/id\" : \"http://example.org/DataSpecification1\"\n" +
                 "    } ]\n" +

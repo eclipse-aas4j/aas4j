@@ -17,7 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIEC61360Builder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,52 +26,52 @@ import java.util.Objects;
 
 /**
  * Default implementation of package
- * org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360
+ * org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360
  * 
  * Content of data specification template for concept descriptions for properties, values and value
  * lists conformant to IEC 61360.
  */
 
-@IRI("aas:DataSpecificationIEC61360")
-public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC61360 {
+@IRI("aas:DataSpecificationIec61360")
+public class DefaultDataSpecificationIec61360 implements DataSpecificationIec61360 {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType")
-    protected DataTypeIEC61360 dataType;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/dataType")
+    protected DataTypeIec61360 dataType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/definition")
     protected List<LangString> definition = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/levelType")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/levelType")
     protected LevelType levelType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/preferredName")
     protected List<LangString> preferredName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/shortName")
     protected List<LangString> shortName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/sourceOfDefinition")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/sourceOfDefinition")
     protected String sourceOfDefinition;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/symbol")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/symbol")
     protected String symbol;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unit")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/unit")
     protected String unit;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/unitId")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/unitId")
     protected Reference unitId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/value")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueFormat")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/valueFormat")
     protected String valueFormat;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/valueList")
+    @IRI("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/valueList")
     protected ValueList valueList;
 
-    public DefaultDataSpecificationIEC61360() {
+    public DefaultDataSpecificationIec61360() {
 
     }
 
@@ -100,7 +100,7 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultDataSpecificationIEC61360 other = (DefaultDataSpecificationIEC61360) obj;
+            DefaultDataSpecificationIec61360 other = (DefaultDataSpecificationIec61360) obj;
             return Objects.equals(this.dataType, other.dataType) &&
                 Objects.equals(this.definition, other.definition) &&
                 Objects.equals(this.levelType, other.levelType) &&
@@ -117,12 +117,12 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     @Override
-    public DataTypeIEC61360 getDataType() {
+    public DataTypeIec61360 getDataType() {
         return dataType;
     }
 
     @Override
-    public void setDataType(DataTypeIEC61360 dataType) {
+    public void setDataType(DataTypeIec61360 dataType) {
         this.dataType = dataType;
     }
 
@@ -237,9 +237,9 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
     }
 
     /**
-     * This builder class can be used to construct a DefaultDataSpecificationIEC61360 bean.
+     * This builder class can be used to construct a DefaultDataSpecificationIec61360 bean.
      */
-    public static class Builder extends DataSpecificationIEC61360Builder<DefaultDataSpecificationIEC61360, Builder> {
+    public static class Builder extends DataSpecificationIec61360Builder<DefaultDataSpecificationIec61360, Builder> {
 
         @Override
         protected Builder getSelf() {
@@ -247,8 +247,8 @@ public class DefaultDataSpecificationIEC61360 implements DataSpecificationIEC613
         }
 
         @Override
-        protected DefaultDataSpecificationIEC61360 newBuildingInstance() {
-            return new DefaultDataSpecificationIEC61360();
+        protected DefaultDataSpecificationIec61360 newBuildingInstance() {
+            return new DefaultDataSpecificationIec61360();
         }
     }
 }

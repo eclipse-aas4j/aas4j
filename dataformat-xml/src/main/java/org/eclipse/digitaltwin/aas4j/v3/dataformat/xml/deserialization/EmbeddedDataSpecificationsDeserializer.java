@@ -25,10 +25,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DataSpecificationManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -57,13 +57,13 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Lis
 
     private List<DataSpecificationContent> createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
         JsonNode nodeContent = node.get(DataSpecificationManager.PROP_DATA_SPECIFICATION_CONTENT);
-        JsonNode specificationNode = nodeContent.get("dataSpecificationIEC61360");
-        DataSpecificationContent content = createDefaultDataSpecificationIEC61360FromNode(parser, specificationNode);
+        JsonNode specificationNode = nodeContent.get("DataSpecificationIec61360");
+        DataSpecificationContent content = createDefaultDataSpecificationIec61360FromNode(parser, specificationNode);
         return Collections.singletonList(content);
     }
 
-    private DataSpecificationContent createDefaultDataSpecificationIEC61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIEC61360.class);
+    private DataSpecificationContent createDefaultDataSpecificationIec61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
+        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIec61360.class);
     }
 
 }

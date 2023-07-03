@@ -20,7 +20,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import java.util.List;
 
 
-public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificationIEC61360, B extends DataSpecificationIEC61360Builder<T, B>>
+public abstract class DataSpecificationIec61360Builder<T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**
@@ -29,7 +29,7 @@ public abstract class DataSpecificationIEC61360Builder<T extends DataSpecificati
      * @param dataType desired value to be set
      * @return Builder object with new value for dataType
      */
-    public B dataType(DataTypeIEC61360 dataType) {
+    public B dataType(DataTypeIec61360 dataType) {
         getBuildingInstance().setDataType(dataType);
         return getSelf();
     }

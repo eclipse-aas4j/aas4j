@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
@@ -31,10 +31,10 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface EmbeddedDataSpecificationMixin {
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-    public DataSpecificationIEC61360 getDataSpecificationContent();
+    public DataSpecificationIec61360 getDataSpecificationContent();
 
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent")
-    public void setDataSpecificationContent(DataSpecificationIEC61360 dataSpecificationContent);
+    public void setDataSpecificationContent(DataSpecificationIec61360 dataSpecificationContent);
 
     @JsonProperty("https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecification")
     public Reference getDataSpecification();

@@ -27,8 +27,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import java.util.List;
 
 @JsonPropertyOrder({"preferredName", "shortName", "unit", "unitId", "sourceOfDefinition", "symbol", "dataType", "definition", "valueFormat", "valueList", "value", "valueId", "levelType"})
-//@JacksonXmlRootElement(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationIec61360")
-public interface DataSpecificationIEC61360Mixin {
+//@JacksonXmlRootElement(namespace = AasXmlNamespaceContext.AAS_URI, localName = "DataSpecificationIec61360")
+public interface DataSpecificationIec61360Mixin {
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "definition")
     public List<LangString> getDefinition();
@@ -82,6 +82,6 @@ public interface DataSpecificationIEC61360Mixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
     @JsonSerialize(using = EnumSerializer.class)
-    public DataTypeIEC61360 getDataType();
+    public DataTypeIec61360 getDataType();
 
 }

@@ -19,7 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
@@ -51,21 +51,21 @@ public class EnumSerializerTest {
     }
 
     @Test
-    public void whenSerializingEnum_usingDataTypeIEC61360_shouldReturnUpperCase() {
-        assertSerialization(DataTypeIEC61360.BOOLEAN, "BOOLEAN");
-        assertSerialization(DataTypeIEC61360.DATE, "DATE");
-        assertSerialization(DataTypeIEC61360.INTEGER_CURRENCY, "INTEGER_CURRENCY");
-        assertSerialization(DataTypeIEC61360.INTEGER_COUNT, "INTEGER_COUNT");
-        assertSerialization(DataTypeIEC61360.INTEGER_MEASURE, "INTEGER_MEASURE");
-        assertSerialization(DataTypeIEC61360.RATIONAL, "RATIONAL");
-        assertSerialization(DataTypeIEC61360.RATIONAL_MEASURE, "RATIONAL_MEASURE");
-        assertSerialization(DataTypeIEC61360.REAL_COUNT, "REAL_COUNT");
-        assertSerialization(DataTypeIEC61360.REAL_MEASURE, "REAL_MEASURE");
-        assertSerialization(DataTypeIEC61360.STRING, "STRING");
-        assertSerialization(DataTypeIEC61360.STRING_TRANSLATABLE, "STRING_TRANSLATABLE");
-        assertSerialization(DataTypeIEC61360.TIME, "TIME");
-        assertSerialization(DataTypeIEC61360.TIMESTAMP, "TIMESTAMP");
-        assertSerialization(DataTypeIEC61360.IRI, "IRI");
+    public void whenSerializingEnum_usingDataTypeIec61360_shouldReturnUpperCase() {
+        assertSerialization(DataTypeIec61360.BOOLEAN, "BOOLEAN");
+        assertSerialization(DataTypeIec61360.DATE, "DATE");
+        assertSerialization(DataTypeIec61360.INTEGER_CURRENCY, "INTEGER_CURRENCY");
+        assertSerialization(DataTypeIec61360.INTEGER_COUNT, "INTEGER_COUNT");
+        assertSerialization(DataTypeIec61360.INTEGER_MEASURE, "INTEGER_MEASURE");
+        assertSerialization(DataTypeIec61360.RATIONAL, "RATIONAL");
+        assertSerialization(DataTypeIec61360.RATIONAL_MEASURE, "RATIONAL_MEASURE");
+        assertSerialization(DataTypeIec61360.REAL_COUNT, "REAL_COUNT");
+        assertSerialization(DataTypeIec61360.REAL_MEASURE, "REAL_MEASURE");
+        assertSerialization(DataTypeIec61360.STRING, "STRING");
+        assertSerialization(DataTypeIec61360.STRING_TRANSLATABLE, "STRING_TRANSLATABLE");
+        assertSerialization(DataTypeIec61360.TIME, "TIME");
+        assertSerialization(DataTypeIec61360.TIMESTAMP, "TIMESTAMP");
+        assertSerialization(DataTypeIec61360.IRI, "IRI");
     }
 
     @Test

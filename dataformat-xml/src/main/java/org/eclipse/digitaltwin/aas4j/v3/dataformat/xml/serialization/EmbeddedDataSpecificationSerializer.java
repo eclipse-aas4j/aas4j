@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,12 +35,12 @@ import java.io.IOException;
  * reference.
  */
 // TODO: solve EmbeddedDataSpecifiction issue
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIEC61360> {
+public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIec61360> {
 
     private static final Logger logger = LoggerFactory.getLogger(EmbeddedDataSpecificationSerializer.class);
 
     @Override
-    public void serialize(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider)
+    public void serialize(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider)
             throws IOException {
         if (data == null) {
             return;
@@ -48,13 +48,13 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
 //        generator.writeFieldName(PROP_DATA_SPECIFICATION_CONTENT);
         generator.writeStartObject();
         // TODO: Add field name according to template type
-        generator.writeObjectField("dataSpecificationIec61360", data);
+        generator.writeObjectField("DataSpecificationIec61360", data);
         generator.writeEndObject();
 
     }
 
     @Override
-    public void serializeWithType(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider,
+    public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
             TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }

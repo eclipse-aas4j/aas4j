@@ -39,11 +39,11 @@ public class DataSpecificationManager {
 
     public static final String PROP_DATA_SPECIFICATION = "dataSpecification";
     public static final String PROP_DATA_SPECIFICATION_CONTENT = "dataSpecificationContent";
-    public static final String DATA_SPECIFICATION_IEC61360_IRI = "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0";
+    public static final String DATA_SPECIFICATION_IEC61360_IRI = "http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0";
     public static final String DATA_SPECIFICATION_IEC61360_PREFIX = "IEC";
 
     private static final Set<DataSpecificationInfo> KNOWN_IMPLEMENTATIONS = new HashSet<>(Arrays.asList(
-    //        new DataSpecificationInfo(DataSpecificationIEC61360.class,
+    //        new DataSpecificationInfo(DataSpecificationIec61360.class,
     //                createGlobalIri(DATA_SPECIFICATION_IEC61360_IRI),
     //                DATA_SPECIFICATION_IEC61360_PREFIX)
     ));

@@ -26,7 +26,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
  * and meta information about the template itself.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DataSpecificationIEC61360.class),
+    @KnownSubtypes.Type(value = DataSpecificationIec61360.class),
     @KnownSubtypes.Type(value = DataSpecificationPhysicalUnit.class)
 })
 public interface DataSpecificationContent {

@@ -57,7 +57,7 @@ public interface Entity extends SubmodelElement {
      * @return Returns the Reference for the property globalAssetId.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/globalAssetId")
-    Reference getGlobalAssetId();
+    String getGlobalAssetId();
 
     /**
      * Global identifier of the asset the entity is representing.
@@ -66,7 +66,7 @@ public interface Entity extends SubmodelElement {
      *
      * @param globalAssetId desired value for the property globalAssetId.
      */
-    void setGlobalAssetId(Reference globalAssetId);
+    void setGlobalAssetId(String globalAssetId);
 
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented

@@ -38,7 +38,7 @@ public interface MultiLanguageProperty extends DataElement {
      * @return Returns the List of LangStrings for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
-    List<LangString> getValue();
+    List<LangStringTextType> getValue();
 
     /**
      * The value of the property instance.
@@ -47,7 +47,7 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * @param value desired value for the property value.
      */
-    void setValue(List<LangString> value);
+    void setValue(List<LangStringTextType> value);
 
     /**
      * Reference to the global unique ID of a coded value.

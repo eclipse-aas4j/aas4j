@@ -52,7 +52,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      * @return Returns the LangStringSet for the property description.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/description")
-    List<LangString> getDescription();
+    List<LangStringTextType> getDescription();
 
     /**
      *
@@ -60,7 +60,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      *
      * @param description desired value for the property description.
      */
-    void setDescription(List<LangString> description);
+    void setDescription(List<LangStringTextType> description);
 
     /**
      *
@@ -69,7 +69,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      * @return Returns the LangStringSet for the property displayName.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/displayName")
-    List<LangString> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
     /**
      *
@@ -77,7 +77,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      *
      * @param displayName desired value for the property displayName.
      */
-    void setDisplayName(List<LangString> displayName);
+    void setDisplayName(List<LangStringNameType> displayName);
 
 
     /**

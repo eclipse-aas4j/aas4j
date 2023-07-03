@@ -49,8 +49,8 @@ public interface AssetAdministrationShellElementVisitor {
             return;
         }
         Class<?> type = dataSpecificationContent.getClass();
-        // if (DataSpecificationIEC61360.class.isAssignableFrom(type)) {
-        //    visit((DataSpecificationIEC61360) dataSpecificationContent);
+        // if (DataSpecificationIec61360.class.isAssignableFrom(type)) {
+        //    visit((DataSpecificationIec61360) dataSpecificationContent);
         //}
     }
 
