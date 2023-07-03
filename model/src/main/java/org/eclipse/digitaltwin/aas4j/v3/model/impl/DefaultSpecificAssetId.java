@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,30 +34,28 @@ import java.util.Objects;
 @IRI("aas:SpecificAssetId")
 public class DefaultSpecificAssetId implements SpecificAssetId {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
     protected Reference externalSubjectId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
     protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
     protected String value;
 
-    public DefaultSpecificAssetId() {
-
-    }
+    public DefaultSpecificAssetId() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.externalSubjectId,
-            this.name,
+        return Objects.hash(this.name,
             this.value,
+            this.externalSubjectId,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -72,22 +70,12 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
             return false;
         } else {
             DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
-            return Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
-                Objects.equals(this.name, other.name) &&
+            return Objects.equals(this.name, other.name) &&
                 Objects.equals(this.value, other.value) &&
+                Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
-    }
-
-    @Override
-    public Reference getExternalSubjectId() {
-        return externalSubjectId;
-    }
-
-    @Override
-    public void setExternalSubjectId(Reference externalSubjectId) {
-        this.externalSubjectId = externalSubjectId;
     }
 
     @Override
@@ -111,6 +99,16 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     }
 
     @Override
+    public Reference getExternalSubjectId() {
+        return externalSubjectId;
+    }
+
+    @Override
+    public void setExternalSubjectId(Reference externalSubjectId) {
+        this.externalSubjectId = externalSubjectId;
+    }
+
+    @Override
     public Reference getSemanticId() {
         return semanticId;
     }
@@ -128,6 +126,15 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     @Override
     public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
         this.supplementalSemanticIds = supplementalSemanticIds;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultSpecificAssetId (" + "name=%s,"
+                + "value=%s,"
+                + "externalSubjectId=%s,"
+                + ")",
+            this.name, this.value, this.externalSubjectId);
     }
 
     /**

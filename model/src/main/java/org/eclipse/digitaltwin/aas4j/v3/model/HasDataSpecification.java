@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -27,8 +27,8 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = AdministrativeInformation.class),
     @KnownSubtypes.Type(value = AssetAdministrationShell.class),
-    @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = ConceptDescription.class),
+    @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface HasDataSpecification {
@@ -37,19 +37,19 @@ public interface HasDataSpecification {
      * Embedded data specification.
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     * https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications
      *
      * @return Returns the List of EmbeddedDataSpecifications for the property
      *         embeddedDataSpecifications.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     /**
      * Embedded data specification.
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications
+     * https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications
      *
      * @param embeddedDataSpecifications desired value for the property embeddedDataSpecifications.
      */

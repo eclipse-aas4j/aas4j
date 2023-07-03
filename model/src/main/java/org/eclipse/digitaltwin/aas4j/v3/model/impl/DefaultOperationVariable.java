@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,7 +33,7 @@ import java.util.Objects;
 @IRI("aas:OperationVariable")
 public class DefaultOperationVariable implements OperationVariable {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/OperationVariable/value")
+    @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
     protected SubmodelElement value;
 
     public DefaultOperationVariable() {}
@@ -65,6 +65,13 @@ public class DefaultOperationVariable implements OperationVariable {
     @Override
     public void setValue(SubmodelElement value) {
         this.value = value;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultOperationVariable (" + "value=%s,"
+                + ")",
+            this.value);
     }
 
     /**

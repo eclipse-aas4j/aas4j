@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -37,39 +37,36 @@ import java.util.Objects;
 @IRI("aas:Qualifier")
 public class DefaultQualifier implements Qualifier {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/kind")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/kind")
     protected QualifierKind kind;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/type")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/type")
     protected String type;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/value")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueId")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueId")
     protected Reference valueId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifier/valueType")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
     protected DataTypeDefXsd valueType;
 
-    public DefaultQualifier() {
-        this.kind = QualifierKind.CONCEPT_QUALIFIER;
-
-    }
+    public DefaultQualifier() {}
 
     @Override
     public int hashCode() {
         return Objects.hash(this.kind,
             this.type,
+            this.valueType,
             this.value,
             this.valueId,
-            this.valueType,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -86,9 +83,9 @@ public class DefaultQualifier implements Qualifier {
             DefaultQualifier other = (DefaultQualifier) obj;
             return Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.type, other.type) &&
+                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.value, other.value) &&
                 Objects.equals(this.valueId, other.valueId) &&
-                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
@@ -115,6 +112,16 @@ public class DefaultQualifier implements Qualifier {
     }
 
     @Override
+    public DataTypeDefXsd getValueType() {
+        return valueType;
+    }
+
+    @Override
+    public void setValueType(DataTypeDefXsd valueType) {
+        this.valueType = valueType;
+    }
+
+    @Override
     public String getValue() {
         return value;
     }
@@ -135,16 +142,6 @@ public class DefaultQualifier implements Qualifier {
     }
 
     @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
-    }
-
-    @Override
     public Reference getSemanticId() {
         return semanticId;
     }
@@ -162,6 +159,17 @@ public class DefaultQualifier implements Qualifier {
     @Override
     public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
         this.supplementalSemanticIds = supplementalSemanticIds;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultQualifier (" + "kind=%s,"
+                + "type=%s,"
+                + "valueType=%s,"
+                + "value=%s,"
+                + "valueId=%s,"
+                + ")",
+            this.kind, this.type, this.valueType, this.value, this.valueId);
     }
 
     /**

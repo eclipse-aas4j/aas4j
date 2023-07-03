@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -31,59 +31,57 @@ import java.util.List;
 public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
 
     /**
-     * Meta-information about the asset the AAS is representing.
-     *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation
-     *
-     * @return Returns the AssetInformation for the property assetInformation.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation")
-    AssetInformation getAssetInformation();
-
-    /**
-     * Meta-information about the asset the AAS is representing.
-     *
-     * More information under
-     * https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation
-     *
-     * @param assetInformation desired value for the property assetInformation.
-     */
-    void setAssetInformation(AssetInformation assetInformation);
-
-    /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
      *
      * @return Returns the Reference for the property derivedFrom.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
     Reference getDerivedFrom();
 
     /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
      *
      * @param derivedFrom desired value for the property derivedFrom.
      */
     void setDerivedFrom(Reference derivedFrom);
 
     /**
+     * Meta-information about the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     *
+     * @return Returns the AssetInformation for the property assetInformation.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
+    AssetInformation getAssetInformation();
+
+    /**
+     * Meta-information about the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     *
+     * @param assetInformation desired value for the property assetInformation.
+     */
+    void setAssetInformation(AssetInformation assetInformation);
+
+    /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
      *
      * @return Returns the List of References for the property submodels.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels")
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels")
     List<Reference> getSubmodels();
 
     /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
      *
      * @param submodels desired value for the property submodels.
      */

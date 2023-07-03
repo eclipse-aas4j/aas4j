@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,20 +34,20 @@ public interface ConceptDescription extends HasDataSpecification, Identifiable {
     /**
      * Reference to an external definition the concept is compatible to or was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf
+     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
      *
      * @return Returns the List of References for the property isCaseOf.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
+    @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
     List<Reference> getIsCaseOf();
 
     /**
      * Reference to an external definition the concept is compatible to or was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf
+     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
      *
-     * @param isCaseOf desired value for the property isCaseOf.
+     * @param isCaseOfs desired value for the property isCaseOf.
      */
-    void setIsCaseOf(List<Reference> isCaseOf);
+    void setIsCaseOf(List<Reference> isCaseOfs);
 
 }

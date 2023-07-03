@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,74 +33,62 @@ import java.util.Objects;
 @IRI("aas:Entity")
 public class DefaultEntity implements Entity {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/entityType")
+    @IRI("https://admin-shell.io/aas/3/0/Entity/entityType")
     protected EntityType entityType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/globalAssetId")
+    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetId")
     protected String globalAssetId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/specificAssetId")
-    protected SpecificAssetId specificAssetId;
+    @IRI("https://admin-shell.io/aas/3/0/Entity/specificAssetIds")
+    protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Entity/statements")
+    @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
     protected List<SubmodelElement> statements = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
-    protected ModelingKind kind;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
-    protected String checksum;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultEntity() {
-
-        this.kind = ModelingKind.INSTANCE;
-
-    }
+    public DefaultEntity() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.entityType,
+        return Objects.hash(this.statements,
+            this.entityType,
             this.globalAssetId,
-            this.specificAssetId,
-            this.statements,
+            this.specificAssetIds,
             this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.kind,
+            this.qualifiers,
             this.category,
-            this.checksum,
-            this.description,
-            this.displayName,
             this.idShort,
-            this.extensions,
-            this.qualifiers);
+            this.displayName,
+            this.description,
+            this.extensions);
     }
 
     @Override
@@ -113,22 +101,30 @@ public class DefaultEntity implements Entity {
             return false;
         } else {
             DefaultEntity other = (DefaultEntity) obj;
-            return Objects.equals(this.entityType, other.entityType) &&
+            return Objects.equals(this.statements, other.statements) &&
+                Objects.equals(this.entityType, other.entityType) &&
                 Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetId, other.specificAssetId) &&
-                Objects.equals(this.statements, other.statements) &&
+                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.extensions, other.extensions);
         }
+    }
+
+    @Override
+    public List<SubmodelElement> getStatements() {
+        return statements;
+    }
+
+    @Override
+    public void setStatements(List<SubmodelElement> statements) {
+        this.statements = statements;
     }
 
     @Override
@@ -152,23 +148,13 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public SpecificAssetId getSpecificAssetId() {
-        return specificAssetId;
+    public List<SpecificAssetId> getSpecificAssetIds() {
+        return specificAssetIds;
     }
 
     @Override
-    public void setSpecificAssetId(SpecificAssetId specificAssetId) {
-        this.specificAssetId = specificAssetId;
-    }
-
-    @Override
-    public List<SubmodelElement> getStatements() {
-        return statements;
-    }
-
-    @Override
-    public void setStatements(List<SubmodelElement> statements) {
-        this.statements = statements;
+    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
+        this.specificAssetIds = specificAssetIds;
     }
 
     @Override
@@ -202,13 +188,13 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
     }
 
     @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     @Override
@@ -222,23 +208,13 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
+    public String getIdShort() {
+        return idShort;
     }
 
     @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -247,18 +223,18 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public List<LangStringTextType> getDescription() {
+        return description;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
     }
 
     @Override
@@ -271,14 +247,14 @@ public class DefaultEntity implements Entity {
         this.extensions = extensions;
     }
 
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public String toString() {
+        return String.format(
+            "DefaultEntity (" + "statements=%s,"
+                + "entityType=%s,"
+                + "globalAssetId=%s,"
+                + "specificAssetIds=%s,"
+                + ")",
+            this.statements, this.entityType, this.globalAssetId, this.specificAssetIds);
     }
 
     /**

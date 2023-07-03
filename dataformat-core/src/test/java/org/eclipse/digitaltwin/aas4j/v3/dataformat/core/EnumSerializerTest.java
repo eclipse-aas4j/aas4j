@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 import org.junit.Assert;
 import org.junit.Before;
@@ -82,8 +82,8 @@ public class EnumSerializerTest {
 
     @Test
     public void whenSerializingEnum_usingModelingKind_shouldReturnCamelCase() {
-        assertSerialization(ModelingKind.INSTANCE, "Instance");
-        assertSerialization(ModelingKind.TEMPLATE, "Template");
+        assertSerialization(ModellingKind.INSTANCE, "Instance");
+        assertSerialization(ModellingKind.TEMPLATE, "Template");
     }
     private void assertSerialization(Enum value, String expected) {
         this.serializationOutput.setLength(0);

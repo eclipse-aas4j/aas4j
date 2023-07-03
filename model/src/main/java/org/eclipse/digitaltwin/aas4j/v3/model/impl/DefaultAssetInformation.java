@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -15,7 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
 
@@ -34,28 +37,30 @@ import java.util.Objects;
 @IRI("aas:AssetInformation")
 public class DefaultAssetInformation implements AssetInformation {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetKind")
     protected AssetKind assetKind;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/defaultThumbnail")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetType")
+    protected String assetType;
+
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail")
     protected Resource defaultThumbnail;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/globalAssetId")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId")
     protected String globalAssetId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds")
+    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
     protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
-    public DefaultAssetInformation() {
-
-    }
+    public DefaultAssetInformation() {}
 
     @Override
     public int hashCode() {
         return Objects.hash(this.assetKind,
-            this.defaultThumbnail,
             this.globalAssetId,
-            this.specificAssetIds);
+            this.specificAssetIds,
+            this.assetType,
+            this.defaultThumbnail);
     }
 
     @Override
@@ -69,9 +74,10 @@ public class DefaultAssetInformation implements AssetInformation {
         } else {
             DefaultAssetInformation other = (DefaultAssetInformation) obj;
             return Objects.equals(this.assetKind, other.assetKind) &&
-                Objects.equals(this.defaultThumbnail, other.defaultThumbnail) &&
                 Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetIds, other.specificAssetIds);
+                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
+                Objects.equals(this.assetType, other.assetType) &&
+                Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
         }
     }
 
@@ -83,16 +89,6 @@ public class DefaultAssetInformation implements AssetInformation {
     @Override
     public void setAssetKind(AssetKind assetKind) {
         this.assetKind = assetKind;
-    }
-
-    @Override
-    public Resource getDefaultThumbnail() {
-        return defaultThumbnail;
-    }
-
-    @Override
-    public void setDefaultThumbnail(Resource defaultThumbnail) {
-        this.defaultThumbnail = defaultThumbnail;
     }
 
     @Override
@@ -113,6 +109,37 @@ public class DefaultAssetInformation implements AssetInformation {
     @Override
     public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
         this.specificAssetIds = specificAssetIds;
+    }
+
+    @Override
+    public String getAssetType() {
+        return assetType;
+    }
+
+    @Override
+    public void setAssetType(String assetType) {
+        this.assetType = assetType;
+    }
+
+    @Override
+    public Resource getDefaultThumbnail() {
+        return defaultThumbnail;
+    }
+
+    @Override
+    public void setDefaultThumbnail(Resource defaultThumbnail) {
+        this.defaultThumbnail = defaultThumbnail;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultAssetInformation (" + "assetKind=%s,"
+                + "globalAssetId=%s,"
+                + "specificAssetIds=%s,"
+                + "assetType=%s,"
+                + "defaultThumbnail=%s,"
+                + ")",
+            this.assetKind, this.globalAssetId, this.specificAssetIds, this.assetType, this.defaultThumbnail);
     }
 
     /**

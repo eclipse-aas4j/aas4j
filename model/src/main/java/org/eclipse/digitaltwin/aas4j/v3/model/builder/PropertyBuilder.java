@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -23,6 +23,17 @@ import java.util.List;
 public abstract class PropertyBuilder<T extends Property, B extends PropertyBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     /**
+     * This function allows setting a value for valueType
+     * 
+     * @param valueType desired value to be set
+     * @return Builder object with new value for valueType
+     */
+    public B valueType(DataTypeDefXsd valueType) {
+        getBuildingInstance().setValueType(valueType);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for value
      * 
      * @param value desired value to be set
@@ -41,17 +52,6 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
      */
     public B valueId(Reference valueId) {
         getBuildingInstance().setValueId(valueId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for valueType
-     * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 
@@ -111,13 +111,24 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
     }
 
     /**
-     * This function allows setting a value for kind
+     * This function allows setting a value for qualifiers
      * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
+     * @param qualifiers desired value to be set
+     * @return Builder object with new value for qualifiers
      */
-    public B kind(ModelingKind kind) {
-        getBuildingInstance().setKind(kind);
+    public B qualifiers(List<Qualifier> qualifiers) {
+        getBuildingInstance().setQualifiers(qualifiers);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List qualifiers
+     * 
+     * @param qualifiers desired value to be added
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(Qualifier qualifiers) {
+        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 
@@ -133,46 +144,24 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
     }
 
     /**
-     * This function allows setting a value for checksum
+     * This function allows setting a value for idShort
      * 
-     * @param checksum desired value to be set
-     * @return Builder object with new value for checksum
+     * @param idShort desired value to be set
+     * @return Builder object with new value for idShort
      */
-    public B checksum(String checksum) {
-        getBuildingInstance().setChecksum(checksum);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for description
-     * 
-     * @param description desired value to be set
-     * @return Builder object with new value for description
-     */
-    public B description(List<LangStringTextType> description) {
-        getBuildingInstance().setDescription(description);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List description
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for description
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescription().add(description);
+    public B idShort(String idShort) {
+        getBuildingInstance().setIdShort(idShort);
         return getSelf();
     }
 
     /**
      * This function allows setting a value for displayName
      * 
-     * @param displayName desired value to be set
+     * @param displayNames desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangStringNameType> displayName) {
-        getBuildingInstance().setDisplayName(displayName);
+    public B displayName(List<LangStringNameType> displayNames) {
+        getBuildingInstance().setDisplayName(displayNames);
         return getSelf();
     }
 
@@ -188,13 +177,24 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
     }
 
     /**
-     * This function allows setting a value for idShort
+     * This function allows setting a value for description
      * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
+     * @param descriptions desired value to be set
+     * @return Builder object with new value for description
      */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
+    public B description(List<LangStringTextType> descriptions) {
+        getBuildingInstance().setDescription(descriptions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List description
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for description
+     */
+    public B description(LangStringTextType description) {
+        getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
 
@@ -217,28 +217,6 @@ public abstract class PropertyBuilder<T extends Property, B extends PropertyBuil
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for qualifiers
-     * 
-     * @param qualifiers desired value to be set
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(List<Qualifier> qualifiers) {
-        getBuildingInstance().setQualifiers(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List qualifiers
-     * 
-     * @param qualifiers desired value to be added
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(Qualifier qualifiers) {
-        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 }

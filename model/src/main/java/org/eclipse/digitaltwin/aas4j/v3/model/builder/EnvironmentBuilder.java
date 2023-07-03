@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -48,28 +48,6 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
     }
 
     /**
-     * This function allows setting a value for conceptDescriptions
-     * 
-     * @param conceptDescriptions desired value to be set
-     * @return Builder object with new value for conceptDescriptions
-     */
-    public B conceptDescriptions(List<ConceptDescription> conceptDescriptions) {
-        getBuildingInstance().setConceptDescriptions(conceptDescriptions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List conceptDescriptions
-     * 
-     * @param conceptDescriptions desired value to be added
-     * @return Builder object with new value for conceptDescriptions
-     */
-    public B conceptDescriptions(ConceptDescription conceptDescriptions) {
-        getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for submodels
      * 
      * @param submodels desired value to be set
@@ -88,6 +66,28 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
      */
     public B submodels(Submodel submodels) {
         getBuildingInstance().getSubmodels().add(submodels);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for conceptDescriptions
+     * 
+     * @param conceptDescriptions desired value to be set
+     * @return Builder object with new value for conceptDescriptions
+     */
+    public B conceptDescriptions(List<ConceptDescription> conceptDescriptions) {
+        getBuildingInstance().setConceptDescriptions(conceptDescriptions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List conceptDescriptions
+     * 
+     * @param conceptDescriptions desired value to be added
+     * @return Builder object with new value for conceptDescriptions
+     */
+    public B conceptDescriptions(ConceptDescription conceptDescriptions) {
+        getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
         return getSelf();
     }
 }

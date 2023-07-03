@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -29,19 +29,19 @@ public enum QualifierKind {
     /**
      * qualifies the semantic definition the element is referring to ('semanticId')
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/ConceptQualifier")
+    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ConceptQualifier")
     CONCEPT_QUALIFIER,
 
     /**
      * qualifies the elements within a specific submodel on concept level.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/TemplateQualifier")
+    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/TemplateQualifier")
     TEMPLATE_QUALIFIER,
 
     /**
      * qualifies the value of the element and can change during run-time.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/QualifierKind/ValueQualifier")
+    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ValueQualifier")
     VALUE_QUALIFIER;
 
 }

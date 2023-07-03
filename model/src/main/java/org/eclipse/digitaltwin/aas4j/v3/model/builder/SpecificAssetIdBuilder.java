@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -25,17 +25,6 @@ public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extend
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for externalSubjectId
-     * 
-     * @param externalSubjectId desired value to be set
-     * @return Builder object with new value for externalSubjectId
-     */
-    public B externalSubjectId(Reference externalSubjectId) {
-        getBuildingInstance().setExternalSubjectId(externalSubjectId);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for name
      * 
      * @param name desired value to be set
@@ -54,6 +43,17 @@ public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extend
      */
     public B value(String value) {
         getBuildingInstance().setValue(value);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for externalSubjectId
+     * 
+     * @param externalSubjectId desired value to be set
+     * @return Builder object with new value for externalSubjectId
+     */
+    public B externalSubjectId(Reference externalSubjectId) {
+        getBuildingInstance().setExternalSubjectId(externalSubjectId);
         return getSelf();
     }
 

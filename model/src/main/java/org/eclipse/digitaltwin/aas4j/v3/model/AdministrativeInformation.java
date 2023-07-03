@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -30,41 +30,79 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformat
 public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
+     * Version of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
+     *
+     * @return Returns the String for the property version.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/version")
+    String getVersion();
+
+    /**
+     * Version of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
+     *
+     * @param version desired value for the property version.
+     */
+    void setVersion(String version);
+
+    /**
      * Revision of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
      *
      * @return Returns the String for the property revision.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision")
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/revision")
     String getRevision();
 
     /**
      * Revision of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/revision
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
      *
      * @param revision desired value for the property revision.
      */
     void setRevision(String revision);
 
     /**
-     * Version of the element.
+     * The subject ID of the subject responsible for making the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
      *
-     * @return Returns the String for the property version.
+     * @return Returns the Reference for the property creator.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version")
-    String getVersion();
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/creator")
+    Reference getCreator();
 
     /**
-     * Version of the element.
+     * The subject ID of the subject responsible for making the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/AdministrativeInformation/version
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
      *
-     * @param version desired value for the property version.
+     * @param creator desired value for the property creator.
      */
-    void setVersion(String version);
+    void setCreator(Reference creator);
+
+    /**
+     * Identifier of the template that guided the creation of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId
+     *
+     * @return Returns the String for the property templateId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId")
+    String getTemplateId();
+
+    /**
+     * Identifier of the template that guided the creation of the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId
+     *
+     * @param templateId desired value for the property templateId.
+     */
+    void setTemplateId(String templateId);
 
 }

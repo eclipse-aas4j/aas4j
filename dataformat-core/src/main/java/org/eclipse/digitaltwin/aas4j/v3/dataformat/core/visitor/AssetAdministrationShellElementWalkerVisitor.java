@@ -214,7 +214,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         //visit(entity.getGlobalAssetId());
-        visit(entity.getSpecificAssetId());
+        entity.getSpecificAssetIds().forEach(x -> visit(x));
         entity.getStatements().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(entity);
     }
@@ -224,7 +224,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (extension == null) {
             return;
         }
-        visit(extension.getRefersTo());
+        extension.getRefersTo().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(extension);
     }
 

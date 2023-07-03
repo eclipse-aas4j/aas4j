@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -28,22 +28,22 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultSubmodel.class)
 })
-public interface Submodel extends HasDataSpecification, Identifiable, HasSemantics, HasKind, Qualifiable {
+public interface Submodel extends HasDataSpecification, HasKind, HasSemantics, Identifiable, Qualifiable {
 
     /**
      * A submodel consists of zero or more submodel elements.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements
+     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
      *
      * @return Returns the List of SubmodelElements for the property submodelElements.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements")
+    @IRI("https://admin-shell.io/aas/3/0/Submodel/submodelElements")
     List<SubmodelElement> getSubmodelElements();
 
     /**
      * A submodel consists of zero or more submodel elements.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElements
+     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
      *
      * @param submodelElements desired value for the property submodelElements.
      */

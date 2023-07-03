@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -21,21 +21,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
 
 /**
- * ReferenceTypes
+ * Reference types
  */
 @IRI("aas:ReferenceTypes")
 public enum ReferenceTypes {
 
     /**
-     * GlobalReference.
+     * External reference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ExternalReference")
+    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ExternalReference")
     EXTERNAL_REFERENCE,
 
     /**
-     * ModelReference
+     * Model reference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ReferenceTypes/ModelReference")
+    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ModelReference")
     MODEL_REFERENCE;
 
 }

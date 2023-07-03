@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,50 +34,40 @@ import java.util.Objects;
 @IRI("aas:RelationshipElement")
 public class DefaultRelationshipElement implements RelationshipElement {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
-    protected ModelingKind kind;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
-    protected String checksum;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/first")
+    @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/first")
     protected Reference first;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/second")
+    @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/second")
     protected Reference second;
 
-    public DefaultRelationshipElement() {
-
-        this.kind = ModelingKind.INSTANCE;
-
-    }
+    public DefaultRelationshipElement() {}
 
     @Override
     public int hashCode() {
@@ -86,14 +76,12 @@ public class DefaultRelationshipElement implements RelationshipElement {
             this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
-            this.kind,
+            this.qualifiers,
             this.category,
-            this.checksum,
-            this.description,
-            this.displayName,
             this.idShort,
-            this.extensions,
-            this.qualifiers);
+            this.displayName,
+            this.description,
+            this.extensions);
     }
 
     @Override
@@ -111,14 +99,12 @@ public class DefaultRelationshipElement implements RelationshipElement {
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -173,13 +159,13 @@ public class DefaultRelationshipElement implements RelationshipElement {
     }
 
     @Override
-    public ModelingKind getKind() {
-        return kind;
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
     }
 
     @Override
-    public void setKind(ModelingKind kind) {
-        this.kind = kind;
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     @Override
@@ -193,23 +179,13 @@ public class DefaultRelationshipElement implements RelationshipElement {
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
+    public String getIdShort() {
+        return idShort;
     }
 
     @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
+    public void setIdShort(String idShort) {
+        this.idShort = idShort;
     }
 
     @Override
@@ -218,18 +194,18 @@ public class DefaultRelationshipElement implements RelationshipElement {
     }
 
     @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
     }
 
     @Override
-    public String getIdShort() {
-        return idShort;
+    public List<LangStringTextType> getDescription() {
+        return description;
     }
 
     @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
     }
 
     @Override
@@ -242,14 +218,12 @@ public class DefaultRelationshipElement implements RelationshipElement {
         this.extensions = extensions;
     }
 
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public String toString() {
+        return String.format(
+            "DefaultRelationshipElement (" + "first=%s,"
+                + "second=%s,"
+                + ")",
+            this.first, this.second);
     }
 
     /**

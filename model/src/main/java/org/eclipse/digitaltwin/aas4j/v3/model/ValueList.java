@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,17 +33,17 @@ public interface ValueList {
     /**
      * A pair of a value together with its global unique id.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
+     * More information under https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs
      *
      * @return Returns the List of ValueReferencePairs for the property valueReferencePairs.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
     List<ValueReferencePair> getValueReferencePairs();
 
     /**
      * A pair of a value together with its global unique id.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs
+     * More information under https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs
      *
      * @param valueReferencePairs desired value for the property valueReferencePairs.
      */

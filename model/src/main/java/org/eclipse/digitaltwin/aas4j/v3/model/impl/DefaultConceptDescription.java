@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -34,41 +34,34 @@ import java.util.Objects;
 @IRI("aas:ConceptDescription")
 public class DefaultConceptDescription implements ConceptDescription {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
+    @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
     protected List<Reference> isCaseOf = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/administration")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/administration")
     protected AdministrativeInformation administration;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Identifiable/id")
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
     protected String id;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/checksum")
-    protected String checksum;
-
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/description")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultConceptDescription() {
-
-        this.category = "PROPERTY";
-
-    }
+    public DefaultConceptDescription() {}
 
     @Override
     public int hashCode() {
@@ -77,10 +70,9 @@ public class DefaultConceptDescription implements ConceptDescription {
             this.administration,
             this.id,
             this.category,
-            this.checksum,
-            this.description,
-            this.displayName,
             this.idShort,
+            this.displayName,
+            this.description,
             this.extensions);
     }
 
@@ -99,10 +91,9 @@ public class DefaultConceptDescription implements ConceptDescription {
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.checksum, other.checksum) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions);
         }
     }
@@ -113,8 +104,8 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public void setIsCaseOf(List<Reference> isCaseOf) {
-        this.isCaseOf = isCaseOf;
+    public void setIsCaseOf(List<Reference> isCaseOfs) {
+        this.isCaseOf = isCaseOfs;
     }
 
     @Override
@@ -158,36 +149,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public String getChecksum() {
-        return checksum;
-    }
-
-    @Override
-    public void setChecksum(String checksum) {
-        this.checksum = checksum;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
-    }
-
-    @Override
     public String getIdShort() {
         return idShort;
     }
@@ -198,6 +159,26 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -205,6 +186,13 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultConceptDescription (" + "isCaseOf=%s,"
+                + ")",
+            this.isCaseOf);
     }
 
     /**

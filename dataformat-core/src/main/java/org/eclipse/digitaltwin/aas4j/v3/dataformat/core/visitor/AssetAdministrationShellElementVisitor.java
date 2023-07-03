@@ -226,9 +226,6 @@ public interface AssetAdministrationShellElementVisitor {
     public default void visit(Key key) {
     }
 
-    public default void visit(LangString langString) {
-    }
-
     public default void visit(MultiLanguageProperty multiLanguageProperty) {
     }
 

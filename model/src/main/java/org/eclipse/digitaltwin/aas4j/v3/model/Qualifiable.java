@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -33,17 +33,17 @@ public interface Qualifiable {
     /**
      * Additional qualification of a qualifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers
+     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
      *
      * @return Returns the List of Qualifiers for the property qualifiers.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     List<Qualifier> getQualifiers();
 
     /**
      * Additional qualification of a qualifiable element.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifiers
+     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
      *
      * @param qualifiers desired value for the property qualifiers.
      */

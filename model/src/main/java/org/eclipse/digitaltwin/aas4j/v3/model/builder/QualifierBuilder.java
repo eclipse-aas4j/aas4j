@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -48,6 +48,17 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
     }
 
     /**
+     * This function allows setting a value for valueType
+     * 
+     * @param valueType desired value to be set
+     * @return Builder object with new value for valueType
+     */
+    public B valueType(DataTypeDefXsd valueType) {
+        getBuildingInstance().setValueType(valueType);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for value
      * 
      * @param value desired value to be set
@@ -66,17 +77,6 @@ public abstract class QualifierBuilder<T extends Qualifier, B extends QualifierB
      */
     public B valueId(Reference valueId) {
         getBuildingInstance().setValueId(valueId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for valueType
-     * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
         return getSelf();
     }
 

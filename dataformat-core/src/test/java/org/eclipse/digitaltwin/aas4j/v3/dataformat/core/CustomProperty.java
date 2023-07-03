@@ -28,8 +28,6 @@ public class CustomProperty implements Property {
 
 	protected List<Reference> dataSpecifications;
 
-	protected ModelingKind kind;
-
 	protected Reference semanticId;
 
 	protected String value;
@@ -58,7 +56,7 @@ public class CustomProperty implements Property {
 	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[] { this.valueType, this.value, this.valueId, this.category, this.description,
-				this.displayName, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications,*/ this.kind,
+				this.displayName, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications, this.kind,*/
 				this.semanticId });
 	}
 
@@ -78,7 +76,8 @@ public class CustomProperty implements Property {
 					&& Objects.equals(this.displayName, other.displayName)
 					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
 					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
-					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
+					//&& Objects.equals(this.kind, other.kind)
+					&& Objects.equals(this.semanticId, other.semanticId);
 		}
 	}
 
@@ -133,16 +132,6 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	public String getChecksum() {
-		return null;
-	}
-
-	@Override
-	public void setChecksum(String checksum) {
-
-	}
-
-	@Override
 	final public List<LangStringNameType> getDisplayName() {
 		return displayName;
 	}
@@ -180,16 +169,6 @@ public class CustomProperty implements Property {
 	@Override
 	final public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
 		this.embeddedDataSpecifications = embeddedDataSpecifications;
-	}
-
-	@Override
-	final public ModelingKind getKind() {
-		return kind;
-	}
-
-	@Override
-	final public void setKind(ModelingKind kind) {
-		this.kind = kind;
 	}
 
 	@Override

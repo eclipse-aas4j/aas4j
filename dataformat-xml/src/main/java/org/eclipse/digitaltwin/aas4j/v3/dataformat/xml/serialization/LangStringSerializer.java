@@ -60,7 +60,7 @@ public class LangStringSerializer extends JsonSerializer<LangString> {
         xgen.writeString(langString.getLanguage());
 
         xgen.writeFieldName("text");
-        xgen.writeString(langString.getText());
+        xgen.writeString(langString.getValue());
 
         xgen.writeEndObject();
     }

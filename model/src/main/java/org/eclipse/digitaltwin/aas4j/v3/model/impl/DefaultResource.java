@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -32,20 +32,18 @@ import java.util.Objects;
 @IRI("aas:Resource")
 public class DefaultResource implements Resource {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
     protected String contentType;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    @IRI("https://admin-shell.io/aas/3/0/Resource/path")
     protected String path;
 
-    public DefaultResource() {
-
-    }
+    public DefaultResource() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.contentType,
-            this.path);
+        return Objects.hash(this.path,
+            this.contentType);
     }
 
     @Override
@@ -58,9 +56,19 @@ public class DefaultResource implements Resource {
             return false;
         } else {
             DefaultResource other = (DefaultResource) obj;
-            return Objects.equals(this.contentType, other.contentType) &&
-                Objects.equals(this.path, other.path);
+            return Objects.equals(this.path, other.path) &&
+                Objects.equals(this.contentType, other.contentType);
         }
+    }
+
+    @Override
+    public String getPath() {
+        return path;
+    }
+
+    @Override
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
@@ -73,14 +81,12 @@ public class DefaultResource implements Resource {
         this.contentType = contentType;
     }
 
-    @Override
-    public String getPath() {
-        return path;
-    }
-
-    @Override
-    public void setPath(String path) {
-        this.path = path;
+    public String toString() {
+        return String.format(
+            "DefaultResource (" + "path=%s,"
+                + "contentType=%s,"
+                + ")",
+            this.path, this.contentType);
     }
 
     /**

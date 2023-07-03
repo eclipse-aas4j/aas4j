@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -31,38 +31,19 @@ import java.util.List;
 public interface Operation extends SubmodelElement {
 
     /**
-     * Parameter that is input and output of the operation.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
-     *
-     * @return Returns the List of OperationVariables for the property inoutputVariables.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables")
-    List<OperationVariable> getInoutputVariables();
-
-    /**
-     * Parameter that is input and output of the operation.
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariables
-     *
-     * @param inoutputVariables desired value for the property inoutputVariables.
-     */
-    void setInoutputVariables(List<OperationVariable> inoutputVariables);
-
-    /**
      * Input parameter of the operation.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inputVariables
+     * More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
      *
      * @return Returns the List of OperationVariables for the property inputVariables.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/inputVariables")
+    @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
     List<OperationVariable> getInputVariables();
 
     /**
      * Input parameter of the operation.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/inputVariables
+     * More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
      *
      * @param inputVariables desired value for the property inputVariables.
      */
@@ -71,20 +52,39 @@ public interface Operation extends SubmodelElement {
     /**
      * Output parameter of the operation.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/outputVariables
+     * More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
      *
      * @return Returns the List of OperationVariables for the property outputVariables.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Operation/outputVariables")
+    @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
     List<OperationVariable> getOutputVariables();
 
     /**
      * Output parameter of the operation.
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/Operation/outputVariables
+     * More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
      *
      * @param outputVariables desired value for the property outputVariables.
      */
     void setOutputVariables(List<OperationVariable> outputVariables);
+
+    /**
+     * Parameter that is input and output of the operation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+     *
+     * @return Returns the List of OperationVariables for the property inoutputVariables.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
+    List<OperationVariable> getInoutputVariables();
+
+    /**
+     * Parameter that is input and output of the operation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+     *
+     * @param inoutputVariables desired value for the property inoutputVariables.
+     */
+    void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
 }
