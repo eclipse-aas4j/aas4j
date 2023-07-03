@@ -381,7 +381,18 @@
 	            <artifactId>hamcrest-core</artifactId>
 	            <version>${hamcrest.version}</version>
 	            <scope>test</scope>
-        	</dependency>
+            </dependency>
+            <dependency>
+            <groupId>com.networknt</groupId>
+	            <artifactId>json-schema-validator</artifactId>
+	            <version>${json-schema-validator.version}</version>
+            </dependency>
+	        <dependency>
+	            <groupId>org.skyscreamer</groupId>
+	            <artifactId>jsonassert</artifactId>
+	            <version>${jsonassert.version}</version>
+	            <scope>test</scope>
+	        </dependency>
         </dependencies>
     </dependencyManagement>
 
