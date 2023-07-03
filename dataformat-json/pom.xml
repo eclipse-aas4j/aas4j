@@ -13,12 +13,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>${groupId}</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>${groupId}</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
             <version>${revision}</version>
             <classifier>tests</classifier>

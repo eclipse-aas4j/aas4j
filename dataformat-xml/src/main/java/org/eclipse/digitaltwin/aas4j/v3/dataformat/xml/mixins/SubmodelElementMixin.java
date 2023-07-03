@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +17,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+
 @JsonPropertyOrder({
-        "hasExtensions", "category", "idShort", "displayNames", "description", "checksum", // --> Referable
+        "hasExtensions", "category", "idShort", "displayName", "description", "checksum", // --> Referable
         "kind", // --> HasKind
-        "semanticId", "supplementalSemanticIds", // --> HasSemantics
+		"semanticId", "supplementalSemanticIds", "reference", // --> HasSemantics
         "qualifier",  // --> Qualifiable
         "dataSpecifications", "embeddedDataSpecifications", // --> HasDataSpecifications
+		"orderRelevant", "semanticIdListElement", "typeValueListElement", "valueTypeListElement", // --> SME-List
         "valueType", "value", "valueId" // --> Property
         , "statements", "entityType", "globalAssetId", "specificAssetId" // --> Entity
         , "first", "second", "annotations" // --> (Annotated)RelationsShipElement

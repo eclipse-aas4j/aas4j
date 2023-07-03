@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,35 +17,20 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.OperationVariableDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 public interface OperationMixin {
 
-    //@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables")
-    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     public List<OperationVariable> getInputVariables();
 
-    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setInputVariables(List<OperationVariable> inputVariables);
 
-
-    // @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
-    // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
-    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables")
-    public List<OperationVariable> getInoutputVariables();
-
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setInoutputVariables(List<OperationVariable> inoutputVariables);
-
-
-    //@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
-    // TODO: conflicting with getter above @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
-    //@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables")
-    public List<OperationVariable> getOutputVariables();
 
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setOutputVariables(List<OperationVariable> outputVariables);

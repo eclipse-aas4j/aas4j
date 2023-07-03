@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +15,32 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.EmbeddedDataSpecificationsDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
 public interface EmbeddedDataSpecificationMixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
     public Reference getDataSpecification();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
+    public void setDataSpecification(Reference dataSpecification);
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
     @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
-    public DataSpecificationIec61360 getDataSpecificationContent();
+	public DataSpecificationContent getDataSpecificationContent();
+
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
+    @JsonDeserialize(using = EmbeddedDataSpecificationsDeserializer.class)
+	public void setDataSpecificationContent(DataSpecificationContent dataSpecificationIEC61360);
 
 }

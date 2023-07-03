@@ -6,15 +6,7 @@
             "id": "http://customer.com/aas/9175_7013_7091_9168",
             "assetInformation": {
                 "assetKind": "Instance",
-                "globalAssetId": {
-                    "keys": [
-                        {
-                            "type": "AssetAdministrationShell",
-                            "value": "http://customer.com/assets/KHBVZJSQKIY"
-                        }
-                    ],
-                    "type": "GlobalReference"
-                },
+                "globalAssetId": "http://customer.com/assets/KHBVZJSQKIY",
                 "specificAssetIds": [
                     {
                         "name": "EquipmentID",
@@ -26,7 +18,7 @@
                                     "value": "http://customer.com/Systems/ERP/012"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         }
                     },
                     {
@@ -39,13 +31,12 @@
                                     "value": "http://customer.com/Systems/IoT/1"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         }
                     }
                 ],
                 "thumbnail": {
                     "modelType": "File",
-                    "kind": "Instance",
                     "idShort": "thumbnail",
                     "mimeType": "image/png",
                     "path": "https://github.com/admin-shell/io/blob/master/verwaltungsschale-detail-part1.png"
@@ -59,7 +50,7 @@
                             "value": "http.//i40.customer.com/type/1/1/7A7104BDAB57E184"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
                 {
                     "keys": [
@@ -68,7 +59,7 @@
                             "value": "http://i40.customer.com/instance/1/1/AC69B1CB44F07935"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 },
                 {
                     "keys": [
@@ -77,7 +68,7 @@
                             "value": "http://i40.customer.com/type/1/1/1A7B62B529F19152"
                         }
                     ],
-                    "type": "GlobalReference"
+                    "type": "ExternalReference"
                 }
             ]
         }
@@ -92,7 +83,7 @@
                         "value": "0173-1#01-AFZ615#016"
                     }
                 ],
-                "type": "GlobalReference"
+                "type": "ExternalReference"
             },
             "kind": "Instance",
             "idShort": "TechnicalData",
@@ -100,7 +91,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
@@ -108,7 +98,7 @@
                                 "value": "0173-1#02-BAA120#008"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "MaxRotationSpeed",
                     "category": "PARAMETER",
@@ -125,7 +115,6 @@
             "submodelElements": [
                 {
                     "modelType": "SubmodelElementCollection",
-                    "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
@@ -133,13 +122,12 @@
                                 "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "OperatingManual",
                     "value": [
                         {
                             "modelType": "Property",
-                            "kind": "Instance",
                             "semanticId": {
                                 "keys": [
                                     {
@@ -147,15 +135,14 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "idShort": "Title",
                             "value": "OperatingManual",
-                            "valueType": "langString"
+                            "valueType": "xs:string"
                         },
                         {
                             "modelType": "File",
-                            "kind": "Instance",
                             "semanticId": {
                                 "keys": [
                                     {
@@ -163,11 +150,11 @@
                                         "value": "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile"
                                     }
                                 ],
-                                "type": "GlobalReference"
+                                "type": "ExternalReference"
                             },
                             "idShort": "DigitalFile_PDF",
                             "contentType": "application/pdf",
-                            "value": "/aasx/OperatingManual.pdf"
+                            "value": "file:///aasx/OperatingManual.pdf"
                         }
                     ],
                     "ordered": false,
@@ -183,7 +170,6 @@
             "submodelElements": [
                 {
                     "modelType": "Property",
-                    "kind": "Instance",
                     "semanticId": {
                         "keys": [
                             {
@@ -191,7 +177,7 @@
                                 "value": "http://customer.com/cd/1/1/18EBD56F6B43D895"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "idShort": "RotationSpeed",
                     "category": "Variable",
@@ -215,10 +201,10 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent": {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "preferredName": [
                             {
                                 "language": "EN",
@@ -229,7 +215,7 @@
                                 "text": "Titel"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "Title"
@@ -239,9 +225,7 @@
                                 "text": "Titel"
                             }
                         ],
-                        "unit": "",
-                        "sourceOfDefinition": "",
-                        "dataType": "StringTranslatable",
+                        "dataType": "STRING_TRANSLATABLE",
                         "definition": [
                             {
                                 "language": "DE",
@@ -265,10 +249,10 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent": {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "preferredName": [
                             {
                                 "language": "EN",
@@ -279,7 +263,7 @@
                                 "text": "DigitaleDatei"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "DigitalFile"
@@ -289,9 +273,7 @@
                                 "text": "DigitaleDatei"
                             }
                         ],
-                        "unit": "",
-                        "sourceOfDefinition": "",
-                        "dataType": "String",
+                        "dataType": "STRING",
                         "definition": [
                             {
                                 "language": "DE",
@@ -320,10 +302,10 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent": {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "preferredName": [
                             {
                                 "language": "de",
@@ -334,7 +316,6 @@
                                 "text": "Max.rotationspeed"
                             }
                         ],
-                        "shortNames": [],
                         "unit": "1/min",
                         "unitId": {
                             "keys": [
@@ -343,10 +324,9 @@
                                     "value": "0173-1#05-AAA650#002"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
-                        "sourceOfDefinition": "",
-                        "dataType": "RealMeasure",
+                        "dataType": "REAL_MEASURE",
                         "definition": [
                             {
                                 "language": "de",
@@ -375,10 +355,10 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent": {
-                        "modelType": "DataSpecificationIEC61360",
+                        "modelType": "DataSpecificationIec61360",
                         "preferredName": [
                             {
                                 "language": "DE",
@@ -389,14 +369,14 @@
                                 "text": "Actualrotationspeed"
                             }
                         ],
-                        "shortNames": [
+                        "shortName": [
                             {
                                 "language": "DE",
                                 "text": "AktuelleDrehzahl"
                             },
                             {
                                 "language": "EN",
-                                "text": "ActualRotationSpeed"
+                                "text": "ActRotationSpeed"
                             }
                         ],
                         "unit": "1/min",
@@ -407,10 +387,9 @@
                                     "value": "0173-1#05-AAA650#002"
                                 }
                             ],
-                            "type": "GlobalReference"
+                            "type": "ExternalReference"
                         },
-                        "sourceOfDefinition": "",
-                        "dataType": "RealMeasure",
+                        "dataType": "REAL_MEASURE",
                         "definition": [
                             {
                                 "language": "DE",
@@ -438,12 +417,17 @@
                                 "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
                             }
                         ],
-                        "type": "GlobalReference"
+                        "type": "ExternalReference"
                     },
                     "dataSpecificationContent": {
-                        "modelType": "DataSpecificationIEC61360",
-                        "preferredName": [],
-                        "shortNames": [
+                        "modelType": "DataSpecificationIec61360",
+                        "preferredName": [
+                            {
+                                "language": "DE",
+                                "text": "Dokument"
+                            }
+                        ],
+                        "shortName": [
                             {
                                 "language": "EN",
                                 "text": "Document"
@@ -453,9 +437,8 @@
                                 "text": "Dokument"
                             }
                         ],
-                        "unit": "",
                         "sourceOfDefinition": "[ISO15519-1:2010]",
-                        "dataType": "String",
+                        "dataType": "STRING",
                         "definition": [
                             {
                                 "language": "DE",

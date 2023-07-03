@@ -25,7 +25,7 @@
 
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -54,20 +55,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-
 
 public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
-
-
-    public QualifierDeserializer() {
-    }
-
 
     @Override
     public List<Qualifier> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
-        List<Qualifier> qualifiers = new ArrayList<>();
 
         if (!node.has("qualifier")) {
             return Collections.emptyList();
@@ -82,10 +75,9 @@ public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
 
     }
 
-    @SuppressWarnings("unchecked")
     private List<Qualifier> createConstraintsFromArrayNode(JsonParser parser, ObjectNode node) throws IOException {
         ArrayNode content = (ArrayNode) node.get("qualifier");
-        return (List<Qualifier>) DeserializationHelper.createInstancesFromArrayNode(parser, content, Qualifier.class);
+        return DeserializationHelper.createInstancesFromArrayNode(parser, content, Qualifier.class);
     }
 
 }

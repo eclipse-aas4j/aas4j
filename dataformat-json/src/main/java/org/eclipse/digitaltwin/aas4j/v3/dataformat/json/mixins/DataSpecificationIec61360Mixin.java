@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,32 +17,30 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-// TODO import io.adminshell.aas.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
 public interface DataSpecificationIec61360Mixin {
 
     @JsonProperty("levelType")
     public List<LevelType> getLevelTypes();
 
-    // TODO
-    // @JsonProperty("levelType")
-    // public void setLevelTypes(List<LevelType> levelTypes);
+    @JsonProperty("levelType")
+    public void setLevelTypes(List<LevelType> levelTypes);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")
-    public List<LangString> getPreferredName();
+    public List<LangStringPreferredNameTypeIec61360> getPreferredName();
 
     @JsonProperty("preferredName")
-    public void setPreferredName(List<LangString> preferredName);
+    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
-    @JsonProperty("shortName")
-    public List<LangString> getShortName();
+    @JsonProperty("unitId")
+    public Reference getUnitID();
 
-    @JsonProperty("shortName")
-    public void setShortName(List<LangString> shortName);
+    public @JsonProperty("unitId")
+    void setUnitID(Reference unitID);
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +27,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins.ReferenceMixin;
 import org.junit.Before;
 import org.junit.Test;
