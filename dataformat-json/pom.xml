@@ -15,45 +15,38 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dataformat-core</artifactId>
-            <version>${revision}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>${vaadin.version}</version>
-            <scope>test</scope>
-        </dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.vaadin.external.google</groupId>
+		    <artifactId>android-json</artifactId>
+		    <scope>test</scope>
+		</dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.digitaltwin.aas4j</groupId>
-            <artifactId>model</artifactId>
-            <version>${revision}</version>
+        	<groupId>${project.groupId}</groupId>
+        	<artifactId>model</artifactId>
         </dependency>
         <dependency>
             <groupId>com.networknt</groupId>
@@ -63,7 +56,6 @@
         <dependency>
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
-            <version>${junit-params.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

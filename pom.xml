@@ -56,7 +56,6 @@
         <plugin.projectinfo.version>3.4.5</plugin.projectinfo.version>
         <plugin.source.version>3.3.0</plugin.source.version>
         <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
-
         <classgraph.version>4.8.160</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.13.0</commons-io.version>
@@ -289,12 +288,100 @@
                 <version>${hamcrest.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-core</artifactId>
-                <version>${hamcrest.version}</version>
-                <scope>test</scope>
-            </dependency>
+	        <dependency>
+	            <groupId>${project.groupId}</groupId>
+	            <artifactId>dataformat-core</artifactId>
+	            <version>${revision}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>${project.groupId}</groupId>
+	            <artifactId>dataformat-xml</artifactId>
+            	<version>${revision}</version>
+        	</dependency>
+	        <dependency>
+	            <groupId>${project.groupId}</groupId>
+	            <artifactId>model</artifactId>
+	            <version>${model.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>${project.groupId}</groupId>
+	            <artifactId>dataformat-core</artifactId>
+	            <classifier>tests</classifier>
+	            <version>${revision}</version>
+        	</dependency>
+	        <dependency>
+	            <groupId>org.apache.poi</groupId>
+	            <artifactId>poi-ooxml</artifactId>
+	            <version>${poi.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>commons-io</groupId>
+	            <artifactId>commons-io</artifactId>
+	            <version>${commons-io.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.core</groupId>
+	            <artifactId>jackson-databind</artifactId>
+	            <version>${jackson.version}</version>
+	        </dependency>
+			 <dependency>
+			    <groupId>com.fasterxml.jackson.core</groupId>
+			    <artifactId>jackson-core</artifactId>
+			    <version>${jackson.version}</version>
+			</dependency>
+	        <dependency>
+	            <groupId>com.fasterxml.jackson.core</groupId>
+	            <artifactId>jackson-annotations</artifactId>
+	            <version>${jackson.version}</version>
+        	</dependency>
+	        <dependency>
+	            <groupId>io.github.classgraph</groupId>
+	            <artifactId>classgraph</artifactId>
+	            <version>${classgraph.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.google.guava</groupId>
+	            <artifactId>guava</artifactId>
+	            <version>${guava.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.apache.commons</groupId>
+	            <artifactId>commons-lang3</artifactId>
+	            <version>${commons-lang3.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>pl.pragmatists</groupId>
+	            <artifactId>JUnitParams</artifactId>
+	            <version>${junit-params.version}</version>
+	        </dependency>
+    		<dependency>
+			    <groupId>com.vaadin.external.google</groupId>
+			    <artifactId>android-json</artifactId>
+			    <version>${vaadin.version}</version>
+			</dependency>
+		  <dependency>
+	            <groupId>com.fasterxml.jackson.dataformat</groupId>
+	            <artifactId>jackson-dataformat-xml</artifactId>
+	            <version>${jackson.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.xmlunit</groupId>
+	            <artifactId>xmlunit-core</artifactId>
+	            <version>${xmlunit.version}</version>
+	            <scope>test</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.xmlunit</groupId>
+	            <artifactId>xmlunit-matchers</artifactId>
+	            <version>${xmlunit.version}</version>
+	            <scope>test</scope>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.hamcrest</groupId>
+	            <artifactId>hamcrest-core</artifactId>
+	            <version>${hamcrest.version}</version>
+	            <scope>test</scope>
+        	</dependency>
         </dependencies>
     </dependencyManagement>
 
