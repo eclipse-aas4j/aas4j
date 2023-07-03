@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +15,50 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-
 public class XMLDeserializerTest {
 
+	@Test
+	public void deserializeAASSimple() throws FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+
+		Assert.assertEquals(AASSimple.createEnvironment(), env);
+	}
+
     @Test
-    public void deserializeAASSimple() throws Exception {
+	public void deserializeAASSimpleAAS() throws Exception {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
-        Assert.assertEquals(AASSimple.ENVIRONMENT, env);
-    }
+
+		Assert.assertEquals(AASSimple.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
+	}
+
+	@Test
+	public void deserializeAASSimpleSubmodel() throws Exception {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+
+		Assert.assertEquals(AASSimple.createEnvironment().getSubmodels(), env.getSubmodels());
+	}
+
+	@Test
+	public void deserializeAASSimpleConceptDescription() throws Exception {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+		
+		Assert.assertEquals(AASSimple.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
+	}
 
     @Test
     public void deserializeAnnotedRelationshipElement() throws Exception {
@@ -57,7 +78,7 @@ public class XMLDeserializerTest {
 
     @Test
     public void deserializeOperation() throws Exception {
-        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATION);
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
         Assert.assertNotNull(env);
 
         OperationVariable inputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInputVariables().get(0);
@@ -73,6 +94,26 @@ public class XMLDeserializerTest {
     @Test
     public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-        Assert.assertEquals(AASFull.ENVIRONMENT, env);
+		Assert.assertEquals(AASFull.createEnvironment(), env);
     }
+
+	@Test
+	public void deserializeAASFullAAS() throws FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+		Assert.assertEquals(AASFull.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
+	}
+
+	@Test
+	public void deserializeAASFullSubmodel() throws FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+
+		Assert.assertEquals(AASFull.createEnvironment().getSubmodels(), env.getSubmodels());
+	}
+
+	@Test
+	public void deserializeAASFullConceptDescription() throws FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+
+		Assert.assertEquals(AASFull.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
+	}
 }

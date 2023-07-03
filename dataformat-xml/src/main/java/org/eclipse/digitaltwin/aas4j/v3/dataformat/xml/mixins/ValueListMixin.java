@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +15,25 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.ValueReferencePairsDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 
-import java.util.List;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public interface ValueListMixin {
 
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePairs")
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePair")
     List<ValueReferencePair> getValueReferencePairs();
+
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePairs")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueReferencePair")
+    @JsonDeserialize(using = ValueReferencePairsDeserializer.class)
+    public void setValueReferencePairs(List<ValueReferencePair> valueReferencePair);
 
 }

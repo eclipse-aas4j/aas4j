@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +28,7 @@ public class CustomProperty implements Property {
 
 	protected List<Reference> dataSpecifications;
 
-	protected ModelingKind kind;
+	protected ModellingKind kind;
 
 	protected Reference semanticId;
 
@@ -49,9 +42,9 @@ public class CustomProperty implements Property {
 
 	protected String category;
 
-	protected List<LangString> description;
+	protected List<LangStringTextType> description;
 
-	protected List<LangString> displayName;
+	protected List<LangStringNameType> displayName;
 
 	protected String idShort;
 
@@ -84,7 +77,7 @@ public class CustomProperty implements Property {
 					&& Objects.equals(this.description, other.description)
 					&& Objects.equals(this.displayName, other.displayName)
 					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
-					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
 					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
 		}
 	}
@@ -130,32 +123,22 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangString> getDescription() {
+	final public List<LangStringTextType> getDescriptions() {
 		return description;
 	}
 
 	@Override
-	final public void setDescription(List<LangString> description) {
+	final public void setDescriptions(List<LangStringTextType> description) {
 		this.description = description;
 	}
 
 	@Override
-	public String getChecksum() {
-		return null;
-	}
-
-	@Override
-	public void setChecksum(String checksum) {
-
-	}
-
-	@Override
-	final public List<LangString> getDisplayName() {
+	final public List<LangStringNameType> getDisplayNames() {
 		return displayName;
 	}
 
 	@Override
-	final public void setDisplayName(List<LangString> displayName) {
+	final public void setDisplayNames(List<LangStringNameType> displayName) {
 		this.displayName = displayName;
 	}
 
@@ -187,16 +170,6 @@ public class CustomProperty implements Property {
 	@Override
 	final public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
 		this.embeddedDataSpecifications = embeddedDataSpecifications;
-	}
-
-	@Override
-	final public ModelingKind getKind() {
-		return kind;
-	}
-
-	@Override
-	final public void setKind(ModelingKind kind) {
-		this.kind = kind;
 	}
 
 	@Override

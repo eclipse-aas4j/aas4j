@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- ** Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
+import java.io.IOException;
+
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIEC61360;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 
 
 /**
@@ -34,27 +31,22 @@ import java.io.IOException;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-// TODO: solve EmbeddedDataSpecifiction issue
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIEC61360> {
-
-    private static final Logger logger = LoggerFactory.getLogger(EmbeddedDataSpecificationSerializer.class);
+public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIec61360> {
 
     @Override
-    public void serialize(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider)
+    public void serialize(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider)
             throws IOException {
         if (data == null) {
             return;
         }
-//        generator.writeFieldName(PROP_DATA_SPECIFICATION_CONTENT);
         generator.writeStartObject();
-        // TODO: Add field name according to template type
         generator.writeObjectField("dataSpecificationIec61360", data);
         generator.writeEndObject();
 
     }
 
     @Override
-    public void serializeWithType(DataSpecificationIEC61360 data, JsonGenerator generator, SerializerProvider provider,
+    public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
             TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }

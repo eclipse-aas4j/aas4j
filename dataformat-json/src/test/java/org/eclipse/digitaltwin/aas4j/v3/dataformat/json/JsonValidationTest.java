@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -30,6 +28,7 @@ import org.junit.runner.RunWith;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(JUnitParamsRunner.class)
 public class JsonValidationTest {
@@ -43,28 +42,27 @@ public class JsonValidationTest {
 
     @Test
     @Parameters({
-            "src/test/resources/empty_aas.json",
-            "src/test/resources/jsonExample.json",
+            "src/test/resources/Environment-Empty.json",
+            "src/test/resources/Example-Simple.json",
             "src/test/resources/MotorAAS.json",
-            "src/test/resources/MotorAAS_reduced.json",
-            "src/test/resources/test_demo_full_example.json"
+            "src/test/resources/MotorAAS-Reduced.json",
+            "src/test/resources/Example-Full.json"
     })
     public void validateValidJson(String file) throws IOException {
-        String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
-        Set<String> errors = validator.validateSchema(serializedEnvironment);
-        System.out.println("Validating: " + file);
-        assertTrue(errors.isEmpty());
+        assertTrue(validate(file).isEmpty());
     }
 
     @Test
-    @Parameters({"src/test/resources/invalidJsonExample.json"})
+    @Parameters({"src/test/resources/Environment-Invalid.json"})
     public void validateInvalidJson(String file) throws IOException {
-        String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
-        Set<String> errors = validator.validateSchema(serializedEnvironment);
+        assertFalse(validate(file).isEmpty());
+    }
+
+    private Set<String> validate(String file) throws IOException {
+        String json = new String(Files.readAllBytes(Paths.get(file)));
+        Set<String> result = validator.validateSchema(json);
         System.out.println("Validating: " + file);
-        for (String s : errors) {
-            System.out.println(s);
-        }
-        assertEquals(2, errors.size());
+        result.forEach(System.out::println);
+        return result;
     }
 }

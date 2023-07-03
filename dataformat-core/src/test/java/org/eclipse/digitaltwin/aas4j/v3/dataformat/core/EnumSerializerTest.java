@@ -1,34 +1,18 @@
-/*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import java.io.IOException;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
 
 public class EnumSerializerTest {
 
@@ -52,40 +36,35 @@ public class EnumSerializerTest {
 
     @Test
     public void whenSerializingEnum_usingDataTypeIEC61360_shouldReturnUpperCase() {
-        assertSerialization(DataTypeIEC61360.BOOLEAN, "BOOLEAN");
-        assertSerialization(DataTypeIEC61360.DATE, "DATE");
-        assertSerialization(DataTypeIEC61360.INTEGER_CURRENCY, "INTEGER_CURRENCY");
-        assertSerialization(DataTypeIEC61360.INTEGER_COUNT, "INTEGER_COUNT");
-        assertSerialization(DataTypeIEC61360.INTEGER_MEASURE, "INTEGER_MEASURE");
-        assertSerialization(DataTypeIEC61360.RATIONAL, "RATIONAL");
-        assertSerialization(DataTypeIEC61360.RATIONAL_MEASURE, "RATIONAL_MEASURE");
-        assertSerialization(DataTypeIEC61360.REAL_COUNT, "REAL_COUNT");
-        assertSerialization(DataTypeIEC61360.REAL_MEASURE, "REAL_MEASURE");
-        assertSerialization(DataTypeIEC61360.STRING, "STRING");
-        assertSerialization(DataTypeIEC61360.STRING_TRANSLATABLE, "STRING_TRANSLATABLE");
-        assertSerialization(DataTypeIEC61360.TIME, "TIME");
-        assertSerialization(DataTypeIEC61360.TIMESTAMP, "TIMESTAMP");
-        assertSerialization(DataTypeIEC61360.IRI, "IRI");
+        assertSerialization(DataTypeIec61360.BOOLEAN, "BOOLEAN");
+        assertSerialization(DataTypeIec61360.DATE, "DATE");
+        assertSerialization(DataTypeIec61360.INTEGER_CURRENCY, "INTEGER_CURRENCY");
+        assertSerialization(DataTypeIec61360.INTEGER_COUNT, "INTEGER_COUNT");
+        assertSerialization(DataTypeIec61360.INTEGER_MEASURE, "INTEGER_MEASURE");
+        assertSerialization(DataTypeIec61360.RATIONAL, "RATIONAL");
+        assertSerialization(DataTypeIec61360.RATIONAL_MEASURE, "RATIONAL_MEASURE");
+        assertSerialization(DataTypeIec61360.REAL_COUNT, "REAL_COUNT");
+        assertSerialization(DataTypeIec61360.REAL_MEASURE, "REAL_MEASURE");
+        assertSerialization(DataTypeIec61360.STRING, "STRING");
+        assertSerialization(DataTypeIec61360.STRING_TRANSLATABLE, "STRING_TRANSLATABLE");
+        assertSerialization(DataTypeIec61360.TIME, "TIME");
+        assertSerialization(DataTypeIec61360.TIMESTAMP, "TIMESTAMP");
+        assertSerialization(DataTypeIec61360.IRI, "IRI");
     }
 
     @Test
-    public void whenSerializingEnum_usingDirection_shouldReturnUpperCase() {
-        assertSerialization(Direction.INPUT, "INPUT");
-        assertSerialization(Direction.OUTPUT, "OUTPUT");
+    public void whenSerializingEnum_usingDirection_shouldReturnLowerCase() {
+        assertSerialization(Direction.INPUT, "input");
+        assertSerialization(Direction.OUTPUT, "output");
     }
 
     @Test
-    public void whenSerializingEnum_usingStateOfEvent_shouldReturnUpperCase() {
-        assertSerialization(StateOfEvent.ON, "ON");
-        assertSerialization(StateOfEvent.OFF, "OFF");
+    public void whenSerializingEnum_usingStateOfEvent_shouldReturnLowerCase() {
+        assertSerialization(StateOfEvent.ON, "on");
+        assertSerialization(StateOfEvent.OFF, "off");
     }
 
-    @Test
-    public void whenSerializingEnum_usingModelingKind_shouldReturnCamelCase() {
-        assertSerialization(ModelingKind.INSTANCE, "Instance");
-        assertSerialization(ModelingKind.TEMPLATE, "Template");
-    }
-    private void assertSerialization(Enum value, String expected) {
+	private void assertSerialization(Enum<?> value, String expected) {
         this.serializationOutput.setLength(0);
         try {
             this.enumSerializer.serialize(value, jsonGeneratorMock, serializerProviderMock);

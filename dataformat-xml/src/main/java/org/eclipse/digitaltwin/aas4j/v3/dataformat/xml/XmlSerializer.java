@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +15,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.XmlDataformatAnnotationIntrospector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.LangStringSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.OperationVariableSerializer;
-// TODO import io.adminshell.aas.v3.dataformat.xml.serialization.EmbeddedDataSpecificationSerializer;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -37,25 +35,34 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 
-public class XmlSerializer implements Serializer {
+public class XmlSerializer {
+    protected final XmlFactory xmlFactory;
     protected XmlMapper mapper;
     protected Map<String, String> namespacePrefixes;
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
 
     public XmlSerializer() {
         this(null);
     }
 
     public XmlSerializer(Map<String, String> namespacePrefixes) {
+        this(new XmlFactory(), namespacePrefixes);
+    }
+
+    public XmlSerializer(XmlFactory xmlFactory, Map<String, String> namespacePrefixes) {
+        this.xmlFactory = xmlFactory;
         this.namespacePrefixes = namespacePrefixes;
         buildMapper();
     }
 
     protected void buildMapper() {
-        mapper = XmlMapper.builder()
+        mapper = XmlMapper.builder(xmlFactory)
                 .enable(SerializationFeature.INDENT_OUTPUT)
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
@@ -70,7 +77,6 @@ public class XmlSerializer implements Serializer {
 
     protected SimpleModule buildCustomSerializerModule() {
         SimpleModule module = new SimpleModule();
-        // TODO: module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
         AssetAdministrationShellEnvironmentSerializer aasEnvSerializer;
         if (namespacePrefixes != null) {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer(namespacePrefixes);
@@ -78,11 +84,7 @@ public class XmlSerializer implements Serializer {
             aasEnvSerializer = new AssetAdministrationShellEnvironmentSerializer();
         }
         module.addSerializer(Environment.class, aasEnvSerializer);
-//        module.addSerializer(Key.class, new KeySerializer());
-//        module.addSerializer(Reference.class, new ReferenceSerializer());
-        module.addSerializer(LangString.class, new LangStringSerializer());
-//        module.addSerializer(new LangStringsSerializer());
-module.addSerializer(OperationVariable.class, new OperationVariableSerializer());
+		module.addSerializer(OperationVariable.class, new OperationVariableSerializer());
         return module;
     }
 
@@ -92,7 +94,15 @@ module.addSerializer(OperationVariable.class, new OperationVariableSerializer())
         return module;
     }
 
-    @Override
+    /**
+     * Serializes a given instance of AssetAdministrationShellEnvironment to
+     * string
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to
+     * serialize
+     * @return the string representation of the environment
+     * @throws SerializationException if serialization fails
+     */
     public String write(Environment aasEnvironment) throws SerializationException {
         try {
             ObjectWriter writer = mapper.writer();
@@ -100,5 +110,74 @@ module.addSerializer(OperationVariable.class, new OperationVariableSerializer())
         } catch (JsonProcessingException ex) {
             throw new SerializationException("serialization failed", ex);
         }
+    }
+
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using DEFAULT_CHARSET
+     *
+     * @param out the Outputstream to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
+        write(out, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of Environment to an
+     * OutputStream using given charset
+     *
+     * @param out the Outputstream to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Charset charset, Environment aasEnvironment)
+            throws IOException, SerializationException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(out, charset)) {
+            writer.write(write(aasEnvironment));
+        }
+    }
+
+    // Note that the AAS also defines a file class
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using DEFAULT_CHARSET
+     *
+     * @param file the java.io.File to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Charset charset, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        try (OutputStream out = new FileOutputStream(file)) {
+            write(out, charset, aasEnvironment);
+        }
+    }
+
+    /**
+     * Serializes a given instance of Environment to a
+     * java.io.File using given charset
+     *
+     * @param file the java.io.File to serialize to
+     * @param aasEnvironment the Environment to
+     * serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        write(file, DEFAULT_CHARSET, aasEnvironment);
     }
 }
