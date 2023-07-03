@@ -35,8 +35,8 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-        	<groupId>${project.groupId}</groupId>
-        	<artifactId>model</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
