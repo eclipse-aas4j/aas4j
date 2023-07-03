@@ -26,11 +26,11 @@ public abstract class SubmodelElementCollectionBuilder<T extends SubmodelElement
     /**
      * This function allows setting a value for values
      * 
-     * @param values desired value to be set
+     * @param value desired value to be set
      * @return Builder object with new value for values
      */
-    public B values(List<SubmodelElement> values) {
-        getBuildingInstance().setValues(values);
+    public B value(List<SubmodelElement> value) {
+        getBuildingInstance().setValues(value);
         return getSelf();
     }
 
