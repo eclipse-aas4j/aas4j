@@ -332,14 +332,14 @@ public class AasUtils {
             if (keyType != null) {
                 if (SubmodelElementList.class.isAssignableFrom(current.getClass())) {
                     try {
-                        current = ((SubmodelElementList) current).getValues().get(Integer.parseInt(key.getValue()));
+                        current = ((SubmodelElementList) current).getValue().get(Integer.parseInt(key.getValue()));
                     } catch (NumberFormatException ex) {
                         throw new IllegalArgumentException(String.format("invalid value for key with index %d, expected integer values >= 0, but found '%s'",
                                 i, key.getValue()));
                     } catch (IndexOutOfBoundsException ex) {
                         throw new IllegalArgumentException(String.format("index out of bounds exception for key with index %d, expected integer values >= 0 and < %d, but found '%s'",
                                 i,
-                                ((SubmodelElementList) current).getValues().size(),
+                                ((SubmodelElementList) current).getValue().size(),
                                 key.getValue()));
                     }
                 } else {

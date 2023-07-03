@@ -78,7 +78,7 @@ public class JsonSerializerTest {
 	@Test
 	public void testSerializeEmptyReferableList() throws SerializationException {
 		List<Referable> emptyList = Collections.emptyList();
-		String serialized = new JsonSerializer().write(emptyList);
+		String serialized = new JsonSerializer().writeReferables(emptyList);
 		assertEquals("[]", serialized);
 	}
 

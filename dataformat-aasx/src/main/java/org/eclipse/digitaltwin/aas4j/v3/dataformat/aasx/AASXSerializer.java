@@ -226,7 +226,7 @@ public class AASXSerializer {
                 files.add((File) element);
             } else if (element instanceof SubmodelElementCollection) {
                 // Recursive call to deal with SubmodelElementCollections
-                files.addAll(findFileElements(((SubmodelElementCollection) element).getValues()));
+                files.addAll(findFileElements(((SubmodelElementCollection) element).getValue()));
             }
         }
 

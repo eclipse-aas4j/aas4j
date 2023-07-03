@@ -169,7 +169,7 @@ public class AASXDeserializer {
                 paths.add(file.getValue());
             } else if (element instanceof SubmodelElementCollection) {
                 SubmodelElementCollection collection = (SubmodelElementCollection) element;
-                paths.addAll(parseElements(collection.getValues()));
+                paths.addAll(parseElements(collection.getValue()));
             }
         }
         return paths;
