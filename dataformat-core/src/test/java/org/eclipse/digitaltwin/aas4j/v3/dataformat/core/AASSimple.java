@@ -328,7 +328,7 @@ public class AASSimple {
                 .idShort(MAX_ROTATION_SPEED).category(PROPERTY)
                 .administration(new DefaultAdministrativeInformation.Builder()
                         .version("2")
-                        .revision("2.1")
+                        .revision("1")
                         .build())
                 .id(_0173_1_02_BAA120_008)
                 .embeddedDataSpecifications(
