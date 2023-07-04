@@ -56,7 +56,6 @@
         <plugin.projectinfo.version>3.4.5</plugin.projectinfo.version>
         <plugin.source.version>3.3.0</plugin.source.version>
         <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
-
         <classgraph.version>4.8.160</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.13.0</commons-io.version>
@@ -64,6 +63,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <guava.version>30.1.1-jre</guava.version>
         <guice.version>5.0.1</guice.version>
+        <hamcrest.version>2.2</hamcrest.version>
         <jackson.version>2.15.2</jackson.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <jaxb.version>2.3.1</jaxb.version>
@@ -81,6 +81,7 @@
         <xerces.version>2.12.1</xerces.version>
         <xmlunit.version>2.9.1</xmlunit.version>
         <mockito.version>5.4.0</mockito.version>
+        <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
     </properties>
     <build>
         <plugins>
@@ -131,7 +132,13 @@
                 <version>${plugin.flatten.version}</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
-                    <pomElements><name/><description/><url/><developers/><scm/></pomElements>
+                    <pomElements>
+                        <name/>
+                        <description/>
+                        <url/>
+                        <developers/>
+                        <scm/>
+                    </pomElements>
                 </configuration>
                 <executions>
                     <execution>
@@ -181,6 +188,11 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -188,44 +200,44 @@
     <profiles>
         <profile>
             <id>MavenCentral</id>
-			<build>
-				<plugins>
-					<!-- Signing the artifacts -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.1.0</version>
-						<executions>
-						  <execution>
-							<id>sign-artifacts</id>
-							<phase>verify</phase>
-							<goals>
-							  <goal>sign</goal>
-							</goals>
-							<configuration>
-							  <gpgArguments>
-								<arg>--pinentry-mode</arg>
-								<arg>loopback</arg>
-							  </gpgArguments>
-							</configuration>
-						  </execution>
-						</executions>
-					</plugin>
-					
-					<!-- Upload to Maven Central -->
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.13</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+            <build>
+                <plugins>
+                    <!-- Signing the artifacts -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    
+                    <!-- Upload to Maven Central -->
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
 
             <!-- Central Repository deployment configuration -->
             <distributionManagement>
@@ -241,25 +253,6 @@
         </profile>
     </profiles>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-    </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -273,15 +266,142 @@
                 <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dataformat-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dataformat-xml</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>model</artifactId>
+                <version>${model.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dataformat-core</artifactId>
+                <classifier>tests</classifier>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.classgraph</groupId>
+                <artifactId>classgraph</artifactId>
+                <version>${classgraph.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.pragmatists</groupId>
+                <artifactId>JUnitParams</artifactId>
+                <version>${junit-params.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin.external.google</groupId>
+                <artifactId>android-json</artifactId>
+                <version>${vaadin.version}</version>
+            </dependency>
+          <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xmlunit</groupId>
+                <artifactId>xmlunit-core</artifactId>
+                <version>${xmlunit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.xmlunit</groupId>
+                <artifactId>xmlunit-matchers</artifactId>
+                <version>${xmlunit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+            <groupId>com.networknt</groupId>
+                <artifactId>json-schema-validator</artifactId>
+                <version>${json-schema-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.skyscreamer</groupId>
+                <artifactId>jsonassert</artifactId>
+                <version>${jsonassert.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <distributionManagement>
-      <repository>
-        <id>github</id>
-        <name>GitHub Apache Maven Packages</name>
-        <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
-      </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
+        </repository>
     </distributionManagement>
 
     <licenses>
