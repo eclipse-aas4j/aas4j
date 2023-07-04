@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,14 +70,14 @@ public class EnumSerializerTest {
 
     @Test
     public void whenSerializingEnum_usingDirection_shouldReturnUpperCase() {
-        assertSerialization(Direction.INPUT, "INPUT");
-        assertSerialization(Direction.OUTPUT, "OUTPUT");
+        assertSerialization(Direction.INPUT, "input");
+        assertSerialization(Direction.OUTPUT, "output");
     }
 
     @Test
     public void whenSerializingEnum_usingStateOfEvent_shouldReturnUpperCase() {
-        assertSerialization(StateOfEvent.ON, "ON");
-        assertSerialization(StateOfEvent.OFF, "OFF");
+        assertSerialization(StateOfEvent.ON, "on");
+        assertSerialization(StateOfEvent.OFF, "off");
     }
 
     @Test

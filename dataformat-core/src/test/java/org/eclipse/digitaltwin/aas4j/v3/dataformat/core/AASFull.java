@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
