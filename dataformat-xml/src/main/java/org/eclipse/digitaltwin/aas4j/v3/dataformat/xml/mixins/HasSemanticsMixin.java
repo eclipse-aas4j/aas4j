@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
