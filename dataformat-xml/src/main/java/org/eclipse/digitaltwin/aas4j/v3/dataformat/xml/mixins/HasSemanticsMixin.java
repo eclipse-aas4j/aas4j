@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.ReferencesDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -25,9 +26,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+
+@JsonPropertyOrder("semanticId, supplementalSemanticIds")
 public interface HasSemanticsMixin {
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticId")
-	void setSemanticID(Reference semanticID);
+	void setSemanticId(Reference semanticId);
 
 	@JsonDeserialize(using = ReferencesDeserializer.class)
 	void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);

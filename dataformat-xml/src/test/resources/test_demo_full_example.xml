@@ -2386,7 +2386,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -2465,6 +2465,12 @@
                 </aas:valueReferencePairs>
               </aas:valueList>
               <aas:value>TEST</aas:value>
+              <aas:levelType>
+                <aas:min>false</aas:min>
+                <aas:nom>false</aas:nom>
+                <aas:typ>false</aas:typ>
+                <aas:max>true</aas:max>
+              </aas:levelType>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
         </aas:embeddedDataSpecification>
