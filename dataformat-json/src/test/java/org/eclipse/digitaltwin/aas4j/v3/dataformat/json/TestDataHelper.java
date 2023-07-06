@@ -33,13 +33,6 @@ public class TestDataHelper {
 
     public static final String DEFAULT_ID_SHORT = "defaultIdShort";
 
-
-
-
-    public static LangString createLangString(String langCode, String text) {
-        return new DefaultLangString.Builder().language(langCode).text(text).build();
-    }
-
     public static LangStringTextType createLangStringTextType(String langCode, String text) {
         return new DefaultLangStringTextType.Builder().language(langCode).text(text).build();
     }

@@ -19,10 +19,10 @@
           "type" : "GlobalReference",
           "value" : "defaultEmbeddedDataSpecificationDataSpecificationValue"
         } ],
-        "type" : "GlobalReference"
+        "type" : "ExternalReference"
       },
       "dataSpecificationContent" : {
-        "modelType" : "DataSpecificationIEC61360",
+        "modelType" : "DataSpecificationIec61360",
         "preferredName" : [ ]
       }
     } ]
@@ -42,6 +42,6 @@
       "type" : "GlobalReference",
       "value" : "eClassDefaultSemanticId"
     } ],
-    "type" : "GlobalReference"
+    "type" : "ExternalReference"
   }
 }

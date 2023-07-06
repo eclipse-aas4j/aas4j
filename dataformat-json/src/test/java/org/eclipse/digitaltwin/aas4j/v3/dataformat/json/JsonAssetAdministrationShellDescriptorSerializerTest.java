@@ -49,7 +49,7 @@ public class JsonAssetAdministrationShellDescriptorSerializerTest {
     private void validateAndCompare(File expectedFile, AssetAdministrationShellDescriptor descriptor) throws IOException, SerializationException, JSONException {
         String expected = Files.readString(expectedFile.toPath());
         String actual = new JsonSerializer().writeAssetAdministrationShellDescriptor(descriptor);
-        logger.info(actual);
+        logger.debug(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);

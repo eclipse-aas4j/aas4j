@@ -92,7 +92,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
     @Override
     public String writeReferables(List<Referable> referables) throws SerializationException {
         if(referables.isEmpty()){
-            return null;
+            return "[]";
         }
 
         try {

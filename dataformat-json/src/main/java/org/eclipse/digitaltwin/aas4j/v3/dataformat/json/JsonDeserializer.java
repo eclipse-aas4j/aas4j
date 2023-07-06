@@ -15,8 +15,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -118,6 +122,15 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
     }
 
     @Override
+    public <T extends Referable> T readReferable(InputStream src, Class<T> outputClass) throws DeserializationException {
+        return readReferable(new BufferedReader(
+            new InputStreamReader(src, DEFAULT_CHARSET))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())),
+            outputClass);
+    }
+
+    @Override
     public <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException {
         try {
             // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
@@ -127,6 +140,15 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of Referables", ex);
         }
+    }
+
+    @Override
+    public <T extends Referable> List<T> readReferables(InputStream src, Class<T> outputClass) throws DeserializationException {
+        return readReferables(new BufferedReader(
+            new InputStreamReader(src, DEFAULT_CHARSET))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())),
+                outputClass);
     }
 
     @Override

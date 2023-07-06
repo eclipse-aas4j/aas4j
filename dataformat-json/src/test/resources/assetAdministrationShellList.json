@@ -24,7 +24,7 @@
           "value": "https://acplt.org/TestAssetAdministrationShell2"
         }
       ],
-      "type": "GlobalReference"
+      "type": "ExternalReference"
     },
     "assetInformation": {
       "assetKind": "Instance",
@@ -35,7 +35,7 @@
             "value": "https://acplt.org/Test_Asset"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     },
     "submodels": [
@@ -46,7 +46,7 @@
             "value": "https://acplt.org/Test_Submodel"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -55,7 +55,7 @@
             "value": "http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -64,7 +64,7 @@
             "value": "http://acplt.org/Submodels/Assets/TestAsset/Identification"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     ]
   },
@@ -81,7 +81,7 @@
             "value": "https://acplt.org/Test_Asset_Mandatory"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     },
     "submodels": [
@@ -92,7 +92,7 @@
             "value": "https://acplt.org/Test_Submodel_Mandatory"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       },
       {
         "keys": [
@@ -101,7 +101,7 @@
             "value": "https://acplt.org/Test_Submodel2_Mandatory"
           }
         ],
-        "type": "GlobalReference"
+        "type": "ExternalReference"
       }
     ]
   }

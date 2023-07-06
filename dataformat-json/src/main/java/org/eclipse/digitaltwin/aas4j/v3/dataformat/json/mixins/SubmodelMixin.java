@@ -17,10 +17,9 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface SubmodelMixin {
@@ -32,14 +31,14 @@ public interface SubmodelMixin {
     public void setIdShort(String idShort);
 
     @JsonProperty("description")
-    public List<LangString> getDescription();
+    public List<LangStringTextType> getDescription();
 
     @JsonProperty("description")
-    public void setDescription(List<LangString> description);
+    public void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayName")
-    public List<LangString> getDisplayName();
+    public List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayName")
-    public void setDisplayName(List<LangString> displayName);
+    public void setDisplayName(List<LangStringNameType> displayName);
 }

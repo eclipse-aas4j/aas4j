@@ -85,7 +85,7 @@ public class JsonSerializerTest {
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = new JsonSerializer().write(exampleData.getModel());
-        logger.info(actual);
+        logger.debug(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);

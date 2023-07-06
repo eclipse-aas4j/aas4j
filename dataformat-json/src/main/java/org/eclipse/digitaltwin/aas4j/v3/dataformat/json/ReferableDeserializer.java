@@ -19,7 +19,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Deserializer Interface for deserialization of referables
@@ -40,6 +44,17 @@ public interface ReferableDeserializer {
      <T extends Referable> T readReferable(String referable, Class<T> outputClass) throws DeserializationException;
 
      /**
+      * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
+      *
+      * @param src a input stream representing a Referable
+      * @param outputClass most specific class of the given Referable
+      * @param <T> type of the returned element
+      * @return an instance of the referable
+      * @throws DeserializationException if deserialization fails
+      */
+     <T extends Referable> T readReferable(InputStream src, Class<T> outputClass) throws DeserializationException;
+
+     /**
       * Deserializes a given string into an instance of
       * a list of the given Referables
       *
@@ -51,5 +66,16 @@ public interface ReferableDeserializer {
       * @throws DeserializationException
       */
      <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException;
+
+     /**
+      * Deserializes a given input stream into an instance of a list of the given Referable
+      *
+      * @param src a input stream representing a Referable
+      * @param outputClass most specific class of the given Referable
+      * @param <T> type of the returned element
+      * @return an instance of the referable
+      * @throws DeserializationException if deserialization fails
+      */
+     public <T extends Referable> List<T> readReferables(InputStream src, Class<T> outputClass) throws DeserializationException;
 
 }

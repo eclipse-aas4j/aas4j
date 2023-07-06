@@ -17,25 +17,25 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 
 import java.util.List;
 
 public interface SubmodelDescriptorMixin {
 
     @JsonProperty("descriptions")
-    public List<LangString> getDescription();
+    public List<LangStringTextType> getDescription();
 
     @JsonProperty("descriptions")
-    public void setDescription(List<LangString> description);
+    public void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayNames")
-    public List<LangString> getDisplayName();
+    public List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayNames")
-    public void setDisplayName(List<LangString> displayName);
+    public void setDisplayName(List<LangStringNameType> displayName);
 
     @JsonProperty("specificAssetIds")
     public SpecificAssetId getSpecificAssetId();

@@ -215,7 +215,7 @@
             "keys": [
               {
                 "type": "GlobalReference",
-                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
               }
             ],
             "type": "ExternalReference"
@@ -234,6 +234,12 @@
                 }
               ],
               "type": "ExternalReference"
+            },
+            "levelType": {
+              "max": true,
+              "min": false,
+              "nom": false,
+              "typ": false
             },
             "value": "TEST",
             "valueFormat": "string",
