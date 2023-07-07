@@ -23,6 +23,13 @@
         <plugin.javadoc.version>3.5.0</plugin.javadoc.version>
         <plugin.projectinfo.version>3.4.5</plugin.projectinfo.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
