@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
@@ -31,8 +30,17 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 public class Examples {
 
@@ -158,7 +166,7 @@ public class Examples {
 
     public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
 
-    public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of((Environment) Examples.EXTENSION_MINIMAL, "Extension-Minimal.json");
+    public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of((Environment) org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "Extension-Minimal.json");
 
-    public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of((Environment) Examples.EXTENSION_MAXIMAL, "Extension-Maximal.json");
+    public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of((Environment) org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "Extension-Maximal.json");
 }
