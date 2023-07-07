@@ -40,6 +40,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 
 public class JsonSerializerTest {
 
@@ -56,7 +59,7 @@ public class JsonSerializerTest {
     @Test
     public void testWriteToFile() throws JsonProcessingException, IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
-		new JsonSerializer().write(file, AASSimple.createEnvironment());
+        new JsonSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
@@ -75,12 +78,12 @@ public class JsonSerializerTest {
         validateAndCompare(Examples.EXAMPLE_FULL);
     }
 
-	@Test
-	public void testSerializeEmptyReferableList() throws SerializationException {
-		List<Referable> emptyList = Collections.emptyList();
-		String serialized = new JsonSerializer().write(emptyList);
-		assertEquals("[]", serialized);
-	}
+    @Test
+    public void testSerializeEmptyReferableList() throws SerializationException {
+        List<Referable> emptyList = Collections.emptyList();
+        String serialized = new JsonSerializer().write(emptyList);
+        assertEquals("[]", serialized);
+    }
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();

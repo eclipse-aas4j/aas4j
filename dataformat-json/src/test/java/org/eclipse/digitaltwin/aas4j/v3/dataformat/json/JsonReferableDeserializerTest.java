@@ -31,6 +31,8 @@ import org.junit.Test;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.junit.Assert;
 
 public class JsonReferableDeserializerTest {
 
