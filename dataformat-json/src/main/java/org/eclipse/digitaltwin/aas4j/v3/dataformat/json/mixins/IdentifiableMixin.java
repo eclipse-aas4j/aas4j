@@ -20,5 +20,5 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public interface IdentifiableMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getId();
+    String getId();
 }

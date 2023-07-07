@@ -24,8 +24,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 public interface HasExtensionsMixin {
 
     @JsonProperty("extension")
-    public List<Extension> getExtensions();
+    List<Extension> getExtensions();
 
     @JsonProperty("extension")
-    public void setExtensions(List<Extension> extensions);
+    void setExtensions(List<Extension> extensions);
 }

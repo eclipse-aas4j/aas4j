@@ -23,11 +23,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 public interface AssetInformationMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public AssetKind getAssetKind();
+    AssetKind getAssetKind();
 
     @JsonProperty("globalAssetId")
-    public String getGlobalAssetID();
+    String getGlobalAssetId();
 
     @JsonProperty("globalAssetId")
-    public void setGlobalAssetID(String globalAssetID);
+    void setGlobalAssetId(String globalAssetId);
 }

@@ -24,22 +24,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import java.util.List;
 
 public interface SubmodelDescriptorMixin {
+    @JsonProperty("descriptions")
+    List<LangStringTextType> getDescription();
 
     @JsonProperty("descriptions")
-    public List<LangStringTextType> getDescription();
-
-    @JsonProperty("descriptions")
-    public void setDescription(List<LangStringTextType> description);
+    void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayNames")
-    public List<LangStringNameType> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayNames")
-    public void setDisplayName(List<LangStringNameType> displayName);
+    void setDisplayName(List<LangStringNameType> displayName);
 
     @JsonProperty("specificAssetIds")
-    public SpecificAssetId getSpecificAssetId();
+    SpecificAssetId getSpecificAssetId();
 
     @JsonProperty("specificAssetIds")
-    public void setSpecificAssetId(SpecificAssetId specificAssetId);
+    void setSpecificAssetId(SpecificAssetId specificAssetId);
 }

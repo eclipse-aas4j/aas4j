@@ -20,13 +20,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface QualifierMixin {
-
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getType();
+    String getType();
 
     @JsonProperty("valueId")
-    public Reference getValueID();
+    Reference getValueId();
 
     @JsonProperty("valueId")
-    void setValueID(Reference valueID);
+    void setValueId(Reference valueId);
 }

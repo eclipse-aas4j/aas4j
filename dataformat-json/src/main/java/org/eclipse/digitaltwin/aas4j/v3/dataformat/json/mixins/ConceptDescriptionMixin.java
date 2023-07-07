@@ -22,8 +22,8 @@ import java.util.List;
 public interface ConceptDescriptionMixin {
 
     @JsonProperty("isCaseOf")
-    public List<Reference> getIsCaseOf();
+    List<Reference> getIsCaseOf();
 
     @JsonProperty("isCaseOf")
-    public void setIsCaseOfs(List<Reference> isCaseOf);
+    void setIsCaseOfs(List<Reference> isCaseOf);
 }

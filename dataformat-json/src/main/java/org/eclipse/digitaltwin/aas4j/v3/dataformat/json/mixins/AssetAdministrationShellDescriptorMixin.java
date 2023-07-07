@@ -27,32 +27,32 @@ import java.util.List;
 public interface AssetAdministrationShellDescriptorMixin {
 
     @JsonProperty("idShort")
-    public String getIdShort();
+    String getIdShort();
 
     @JsonProperty("idShort")
-    public void setIdShort(String idShort);
+    void setIdShort(String idShort);
 
     @JsonProperty("descriptions")
-    public List<LangStringTextType> getDescription();
+    List<LangStringTextType> getDescription();
 
     @JsonProperty("descriptions")
-    public void setDescription(List<LangStringTextType> description);
+    void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayNames")
-    public List<LangStringNameType> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayNames")
-    public void setDisplayName(List<LangStringNameType> displayName);
+    void setDisplayName(List<LangStringNameType> displayName);
 
     @JsonProperty("submodelDescriptors")
-    public List<SubmodelDescriptor> getSubmodelDescriptor();
+    List<SubmodelDescriptor> getSubmodelDescriptor();
 
     @JsonProperty("submodelDescriptors")
-    public void setSubmodelDescriptor(List<SubmodelDescriptor> submodelDescriptor);
+    void setSubmodelDescriptor(List<SubmodelDescriptor> submodelDescriptor);
 
     @JsonProperty("specificAssetIds")
-    public SpecificAssetId getSpecificAssetId();
+    SpecificAssetId getSpecificAssetId();
 
     @JsonProperty("specificAssetIds")
-    public void setSpecificAssetId(SpecificAssetId specificAssetId);
+    void setSpecificAssetId(SpecificAssetId specificAssetId);
 }

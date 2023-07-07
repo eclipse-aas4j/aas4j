@@ -30,8 +30,8 @@ public interface MultiLanguagePropertyMixin {
     public void setValue(LangStringTextType value);
 
     @JsonProperty("valueId")
-    public Reference getValueID();
+    public Reference getValueId();
 
     @JsonProperty("valueId")
-    public void setValueID(Reference valueID);
+    public void setValueId(Reference valueId);
 }

@@ -23,15 +23,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import java.util.List;
 
 public interface ReferenceMixin {
-
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("keys")
-    public List<Key> getKeys();
+    List<Key> getKeys();
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("type")
-    public ReferenceTypes getType();
+    ReferenceTypes getType();
 
     @JsonProperty("type")
-    public void setType(ReferenceTypes type);
+    void setType(ReferenceTypes type);
 }

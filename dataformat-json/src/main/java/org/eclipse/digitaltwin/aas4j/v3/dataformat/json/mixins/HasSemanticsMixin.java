@@ -20,8 +20,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface HasSemanticsMixin {
 	@JsonProperty("semanticId")
-	public Reference getSemanticID();
+	Reference getSemanticId();
 
-        @JsonProperty("semanticId")
-	public void setSemanticID(Reference semanticID);
+	@JsonProperty("semanticId")
+	void setSemanticId(Reference semanticId);
 }
