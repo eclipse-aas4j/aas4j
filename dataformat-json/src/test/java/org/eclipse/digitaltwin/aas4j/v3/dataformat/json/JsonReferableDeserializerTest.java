@@ -102,9 +102,23 @@ public class JsonReferableDeserializerTest {
     }
 
     @Test
-    public void testDeserializationOfShellWithExtensions() throws Exception {
+    public void testAASWithExtensions() throws Exception {
         AssetAdministrationShell expected = Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS.getModel();
         AssetAdministrationShell actual = new JsonDeserializer().readReferable(Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS.fileContentStream(), AssetAdministrationShell.class);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testExtensionMinimal() throws Exception {
+        Environment expected = Examples.EXTENSION_MINIMAL.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MINIMAL.fileContentStream());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testExtensionMaximal() throws Exception {
+        Environment expected = Examples.EXTENSION_MAXIMAL.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MAXIMAL.fileContentStream());
         assertEquals(expected, actual);
     }
 }

@@ -92,6 +92,16 @@ public class JsonReferableSerializerTest {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
+    @Test
+    public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MINIMAL);
+    }
+
+    @Test
+    public void testSerializeExtensionMaximal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MAXIMAL);
+    }
+
     @SuppressWarnings("unchecked")
     private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
