@@ -19,9 +19,54 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 import java.util.Arrays;
 import java.util.Base64;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
-
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBasicEventElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultCapability;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLevelType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultMultiLanguageProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultQualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRange;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReferenceElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueReferencePair;
 
 public class AASFull {
 
@@ -1761,75 +1806,75 @@ public class AASFull {
 
     public static ConceptDescription createConceptDescription4() {
         return new DefaultConceptDescription.Builder()
-            .idShort("TestSpec_01")
-            .id("http://acplt.org/DataSpecifciations/Example/Identification")
-            .administration(new DefaultAdministrativeInformation.Builder()
-                .version("0")
-                .revision("9")
-                .build())
-            .isCaseOf(new DefaultReference.Builder()
-                .keys(new DefaultKey.Builder()
-                    .type(KeyTypes.GLOBAL_REFERENCE)
-                    .value("http://acplt.org/ReferenceElements/ConceptDescriptionX")
-                    .build())
-                .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                .build())
-            .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
-                .dataSpecification(new DefaultReference.Builder()
-                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                    .keys(new DefaultKey.Builder()
-                        .type(KeyTypes.GLOBAL_REFERENCE)
-                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                .idShort("TestSpec_01")
+                .id("http://acplt.org/DataSpecifciations/Example/Identification")
+                .administration(new DefaultAdministrativeInformation.Builder()
+                        .version("0")
+                        .revision("9")
                         .build())
-                    .build())
-                .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
-                    .preferredName(Arrays.asList(
-                        new DefaultLangStringPreferredNameTypeIec61360.Builder().text("Test Specification").language("de").build(),
-                        new DefaultLangStringPreferredNameTypeIec61360.Builder().text("TestSpecification").language("en-us").build()
-                    ))
-                    .dataType(DataTypeIec61360.REAL_MEASURE)
-                    .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text("Dies ist eine Data Specification für Testzwecke").language("de").build())
-                    .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text("This is a DataSpecification for testing purposes").language("en-us").build())
-                    .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("Test Spec").language("de").build())
-                    .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("TestSpec").language("en-us").build())
-                    .unit("SpaceUnit")
-                    .unitId(new DefaultReference.Builder()
+                .isCaseOf(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
-                            .type(KeyTypes.GLOBAL_REFERENCE)
-                            .value("http://acplt.org/Units/SpaceUnit")
-                            .build())
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("http://acplt.org/ReferenceElements/ConceptDescriptionX")
+                                .build())
                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                         .build())
-                    .sourceOfDefinition("http://acplt.org/DataSpec/ExampleDef")
-                    .symbol("SU")
-                    .valueFormat("string")
-                    .value("TEST")
-                    .levelType(new DefaultLevelType.Builder().max(true).build())
-                    .valueList(new DefaultValueList.Builder()
-                        .valueReferencePairs(new DefaultValueReferencePair.Builder()
-                            .value("http://acplt.org/ValueId/ExampleValueId")
-                            .valueId(new DefaultReference.Builder()
-                                .keys(new DefaultKey.Builder()
-                                    .type(KeyTypes.GLOBAL_REFERENCE)
-                                    .value("http://acplt.org/ValueId/ExampleValueId")
-                                    .build())
+                .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
+                        .dataSpecification(new DefaultReference.Builder()
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                .build())
-                            .build())
-                        .valueReferencePairs(new DefaultValueReferencePair.Builder()
-                            .value("http://acplt.org/ValueId/ExampleValueId2")
-                            .valueId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
-                                    .type(KeyTypes.GLOBAL_REFERENCE)
-                                    .value("http://acplt.org/ValueId/ExampleValueId2")
-                                    .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                        .build())
                                 .build())
-                            .build())
+                        .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
+                                .preferredName(Arrays.asList(
+                                        new DefaultLangStringPreferredNameTypeIec61360.Builder().text("Test Specification").language("de").build(),
+                                        new DefaultLangStringPreferredNameTypeIec61360.Builder().text("TestSpecification").language("en-us").build()
+                                ))
+                                .dataType(DataTypeIec61360.REAL_MEASURE)
+                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text("Dies ist eine Data Specification für Testzwecke").language("de").build())
+                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder().text("This is a DataSpecification for testing purposes").language("en-us").build())
+                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("Test Spec").language("de").build())
+                                .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("TestSpec").language("en-us").build())
+                                .unit("SpaceUnit")
+                                .unitId(new DefaultReference.Builder()
+                                        .keys(new DefaultKey.Builder()
+                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                .value("http://acplt.org/Units/SpaceUnit")
+                                                .build())
+                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                        .build())
+                                .sourceOfDefinition("http://acplt.org/DataSpec/ExampleDef")
+                                .symbol("SU")
+                                .valueFormat("string")
+                                .value("TEST")
+                                .levelType(new DefaultLevelType.Builder().max(true).build())
+                                .valueList(new DefaultValueList.Builder()
+                                        .valueReferencePairs(new DefaultValueReferencePair.Builder()
+                                                .value("http://acplt.org/ValueId/ExampleValueId")
+                                                .valueId(new DefaultReference.Builder()
+                                                        .keys(new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                .value("http://acplt.org/ValueId/ExampleValueId")
+                                                                .build())
+                                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                        .build())
+                                                .build())
+                                        .valueReferencePairs(new DefaultValueReferencePair.Builder()
+                                                .value("http://acplt.org/ValueId/ExampleValueId2")
+                                                .valueId(new DefaultReference.Builder()
+                                                        .keys(new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                .value("http://acplt.org/ValueId/ExampleValueId2")
+                                                                .build())
+                                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                        .build())
+                                                .build())
+                                        .build())
+                                .build())
                         .build())
-                    .build())
-                .build())
-            .build();
+                .build();
     }
 
     public static Environment createEnvironment() {

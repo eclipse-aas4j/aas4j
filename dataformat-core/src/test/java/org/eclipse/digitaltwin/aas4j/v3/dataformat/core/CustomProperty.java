@@ -28,6 +28,8 @@ public class CustomProperty implements Property {
 
 	protected List<Reference> dataSpecifications;
 
+	protected ModellingKind kind;
+
 	protected Reference semanticId;
 
 	protected String value;
@@ -56,7 +58,7 @@ public class CustomProperty implements Property {
 	@Override
 	public int hashCode() {
 		return Objects.hash(new Object[] { this.valueType, this.value, this.valueId, this.category, this.description,
-				this.displayName, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications, this.kind,*/
+				this.displayName, this.idShort, this.qualifiers, /* this.embeddedDataSpecifications,*/ this.kind,
 				this.semanticId });
 	}
 
@@ -70,13 +72,16 @@ public class CustomProperty implements Property {
 			return false;
 		} else {
 			CustomProperty other = (CustomProperty) obj;
-			return Objects.equals(this.valueType, other.valueType) && Objects.equals(this.value, other.value)
-					&& Objects.equals(this.valueId, other.valueId) && Objects.equals(this.category, other.category)
+			return Objects.equals(this.valueType, other.valueType)
+					&& Objects.equals(this.value, other.value)
+					&& Objects.equals(this.valueId, other.valueId)
+					&& Objects.equals(this.category, other.category)
 					&& Objects.equals(this.description, other.description)
 					&& Objects.equals(this.displayName, other.displayName)
-					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
-					// TODO && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
-					//&& Objects.equals(this.kind, other.kind)
+					&& Objects.equals(this.idShort, other.idShort)
+					&& Objects.equals(this.qualifiers, other.qualifiers)
+					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+					&& Objects.equals(this.kind, other.kind)
 					&& Objects.equals(this.semanticId, other.semanticId);
 		}
 	}

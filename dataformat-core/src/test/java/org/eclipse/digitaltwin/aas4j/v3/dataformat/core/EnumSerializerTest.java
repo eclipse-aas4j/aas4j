@@ -69,13 +69,13 @@ public class EnumSerializerTest {
     }
 
     @Test
-    public void whenSerializingEnum_usingDirection_shouldReturnUpperCase() {
+    public void whenSerializingEnum_usingDirection_shouldReturnLowerCase() {
         assertSerialization(Direction.INPUT, "input");
         assertSerialization(Direction.OUTPUT, "output");
     }
 
     @Test
-    public void whenSerializingEnum_usingStateOfEvent_shouldReturnUpperCase() {
+    public void whenSerializingEnum_usingStateOfEvent_shouldReturnLowerCase() {
         assertSerialization(StateOfEvent.ON, "on");
         assertSerialization(StateOfEvent.OFF, "off");
     }
@@ -85,6 +85,7 @@ public class EnumSerializerTest {
         assertSerialization(ModellingKind.INSTANCE, "Instance");
         assertSerialization(ModellingKind.TEMPLATE, "Template");
     }
+
     private void assertSerialization(Enum value, String expected) {
         this.serializationOutput.setLength(0);
         try {

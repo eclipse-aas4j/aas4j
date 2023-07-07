@@ -16,8 +16,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
+import java.io.IOException;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
@@ -27,7 +27,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
 
 public class EnumDeserializerTest {
 
@@ -40,8 +41,24 @@ public class EnumDeserializerTest {
         deserializationContextMock = Mockito.mock(DeserializationContext.class);
     }
 
+	@Test
+	public void whenDeserializingEnumNames_withUpperCamelCase_shouldReturnScreamingSnakeCase() {
+		Assert.assertEquals("ANY_ENUM", EnumDeserializer.deserializeEnumName("AnyEnum"));
+	}
+
+	@Test
+	public void whenDeserializingEnumNames_withLowerCamelCase_shouldReturnScreamingSnakeCase() {
+		Assert.assertEquals("ANY_ENUM", EnumDeserializer.deserializeEnumName("anyEnum"));
+	}
+
+	@Test
+	public void whenDeserializingEnumNames_withScreamingSnakeCase_shouldReturnUnchanged() {
+		final String name = "ANY_ENUM";
+		Assert.assertEquals(name, EnumDeserializer.deserializeEnumName(name));
+	}
+
     @Test
-    public void whenSerializingEnum_usingDataTypeIec61360_shouldReturnUpperCase() {
+    public void whenSerializingEnum_usingDataTypeIEC61360_shouldReturnUpperCase() {
         assertDeserialization("BOOLEAN", DataTypeIec61360.BOOLEAN);
         assertDeserialization("DATE", DataTypeIec61360.DATE);
         assertDeserialization("INTEGER_CURRENCY", DataTypeIec61360.INTEGER_CURRENCY);
@@ -70,7 +87,8 @@ public class EnumDeserializerTest {
         assertDeserialization("off", StateOfEvent.OFF);
     }
 
-    private void assertDeserialization(String value, Enum expected) {
+	@SuppressWarnings("rawtypes")
+	private void assertDeserialization(String value, Enum<?> expected) {
         try {
             Mockito.doReturn(value).when(jsonParserMock).getText();
             Class<? extends Enum> type = expected.getClass();
