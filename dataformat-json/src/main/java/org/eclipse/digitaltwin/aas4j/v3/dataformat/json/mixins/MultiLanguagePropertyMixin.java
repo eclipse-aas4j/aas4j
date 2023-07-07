@@ -24,13 +24,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 public interface MultiLanguagePropertyMixin {
 
     @JsonProperty("value")
-    public List<LangStringTextType> getValue();
+    List<LangStringTextType> getValue();
 
     @JsonProperty("value")
-    public void setValue(LangStringTextType value);
+    void setValue(LangStringTextType value);
 
     @JsonProperty("valueId")
-    public Reference getValueId();
+    Reference getValueId();
 
     @JsonProperty("valueId")
     public void setValueId(Reference valueId);

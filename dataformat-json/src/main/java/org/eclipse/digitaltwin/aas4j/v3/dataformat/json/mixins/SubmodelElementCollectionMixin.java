@@ -20,9 +20,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import java.util.Collection;
 
 public interface SubmodelElementCollectionMixin {
-    @JsonProperty("value")
-    Collection<SubmodelElement> getValues();
 
     @JsonProperty("value")
-    void setValues(Collection<SubmodelElement> values);
+    public Collection<SubmodelElement> getValue();
+
+    @JsonProperty("value")
+    public void setValue(Collection<SubmodelElement> values);
 }

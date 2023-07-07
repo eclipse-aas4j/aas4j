@@ -25,5 +25,5 @@ public interface ConceptDescriptionMixin {
     List<Reference> getIsCaseOf();
 
     @JsonProperty("isCaseOf")
-    void setIsCaseOfs(List<Reference> isCaseOf);
+    void setIsCaseOf(List<Reference> isCaseOf);
 }

@@ -53,8 +53,8 @@ public interface SubmodelElementListMixin {
     void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 
     @JsonProperty("value")
-    Collection<SubmodelElement> getValues();
+    Collection<SubmodelElement> getValue();
 
     @JsonProperty("value")
-    void setValues(Collection<SubmodelElement> values);
+    void setValue(Collection<SubmodelElement> value);
 }
