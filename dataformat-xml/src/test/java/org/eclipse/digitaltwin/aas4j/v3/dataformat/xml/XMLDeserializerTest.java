@@ -19,8 +19,10 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
@@ -29,6 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
 public class XMLDeserializerTest {
 
@@ -115,5 +118,19 @@ public class XMLDeserializerTest {
 		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
 
 		Assert.assertEquals(AASFull.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
+	}
+
+	@Test
+	public void deserializeAASWithExtensionMinimal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MINIMAL);
+
+		Assert.assertEquals(Examples.EXTENSION_MINIMAL, env);
+	}
+
+	@Test
+	public void deserializeAASWithExtensionMaximal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
+		Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MAXIMAL);
+
+		Assert.assertEquals(Examples.EXTENSION_MAXIMAL, env);
 	}
 }
