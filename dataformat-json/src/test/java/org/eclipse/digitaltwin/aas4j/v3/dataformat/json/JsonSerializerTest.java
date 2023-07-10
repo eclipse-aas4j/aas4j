@@ -41,8 +41,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonSerializerTest {
 
@@ -79,6 +78,14 @@ public class JsonSerializerTest {
     }
 
     @Test
+    public void testSerializeFullExampleToNode() throws SerializationException, JSONException, IOException {
+        String expected = Examples.EXAMPLE_FULL.fileContent();
+        JsonNode node = new JsonSerializer().toNode(Examples.EXAMPLE_FULL.getModel());
+        String actual = new ObjectMapper().writeValueAsString(node);
+        validateAndCompare(expected, actual);
+    }
+
+    @Test
     public void testSerializeEmptyReferableList() throws SerializationException {
         List<Referable> emptyList = Collections.emptyList();
         String serialized = new JsonSerializer().write(emptyList);
@@ -88,6 +95,10 @@ public class JsonSerializerTest {
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = new JsonSerializer().write(exampleData.getModel());
+        validateAndCompare(expected, actual);
+    }
+
+    private void validateAndCompare(String expected, String actual) throws IOException, SerializationException, JSONException {
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());

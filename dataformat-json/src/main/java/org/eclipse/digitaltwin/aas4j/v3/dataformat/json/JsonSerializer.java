@@ -212,7 +212,6 @@ public class JsonSerializer {
         } else if (referables.isEmpty()) {
             return mapper.createArrayNode();
         }
-        // TODO make sure this does exactly what is expected
         return mapper.valueToTree(referables);
     }
 }
