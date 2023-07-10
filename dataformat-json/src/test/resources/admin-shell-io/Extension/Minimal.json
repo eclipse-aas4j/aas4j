@@ -2,7 +2,7 @@
     "assetAdministrationShells": [
         {
             "assetInformation": {
-                "assetKind": "Instance",
+                "assetKind": "NotApplicable",
                 "globalAssetId": "something_eea66fa1"
             },
             "extensions": [
