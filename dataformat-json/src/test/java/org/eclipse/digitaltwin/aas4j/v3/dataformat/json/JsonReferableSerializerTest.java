@@ -42,11 +42,6 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeAASWithExtensions() throws SerializationException, JSONException, IOException {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS);
-    }
-
-    @Test
     public void testSerializeAASs() throws IOException, SerializationException, JSONException {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
     }

@@ -22,7 +22,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -35,7 +34,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
@@ -79,28 +77,6 @@ public class Examples {
                             .build())
                     .build(),
             "AssetAdministrationShell-WithAssetInformation.json");
-
-    public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL_WITH_EXTENSIONS = ExampleData.of(
-            new DefaultAssetAdministrationShell.Builder()
-                    .id("https://example.org/AssetAdministrationShell")
-                    .extensions(new DefaultExtension.Builder()
-                            .name("CustomId")
-                            .valueType(DataTypeDefXSD.STRING)
-                            .value("lore_ipsum_you_know...")
-                            .semanticID(new DefaultReference.Builder()
-                                    .type(ReferenceTypes.MODEL_REFERENCE)
-                                    .keys(new DefaultKey.Builder()
-                                            .type(KeyTypes.CONCEPT_DESCRIPTION)
-                                            .value("my_custom_id")
-                                            .build())
-                                    .build())
-                            .build())
-                    .assetInformation(new DefaultAssetInformation.Builder()
-                            .assetKind(AssetKind.INSTANCE)
-                            .globalAssetID("https://acplt.org/Test_Asset")
-                            .build())
-                    .build(),
-            "AssetAdministrationShell-WithExtensions.json");
 
     public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL = ExampleData.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0), "AssetAdministrationShell.json");
 
@@ -166,7 +142,7 @@ public class Examples {
 
     public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
 
-    public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of((Environment) org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "Extension-Minimal.json");
+    public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "Extension-Minimal.json");
 
-    public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of((Environment) org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "Extension-Maximal.json");
+    public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "Extension-Maximal.json");
 }
