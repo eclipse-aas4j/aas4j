@@ -142,7 +142,7 @@ public class Examples {
 
     public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
 
-    public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "Extension-Minimal.json");
+	public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "admin-shell-io/Extension/Minimal.json");
 
-    public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "Extension-Maximal.json");
+	public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "admin-shell-io/Extension/Maximal.json");
 }
