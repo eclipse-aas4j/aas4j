@@ -15,6 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -32,6 +34,8 @@ import org.junit.Test;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.junit.Assert;
 
 public class JsonReferableDeserializerTest {
@@ -93,10 +97,22 @@ public class JsonReferableDeserializerTest {
         assertEquals(expected, actual);
     }
 
-	@Test
-	public void testReadEmptyReferableList() throws DeserializationException {
-		List<Referable> emptyList = Collections.emptyList();
-		List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
-		assertEquals(emptyList, deserialized);
-	}
+    @Test
+    public void testReadEmptyReferableList() throws DeserializationException {
+        List<Referable> emptyList = Collections.emptyList();
+        List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
+        assertEquals(emptyList, deserialized);
+    }
+
+    @Test
+    public void testPropertyFromNode() throws Exception {
+        Property expected = new DefaultProperty.Builder()
+                .idShort("exampleId")
+                .build();
+        ObjectNode input = JsonNodeFactory.instance.objectNode();
+        input.put("idShort", "exampleId");
+        input.put("modelType", "Property");
+        Property actual = new JsonDeserializer().readReferable(input, Property.class);
+        assertEquals(expected, actual);
+    }
 }
