@@ -40,6 +40,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonSerializerTest {
 
@@ -56,7 +58,7 @@ public class JsonSerializerTest {
     @Test
     public void testWriteToFile() throws JsonProcessingException, IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
-		new JsonSerializer().write(file, AASSimple.createEnvironment());
+        new JsonSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
@@ -75,16 +77,28 @@ public class JsonSerializerTest {
         validateAndCompare(Examples.EXAMPLE_FULL);
     }
 
-	@Test
-	public void testSerializeEmptyReferableList() throws SerializationException {
-		List<Referable> emptyList = Collections.emptyList();
-		String serialized = new JsonSerializer().write(emptyList);
-		assertEquals("[]", serialized);
-	}
+    @Test
+    public void testSerializeFullExampleToNode() throws SerializationException, JSONException, IOException {
+        String expected = Examples.EXAMPLE_FULL.fileContent();
+        JsonNode node = new JsonSerializer().toNode(Examples.EXAMPLE_FULL.getModel());
+        String actual = new ObjectMapper().writeValueAsString(node);
+        validateAndCompare(expected, actual);
+    }
+
+    @Test
+    public void testSerializeEmptyReferableList() throws SerializationException {
+        List<Referable> emptyList = Collections.emptyList();
+        String serialized = new JsonSerializer().write(emptyList);
+        assertEquals("[]", serialized);
+    }
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = new JsonSerializer().write(exampleData.getModel());
+        validateAndCompare(expected, actual);
+    }
+
+    private void validateAndCompare(String expected, String actual) throws IOException, SerializationException, JSONException {
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
