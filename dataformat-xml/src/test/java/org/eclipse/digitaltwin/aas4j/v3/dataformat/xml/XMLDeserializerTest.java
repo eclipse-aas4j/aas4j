@@ -35,33 +35,33 @@ import org.xml.sax.SAXException;
 
 public class XMLDeserializerTest {
 
-	@Test
-	public void deserializeAASSimple() throws FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
-
-		Assert.assertEquals(AASSimple.createEnvironment(), env);
-	}
-
     @Test
-	public void deserializeAASSimpleAAS() throws Exception {
+    public void deserializeAASSimple() throws FileNotFoundException, DeserializationException {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		Assert.assertEquals(AASSimple.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
-	}
+        Assert.assertEquals(AASSimple.createEnvironment(), env);
+    }
 
-	@Test
-	public void deserializeAASSimpleSubmodel() throws Exception {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+    @Test
+    public void deserializeAASSimpleAAS() throws Exception {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
 
-		Assert.assertEquals(AASSimple.createEnvironment().getSubmodels(), env.getSubmodels());
-	}
+        Assert.assertEquals(AASSimple.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
+    }
 
-	@Test
-	public void deserializeAASSimpleConceptDescription() throws Exception {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
-		
-		Assert.assertEquals(AASSimple.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
-	}
+    @Test
+    public void deserializeAASSimpleSubmodel() throws Exception {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+
+        Assert.assertEquals(AASSimple.createEnvironment().getSubmodels(), env.getSubmodels());
+    }
+
+    @Test
+    public void deserializeAASSimpleConceptDescription() throws Exception {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASSIMPLE_FILE);
+        
+        Assert.assertEquals(AASSimple.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
+    }
 
     @Test
     public void deserializeAnnotedRelationshipElement() throws Exception {
@@ -81,7 +81,7 @@ public class XMLDeserializerTest {
 
     @Test
     public void deserializeOperation() throws Exception {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE_WITH_OPERATIONS);
         Assert.assertNotNull(env);
 
         OperationVariable inputVariable = ((Operation) env.getSubmodels().get(0).getSubmodelElements().get(0)).getInputVariables().get(0);
@@ -97,40 +97,40 @@ public class XMLDeserializerTest {
     @Test
     public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-		Assert.assertEquals(AASFull.createEnvironment(), env);
+        Assert.assertEquals(AASFull.createEnvironment(), env);
     }
 
-	@Test
-	public void deserializeAASFullAAS() throws FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-		Assert.assertEquals(AASFull.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
-	}
+    @Test
+    public void deserializeAASFullAAS() throws FileNotFoundException, DeserializationException {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+        Assert.assertEquals(AASFull.createEnvironment().getAssetAdministrationShells(), env.getAssetAdministrationShells());
+    }
 
-	@Test
-	public void deserializeAASFullSubmodel() throws FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+    @Test
+    public void deserializeAASFullSubmodel() throws FileNotFoundException, DeserializationException {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
 
-		Assert.assertEquals(AASFull.createEnvironment().getSubmodels(), env.getSubmodels());
-	}
+        Assert.assertEquals(AASFull.createEnvironment().getSubmodels(), env.getSubmodels());
+    }
 
-	@Test
-	public void deserializeAASFullConceptDescription() throws FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
+    @Test
+    public void deserializeAASFullConceptDescription() throws FileNotFoundException, DeserializationException {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
 
-		Assert.assertEquals(AASFull.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
-	}
+        Assert.assertEquals(AASFull.createEnvironment().getConceptDescriptions(), env.getConceptDescriptions());
+    }
 
-	@Test
-	public void deserializeAASWithExtensionMinimal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MINIMAL);
+    @Test
+    public void deserializeAASWithExtensionMinimal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MINIMAL);
 
-		Assert.assertEquals(Examples.EXTENSION_MINIMAL, env);
-	}
+        Assert.assertEquals(Examples.EXTENSION_MINIMAL, env);
+    }
 
-	@Test
-	public void deserializeAASWithExtensionMaximal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
-		Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MAXIMAL);
+    @Test
+    public void deserializeAASWithExtensionMaximal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
+        Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MAXIMAL);
 
-		Assert.assertEquals(Examples.EXTENSION_MAXIMAL, env);
-	}
+        Assert.assertEquals(Examples.EXTENSION_MAXIMAL, env);
+    }
 }

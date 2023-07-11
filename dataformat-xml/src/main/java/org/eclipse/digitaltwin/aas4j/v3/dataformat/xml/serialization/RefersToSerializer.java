@@ -47,25 +47,25 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
  */
 public class RefersToSerializer extends JsonSerializer<List<Reference>> {
 
-	@Override
-	public void serialize(List<Reference> value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-		if (value.isEmpty())
-			return;
+    @Override
+    public void serialize(List<Reference> value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+        if (value.isEmpty())
+            return;
 
-		ToXmlGenerator xgen = (ToXmlGenerator) gen;
+        ToXmlGenerator xgen = (ToXmlGenerator) gen;
 
-		xgen.writeStartObject();
+        xgen.writeStartObject();
 
-		for (Reference ref : value) {
-			writeReference(xgen, ref);
-		}
+        for (Reference ref : value) {
+            writeReference(xgen, ref);
+        }
 
-		xgen.writeEndObject();
-	}
+        xgen.writeEndObject();
+    }
 
-	private void writeReference(ToXmlGenerator xgen, Reference ref) throws IOException {
-		xgen.writeFieldName("reference");
-		xgen.writeObject(ref);
-	}
+    private void writeReference(ToXmlGenerator xgen, Reference ref) throws IOException {
+        xgen.writeFieldName("reference");
+        xgen.writeObject(ref);
+    }
 
 }

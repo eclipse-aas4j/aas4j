@@ -25,6 +25,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonPropertyOrder({ "semanticId", "supplementalSemanticIds", "name", "valueType", "value", "refersTo" })
 public interface ExtensionMixin {
-	@JsonSerialize(using = RefersToSerializer.class)
-	List<Reference> getRefersTo();
+    @JsonSerialize(using = RefersToSerializer.class)
+    List<Reference> getRefersTo();
 }

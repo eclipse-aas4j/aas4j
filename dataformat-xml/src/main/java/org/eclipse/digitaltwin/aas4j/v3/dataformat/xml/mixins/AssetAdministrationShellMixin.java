@@ -28,12 +28,12 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public interface AssetAdministrationShellMixin {
 
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-	public String getID();
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
+    public String getID();
 
 
-	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
+    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
     public List<Reference> getSubmodels();
 
 }
