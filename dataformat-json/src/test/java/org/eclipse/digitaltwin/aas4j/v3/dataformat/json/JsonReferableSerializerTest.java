@@ -43,7 +43,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeWithAssetInformation() throws SerializationException, JSONException, IOException {
+    public void testSerializeAASWithAssetInformation() throws SerializationException, JSONException, IOException {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
     }
 
@@ -103,6 +103,16 @@ public class JsonReferableSerializerTest {
         expected.put("modelType", "Property");
         JsonNode actual = new JsonSerializer().toNode(property);
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MINIMAL);
+    }
+
+    @Test
+    public void testSerializeExtensionMaximal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MAXIMAL);
     }
 
     @SuppressWarnings("unchecked")

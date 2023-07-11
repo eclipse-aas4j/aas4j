@@ -23,20 +23,24 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.junit.Test;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+
 import org.junit.Assert;
+
 
 public class JsonReferableDeserializerTest {
 
@@ -113,6 +117,20 @@ public class JsonReferableDeserializerTest {
         input.put("idShort", "exampleId");
         input.put("modelType", "Property");
         Property actual = new JsonDeserializer().readReferable(input, Property.class);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testExtensionMinimal() throws Exception {
+        Environment expected = Examples.EXTENSION_MINIMAL.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MINIMAL.fileContentStream());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testExtensionMaximal() throws Exception {
+        Environment expected = Examples.EXTENSION_MAXIMAL.getModel();
+        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MAXIMAL.fileContentStream());
         assertEquals(expected, actual);
     }
 }
