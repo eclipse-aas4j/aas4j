@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,7 +168,7 @@ public class AASXDeserializer {
                 paths.add(file.getValue());
             } else if (element instanceof SubmodelElementCollection) {
                 SubmodelElementCollection collection = (SubmodelElementCollection) element;
-                paths.addAll(parseElements(collection.getValues()));
+                paths.addAll(parseElements(collection.getValue()));
             }
         }
         return paths;

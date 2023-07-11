@@ -30,7 +30,7 @@ import static org.junit.Assert.fail;
 /**
  * Tests the following constraint:
  * <p>
- * <i> If the semanticId of a MultiLanguageProperty or MultiLanguageMultiLanguageProperty references a ConceptDescription with the category MultiLanguageProperty and DataSpecificationIEC61360/valueList is defined the value and valueId of the MultiLanguageProperty is identical to one of the value reference pair types references in the value list,
+ * <i> If the semanticId of a MultiLanguageProperty or MultiLanguageMultiLanguageProperty references a ConceptDescription with the category MultiLanguageProperty and DataSpecificationIec61360/valueList is defined the value and valueId of the MultiLanguageProperty is identical to one of the value reference pair types references in the value list,
  * i.e. ValueReferencePairType/value or ValueReferencePairType/valueId, resp. </i>
  * </p>
  *
@@ -52,7 +52,7 @@ public class TestAASd_66a {
                 .build();
 
 
-//        DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
+//        DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
 //                .valueList(new DefaultValueList.Builder()
 //                        .valueReferencePairTypes(new DefaultValueReferencePair.Builder()
 //                                .value("This is not identical to Multilanguage property value.")
@@ -100,7 +100,7 @@ public class TestAASd_66a {
             fail();
         } catch (ValidationException e) {
             assertTrue(e.getMessage().endsWith(
-                    "If the semanticId of a MultiLanguageProperty or MultiLanguageMultiLanguageProperty references a ConceptDescription with the category MultiLanguageProperty and DataSpecificationIEC61360/valueList is defined the value and valueId of the MultiLanguageProperty is identical to one of the value reference pair types references in the value list, i.e. ValueReferencePairType/value or ValueReferencePairType/valueId, resp."));
+                    "If the semanticId of a MultiLanguageProperty or MultiLanguageMultiLanguageProperty references a ConceptDescription with the category MultiLanguageProperty and DataSpecificationIec61360/valueList is defined the value and valueId of the MultiLanguageProperty is identical to one of the value reference pair types references in the value list, i.e. ValueReferencePairType/value or ValueReferencePairType/valueId, resp."));
         }
 
     }
@@ -115,8 +115,8 @@ public class TestAASd_66a {
                 .type(ReferenceTypes.GLOBAL_REFERENCE)
                 .build();
 
-//        DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//                .dataType(DataTypeIEC61360.STRING_TRANSLATABLE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//        DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//                .dataType(DataTypeIec61360.STRING_TRANSLATABLE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //                .preferredName(new LangString("Data Specification", "en"))
 //                .definition(new LangString("A definition of a STRING_TRANSLATABLE in English.", "en"))
 //                .valueList(new DefaultValueList.Builder()

@@ -23,8 +23,8 @@ import static org.junit.Assert.fail;
  * <p>
  * <i>For a ConceptDescription with category DOCUMENT using data specification
  * template IEC61360
- * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0)
- * - DataSpecificationIEC61360/dataType shall be one of the following values:
+ * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0)
+ * - DataSpecificationIec61360/dataType shall be one of the following values:
  * STRING or URL.</i>
  * </p>
  * 
@@ -37,37 +37,37 @@ public class TestAASc_006 {
 	/*
 	@Test
 	public void correctDataTypeURL() throws ValidationException, IOException {
-		ConceptDescription correctURLCD = createConceptDescription(DataTypeIEC61360.URL);
+		ConceptDescription correctURLCD = createConceptDescription(DataTypeIec61360.URL);
 
 		ShaclValidator.getInstance().validate(correctURLCD);
 	}
 
 	@Test
 	public void wrongDataType() {
-		ConceptDescription wrongCD = createConceptDescription(DataTypeIEC61360.DATE);
+		ConceptDescription wrongCD = createConceptDescription(DataTypeIec61360.DATE);
 
 		try {
 			ShaclValidator.getInstance().validate(wrongCD);
 			fail();
 		} catch (ValidationException e) {
 			assertTrue(e.getMessage().endsWith(
-					"For a ConceptDescription with category DOCUMENT using data specification template IEC61360 (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0) - DataSpecificationIEC61360/dataType shall be one of the following values: String or URL."));
+					"For a ConceptDescription with category DOCUMENT using data specification template IEC61360 (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0) - DataSpecificationIec61360/dataType shall be one of the following values: String or URL."));
 		}
 	}
 
 	@Test
 	public void correctDataTypeString() throws ValidationException {
-		ConceptDescription correctStringCD = createConceptDescription(DataTypeIEC61360.STRING);
+		ConceptDescription correctStringCD = createConceptDescription(DataTypeIec61360.STRING);
 
 
 		ShaclValidator.getInstance().validate(correctStringCD);
 	}
 
-	private ConceptDescription createConceptDescription(DataTypeIEC61360 dataType) {
+	private ConceptDescription createConceptDescription(DataTypeIec61360 dataType) {
 		ConceptDescription correctURLCD = ConstraintTestHelper.createConceptDescription("idShort1",
 				"conceptDescriptionURL", "DOCUMENT");
 
-		DataSpecificationIEC61360 urlDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+		DataSpecificationIec61360 urlDataTypeDS = new DefaultDataSpecificationIec61360.Builder()
 				.preferredName(new LangString("ds", "en")).definition(new LangString("some english definition", "EN"))
 				.dataType(dataType).build();
 

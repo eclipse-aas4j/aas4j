@@ -31,7 +31,7 @@ import static org.junit.Assert.fail;
  * Tests the following constraint:
  * <p>
  * <i> If the semanticId of a Range submodel element references a ConceptDescription then
- * DataSpecificationIEC61360/dataType shall be a numerical one, i.e. REAL_* or RATIONAL_*. </i>
+ * DataSpecificationIec61360/dataType shall be a numerical one, i.e. REAL_* or RATIONAL_*. </i>
  * </p>
  * 
  * @author bader, chang
@@ -42,8 +42,8 @@ public class TestAASd_068 {
 	@Test
 	public void wrongConceptDescriptionDatatype() throws ValidationException {
 
-//		DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//				.dataType(DataTypeIEC61360.INTEGER_COUNT) // This should be DataTypeIEC61360.REAL_* or RATIONAL_*
+//		DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//				.dataType(DataTypeIec61360.INTEGER_COUNT) // This should be DataTypeIec61360.REAL_* or RATIONAL_*
 //				.preferredName(new LangString("Wrong Data Specification", "en"))
 //				.definition(new LangString("A definition of a Date in English.", "en"))
 //				.build();
@@ -87,7 +87,7 @@ public class TestAASd_068 {
 			fail();
 		} catch (ValidationException e) {
 			assertTrue(e.getMessage().endsWith("If the semanticId of a Range submodel element references a " +
-							"ConceptDescription then DataSpecificationIEC61360/dataType shall be a numerical one, i.e. " +
+							"ConceptDescription then DataSpecificationIec61360/dataType shall be a numerical one, i.e. " +
 							"Real* or Rational*."));
 		}
 
@@ -98,8 +98,8 @@ public class TestAASd_068 {
 	public void correctRealConceptDescriptionDatatype() throws ValidationException {
 
 
-//		DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//				.dataType(DataTypeIEC61360.REAL_COUNT) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//		DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//				.dataType(DataTypeIec61360.REAL_COUNT) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //				.preferredName(new LangString("Data Specification", "en"))
 //				.definition(new LangString("A definition of a REAL_COUNT in English.", "en"))
 //				.build();
@@ -148,8 +148,8 @@ public class TestAASd_068 {
 	public void correctRationalConceptDescriptionDatatype() throws ValidationException {
 
 
-//		DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//				.dataType(DataTypeIEC61360.RATIONAL_MEASURE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//		DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//				.dataType(DataTypeIec61360.RATIONAL_MEASURE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //				.preferredName(new LangString("Data Specification", "en"))
 //				.definition(new LangString("A definition of a RATIONAL_MEASURE in English.", "en"))
 //				.build();

@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -39,7 +39,7 @@ public class DefaultExtension implements Extension {
     protected String name;
 
     @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
-    protected List<Reference> refersTos = new ArrayList<>();
+    protected List<Reference> refersTo = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/Extension/value")
     protected String value;
@@ -60,7 +60,7 @@ public class DefaultExtension implements Extension {
         return Objects.hash(this.name,
             this.valueType,
             this.value,
-            this.refersTos,
+            this.refersTo,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -78,7 +78,7 @@ public class DefaultExtension implements Extension {
             return Objects.equals(this.name, other.name) &&
                 Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.refersTos, other.refersTos) &&
+                Objects.equals(this.refersTo, other.refersTo) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
@@ -115,13 +115,13 @@ public class DefaultExtension implements Extension {
     }
 
     @Override
-    public List<Reference> getRefersTos() {
-        return refersTos;
+    public List<Reference> getRefersTo() {
+        return refersTo;
     }
 
     @Override
-    public void setRefersTos(List<Reference> refersTos) {
-        this.refersTos = refersTos;
+    public void setRefersTo(List<Reference> refersTos) {
+        this.refersTo = refersTos;
     }
 
     @Override
@@ -149,9 +149,9 @@ public class DefaultExtension implements Extension {
             "DefaultExtension (" + "name=%s,"
                 + "valueType=%s,"
                 + "value=%s,"
-                + "refersTos=%s,"
+                + "refersTo=%s,"
                 + ")",
-            this.name, this.valueType, this.value, this.refersTos);
+            this.name, this.valueType, this.value, this.refersTo);
     }
 
     /**

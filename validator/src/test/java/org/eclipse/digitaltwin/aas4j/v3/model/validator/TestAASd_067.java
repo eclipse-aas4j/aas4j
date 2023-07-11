@@ -31,7 +31,7 @@ import static org.junit.Assert.fail;
  * Tests the following constraint:
  * <p>
  * <i> If the semanticId of a MultiLanguageProperty references a ConceptDescription then
- * DataSpecificationIEC61360/dataType shall be STRING_TRANSLATABLE. </i>
+ * DataSpecificationIec61360/dataType shall be STRING_TRANSLATABLE. </i>
  * </p>
  * 
  * @author bader, chang
@@ -42,8 +42,8 @@ public class TestAASd_067 {
 	@Test
 	public void wrongConceptDescriptionDatatype() throws ValidationException {
 
-//		DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//				.dataType(DataTypeIEC61360.DATE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//		DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//				.dataType(DataTypeIec61360.DATE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //				.preferredName(new LangString("Wrong Data Specification", "en"))
 //				.definition(new LangString("A definition of a Date in English.", "en"))
 //				.build();
@@ -84,7 +84,7 @@ public class TestAASd_067 {
 			fail();
 		} catch (ValidationException e) {
 			assertTrue(e.getMessage().endsWith(
-					"If the semanticId of a MultiLanguageProperty references a ConceptDescription then DataSpecificationIEC61360/dataType shall be STRING_TRANSLATABLE."));
+					"If the semanticId of a MultiLanguageProperty references a ConceptDescription then DataSpecificationIec61360/dataType shall be STRING_TRANSLATABLE."));
 		}
 
 
@@ -94,8 +94,8 @@ public class TestAASd_067 {
 	public void correctConceptDescriptionDatatype() throws ValidationException {
 
 
-//		DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//				.dataType(DataTypeIEC61360.STRING_TRANSLATABLE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//		DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//				.dataType(DataTypeIec61360.STRING_TRANSLATABLE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //				.preferredName(new LangString("Data Specification", "en"))
 //				.definition(new LangString("A definition of a STRING_TRANSLATABLE in English.", "en"))
 //				.build();

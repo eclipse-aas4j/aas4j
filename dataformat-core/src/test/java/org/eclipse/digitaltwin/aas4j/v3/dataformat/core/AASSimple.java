@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import java.util.List;
+import java.util.Arrays;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
@@ -24,7 +23,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -47,8 +45,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class AASSimple {
 
@@ -59,7 +55,7 @@ public class AASSimple {
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document";
     private static final String ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED = "Actual rotationspeed with which the motor or feedingunit is operated";
     private static final String AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD = "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird";
-    private static final String ACTUAL_ROTATION_SPEED = "ActRotationSpeed";
+    private static final String ACTUAL_ROTATION_SPEED = "ActualRotationSpeed";
     private static final String ACTUALROTATIONSPEED = "Actualrotationspeed";
     private static final String AKTUELLE_DREHZAHL = "AktuelleDrehzahl";
     private static final String _1_MIN = "1/min";
@@ -81,8 +77,10 @@ public class AASSimple {
     private static final String TITEL = "Titel";
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title";
     private static final String TITLE = "Title";
+    private static final String SERVO_DC_MOTOR = "ServoDCMotor";
     private static final String FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "file:///master/verwaltungsschale-detail-part1.png";
     private static final String IMAGE_PNG = "image/png";
+    private static final String THUMBNAIL = "thumbnail";
     private static final String HTTP_CUSTOMER_COM_SYSTEMS_IO_T_1 = "http://customer.com/Systems/IoT/1";
     private static final String QJ_YG_PGGJWKI_HK4_RR_QI_YS_LG = "QjYgPggjwkiHk4RrQiYSLg==";
     private static final String DEVICE_ID = "DeviceID";
@@ -112,6 +110,7 @@ public class AASSimple {
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DESCRIPTION_TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_ID_SHORT = TITLE;
     private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUE = "OperatingManual";
+    private static final String SUBMODEL_DOCUMENTATION_PROPERTY_VALUETYPE = "langString";
     private static final String SUBMODEL_DOCUMENTATION_FILE_SEMANTIC_ID = WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_STORED_DOCUMENT_REPRESENTATION_DIGITAL_FILE;
     private static final String SUBMODEL_DOCUMENTATION_FILE_ID_SHORT = "DigitalFile_PDF";
     private static final String SUBMODEL_DOCUMENTATION_FILE_contentType = "application/pdf";
@@ -124,7 +123,8 @@ public class AASSimple {
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_ID_SHORT = ROTATION_SPEED;
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY = "VARIABLE";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
-    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
+    private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
+    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360";
 
     public AASSimple() {
     }
@@ -138,6 +138,7 @@ public class AASSimple {
     public static final ConceptDescription CONCEPT_DESCRIPTION_MAXROTATIONSPEED = createConceptDescriptionMaxRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_ROTATIONSPEED = createConceptDescriptionRotationSpeed();
     public static final ConceptDescription CONCEPT_DESCRIPTION_DOCUMENT = createConceptDescriptionDocument();
+    public static final Environment ENVIRONMENT = createEnvironment();
 
     public static AssetAdministrationShell createAAS() {
         return new DefaultAssetAdministrationShell.Builder()
@@ -150,10 +151,10 @@ public class AASSimple {
                                 .name(EQUIPMENT_ID)
                                 .value(_538FD1B3_F99F_4A52_9C75_72E9FA921270)
                                 .externalSubjectId(new DefaultReference.Builder()
-                                        .keys(new DefaultKey.Builder()
+                                        .keys(Arrays.asList(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value(HTTP_CUSTOMER_COM_SYSTEMS_ERP_012)
-                                                .build())
+                                                .build()))
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .build())
@@ -199,6 +200,7 @@ public class AASSimple {
                 .build();
     }
 
+
     public static Submodel createSubmodelTechnicalData() {
         return new DefaultSubmodel.Builder()
                 .semanticId(new DefaultReference.Builder()
@@ -208,6 +210,7 @@ public class AASSimple {
                                 .build())
                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                         .build())
+                .kind(ModellingKind.INSTANCE)
                 .idShort(SUBMODEL_TECHNICAL_DATA_ID_SHORT)
                 .id(SUBMODEL_TECHNICAL_DATA_ID)
                 .submodelElements(new DefaultProperty.Builder()
@@ -456,11 +459,4 @@ public class AASSimple {
                 .conceptDescriptions(createConceptDescriptionDocument())
                 .build();
     }
-
-    @Test
-    public void testAasSimpleExtensionsInitialized() {
-		List<Extension> extensions = AASSimple.createEnvironment().getAssetAdministrationShells().get(0).getExtensions();
-        Assert.assertTrue(extensions != null);
-    }
-
 }

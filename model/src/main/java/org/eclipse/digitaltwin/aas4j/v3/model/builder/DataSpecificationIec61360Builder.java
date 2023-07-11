@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -24,46 +24,46 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for preferredNames
+     * This function allows setting a value for preferredName
      * 
      * @param preferredNames desired value to be set
-     * @return Builder object with new value for preferredNames
+     * @return Builder object with new value for preferredName
      */
-    public B preferredNames(List<LangStringPreferredNameTypeIec61360> preferredNames) {
-        getBuildingInstance().setPreferredNames(preferredNames);
+    public B preferredName(List<LangStringPreferredNameTypeIec61360> preferredNames) {
+        getBuildingInstance().setPreferredName(preferredNames);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List preferredNames
+     * This function allows adding a value to the List preferredName
      * 
      * @param preferredName desired value to be added
-     * @return Builder object with new value for preferredNames
+     * @return Builder object with new value for preferredName
      */
     public B preferredName(LangStringPreferredNameTypeIec61360 preferredName) {
-        getBuildingInstance().getPreferredNames().add(preferredName);
+        getBuildingInstance().getPreferredName().add(preferredName);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for shortNames
+     * This function allows setting a value for shortName
      * 
      * @param shortNames desired value to be set
-     * @return Builder object with new value for shortNames
+     * @return Builder object with new value for shortName
      */
-    public B shortNames(List<LangStringShortNameTypeIec61360> shortNames) {
-        getBuildingInstance().setShortNames(shortNames);
+    public B shortName(List<LangStringShortNameTypeIec61360> shortNames) {
+        getBuildingInstance().setShortName(shortNames);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List shortNames
+     * This function allows adding a value to the List shortName
      * 
      * @param shortName desired value to be added
-     * @return Builder object with new value for shortNames
+     * @return Builder object with new value for shortName
      */
     public B shortName(LangStringShortNameTypeIec61360 shortName) {
-        getBuildingInstance().getShortNames().add(shortName);
+        getBuildingInstance().getShortName().add(shortName);
         return getSelf();
     }
 
@@ -123,24 +123,24 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
     }
 
     /**
-     * This function allows setting a value for definitions
+     * This function allows setting a value for definition
      * 
      * @param definitions desired value to be set
-     * @return Builder object with new value for definitions
+     * @return Builder object with new value for definition
      */
-    public B definitions(List<LangStringDefinitionTypeIec61360> definitions) {
-        getBuildingInstance().setDefinitions(definitions);
+    public B definition(List<LangStringDefinitionTypeIec61360> definitions) {
+        getBuildingInstance().setDefinition(definitions);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List definitions
+     * This function allows adding a value to the List definition
      * 
      * @param definition desired value to be added
-     * @return Builder object with new value for definitions
+     * @return Builder object with new value for definition
      */
     public B definition(LangStringDefinitionTypeIec61360 definition) {
-        getBuildingInstance().getDefinitions().add(definition);
+        getBuildingInstance().getDefinition().add(definition);
         return getSelf();
     }
 

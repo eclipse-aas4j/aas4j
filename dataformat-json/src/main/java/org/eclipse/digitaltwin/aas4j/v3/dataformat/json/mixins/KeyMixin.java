@@ -21,8 +21,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 public interface KeyMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public KeyTypes getType();
+    KeyTypes getType();
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getValue();
+    String getValue();
 }

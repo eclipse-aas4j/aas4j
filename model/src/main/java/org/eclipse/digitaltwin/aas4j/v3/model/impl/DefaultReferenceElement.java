@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -53,10 +53,10 @@ public class DefaultReferenceElement implements ReferenceElement {
     protected String category;
 
     @IRI("https://admin-shell.io/aas/3/0/Referable/description")
-    protected List<LangStringTextType> descriptions = new ArrayList<>();
+    protected List<LangStringTextType> description = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
-    protected List<LangStringNameType> displayNames = new ArrayList<>();
+    protected List<LangStringNameType> displayName = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
@@ -75,8 +75,8 @@ public class DefaultReferenceElement implements ReferenceElement {
             this.qualifiers,
             this.category,
             this.idShort,
-            this.displayNames,
-            this.descriptions,
+            this.displayName,
+            this.description,
             this.extensions);
     }
 
@@ -97,8 +97,8 @@ public class DefaultReferenceElement implements ReferenceElement {
                 Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayNames, other.displayNames) &&
-                Objects.equals(this.descriptions, other.descriptions) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions);
         }
     }
@@ -174,23 +174,23 @@ public class DefaultReferenceElement implements ReferenceElement {
     }
 
     @Override
-    public List<LangStringNameType> getDisplayNames() {
-        return displayNames;
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
     }
 
     @Override
-    public void setDisplayNames(List<LangStringNameType> displayNames) {
-        this.displayNames = displayNames;
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
     }
 
     @Override
-    public List<LangStringTextType> getDescriptions() {
-        return descriptions;
+    public List<LangStringTextType> getDescription() {
+        return description;
     }
 
     @Override
-    public void setDescriptions(List<LangStringTextType> descriptions) {
-        this.descriptions = descriptions;
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
     }
 
     @Override

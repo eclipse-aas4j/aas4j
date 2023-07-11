@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -113,18 +113,18 @@ public interface SubmodelElementList extends SubmodelElement {
      *
      * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
      *
-     * @return Returns the List of SubmodelElements for the property values.
+     * @return Returns the List of SubmodelElements for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
-    List<SubmodelElement> getValues();
+    List<SubmodelElement> getValue();
 
     /**
      * Submodel element contained in the list.
      *
      * More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
      *
-     * @param values desired value for the property values.
+     * @param values desired value for the property value.
      */
-    void setValues(List<SubmodelElement> values);
+    void setValue(List<SubmodelElement> values);
 
 }

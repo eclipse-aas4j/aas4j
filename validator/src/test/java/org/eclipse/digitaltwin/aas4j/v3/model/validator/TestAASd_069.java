@@ -33,7 +33,7 @@ import org.junit.Test;
  * Tests the following constraint:
  * <p>
  * <i> If the semanticId of a Range references a ConceptDescription then
- * DataSpecificationIEC61360/levelType shall be identical to the set {Min, Max}.
+ * DataSpecificationIec61360/levelType shall be identical to the set {Min, Max}.
  * </i>
  * </p>
  * 
@@ -76,7 +76,7 @@ public class TestAASd_069 {
 			fail();
 		} catch (ValidationException e) {
 			assertTrue(e.getMessage().endsWith(
-					"If the semanticId of a Range references a ConceptDescription then DataSpecificationIEC61360/levelType shall be identical to the set {Min, Max}."));
+					"If the semanticId of a Range references a ConceptDescription then DataSpecificationIec61360/levelType shall be identical to the set {Min, Max}."));
 		}
 	}
 
@@ -99,10 +99,10 @@ public class TestAASd_069 {
 		ConceptDescription cd = ConstraintTestHelper.createConceptDescription("idShort1", conceptDescriptionId,
 				"PROPERTY");
 
-//		DataSpecificationIEC61360 stringDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+//		DataSpecificationIec61360 stringDataTypeDS = new DefaultDataSpecificationIec61360.Builder()
 //				.preferredName(new LangString("ds", "EN"))
 //				.definition(new LangString("some english definition", "EN"))
-//				.dataType(DataTypeIEC61360.REAL_MEASURE)
+//				.dataType(DataTypeIec61360.REAL_MEASURE)
 //				.levelTypes(Arrays.asList(LevelType.MIN, LevelType.MAX))
 //				.build();
 
@@ -126,10 +126,10 @@ public class TestAASd_069 {
 		ConceptDescription cd = ConstraintTestHelper.createConceptDescription("idShort1", conceptDescriptionId,
 				"PROPERTY");
 
-//		DataSpecificationIEC61360 stringDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+//		DataSpecificationIec61360 stringDataTypeDS = new DefaultDataSpecificationIec61360.Builder()
 //				.preferredName(new LangString("ds", "EN"))
 //				.definition(new LangString("some english definition", "EN"))
-//				.dataType(DataTypeIEC61360.STRING)
+//				.dataType(DataTypeIec61360.STRING)
 //				.levelTypes(Arrays.asList(LevelType.NOM, LevelType.MAX))
 //				.build();
 

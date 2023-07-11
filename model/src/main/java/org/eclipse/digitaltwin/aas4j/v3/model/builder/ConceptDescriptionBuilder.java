@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -24,24 +24,24 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for isCaseOfs
+     * This function allows setting a value for isCaseOf
      * 
      * @param isCaseOfs desired value to be set
-     * @return Builder object with new value for isCaseOfs
+     * @return Builder object with new value for isCaseOf
      */
-    public B isCaseOfs(List<Reference> isCaseOfs) {
-        getBuildingInstance().setIsCaseOfs(isCaseOfs);
+    public B isCaseOf(List<Reference> isCaseOfs) {
+        getBuildingInstance().setIsCaseOf(isCaseOfs);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List isCaseOfs
+     * This function allows adding a value to the List isCaseOf
      * 
      * @param isCaseOf desired value to be added
-     * @return Builder object with new value for isCaseOfs
+     * @return Builder object with new value for isCaseOf
      */
     public B isCaseOf(Reference isCaseOf) {
-        getBuildingInstance().getIsCaseOfs().add(isCaseOf);
+        getBuildingInstance().getIsCaseOf().add(isCaseOf);
         return getSelf();
     }
 
@@ -112,46 +112,46 @@ public abstract class ConceptDescriptionBuilder<T extends ConceptDescription, B 
     }
 
     /**
-     * This function allows setting a value for displayNames
+     * This function allows setting a value for displayName
      * 
      * @param displayNames desired value to be set
-     * @return Builder object with new value for displayNames
+     * @return Builder object with new value for displayName
      */
-    public B displayNames(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayNames(displayNames);
+    public B displayName(List<LangStringNameType> displayNames) {
+        getBuildingInstance().setDisplayName(displayNames);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List displayNames
+     * This function allows adding a value to the List displayName
      * 
      * @param displayName desired value to be added
-     * @return Builder object with new value for displayNames
+     * @return Builder object with new value for displayName
      */
     public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().getDisplayNames().add(displayName);
+        getBuildingInstance().getDisplayName().add(displayName);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for descriptions
+     * This function allows setting a value for description
      * 
      * @param descriptions desired value to be set
-     * @return Builder object with new value for descriptions
+     * @return Builder object with new value for description
      */
-    public B descriptions(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescriptions(descriptions);
+    public B description(List<LangStringTextType> descriptions) {
+        getBuildingInstance().setDescription(descriptions);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List descriptions
+     * This function allows adding a value to the List description
      * 
      * @param description desired value to be added
-     * @return Builder object with new value for descriptions
+     * @return Builder object with new value for description
      */
     public B description(LangStringTextType description) {
-        getBuildingInstance().getDescriptions().add(description);
+        getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
 

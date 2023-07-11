@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -36,38 +36,38 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/preferredName
      *
-     * @return Returns the List of LangStringPreferredNameTypeIec61360s for the property preferredNames.
+     * @return Returns the List of LangStringPreferredNameTypeIec61360s for the property preferredName.
      */
     @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/preferredName")
-    List<LangStringPreferredNameTypeIec61360> getPreferredNames();
+    List<LangStringPreferredNameTypeIec61360> getPreferredName();
 
     /**
      * Preferred name
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/preferredName
      *
-     * @param preferredNames desired value for the property preferredNames.
+     * @param preferredNames desired value for the property preferredName.
      */
-    void setPreferredNames(List<LangStringPreferredNameTypeIec61360> preferredNames);
+    void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredNames);
 
     /**
      * Short name
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/shortName
      *
-     * @return Returns the List of LangStringShortNameTypeIec61360s for the property shortNames.
+     * @return Returns the List of LangStringShortNameTypeIec61360s for the property shortName.
      */
     @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/shortName")
-    List<LangStringShortNameTypeIec61360> getShortNames();
+    List<LangStringShortNameTypeIec61360> getShortName();
 
     /**
      * Short name
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/shortName
      *
-     * @param shortNames desired value for the property shortNames.
+     * @param shortNames desired value for the property shortName.
      */
-    void setShortNames(List<LangStringShortNameTypeIec61360> shortNames);
+    void setShortName(List<LangStringShortNameTypeIec61360> shortNames);
 
     /**
      * Unit
@@ -171,19 +171,19 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/definition
      *
-     * @return Returns the List of LangStringDefinitionTypeIec61360s for the property definitions.
+     * @return Returns the List of LangStringDefinitionTypeIec61360s for the property definition.
      */
     @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/definition")
-    List<LangStringDefinitionTypeIec61360> getDefinitions();
+    List<LangStringDefinitionTypeIec61360> getDefinition();
 
     /**
      * Definition in different languages
      *
      * More information under https://admin-shell.io/aas/3/0/DataSpecificationIec61360/definition
      *
-     * @param definitions desired value for the property definitions.
+     * @param definitions desired value for the property definition.
      */
-    void setDefinitions(List<LangStringDefinitionTypeIec61360> definitions);
+    void setDefinition(List<LangStringDefinitionTypeIec61360> definitions);
 
     /**
      * Value Format

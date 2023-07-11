@@ -31,8 +31,8 @@ import java.util.Arrays;
  * <p>
  * <i> For all ConceptDescriptions except for ConceptDescriptions of category
  * VALUE using data specification template IEC61360
- * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0)
- * - DataSpecificationIEC61360/definition is mandatory and shall be defined at
+ * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0)
+ * - DataSpecificationIec61360/definition is mandatory and shall be defined at
  * least in English. </i>
  * </p>
  * 
@@ -60,7 +60,7 @@ public class TestAASc_008 {
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 			assertTrue(e.getMessage().endsWith(
-					"For all ConceptDescriptions except for ConceptDescriptions of category VALUE using data specification template IEC61360 (https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition) - DataSpecificationIEC61360/definition is mandatory and shall be defined at least in English."));
+					"For all ConceptDescriptions except for ConceptDescriptions of category VALUE using data specification template IEC61360 (https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360/definition) - DataSpecificationIec61360/definition is mandatory and shall be defined at least in English."));
 		}
 	}
 
@@ -84,11 +84,11 @@ public class TestAASc_008 {
 		ConceptDescription cd = ConstraintTestHelper.createConceptDescription("idShort1", "id",
 				"QUALIFIER");
 
-		DataSpecificationIEC61360 urlDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+		DataSpecificationIec61360 urlDataTypeDS = new DefaultDataSpecificationIec61360.Builder()
 				.preferredName(new DefaultLangString.Builder().language("en").text("ds").build())
 				.definition(definition)
 				.definition(new DefaultLangString.Builder().language("de").text("test").build())
-				.dataType(DataTypeIEC61360.IRI)
+				.dataType(DataTypeIec61360.IRI)
 				.build();
 		
 		EmbeddedDataSpecification urlDataTypeEDS = new DefaultEmbeddedDataSpecification.Builder()

@@ -22,5 +22,5 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
 public interface AssetAdministrationShellMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public AssetInformation getAssetInformation();
+    AssetInformation getAssetInformation();
 }

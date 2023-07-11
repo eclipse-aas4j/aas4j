@@ -27,5 +27,5 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
  */
 public interface PropertyMixin {
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	void setValueID(Reference valueID);
+	void setValueId(Reference valueId);
 }

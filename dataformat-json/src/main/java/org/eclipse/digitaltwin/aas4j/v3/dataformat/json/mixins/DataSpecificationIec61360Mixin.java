@@ -26,21 +26,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec6136
 public interface DataSpecificationIec61360Mixin {
 
     @JsonProperty("levelType")
-    public List<LevelType> getLevelTypes();
+    List<LevelType> getLevelTypes();
 
     @JsonProperty("levelType")
-    public void setLevelTypes(List<LevelType> levelTypes);
+    void setLevelTypes(List<LevelType> levelTypes);
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("preferredName")
-    public List<LangStringPreferredNameTypeIec61360> getPreferredName();
+    List<LangStringPreferredNameTypeIec61360> getPreferredName();
 
     @JsonProperty("preferredName")
-    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
+    void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
     @JsonProperty("unitId")
-    public Reference getUnitID();
+    Reference getUnitId();
 
     public @JsonProperty("unitId")
-    void setUnitID(Reference unitID);
+    void setUnitId(Reference unitId);
 }

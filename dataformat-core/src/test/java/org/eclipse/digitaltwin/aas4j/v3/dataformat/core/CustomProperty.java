@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,13 +72,17 @@ public class CustomProperty implements Property {
 			return false;
 		} else {
 			CustomProperty other = (CustomProperty) obj;
-			return Objects.equals(this.valueType, other.valueType) && Objects.equals(this.value, other.value)
-					&& Objects.equals(this.valueId, other.valueId) && Objects.equals(this.category, other.category)
+			return Objects.equals(this.valueType, other.valueType)
+					&& Objects.equals(this.value, other.value)
+					&& Objects.equals(this.valueId, other.valueId)
+					&& Objects.equals(this.category, other.category)
 					&& Objects.equals(this.description, other.description)
 					&& Objects.equals(this.displayName, other.displayName)
-					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
+					&& Objects.equals(this.idShort, other.idShort)
+					&& Objects.equals(this.qualifiers, other.qualifiers)
 					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
-					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
+					&& Objects.equals(this.kind, other.kind)
+					&& Objects.equals(this.semanticId, other.semanticId);
 		}
 	}
 
@@ -123,22 +127,22 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public List<LangStringTextType> getDescriptions() {
+	final public List<LangStringTextType> getDescription() {
 		return description;
 	}
 
 	@Override
-	final public void setDescriptions(List<LangStringTextType> description) {
+	final public void setDescription(List<LangStringTextType> description) {
 		this.description = description;
 	}
 
 	@Override
-	final public List<LangStringNameType> getDisplayNames() {
+	final public List<LangStringNameType> getDisplayName() {
 		return displayName;
 	}
 
 	@Override
-	final public void setDisplayNames(List<LangStringNameType> displayName) {
+	final public void setDisplayName(List<LangStringNameType> displayName) {
 		this.displayName = displayName;
 	}
 

@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -77,37 +77,37 @@ public interface Referable extends HasExtensions {
      *
      * More information under https://admin-shell.io/aas/3/0/Referable/displayName
      *
-     * @return Returns the List of LangStringNameTypes for the property displayNames.
+     * @return Returns the List of LangStringNameTypes for the property displayName.
      */
     @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
-    List<LangStringNameType> getDisplayNames();
+    List<LangStringNameType> getDisplayName();
 
     /**
      * Display name. Can be provided in several languages.
      *
      * More information under https://admin-shell.io/aas/3/0/Referable/displayName
      *
-     * @param displayNames desired value for the property displayNames.
+     * @param displayNames desired value for the property displayName.
      */
-    void setDisplayNames(List<LangStringNameType> displayNames);
+    void setDisplayName(List<LangStringNameType> displayNames);
 
     /**
      * Description or comments on the element.
      *
      * More information under https://admin-shell.io/aas/3/0/Referable/description
      *
-     * @return Returns the List of LangStringTextTypes for the property descriptions.
+     * @return Returns the List of LangStringTextTypes for the property description.
      */
     @IRI("https://admin-shell.io/aas/3/0/Referable/description")
-    List<LangStringTextType> getDescriptions();
+    List<LangStringTextType> getDescription();
 
     /**
      * Description or comments on the element.
      *
      * More information under https://admin-shell.io/aas/3/0/Referable/description
      *
-     * @param descriptions desired value for the property descriptions.
+     * @param descriptions desired value for the property description.
      */
-    void setDescriptions(List<LangStringTextType> descriptions);
+    void setDescription(List<LangStringTextType> descriptions);
 
 }

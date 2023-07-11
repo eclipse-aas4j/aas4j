@@ -162,8 +162,6 @@ public class XmlSerializerTest {
         assertTrue(errors.isEmpty());
     }
 
-
-
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
         return new XmlSchemaValidator().validateSchema(xml);
     }

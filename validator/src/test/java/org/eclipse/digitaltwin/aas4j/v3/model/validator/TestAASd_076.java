@@ -29,7 +29,7 @@ import org.junit.Test;
  * Tests the following constraint:
  * <p>
  * <i> For all ConceptDescriptions using data specification template IEC61360
- * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0)
+ * (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0)
  * at least a preferred name in English shall be defined. </i>
  * </p>
  * 
@@ -68,7 +68,7 @@ public class TestAASd_076 {
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
 			assertTrue(e.getMessage().endsWith(
-					"For all ConceptDescriptions using data specification template IEC61360 (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/2/0) at least a preferred name in English shall be defined."));
+					"For all ConceptDescriptions using data specification template IEC61360 (http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/2/0) at least a preferred name in English shall be defined."));
 		}
 	}
 
@@ -76,11 +76,11 @@ public class TestAASd_076 {
 		ConceptDescription cd = ConstraintTestHelper.createConceptDescription("idShort1", "id",
 				"QUALIFIER");
 
-//		DataSpecificationIEC61360 urlDataTypeDS = new DefaultDataSpecificationIEC61360.Builder()
+//		DataSpecificationIec61360 urlDataTypeDS = new DefaultDataSpecificationIec61360.Builder()
 //				.preferredName(preferredName)
 //				.preferredName(new LangString("test", "de"))
 //				.definition(new LangString("definition", "en"))
-//				.dataType(DataTypeIEC61360.URL)
+//				.dataType(DataTypeIec61360.URL)
 //				.build();
 		
 //		EmbeddedDataSpecification urlDataTypeEDS = new DefaultEmbeddedDataSpecification.Builder()

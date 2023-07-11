@@ -1,0 +1,112 @@
+{
+  "endpoints" : [ {
+    "protocolInformation" : {
+      "endpointAddress" : "defaultEndpointAddress",
+      "endpointProtocol" : "defaultEndpointProtocol",
+      "endpointProtocolVersion" : "defaultEndpointProtocolVersion",
+      "subprotocol" : "defaultSubprotocol",
+      "subprotocolBody" : "defaultSubprotocolBody",
+      "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
+    },
+    "interface" : "defaultInterface"
+  } ],
+  "administration" : {
+    "revision" : "defaultAdministrativeInformationRevisionValue",
+    "version" : "defaultAdministrativeInformationVersionValue",
+    "embeddedDataSpecifications" : [ {
+      "dataSpecification" : {
+        "keys" : [ {
+          "type" : "GlobalReference",
+          "value" : "defaultEmbeddedDataSpecificationDataSpecificationValue"
+        } ],
+        "type" : "ExternalReference"
+      },
+      "dataSpecificationContent" : {
+        "modelType" : "DataSpecificationIec61360",
+        "preferredName" : [ ]
+      }
+    } ]
+  },
+  "descriptions" : [ {
+    "language" : "en",
+    "text" : "defaultDescription"
+  } ],
+  "displayNames" : [ {
+    "language" : "en",
+    "text" : "defaultDisplayName"
+  } ],
+  "idShort" : "defaultIdShort",
+  "identification" : "identification",
+  "globalAssetId" : {
+    "keys" : [ {
+      "type" : "AssetAdministrationShell",
+      "value" : "defaultGlobalAssetId"
+    } ],
+    "type" : "ModelReference"
+  },
+  "specificAssetIds" : {
+    "semanticId" : {
+      "keys" : [ {
+        "type" : "GlobalReference",
+        "value" : "eClassDefaultSemanticId"
+      } ],
+      "type" : "ExternalReference"
+    },
+    "externalSubjectId" : {
+      "keys" : [ {
+        "type" : "AssetAdministrationShell",
+        "value" : "defaultSpecificAssetId"
+      } ],
+      "type" : "ModelReference"
+    },
+    "name" : "defaultSpecificAssetIdName",
+    "value" : "http://example.company/myAsset"
+  },
+  "submodelDescriptors" : [ {
+    "endpoints" : [ {
+      "protocolInformation" : {
+        "endpointAddress" : "defaultEndpointAddress",
+        "endpointProtocol" : "defaultEndpointProtocol",
+        "endpointProtocolVersion" : "defaultEndpointProtocolVersion",
+        "subprotocol" : "defaultSubprotocol",
+        "subprotocolBody" : "defaultSubprotocolBody",
+        "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
+      },
+      "interface" : "defaultInterface"
+    } ],
+    "administration" : {
+      "revision" : "defaultAdministrativeInformationRevisionValue",
+      "version" : "defaultAdministrativeInformationVersionValue",
+      "embeddedDataSpecifications" : [ {
+        "dataSpecification" : {
+          "keys" : [ {
+            "type" : "GlobalReference",
+            "value" : "defaultEmbeddedDataSpecificationDataSpecificationValue"
+          } ],
+          "type" : "ExternalReference"
+        },
+        "dataSpecificationContent" : {
+          "modelType" : "DataSpecificationIec61360",
+          "preferredName" : [ ]
+        }
+      } ]
+    },
+    "descriptions" : [ {
+      "language" : "en",
+      "text" : "defaultDescription"
+    } ],
+    "displayNames" : [ {
+      "language" : "en",
+      "text" : "defaultDisplayName"
+    } ],
+    "idShort" : "defaultIdShort",
+    "identification" : "identification",
+    "semanticId" : {
+      "keys" : [ {
+        "type" : "GlobalReference",
+        "value" : "eClassDefaultSemanticId"
+      } ],
+      "type" : "ExternalReference"
+    }
+  } ]
+}

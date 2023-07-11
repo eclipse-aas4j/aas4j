@@ -77,6 +77,7 @@
     <aas:submodel>
       <aas:idShort>TechnicalData</aas:idShort>
       <aas:id>http://i40.customer.com/type/1/1/7A7104BDAB57E184</aas:id>
+      <aas:kind>Instance</aas:kind>
       <aas:semanticId>
         <aas:type>ExternalReference</aas:type>
         <aas:keys>
@@ -187,7 +188,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -237,7 +238,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -292,7 +293,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -346,7 +347,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -369,7 +370,7 @@
                 </aas:langStringShortNameTypeIec61360>
                 <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
-                  <aas:text>ActRotationSpeed</aas:text>
+                  <aas:text>ActualRotationSpeed</aas:text>
                 </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>1/min</aas:unit>
@@ -409,7 +410,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>

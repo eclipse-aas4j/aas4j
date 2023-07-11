@@ -78,14 +78,14 @@ public class JsonSerializerTest {
 	@Test
 	public void testSerializeEmptyReferableList() throws SerializationException {
 		List<Referable> emptyList = Collections.emptyList();
-		String serialized = new JsonSerializer().write(emptyList);
+		String serialized = new JsonSerializer().writeReferables(emptyList);
 		assertEquals("[]", serialized);
 	}
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = new JsonSerializer().write(exampleData.getModel());
-        logger.info(actual);
+        logger.debug(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);

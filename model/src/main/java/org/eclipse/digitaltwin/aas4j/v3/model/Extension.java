@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -92,18 +92,18 @@ public interface Extension extends HasSemantics {
      *
      * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
      *
-     * @return Returns the List of References for the property refersTos.
+     * @return Returns the List of References for the property refersTo.
      */
     @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
-    List<Reference> getRefersTos();
+    List<Reference> getRefersTo();
 
     /**
      * Reference to an element the extension refers to.
      *
      * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
      *
-     * @param refersTos desired value for the property refersTos.
+     * @param refersTos desired value for the property refersTo.
      */
-    void setRefersTos(List<Reference> refersTos);
+    void setRefersTo(List<Reference> refersTos);
 
 }

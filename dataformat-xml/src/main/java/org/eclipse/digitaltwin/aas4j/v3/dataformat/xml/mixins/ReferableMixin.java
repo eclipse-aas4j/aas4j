@@ -35,19 +35,19 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public interface ReferableMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
 	@JsonSerialize(using = LangStringsTextTypeSerializer.class)
-    public List<LangStringTextType> getDescription();
+    List<LangStringTextType> getDescription();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
     @JsonDeserialize(using = LangStringsTextTypeDeserializer.class)
-    public void setDescription(List<LangStringTextType> descriptions);
+    void setDescription(List<LangStringTextType> descriptions);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
 	@JsonDeserialize(using = LangStringsNameTypeDeserializer.class)
-    public List<LangStringNameType> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
 	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
 	@JsonSerialize(using = LangStringsNameTypeSerializer.class)
-	public void setDisplayName(List<LangStringNameType> displayNames);
+	void setDisplayName(List<LangStringNameType> displayNames);
 
-    public String getIdShort();
+    String getIdShort();
 }

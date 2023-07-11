@@ -101,6 +101,4 @@ public interface DataSpecificationIec61360Mixin {
     @JsonSerialize(using = EnumSerializer.class)
     public DataTypeIec61360 getDataType();
 
-
-
 }

@@ -31,8 +31,8 @@ import java.util.ArrayList;
  * Tests the following constraint:
  * <p>
  * <i> If the semanticId of a Property references a ConceptDescription with the category VALUE
- * then the value of the property is identical to DataSpecificationIEC61360/value and the valueId of
- * the property is identical to DataSpecificationIEC61360/valueId. </i>
+ * then the value of the property is identical to DataSpecificationIec61360/value and the valueId of
+ * the property is identical to DataSpecificationIec61360/valueId. </i>
  * </p>
  *
  * @author bader, chang
@@ -50,27 +50,27 @@ public class TestAASd_65a {
                 .value("the value of property")
                 .valueId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
-                                .value("DataSpecificationIEC61360")
+                                .value("DataSpecificationIec61360")
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .build())
                         .build())
                 .valueType(DataTypeDefXsd.STRING)
                 .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
-                                .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC01/DataTypeIEC61360")
+                                .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0/RC01/DataTypeIec61360")
                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                 .build())
                         .build())
                 .build();
 
-//        DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//                .dataType(DataTypeIEC61360.STRING_TRANSLATABLE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//        DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//                .dataType(DataTypeIec61360.STRING_TRANSLATABLE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //                .preferredName(new LangString("Data Specification", "en"))
 //                .definition(new LangString("A definition of a STRING_TRANSLATABLE in English.", "en"))
 //                .value("the value")
 //                .valueId(new DefaultReference.Builder().
 //                        keys(new DefaultKey.Builder()
-//                                .value("DataSpecificationIEC61360")
+//                                .value("DataSpecificationIec61360")
 //
 //                                .type(KeyTypes.GLOBAL_REFERENCE)
 //                                .build())
@@ -112,7 +112,7 @@ public class TestAASd_65a {
                 .value("the value of Property value")
                 .valueId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
-                                .value("DataSpecificationIEC61360")
+                                .value("DataSpecificationIec61360")
 
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .build())
@@ -121,20 +121,20 @@ public class TestAASd_65a {
                 .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 
-                                .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC01/DataTypeIEC61360")
+                                .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0/RC01/DataTypeIec61360")
                                 .type(KeyTypes.CONCEPT_DESCRIPTION)
                                 .build())
                         .build())
                 .build();
 
-//        DataSpecificationIEC61360 ds = new DefaultDataSpecificationIEC61360.Builder()
-//                .dataType(DataTypeIEC61360.STRING_TRANSLATABLE) // This should be DataTypeIEC61360.STRING_TRANSLATABLE
+//        DataSpecificationIec61360 ds = new DefaultDataSpecificationIec61360.Builder()
+//                .dataType(DataTypeIec61360.STRING_TRANSLATABLE) // This should be DataTypeIec61360.STRING_TRANSLATABLE
 //                .preferredName(new LangString("Data Specification", "en"))
 //                .definition(new LangString("A definition of a STRING_TRANSLATABLE in English.", "en"))
 //                .value("the value of Property value")
 //                .valueId(new DefaultReference.Builder().
 //                        keys(new DefaultKey.Builder()
-//                                .value("DataSpecificationIEC61360")
+//                                .value("DataSpecificationIec61360")
 //
 //                                .type(KeyTypes.GLOBAL_REFERENCE)
 //                                .build())

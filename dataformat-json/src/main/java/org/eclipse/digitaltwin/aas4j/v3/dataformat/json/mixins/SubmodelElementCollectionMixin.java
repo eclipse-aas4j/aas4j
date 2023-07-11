@@ -22,8 +22,8 @@ import java.util.Collection;
 public interface SubmodelElementCollectionMixin {
 
     @JsonProperty("value")
-    public Collection<SubmodelElement> getValues();
+    public Collection<SubmodelElement> getValue();
 
     @JsonProperty("value")
-    public void setValues(Collection<SubmodelElement> values);
+    public void setValue(Collection<SubmodelElement> values);
 }

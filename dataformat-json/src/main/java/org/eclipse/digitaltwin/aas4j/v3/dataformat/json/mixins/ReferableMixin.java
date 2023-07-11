@@ -22,16 +22,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import java.util.List;
 
 public interface ReferableMixin {
+    @JsonProperty("description")
+    List<LangStringTextType> getDescription();
 
     @JsonProperty("description")
-    public List<LangStringTextType> getDescription();
-
-    @JsonProperty("description")
-    public void setDescription(List<LangStringTextType> description);
+    void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayName")
-    public List<LangStringNameType> getDisplayName();
+    List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayName")
-    public void setDisplayName(List<LangStringNameType> displayNames);
+    void setDisplayName(List<LangStringNameType> displayNames);
 }

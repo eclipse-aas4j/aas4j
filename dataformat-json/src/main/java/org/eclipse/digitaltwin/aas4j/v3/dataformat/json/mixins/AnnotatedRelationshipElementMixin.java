@@ -22,8 +22,8 @@ import java.util.List;
 public interface AnnotatedRelationshipElementMixin {
 
     @JsonProperty("annotations")
-    public List<DataElement> getAnnotations();
+    List<DataElement> getAnnotations();
 
     @JsonProperty("annotations")
-    public void setAnnotations(List<DataElement> annotations);
+    void setAnnotations(List<DataElement> annotations);
 }

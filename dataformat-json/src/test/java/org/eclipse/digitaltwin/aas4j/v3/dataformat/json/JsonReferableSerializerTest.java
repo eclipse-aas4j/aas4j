@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
@@ -94,10 +95,10 @@ public class JsonReferableSerializerTest {
         if (Environment.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = new JsonSerializer().write((Environment) exampleData.getModel());
         } else if (Referable.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = new JsonSerializer().write((Referable) exampleData.getModel());
+            actual = new JsonSerializer().writeReferable((Referable) exampleData.getModel());
         } else if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())
 				&& ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
-            actual = new JsonSerializer().write((Collection<Referable>) exampleData.getModel());
+            actual = new JsonSerializer().writeReferables((List<Referable>) exampleData.getModel());
         }
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);

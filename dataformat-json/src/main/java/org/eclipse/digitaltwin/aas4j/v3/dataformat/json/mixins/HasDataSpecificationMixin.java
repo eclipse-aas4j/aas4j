@@ -24,14 +24,14 @@ import java.util.List;
 public interface HasDataSpecificationMixin {
 
     @JsonProperty("embeddedDataSpecifications")
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
+    List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
     @JsonProperty("embeddedDataSpecifications")
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
+    void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications);
 
     @JsonProperty("dataSpecifications")
-    public List<Reference> getDataSpecifications();
+    List<Reference> getDataSpecifications();
 
     @JsonProperty("dataSpecifications")
-    public void setDataSpecifications(List<Reference> dataSpecifications);
+    void setDataSpecifications(List<Reference> dataSpecifications);
 }

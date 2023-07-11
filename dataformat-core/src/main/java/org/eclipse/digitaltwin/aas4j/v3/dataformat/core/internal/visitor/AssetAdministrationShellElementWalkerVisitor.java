@@ -72,7 +72,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (conceptDescription == null) {
             return;
         }
-        conceptDescription.getIsCaseOfs().forEach(x -> visit(x));
+        conceptDescription.getIsCaseOf().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(conceptDescription);
     }
 
@@ -127,7 +127,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (multiLanguageProperty == null) {
             return;
         }
-        multiLanguageProperty.getValues().forEach(x -> visit(x));
+        multiLanguageProperty.getValue().forEach(x -> visit(x));
         visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
@@ -173,8 +173,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (referable == null) {
             return;
         }
-        referable.getDescriptions().forEach(x -> visit(x));
-        referable.getDisplayNames().forEach(x -> visit(x));
+        referable.getDescription().forEach(x -> visit(x));
+        referable.getDisplayName().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(referable);
     }
 
@@ -253,7 +253,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (extension == null) {
             return;
         }
-        extension.getRefersTos().forEach(x -> visit(x));
+        extension.getRefersTo().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(extension);
     }
 
@@ -282,7 +282,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (submodelElementCollection == null) {
             return;
         }
-        submodelElementCollection.getValues().forEach(x -> visit(x));
+        submodelElementCollection.getValue().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(submodelElementCollection);
     }
 

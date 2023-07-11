@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,19 +35,19 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
      *
-     * @return Returns the List of LangStringTextTypes for the property values.
+     * @return Returns the List of LangStringTextTypes for the property value.
      */
     @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/value")
-    List<LangStringTextType> getValues();
+    List<LangStringTextType> getValue();
 
     /**
      * The value of the property instance.
      *
      * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
      *
-     * @param values desired value for the property values.
+     * @param values desired value for the property value.
      */
-    void setValues(List<LangStringTextType> values);
+    void setValue(List<LangStringTextType> values);
 
     /**
      * Reference to the global unique ID of a coded value.
