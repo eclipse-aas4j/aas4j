@@ -15,6 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -22,8 +25,11 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.json.JSONException;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -85,6 +91,18 @@ public class JsonReferableSerializerTest {
     @Test
     public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
+    }
+
+    @Test
+    public void testSerializePropertyToNode() throws IOException, SerializationException, JSONException {
+        Property property = new DefaultProperty.Builder()
+                .idShort("exampleId")
+                .build();
+        ObjectNode expected = JsonNodeFactory.instance.objectNode();
+        expected.put("idShort", "exampleId");
+        expected.put("modelType", "Property");
+        JsonNode actual = new JsonSerializer().toNode(property);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test

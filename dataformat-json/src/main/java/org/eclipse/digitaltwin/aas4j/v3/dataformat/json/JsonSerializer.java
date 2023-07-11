@@ -15,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
@@ -31,9 +30,16 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.Objects;
 
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
@@ -65,11 +71,9 @@ public class JsonSerializer {
     }
 
     /**
-     * Serializes a given instance of AssetAdministrationShellEnvironment to
-     * string
+     * Serializes a given instance of AssetAdministrationShellEnvironment to string
      *
-     * @param aasEnvironment the AssetAdministrationShellEnvironment to
-     * serialize
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
      * @return the string representation of the environment
      * @throws SerializationException if serialization fails
      */
@@ -81,14 +85,21 @@ public class JsonSerializer {
         }
     }
 
+    /**
+     * Converts a given instance of AssetAdministrationShellEnvironment as JSON node.
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
+     * @return the JSON node representation of the environment
+     */
+    public JsonNode toNode(Environment aasEnvironment) {
+        return mapper.valueToTree(aasEnvironment);
+    }
 
     /**
-     * Serializes a given instance of Environment to an
-     * OutputStream using DEFAULT_CHARSET
+     * Serializes a given instance of Environment to an OutputStream using DEFAULT_CHARSET
      *
      * @param out the Outputstream to serialize to
-     * @param aasEnvironment the Environment to
-     * serialize
+     * @param aasEnvironment the Environment to serialize
      * @throws IOException if writing to the stream fails
      * @throws SerializationException if serialization fails
      */
@@ -97,13 +108,11 @@ public class JsonSerializer {
     }
 
     /**
-     * Serializes a given instance of Environment to an
-     * OutputStream using given charset
+     * Serializes a given instance of Environment to an OutputStream using given charset
      *
      * @param out the Outputstream to serialize to
      * @param charset the Charset to use for serialization
-     * @param aasEnvironment the Environment to
-     * serialize
+     * @param aasEnvironment the Environment to serialize
      * @throws IOException if writing to the stream fails
      * @throws SerializationException if serialization fails
      */
@@ -116,13 +125,11 @@ public class JsonSerializer {
 
     // Note that the AAS also defines a file class
     /**
-     * Serializes a given instance of Environment to a
-     * java.io.File using DEFAULT_CHARSET
+     * Serializes a given instance of Environment to a java.io.File using DEFAULT_CHARSET
      *
      * @param file the java.io.File to serialize to
      * @param charset the Charset to use for serialization
-     * @param aasEnvironment the Environment to
-     * serialize
+     * @param aasEnvironment the Environment to serialize
      * @throws FileNotFoundException if the fail does not exist
      * @throws IOException if writing to the file fails
      * @throws SerializationException if serialization fails
@@ -135,12 +142,10 @@ public class JsonSerializer {
     }
 
     /**
-     * Serializes a given instance of Environment to a
-     * java.io.File using given charset
+     * Serializes a given instance of Environment to a java.io.File using given charset
      *
      * @param file the java.io.File to serialize to
-     * @param aasEnvironment the Environment to
-     * serialize
+     * @param aasEnvironment the Environment to serialize
      * @throws FileNotFoundException if the fail does not exist
      * @throws IOException if writing to the file fails
      * @throws SerializationException if serialization fails
@@ -166,17 +171,27 @@ public class JsonSerializer {
     }
 
     /**
+     * Converts a given instance of a Referable to a JSON node.
+     *
+     * @param referable the referable to serialize
+     * @return the JSON node representation of the referable
+     */
+    public JsonNode toNode(Referable referable) {
+        return mapper.valueToTree(referable);
+    }
+
+    /**
      *
      * @param referables the referables to serialize
      * @return the string representation of the list of referables
      * @throws SerializationException if serialization fails
      */
     public String write(Collection<? extends Referable> referables) throws SerializationException {
-		if (referables == null) {
+        if (referables == null) {
             return null;
-		} else if (referables.isEmpty()) {
-			return mapper.createArrayNode().toString();
-		}
+        } else if (referables.isEmpty()) {
+            return mapper.createArrayNode().toString();
+        }
 
         try {
             return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.iterator().next().getClass()))
@@ -184,5 +199,19 @@ public class JsonSerializer {
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of Referables", ex);
         }
+    }
+
+    /**
+     *
+     * @param referables the referables to serialize
+     * @return the string representation of the list of referables
+     */
+    public JsonNode toNode(Collection<? extends Referable> referables) {
+        if (referables == null) {
+            return null;
+        } else if (referables.isEmpty()) {
+            return mapper.createArrayNode();
+        }
+        return mapper.valueToTree(referables);
     }
 }
