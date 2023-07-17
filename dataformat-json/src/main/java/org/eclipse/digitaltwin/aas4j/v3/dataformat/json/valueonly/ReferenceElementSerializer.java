@@ -16,6 +16,6 @@ public class ReferenceElementSerializer extends AbstractSerializer<ReferenceElem
 
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
-        return JsonNodeFactory.instance.pojoNode(element.getValue());
+        return serializer.toJson(element.getValue());
     }
 }

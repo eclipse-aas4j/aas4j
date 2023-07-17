@@ -23,8 +23,8 @@ public class AnnotatedRelationshipSerializer extends AbstractSerializer<Annotate
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("first", JsonNodeFactory.instance.pojoNode(element.getFirst()));
-        node.set("second", JsonNodeFactory.instance.pojoNode(element.getSecond()));
+        node.set("first", serializer.toJson(element.getFirst()));
+        node.set("second", serializer.toJson(element.getSecond()));
         List<SubmodelElement> annotations = new ArrayList<>(element.getAnnotations());
         ElementsListSerializer listSerializer = new ElementsListSerializer(
             annotations, idShortPath + ".annotations");

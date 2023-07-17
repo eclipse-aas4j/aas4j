@@ -20,8 +20,8 @@ public class RelationshipSerializer extends AbstractSerializer<RelationshipEleme
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("first", JsonNodeFactory.instance.pojoNode(element.getFirst()));
-        node.set("second", JsonNodeFactory.instance.pojoNode(element.getSecond()));
+        node.set("first", serializer.toJson(element.getFirst()));
+        node.set("second", serializer.toJson(element.getSecond()));
         return node;
     }
 }

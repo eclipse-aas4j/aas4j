@@ -1,6 +1,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 
 /**
  * The abstract base class for all value-only serializers.
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public abstract class AbstractSerializer<T> {
     protected T element;
     protected String idShortPath;
+    protected static JsonSerializer serializer = new JsonSerializer();
 
     /**
      *
