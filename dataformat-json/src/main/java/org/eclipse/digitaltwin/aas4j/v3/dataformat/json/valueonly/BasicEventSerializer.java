@@ -18,7 +18,7 @@ public class BasicEventSerializer extends AbstractSerializer<BasicEventElement> 
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("observed", JsonNodeFactory.instance.pojoNode(element.getObserved()));
+        node.set("observed", serializer.toJson(element.getObserved()));
         return node;
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
@@ -43,7 +44,7 @@ public class EntitySerializer extends AbstractSerializer<Entity> {
             }
             node.set("specificAssetId", assetIdNode);
         }
-        node.set("entityType", new TextNode(element.getEntityType().name()));
+        node.set("entityType", new TextNode(EnumSerializer.serializeEnumName(element.getEntityType().name())));
         return node;
     }
 }
