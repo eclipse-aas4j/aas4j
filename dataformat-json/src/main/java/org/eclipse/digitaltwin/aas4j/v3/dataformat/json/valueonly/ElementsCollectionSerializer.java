@@ -94,7 +94,7 @@ public class ElementsCollectionSerializer extends AbstractSerializer<List<Submod
             return new ElementsCollectionSerializer(((SubmodelElementCollection)element).getValue(), idShortPath).serialize();
         }
         if(element instanceof SubmodelElementList) {
-            return new ElementsListSerializer(((SubmodelElementCollection)element).getValue(), idShortPath).serialize();
+            return new ElementsListSerializer(((SubmodelElementList)element).getValue(), idShortPath).serialize();
         }
         if(element instanceof AnnotatedRelationshipElement) {
             return new AnnotatedRelationshipSerializer((AnnotatedRelationshipElement) element, idShortPath).serialize();

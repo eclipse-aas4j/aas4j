@@ -31,6 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
@@ -47,6 +48,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -114,17 +116,22 @@ public class TestData {
             .value("42")
             .build();
 
-
     public static final Range RANGE_INT = new DefaultRange.Builder()
             .idShort("rangeInt")
             .valueType(DataTypeDefXsd.INT)
             .min("17")
             .max("42")
             .build();
-
     public static final ReferenceElement REFERENCE_ELEMENT_GLOBAL = new DefaultReferenceElement.Builder()
         .idShort("referenceGlobal")
         .value(new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE)
+            .referredSemanticId(new DefaultReference.Builder()
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .keys(new DefaultKey.Builder()
+                    .type(KeyTypes.CONCEPT_DESCRIPTION)
+                    .value("Concept Description key value")
+                     .build())
+                .build())
             .keys(new DefaultKey.Builder()
                 .type(KeyTypes.GLOBAL_REFERENCE)
                 .value("global reference key value")
@@ -151,6 +158,7 @@ public class TestData {
             .idShort("AppliedRule")
             .value("TechnicalCurrentFlowDirection")
             .build())
+        .annotations(RANGE_INT)
         .build();
 
     public static final RelationshipElement RELATIONSHIP_ELEMENT = new DefaultRelationshipElement.Builder()
@@ -165,6 +173,15 @@ public class TestData {
             .value(PROPERTY_STRING)
             .value(RANGE_DOUBLE)
             .value(ENTITY)
+            .value(RELATIONSHIP_ELEMENT)
+            .build();
+
+    public static final SubmodelElementList ELEMENT_LIST = new DefaultSubmodelElementList.Builder()
+            .idShort("list1")
+            .value(PROPERTY_STRING)
+            .value(RANGE_DOUBLE)
+            .value(ENTITY)
+            .value(ANNOTATED_RELATIONSHIP_ELEMENT)
             .build();
 
     public static final Submodel SUBMODEL = new DefaultSubmodel.Builder()
@@ -175,8 +192,8 @@ public class TestData {
             .submodelElements(RANGE_DOUBLE)
             .submodelElements(ELEMENT_COLLECTION)
             .submodelElements(new DefaultOperation.Builder()
-                    .idShort("operation1")
-                    .build())
+                .idShort("operation1")
+                .build())
             .build();
 
 }

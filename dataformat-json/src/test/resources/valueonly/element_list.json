@@ -1,0 +1,48 @@
+[
+  "foo",
+  {
+    "min" : 3.0,
+    "max" : 5.0
+  },
+  {
+    "statements" : [ 5000 ],
+    "globalAssetId" : "Global Asset Id",
+    "entityType" : "SelfManagedEntity"
+  },
+  {
+    "first" : {
+      "referredSemanticId" : {
+        "keys" : [
+          {
+            "type" : "ConceptDescription",
+            "value" : "Concept Description key value"
+          }
+        ],
+        "type" : "ExternalReference"
+      },
+      "keys" : [
+        {
+          "type" : "GlobalReference",
+          "value" : "global reference key value"
+        }
+      ],
+      "type" : "ExternalReference"
+    },
+    "second" : {
+      "keys" : [
+        {
+          "type" : "Property",
+          "value" : "MaxRotationSpeed"
+        }
+      ],
+      "type" : "ModelReference"
+    },
+    "annotations" : [
+      "TechnicalCurrentFlowDirection",
+      {
+        "min" : 17,
+        "max" : 42
+      }
+    ]
+  }
+]
