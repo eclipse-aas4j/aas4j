@@ -26,12 +26,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
  * AAS Specification Part 2</a><br>
  *
  * Values are only available for:
+ * <ol>
  * <li>All subtypes of abstract type DataElement</li>
  * <li>SubmodelElementList and SubmodelElementCollection respectively for their included SubmodelElements</li>
  * <li>ReferenceElement</li>
  * <li>RelationshipElement + AnnotatedRelationshipElement</li>
  * <li>Entity</li>
  * <li>BasicEventElement</li>
+ * </ol>
  */
 public class ValueOnlyJsonSerializer {
     private final boolean prettyString;
