@@ -1,8 +1,14 @@
 # Eclipse AAS4J
 
-> :newspaper: The _`Eclipse AAS4J 1.0.0-milestone-03`_ release is available on Maven Central Repository and includes the following artifacts implementing the _AAS Specs – Part 1 V3.0 (final)_: `dataformat-core`, `dataformat-aasx`, `dataformat-xml`, `dataformat-json`, `dataformat-parent`, and `model`.
+> :newspaper: The _`Eclipse AAS4J 1.0.0-milestone-03`_ release is available on Maven Central Repository and includes the 
+> following artifacts implementing the _AAS Specs – Part 1 V3.0 (final)_: `dataformat-core`, `dataformat-aasx`, 
+> `dataformat-xml`, `dataformat-json`, `dataformat-parent`, and `model`.
 
-[Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 'Details of the Asset Administration Shell' published on [Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
+[Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration 
+Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation 
+libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 
+'Specification of the Asset Administration Shell Part 1: Meta-Model' published on 
+[Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/wp-content/uploads/2023/04/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf).
 
 Note: AAS libraries for java previously available in [admin-shell-io](https://github.com/admin-shell-io).
 
@@ -10,8 +16,10 @@ Note: AAS libraries for java previously available in [admin-shell-io](https://gi
 
 [Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) consists of the following components:
 - AAS Model
-- Dataformat Library
-- Validator
+- Dataformat AASX
+- Dataformat Core
+- Dataformat JSON
+- Dataformat XML
 
 # AAS Model
 
@@ -57,10 +65,11 @@ The project contains several modules:
 - `dataformat-json` JSON de-/serializer
 - `dataformat-xml` XML de-/serializer
 - `model` Meta-model classes be instantiated
-- `validator` Validator against the semantic restrictions of the AAS meta-model
 
 [AAS4J's predecessor](https://github.com/admin-shell-io/java-serializer) contained serialization modules for AutomationML
 and OPC UA for which however no longer up-to-date specifications exist. Implementation is halted until the specs have been updated.
+Additionally, the RDF serializer and the validator have been removed temporarily from this repo but are planned to be
+reintroduced in the future.
 
 Additionally, the sources that are used for generating the static documentation using [DocFX](https://dotnet.github.io/docfx/) in the `gh-pages` branch are located in the `docs` folder.
 
@@ -89,7 +98,7 @@ This project was initiated by SAP and Fraunhofer to provide a foundation for the
 ## License
 Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
 
-Copyright 2021 SAP SE or an SAP affiliate company and Eclipse AAS4J contributors. 
+Copyright 2023 SAP SE or an SAP affiliate company and Eclipse AAS4J contributors. 
 
 The serializers contained in this repository provide the functionalities to serialize and deserialize instances of the Asset Administration Shell (AAS) data model from and to the AAS Java Model library. It is licensed under the Apache License
 2.0 (see [LICENSE](https://github.com/eclipse-aas4j/aas4j/blob/main/LICENSE)).
