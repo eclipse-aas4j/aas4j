@@ -116,10 +116,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    public JsonNode toJson(Reference reference) {
-        return mapper.valueToTree(reference);
-    }
-
     @Override
     public String writeReferences(List<Reference> references) throws SerializationException {
         if(references.isEmpty()){
