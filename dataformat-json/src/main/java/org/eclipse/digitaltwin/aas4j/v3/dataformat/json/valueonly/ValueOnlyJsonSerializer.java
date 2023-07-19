@@ -66,6 +66,16 @@ public class ValueOnlyJsonSerializer {
     }
 
     /**
+     * Update an existing submodel with the given valueOnly.
+     * @param submodel The submodel to be updated. If you want to prevent the direct modification of the original
+     *                 submodel, just use the corresponding copy constructor, when you pass this argument.
+     * @param valueOnly the valueOnly string.
+     */
+    public void update(Submodel submodel, String valueOnly) {
+        throw new UnsupportedOperationException("This method is still not implemented.");
+    }
+
+    /**
      * Serializes a submodel element in value-only JSON format.
      * @param element the submodel element to be serialized.
      * @return the corresponding value-only JSON string.
@@ -75,5 +85,15 @@ public class ValueOnlyJsonSerializer {
     public String write(SubmodelElement element) throws ValueOnlySerializationException {
         JsonNode node = ElementsCollectionSerializer.serialize(element, "$");
         return prettyString ? node.toPrettyString() : node.toString();
+    }
+
+    /**
+     * Update an existing submodel element with the given valueOnly.
+     * @param element The submodel element to be updated. If you want to prevent the direct modification of the original
+     *                submodel element, just use the corresponding copy constructor, when you pass this argument.
+     * @param valueOnly the valueOnly string.
+     */
+    public SubmodelElement update(SubmodelElement element, String valueOnly) {
+        throw new UnsupportedOperationException("This method is still not implemented.");
     }
 }
