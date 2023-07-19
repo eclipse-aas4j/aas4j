@@ -66,44 +66,47 @@ public class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElemen
     }
 
     static JsonNode serialize(SubmodelElement element, String idShortPath) throws ValueOnlySerializationException {
+        AbstractMapper mapper = createMapper(element, idShortPath);
+        return mapper == null ? NullNode.instance : mapper.serialize();
+    }
+
+    private static AbstractMapper createMapper(SubmodelElement element, String idShortPath) {
         if(element instanceof Blob) {
-            return new BlobMapper((Blob) element, idShortPath).serialize();
+            return new BlobMapper((Blob) element, idShortPath);
         }
         if(element instanceof File) {
-            return new FileMapper((File) element, idShortPath).serialize();
+            return new FileMapper((File) element, idShortPath);
         }
         if(element instanceof MultiLanguageProperty) {
-            return new MultiLanguagePropertyMapper((MultiLanguageProperty)element, idShortPath).serialize();
+            return new MultiLanguagePropertyMapper((MultiLanguageProperty)element, idShortPath);
         }
         if(element instanceof Property) {
-            return new PropertyMapper((Property)element, idShortPath).serialize();
+            return new PropertyMapper((Property)element, idShortPath);
         }
         if(element instanceof Range) {
-            return new RangeMapper((Range) element, idShortPath).serialize();
+            return new RangeMapper((Range) element, idShortPath);
         }
         if(element instanceof ReferenceElement) {
-            return new ReferenceElementMapper((ReferenceElement) element, idShortPath).serialize();
+            return new ReferenceElementMapper((ReferenceElement) element, idShortPath);
         }
         if(element instanceof Entity) {
-            return new EntityMapper((Entity) element, idShortPath).serialize();
+            return new EntityMapper((Entity) element, idShortPath);
         }
         if(element instanceof BasicEventElement) {
-            return new BasicEventElementMapper((BasicEventElement) element, idShortPath).serialize();
+            return new BasicEventElementMapper((BasicEventElement) element, idShortPath);
         }
         if(element instanceof SubmodelElementCollection) {
-            return new ElementsCollectionMapper(((SubmodelElementCollection)element).getValue(), idShortPath).serialize();
+            return new ElementsCollectionMapper(((SubmodelElementCollection)element).getValue(), idShortPath);
         }
         if(element instanceof SubmodelElementList) {
-            return new ElementsListMapper(((SubmodelElementList)element).getValue(), idShortPath).serialize();
+            return new ElementsListMapper(((SubmodelElementList)element).getValue(), idShortPath);
         }
         if(element instanceof AnnotatedRelationshipElement) {
-            return new AnnotatedRelationshipMapper((AnnotatedRelationshipElement) element, idShortPath).serialize();
+            return new AnnotatedRelationshipMapper((AnnotatedRelationshipElement) element, idShortPath);
         }
         if(element instanceof RelationshipElement) {
-            return new RelationshipElementMapper((RelationshipElement) element, idShortPath).serialize();
+            return new RelationshipElementMapper((RelationshipElement) element, idShortPath);
         }
-
-        // This type of submodel element should not be serialized.
-        return NullNode.instance;
+        return null;
     }
 }
