@@ -31,8 +31,8 @@ import java.util.List;
  * ${AnnotatedRelationshipElement/annotations}. The values of the array items are serialized depending on the type of
  * the annotation data element.
  */
-public class AnnotatedRelationshipSerializer extends AbstractSerializer<AnnotatedRelationshipElement> {
-    AnnotatedRelationshipSerializer(AnnotatedRelationshipElement relationship, String idShortPath) {
+public class AnnotatedRelationshipMapper extends AbstractMapper<AnnotatedRelationshipElement> {
+    AnnotatedRelationshipMapper(AnnotatedRelationshipElement relationship, String idShortPath) {
         super(relationship, idShortPath);
     }
 
@@ -42,7 +42,7 @@ public class AnnotatedRelationshipSerializer extends AbstractSerializer<Annotate
         node.set("first", serializer.toJson(element.getFirst()));
         node.set("second", serializer.toJson(element.getSecond()));
         List<SubmodelElement> annotations = new ArrayList<>(element.getAnnotations());
-        ElementsListSerializer listSerializer = new ElementsListSerializer(
+        ElementsListMapper listSerializer = new ElementsListMapper(
             annotations, idShortPath + ".annotations");
         node.set("annotations", listSerializer.serialize());
         return node;

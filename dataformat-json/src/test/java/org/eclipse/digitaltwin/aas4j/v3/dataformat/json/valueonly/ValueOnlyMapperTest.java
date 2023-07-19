@@ -28,12 +28,12 @@ import java.nio.charset.StandardCharsets;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ValueOnlyJsonSerializerTest {
-    private static ValueOnlyJsonSerializer serializer = new ValueOnlyJsonSerializer(true);
+public class ValueOnlyMapperTest {
+    private static ValueOnlyMapper serializer = new ValueOnlyMapper(true);
 
     @Test
     public void testCreateDefaultSerializer() throws IOException {
-        assertNotNull(new ValueOnlyJsonSerializer());
+        assertNotNull(new ValueOnlyMapper());
     }
 
     @Test

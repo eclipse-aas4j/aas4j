@@ -28,8 +28,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Range;
  * object contains two JSON properties. The first is named "min". The second is named "max". Their corresponding values
  * are ${Range/min} and ${Range/max}.
  */
-public class RangeSerializer extends AbstractSerializer<Range> {
-    RangeSerializer(Range range, String idShortPath) {
+public class RangeMapper extends AbstractMapper<Range> {
+    RangeMapper(Range range, String idShortPath) {
         super(range, idShortPath);
     }
 

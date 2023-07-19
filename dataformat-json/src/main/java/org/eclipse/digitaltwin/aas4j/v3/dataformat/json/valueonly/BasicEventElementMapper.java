@@ -17,26 +17,24 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
 
 /**
- * Property is serialized as ${Property/idShort}: ${Property/value} where ${Property/value} is the JSON serialization
- * of the respective property’s value in accordance with the data type to value mapping.
- * @see ValueConverter
+ * BasicEventElement is serialized as named JSON object with ${BasicEventElement/idShort} as the name of the containing
+ * JSON property. The JSON object contains one JSON property named “observed” with the corresponding value of
+ * ${BasicEventElement/observed} as the standard serialization of the Reference class.
  */
-public class PropertySerializer extends AbstractSerializer<Property> {
-    PropertySerializer(Property property, String idShortPath) {
-        super(property, idShortPath);
+public class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
+    BasicEventElementMapper(BasicEventElement event, String idShortPath) {
+        super(event, idShortPath);
     }
 
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
-        try {
-            return ValueConverter.convert(element.getValueType(), element.getValue());
-        } catch (NumberFormatException ex) {
-            throw new ValueOnlySerializationException("Cannot serialize the property with idShort path '" +
-                idShortPath + "': " + ex.getMessage());
-        }
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.set("observed", serializer.toJson(element.getObserved()));
+        return node;
     }
 }

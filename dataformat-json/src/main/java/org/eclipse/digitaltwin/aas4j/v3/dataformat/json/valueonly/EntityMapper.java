@@ -36,9 +36,9 @@ import java.util.List;
  * JSON key and “value” for the JSON value. The third property is named “entityType” and contains a string
  * representation of ${Entity/entityType}.
  */
-public class EntitySerializer extends AbstractSerializer<Entity> {
+public class EntityMapper extends AbstractMapper<Entity> {
 
-    EntitySerializer(Entity entity, String idShortPath) {
+    EntityMapper(Entity entity, String idShortPath) {
         super(entity, idShortPath);
     }
 
@@ -46,7 +46,7 @@ public class EntitySerializer extends AbstractSerializer<Entity> {
     public JsonNode serialize() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         List<SubmodelElement> elements = element.getStatements();
-        ElementsListSerializer ecSerializer = new ElementsListSerializer(elements, idShortPath + ".statements");
+        ElementsListMapper ecSerializer = new ElementsListMapper(elements, idShortPath + ".statements");
         node.set("statements", ecSerializer.serialize());
         String globalAssetId = element.getGlobalAssetId();
         if(globalAssetId != null) {

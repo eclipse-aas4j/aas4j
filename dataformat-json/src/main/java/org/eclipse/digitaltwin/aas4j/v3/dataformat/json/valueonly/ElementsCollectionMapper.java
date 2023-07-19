@@ -41,8 +41,8 @@ import java.util.List;
  * the containing JSON property. The elements contained within the struct are serialized according to their respective
  * type with ${SubmodelElement/idShort} as the name of the containing JSON property.
  */
-public class ElementsCollectionSerializer extends AbstractSerializer<List<SubmodelElement>> {
-    ElementsCollectionSerializer(List<SubmodelElement> elements, String idShortPath) {
+public class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElement>> {
+    ElementsCollectionMapper(List<SubmodelElement> elements, String idShortPath) {
         super(elements, idShortPath);
     }
 
@@ -67,40 +67,40 @@ public class ElementsCollectionSerializer extends AbstractSerializer<List<Submod
 
     static JsonNode serialize(SubmodelElement element, String idShortPath) throws ValueOnlySerializationException {
         if(element instanceof Blob) {
-            return new BlobSerializer((Blob) element, idShortPath).serialize();
+            return new BlobMapper((Blob) element, idShortPath).serialize();
         }
         if(element instanceof File) {
-            return new FileSerializer((File) element, idShortPath).serialize();
+            return new FileMapper((File) element, idShortPath).serialize();
         }
         if(element instanceof MultiLanguageProperty) {
-            return new MultiLanguagePropertySerializer((MultiLanguageProperty)element, idShortPath).serialize();
+            return new MultiLanguagePropertyMapper((MultiLanguageProperty)element, idShortPath).serialize();
         }
         if(element instanceof Property) {
-            return new PropertySerializer((Property)element, idShortPath).serialize();
+            return new PropertyMapper((Property)element, idShortPath).serialize();
         }
         if(element instanceof Range) {
-            return new RangeSerializer((Range) element, idShortPath).serialize();
+            return new RangeMapper((Range) element, idShortPath).serialize();
         }
         if(element instanceof ReferenceElement) {
-            return new ReferenceElementSerializer((ReferenceElement) element, idShortPath).serialize();
+            return new ReferenceElementMapper((ReferenceElement) element, idShortPath).serialize();
         }
         if(element instanceof Entity) {
-            return new EntitySerializer((Entity) element, idShortPath).serialize();
+            return new EntityMapper((Entity) element, idShortPath).serialize();
         }
         if(element instanceof BasicEventElement) {
-            return new BasicEventSerializer((BasicEventElement) element, idShortPath).serialize();
+            return new BasicEventElementMapper((BasicEventElement) element, idShortPath).serialize();
         }
         if(element instanceof SubmodelElementCollection) {
-            return new ElementsCollectionSerializer(((SubmodelElementCollection)element).getValue(), idShortPath).serialize();
+            return new ElementsCollectionMapper(((SubmodelElementCollection)element).getValue(), idShortPath).serialize();
         }
         if(element instanceof SubmodelElementList) {
-            return new ElementsListSerializer(((SubmodelElementList)element).getValue(), idShortPath).serialize();
+            return new ElementsListMapper(((SubmodelElementList)element).getValue(), idShortPath).serialize();
         }
         if(element instanceof AnnotatedRelationshipElement) {
-            return new AnnotatedRelationshipSerializer((AnnotatedRelationshipElement) element, idShortPath).serialize();
+            return new AnnotatedRelationshipMapper((AnnotatedRelationshipElement) element, idShortPath).serialize();
         }
         if(element instanceof RelationshipElement) {
-            return new RelationshipSerializer((RelationshipElement) element, idShortPath).serialize();
+            return new RelationshipElementMapper((RelationshipElement) element, idShortPath).serialize();
         }
 
         // This type of submodel element should not be serialized.

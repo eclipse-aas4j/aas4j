@@ -18,19 +18,25 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 
 /**
- * ReferenceElement is serialized as ${ReferenceElement/idShort}: ${ReferenceElement/value} where
- * ${ReferenceElement/value} is the serialization of the Reference class.
+ * Property is serialized as ${Property/idShort}: ${Property/value} where ${Property/value} is the JSON serialization
+ * of the respective property’s value in accordance with the data type to value mapping.
+ * @see ValueConverter
  */
-public class ReferenceElementSerializer extends AbstractSerializer<ReferenceElement> {
-    ReferenceElementSerializer(ReferenceElement element, String idShortPath) {
-        super(element, idShortPath);
+public class PropertyMapper extends AbstractMapper<Property> {
+    PropertyMapper(Property property, String idShortPath) {
+        super(property, idShortPath);
     }
 
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
-        return serializer.toJson(element.getValue());
+        try {
+            return ValueConverter.convert(element.getValueType(), element.getValue());
+        } catch (NumberFormatException ex) {
+            throw new ValueOnlySerializationException("Cannot serialize the property with idShort path '" +
+                idShortPath + "': " + ex.getMessage());
+        }
     }
 }

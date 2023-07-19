@@ -17,24 +17,29 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
+import java.util.List;
 
 /**
- * BasicEventElement is serialized as named JSON object with ${BasicEventElement/idShort} as the name of the containing
- * JSON property. The JSON object contains one JSON property named “observed” with the corresponding value of
- * ${BasicEventElement/observed} as the standard serialization of the Reference class.
+ * SubmodelElementList is serialized as a JSON array with the index of the contained SubmodelElement in the list as the
+ * position in the JSON array. The elements contained within the list are serialized according to their respective type.
  */
-public class BasicEventSerializer extends AbstractSerializer<BasicEventElement> {
-    BasicEventSerializer(BasicEventElement event, String idShortPath) {
-        super(event, idShortPath);
+public class ElementsListMapper extends ElementsCollectionMapper {
+    ElementsListMapper(List<SubmodelElement> elements, String idShortPath) {
+        super(elements, idShortPath);
     }
 
     @Override
     public JsonNode serialize() throws ValueOnlySerializationException {
-        ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("observed", serializer.toJson(element.getObserved()));
-        return node;
+        ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
+        for(int i = 0; i < element.size(); i++) {
+            SubmodelElement submodelElement = element.get(i);
+            arrayNode.add(serialize(submodelElement, idShortPath + "[" + i + "]"));
+        }
+        return arrayNode;
     }
 }

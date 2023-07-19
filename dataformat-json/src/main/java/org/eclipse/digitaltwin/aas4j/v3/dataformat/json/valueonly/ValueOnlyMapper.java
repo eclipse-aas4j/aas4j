@@ -35,14 +35,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
  * <li>BasicEventElement</li>
  * </ol>
  */
-public class ValueOnlyJsonSerializer {
+public class ValueOnlyMapper {
     private final boolean prettyString;
 
     /**
      * The default constructor creates a value-only serializer which serializes submodels and submodel elements to a
      * compact string.
      */
-    public ValueOnlyJsonSerializer() {
+    public ValueOnlyMapper() {
         this(false);
     }
 
@@ -50,7 +50,7 @@ public class ValueOnlyJsonSerializer {
      * Creates a value-only serializer.
      * @param prettyString pass true, if you want to have a pretty formatted strings.
      */
-    public ValueOnlyJsonSerializer(boolean prettyString) {
+    public ValueOnlyMapper(boolean prettyString) {
         this.prettyString = prettyString;
     }
 
@@ -60,7 +60,7 @@ public class ValueOnlyJsonSerializer {
      * @return the corresponding value-only JSON string.
      */
     public String write(Submodel submodel) throws ValueOnlySerializationException {
-        ElementsCollectionSerializer serializer = new ElementsCollectionSerializer(submodel.getSubmodelElements(), "$");
+        ElementsCollectionMapper serializer = new ElementsCollectionMapper(submodel.getSubmodelElements(), "$");
         JsonNode node = serializer.serialize();
         return prettyString ? node.toPrettyString() : node.toString();
     }
@@ -83,7 +83,7 @@ public class ValueOnlyJsonSerializer {
      * @return
      */
     public String write(SubmodelElement element) throws ValueOnlySerializationException {
-        JsonNode node = ElementsCollectionSerializer.serialize(element, "$");
+        JsonNode node = ElementsCollectionMapper.serialize(element, "$");
         return prettyString ? node.toPrettyString() : node.toString();
     }
 

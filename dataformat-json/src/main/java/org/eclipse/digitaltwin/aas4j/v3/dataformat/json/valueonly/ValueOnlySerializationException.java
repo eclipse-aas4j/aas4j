@@ -17,7 +17,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 /**
- * This exception is thrown during the value-only serialization.
+ * This exception is thrown during the value-only serialization or deserialization.
  */
 public class ValueOnlySerializationException extends Exception {
     public ValueOnlySerializationException(String msg) {
