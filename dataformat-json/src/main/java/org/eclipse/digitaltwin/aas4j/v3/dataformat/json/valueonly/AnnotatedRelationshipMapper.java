@@ -19,14 +19,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.deserializer;
 
 /**
  * AnnotatedRelationshipElement is serialized according to the serialization of a ReleationshipElement. Additionally, a
@@ -58,8 +59,8 @@ public class AnnotatedRelationshipMapper extends AbstractMapper<AnnotatedRelatio
 
     @Override
     public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setFirst(serializer.parseReference(valueOnly.get(FIRST), idShortPath));
-        element.setSecond(serializer.parseReference(valueOnly.get(SECOND), idShortPath));
+        element.setFirst(deserializer.parseReference(valueOnly.get(FIRST), idShortPath));
+        element.setSecond(deserializer.parseReference(valueOnly.get(SECOND), idShortPath));
 
         JsonNode annotationsNode = valueOnly.get(ANNOTATIONS);
         if(annotationsNode == null || annotationsNode.isNull()) {

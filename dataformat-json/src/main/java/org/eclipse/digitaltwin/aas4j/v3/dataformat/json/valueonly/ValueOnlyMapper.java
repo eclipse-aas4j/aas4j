@@ -19,10 +19,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 
 /**
  * This class implements the value-only Serialization in JSON format, as described in section 11.4.2 of <a
@@ -51,23 +53,27 @@ public class ValueOnlyMapper {
                 throw new ValueOnlySerializationException("Cannot parse the value only string: ", e, "$");
             }
         }
+    }
 
+    static class ValueOnlyDeserializer extends JsonDeserializer {
         Reference parseReference(JsonNode refNode, String idShortPath) throws ValueOnlySerializationException {
             if(refNode == null) {
                 return null;
             }
             try {
-                return mapper.treeToValue(refNode, Reference.class);
+                return mapper.treeToValue(refNode, DefaultReference.class);
             } catch (JsonProcessingException e) {
                 throw new ValueOnlySerializationException(
-                    "Cannot deserialize a reference at idShort path + '" + idShortPath + "'.", e, idShortPath);
+                        "Cannot deserialize a reference at idShort path + '" + idShortPath + "'.", e, idShortPath);
             }
         }
     }
 
+
     private final boolean prettyString;
 
     final static ValueOnlySerializer serializer = new ValueOnlySerializer();
+    final static ValueOnlyDeserializer deserializer = new ValueOnlyDeserializer();
 
     /**
      * The default constructor creates a value-only mapper which serializes and deserializes submodels and submodel

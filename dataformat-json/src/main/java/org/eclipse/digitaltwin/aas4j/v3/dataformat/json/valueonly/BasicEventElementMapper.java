@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
 
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.deserializer;
 
 /**
  * BasicEventElement is serialized as named JSON object with ${BasicEventElement/idShort} as the name of the containing
@@ -44,6 +45,6 @@ public class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
 
     @Override
     public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setObserved(serializer.parseReference(valueOnly.get(OBSERVED), idShortPath));
+        element.setObserved(deserializer.parseReference(valueOnly.get(OBSERVED), idShortPath));
     }
 }

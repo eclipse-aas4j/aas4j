@@ -20,10 +20,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
 
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.deserializer;
 
 /**
  * RelationshipElement is serialized as named JSON object with ${RelationshipElement/idShort} as the name of the
@@ -49,7 +49,7 @@ public class RelationshipElementMapper extends AbstractMapper<RelationshipElemen
 
     @Override
     public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setFirst(serializer.parseReference(valueOnly.get(FIRST), idShortPath + "." + FIRST));
-        element.setSecond(serializer.parseReference(valueOnly.get(SECOND), idShortPath + "." + SECOND));
+        element.setFirst(deserializer.parseReference(valueOnly.get(FIRST), idShortPath + "." + FIRST));
+        element.setSecond(deserializer.parseReference(valueOnly.get(SECOND), idShortPath + "." + SECOND));
     }
 }
