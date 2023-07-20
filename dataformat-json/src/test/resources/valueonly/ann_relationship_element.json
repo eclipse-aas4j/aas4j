@@ -21,7 +21,7 @@
     "type" : "ModelReference"
   },
   "annotations" : [
-    "TechnicalCurrentFlowDirection",
+    "2022-07-31T17:08:51Z",
     {
       "min" : 17,
       "max" : 42

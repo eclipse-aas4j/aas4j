@@ -1,6 +1,5 @@
 [
-  "foo",
-  {
+  "foo", {
     "min" : 3.0,
     "max" : 5.0
   },
@@ -38,7 +37,7 @@
       "type" : "ModelReference"
     },
     "annotations" : [
-      "TechnicalCurrentFlowDirection",
+      "2022-07-31T17:08:51Z",
       {
         "min" : 17,
         "max" : 42
