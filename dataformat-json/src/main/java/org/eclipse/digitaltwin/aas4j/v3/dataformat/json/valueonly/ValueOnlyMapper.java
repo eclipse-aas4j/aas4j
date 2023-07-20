@@ -24,7 +24,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 
 /**
  * This class implements the value-only Serialization in JSON format, as described in section 11.4.2 of <a
@@ -61,7 +60,7 @@ public class ValueOnlyMapper {
                 return null;
             }
             try {
-                return mapper.treeToValue(refNode, DefaultReference.class);
+                return mapper.treeToValue(refNode, Reference.class);
             } catch (JsonProcessingException e) {
                 throw new ValueOnlySerializationException(
                         "Cannot deserialize a reference at idShort path + '" + idShortPath + "'.", e, idShortPath);
@@ -119,8 +118,6 @@ public class ValueOnlyMapper {
 
     /**
      * Serializes a submodel element in value-only JSON format.
-     * <br><b>Note:</b>The update is not an atomic operation and if an exception is thrown, the corresponding element
-     * will be in an inconsistent state. If you cannot handle such situations, pass a copy of the original element.
      * @param element the submodel element to be serialized. Not null.
      * @return the corresponding value-only JSON string.
      */
@@ -137,6 +134,8 @@ public class ValueOnlyMapper {
 
     /**
      * Update an existing submodel element with the given valueOnly.
+     * <br><b>Note:</b>The update is not an atomic operation and if an exception is thrown, the corresponding element
+     * will be in an inconsistent state. If you cannot handle such situations, pass a copy of the original element.
      * @param element The submodel element to be updated. If you want to prevent the direct modification of the original
      *                submodel element, just use the corresponding copy constructor, when you pass this argument.
      *                Not null.
