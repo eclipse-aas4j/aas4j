@@ -25,7 +25,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerial
 import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.Iterator;
 import java.util.List;
@@ -95,14 +94,14 @@ public class EntityMapper extends AbstractMapper<Entity> {
             List<SpecificAssetId> specificAssetIds = element.getSpecificAssetIds();
             if(!specificAssetIdNode.isObject()) {
                 throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
-                    idShortPath + "' as the passed " + SPECIFIC_ASSET_ID + " is not an object.", idShortPath);
+                    idShortPath + "', as the passed " + SPECIFIC_ASSET_ID + " is not an object.", idShortPath);
             }
             updateSpecificAssetIds(element.getSpecificAssetIds(), (ObjectNode) specificAssetIdNode);
         }
         JsonNode entityTypeNode = valueOnly.get(ENTITY_TYPE);
         if(entityTypeNode == null || !entityTypeNode.isTextual()) {
             throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
-                idShortPath + "' as its type is not set as string property '" + ENTITY_TYPE + "'.", idShortPath);
+                idShortPath + "', as its type is not set as string property '" + ENTITY_TYPE + "'.", idShortPath);
         }
         element.setEntityType(EntityType.valueOf(EnumDeserializer.deserializeEnumName(entityTypeNode.textValue())));
     }

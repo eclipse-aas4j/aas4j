@@ -19,8 +19,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * The abstract base class for all value-only serializers.
- * @param <T> The type of the serialized elements.
+ * The abstract base class for all value-only mappers.
+ * @param <T> The type of the mapped elements.
  */
 public abstract class AbstractMapper<T> {
     protected final T element;
@@ -28,7 +28,7 @@ public abstract class AbstractMapper<T> {
 
     /**
      *
-     * @param element the submodel element that has to be serialized.
+     * @param element the submodel element that has to be mapped.
      * @param idShortPath the idShort path is a dot separated chain of idShorts, that can be used in case of
      * troubleshooting.
      */

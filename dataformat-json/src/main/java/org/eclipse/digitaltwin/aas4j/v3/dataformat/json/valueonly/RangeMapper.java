@@ -29,6 +29,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Range;
  * are ${Range/min} and ${Range/max}.
  */
 public class RangeMapper extends AbstractMapper<Range> {
+    private static final String MIN = "min";
+    private static final String MAX = "max";
+
     RangeMapper(Range range, String idShortPath) {
         super(range, idShortPath);
     }
@@ -38,8 +41,8 @@ public class RangeMapper extends AbstractMapper<Range> {
         try {
             ObjectNode node = JsonNodeFactory.instance.objectNode();
             DataTypeDefXsd valueType = element.getValueType();
-            node.set("min", ValueConverter.convert(valueType, element.getMin()));
-            node.set("max", ValueConverter.convert(valueType, element.getMax()));
+            node.set(MIN, ValueConverter.convert(valueType, element.getMin()));
+            node.set(MAX, ValueConverter.convert(valueType, element.getMax()));
             return node;
         } catch (NumberFormatException ex) {
             throw new ValueOnlySerializationException("Cannot serialize the range with idShort path '" +
@@ -49,7 +52,7 @@ public class RangeMapper extends AbstractMapper<Range> {
 
     @Override
     public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setMax(PropertyMapper.readValueAsString("Cannot update Range.max", idShortPath, valueOnly.get("max")));
-        element.setMin(PropertyMapper.readValueAsString("Cannot update Range.min", idShortPath, valueOnly.get("min")));
+        element.setMax(PropertyMapper.readValueAsString("Cannot update Range." + MAX, idShortPath, valueOnly.get(MAX)));
+        element.setMin(PropertyMapper.readValueAsString("Cannot update Range." + MIN, idShortPath, valueOnly.get(MIN)));
     }
 }

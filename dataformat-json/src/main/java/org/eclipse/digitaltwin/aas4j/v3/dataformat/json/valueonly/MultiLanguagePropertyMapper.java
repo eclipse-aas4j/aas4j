@@ -25,7 +25,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguagePro
         if(!valueOnly.isObject()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the multi-language property at idShort path '" + idShortPath +
-                "' as the passed value-only is not a JSON object.", idShortPath);
+                "', as the passed value-only is not a JSON object.", idShortPath);
         }
         ObjectNode propNode = (ObjectNode)valueOnly;
         List<LangStringTextType> value = element.getValue();
@@ -71,7 +70,7 @@ public class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguagePro
                 String fullPath = idShortPath + "." + language;
                 throw new ValueOnlySerializationException(
                     "Cannot update the multi-language property at idShort path '" + fullPath +
-                    "' as the passed value is not a string.", idShortPath);
+                    "', as the passed value is not a string.", idShortPath);
             }
             value.add(new DefaultLangStringTextType.Builder().language(language).text(textNode.textValue()).build());
         }

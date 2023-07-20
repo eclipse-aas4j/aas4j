@@ -21,11 +21,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import com.fasterxml.jackson.databind.node.NullNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import java.util.ArrayDeque;
-import java.util.Iterator;
 import java.util.List;
 
 /**
