@@ -32,8 +32,8 @@ import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOn
  * are serialized according to the serialization of a Reference.
  */
 public class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
-    public static final String FIRST = "first";
-    public static final String SECOND = "second";
+    private static final String FIRST = "first";
+    private static final String SECOND = "second";
 
     RelationshipElementMapper(RelationshipElement relationship, String idShortPath) {
         super(relationship, idShortPath);
