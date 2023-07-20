@@ -35,7 +35,7 @@ public class ValueOnlyMapperTest {
     private static ValueOnlyMapper valueOnlyMapper = new ValueOnlyMapper(true);
 
     @Test
-    public void testCreateDefaultSerializer() throws IOException {
+    public void testCreateDefaultMapper() throws IOException {
         assertNotNull(new ValueOnlyMapper());
     }
 
