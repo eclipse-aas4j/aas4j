@@ -20,8 +20,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
+import com.fasterxml.jackson.databind.node.NullNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
+import java.util.ArrayDeque;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -34,12 +38,33 @@ public class ElementsListMapper extends ElementsCollectionMapper {
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
         for(int i = 0; i < element.size(); i++) {
             SubmodelElement submodelElement = element.get(i);
-            arrayNode.add(serialize(submodelElement, idShortPath + "[" + i + "]"));
+            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "[" + i + "]");
+            arrayNode.add(mapper == null ? NullNode.instance : mapper.toJson());
         }
         return arrayNode;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        if(!valueOnly.isArray()) {
+            throw new ValueOnlySerializationException(
+                "Cannot update the submodel elements list at idShort path '" + idShortPath +
+                "', as the corresponding value-only is not a JSON array.", idShortPath);
+        }
+        ArrayNode arrayNode = (ArrayNode) valueOnly;
+        if(arrayNode.size() != element.size()) {
+            throw new ValueOnlySerializationException(
+                "Cannot update the submodel elements list at idShort path '" + idShortPath +
+                "', as the corresponding value-only array has different size.", idShortPath);
+        }
+        for (int i = 0; i < arrayNode.size(); i++ ) {
+            SubmodelElement submodelElement = element.get(i);
+            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "[" + i + "]");
+            mapper.update(arrayNode.get(i));
+        }
     }
 }

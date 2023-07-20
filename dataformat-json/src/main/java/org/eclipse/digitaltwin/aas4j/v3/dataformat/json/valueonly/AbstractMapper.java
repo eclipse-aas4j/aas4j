@@ -17,16 +17,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 
 /**
  * The abstract base class for all value-only serializers.
  * @param <T> The type of the serialized elements.
  */
 public abstract class AbstractMapper<T> {
-    protected T element;
-    protected String idShortPath;
-    protected static JsonSerializer serializer = new JsonSerializer();
+    protected final T element;
+    protected final String idShortPath;
 
     /**
      *
@@ -40,9 +38,18 @@ public abstract class AbstractMapper<T> {
     }
 
     /**
-     * This method serializes the corresponding element.
+     * This method converts the corresponding element to a value-only JSON node.
      * @return the corresponding JSON node.
      * @throws ValueOnlySerializationException with information about the idShort path.
      */
-    public abstract JsonNode serialize() throws ValueOnlySerializationException;
+    abstract JsonNode toJson() throws ValueOnlySerializationException;
+
+    /**
+     * Updates the corresponding element according the passed valueOnly JSON node.
+     * @param valueOnly the value only JSON node.
+     * @throws ValueOnlySerializationException with information about the idShort path.
+     * <br><b>Note:</b>The update is not an atomic operation and if an exception is thrown, the corresponding element
+     * will be in an inconsistent state. If you cannot handle such situations, pass a copy of the original element.
+     */
+    abstract void update(JsonNode valueOnly) throws ValueOnlySerializationException;
 }

@@ -21,20 +21,29 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
 
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
+
 /**
  * BasicEventElement is serialized as named JSON object with ${BasicEventElement/idShort} as the name of the containing
  * JSON property. The JSON object contains one JSON property named “observed” with the corresponding value of
  * ${BasicEventElement/observed} as the standard serialization of the Reference class.
  */
 public class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
+    private static final String OBSERVED = "observed";
+
     BasicEventElementMapper(BasicEventElement event, String idShortPath) {
         super(event, idShortPath);
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("observed", serializer.toJson(element.getObserved()));
+        node.set(OBSERVED, serializer.toJson(element.getObserved()));
         return node;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        element.setObserved(serializer.parseReference(valueOnly.get(OBSERVED), idShortPath));
     }
 }

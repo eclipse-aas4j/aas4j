@@ -34,7 +34,7 @@ public class RangeMapper extends AbstractMapper<Range> {
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         try {
             ObjectNode node = JsonNodeFactory.instance.objectNode();
             DataTypeDefXsd valueType = element.getValueType();
@@ -43,7 +43,13 @@ public class RangeMapper extends AbstractMapper<Range> {
             return node;
         } catch (NumberFormatException ex) {
             throw new ValueOnlySerializationException("Cannot serialize the range with idShort path '" +
-                idShortPath + "': " + ex.getMessage());
+                idShortPath + "': " + ex.getMessage(), idShortPath);
         }
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        element.setMax(PropertyMapper.readValueAsString("Cannot update Range.max", idShortPath, valueOnly.get("max")));
+        element.setMin(PropertyMapper.readValueAsString("Cannot update Range.min", idShortPath, valueOnly.get("min")));
     }
 }

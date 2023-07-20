@@ -31,12 +31,35 @@ public class PropertyMapper extends AbstractMapper<Property> {
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         try {
             return ValueConverter.convert(element.getValueType(), element.getValue());
         } catch (NumberFormatException ex) {
             throw new ValueOnlySerializationException("Cannot serialize the property with idShort path '" +
-                idShortPath + "': " + ex.getMessage());
+                idShortPath + "': " + ex.getMessage(), idShortPath);
         }
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        element.setValue(readValueAsString("Cannot update the property", idShortPath, valueOnly));
+    }
+
+    static String readValueAsString(String msg, String idShortPath, JsonNode valueOnly)
+        throws ValueOnlySerializationException {
+        if(valueOnly == null || valueOnly.isNull()) {
+            return null;
+        }
+        if(valueOnly.isObject()) {
+            throw new ValueOnlySerializationException(
+                msg + " at idShort path '" + idShortPath +
+                "', as the passed value is a JSON object.", idShortPath);
+        }
+        if(valueOnly.isArray()) {
+            throw new ValueOnlySerializationException(
+                msg + " at idShort path '" + idShortPath +
+                "', as the passed value is a JSON array.", idShortPath);
+        }
+        return valueOnly.asText();
     }
 }

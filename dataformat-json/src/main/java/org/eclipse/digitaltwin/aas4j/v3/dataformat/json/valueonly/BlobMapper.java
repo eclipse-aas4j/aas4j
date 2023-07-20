@@ -33,15 +33,41 @@ import java.util.Base64;
  * shall be manipulated, it can parse the transferred value-only object accordingly as a File or Blob object.
  */
 class BlobMapper extends AbstractMapper<Blob> {
+    private static final String CONTENT_TYPE = "contentType";
+    private static final String VALUE = "value";
+
     BlobMapper(Blob blob, String idShortPath) {
         super(blob, idShortPath);
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("contentType", new TextNode(element.getContentType()));
-        node.set("value", new TextNode(Base64.getEncoder().encodeToString(element.getValue())));
+        node.set(CONTENT_TYPE, new TextNode(element.getContentType()));
+        node.set(VALUE, new TextNode(Base64.getEncoder().encodeToString(element.getValue())));
         return node;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        JsonNode contentNode = valueOnly.get(CONTENT_TYPE);
+        if(contentNode == null || contentNode.isNull()) {
+            element.setContentType(null);
+        } else if(contentNode.isTextual()) {
+            element.setContentType(contentNode.asText());
+        } else {
+            throw new ValueOnlySerializationException(
+                "Invalid Blob contentType at idShort path '" + idShortPath + "'.", idShortPath);
+        }
+
+        JsonNode valueNode = valueOnly.get(VALUE);
+        if(valueNode == null || valueNode.isNull()) {
+            element.setValue(null);
+        } else if(contentNode.isTextual()) {
+            element.setValue(Base64.getDecoder().decode(valueNode.asText()));
+        } else {
+            throw new ValueOnlySerializationException(
+                "Invalid Blob value at idShort path '" + idShortPath + "'.", idShortPath);
+        }
     }
 }

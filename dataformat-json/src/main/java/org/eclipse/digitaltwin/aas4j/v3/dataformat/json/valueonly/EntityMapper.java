@@ -20,11 +20,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -37,20 +40,24 @@ import java.util.List;
  * representation of ${Entity/entityType}.
  */
 public class EntityMapper extends AbstractMapper<Entity> {
+    private static final String STATEMENTS = "statements";
+    private static final String GLOBAL_ASSET_ID = "globalAssetId";
+    private static final String SPECIFIC_ASSET_ID = "specificAssetId";
+    private static final String ENTITY_TYPE = "entityType";
 
     EntityMapper(Entity entity, String idShortPath) {
         super(entity, idShortPath);
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        List<SubmodelElement> elements = element.getStatements();
-        ElementsListMapper ecSerializer = new ElementsListMapper(elements, idShortPath + ".statements");
-        node.set("statements", ecSerializer.serialize());
+        ElementsListMapper statementsMapper = new ElementsListMapper(
+            element.getStatements(), idShortPath + "." + STATEMENTS);
+        node.set(STATEMENTS, statementsMapper.toJson());
         String globalAssetId = element.getGlobalAssetId();
         if(globalAssetId != null) {
-            node.set("globalAssetId", new TextNode(globalAssetId));
+            node.set(GLOBAL_ASSET_ID, new TextNode(globalAssetId));
         }
         List<SpecificAssetId> specificAssetIds = element.getSpecificAssetIds();
         if(specificAssetIds != null && specificAssetIds.size() > 0) {
@@ -58,9 +65,71 @@ public class EntityMapper extends AbstractMapper<Entity> {
             for (SpecificAssetId assetId : specificAssetIds) {
                 assetIdNode.set(assetId.getValue(), new TextNode(assetId.getName()));
             }
-            node.set("specificAssetId", assetIdNode);
+            node.set(SPECIFIC_ASSET_ID, assetIdNode);
         }
-        node.set("entityType", new TextNode(EnumSerializer.serializeEnumName(element.getEntityType().name())));
+        node.set(ENTITY_TYPE, new TextNode(EnumSerializer.serializeEnumName(element.getEntityType().name())));
         return node;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        JsonNode statementsNode = valueOnly.get(STATEMENTS);
+        if(statementsNode == null) {
+            element.getStatements().clear();
+        } else {
+            ElementsListMapper statementsMapper = new ElementsListMapper(
+                element.getStatements(), idShortPath + "." + STATEMENTS);
+            statementsMapper.update(statementsNode);
+        }
+        JsonNode globalAssetIdNode = valueOnly.get(GLOBAL_ASSET_ID);
+        if(globalAssetIdNode == null || globalAssetIdNode.isNull()) {
+            element.setGlobalAssetId(null);
+        } else if(globalAssetIdNode.isTextual()) {
+            element.setGlobalAssetId(globalAssetIdNode.asText());
+        } else {
+            throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
+                idShortPath + "', as the passed " + GLOBAL_ASSET_ID + " is not a string.", idShortPath);
+        }
+        JsonNode specificAssetIdNode = valueOnly.get(SPECIFIC_ASSET_ID);
+        if(specificAssetIdNode != null) {
+            List<SpecificAssetId> specificAssetIds = element.getSpecificAssetIds();
+            if(!specificAssetIdNode.isObject()) {
+                throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
+                    idShortPath + "' as the passed " + SPECIFIC_ASSET_ID + " is not an object.", idShortPath);
+            }
+            updateSpecificAssetIds(element.getSpecificAssetIds(), (ObjectNode) specificAssetIdNode);
+        }
+        JsonNode entityTypeNode = valueOnly.get(ENTITY_TYPE);
+        if(entityTypeNode == null || !entityTypeNode.isTextual()) {
+            throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
+                idShortPath + "' as its type is not set as string property '" + ENTITY_TYPE + "'.", idShortPath);
+        }
+        element.setEntityType(EntityType.valueOf(EnumDeserializer.deserializeEnumName(entityTypeNode.textValue())));
+    }
+
+    private void updateSpecificAssetIds(List<SpecificAssetId> specificAssetIds, ObjectNode objNode)
+        throws ValueOnlySerializationException {
+        for (Iterator<String> it = objNode.fieldNames(); it.hasNext(); ) {
+            String name = it.next();
+            SpecificAssetId specificAssetId = findSpecificAssetIdByName(specificAssetIds, name);
+            JsonNode valueNode = objNode.get(name);
+            if(!valueNode.isTextual()) {
+                throw new ValueOnlySerializationException("Cannot update the SpecificAssetId at IdShort path '" +
+                   idShortPath + "." + SPECIFIC_ASSET_ID + "." + name + "' as its value is not set as string property.",
+                    idShortPath);
+            }
+            specificAssetId.setValue(valueNode.textValue());
+        }
+    }
+
+    private SpecificAssetId findSpecificAssetIdByName(List<SpecificAssetId> specificAssetIds, String name)
+        throws ValueOnlySerializationException {
+        for (SpecificAssetId saId : specificAssetIds) {
+            if(name.equals(saId.getName())) {
+                return saId;
+            }
+        }
+        throw new ValueOnlySerializationException(
+            "Cannot find the SpecificAssetId with name '" + name + "'.", idShortPath + "." + SPECIFIC_ASSET_ID);
     }
 }

@@ -20,7 +20,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
  * This exception is thrown during the value-only serialization or deserialization.
  */
 public class ValueOnlySerializationException extends Exception {
-    public ValueOnlySerializationException(String msg) {
+    private final String idShortPath;
+
+    public ValueOnlySerializationException(String msg, String idShortPath) {
         super(msg);
+        this.idShortPath = idShortPath;
+    }
+    public ValueOnlySerializationException(String msg, Throwable cause, String idShortPath) {
+        super(msg, cause);
+        this.idShortPath = idShortPath;
     }
 }

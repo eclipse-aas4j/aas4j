@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.NullNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
@@ -34,6 +33,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -47,30 +47,47 @@ public class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElemen
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         for(SubmodelElement submodelElement : element) {
             String idShort = submodelElement.getIdShort();
-            JsonNode elementNode = serialize(submodelElement, idShortPath + "." + idShort);
-            if(elementNode.equals(NullNode.instance)) {
+            if(node.has(idShort)) {
+                throw new ValueOnlySerializationException("Duplicated idShort name '" + idShort +
+                    "' under idShort path '" + idShortPath + "'.", idShortPath);
+            }
+            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "." + idShort);
+            if(mapper == null) {
                 // This type of submodel elements are not serialized in value-only format.
                 continue;
             }
-            if(node.has(idShort)) {
-                throw new ValueOnlySerializationException("Duplicated idShort name '" + idShort +
-                    "' under idShort path '" + idShortPath + "'");
-            }
-            node.set(idShort, elementNode);
+            node.set(idShort, mapper.toJson());
         }
         return node;
     }
 
-    static JsonNode serialize(SubmodelElement element, String idShortPath) throws ValueOnlySerializationException {
-        AbstractMapper mapper = createMapper(element, idShortPath);
-        return mapper == null ? NullNode.instance : mapper.serialize();
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        if(!valueOnly.isObject()) {
+            throw new ValueOnlySerializationException(
+                "Cannot update the submodel elements collection at idShort path '" + idShortPath +
+                "', as the corresponding value-only is not a JSON object.", idShortPath);
+        }
+        ObjectNode objNode = (ObjectNode) valueOnly;
+        for (Iterator<String> it = objNode.fieldNames(); it.hasNext(); ) {
+            String idShort = it.next();
+            SubmodelElement submodelElement = findElementByIdShort(idShort);
+            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "." + idShort);
+            mapper.update(objNode.get(idShort));
+        }
     }
 
-    private static AbstractMapper createMapper(SubmodelElement element, String idShortPath) {
+    /**
+     * Creates the corresponding mapper.
+     * @param element the submodel element.
+     * @param idShortPath the idShort path.
+     * @return the corresponding mapper or null if this type cannot be serialized to value-only JSON string.
+     */
+    static AbstractMapper createMapper(SubmodelElement element, String idShortPath) {
         if(element instanceof Blob) {
             return new BlobMapper((Blob) element, idShortPath);
         }
@@ -108,5 +125,15 @@ public class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElemen
             return new RelationshipElementMapper((RelationshipElement) element, idShortPath);
         }
         return null;
+    }
+
+    private SubmodelElement findElementByIdShort(String idShort) throws ValueOnlySerializationException {
+        for (SubmodelElement submodelElement : element) {
+            if(idShort.equals(submodelElement.getIdShort())) {
+                return submodelElement;
+            }
+        }
+        throw new ValueOnlySerializationException("Cannot find submodel element with idShort '" + idShort +
+            "' at idShort path '" + idShortPath + "'.", idShortPath);
     }
 }

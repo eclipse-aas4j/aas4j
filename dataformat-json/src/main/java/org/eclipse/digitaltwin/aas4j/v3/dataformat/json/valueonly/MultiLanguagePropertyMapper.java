@@ -23,7 +23,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 
+import javax.naming.OperationNotSupportedException;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -39,7 +42,7 @@ public class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguagePro
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         List<LangStringTextType> langTexts = element.getValue();
         if(langTexts == null || langTexts.size() == 0) {
             return NullNode.instance;
@@ -49,5 +52,28 @@ public class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguagePro
             node.set(langText.getLanguage(), new TextNode(langText.getText()));
         }
         return node;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        if(!valueOnly.isObject()) {
+            throw new ValueOnlySerializationException(
+                "Cannot update the multi-language property at idShort path '" + idShortPath +
+                "' as the passed value-only is not a JSON object.", idShortPath);
+        }
+        ObjectNode propNode = (ObjectNode)valueOnly;
+        List<LangStringTextType> value = element.getValue();
+        value.clear();
+        for (Iterator<String> it = propNode.fieldNames(); it.hasNext(); ) {
+            String language = it.next();
+            JsonNode textNode = propNode.get(language);
+            if(!textNode.isTextual()) {
+                String fullPath = idShortPath + "." + language;
+                throw new ValueOnlySerializationException(
+                    "Cannot update the multi-language property at idShort path '" + fullPath +
+                    "' as the passed value is not a string.", idShortPath);
+            }
+            value.add(new DefaultLangStringTextType.Builder().language(language).text(textNode.textValue()).build());
+        }
     }
 }

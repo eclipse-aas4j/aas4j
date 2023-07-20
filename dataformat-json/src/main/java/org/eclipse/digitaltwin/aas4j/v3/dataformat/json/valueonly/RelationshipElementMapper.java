@@ -20,7 +20,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
+
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
 
 /**
  * RelationshipElement is serialized as named JSON object with ${RelationshipElement/idShort} as the name of the
@@ -29,15 +32,24 @@ import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
  * are serialized according to the serialization of a Reference.
  */
 public class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
+    public static final String FIRST = "first";
+    public static final String SECOND = "second";
+
     RelationshipElementMapper(RelationshipElement relationship, String idShortPath) {
         super(relationship, idShortPath);
     }
 
     @Override
-    public JsonNode serialize() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set("first", serializer.toJson(element.getFirst()));
-        node.set("second", serializer.toJson(element.getSecond()));
+        node.set(FIRST, serializer.toJson(element.getFirst()));
+        node.set(SECOND, serializer.toJson(element.getSecond()));
         return node;
+    }
+
+    @Override
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        element.setFirst(serializer.parseReference(valueOnly.get(FIRST), idShortPath + "." + FIRST));
+        element.setSecond(serializer.parseReference(valueOnly.get(SECOND), idShortPath + "." + SECOND));
     }
 }
