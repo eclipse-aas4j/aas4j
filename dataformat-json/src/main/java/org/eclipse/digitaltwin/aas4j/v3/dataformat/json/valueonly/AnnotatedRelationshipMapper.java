@@ -17,17 +17,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.serializer;
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOnlyMapper.deserializer;
 
 /**
  * AnnotatedRelationshipElement is serialized according to the serialization of a ReleationshipElement. Additionally, a
@@ -35,9 +32,7 @@ import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOn
  * ${AnnotatedRelationshipElement/annotations}. The values of the array items are serialized depending on the type of
  * the annotation data element.
  */
-public class AnnotatedRelationshipMapper extends AbstractMapper<AnnotatedRelationshipElement> {
-    private static final String FIRST = "first";
-    private static final String SECOND = "second";
+public class AnnotatedRelationshipMapper extends RelationshipElementMapper {
     private static final String ANNOTATIONS = "annotations";
     AnnotatedRelationshipMapper(AnnotatedRelationshipElement relationship, String idShortPath) {
         super(relationship, idShortPath);
@@ -45,10 +40,8 @@ public class AnnotatedRelationshipMapper extends AbstractMapper<AnnotatedRelatio
 
     @Override
     public JsonNode toJson() throws ValueOnlySerializationException {
-        ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.set(FIRST, serializer.toJson(element.getFirst()));
-        node.set(SECOND, serializer.toJson(element.getSecond()));
-        List<SubmodelElement> annotations = new ArrayList<>(element.getAnnotations());
+        ObjectNode node = (ObjectNode) super.toJson();
+        List<SubmodelElement> annotations = new ArrayList<>(((AnnotatedRelationshipElement)element).getAnnotations());
         if(annotations.size() > 0) {
             ElementsListMapper listMapper = new ElementsListMapper(
                 annotations, idShortPath + "." + ANNOTATIONS);
@@ -59,16 +52,14 @@ public class AnnotatedRelationshipMapper extends AbstractMapper<AnnotatedRelatio
 
     @Override
     public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setFirst(deserializer.parseReference(valueOnly.get(FIRST), idShortPath));
-        element.setSecond(deserializer.parseReference(valueOnly.get(SECOND), idShortPath));
-
+        super.update(valueOnly);
+        List<DataElement> annotations = ((AnnotatedRelationshipElement)element).getAnnotations();
         JsonNode annotationsNode = valueOnly.get(ANNOTATIONS);
         if(annotationsNode == null || annotationsNode.isNull()) {
-            element.getAnnotations().clear();
+            annotations.clear();
         } else {
-            List<SubmodelElement> annotations = new ArrayList<>(element.getAnnotations());
-            ElementsListMapper listMapper = new ElementsListMapper(
-                annotations, idShortPath + "." + ANNOTATIONS);
+            List<SubmodelElement> elements = new ArrayList<>(annotations);
+            ElementsListMapper listMapper = new ElementsListMapper(elements, idShortPath + "." + ANNOTATIONS);
             listMapper.update(annotationsNode);
         }
     }
