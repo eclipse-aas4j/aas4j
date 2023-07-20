@@ -30,4 +30,8 @@ public class ValueOnlySerializationException extends Exception {
         super(msg, cause);
         this.idShortPath = idShortPath;
     }
+
+    public String getIdShortPath() {
+        return idShortPath;
+    }
 }
