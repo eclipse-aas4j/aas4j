@@ -49,7 +49,7 @@ class EntityMapper extends AbstractMapper<Entity> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         ElementsListMapper statementsMapper = new ElementsListMapper(
             element.getStatements(), idShortPath + "." + STATEMENTS);
@@ -71,7 +71,7 @@ class EntityMapper extends AbstractMapper<Entity> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         JsonNode statementsNode = valueOnly.get(STATEMENTS);
         if(statementsNode == null) {
             element.getStatements().clear();

@@ -37,7 +37,7 @@ class RangeMapper extends AbstractMapper<Range> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         try {
             ObjectNode node = JsonNodeFactory.instance.objectNode();
             DataTypeDefXsd valueType = element.getValueType();
@@ -51,7 +51,7 @@ class RangeMapper extends AbstractMapper<Range> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         element.setMax(PropertyMapper.readValueAsString("Cannot update Range." + MAX, idShortPath, valueOnly.get(MAX)));
         element.setMin(PropertyMapper.readValueAsString("Cannot update Range." + MIN, idShortPath, valueOnly.get(MIN)));
     }

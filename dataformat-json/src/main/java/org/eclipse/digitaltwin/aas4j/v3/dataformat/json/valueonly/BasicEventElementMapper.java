@@ -37,14 +37,14 @@ class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(OBSERVED, serializer.toJson(element.getObserved()));
         return node;
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         element.setObserved(deserializer.parseReference(valueOnly.get(OBSERVED), idShortPath));
     }
 }

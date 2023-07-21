@@ -41,7 +41,7 @@ class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> 
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         List<LangStringTextType> langTexts = element.getValue();
         if(langTexts == null || langTexts.size() == 0) {
             return NullNode.instance;
@@ -54,7 +54,7 @@ class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> 
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         if(!valueOnly.isObject()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the multi-language property at idShort path '" + idShortPath +

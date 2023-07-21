@@ -31,7 +31,7 @@ class PropertyMapper extends AbstractMapper<Property> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         try {
             return ValueConverter.convert(element.getValueType(), element.getValue());
         } catch (NumberFormatException ex) {
@@ -41,7 +41,7 @@ class PropertyMapper extends AbstractMapper<Property> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         element.setValue(readValueAsString("Cannot update the property", idShortPath, valueOnly));
     }
 

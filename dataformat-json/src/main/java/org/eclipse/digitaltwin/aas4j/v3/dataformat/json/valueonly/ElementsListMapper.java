@@ -36,7 +36,7 @@ class ElementsListMapper extends ElementsCollectionMapper {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
         for(int i = 0; i < element.size(); i++) {
             SubmodelElement submodelElement = element.get(i);
@@ -47,7 +47,7 @@ class ElementsListMapper extends ElementsCollectionMapper {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         if(!valueOnly.isArray()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the submodel elements list at idShort path '" + idShortPath +

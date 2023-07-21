@@ -40,7 +40,7 @@ class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(FIRST, serializer.toJson(element.getFirst()));
         node.set(SECOND, serializer.toJson(element.getSecond()));
@@ -48,7 +48,7 @@ class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         element.setFirst(deserializer.parseReference(valueOnly.get(FIRST), idShortPath + "." + FIRST));
         element.setSecond(deserializer.parseReference(valueOnly.get(SECOND), idShortPath + "." + SECOND));
     }

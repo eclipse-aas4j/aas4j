@@ -41,7 +41,7 @@ class FileMapper extends AbstractMapper<File> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(CONTENT_TYPE, new TextNode(element.getContentType()));
         node.set(VALUE, new TextNode(element.getValue()));
@@ -49,7 +49,7 @@ class FileMapper extends AbstractMapper<File> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         JsonNode contentNode = valueOnly.get(CONTENT_TYPE);
         if(contentNode == null || contentNode.isNull()) {
             element.setContentType(null);

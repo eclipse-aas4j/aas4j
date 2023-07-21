@@ -47,7 +47,7 @@ class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElement>> {
     }
 
     @Override
-    public JsonNode toJson() throws ValueOnlySerializationException {
+    JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         for(SubmodelElement submodelElement : element) {
             String idShort = submodelElement.getIdShort();
@@ -66,7 +66,7 @@ class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElement>> {
     }
 
     @Override
-    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         if(!valueOnly.isObject()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the submodel elements collection at idShort path '" + idShortPath +
