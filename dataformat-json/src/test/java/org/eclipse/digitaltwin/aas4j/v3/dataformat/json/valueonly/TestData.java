@@ -32,32 +32,18 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultMultiLanguageProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRange;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReferenceElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public class TestData {
     public static final Entity ENTITY = new DefaultEntity.Builder()
-        .idShort("entity1")
-        .entityType(EntityType.SELF_MANAGED_ENTITY)
-        .globalAssetId("Global Asset Id")
+            .idShort("entity1")
+            .entityType(EntityType.SELF_MANAGED_ENTITY)
+            .globalAssetId("Global Asset Id")
         .statements(new DefaultProperty.Builder()
             .idShort("MaxRotationSpeed")
             .valueType(DataTypeDefXsd.INT)
