@@ -27,7 +27,7 @@ import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOn
  * ReferenceElement is serialized as ${ReferenceElement/idShort}: ${ReferenceElement/value} where
  * ${ReferenceElement/value} is the serialization of the Reference class.
  */
-public class ReferenceElementMapper extends AbstractMapper<ReferenceElement> {
+class ReferenceElementMapper extends AbstractMapper<ReferenceElement> {
     ReferenceElementMapper(ReferenceElement element, String idShortPath) {
         super(element, idShortPath);
     }

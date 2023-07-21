@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * The abstract base class for all value-only mappers.
  * @param <T> The type of the mapped elements.
  */
-public abstract class AbstractMapper<T> {
+abstract class AbstractMapper<T> {
     protected final T element;
     protected final String idShortPath;
 

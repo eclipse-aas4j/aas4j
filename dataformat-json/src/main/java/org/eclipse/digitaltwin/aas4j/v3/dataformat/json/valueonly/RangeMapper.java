@@ -28,7 +28,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Range;
  * object contains two JSON properties. The first is named "min". The second is named "max". Their corresponding values
  * are ${Range/min} and ${Range/max}.
  */
-public class RangeMapper extends AbstractMapper<Range> {
+class RangeMapper extends AbstractMapper<Range> {
     private static final String MIN = "min";
     private static final String MAX = "max";
 

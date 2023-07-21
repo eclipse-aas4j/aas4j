@@ -30,7 +30,7 @@ import java.util.List;
  * SubmodelElementList is serialized as a JSON array with the index of the contained SubmodelElement in the list as the
  * position in the JSON array. The elements contained within the list are serialized according to their respective type.
  */
-public class ElementsListMapper extends ElementsCollectionMapper {
+class ElementsListMapper extends ElementsCollectionMapper {
     ElementsListMapper(List<SubmodelElement> elements, String idShortPath) {
         super(elements, idShortPath);
     }

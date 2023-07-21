@@ -38,7 +38,7 @@ import java.util.List;
  * JSON key and “value” for the JSON value. The third property is named “entityType” and contains a string
  * representation of ${Entity/entityType}.
  */
-public class EntityMapper extends AbstractMapper<Entity> {
+class EntityMapper extends AbstractMapper<Entity> {
     private static final String STATEMENTS = "statements";
     private static final String GLOBAL_ASSET_ID = "globalAssetId";
     private static final String SPECIFIC_ASSET_ID = "specificAssetId";

@@ -29,7 +29,7 @@ import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOn
  * JSON property. The JSON object contains one JSON property named “observed” with the corresponding value of
  * ${BasicEventElement/observed} as the standard serialization of the Reference class.
  */
-public class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
+class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
     private static final String OBSERVED = "observed";
 
     BasicEventElementMapper(BasicEventElement event, String idShortPath) {

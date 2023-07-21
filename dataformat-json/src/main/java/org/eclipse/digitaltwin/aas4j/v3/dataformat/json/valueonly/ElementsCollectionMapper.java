@@ -41,7 +41,7 @@ import java.util.List;
  * the containing JSON property. The elements contained within the struct are serialized according to their respective
  * type with ${SubmodelElement/idShort} as the name of the containing JSON property.
  */
-public class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElement>> {
+class ElementsCollectionMapper extends AbstractMapper<List<SubmodelElement>> {
     ElementsCollectionMapper(List<SubmodelElement> elements, String idShortPath) {
         super(elements, idShortPath);
     }

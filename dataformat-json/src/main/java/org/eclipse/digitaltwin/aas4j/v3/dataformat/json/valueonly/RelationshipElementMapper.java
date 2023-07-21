@@ -31,7 +31,7 @@ import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly.ValueOn
  * named "second". Their corresponding values are ${RelationshipElement/first} resp. ${Relationship/second}. The values
  * are serialized according to the serialization of a Reference.
  */
-public class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
+class RelationshipElementMapper extends AbstractMapper<RelationshipElement> {
     private static final String FIRST = "first";
     private static final String SECOND = "second";
 

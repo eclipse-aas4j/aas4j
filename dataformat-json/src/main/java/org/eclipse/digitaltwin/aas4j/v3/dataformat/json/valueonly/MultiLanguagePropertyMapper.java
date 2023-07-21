@@ -34,7 +34,7 @@ import java.util.List;
  * MultiLanguageProperty with the language as name and the corresponding localized string as value of the respective
  * JSON property. The language name is defined as two chars according to ISO 639-1.
  */
-public class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> {
+class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> {
 
     MultiLanguagePropertyMapper(MultiLanguageProperty property, String idShortPath) {
         super(property, idShortPath);

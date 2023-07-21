@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Property;
  * of the respective property’s value in accordance with the data type to value mapping.
  * @see ValueConverter
  */
-public class PropertyMapper extends AbstractMapper<Property> {
+class PropertyMapper extends AbstractMapper<Property> {
     PropertyMapper(Property property, String idShortPath) {
         super(property, idShortPath);
     }

@@ -32,7 +32,7 @@ import java.util.List;
  * ${AnnotatedRelationshipElement/annotations}. The values of the array items are serialized depending on the type of
  * the annotation data element.
  */
-public class AnnotatedRelationshipMapper extends RelationshipElementMapper {
+class AnnotatedRelationshipMapper extends RelationshipElementMapper {
     private static final String ANNOTATIONS = "annotations";
     AnnotatedRelationshipMapper(AnnotatedRelationshipElement relationship, String idShortPath) {
         super(relationship, idShortPath);
