@@ -54,9 +54,10 @@ public class ValueOnlyMapperTest {
     }
 
     @Test
-    public void testSerializeProperty() throws ValueOnlySerializationException {
+    public void testSerializeProperty() throws ValueOnlySerializationException, IOException, JSONException {
         String valueOnly = valueOnlyMapper.toValueOnly(TestData.PROPERTY_INT);
-        assertEquals("42", valueOnly);
+        String expected = readValueOnlyFile("property_int.json");
+        JSONAssert.assertEquals(expected, valueOnly, JSONCompareMode.NON_EXTENSIBLE);
     }
 
     @Test
@@ -88,9 +89,10 @@ public class ValueOnlyMapperTest {
     }
 
     @Test
-    public void testSerializePropertyDouble() throws ValueOnlySerializationException, JSONException {
+    public void testSerializePropertyDouble() throws ValueOnlySerializationException, JSONException, IOException {
         String valueOnly = valueOnlyMapper.toValueOnly(TestData.PROPERTY_DOUBLE);
-        JSONAssert.assertEquals("42.17", valueOnly, JSONCompareMode.NON_EXTENSIBLE);
+        String expected = readValueOnlyFile("property_double.json");
+        JSONAssert.assertEquals(expected, valueOnly, JSONCompareMode.NON_EXTENSIBLE);
     }
 
     @Test
@@ -119,6 +121,7 @@ public class ValueOnlyMapperTest {
         String valueOnly = valueOnlyMapper.toValueOnly(TestData.ELEMENT_COLLECTION);
         String expected = readValueOnlyFile("element_collection.json");
         JSONAssert.assertEquals(expected, valueOnly, JSONCompareMode.NON_EXTENSIBLE);
+        // failing
     }
 
     @Test

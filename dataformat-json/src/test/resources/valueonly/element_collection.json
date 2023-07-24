@@ -5,9 +5,11 @@
     "max" : 5.0
   },
   "entity1" : {
-    "statements" : [ 5000 ],
-    "globalAssetId" : "Global Asset Id",
-    "entityType" : "SelfManagedEntity"
+    "statements": {
+      "maxRotationSpeed": 5000
+    },
+    "globalAssetId": "Global Asset Id",
+    "entityType": "SelfManagedEntity"
   },
   "relationship1" : {
     "first" : {

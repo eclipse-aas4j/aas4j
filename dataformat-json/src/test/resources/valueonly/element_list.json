@@ -1,12 +1,19 @@
 [
-  "foo", {
+  "foo",
+  {
     "min" : 3.0,
     "max" : 5.0
   },
   {
-    "statements" : [ 5000 ],
-    "globalAssetId" : "Global Asset Id",
-    "entityType" : "SelfManagedEntity"
+    "statements": {
+      "MaxRotationSpeed": 5000
+    },
+    "globalAssetId": "Global Asset Id",
+    "specificAssetIds": {
+      "firstIdType": "someId",
+      "secondIdType": "someOtherId"
+    },
+    "entityType": "SelfManagedEntity"
   },
   {
     "first" : {
