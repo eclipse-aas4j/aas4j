@@ -17,14 +17,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import static org.junit.Assert.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@Ignore // @TODO: activate again
 public class JsonValueOnlyDeserialiserTest {
 
     private static final JsonValueOnlyDeserialiser deserialiser = new JsonValueOnlyDeserialiser();

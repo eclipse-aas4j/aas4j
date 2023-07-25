@@ -17,7 +17,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import org.json.JSONException;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -27,7 +26,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@Ignore // @TODO: activate again
 public class JsonValueOnlySerialiserTest {
     private static final JsonValueOnlySerialiser serialiser = new JsonValueOnlySerialiser(true);
 
