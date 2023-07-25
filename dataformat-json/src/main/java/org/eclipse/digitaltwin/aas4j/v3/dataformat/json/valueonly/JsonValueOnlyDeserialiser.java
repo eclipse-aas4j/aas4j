@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -40,66 +39,45 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
  * <li>BasicEventElement</li>
  * </ol>
  */
-public class ValueOnlyMapper {
-    static class ValueOnlySerializer extends JsonSerializer {
-        JsonNode toJson(Reference reference) {
-            return mapper.valueToTree(reference);
-        }
-        JsonNode readTree(String jsonString) throws ValueOnlySerializationException {
+public class JsonValueOnlyDeserialiser extends JsonDeserializer {
+
+    JsonNode toJson(Reference reference) {
+        return mapper.valueToTree(reference) ;
+    }
+
+    JsonNode readTree(String jsonString) throws ValueOnlySerializationException {
             try {
                 return mapper.readTree(jsonString);
             } catch (JsonProcessingException e) {
                 throw new ValueOnlySerializationException("Cannot parse the value only string: ", e, "$");
             }
-        }
-    }
 
-    static class ValueOnlyDeserializer extends JsonDeserializer {
-        Reference parseReference(JsonNode refNode, String idShortPath) throws ValueOnlySerializationException {
-            if(refNode == null) {
-                return null;
-            }
-            try {
-                return mapper.treeToValue(refNode, Reference.class);
-            } catch (JsonProcessingException e) {
-                throw new ValueOnlySerializationException(
-                        "Cannot deserialize a reference at idShort path + '" + idShortPath + "'.", e, idShortPath);
-            }
-        }
     }
 
 
-    private final boolean prettyString;
+    public Reference deserialiseReference(JsonNode refNode, String idShortPath) throws ValueOnlySerializationException {
+        if(refNode == null) {
+            return null;
+        }
+        try {
+            return mapper.treeToValue(refNode, Reference.class);
+        } catch (JsonProcessingException e) {
+            throw new ValueOnlySerializationException(
+                    "Cannot deserialize a reference at idShort path + '" + idShortPath + "'.", e, idShortPath);
+        }
+    }
 
-    final static ValueOnlySerializer serializer = new ValueOnlySerializer();
-    final static ValueOnlyDeserializer deserializer = new ValueOnlyDeserializer();
+
 
     /**
      * The default constructor creates a value-only mapper which serializes and deserializes submodels and submodel
      * elements to a compact value-only JSON string.
      */
-    public ValueOnlyMapper() {
-        this(false);
+    public JsonValueOnlyDeserialiser() {
+
     }
 
-    /**
-     * Creates a value-only mapper.
-     * @param prettyString pass true, if you want to have a pretty formatted value-only JSON strings.
-     */
-    public ValueOnlyMapper(boolean prettyString) {
-        this.prettyString = prettyString;
-    }
 
-    /**
-     * Serializes a submodel in value-only JSON format.
-     * @param submodel the submodel to be serialized. Not null.
-     * @return the corresponding value-only JSON string.
-     */
-    public String toValueOnly(Submodel submodel) throws ValueOnlySerializationException {
-        ElementsCollectionMapper mapper = new ElementsCollectionMapper(submodel.getSubmodelElements(), "$");
-        JsonNode node = mapper.toJson();
-        return prettyString ? node.toPrettyString() : node.toString();
-    }
 
     /**
      * Update an existing submodel with the given value-only JSON string.
@@ -110,27 +88,12 @@ public class ValueOnlyMapper {
      * @param valueOnly the valueOnly string. Not null.
      *
      */
-    public void update(Submodel submodel, String valueOnly) throws ValueOnlySerializationException {
-        JsonNode node = serializer.readTree(valueOnly);
+    public void deserialise(Submodel submodel, String valueOnly) throws ValueOnlySerializationException {
+        JsonNode node = readTree(valueOnly);
         ElementsCollectionMapper mapper = new ElementsCollectionMapper(submodel.getSubmodelElements(), "$");
         mapper.update(node);
     }
 
-    /**
-     * Serializes a submodel element in value-only JSON format.
-     * @param element the submodel element to be serialized. Not null.
-     * @return the corresponding value-only JSON string.
-     */
-    public String toValueOnly(SubmodelElement element) throws ValueOnlySerializationException {
-        AbstractMapper mapper = ElementsCollectionMapper.createMapper(element, "$");
-        if(mapper == null) {
-            throw new ValueOnlySerializationException(
-                "Value-only serialization is not allowed for submodel elements of type '" + element.getClass() + "'.",
-                "$");
-        }
-        JsonNode node = mapper.toJson();
-        return prettyString ? node.toPrettyString() : node.toString();
-    }
 
     /**
      * Update an existing submodel element with the given valueOnly.
@@ -141,8 +104,8 @@ public class ValueOnlyMapper {
      *                Not null.
      * @param valueOnly the valueOnly string. Not null.
      */
-    public void update(SubmodelElement element, String valueOnly) throws ValueOnlySerializationException {
-        JsonNode node = serializer.readTree(valueOnly);
+    public void deserialise(SubmodelElement element, String valueOnly) throws ValueOnlySerializationException {
+        JsonNode node = readTree(valueOnly);
         AbstractMapper mapper = ElementsCollectionMapper.createMapper(element, "$");
         mapper.update(node);
     }
