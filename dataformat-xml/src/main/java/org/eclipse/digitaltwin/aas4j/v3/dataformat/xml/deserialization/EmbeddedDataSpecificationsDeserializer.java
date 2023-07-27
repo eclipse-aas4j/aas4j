@@ -16,23 +16,29 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Set;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
-
+import org.apache.commons.lang3.tuple.Pair;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 
-public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIec61360> {
+import static java.util.Spliterator.ORDERED;
+import static java.util.Spliterators.spliteratorUnknownSize;
+import static java.util.stream.StreamSupport.stream;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper.getDefaultImplementation;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.DeserializationHelper.createInstanceFromNode;
 
-    private static final String PROP_DATA_SPECIFICATION_CONTENT = "dataSpecificationIec61360";
+public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationContent> {
 
     @Override
-    public DataSpecificationIec61360 deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
@@ -42,13 +48,17 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Dat
     }
 
 
-    private DataSpecificationIec61360 createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
-        JsonNode nodeContent = node.get(PROP_DATA_SPECIFICATION_CONTENT);
-		return createDefaultDataSpecificationIec61360FromNode(parser, nodeContent);
-    }
+    private DataSpecificationContent createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
+        final Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
 
-    private DataSpecificationIec61360 createDefaultDataSpecificationIec61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIec61360.class);
+        Pair<String, ? extends Class<?>> typeMapping = stream(spliteratorUnknownSize(node.fieldNames(), ORDERED), false)
+                .flatMap(fieldName -> subtypes.stream().map(subtype -> (subtype.getSimpleName().equalsIgnoreCase(fieldName)) ? Pair.of(fieldName, subtype) : null))
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("No subtype could be determined for creating EmbeddedDataSpecifications from content!"));
+        JsonNode nodeContent = node.get(typeMapping.getKey());
+        Class<?> instanceType = getDefaultImplementation(typeMapping.getValue());
+        return (DataSpecificationContent) createInstanceFromNode(parser, nodeContent, instanceType);
     }
 
 }

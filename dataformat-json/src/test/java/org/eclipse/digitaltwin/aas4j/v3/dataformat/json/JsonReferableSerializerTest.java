@@ -48,7 +48,6 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
     public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }

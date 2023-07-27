@@ -17,13 +17,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
 import java.io.IOException;
 
-
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+
+import static org.apache.commons.lang3.StringUtils.uncapitalize;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper.getModelType;
 
 
 /**
@@ -31,23 +33,24 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIec61360> {
+public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationContent> {
 
     @Override
-    public void serialize(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider)
+    public void serialize(DataSpecificationContent data, JsonGenerator generator, SerializerProvider provider)
             throws IOException {
         if (data == null) {
             return;
         }
+        String fieldName = uncapitalize(getModelType(data.getClass()));
         generator.writeStartObject();
-        generator.writeObjectField("dataSpecificationIec61360", data);
+        generator.writeObjectField(fieldName, data);
         generator.writeEndObject();
 
     }
 
     @Override
-    public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
-            TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
+    public void serializeWithType(DataSpecificationContent data, JsonGenerator generator, SerializerProvider provider,
+                                  TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }
 }

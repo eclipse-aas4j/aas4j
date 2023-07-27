@@ -15,22 +15,26 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import static org.junit.Assert.assertEquals;
 
 public class JsonReferableDeserializerTest {
 
@@ -97,4 +101,14 @@ public class JsonReferableDeserializerTest {
 		List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
 		assertEquals(emptyList, deserialized);
 	}
+
+    @Test
+    public void testDeserializeConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
+        ExampleData<ConceptDescription> exampleData = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT;
+        Object expected = exampleData.getModel();
+        try (InputStream fileContent = exampleData.fileContentStream()) {
+            Object actual = new JsonDeserializer().readReferable(fileContent, (Class<? extends Referable>) exampleData.getModel().getClass());
+            Assert.assertEquals(expected, actual);
+        }
+    }
 }
