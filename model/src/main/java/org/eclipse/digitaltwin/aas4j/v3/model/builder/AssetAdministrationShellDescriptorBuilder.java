@@ -69,11 +69,11 @@ public abstract class AssetAdministrationShellDescriptorBuilder<T extends AssetA
     /**
      * This function allows setting a value for identification
      * 
-     * @param identification desired value to be set
+     * @param id desired value to be set
      * @return Builder object with new value for identification
      */
-    public B identification(String identification) {
-        getBuildingInstance().setIdentification(identification);
+    public B identification(String id) {
+        getBuildingInstance().setId(id);
         return getSelf();
     }
 

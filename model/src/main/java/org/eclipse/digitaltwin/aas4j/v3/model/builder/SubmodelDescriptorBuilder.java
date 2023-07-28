@@ -74,11 +74,11 @@ public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B 
     /**
      * This function allows setting a value for identification
      * 
-     * @param identification desired value to be set
+     * @param id desired value to be set
      * @return Builder object with new value for identification
      */
-    public B identification(String identification) {
-        getBuildingInstance().setIdentification(identification);
+    public B id(String id) {
+        getBuildingInstance().setId(id);
         return getSelf();
     }
 

@@ -27,16 +27,16 @@
       }
     } ]
   },
-  "descriptions" : [ {
+  "description" : [ {
     "language" : "en",
     "text" : "defaultDescription"
   } ],
-  "displayNames" : [ {
+  "displayName" : [ {
     "language" : "en",
     "text" : "defaultDisplayName"
   } ],
   "idShort" : "defaultIdShort",
-  "identification" : "identification",
+  "id" : "identification",
   "semanticId" : {
     "keys" : [ {
       "type" : "GlobalReference",

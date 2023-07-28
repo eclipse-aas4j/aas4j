@@ -41,8 +41,8 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/identification")
-    protected String identification;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/id")
+    protected String id;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/globalAssetId")
     protected Reference globalAssetId;
@@ -63,7 +63,7 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
             this.description,
             this.displayName,
             this.idShort,
-            this.identification,
+            this.id,
             this.globalAssetId,
             this.specificAssetId,
             this.submodelDescriptor,
@@ -84,7 +84,7 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.identification, other.identification) &&
+                Objects.equals(this.id, other.id) &&
                 Objects.equals(this.globalAssetId, other.globalAssetId) &&
                 Objects.equals(this.specificAssetId, other.specificAssetId) &&
                 Objects.equals(this.submodelDescriptor, other.submodelDescriptor) &&
@@ -133,13 +133,13 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     }
 
     @Override
-    public String getIdentification() {
-        return identification;
+    public String getId() {
+        return id;
     }
 
     @Override
-    public void setIdentification(String identification) {
-        this.identification = identification;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -181,6 +181,17 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     @Override
     public void setEndpoints(List<Endpoint> endpoints) {
         this.endpoints = endpoints;
+    }
+
+
+    public String toString() {
+        return String.format(
+                "DefaultAssetAdministrationShellDescriptor (" + "id=%s,"
+                        + "description=%s,"
+                        + "displayName=%s,"
+                        + "submodelDescriptor=%s,"
+                        + ")",
+                this.id, this.description, this.displayName, this.submodelDescriptor);
     }
 
     /**

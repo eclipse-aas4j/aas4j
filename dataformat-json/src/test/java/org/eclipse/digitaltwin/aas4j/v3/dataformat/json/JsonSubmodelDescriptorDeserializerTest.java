@@ -35,7 +35,7 @@ public class JsonSubmodelDescriptorDeserializerTest {
                 .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
                 .description(TestDataHelper.DEFAULT_DESCRIPTION)
                 .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
-                .identification(TestDataHelper.DEFAULT_IDENTIFICATION)
+                .id(TestDataHelper.DEFAULT_IDENTIFICATION)
                 .idShort(TestDataHelper.DEFAULT_ID_SHORT)
                 .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
                 .semanticId(TestDataHelper.DEFAULT_SEMANTIC_ID)

@@ -46,8 +46,8 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification")
-    protected String identification;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/id")
+    protected String id;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/semanticId")
     protected Reference semanticId;
@@ -61,7 +61,7 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
             this.description,
             this.displayName,
             this.idShort,
-            this.identification,
+            this.id,
             this.semanticId,
             this.endpoints);
     }
@@ -80,7 +80,7 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.identification, other.identification) &&
+                Objects.equals(this.id, other.id) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.endpoints, other.endpoints);
         }
@@ -127,13 +127,13 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     }
 
     @Override
-    public String getIdentification() {
-        return identification;
+    public String getId() {
+        return id;
     }
 
     @Override
-    public void setIdentification(String identification) {
-        this.identification = identification;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -155,6 +155,18 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     public void setEndpoints(List<Endpoint> endpoints) {
         this.endpoints = endpoints;
     }
+
+    public String toString() {
+        return String.format(
+                "DefaultSubmodel (" + "id=%s,"
+                        + "endpoints=%s,"
+                        + "displayName=%s,"
+                        + "description=%s,"
+                        + "endpoints=%s,"
+                        + ")",
+                this.id, this.endpoints, this.displayName, this.description, this.endpoints);
+    }
+
 
     /**
      * This builder class can be used to construct a DefaultSubmodelDescriptor bean.

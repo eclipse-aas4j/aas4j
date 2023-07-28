@@ -1,5 +1,4 @@
 /*
- * Copyright (c) 2023 SAP SE
  * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -116,20 +115,20 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/id
      *
      * @return Returns the String for the property identification.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification")
-    String getIdentification();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/id")
+    String getId();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification
+     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/id
      *
-     * @param identification desired value for the property identification.
+     * @param id desired value for the property identification.
      */
-    void setIdentification(String identification);
+    void setId(String id);
 
 
     /**

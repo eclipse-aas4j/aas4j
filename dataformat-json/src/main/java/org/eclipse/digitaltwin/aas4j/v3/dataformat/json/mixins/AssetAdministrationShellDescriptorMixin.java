@@ -32,16 +32,16 @@ public interface AssetAdministrationShellDescriptorMixin {
     @JsonProperty("idShort")
     void setIdShort(String idShort);
 
-    @JsonProperty("descriptions")
+    @JsonProperty("description")
     List<LangStringTextType> getDescription();
 
-    @JsonProperty("descriptions")
+    @JsonProperty("description")
     void setDescription(List<LangStringTextType> description);
 
-    @JsonProperty("displayNames")
+    @JsonProperty("displayName")
     List<LangStringNameType> getDisplayName();
 
-    @JsonProperty("displayNames")
+    @JsonProperty("displayName")
     void setDisplayName(List<LangStringNameType> displayName);
 
     @JsonProperty("submodelDescriptors")
