@@ -19,19 +19,20 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ProtocolInformationBuilder;
 
+import java.util.List;
 import java.util.Objects;
 
 @IRI("aas:ProtocolInformation")
 public class DefaultProtocolInformation implements ProtocolInformation {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointAddress")
-    protected String endpointAddress;
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/href")
+    protected String href;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointProtocol")
     protected String endpointProtocol;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointProtocolVersion")
-    protected String endpointProtocolVersion;
+    protected List<String> endpointProtocolVersion;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/subprotocol")
     protected String subprotocol;
@@ -47,7 +48,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.endpointAddress,
+        return Objects.hash(this.href,
             this.endpointProtocol,
             this.endpointProtocolVersion,
             this.subprotocol,
@@ -65,7 +66,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
             return false;
         } else {
             DefaultProtocolInformation other = (DefaultProtocolInformation) obj;
-            return Objects.equals(this.endpointAddress, other.endpointAddress) &&
+            return Objects.equals(this.href, other.href) &&
                 Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
                 Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
                 Objects.equals(this.subprotocol, other.subprotocol) &&
@@ -75,13 +76,13 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     }
 
     @Override
-    public String getEndpointAddress() {
-        return endpointAddress;
+    public String getHref() {
+        return href;
     }
 
     @Override
-    public void setEndpointAddress(String endpointAddress) {
-        this.endpointAddress = endpointAddress;
+    public void setHref(String href) {
+        this.href = href;
     }
 
     @Override
@@ -95,12 +96,12 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     }
 
     @Override
-    public String getEndpointProtocolVersion() {
+    public List<String> getEndpointProtocolVersion() {
         return endpointProtocolVersion;
     }
 
     @Override
-    public void setEndpointProtocolVersion(String endpointProtocolVersion) {
+    public void setEndpointProtocolVersion(List<String> endpointProtocolVersion) {
         this.endpointProtocolVersion = endpointProtocolVersion;
     }
 

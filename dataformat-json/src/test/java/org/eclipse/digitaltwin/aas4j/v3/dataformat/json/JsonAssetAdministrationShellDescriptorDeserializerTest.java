@@ -53,9 +53,9 @@ public class JsonAssetAdministrationShellDescriptorDeserializerTest {
                 .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
                 .identification(TestDataHelper.DEFAULT_IDENTIFICATION)
                 .idShort(TestDataHelper.DEFAULT_ID_SHORT)
-                .specificAssetId(specificAssetId)
+                .specificAssetIds(List.of(specificAssetId))
                 .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
-                .globalAssetId(TestDataHelper.createReference(ReferenceTypes.MODEL_REFERENCE, KeyTypes.ASSET_ADMINISTRATION_SHELL, "defaultGlobalAssetId"))
+                .globalAssetId("defaultGlobalAssetId")
                 .submodelDescriptor(List.of(JsonSubmodelDescriptorDeserializerTest.getDefaultSubmodelDescriptor())).build();
     }
 

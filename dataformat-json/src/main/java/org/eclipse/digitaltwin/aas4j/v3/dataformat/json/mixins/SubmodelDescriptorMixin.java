@@ -35,10 +35,4 @@ public interface SubmodelDescriptorMixin {
 
     @JsonProperty("displayName")
     void setDisplayName(List<LangStringNameType> displayName);
-
-    @JsonProperty("specificAssetIds")
-    SpecificAssetId getSpecificAssetId();
-
-    @JsonProperty("specificAssetIds")
-    void setSpecificAssetId(SpecificAssetId specificAssetId);
 }

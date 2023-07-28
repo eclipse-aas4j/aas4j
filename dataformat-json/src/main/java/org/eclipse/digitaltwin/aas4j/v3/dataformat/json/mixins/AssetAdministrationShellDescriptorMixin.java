@@ -51,8 +51,8 @@ public interface AssetAdministrationShellDescriptorMixin {
     void setSubmodelDescriptor(List<SubmodelDescriptor> submodelDescriptor);
 
     @JsonProperty("specificAssetIds")
-    SpecificAssetId getSpecificAssetId();
+    List<SpecificAssetId> getSpecificAssetIds();
 
     @JsonProperty("specificAssetIds")
-    void setSpecificAssetId(SpecificAssetId specificAssetId);
+    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 }

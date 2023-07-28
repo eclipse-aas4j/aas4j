@@ -17,17 +17,19 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 
+import java.util.List;
+
 public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, B extends ProtocolInformationBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for endpointAddress
      * 
-     * @param endpointAddress desired value to be set
+     * @param href desired value to be set
      * @return Builder object with new value for endpointAddress
      */
-    public B endpointAddress(String endpointAddress) {
-        getBuildingInstance().setEndpointAddress(endpointAddress);
+    public B href(String href) {
+        getBuildingInstance().setHref(href);
         return getSelf();
     }
 
@@ -48,7 +50,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
      * @param endpointProtocolVersion desired value to be set
      * @return Builder object with new value for endpointProtocolVersion
      */
-    public B endpointProtocolVersion(String endpointProtocolVersion) {
+    public B endpointProtocolVersion(List<String> endpointProtocolVersion) {
         getBuildingInstance().setEndpointProtocolVersion(endpointProtocolVersion);
         return getSelf();
     }

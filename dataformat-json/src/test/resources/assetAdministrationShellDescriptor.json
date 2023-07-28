@@ -1,9 +1,9 @@
 {
   "endpoints" : [ {
     "protocolInformation" : {
-      "endpointAddress" : "defaultEndpointAddress",
+      "href" : "defaultEndpointAddress",
       "endpointProtocol" : "defaultEndpointProtocol",
-      "endpointProtocolVersion" : "defaultEndpointProtocolVersion",
+      "endpointProtocolVersion" : ["defaultEndpointProtocolVersion"],
       "subprotocol" : "defaultSubprotocol",
       "subprotocolBody" : "defaultSubprotocolBody",
       "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
@@ -11,8 +11,8 @@
     "interface" : "defaultInterface"
   } ],
   "administration" : {
-    "revision" : "defaultAdministrativeInformationRevisionValue",
-    "version" : "defaultAdministrativeInformationVersionValue",
+    "revision" : "1",
+    "version" : "1",
     "embeddedDataSpecifications" : [ {
       "dataSpecification" : {
         "keys" : [ {
@@ -23,7 +23,10 @@
       },
       "dataSpecificationContent" : {
         "modelType" : "DataSpecificationIec61360",
-        "preferredName" : [ ]
+        "preferredName" : [ {
+          "language": "en",
+          "text": "defaultPreferredName"
+        } ]
       }
     } ]
   },
@@ -37,14 +40,8 @@
   } ],
   "idShort" : "defaultIdShort",
   "id" : "identification",
-  "globalAssetId" : {
-    "keys" : [ {
-      "type" : "AssetAdministrationShell",
-      "value" : "defaultGlobalAssetId"
-    } ],
-    "type" : "ModelReference"
-  },
-  "specificAssetIds" : {
+  "globalAssetId" : "defaultGlobalAssetId",
+  "specificAssetIds" : [{
     "semanticId" : {
       "keys" : [ {
         "type" : "GlobalReference",
@@ -61,13 +58,13 @@
     },
     "name" : "defaultSpecificAssetIdName",
     "value" : "http://example.company/myAsset"
-  },
+  }],
   "submodelDescriptors" : [ {
     "endpoints" : [ {
       "protocolInformation" : {
-        "endpointAddress" : "defaultEndpointAddress",
+        "href" : "defaultEndpointAddress",
         "endpointProtocol" : "defaultEndpointProtocol",
-        "endpointProtocolVersion" : "defaultEndpointProtocolVersion",
+        "endpointProtocolVersion" : ["defaultEndpointProtocolVersion"],
         "subprotocol" : "defaultSubprotocol",
         "subprotocolBody" : "defaultSubprotocolBody",
         "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
@@ -75,8 +72,8 @@
       "interface" : "defaultInterface"
     } ],
     "administration" : {
-      "revision" : "defaultAdministrativeInformationRevisionValue",
-      "version" : "defaultAdministrativeInformationVersionValue",
+      "revision" : "1",
+      "version" : "1",
       "embeddedDataSpecifications" : [ {
         "dataSpecification" : {
           "keys" : [ {
@@ -87,7 +84,10 @@
         },
         "dataSpecificationContent" : {
           "modelType" : "DataSpecificationIec61360",
-          "preferredName" : [ ]
+          "preferredName" : [ {
+            "language": "en",
+            "text": "defaultPreferredName"
+          } ]
         }
       } ]
     },

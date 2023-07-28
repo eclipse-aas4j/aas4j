@@ -45,10 +45,10 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     protected String id;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/globalAssetId")
-    protected Reference globalAssetId;
+    protected String globalAssetId;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/specificAssetIds")
-    protected SpecificAssetId specificAssetId;
+    protected List<SpecificAssetId> specificAssetIds;
 
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/submodelDescriptor")
     protected List<SubmodelDescriptor> submodelDescriptor;
@@ -65,7 +65,7 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
             this.idShort,
             this.id,
             this.globalAssetId,
-            this.specificAssetId,
+            this.specificAssetIds,
             this.submodelDescriptor,
             this.endpoints);
     }
@@ -86,7 +86,7 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetId, other.specificAssetId) &&
+                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
                 Objects.equals(this.submodelDescriptor, other.submodelDescriptor) &&
                 Objects.equals(this.endpoints, other.endpoints);
         }
@@ -143,23 +143,23 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     }
 
     @Override
-    public Reference getGlobalAssetId() {
+    public String getGlobalAssetId() {
         return globalAssetId;
     }
 
     @Override
-    public void setGlobalAssetId(Reference globalAssetId) {
+    public void setGlobalAssetId(String globalAssetId) {
         this.globalAssetId = globalAssetId;
     }
 
     @Override
-    public SpecificAssetId getSpecificAssetIds() {
-        return specificAssetId;
+    public List<SpecificAssetId> getSpecificAssetIds() {
+        return specificAssetIds;
     }
 
     @Override
-    public void setSpecificAssetIds(SpecificAssetId specificAssetId) {
-        this.specificAssetId = specificAssetId;
+    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
+        this.specificAssetIds = specificAssetIds;
     }
 
     @Override

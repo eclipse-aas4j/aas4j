@@ -19,6 +19,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProtocolInformation;
 
+import java.util.List;
+
 /**
 */
 @KnownSubtypes({
@@ -32,16 +34,16 @@ public interface ProtocolInformation {
      *
      * @return Returns the String for the property endpointAddress.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointAddress")
-    String getEndpointAddress();
+    @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/href")
+    String getHref();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointAddress
+     * More information under https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/href
      *
-     * @param endpointAddress desired value for the property endpointAddress.
+     * @param href desired value for the property endpointAddress.
      */
-    void setEndpointAddress(String endpointAddress);
+    void setHref(String href);
 
     /**
      *
@@ -68,7 +70,7 @@ public interface ProtocolInformation {
      * @return Returns the String for the property endpointProtocolVersion.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/ProtocolInformation/endpointProtocolVersion")
-    String getEndpointProtocolVersion();
+    List<String> getEndpointProtocolVersion();
 
     /**
      *
@@ -77,7 +79,7 @@ public interface ProtocolInformation {
      *
      * @param endpointProtocolVersion desired value for the property endpointProtocolVersion.
      */
-    void setEndpointProtocolVersion(String endpointProtocolVersion);
+    void setEndpointProtocolVersion(List<String> endpointProtocolVersion);
 
     /**
      *

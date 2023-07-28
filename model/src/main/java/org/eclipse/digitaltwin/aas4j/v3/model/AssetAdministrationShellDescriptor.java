@@ -86,7 +86,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      * @return Returns the String for the property idShort.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/globalAssetId")
-    Reference getGlobalAssetId();
+    String getGlobalAssetId();
 
     /**
      *
@@ -94,7 +94,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      *
      * @param globalAssetId desired value for the property globalAssetId.
      */
-    void setGlobalAssetId(Reference globalAssetId);
+    void setGlobalAssetId(String globalAssetId);
 
     /**
      *
@@ -138,7 +138,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      * @return Returns the String for the property specificAssetId.
      */
     @IRI("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShellDescriptor/specificAssetIds")
-    SpecificAssetId getSpecificAssetIds();
+    List<SpecificAssetId> getSpecificAssetIds();
 
     /**
      *
@@ -146,7 +146,7 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
      *
      * @param specificAssetIds desired value for the property specificAssetIds.
      */
-    void setSpecificAssetIds(SpecificAssetId specificAssetIds);
+    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 
     /**
      *

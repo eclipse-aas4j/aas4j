@@ -80,11 +80,11 @@ public abstract class AssetAdministrationShellDescriptorBuilder<T extends AssetA
     /**
      * This function allows setting a value for specificAssetId
      * 
-     * @param specificAssetId desired value to be set
+     * @param specificAssetIds desired value to be set
      * @return Builder object with new value for specificAssetId
      */
-    public B specificAssetId(SpecificAssetId specificAssetId) {
-        getBuildingInstance().setSpecificAssetIds(specificAssetId);
+    public B specificAssetIds(List<SpecificAssetId> specificAssetIds) {
+        getBuildingInstance().setSpecificAssetIds(specificAssetIds);
         return getSelf();
     }
 
@@ -94,7 +94,7 @@ public abstract class AssetAdministrationShellDescriptorBuilder<T extends AssetA
      * @param globalAssetId desired value to be set
      * @return Builder object with new value for globalAssetId
      */
-    public B globalAssetId(Reference globalAssetId) {
+    public B globalAssetId(String globalAssetId) {
         getBuildingInstance().setGlobalAssetId(globalAssetId);
         return getSelf();
     }

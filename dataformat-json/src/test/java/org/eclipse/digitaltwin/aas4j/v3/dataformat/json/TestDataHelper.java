@@ -18,14 +18,17 @@ public class TestDataHelper {
                     .build();
 
     public static final EmbeddedDataSpecification DEFAULT_EMBEDDED_DATA_SPECIFICATION = new DefaultEmbeddedDataSpecification.Builder()
-            .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder().build())
+            .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
+                    .preferredName(
+                    new DefaultLangStringPreferredNameTypeIec61360.Builder().language("en").text("defaultPreferredName").build())
+                    .build())
             .dataSpecification(createGlobalReference("defaultEmbeddedDataSpecificationDataSpecificationValue")).build();
 
     public static final AdministrativeInformation DEFAULT_ADMINISTRATIVE_INFORMATION =
             new DefaultAdministrativeInformation.Builder()
                     .embeddedDataSpecifications(DEFAULT_EMBEDDED_DATA_SPECIFICATION)
-                    .revision("defaultAdministrativeInformationRevisionValue")
-                    .version("defaultAdministrativeInformationVersionValue").build();
+                    .revision("1")
+                    .version("1").build();
 
     public static final List<LangStringTextType> DEFAULT_DESCRIPTION = List.of(createLangStringTextType("en", "defaultDescription"));
 
@@ -64,9 +67,9 @@ public class TestDataHelper {
 
     public static DefaultProtocolInformation.Builder createProtocolInformationBuilder() {
         return new DefaultProtocolInformation.Builder()
-                .endpointAddress("defaultEndpointAddress")
+                .href("defaultEndpointAddress")
                 .endpointProtocol("defaultEndpointProtocol")
-                .endpointProtocolVersion("defaultEndpointProtocolVersion")
+                .endpointProtocolVersion(List.of("defaultEndpointProtocolVersion"))
                 .subprotocol("defaultSubprotocol")
                 .subprotocolBody("defaultSubprotocolBody")
                 .subprotocolBodyEncoding("defaultSubprotocolBodyEncoding");
