@@ -28,8 +28,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  * The value of a qualifiable element may be further qualified by one or more qualifiers.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-    @KnownSubtypes.Type(value = SubmodelMetadata.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class)
 })

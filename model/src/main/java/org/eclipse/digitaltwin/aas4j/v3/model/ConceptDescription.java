@@ -31,7 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultConceptDescription.class)
 })
-public interface ConceptDescription extends Identifiable, HasDataSpecification {
+public interface ConceptDescription extends HasDataSpecification, Identifiable {
 
     /**
      * Reference to an external definition the concept is compatible to or was derived from.

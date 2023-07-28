@@ -77,25 +77,13 @@ public class DefaultSubmodel implements Submodel {
         this.kind = ModellingKind.INSTANCE;
     }
 
-    public DefaultSubmodel(Submodel x) {
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.kind = x.getKind();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-        this.submodelElements = x.getSubmodelElements();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.submodelElements,
+            this.embeddedDataSpecifications,
+            this.kind,
+            this.semanticId,
+            this.supplementalSemanticIds,
             this.administration,
             this.id,
             this.category,
@@ -103,11 +91,7 @@ public class DefaultSubmodel implements Submodel {
             this.displayName,
             this.description,
             this.extensions,
-            this.embeddedDataSpecifications,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers,
-            this.kind);
+            this.qualifiers);
     }
 
     @Override
@@ -121,6 +105,10 @@ public class DefaultSubmodel implements Submodel {
         } else {
             DefaultSubmodel other = (DefaultSubmodel) obj;
             return Objects.equals(this.submodelElements, other.submodelElements) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
+                Objects.equals(this.kind, other.kind) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
@@ -128,11 +116,7 @@ public class DefaultSubmodel implements Submodel {
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
-                Objects.equals(this.kind, other.kind);
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -144,6 +128,46 @@ public class DefaultSubmodel implements Submodel {
     @Override
     public void setSubmodelElements(List<SubmodelElement> submodelElements) {
         this.submodelElements = submodelElements;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
+    }
+
+    @Override
+    public ModellingKind getKind() {
+        return kind;
+    }
+
+    @Override
+    public void setKind(ModellingKind kind) {
+        this.kind = kind;
+    }
+
+    @Override
+    public Reference getSemanticId() {
+        return semanticId;
+    }
+
+    @Override
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
+    }
+
+    @Override
+    public List<Reference> getSupplementalSemanticIds() {
+        return supplementalSemanticIds;
+    }
+
+    @Override
+    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        this.supplementalSemanticIds = supplementalSemanticIds;
     }
 
     @Override
@@ -217,36 +241,6 @@ public class DefaultSubmodel implements Submodel {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    @Override
     public List<Qualifier> getQualifiers() {
         return qualifiers;
     }
@@ -254,16 +248,6 @@ public class DefaultSubmodel implements Submodel {
     @Override
     public void setQualifiers(List<Qualifier> qualifiers) {
         this.qualifiers = qualifiers;
-    }
-
-    @Override
-    public ModellingKind getKind() {
-        return kind;
-    }
-
-    @Override
-    public void setKind(ModellingKind kind) {
-        this.kind = kind;
     }
 
     public String toString() {

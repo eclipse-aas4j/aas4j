@@ -30,7 +30,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultSubmodel.class)
 })
-public interface Submodel extends Identifiable, HasDataSpecification, HasSemantics, Qualifiable, HasKind {
+public interface Submodel extends HasDataSpecification, HasKind, HasSemantics, Identifiable, Qualifiable {
 
     /**
      * A submodel consists of zero or more submodel elements.

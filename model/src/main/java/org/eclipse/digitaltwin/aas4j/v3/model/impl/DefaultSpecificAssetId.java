@@ -51,14 +51,6 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
 
     public DefaultSpecificAssetId() {}
 
-    public DefaultSpecificAssetId(SpecificAssetId x) {
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.externalSubjectId = x.getExternalSubjectId();
-        this.name = x.getName();
-        this.value = x.getValue();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.name,

@@ -56,15 +56,6 @@ public class DefaultExtension implements Extension {
         this.valueType = DataTypeDefXsd.STRING;
     }
 
-    public DefaultExtension(Extension x) {
-        this.name = x.getName();
-        this.refersTo = x.getRefersTo();
-        this.value = x.getValue();
-        this.valueType = x.getValueType();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.name,

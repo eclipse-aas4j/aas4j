@@ -64,29 +64,17 @@ public class DefaultConceptDescription implements ConceptDescription {
 
     public DefaultConceptDescription() {}
 
-    public DefaultConceptDescription(ConceptDescription x) {
-        this.isCaseOf = x.getIsCaseOf();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.isCaseOf,
+            this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions,
-            this.embeddedDataSpecifications);
+            this.extensions);
     }
 
     @Override
@@ -100,14 +88,14 @@ public class DefaultConceptDescription implements ConceptDescription {
         } else {
             DefaultConceptDescription other = (DefaultConceptDescription) obj;
             return Objects.equals(this.isCaseOf, other.isCaseOf) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -119,6 +107,16 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setIsCaseOf(List<Reference> isCaseOfs) {
         this.isCaseOf = isCaseOfs;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -189,16 +187,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     public String toString() {

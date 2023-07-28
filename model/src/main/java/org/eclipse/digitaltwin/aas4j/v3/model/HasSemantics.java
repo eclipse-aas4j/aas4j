@@ -29,11 +29,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  */
 @KnownSubtypes({
     @KnownSubtypes.Type(value = SpecificAssetId.class),
-    @KnownSubtypes.Type(value = Extension.class),
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-    @KnownSubtypes.Type(value = SubmodelMetadata.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class),
+    @KnownSubtypes.Type(value = Extension.class),
     @KnownSubtypes.Type(value = Qualifier.class)
 })
 public interface HasSemantics {

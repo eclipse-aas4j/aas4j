@@ -47,6 +47,72 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
     }
 
     /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for kind
+     * 
+     * @param kind desired value to be set
+     * @return Builder object with new value for kind
+     */
+    public B kind(ModellingKind kind) {
+        getBuildingInstance().setKind(kind);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for semanticId
+     * 
+     * @param semanticId desired value to be set
+     * @return Builder object with new value for semanticId
+     */
+    public B semanticId(Reference semanticId) {
+        getBuildingInstance().setSemanticId(semanticId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be set
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be added
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
+        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for administration
      * 
      * @param administration desired value to be set
@@ -157,61 +223,6 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
     }
 
     /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for semanticId
-     * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
-     */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be set
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be added
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
-        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for qualifiers
      * 
      * @param qualifiers desired value to be set
@@ -230,17 +241,6 @@ public abstract class SubmodelBuilder<T extends Submodel, B extends SubmodelBuil
      */
     public B qualifiers(Qualifier qualifiers) {
         getBuildingInstance().getQualifiers().add(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for kind
-     * 
-     * @param kind desired value to be set
-     * @return Builder object with new value for kind
-     */
-    public B kind(ModellingKind kind) {
-        getBuildingInstance().setKind(kind);
         return getSelf();
     }
 }

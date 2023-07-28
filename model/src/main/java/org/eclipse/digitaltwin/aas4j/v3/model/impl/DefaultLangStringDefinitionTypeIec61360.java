@@ -41,11 +41,6 @@ public class DefaultLangStringDefinitionTypeIec61360 implements LangStringDefini
 
     public DefaultLangStringDefinitionTypeIec61360() {}
 
-    public DefaultLangStringDefinitionTypeIec61360(LangStringDefinitionTypeIec61360 x) {
-        this.language = x.getLanguage();
-        this.text = x.getText();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.language,

@@ -27,8 +27,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  * An element that has a globally unique identifier.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = AssetAdministrationShellMetadata.class),
-    @KnownSubtypes.Type(value = SubmodelMetadata.class),
     @KnownSubtypes.Type(value = AssetAdministrationShell.class),
     @KnownSubtypes.Type(value = ConceptDescription.class),
     @KnownSubtypes.Type(value = Submodel.class)

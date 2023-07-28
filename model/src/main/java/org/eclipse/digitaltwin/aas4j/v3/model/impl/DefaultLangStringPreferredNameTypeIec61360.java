@@ -41,11 +41,6 @@ public class DefaultLangStringPreferredNameTypeIec61360 implements LangStringPre
 
     public DefaultLangStringPreferredNameTypeIec61360() {}
 
-    public DefaultLangStringPreferredNameTypeIec61360(LangStringPreferredNameTypeIec61360 x) {
-        this.language = x.getLanguage();
-        this.text = x.getText();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.language,

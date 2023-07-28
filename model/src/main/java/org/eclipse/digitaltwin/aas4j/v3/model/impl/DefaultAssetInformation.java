@@ -52,14 +52,6 @@ public class DefaultAssetInformation implements AssetInformation {
 
     public DefaultAssetInformation() {}
 
-    public DefaultAssetInformation(AssetInformation x) {
-        this.assetKind = x.getAssetKind();
-        this.assetType = x.getAssetType();
-        this.defaultThumbnail = x.getDefaultThumbnail();
-        this.globalAssetId = x.getGlobalAssetId();
-        this.specificAssetIds = x.getSpecificAssetIds();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.assetKind,

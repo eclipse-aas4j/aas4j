@@ -52,14 +52,6 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
 
     public DefaultAdministrativeInformation() {}
 
-    public DefaultAdministrativeInformation(AdministrativeInformation x) {
-        this.creator = x.getCreator();
-        this.revision = x.getRevision();
-        this.templateId = x.getTemplateId();
-        this.version = x.getVersion();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.version,

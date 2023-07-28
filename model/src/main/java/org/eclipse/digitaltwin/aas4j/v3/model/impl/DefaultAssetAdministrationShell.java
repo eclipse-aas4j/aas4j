@@ -69,33 +69,19 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
 
     public DefaultAssetAdministrationShell() {}
 
-    public DefaultAssetAdministrationShell(AssetAdministrationShell x) {
-        this.assetInformation = x.getAssetInformation();
-        this.derivedFrom = x.getDerivedFrom();
-        this.submodels = x.getSubmodels();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.derivedFrom,
             this.assetInformation,
             this.submodels,
+            this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions,
-            this.embeddedDataSpecifications);
+            this.extensions);
     }
 
     @Override
@@ -111,14 +97,14 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
             return Objects.equals(this.derivedFrom, other.derivedFrom) &&
                 Objects.equals(this.assetInformation, other.assetInformation) &&
                 Objects.equals(this.submodels, other.submodels) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -150,6 +136,16 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setSubmodels(List<Reference> submodels) {
         this.submodels = submodels;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -220,16 +216,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     public String toString() {

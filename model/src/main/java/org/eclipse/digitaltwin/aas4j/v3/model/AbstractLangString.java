@@ -27,11 +27,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  * Strings with language tags
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = LangStringTextType.class),
-    @KnownSubtypes.Type(value = LangStringNameType.class),
     @KnownSubtypes.Type(value = LangStringPreferredNameTypeIec61360.class),
     @KnownSubtypes.Type(value = LangStringShortNameTypeIec61360.class),
-    @KnownSubtypes.Type(value = LangStringDefinitionTypeIec61360.class)
+    @KnownSubtypes.Type(value = LangStringDefinitionTypeIec61360.class),
+    @KnownSubtypes.Type(value = LangStringNameType.class),
+    @KnownSubtypes.Type(value = LangStringTextType.class)
 })
 public interface AbstractLangString {
 

@@ -28,9 +28,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  * An element that is referable by its 'idShort'.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-    @KnownSubtypes.Type(value = Identifiable.class),
-    @KnownSubtypes.Type(value = SubmodelElement.class)
+    @KnownSubtypes.Type(value = SubmodelElement.class),
+    @KnownSubtypes.Type(value = Identifiable.class)
 })
 public interface Referable extends HasExtensions {
 

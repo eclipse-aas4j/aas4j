@@ -45,12 +45,6 @@ public class DefaultReference implements Reference {
 
     public DefaultReference() {}
 
-    public DefaultReference(Reference x) {
-        this.keys = x.getKeys();
-        this.referredSemanticId = x.getReferredSemanticId();
-        this.type = x.getType();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.type,

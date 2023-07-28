@@ -39,10 +39,6 @@ public class DefaultValueList implements ValueList {
 
     public DefaultValueList() {}
 
-    public DefaultValueList(ValueList x) {
-        this.valueReferencePairs = x.getValueReferencePairs();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.valueReferencePairs);

@@ -29,9 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  */
 @KnownSubtypes({
     @KnownSubtypes.Type(value = AdministrativeInformation.class),
-    @KnownSubtypes.Type(value = AssetAdministrationShellMetadata.class),
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-    @KnownSubtypes.Type(value = SubmodelMetadata.class),
     @KnownSubtypes.Type(value = AssetAdministrationShell.class),
     @KnownSubtypes.Type(value = ConceptDescription.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),

@@ -59,17 +59,6 @@ public class DefaultEventPayload implements EventPayload {
 
     public DefaultEventPayload() {}
 
-    public DefaultEventPayload(EventPayload x) {
-        this.observableReference = x.getObservableReference();
-        this.observableSemanticId = x.getObservableSemanticId();
-        this.payload = x.getPayload();
-        this.source = x.getSource();
-        this.sourceSemanticId = x.getSourceSemanticId();
-        this.subjectId = x.getSubjectId();
-        this.timeStamp = x.getTimeStamp();
-        this.topic = x.getTopic();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.source,

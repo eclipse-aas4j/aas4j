@@ -41,11 +41,6 @@ public class DefaultValueReferencePair implements ValueReferencePair {
 
     public DefaultValueReferencePair() {}
 
-    public DefaultValueReferencePair(ValueReferencePair x) {
-        this.value = x.getValue();
-        this.valueId = x.getValueId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.value,

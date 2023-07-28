@@ -30,7 +30,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultAssetAdministrationShell.class)
 })
-public interface AssetAdministrationShell extends Identifiable, HasDataSpecification {
+public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
 
     /**
      * The reference to the AAS the AAS was derived from.
