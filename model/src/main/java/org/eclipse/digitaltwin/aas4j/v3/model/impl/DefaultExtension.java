@@ -15,15 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtensionBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -53,7 +52,18 @@ public class DefaultExtension implements Extension {
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    public DefaultExtension() {}
+    public DefaultExtension() {
+        this.valueType = DataTypeDefXsd.STRING;
+    }
+
+    public DefaultExtension(Extension x) {
+        this.name = x.getName();
+        this.refersTo = x.getRefersTo();
+        this.value = x.getValue();
+        this.valueType = x.getValueType();
+        this.semanticId = x.getSemanticId();
+        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
+    }
 
     @Override
     public int hashCode() {

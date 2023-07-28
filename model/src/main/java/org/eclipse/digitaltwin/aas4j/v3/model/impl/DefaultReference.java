@@ -15,15 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -45,6 +44,12 @@ public class DefaultReference implements Reference {
     protected ReferenceTypes type;
 
     public DefaultReference() {}
+
+    public DefaultReference(Reference x) {
+        this.keys = x.getKeys();
+        this.referredSemanticId = x.getReferredSemanticId();
+        this.type = x.getType();
+    }
 
     @Override
     public int hashCode() {

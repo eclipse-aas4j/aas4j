@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringDefinitionTypeIec61360Builder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -39,6 +40,11 @@ public class DefaultLangStringDefinitionTypeIec61360 implements LangStringDefini
     protected String text;
 
     public DefaultLangStringDefinitionTypeIec61360() {}
+
+    public DefaultLangStringDefinitionTypeIec61360(LangStringDefinitionTypeIec61360 x) {
+        this.language = x.getLanguage();
+        this.text = x.getText();
+    }
 
     @Override
     public int hashCode() {

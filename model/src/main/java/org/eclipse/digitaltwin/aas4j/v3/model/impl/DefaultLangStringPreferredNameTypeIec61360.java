@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringPreferredNameTypeIec61360Builder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -39,6 +40,11 @@ public class DefaultLangStringPreferredNameTypeIec61360 implements LangStringPre
     protected String text;
 
     public DefaultLangStringPreferredNameTypeIec61360() {}
+
+    public DefaultLangStringPreferredNameTypeIec61360(LangStringPreferredNameTypeIec61360 x) {
+        this.language = x.getLanguage();
+        this.text = x.getText();
+    }
 
     @Override
     public int hashCode() {

@@ -49,6 +49,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
+    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
     public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }

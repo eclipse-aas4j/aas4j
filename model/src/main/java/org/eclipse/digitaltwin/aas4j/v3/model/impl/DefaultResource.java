@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -39,6 +40,11 @@ public class DefaultResource implements Resource {
     protected String path;
 
     public DefaultResource() {}
+
+    public DefaultResource(Resource x) {
+        this.contentType = x.getContentType();
+        this.path = x.getPath();
+    }
 
     @Override
     public int hashCode() {

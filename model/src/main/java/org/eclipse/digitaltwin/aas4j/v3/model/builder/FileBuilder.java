@@ -15,9 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class FileBuilder<T extends File, B extends FileBuilder<T, B>> extends ExtendableBuilder<T, B> {
@@ -63,61 +65,6 @@ public abstract class FileBuilder<T extends File, B extends FileBuilder<T, B>> e
      */
     public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
         getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for semanticId
-     * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
-     */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be set
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List supplementalSemanticIds
-     * 
-     * @param supplementalSemanticIds desired value to be added
-     * @return Builder object with new value for supplementalSemanticIds
-     */
-    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
-        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for qualifiers
-     * 
-     * @param qualifiers desired value to be set
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(List<Qualifier> qualifiers) {
-        getBuildingInstance().setQualifiers(qualifiers);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List qualifiers
-     * 
-     * @param qualifiers desired value to be added
-     * @return Builder object with new value for qualifiers
-     */
-    public B qualifiers(Qualifier qualifiers) {
-        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 
@@ -206,6 +153,61 @@ public abstract class FileBuilder<T extends File, B extends FileBuilder<T, B>> e
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for semanticId
+     * 
+     * @param semanticId desired value to be set
+     * @return Builder object with new value for semanticId
+     */
+    public B semanticId(Reference semanticId) {
+        getBuildingInstance().setSemanticId(semanticId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be set
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List supplementalSemanticIds
+     * 
+     * @param supplementalSemanticIds desired value to be added
+     * @return Builder object with new value for supplementalSemanticIds
+     */
+    public B supplementalSemanticIds(Reference supplementalSemanticIds) {
+        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for qualifiers
+     * 
+     * @param qualifiers desired value to be set
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(List<Qualifier> qualifiers) {
+        getBuildingInstance().setQualifiers(qualifiers);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List qualifiers
+     * 
+     * @param qualifiers desired value to be added
+     * @return Builder object with new value for qualifiers
+     */
+    public B qualifiers(Qualifier qualifiers) {
+        getBuildingInstance().getQualifiers().add(qualifiers);
         return getSelf();
     }
 }

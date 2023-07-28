@@ -352,12 +352,14 @@
             {
               "type": "http://acplt.org/Qualifier/ExampleQualifier",
               "value": "100",
-              "valueType": "xs:int"
+              "valueType": "xs:int",
+              "kind": "ConceptQualifier"
             },
             {
               "type": "http://acplt.org/Qualifier/ExampleQualifier2",
               "value": "50",
-              "valueType": "xs:int"
+              "valueType": "xs:int",
+              "kind": "ConceptQualifier"
             }
           ],
           "idShort": "ManufacturerName",
@@ -1553,7 +1555,8 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string"
+                    "valueType": "xs:string",
+                    "kind": "ConceptQualifier"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1589,7 +1592,8 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string"
+                    "valueType": "xs:string",
+                    "kind": "ConceptQualifier"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1625,7 +1629,8 @@
                 "qualifiers": [
                   {
                     "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                    "valueType": "xs:string"
+                    "valueType": "xs:string",
+                    "kind": "ConceptQualifier"
                   }
                 ],
                 "category": "CONSTANT",
@@ -1763,7 +1768,8 @@
               "qualifiers": [
                 {
                   "type": "http://acplt.org/Qualifier/ExampleQualifier",
-                  "valueType": "xs:string"
+                  "valueType": "xs:string",
+                  "kind": "ConceptQualifier"
                 }
               ],
               "category": "CONSTANT",

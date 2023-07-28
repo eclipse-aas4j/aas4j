@@ -104,6 +104,7 @@ public class JsonReferableDeserializerTest {
 	}
 
     @Test
+    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
     public void testDeserializeConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
         ExampleData<ConceptDescription> exampleData = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT;
         Object expected = exampleData.getModel();

@@ -15,11 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -28,7 +30,7 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultSubmodel.class)
 })
-public interface Submodel extends HasDataSpecification, HasKind, HasSemantics, Identifiable, Qualifiable {
+public interface Submodel extends Identifiable, HasDataSpecification, HasSemantics, Qualifiable, HasKind {
 
     /**
      * A submodel consists of zero or more submodel elements.

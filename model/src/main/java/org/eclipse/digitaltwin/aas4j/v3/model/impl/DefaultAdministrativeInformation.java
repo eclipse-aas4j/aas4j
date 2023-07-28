@@ -15,15 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -52,6 +51,14 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     public DefaultAdministrativeInformation() {}
+
+    public DefaultAdministrativeInformation(AdministrativeInformation x) {
+        this.creator = x.getCreator();
+        this.revision = x.getRevision();
+        this.templateId = x.getTemplateId();
+        this.version = x.getVersion();
+        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
+    }
 
     @Override
     public int hashCode() {

@@ -15,12 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationVariableBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -37,6 +37,10 @@ public class DefaultOperationVariable implements OperationVariable {
     protected SubmodelElement value;
 
     public DefaultOperationVariable() {}
+
+    public DefaultOperationVariable(OperationVariable x) {
+        this.value = x.getValue();
+    }
 
     @Override
     public int hashCode() {

@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -15,28 +15,38 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.EndpointBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+
+
+/**
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Endpoint
+ * 
+ */
 
 @IRI("aas:Endpoint")
 public class DefaultEndpoint implements Endpoint {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Endpoint/_interface")
-    protected String interfaceValue;
+    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
+    protected String _interface;
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Endpoint/protocolInformation")
+    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
     protected ProtocolInformation protocolInformation;
 
-    public DefaultEndpoint() {
+    public DefaultEndpoint() {}
+
+    public DefaultEndpoint(Endpoint x) {
+        this._interface = x.get_interface();
+        this.protocolInformation = x.getProtocolInformation();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.interfaceValue,
+        return Objects.hash(this._interface,
             this.protocolInformation);
     }
 
@@ -50,19 +60,19 @@ public class DefaultEndpoint implements Endpoint {
             return false;
         } else {
             DefaultEndpoint other = (DefaultEndpoint) obj;
-            return Objects.equals(this.interfaceValue, other.interfaceValue) &&
+            return Objects.equals(this._interface, other._interface) &&
                 Objects.equals(this.protocolInformation, other.protocolInformation);
         }
     }
 
     @Override
-    public String getInterface() {
-        return interfaceValue;
+    public String get_interface() {
+        return _interface;
     }
 
     @Override
-    public void setInterface(String interfaceValue) {
-        this.interfaceValue = interfaceValue;
+    public void set_interface(String _interface) {
+        this._interface = _interface;
     }
 
     @Override
@@ -73,6 +83,14 @@ public class DefaultEndpoint implements Endpoint {
     @Override
     public void setProtocolInformation(ProtocolInformation protocolInformation) {
         this.protocolInformation = protocolInformation;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultEndpoint (" + "_interface=%s,"
+                + "protocolInformation=%s,"
+                + ")",
+            this._interface, this.protocolInformation);
     }
 
     /**

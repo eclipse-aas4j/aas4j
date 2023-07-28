@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extends SpecificAssetIdBuilder<T, B>>

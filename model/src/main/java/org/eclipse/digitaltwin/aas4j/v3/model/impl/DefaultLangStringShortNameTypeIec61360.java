@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -39,6 +40,11 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
     protected String text;
 
     public DefaultLangStringShortNameTypeIec61360() {}
+
+    public DefaultLangStringShortNameTypeIec61360(LangStringShortNameTypeIec61360 x) {
+        this.language = x.getLanguage();
+        this.text = x.getText();
+    }
 
     @Override
     public int hashCode() {

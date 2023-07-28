@@ -15,14 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIdBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -50,6 +50,14 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     protected String value;
 
     public DefaultSpecificAssetId() {}
+
+    public DefaultSpecificAssetId(SpecificAssetId x) {
+        this.semanticId = x.getSemanticId();
+        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
+        this.externalSubjectId = x.getExternalSubjectId();
+        this.name = x.getName();
+        this.value = x.getValue();
+    }
 
     @Override
     public int hashCode() {

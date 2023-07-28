@@ -15,13 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -72,6 +73,21 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
     protected ValueList valueList;
 
     public DefaultDataSpecificationIec61360() {}
+
+    public DefaultDataSpecificationIec61360(DataSpecificationIec61360 x) {
+        this.dataType = x.getDataType();
+        this.definition = x.getDefinition();
+        this.levelType = x.getLevelType();
+        this.preferredName = x.getPreferredName();
+        this.shortName = x.getShortName();
+        this.sourceOfDefinition = x.getSourceOfDefinition();
+        this.symbol = x.getSymbol();
+        this.unit = x.getUnit();
+        this.unitId = x.getUnitId();
+        this.value = x.getValue();
+        this.valueFormat = x.getValueFormat();
+        this.valueList = x.getValueList();
+    }
 
     @Override
     public int hashCode() {

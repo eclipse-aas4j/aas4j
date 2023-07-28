@@ -15,16 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.QualifierBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -58,7 +56,19 @@ public class DefaultQualifier implements Qualifier {
     @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
     protected DataTypeDefXsd valueType;
 
-    public DefaultQualifier() {}
+    public DefaultQualifier() {
+        this.kind = QualifierKind.CONCEPT_QUALIFIER;
+    }
+
+    public DefaultQualifier(Qualifier x) {
+        this.semanticId = x.getSemanticId();
+        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
+        this.kind = x.getKind();
+        this.type = x.getType();
+        this.value = x.getValue();
+        this.valueId = x.getValueId();
+        this.valueType = x.getValueType();
+    }
 
     @Override
     public int hashCode() {

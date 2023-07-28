@@ -15,12 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ValueReferencePairBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -40,6 +40,11 @@ public class DefaultValueReferencePair implements ValueReferencePair {
     protected Reference valueId;
 
     public DefaultValueReferencePair() {}
+
+    public DefaultValueReferencePair(ValueReferencePair x) {
+        this.value = x.getValue();
+        this.valueId = x.getValueId();
+    }
 
     @Override
     public int hashCode() {

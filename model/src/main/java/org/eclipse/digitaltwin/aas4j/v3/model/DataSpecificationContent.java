@@ -18,6 +18,8 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -26,8 +28,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
  * and meta information about the template itself.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DataSpecificationIec61360.class),
-    @KnownSubtypes.Type(value = DataSpecificationPhysicalUnit.class)
+    @KnownSubtypes.Type(value = DataSpecificationIec61360.class)
 })
 public interface DataSpecificationContent {
 

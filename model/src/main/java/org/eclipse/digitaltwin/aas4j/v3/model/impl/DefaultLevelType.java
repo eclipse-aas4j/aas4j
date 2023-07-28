@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -45,6 +46,13 @@ public class DefaultLevelType implements LevelType {
     protected boolean typ;
 
     public DefaultLevelType() {}
+
+    public DefaultLevelType(LevelType x) {
+        this.max = x.getMax();
+        this.min = x.getMin();
+        this.nom = x.getNom();
+        this.typ = x.getTyp();
+    }
 
     @Override
     public int hashCode() {

@@ -16,8 +16,9 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class ValueReferencePairBuilder<T extends ValueReferencePair, B extends ValueReferencePairBuilder<T, B>>

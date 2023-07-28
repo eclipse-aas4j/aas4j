@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -15,27 +15,46 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.DescriptorBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+
+
+/**
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Descriptor
+ * 
+ */
+
 @IRI("aas:Descriptor")
 public class DefaultDescriptor implements Descriptor {
 
-    @IRI("https://admin-shell.io/aas/3/0/RC02/Descriptor/endpoints")
-    protected List<Endpoint> endpoints = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/0/Descriptor/description")
+    protected List<LangStringTextType> description = new ArrayList<>();
 
-    public DefaultDescriptor() {
+    @IRI("https://admin-shell.io/aas/3/0/Descriptor/displayName")
+    protected List<LangStringNameType> displayName = new ArrayList<>();
+
+    @IRI("https://admin-shell.io/aas/3/0/Descriptor/extensions")
+    protected List<Extension> extensions = new ArrayList<>();
+
+    public DefaultDescriptor() {}
+
+    public DefaultDescriptor(Descriptor x) {
+        this.description = x.getDescription();
+        this.displayName = x.getDisplayName();
+        this.extensions = x.getExtensions();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.endpoints);
+        return Objects.hash(this.description,
+            this.displayName,
+            this.extensions);
     }
 
     @Override
@@ -48,18 +67,49 @@ public class DefaultDescriptor implements Descriptor {
             return false;
         } else {
             DefaultDescriptor other = (DefaultDescriptor) obj;
-            return Objects.equals(this.endpoints, other.endpoints);
+            return Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
     @Override
-    public List<Endpoint> getEndpoints() {
-        return endpoints;
+    public List<LangStringTextType> getDescription() {
+        return description;
     }
 
     @Override
-    public void setEndpoints(List<Endpoint> endpoints) {
-        this.endpoints = endpoints;
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<Extension> getExtensions() {
+        return extensions;
+    }
+
+    @Override
+    public void setExtensions(List<Extension> extensions) {
+        this.extensions = extensions;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultDescriptor (" + "description=%s,"
+                + "displayName=%s,"
+                + "extensions=%s,"
+                + ")",
+            this.description, this.displayName, this.extensions);
     }
 
     /**

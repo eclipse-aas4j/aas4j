@@ -15,16 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.EnvironmentBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -46,6 +44,12 @@ public class DefaultEnvironment implements Environment {
     protected List<Submodel> submodels = new ArrayList<>();
 
     public DefaultEnvironment() {}
+
+    public DefaultEnvironment(Environment x) {
+        this.assetAdministrationShells = x.getAssetAdministrationShells();
+        this.conceptDescriptions = x.getConceptDescriptions();
+        this.submodels = x.getSubmodels();
+    }
 
     @Override
     public int hashCode() {

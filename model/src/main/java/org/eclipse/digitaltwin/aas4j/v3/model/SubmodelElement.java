@@ -18,6 +18,8 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -33,6 +35,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
     @KnownSubtypes.Type(value = SubmodelElementCollection.class),
     @KnownSubtypes.Type(value = SubmodelElementList.class)
 })
-public interface SubmodelElement extends HasDataSpecification, HasSemantics, Qualifiable, Referable {
+public interface SubmodelElement extends HasDataSpecification, Referable, HasSemantics, Qualifiable {
 
 }

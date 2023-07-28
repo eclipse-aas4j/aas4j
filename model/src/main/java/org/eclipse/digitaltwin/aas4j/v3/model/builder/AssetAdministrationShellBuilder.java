@@ -15,9 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
@@ -64,28 +66,6 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
      */
     public B submodels(Reference submodels) {
         getBuildingInstance().getSubmodels().add(submodels);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 
@@ -196,6 +176,28 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 }

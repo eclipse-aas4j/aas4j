@@ -15,11 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringNameTypeBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -38,6 +39,11 @@ public class DefaultLangStringNameType implements LangStringNameType {
     protected String text;
 
     public DefaultLangStringNameType() {}
+
+    public DefaultLangStringNameType(LangStringNameType x) {
+        this.language = x.getLanguage();
+        this.text = x.getText();
+    }
 
     @Override
     public int hashCode() {

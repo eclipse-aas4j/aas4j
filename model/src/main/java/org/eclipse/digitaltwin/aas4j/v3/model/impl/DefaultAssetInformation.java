@@ -15,16 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -53,6 +51,14 @@ public class DefaultAssetInformation implements AssetInformation {
     protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
     public DefaultAssetInformation() {}
+
+    public DefaultAssetInformation(AssetInformation x) {
+        this.assetKind = x.getAssetKind();
+        this.assetType = x.getAssetType();
+        this.defaultThumbnail = x.getDefaultThumbnail();
+        this.globalAssetId = x.getGlobalAssetId();
+        this.specificAssetIds = x.getSpecificAssetIds();
+    }
 
     @Override
     public int hashCode() {
