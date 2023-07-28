@@ -52,15 +52,6 @@ public class TestDataHelper {
         return createReference(ReferenceTypes.EXTERNAL_REFERENCE, KeyTypes.GLOBAL_REFERENCE, value);
     }
 
-    public static DefaultEndpoint.Builder createEndpointBuilder() {
-
-        String DEFAULT_INTERFACE_VALUE = "defaultInterface";
-
-        return new DefaultEndpoint.Builder()
-                .protocolInformation(createProtocolInformationBuilder().build())
-                .withInterface(DEFAULT_INTERFACE_VALUE);
-    }
-
     public static Key createKey(KeyTypes type, String value) {
         return new DefaultKey.Builder().type(type).value(value).build();
     }

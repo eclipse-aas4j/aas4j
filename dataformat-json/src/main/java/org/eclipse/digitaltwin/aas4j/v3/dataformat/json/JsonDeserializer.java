@@ -42,7 +42,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
-public class JsonDeserializer implements Deserializer, ReferableDeserializer, ReferenceDeserializer, SpecificAssetIdDeserializer, SubmodelDescriptorDeserializer, AssetAdministrationShellDescriptorDeserializer {
+public class JsonDeserializer implements Deserializer, ReferableDeserializer, ReferenceDeserializer, SpecificAssetIdDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
@@ -189,41 +189,4 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
-    public SubmodelDescriptor readSubmodelDescriptor(String submodelDescriptor) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(submodelDescriptor), SubmodelDescriptor.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the SubmodelDescriptor", ex);
-        }
-    }
-
-    @Override
-    public List<SubmodelDescriptor> readSubmodelDescriptors(String submodelDescriptors) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(submodelDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SubmodelDescriptor>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of SubmodelDescriptors", ex);
-        }
-    }
-
-    @Override
-    public AssetAdministrationShellDescriptor readAssetAdministrationShellDescriptor(String assetAdministrationShellDescriptor) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(assetAdministrationShellDescriptor), AssetAdministrationShellDescriptor.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the AssetAdministrationShellDescriptor", ex);
-        }
-    }
-
-    @Override
-    public List<AssetAdministrationShellDescriptor> readAssetAdministrationShellDescriptors(String assetAdministrationShellDescriptors) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(assetAdministrationShellDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<AssetAdministrationShellDescriptor>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of AssetAdministrationShellDescriptors", ex);
-        }
-    }
 }

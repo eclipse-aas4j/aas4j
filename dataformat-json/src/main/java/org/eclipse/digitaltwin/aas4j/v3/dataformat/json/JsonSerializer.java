@@ -37,7 +37,7 @@ import java.util.List;
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to
  * JSON.
  */
-public class JsonSerializer implements Serializer, ReferableSerializer, ReferenceSerializer, SpecificAssetIdSerializer, SubmodelDescriptorSerializer, AssetAdministrationShellDescriptorSerializer {
+public class JsonSerializer implements Serializer, ReferableSerializer, ReferenceSerializer, SpecificAssetIdSerializer {
 
     protected JsonMapper mapper;
 
@@ -155,58 +155,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of SpecificAssetIds", ex);
-        }
-    }
-
-    @Override
-    public String writeSubmodelDescriptor(SubmodelDescriptor submodelDescriptor) throws SerializationException {
-        try {
-            return mapper.writeValueAsString(mapper.valueToTree(submodelDescriptor));
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing SubmodelDescriptor", ex);
-        }
-    }
-
-    @Override
-    public String writeSubmodelDescriptors(List<SubmodelDescriptor> submodelDescriptors) throws SerializationException {
-        if(submodelDescriptors.isEmpty()){
-            return null;
-        }
-
-        try {
-            ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, SubmodelDescriptor.class));
-            String json = objectWriter.writeValueAsString(submodelDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
-
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing list of SubmodelDescriptors", ex);
-        }
-    }
-
-    @Override
-    public String writeAssetAdministrationShellDescriptor(AssetAdministrationShellDescriptor assetAdministrationShellDescriptor) throws SerializationException {
-        try {
-            return mapper.writeValueAsString(mapper.valueToTree(assetAdministrationShellDescriptor));
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing AssetAdministrationShellDescriptor", ex);
-        }
-    }
-
-    @Override
-    public String writeAssetAdministrationShellDescriptors(List<AssetAdministrationShellDescriptor> assetAdministrationShellDescriptors) throws SerializationException {
-        if(assetAdministrationShellDescriptors.isEmpty()){
-            return null;
-        }
-
-        try {
-            ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, AssetAdministrationShellDescriptor.class));
-            String json = objectWriter.writeValueAsString(assetAdministrationShellDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
-
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing list of AssetAdministrationShellDescriptors", ex);
         }
     }
 
