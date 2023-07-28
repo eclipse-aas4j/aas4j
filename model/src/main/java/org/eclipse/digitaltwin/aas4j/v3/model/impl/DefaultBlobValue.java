@@ -39,11 +39,6 @@ public class DefaultBlobValue implements BlobValue {
 
     public DefaultBlobValue() {}
 
-    public DefaultBlobValue(BlobValue x) {
-        this.mimeType = x.getMimeType();
-        this.value = x.getValue();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.mimeType,

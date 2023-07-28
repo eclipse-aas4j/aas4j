@@ -38,10 +38,6 @@ public class DefaultBasicEventElementValue implements BasicEventElementValue {
 
     public DefaultBasicEventElementValue() {}
 
-    public DefaultBasicEventElementValue(BasicEventElementValue x) {
-        this.observed = x.getObserved();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.observed);

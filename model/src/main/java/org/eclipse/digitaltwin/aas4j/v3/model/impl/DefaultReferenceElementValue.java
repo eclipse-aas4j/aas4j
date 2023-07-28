@@ -38,10 +38,6 @@ public class DefaultReferenceElementValue implements ReferenceElementValue {
 
     public DefaultReferenceElementValue() {}
 
-    public DefaultReferenceElementValue(ReferenceElementValue x) {
-        this.outputArguments = x.getOutputArguments();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.outputArguments);

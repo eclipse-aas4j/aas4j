@@ -39,11 +39,6 @@ public class DefaultRelationshipElementValue implements RelationshipElementValue
 
     public DefaultRelationshipElementValue() {}
 
-    public DefaultRelationshipElementValue(RelationshipElementValue x) {
-        this.first = x.getFirst();
-        this.second = x.getSecond();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.first,

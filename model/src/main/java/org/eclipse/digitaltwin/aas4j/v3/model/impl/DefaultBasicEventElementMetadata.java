@@ -87,26 +87,6 @@ public class DefaultBasicEventElementMetadata implements BasicEventElementMetada
 
     public DefaultBasicEventElementMetadata() {}
 
-    public DefaultBasicEventElementMetadata(BasicEventElementMetadata x) {
-        this.direction = x.getDirection();
-        this.lastUpdate = x.getLastUpdate();
-        this.maxInterval = x.getMaxInterval();
-        this.messageBroker = x.getMessageBroker();
-        this.messageTopic = x.getMessageTopic();
-        this.minInterval = x.getMinInterval();
-        this.state = x.getState();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-        this.kind = x.getKind();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.direction,

@@ -69,20 +69,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
 
     public DefaultAssetAdministrationShell() {}
 
-    public DefaultAssetAdministrationShell(AssetAdministrationShell x) {
-        this.assetInformation = x.getAssetInformation();
-        this.derivedFrom = x.getDerivedFrom();
-        this.submodels = x.getSubmodels();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.derivedFrom,

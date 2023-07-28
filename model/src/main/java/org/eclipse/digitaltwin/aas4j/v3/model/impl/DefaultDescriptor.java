@@ -44,12 +44,6 @@ public class DefaultDescriptor implements Descriptor {
 
     public DefaultDescriptor() {}
 
-    public DefaultDescriptor(Descriptor x) {
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.extensions = x.getExtensions();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.description,

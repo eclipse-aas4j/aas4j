@@ -75,22 +75,6 @@ public class DefaultEntity implements Entity {
 
     public DefaultEntity() {}
 
-    public DefaultEntity(Entity x) {
-        this.entityType = x.getEntityType();
-        this.globalAssetId = x.getGlobalAssetId();
-        this.specificAssetIds = x.getSpecificAssetIds();
-        this.statements = x.getStatements();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.statements,

@@ -50,14 +50,6 @@ public class DefaultOperationResultValueOnly implements OperationResultValueOnly
 
     public DefaultOperationResultValueOnly() {}
 
-    public DefaultOperationResultValueOnly(OperationResultValueOnly x) {
-        this.executionResult = x.getExecutionResult();
-        this.executionState = x.getExecutionState();
-        this.inoutputArguments = x.getInoutputArguments();
-        this.outputArguments = x.getOutputArguments();
-        this.requestId = x.getRequestId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.executionResult,

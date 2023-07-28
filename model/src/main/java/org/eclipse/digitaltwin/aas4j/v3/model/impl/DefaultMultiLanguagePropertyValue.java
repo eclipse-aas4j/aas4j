@@ -34,10 +34,6 @@ public class DefaultMultiLanguagePropertyValue implements MultiLanguagePropertyV
 
     public DefaultMultiLanguagePropertyValue() {}
 
-    public DefaultMultiLanguagePropertyValue(MultiLanguagePropertyValue x) {
-
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());

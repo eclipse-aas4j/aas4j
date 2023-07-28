@@ -38,10 +38,6 @@ public class DefaultOperationVariable implements OperationVariable {
 
     public DefaultOperationVariable() {}
 
-    public DefaultOperationVariable(OperationVariable x) {
-        this.value = x.getValue();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.value);

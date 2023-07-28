@@ -78,23 +78,6 @@ public class DefaultSubmodelElementListMetadata implements SubmodelElementListMe
 
     public DefaultSubmodelElementListMetadata() {}
 
-    public DefaultSubmodelElementListMetadata(SubmodelElementListMetadata x) {
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-        this.kind = x.getKind();
-        this.orderRelevant = x.getOrderRelevant();
-        this.semanticIdListElement = x.getSemanticIdListElement();
-        this.typeValueListElement = x.getTypeValueListElement();
-        this.valueTypeListElement = x.getValueTypeListElement();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.orderRelevant,

@@ -41,11 +41,6 @@ public class DefaultResource implements Resource {
 
     public DefaultResource() {}
 
-    public DefaultResource(Resource x) {
-        this.contentType = x.getContentType();
-        this.path = x.getPath();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.path,

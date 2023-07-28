@@ -72,21 +72,6 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
 
     public DefaultAssetAdministrationShellDescriptor() {}
 
-    public DefaultAssetAdministrationShellDescriptor(AssetAdministrationShellDescriptor x) {
-        this.administration = x.getAdministration();
-        this.assetKind = x.getAssetKind();
-        this.assetType = x.getAssetType();
-        this.endpoints = x.getEndpoints();
-        this.globalAssetId = x.getGlobalAssetId();
-        this.id = x.getId();
-        this.idShort = x.getIdShort();
-        this.specificAssetIds = x.getSpecificAssetIds();
-        this.submodelDescriptors = x.getSubmodelDescriptors();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.extensions = x.getExtensions();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.administration,

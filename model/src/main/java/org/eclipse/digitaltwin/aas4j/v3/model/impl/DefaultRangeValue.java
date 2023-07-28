@@ -40,11 +40,6 @@ public class DefaultRangeValue implements RangeValue {
 
     public DefaultRangeValue() {}
 
-    public DefaultRangeValue(RangeValue x) {
-        this.max = x.getMax();
-        this.min = x.getMin();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.max,

@@ -71,21 +71,6 @@ public class DefaultSubmodelMetadata implements SubmodelMetadata {
 
     public DefaultSubmodelMetadata() {}
 
-    public DefaultSubmodelMetadata(SubmodelMetadata x) {
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-        this.kind = x.getKind();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.kind,

@@ -47,13 +47,6 @@ public class DefaultEntityValue implements EntityValue {
 
     public DefaultEntityValue() {}
 
-    public DefaultEntityValue(EntityValue x) {
-        this.entityType = x.getEntityType();
-        this.globalAssetId = x.getGlobalAssetId();
-        this.specificAssetIds = x.getSpecificAssetIds();
-        this.statements = x.getStatements();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.entityType,

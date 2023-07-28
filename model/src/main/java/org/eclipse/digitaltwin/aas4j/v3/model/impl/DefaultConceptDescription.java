@@ -64,18 +64,6 @@ public class DefaultConceptDescription implements ConceptDescription {
 
     public DefaultConceptDescription() {}
 
-    public DefaultConceptDescription(ConceptDescription x) {
-        this.isCaseOf = x.getIsCaseOf();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.isCaseOf,

@@ -60,16 +60,6 @@ public class DefaultQualifier implements Qualifier {
         this.kind = QualifierKind.CONCEPT_QUALIFIER;
     }
 
-    public DefaultQualifier(Qualifier x) {
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.kind = x.getKind();
-        this.type = x.getType();
-        this.value = x.getValue();
-        this.valueId = x.getValueId();
-        this.valueType = x.getValueType();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.kind,

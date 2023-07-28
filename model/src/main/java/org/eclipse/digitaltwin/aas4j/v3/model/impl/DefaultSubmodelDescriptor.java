@@ -62,18 +62,6 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
 
     public DefaultSubmodelDescriptor() {}
 
-    public DefaultSubmodelDescriptor(SubmodelDescriptor x) {
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.endpoints = x.getEndpoints();
-        this.id = x.getId();
-        this.idShort = x.getIdShort();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticId = x.getSupplementalSemanticId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.administration,

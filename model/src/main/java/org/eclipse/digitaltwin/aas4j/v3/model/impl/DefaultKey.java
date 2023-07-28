@@ -40,11 +40,6 @@ public class DefaultKey implements Key {
 
     public DefaultKey() {}
 
-    public DefaultKey(Key x) {
-        this.type = x.getType();
-        this.value = x.getValue();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.type,

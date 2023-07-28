@@ -33,10 +33,6 @@ public class DefaultStringValue implements StringValue {
 
     public DefaultStringValue() {}
 
-    public DefaultStringValue(StringValue x) {
-
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());

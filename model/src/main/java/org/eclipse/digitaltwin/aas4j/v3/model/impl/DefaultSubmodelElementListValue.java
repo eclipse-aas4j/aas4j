@@ -33,10 +33,6 @@ public class DefaultSubmodelElementListValue implements SubmodelElementListValue
 
     public DefaultSubmodelElementListValue() {}
 
-    public DefaultSubmodelElementListValue(SubmodelElementListValue x) {
-
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());

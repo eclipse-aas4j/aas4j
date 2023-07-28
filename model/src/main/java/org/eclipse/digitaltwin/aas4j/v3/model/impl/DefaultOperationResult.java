@@ -48,14 +48,6 @@ public class DefaultOperationResult implements OperationResult {
 
     public DefaultOperationResult() {}
 
-    public DefaultOperationResult(OperationResult x) {
-        this.executionResult = x.getExecutionResult();
-        this.executionState = x.getExecutionState();
-        this.inoutputArguments = x.getInoutputArguments();
-        this.outputArguments = x.getOutputArguments();
-        this.requestId = x.getRequestId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.executionResult,

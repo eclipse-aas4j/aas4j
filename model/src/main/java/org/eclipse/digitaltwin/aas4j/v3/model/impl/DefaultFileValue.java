@@ -39,11 +39,6 @@ public class DefaultFileValue implements FileValue {
 
     public DefaultFileValue() {}
 
-    public DefaultFileValue(FileValue x) {
-        this.contentType = x.getContentType();
-        this.value = x.getValue();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.contentType,

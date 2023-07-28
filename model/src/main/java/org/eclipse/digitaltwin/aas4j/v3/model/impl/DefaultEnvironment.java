@@ -45,12 +45,6 @@ public class DefaultEnvironment implements Environment {
 
     public DefaultEnvironment() {}
 
-    public DefaultEnvironment(Environment x) {
-        this.assetAdministrationShells = x.getAssetAdministrationShells();
-        this.conceptDescriptions = x.getConceptDescriptions();
-        this.submodels = x.getSubmodels();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.assetAdministrationShells,

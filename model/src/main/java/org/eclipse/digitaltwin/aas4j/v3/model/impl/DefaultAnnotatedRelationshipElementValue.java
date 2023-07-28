@@ -45,12 +45,6 @@ public class DefaultAnnotatedRelationshipElementValue implements AnnotatedRelati
 
     public DefaultAnnotatedRelationshipElementValue() {}
 
-    public DefaultAnnotatedRelationshipElementValue(AnnotatedRelationshipElementValue x) {
-        this.annotation = x.getAnnotation();
-        this.first = x.getFirst();
-        this.second = x.getSecond();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.first,

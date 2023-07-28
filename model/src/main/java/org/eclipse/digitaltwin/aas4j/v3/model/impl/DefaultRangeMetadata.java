@@ -68,20 +68,6 @@ public class DefaultRangeMetadata implements RangeMetadata {
 
     public DefaultRangeMetadata() {}
 
-    public DefaultRangeMetadata(RangeMetadata x) {
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.qualifiers = x.getQualifiers();
-        this.valueType = x.getValueType();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-        this.kind = x.getKind();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.valueType,

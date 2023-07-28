@@ -40,11 +40,6 @@ public class DefaultLangStringTextType implements LangStringTextType {
 
     public DefaultLangStringTextType() {}
 
-    public DefaultLangStringTextType(LangStringTextType x) {
-        this.language = x.getLanguage();
-        this.text = x.getText();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.language,

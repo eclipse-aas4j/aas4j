@@ -63,18 +63,6 @@ public class DefaultAssetAdministrationShellMetadata implements AssetAdministrat
 
     public DefaultAssetAdministrationShellMetadata() {}
 
-    public DefaultAssetAdministrationShellMetadata(AssetAdministrationShellMetadata x) {
-        this.derivedFrom = x.getDerivedFrom();
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.administration = x.getAdministration();
-        this.id = x.getId();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.derivedFrom,

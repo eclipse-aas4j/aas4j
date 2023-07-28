@@ -41,11 +41,6 @@ public class DefaultResult implements Result {
 
     public DefaultResult() {}
 
-    public DefaultResult(Result x) {
-        this.messages = x.getMessages();
-        this.success = x.getSuccess();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.messages,

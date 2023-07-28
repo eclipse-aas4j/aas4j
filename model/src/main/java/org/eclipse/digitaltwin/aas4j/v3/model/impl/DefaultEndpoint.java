@@ -39,11 +39,6 @@ public class DefaultEndpoint implements Endpoint {
 
     public DefaultEndpoint() {}
 
-    public DefaultEndpoint(Endpoint x) {
-        this._interface = x.get_interface();
-        this.protocolInformation = x.getProtocolInformation();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this._interface,

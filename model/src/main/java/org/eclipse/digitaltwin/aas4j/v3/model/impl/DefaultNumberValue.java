@@ -33,10 +33,6 @@ public class DefaultNumberValue implements NumberValue {
 
     public DefaultNumberValue() {}
 
-    public DefaultNumberValue(NumberValue x) {
-
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode());

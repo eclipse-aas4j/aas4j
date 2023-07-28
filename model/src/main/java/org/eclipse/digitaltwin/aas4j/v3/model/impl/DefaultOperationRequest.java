@@ -46,13 +46,6 @@ public class DefaultOperationRequest implements OperationRequest {
 
     public DefaultOperationRequest() {}
 
-    public DefaultOperationRequest(OperationRequest x) {
-        this.inoutputArguments = x.getInoutputArguments();
-        this.inputArguments = x.getInputArguments();
-        this.requestId = x.getRequestId();
-        this.timeout = x.getTimeout();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.inoutputArguments,

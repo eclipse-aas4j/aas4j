@@ -41,11 +41,6 @@ public class DefaultPackageDescription implements PackageDescription {
 
     public DefaultPackageDescription() {}
 
-    public DefaultPackageDescription(PackageDescription x) {
-        this.items = x.getItems();
-        this.packageId = x.getPackageId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.items,

@@ -39,11 +39,6 @@ public class DefaultOperationHandle implements OperationHandle {
 
     public DefaultOperationHandle() {}
 
-    public DefaultOperationHandle(OperationHandle x) {
-        this.handleId = x.getHandleId();
-        this.requestId = x.getRequestId();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.handleId,

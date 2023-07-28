@@ -41,11 +41,6 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
 
     public DefaultEmbeddedDataSpecification() {}
 
-    public DefaultEmbeddedDataSpecification(EmbeddedDataSpecification x) {
-        this.dataSpecification = x.getDataSpecification();
-        this.dataSpecificationContent = x.getDataSpecificationContent();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.dataSpecification,

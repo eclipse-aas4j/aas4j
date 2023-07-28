@@ -53,15 +53,6 @@ public class DefaultProtocolInformation implements ProtocolInformation {
 
     public DefaultProtocolInformation() {}
 
-    public DefaultProtocolInformation(ProtocolInformation x) {
-        this.endpointProtocol = x.getEndpointProtocol();
-        this.endpointProtocolVersion = x.getEndpointProtocolVersion();
-        this.href = x.getHref();
-        this.subprotocol = x.getSubprotocol();
-        this.subprotocolBody = x.getSubprotocolBody();
-        this.subprotocolBodyEncoding = x.getSubprotocolBodyEncoding();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.href,

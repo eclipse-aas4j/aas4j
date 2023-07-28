@@ -41,11 +41,6 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
 
     public DefaultLangStringShortNameTypeIec61360() {}
 
-    public DefaultLangStringShortNameTypeIec61360(LangStringShortNameTypeIec61360 x) {
-        this.language = x.getLanguage();
-        this.text = x.getText();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.language,

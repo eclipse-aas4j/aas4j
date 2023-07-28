@@ -74,21 +74,6 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
 
     public DefaultDataSpecificationIec61360() {}
 
-    public DefaultDataSpecificationIec61360(DataSpecificationIec61360 x) {
-        this.dataType = x.getDataType();
-        this.definition = x.getDefinition();
-        this.levelType = x.getLevelType();
-        this.preferredName = x.getPreferredName();
-        this.shortName = x.getShortName();
-        this.sourceOfDefinition = x.getSourceOfDefinition();
-        this.symbol = x.getSymbol();
-        this.unit = x.getUnit();
-        this.unitId = x.getUnitId();
-        this.value = x.getValue();
-        this.valueFormat = x.getValueFormat();
-        this.valueList = x.getValueList();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.preferredName,

@@ -45,13 +45,6 @@ public class DefaultMessage implements Message {
 
     public DefaultMessage() {}
 
-    public DefaultMessage(Message x) {
-        this.code = x.getCode();
-        this.messageType = x.getMessageType();
-        this.text = x.getText();
-        this.timestamp = x.getTimestamp();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.code,

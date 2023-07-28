@@ -72,21 +72,6 @@ public class DefaultOperation implements Operation {
 
     public DefaultOperation() {}
 
-    public DefaultOperation(Operation x) {
-        this.embeddedDataSpecifications = x.getEmbeddedDataSpecifications();
-        this.extensions = x.getExtensions();
-        this.semanticId = x.getSemanticId();
-        this.supplementalSemanticIds = x.getSupplementalSemanticIds();
-        this.inoutputVariables = x.getInoutputVariables();
-        this.inputVariables = x.getInputVariables();
-        this.outputVariables = x.getOutputVariables();
-        this.qualifiers = x.getQualifiers();
-        this.category = x.getCategory();
-        this.description = x.getDescription();
-        this.displayName = x.getDisplayName();
-        this.idShort = x.getIdShort();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.inputVariables,

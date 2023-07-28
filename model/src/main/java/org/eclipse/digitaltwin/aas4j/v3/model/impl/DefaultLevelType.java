@@ -47,13 +47,6 @@ public class DefaultLevelType implements LevelType {
 
     public DefaultLevelType() {}
 
-    public DefaultLevelType(LevelType x) {
-        this.max = x.getMax();
-        this.min = x.getMin();
-        this.nom = x.getNom();
-        this.typ = x.getTyp();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.min,
