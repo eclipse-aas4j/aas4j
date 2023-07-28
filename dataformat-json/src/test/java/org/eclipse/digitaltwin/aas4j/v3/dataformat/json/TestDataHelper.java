@@ -58,7 +58,7 @@ public class TestDataHelper {
 
         return new DefaultEndpoint.Builder()
                 .protocolInformation(createProtocolInformationBuilder().build())
-                .withInterface(DEFAULT_INTERFACE_VALUE);
+                ._interface(DEFAULT_INTERFACE_VALUE);
     }
 
     public static Key createKey(KeyTypes type, String value) {

@@ -26,42 +26,42 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 /**
 */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEndpoint.class)
+    @KnownSubtypes.Type(value = DefaultBlobValue.class)
 })
-public interface Endpoint {
+public interface BlobValue {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/BlobValue/mimeType
      *
-     * @return Returns the String for the property _interface.
+     * @return Returns the String for the property mimeType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
-    String get_interface();
+    @IRI("https://admin-shell.io/aas/3/0/BlobValue/mimeType")
+    String getMimeType();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/BlobValue/mimeType
      *
-     * @param _interface desired value for the property _interface.
+     * @param mimeType desired value for the property mimeType.
      */
-    void set_interface(String _interface);
+    void setMimeType(String mimeType);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/BlobValue/value
      *
-     * @return Returns the ProtocolInformation for the property protocolInformation.
+     * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
-    ProtocolInformation getProtocolInformation();
+    @IRI("https://admin-shell.io/aas/3/0/BlobValue/value")
+    String getValue();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/BlobValue/value
      *
-     * @param protocolInformation desired value for the property protocolInformation.
+     * @param value desired value for the property value.
      */
-    void setProtocolInformation(ProtocolInformation protocolInformation);
+    void setValue(String value);
 
 }

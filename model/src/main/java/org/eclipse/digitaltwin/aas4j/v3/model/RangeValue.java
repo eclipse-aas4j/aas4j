@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.math.BigInteger;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -26,42 +27,42 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 /**
 */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEndpoint.class)
+    @KnownSubtypes.Type(value = DefaultRangeValue.class)
 })
-public interface Endpoint {
+public interface RangeValue {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/RangeValue/max
      *
-     * @return Returns the String for the property _interface.
+     * @return Returns the BigInteger for the property max.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
-    String get_interface();
+    @IRI("https://admin-shell.io/aas/3/0/RangeValue/max")
+    BigInteger getMax();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/RangeValue/max
      *
-     * @param _interface desired value for the property _interface.
+     * @param max desired value for the property max.
      */
-    void set_interface(String _interface);
+    void setMax(BigInteger max);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/RangeValue/min
      *
-     * @return Returns the ProtocolInformation for the property protocolInformation.
+     * @return Returns the BigInteger for the property min.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
-    ProtocolInformation getProtocolInformation();
+    @IRI("https://admin-shell.io/aas/3/0/RangeValue/min")
+    BigInteger getMin();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/RangeValue/min
      *
-     * @param protocolInformation desired value for the property protocolInformation.
+     * @param min desired value for the property min.
      */
-    void setProtocolInformation(ProtocolInformation protocolInformation);
+    void setMin(BigInteger min);
 
 }

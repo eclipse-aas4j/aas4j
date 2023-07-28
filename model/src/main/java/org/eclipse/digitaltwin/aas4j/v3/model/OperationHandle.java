@@ -26,42 +26,42 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 /**
 */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEndpoint.class)
+    @KnownSubtypes.Type(value = DefaultOperationHandle.class)
 })
-public interface Endpoint {
+public interface OperationHandle {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/OperationHandle/handleId
      *
-     * @return Returns the String for the property _interface.
+     * @return Returns the String for the property handleId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
-    String get_interface();
+    @IRI("https://admin-shell.io/aas/3/0/OperationHandle/handleId")
+    String getHandleId();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/OperationHandle/handleId
      *
-     * @param _interface desired value for the property _interface.
+     * @param handleId desired value for the property handleId.
      */
-    void set_interface(String _interface);
+    void setHandleId(String handleId);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/OperationHandle/requestId
      *
-     * @return Returns the ProtocolInformation for the property protocolInformation.
+     * @return Returns the String for the property requestId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
-    ProtocolInformation getProtocolInformation();
+    @IRI("https://admin-shell.io/aas/3/0/OperationHandle/requestId")
+    String getRequestId();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/OperationHandle/requestId
      *
-     * @param protocolInformation desired value for the property protocolInformation.
+     * @param requestId desired value for the property requestId.
      */
-    void setProtocolInformation(ProtocolInformation protocolInformation);
+    void setRequestId(String requestId);
 
 }

@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -26,42 +27,42 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 /**
 */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEndpoint.class)
+    @KnownSubtypes.Type(value = DefaultResult.class)
 })
-public interface Endpoint {
+public interface Result {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/Result/messages
      *
-     * @return Returns the String for the property _interface.
+     * @return Returns the List of Messages for the property messages.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
-    String get_interface();
+    @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+    List<Message> getMessages();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/0/Result/messages
      *
-     * @param _interface desired value for the property _interface.
+     * @param messages desired value for the property messages.
      */
-    void set_interface(String _interface);
+    void setMessages(List<Message> messages);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/Result/success
      *
-     * @return Returns the ProtocolInformation for the property protocolInformation.
+     * @return Returns the boolean for the property success.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
-    ProtocolInformation getProtocolInformation();
+    @IRI("https://admin-shell.io/aas/3/0/Result/success")
+    boolean getSuccess();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/0/Result/success
      *
-     * @param protocolInformation desired value for the property protocolInformation.
+     * @param success desired value for the property success.
      */
-    void setProtocolInformation(ProtocolInformation protocolInformation);
+    void setSuccess(boolean success);
 
 }
