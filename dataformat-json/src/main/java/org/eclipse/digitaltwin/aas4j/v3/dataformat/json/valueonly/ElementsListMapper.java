@@ -15,52 +15,51 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-
 import com.fasterxml.jackson.databind.node.NullNode;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
-import java.util.List;
 
 /**
  * SubmodelElementList is serialized as a JSON array with the index of the contained SubmodelElement in the list as the
  * position in the JSON array. The elements contained within the list are serialized according to their respective type.
  */
-class ElementsListMapper extends ElementsCollectionMapper {
-    ElementsListMapper(List<SubmodelElement> elements, String idShortPath) {
-        super(elements, idShortPath);
+class ElementsListMapper<T extends Referable> extends AbstractListMapper<T> {
+    ElementsListMapper(T elementList, List<SubmodelElement> values, String idShortPath) {
+        super(elementList, values, idShortPath);
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ArrayNode arrayNode = JsonNodeFactory.instance.arrayNode();
-        for(int i = 0; i < element.size(); i++) {
-            SubmodelElement submodelElement = element.get(i);
-            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "[" + i + "]");
+        for (int i = 0; i < values.size(); i++) {
+            SubmodelElement submodelElement = values.get(i);
+            ValueOnlyMapper mapper = ValueOnlyMapper.createMapper(submodelElement, idShortPath + "[" + i + "]");
             arrayNode.add(mapper == null ? NullNode.instance : mapper.toJson());
         }
         return arrayNode;
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         if(!valueOnly.isArray()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the submodel elements list at idShort path '" + idShortPath +
                 "', as the corresponding value-only is not a JSON array.", idShortPath);
         }
         ArrayNode arrayNode = (ArrayNode) valueOnly;
-        if(arrayNode.size() != element.size()) {
+        if (arrayNode.size() != values.size()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the submodel elements list at idShort path '" + idShortPath +
                 "', as the corresponding value-only array has different size.", idShortPath);
         }
         for (int i = 0; i < arrayNode.size(); i++ ) {
-            SubmodelElement submodelElement = element.get(i);
-            AbstractMapper mapper = createMapper(submodelElement, idShortPath + "[" + i + "]");
+            SubmodelElement submodelElement = values.get(i);
+            ValueOnlyMapper mapper = ValueOnlyMapper.createMapper(submodelElement, idShortPath + "[" + i + "]");
             mapper.update(arrayNode.get(i));
         }
     }

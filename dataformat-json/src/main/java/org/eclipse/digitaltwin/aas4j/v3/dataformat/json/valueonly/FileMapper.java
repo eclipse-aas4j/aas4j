@@ -15,13 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
-
-import java.util.Base64;
 
 /**
  * File is serialized as named JSON object with ${File/idShort} as the name of the containing JSON property. The JSON
@@ -40,7 +38,7 @@ class FileMapper extends AbstractMapper<File> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(CONTENT_TYPE, new TextNode(element.getContentType()));
         node.set(VALUE, new TextNode(element.getValue()));
@@ -48,7 +46,7 @@ class FileMapper extends AbstractMapper<File> {
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         JsonNode contentNode = valueOnly.get(CONTENT_TYPE);
         if(contentNode == null || contentNode.isNull()) {
             element.setContentType(null);
@@ -62,7 +60,7 @@ class FileMapper extends AbstractMapper<File> {
         JsonNode valueNode = valueOnly.get(VALUE);
         if(valueNode == null || valueNode.isNull()) {
             element.setValue(null);
-        } else if(contentNode.isTextual()) {
+        } else if(contentNode != null && contentNode.isTextual()) {
             element.setValue(valueNode.textValue());
         } else {
             throw new ValueOnlySerializationException(

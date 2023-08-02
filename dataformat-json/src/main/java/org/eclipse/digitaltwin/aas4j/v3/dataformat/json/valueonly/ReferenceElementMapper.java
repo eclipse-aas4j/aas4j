@@ -15,9 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * ReferenceElement is serialized as ${ReferenceElement/idShort}: ${ReferenceElement/value} where
@@ -30,12 +29,14 @@ class ReferenceElementMapper extends AbstractMapper<ReferenceElement> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
-        return new JsonValueOnlySerialiser().toJson(element.getValue());
+    public JsonNode toJson() throws ValueOnlySerializationException {
+        JsonNode value = new JsonValueOnlySerialiser().toJson(element.getValue());
+        return asValueNode(value);
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setValue(new JsonValueOnlyDeserialiser().deserialiseReference(valueOnly, idShortPath));
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        JsonNode reference = valueFromNode("Cannot update ReferenceElement", idShortPath, valueOnly);
+        element.setValue(new JsonValueOnlyDeserialiser().deserialiseReference(reference, idShortPath));
     }
 }

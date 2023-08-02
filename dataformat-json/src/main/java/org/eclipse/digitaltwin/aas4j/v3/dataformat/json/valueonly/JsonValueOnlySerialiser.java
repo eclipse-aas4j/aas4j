@@ -15,13 +15,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * This class implements the value-only Serialization in JSON format, as described in section 11.4.2 of <a
@@ -55,7 +54,6 @@ public class JsonValueOnlySerialiser extends JsonSerializer {
 
     }
 
-
     /**
      * The default constructor creates a value-only mapper which serializes and deserializes submodels and submodel
      * elements to a compact value-only JSON string.
@@ -78,9 +76,9 @@ public class JsonValueOnlySerialiser extends JsonSerializer {
      * @return the corresponding value-only JSON string.
      */
     public String serialise(Submodel submodel) throws ValueOnlySerializationException {
-        ElementsCollectionMapper mapper = new ElementsCollectionMapper(submodel.getSubmodelElements(), "$");
+        SubmodelMapper mapper = new SubmodelMapper(submodel, "$");
         JsonNode node = mapper.toJson();
-        return prettyString ? node.toPrettyString() : node.toString();
+        return stringify(node);
     }
 
     /**
@@ -94,7 +92,7 @@ public class JsonValueOnlySerialiser extends JsonSerializer {
      */
     public void update(Submodel submodel, String valueOnly) throws ValueOnlySerializationException {
         JsonNode node = readTree(valueOnly);
-        ElementsCollectionMapper mapper = new ElementsCollectionMapper(submodel.getSubmodelElements(), "$");
+        SubmodelMapper mapper = new SubmodelMapper(submodel, "$");
         mapper.update(node);
     }
 
@@ -104,14 +102,14 @@ public class JsonValueOnlySerialiser extends JsonSerializer {
      * @return the corresponding value-only JSON string.
      */
     public String serialise(SubmodelElement element) throws ValueOnlySerializationException {
-        AbstractMapper mapper = ElementsCollectionMapper.createMapper(element, "$");
+        ValueOnlyMapper mapper = ValueOnlyMapper.createMapper(element, "$");
         if(mapper == null) {
             throw new ValueOnlySerializationException(
                 "Value-only serialization is not allowed for submodel elements of type '" + element.getClass() + "'.",
                 "$");
         }
         JsonNode node = mapper.toJson();
-        return prettyString ? node.toPrettyString() : node.toString();
+        return stringify(node);
     }
 
     /**
@@ -125,7 +123,11 @@ public class JsonValueOnlySerialiser extends JsonSerializer {
      */
     public void update(SubmodelElement element, String valueOnly) throws ValueOnlySerializationException {
         JsonNode node = readTree(valueOnly);
-        AbstractMapper mapper = ElementsCollectionMapper.createMapper(element, "$");
+        ValueOnlyMapper mapper = ValueOnlyMapper.createMapper(element, "$");
         mapper.update(node);
+    }
+
+    private String stringify(JsonNode node) {
+        return prettyString ? node.toPrettyString() : node.toString();
     }
 }

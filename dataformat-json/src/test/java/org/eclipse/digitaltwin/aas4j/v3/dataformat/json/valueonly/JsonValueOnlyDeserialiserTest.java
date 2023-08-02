@@ -16,6 +16,17 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
+import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.Range;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -31,92 +42,113 @@ public class JsonValueOnlyDeserialiserTest {
     @Test
     public void testUpdateSubmodel() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.SUBMODEL_UPDATED);
-        deserialiser.deserialise(TestData.SUBMODEL, valueOnly);
-        assertEquals(TestData.SUBMODEL_UPDATED, TestData.SUBMODEL);
+        Submodel actual = TestData.SUBMODEL.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.SUBMODEL_UPDATED, actual);
     }
 
     @Test
     public void testUpdateEntity() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.ENTITY_UPDATED);
-        deserialiser.deserialise(TestData.ENTITY, valueOnly);
-        assertEquals(TestData.ENTITY_UPDATED, TestData.ENTITY);
+        Entity actual = TestData.ENTITY.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.ENTITY_UPDATED, actual);
     }
 
     @Test
     public void testUpdateProperty() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.PROPERTY_INT_UPDATED);
-        deserialiser.deserialise(TestData.PROPERTY_INT, valueOnly);
-        assertEquals(TestData.PROPERTY_INT_UPDATED, TestData.PROPERTY_INT);
+        Property actual = TestData.PROPERTY_INT.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.PROPERTY_INT_UPDATED, actual);
     }
 
     @Test
     public void testUpdateRange() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.RANGE_DOUBLE_UPDATED);
-        deserialiser.deserialise(TestData.RANGE_DOUBLE, valueOnly);
-        assertEquals(TestData.RANGE_DOUBLE_UPDATED, TestData.RANGE_DOUBLE);
+        Range actual = TestData.RANGE_DOUBLE.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.RANGE_DOUBLE_UPDATED, actual);
     }
 
     @Test
     public void testUpdateBlob() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.BLOB_UPDATED);
-        deserialiser.deserialise(TestData.BLOB, valueOnly);
-        assertEquals(TestData.BLOB_UPDATED, TestData.BLOB);
+        Blob actual = TestData.BLOB.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.BLOB_UPDATED, actual);
     }
 
     @Test
     public void testUpdateFile() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.FILE_UPDATED);
-        deserialiser.deserialise(TestData.FILE, valueOnly);
-        assertEquals(TestData.FILE_UPDATED, TestData.FILE);
+        File actual = TestData.FILE.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.FILE_UPDATED, actual);
     }
 
     @Test
     public void testUpdateMultiLangProperty() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.MULTI_LANGUAGE_PROPERTY_UPDATED);
-        deserialiser.deserialise(TestData.MULTI_LANGUAGE_PROPERTY, valueOnly);
-        assertEquals(TestData.MULTI_LANGUAGE_PROPERTY_UPDATED, TestData.MULTI_LANGUAGE_PROPERTY);
+        MultiLanguageProperty actual = TestData.MULTI_LANGUAGE_PROPERTY.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.MULTI_LANGUAGE_PROPERTY_UPDATED, actual);
     }
 
     @Test
     public void testUpdatePropertyDouble() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.PROPERTY_DOUBLE_UPDATED);
-        deserialiser.deserialise(TestData.PROPERTY_DOUBLE, valueOnly);
-        assertEquals(TestData.PROPERTY_DOUBLE_UPDATED, TestData.PROPERTY_DOUBLE);
+        Property actual = TestData.PROPERTY_DOUBLE.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.PROPERTY_DOUBLE_UPDATED, actual);
     }
 
     @Test
     public void testUpdatePropertyDatetime() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.PROPERTY_DATETIME_UPDATED);
-        deserialiser.deserialise(TestData.PROPERTY_DATETIME, valueOnly);
-        assertEquals(TestData.PROPERTY_DATETIME_UPDATED, TestData.PROPERTY_DATETIME);
+        Property actual = TestData.PROPERTY_DATETIME.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.PROPERTY_DATETIME_UPDATED, actual);
+    }
+
+    @Test
+    public void testUpdatePropertyString() {
+        String valueOnly = serialiser.serialise(TestData.PROPERTY_STRING_UPDATED);
+        Property actual = TestData.PROPERTY_STRING.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.PROPERTY_STRING_UPDATED, actual);
     }
 
     @Test
     public void testUpdateRefElementGlobal() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.REFERENCE_ELEMENT_GLOBAL_UPDATED);
-        deserialiser.deserialise(TestData.REFERENCE_ELEMENT_GLOBAL, valueOnly);
-        assertEquals(TestData.REFERENCE_ELEMENT_GLOBAL_UPDATED, TestData.REFERENCE_ELEMENT_GLOBAL);
+        ReferenceElement actual = TestData.REFERENCE_ELEMENT_GLOBAL.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.REFERENCE_ELEMENT_GLOBAL_UPDATED, actual);
     }
 
     @Test
     public void testUpdateAnnotatedRelationshipElement() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.ANNOTATED_RELATIONSHIP_ELEMENT_UPDATED);
-        deserialiser.deserialise(TestData.ANNOTATED_RELATIONSHIP_ELEMENT, valueOnly);
-        assertEquals(TestData.ANNOTATED_RELATIONSHIP_ELEMENT_UPDATED, TestData.ANNOTATED_RELATIONSHIP_ELEMENT);
+        AnnotatedRelationshipElement actual = TestData.ANNOTATED_RELATIONSHIP_ELEMENT.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.ANNOTATED_RELATIONSHIP_ELEMENT_UPDATED, actual);
     }
 
     @Test
     public void testUpdateCollectionElement() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.ELEMENT_COLLECTION_UPDATED);
-        deserialiser.deserialise(TestData.ELEMENT_COLLECTION, valueOnly);
-        assertEquals(TestData.ELEMENT_COLLECTION_UPDATED, TestData.ELEMENT_COLLECTION);
+        SubmodelElementCollection actual = TestData.ELEMENT_COLLECTION.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.ELEMENT_COLLECTION_UPDATED, actual);
     }
 
     @Test
     public void testUpdateListElement() throws ValueOnlySerializationException {
         String valueOnly = serialiser.serialise(TestData.ELEMENT_LIST_UPDATED);
-        deserialiser.deserialise(TestData.ELEMENT_LIST, valueOnly);
-        assertEquals(TestData.ELEMENT_LIST_UPDATED, TestData.ELEMENT_LIST);
+        SubmodelElementList actual = TestData.ELEMENT_LIST.get();
+        deserialiser.deserialise(actual, valueOnly);
+        assertEquals(TestData.ELEMENT_LIST_UPDATED, actual);
     }
 
 }

@@ -1,37 +1,47 @@
 {
-  "propString" : "foo",
-  "rangeDouble" : {
-    "min" : 3.0,
-    "max" : 5.0
-  },
-  "entity1" : {
-    "statements": {
-      "maxRotationSpeed": 5000
+  "collection1": {
+    "propString": "foo",
+    "rangeDouble": {
+      "min": 3.0,
+      "max": 5.0
     },
-    "globalAssetId": "Global Asset Id",
-    "entityType": "SelfManagedEntity"
-  },
-  "relationship1" : {
-    "first" : {
-      "referredSemanticId" : {
-        "keys" : [ {
-          "type" : "ConceptDescription",
-          "value" : "Concept Description key value"
-        } ],
-        "type" : "ExternalReference"
+    "entity1": {
+      "statements": [
+        {
+          "maxRotationSpeed": 5000
+        }
+      ],
+      "globalAssetId": "Global Asset Id",
+      "entityType": "SelfManagedEntity"
+    },
+    "relationship1": {
+      "first": {
+        "referredSemanticId": {
+          "keys": [
+            {
+              "type": "ConceptDescription",
+              "value": "Concept Description key value"
+            }
+          ],
+          "type": "ExternalReference"
+        },
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "global reference key value"
+          }
+        ],
+        "type": "ExternalReference"
       },
-      "keys" : [ {
-        "type" : "GlobalReference",
-        "value" : "global reference key value"
-      } ],
-      "type" : "ExternalReference"
-    },
-    "second" : {
-      "keys" : [ {
-        "type" : "Property",
-        "value" : "MaxRotationSpeed"
-      } ],
-      "type" : "ModelReference"
+      "second": {
+        "keys": [
+          {
+            "type": "Property",
+            "value": "MaxRotationSpeed"
+          }
+        ],
+        "type": "ModelReference"
+      }
     }
   }
 }

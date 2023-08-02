@@ -15,9 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Property is serialized as ${Property/idShort}: ${Property/value} where ${Property/value} is the JSON serialization
@@ -30,9 +29,10 @@ class PropertyMapper extends AbstractMapper<Property> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         try {
-            return ValueConverter.convert(element.getValueType(), element.getValue());
+            JsonNode value = ValueConverter.convert(element.getValueType(), element.getValue());
+            return asValueNode(value);
         } catch (NumberFormatException ex) {
             throw new ValueOnlySerializationException("Cannot serialize the property with idShort path '" +
                 idShortPath + "': " + ex.getMessage(), idShortPath);
@@ -40,25 +40,8 @@ class PropertyMapper extends AbstractMapper<Property> {
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setValue(readValueAsString("Cannot update the property", idShortPath, valueOnly));
-    }
-
-    static String readValueAsString(String msg, String idShortPath, JsonNode valueOnly)
-        throws ValueOnlySerializationException {
-        if(valueOnly == null || valueOnly.isNull()) {
-            return null;
-        }
-        if(valueOnly.isObject()) {
-            throw new ValueOnlySerializationException(
-                msg + " at idShort path '" + idShortPath +
-                "', as the passed value is a JSON object.", idShortPath);
-        }
-        if(valueOnly.isArray()) {
-            throw new ValueOnlySerializationException(
-                msg + " at idShort path '" + idShortPath +
-                "', as the passed value is a JSON array.", idShortPath);
-        }
-        return valueOnly.asText();
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        JsonNode valueNode = valueFromNode("Cannot update the property", idShortPath, valueOnly);
+        element.setValue(readValueAsString("Cannot update the property", idShortPath, valueNode));
     }
 }

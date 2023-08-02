@@ -1,54 +1,64 @@
 [
-  "foo",
   {
-    "min" : 3.0,
-    "max" : 5.0
+    "propString": "foo"
   },
   {
-    "statements": {
-      "MaxRotationSpeed": 5000
-    },
-    "globalAssetId": "Global Asset Id",
-    "specificAssetIds": {
-      "firstIdType": "someId",
-      "secondIdType": "someOtherId"
-    },
-    "entityType": "SelfManagedEntity"
+    "rangeDouble": {
+      "min": 3.0,
+      "max": 5.0
+    }
   },
   {
-    "first" : {
-      "referredSemanticId" : {
-        "keys" : [
+    "entity1": {
+      "statements": [
+        {
+          "maxRotationSpeed": 5000
+        }
+      ],
+      "globalAssetId": "Global Asset Id",
+      "entityType": "SelfManagedEntity"
+    }
+  },
+  {
+    "annotatedRelationship1": {
+      "first": {
+        "referredSemanticId": {
+          "keys": [
+            {
+              "type": "ConceptDescription",
+              "value": "Concept Description key value"
+            }
+          ],
+          "type": "ExternalReference"
+        },
+        "keys": [
           {
-            "type" : "ConceptDescription",
-            "value" : "Concept Description key value"
+            "type": "GlobalReference",
+            "value": "global reference key value"
           }
         ],
-        "type" : "ExternalReference"
+        "type": "ExternalReference"
       },
-      "keys" : [
+      "second": {
+        "keys": [
+          {
+            "type": "Property",
+            "value": "MaxRotationSpeed"
+          }
+        ],
+        "type": "ModelReference"
+      },
+      "annotations": [
         {
-          "type" : "GlobalReference",
-          "value" : "global reference key value"
-        }
-      ],
-      "type" : "ExternalReference"
-    },
-    "second" : {
-      "keys" : [
+          "propDateTime": "2022-07-31T17:08:51Z"
+        },
         {
-          "type" : "Property",
-          "value" : "MaxRotationSpeed"
+          "rangeInt": {
+            "min": 17,
+            "max": 42
+          }
         }
-      ],
-      "type" : "ModelReference"
-    },
-    "annotations" : [
-      "2022-07-31T17:08:51Z",
-      {
-        "min" : 17,
-        "max" : 42
-      }
-    ]
+      ]
+    }
   }
 ]

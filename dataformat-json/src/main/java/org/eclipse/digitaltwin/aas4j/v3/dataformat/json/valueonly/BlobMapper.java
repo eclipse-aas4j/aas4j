@@ -15,13 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import java.util.Base64;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
-
-import java.util.Base64;
 
 /**
  * Blob is serialized as named JSON object with ${Blob/idShort} as the name of the containing JSON property. The JSON
@@ -40,7 +40,7 @@ class BlobMapper extends AbstractMapper<Blob> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(CONTENT_TYPE, new TextNode(element.getContentType()));
         node.set(VALUE, new TextNode(Base64.getEncoder().encodeToString(element.getValue())));
@@ -48,7 +48,7 @@ class BlobMapper extends AbstractMapper<Blob> {
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         JsonNode contentNode = valueOnly.get(CONTENT_TYPE);
         if(contentNode == null || contentNode.isNull()) {
             element.setContentType(null);
@@ -62,7 +62,7 @@ class BlobMapper extends AbstractMapper<Blob> {
         JsonNode valueNode = valueOnly.get(VALUE);
         if(valueNode == null || valueNode.isNull()) {
             element.setValue(null);
-        } else if(contentNode.isTextual()) {
+        } else if(contentNode != null && contentNode.isTextual()) {
             element.setValue(Base64.getDecoder().decode(valueNode.asText()));
         } else {
             throw new ValueOnlySerializationException(

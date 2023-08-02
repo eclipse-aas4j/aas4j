@@ -15,12 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.Range;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Range;
 
 /**
  * Range is serialized as named JSON object with ${Range/idShort} as the name of the containing JSON property. The JSON
@@ -36,13 +35,13 @@ class RangeMapper extends AbstractMapper<Range> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         try {
             ObjectNode node = JsonNodeFactory.instance.objectNode();
             DataTypeDefXsd valueType = element.getValueType();
             node.set(MIN, ValueConverter.convert(valueType, element.getMin()));
             node.set(MAX, ValueConverter.convert(valueType, element.getMax()));
-            return node;
+            return asValueNode(node);
         } catch (NumberFormatException ex) {
             throw new ValueOnlySerializationException("Cannot serialize the range with idShort path '" +
                 idShortPath + "': " + ex.getMessage(), idShortPath);
@@ -50,8 +49,9 @@ class RangeMapper extends AbstractMapper<Range> {
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
-        element.setMax(PropertyMapper.readValueAsString("Cannot update Range." + MAX, idShortPath, valueOnly.get(MAX)));
-        element.setMin(PropertyMapper.readValueAsString("Cannot update Range." + MIN, idShortPath, valueOnly.get(MIN)));
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+        JsonNode valueNode = valueFromNode("Cannot update Range", idShortPath, valueOnly);
+        element.setMax(readValueAsString("Cannot update Range." + MAX, idShortPath, valueNode.get(MAX)));
+        element.setMin(readValueAsString("Cannot update Range." + MIN, idShortPath, valueNode.get(MIN)));
     }
 }

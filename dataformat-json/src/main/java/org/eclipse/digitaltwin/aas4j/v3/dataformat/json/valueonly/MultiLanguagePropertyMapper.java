@@ -15,17 +15,17 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.NullNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
-
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * MultiLanguageProperty is serialized as named JSON object with ${MultiLanguageProperty/idShort} as the name of the
@@ -40,9 +40,9 @@ class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> 
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         List<LangStringTextType> langTexts = element.getValue();
-        if(langTexts == null || langTexts.size() == 0) {
+        if(langTexts == null || langTexts.isEmpty()) {
             return NullNode.instance;
         }
         ObjectNode node = JsonNodeFactory.instance.objectNode();
@@ -53,7 +53,7 @@ class MultiLanguagePropertyMapper extends AbstractMapper<MultiLanguageProperty> 
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         if(!valueOnly.isObject()) {
             throw new ValueOnlySerializationException(
                 "Cannot update the multi-language property at idShort path '" + idShortPath +

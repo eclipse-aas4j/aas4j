@@ -15,10 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
 
 /**
  * BasicEventElement is serialized as named JSON object with ${BasicEventElement/idShort} as the name of the containing
@@ -33,14 +33,14 @@ class BasicEventElementMapper extends AbstractMapper<BasicEventElement> {
     }
 
     @Override
-    JsonNode toJson() throws ValueOnlySerializationException {
+    public JsonNode toJson() throws ValueOnlySerializationException {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
         node.set(OBSERVED, new JsonValueOnlyDeserialiser().toJson(element.getObserved()));
         return node;
     }
 
     @Override
-    void update(JsonNode valueOnly) throws ValueOnlySerializationException {
+    public void update(JsonNode valueOnly) throws ValueOnlySerializationException {
         element.setObserved(new JsonValueOnlyDeserialiser().deserialiseReference(valueOnly.get(OBSERVED), idShortPath));
     }
 }
