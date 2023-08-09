@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -107,6 +108,13 @@ public class XmlSerializerTest {
     @Test
     public void serializeFull() throws SerializationException, SAXException {
         validateXmlSerializer(AASFULL_FILE, AASFull.createEnvironment());
+    }
+
+    @Test
+    public void serializationDoesNotChangeEnvironment() throws SerializationException, SAXException {
+        Environment env = AASSimple.createEnvironment();
+        validateXmlSerializer(AASSIMPLE_FILE, env);
+        assertEquals(AASSimple.createEnvironment(), env);
     }
 
     @Test

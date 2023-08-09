@@ -41,10 +41,11 @@ public class LangStringsNameTypeSerializer extends NoEntryWrapperListSerializer<
 		ToXmlGenerator xgen = (ToXmlGenerator) gen;
 		xgen.writeStartObject();
 		for (LangStringNameType element : langStrings) {
-			ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
+			List<Runnable> resetRunnables = ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
 															// <statements />, which is not allowed according to the schema
 			xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
 			ser.serialize(element, xgen, serializers);
+			resetRunnables.stream().forEach(r -> r.run());
 		}
 		xgen.writeEndObject();
 
