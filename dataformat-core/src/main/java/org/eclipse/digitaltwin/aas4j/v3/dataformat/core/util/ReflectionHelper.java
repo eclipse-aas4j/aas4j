@@ -430,16 +430,7 @@ public class ReflectionHelper {
             field.setAccessible(true);
             try {
                 if (field.getType().isAssignableFrom(List.class) && field.get(element)!=null && ((List<?>) field.get(element)).isEmpty()) {
-                    List<?> originalValue = (List<?>) field.get(element);
-                    resetRunnables.add(() -> {
-                        field.setAccessible(true);
-                        try {
-                            field.set(element, originalValue);
-                        } catch (IllegalArgumentException | IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                        field.setAccessible(false);
-                    });
+                    resetRunnables.add(createResetRunnable(element, field));
                     field.set(element, null);
                 }
             } catch (IllegalAccessException e) {
@@ -449,5 +440,19 @@ public class ReflectionHelper {
         }
 
         return resetRunnables;
+    }
+
+    private static Runnable createResetRunnable(Object element, Field field) throws IllegalAccessException {
+        List<?> originalValue = (List<?>) field.get(element);
+        Runnable resetRunnable = () -> {
+            field.setAccessible(true);
+            try {
+                field.set(element, originalValue);
+            } catch (IllegalArgumentException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            field.setAccessible(false);
+        };
+        return resetRunnable;
     }
 }
