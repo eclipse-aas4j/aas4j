@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,11 +42,18 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Objects;
 
+//import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectWriter;
+//
+//import java.util.List;
+
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
  */
 public class JsonSerializer {
 
+//    protected final ObjectMapper mapper;
     protected JsonMapper mapper;
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
@@ -214,4 +222,15 @@ public class JsonSerializer {
         }
         return mapper.valueToTree(referables);
     }
+
+    public String write(Object aas_element) throws SerializationException {
+        try {
+            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
+            //return mapper.writeValueAsString(ModelTypeProcessor.postprocess(this.mapper.readTree(json)));
+            return mapper.writeValueAsString(aas_element);
+        } catch (JsonProcessingException ex) {
+            throw new SerializationException("Error serializing an aas-element", ex);
+        }
+    }
+
 }

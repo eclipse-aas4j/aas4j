@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
@@ -38,8 +40,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createMapper;
+//import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createTypeResolver;
+
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
@@ -47,6 +53,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 public class JsonDeserializer {
 
     protected JsonMapper mapper;
+//    protected ObjectMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
@@ -54,6 +61,8 @@ public class JsonDeserializer {
     public JsonDeserializer() {
         initTypeResolver();
         buildMapper();
+//        typeResolver = createTypeResolver();
+//        mapper = createMapper(typeResolver);
     }
 
     protected void buildMapper() {
@@ -183,7 +192,7 @@ public class JsonDeserializer {
      */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
-        buildMapper();
+        mapper = createMapper(typeResolver);
     }
 
     /**
@@ -373,5 +382,13 @@ public class JsonDeserializer {
      */
     public <T extends Referable> List<T> readReferables(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
         return readReferables(new FileInputStream(src), charset, outputClass);
+    }
+
+    public <T> T read(String json, Class<T> clazz) throws DeserializationException {
+        try {
+            return mapper.readValue(json, clazz);
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("Error by deserializing the json string:\n" + json, ex);
+        }
     }
 }
