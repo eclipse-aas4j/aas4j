@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -19,7 +20,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelElementCollectionBuilder;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,8 +41,8 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
-    protected Reference semanticID;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    protected Reference semanticId;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -63,24 +63,22 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     protected String idShort;
 
     @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
-    protected Collection<SubmodelElement> value = new ArrayList<>();
+    protected List<SubmodelElement> value = new ArrayList<>();
 
-    public DefaultSubmodelElementCollection() {
-
-    }
+    public DefaultSubmodelElementCollection() {}
 
     @Override
     public int hashCode() {
         return Objects.hash(this.value,
             this.embeddedDataSpecifications,
-            this.semanticID,
+            this.semanticId,
             this.supplementalSemanticIds,
+            this.qualifiers,
             this.category,
-            this.description,
-            this.displayName,
             this.idShort,
-            this.extensions,
-            this.qualifiers);
+            this.displayName,
+            this.description,
+            this.extensions);
     }
 
     @Override
@@ -95,25 +93,25 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
             DefaultSubmodelElementCollection other = (DefaultSubmodelElementCollection) obj;
             return Objects.equals(this.value, other.value) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticID, other.semanticID) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
     @Override
-    public Collection<SubmodelElement> getValue() {
+    public List<SubmodelElement> getValue() {
         return value;
     }
 
     @Override
-    public void setValue(Collection<SubmodelElement> value) {
-        this.value = value;
+    public void setValue(List<SubmodelElement> values) {
+        this.value = values;
     }
 
     @Override
@@ -127,13 +125,13 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     }
 
     @Override
-    public Reference getSemanticID() {
-        return semanticID;
+    public Reference getSemanticId() {
+        return semanticId;
     }
 
     @Override
-    public void setSemanticID(Reference semanticID) {
-        this.semanticID = semanticID;
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
     }
 
     @Override
@@ -147,6 +145,16 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     }
 
     @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
+    @Override
     public String getCategory() {
         return category;
     }
@@ -154,26 +162,6 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     @Override
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
     }
 
     @Override
@@ -187,6 +175,26 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
     }
 
     @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -196,14 +204,11 @@ public class DefaultSubmodelElementCollection implements SubmodelElementCollecti
         this.extensions = extensions;
     }
 
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public String toString() {
+        return String.format(
+            "DefaultSubmodelElementCollection (" + "value=%s,"
+                + ")",
+            this.value);
     }
 
     /**

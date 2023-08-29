@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -62,8 +63,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
-    protected Reference semanticID;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    protected Reference semanticId;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -83,29 +84,27 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultBasicEventElement() {
-
-    }
+    public DefaultBasicEventElement() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.direction,
-            this.lastUpdate,
-            this.maxInterval,
-            this.messageBroker,
-            this.messageTopic,
-            this.minInterval,
-            this.observed,
+        return Objects.hash(this.observed,
+            this.direction,
             this.state,
+            this.messageTopic,
+            this.messageBroker,
+            this.lastUpdate,
+            this.minInterval,
+            this.maxInterval,
             this.embeddedDataSpecifications,
-            this.semanticID,
+            this.semanticId,
             this.supplementalSemanticIds,
+            this.qualifiers,
             this.category,
-            this.description,
-            this.displayName,
             this.idShort,
-            this.extensions,
-            this.qualifiers);
+            this.displayName,
+            this.description,
+            this.extensions);
     }
 
     @Override
@@ -118,84 +117,24 @@ public class DefaultBasicEventElement implements BasicEventElement {
             return false;
         } else {
             DefaultBasicEventElement other = (DefaultBasicEventElement) obj;
-            return Objects.equals(this.direction, other.direction) &&
-                Objects.equals(this.lastUpdate, other.lastUpdate) &&
-                Objects.equals(this.maxInterval, other.maxInterval) &&
-                Objects.equals(this.messageBroker, other.messageBroker) &&
-                Objects.equals(this.messageTopic, other.messageTopic) &&
-                Objects.equals(this.minInterval, other.minInterval) &&
-                Objects.equals(this.observed, other.observed) &&
+            return Objects.equals(this.observed, other.observed) &&
+                Objects.equals(this.direction, other.direction) &&
                 Objects.equals(this.state, other.state) &&
+                Objects.equals(this.messageTopic, other.messageTopic) &&
+                Objects.equals(this.messageBroker, other.messageBroker) &&
+                Objects.equals(this.lastUpdate, other.lastUpdate) &&
+                Objects.equals(this.minInterval, other.minInterval) &&
+                Objects.equals(this.maxInterval, other.maxInterval) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticID, other.semanticID) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.extensions, other.extensions);
         }
-    }
-
-    @Override
-    public Direction getDirection() {
-        return direction;
-    }
-
-    @Override
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    @Override
-    public String getLastUpdate() {
-        return lastUpdate;
-    }
-
-    @Override
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public String getMaxInterval() {
-        return maxInterval;
-    }
-
-    @Override
-    public void setMaxInterval(String maxInterval) {
-        this.maxInterval = maxInterval;
-    }
-
-    @Override
-    public Reference getMessageBroker() {
-        return messageBroker;
-    }
-
-    @Override
-    public void setMessageBroker(Reference messageBroker) {
-        this.messageBroker = messageBroker;
-    }
-
-    @Override
-    public String getMessageTopic() {
-        return messageTopic;
-    }
-
-    @Override
-    public void setMessageTopic(String messageTopic) {
-        this.messageTopic = messageTopic;
-    }
-
-    @Override
-    public String getMinInterval() {
-        return minInterval;
-    }
-
-    @Override
-    public void setMinInterval(String minInterval) {
-        this.minInterval = minInterval;
     }
 
     @Override
@@ -209,6 +148,16 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
+    public Direction getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    @Override
     public StateOfEvent getState() {
         return state;
     }
@@ -216,6 +165,56 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @Override
     public void setState(StateOfEvent state) {
         this.state = state;
+    }
+
+    @Override
+    public String getMessageTopic() {
+        return messageTopic;
+    }
+
+    @Override
+    public void setMessageTopic(String messageTopic) {
+        this.messageTopic = messageTopic;
+    }
+
+    @Override
+    public Reference getMessageBroker() {
+        return messageBroker;
+    }
+
+    @Override
+    public void setMessageBroker(Reference messageBroker) {
+        this.messageBroker = messageBroker;
+    }
+
+    @Override
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    @Override
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public String getMinInterval() {
+        return minInterval;
+    }
+
+    @Override
+    public void setMinInterval(String minInterval) {
+        this.minInterval = minInterval;
+    }
+
+    @Override
+    public String getMaxInterval() {
+        return maxInterval;
+    }
+
+    @Override
+    public void setMaxInterval(String maxInterval) {
+        this.maxInterval = maxInterval;
     }
 
     @Override
@@ -229,13 +228,13 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public Reference getSemanticID() {
-        return semanticID;
+    public Reference getSemanticId() {
+        return semanticId;
     }
 
     @Override
-    public void setSemanticID(Reference semanticID) {
-        this.semanticID = semanticID;
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
     }
 
     @Override
@@ -249,6 +248,16 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
+    @Override
     public String getCategory() {
         return category;
     }
@@ -256,26 +265,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @Override
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
     }
 
     @Override
@@ -289,6 +278,26 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -298,14 +307,19 @@ public class DefaultBasicEventElement implements BasicEventElement {
         this.extensions = extensions;
     }
 
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public String toString() {
+        return String.format(
+            "DefaultBasicEventElement (" + "observed=%s,"
+                + "direction=%s,"
+                + "state=%s,"
+                + "messageTopic=%s,"
+                + "messageBroker=%s,"
+                + "lastUpdate=%s,"
+                + "minInterval=%s,"
+                + "maxInterval=%s,"
+                + ")",
+            this.observed, this.direction, this.state, this.messageTopic, this.messageBroker, this.lastUpdate, this.minInterval,
+            this.maxInterval);
     }
 
     /**

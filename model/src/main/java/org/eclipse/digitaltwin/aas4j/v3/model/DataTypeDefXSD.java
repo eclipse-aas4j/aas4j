@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -22,157 +23,157 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 /**
  * Enumeration listing all XSD anySimpleTypes
  */
-@IRI("aas:DataTypeDefXSD")
-public enum DataTypeDefXSD {
+@IRI("aas:DataTypeDefXsd")
+public enum DataTypeDefXsd {
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/AnyUri")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/AnyUri")
     ANY_URI,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Base64Binary")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Base64Binary")
     BASE64BINARY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Boolean")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Boolean")
     BOOLEAN,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Byte")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Byte")
     BYTE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Date")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Date")
     DATE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/DateTime")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/DateTime")
     DATE_TIME,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Decimal")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Decimal")
     DECIMAL,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Double")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Double")
     DOUBLE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Duration")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Duration")
     DURATION,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Float")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Float")
     FLOAT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/GDay")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/GDay")
     GDAY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/GMonth")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/GMonth")
     GMONTH,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/GMonthDay")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/GMonthDay")
     GMONTH_DAY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/GYear")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/GYear")
     GYEAR,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/GYearMonth")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/GYearMonth")
     GYEAR_MONTH,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/HexBinary")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/HexBinary")
     HEX_BINARY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Int")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Int")
     INT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Integer")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Integer")
     INTEGER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Long")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Long")
     LONG,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/NegativeInteger")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/NegativeInteger")
     NEGATIVE_INTEGER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/NonNegativeInteger")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/NonNegativeInteger")
     NON_NEGATIVE_INTEGER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/NonPositiveInteger")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/NonPositiveInteger")
     NON_POSITIVE_INTEGER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/PositiveInteger")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/PositiveInteger")
     POSITIVE_INTEGER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Short")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Short")
     SHORT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/String")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/String")
     STRING,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/Time")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/Time")
     TIME,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/UnsignedByte")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/UnsignedByte")
     UNSIGNED_BYTE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/UnsignedInt")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/UnsignedInt")
     UNSIGNED_INT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/UnsignedLong")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/UnsignedLong")
     UNSIGNED_LONG,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXSD/UnsignedShort")
+    @IRI("https://admin-shell.io/aas/3/0/DataTypeDefXsd/UnsignedShort")
     UNSIGNED_SHORT;
 
 }

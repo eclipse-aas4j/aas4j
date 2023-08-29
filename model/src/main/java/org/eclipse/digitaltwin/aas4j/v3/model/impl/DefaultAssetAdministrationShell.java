@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -14,20 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
 
 
 /**
@@ -72,21 +66,20 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultAssetAdministrationShell() {
-    }
+    public DefaultAssetAdministrationShell() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.assetInformation,
-            this.derivedFrom,
+        return Objects.hash(this.derivedFrom,
+            this.assetInformation,
             this.submodels,
             this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
-            this.description,
-            this.displayName,
             this.idShort,
+            this.displayName,
+            this.description,
             this.extensions);
     }
 
@@ -100,28 +93,18 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
             return false;
         } else {
             DefaultAssetAdministrationShell other = (DefaultAssetAdministrationShell) obj;
-            return Objects.equals(this.assetInformation, other.assetInformation) &&
-                Objects.equals(this.derivedFrom, other.derivedFrom) &&
+            return Objects.equals(this.derivedFrom, other.derivedFrom) &&
+                Objects.equals(this.assetInformation, other.assetInformation) &&
                 Objects.equals(this.submodels, other.submodels) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions);
         }
-    }
-
-    @Override
-    public AssetInformation getAssetInformation() {
-        return assetInformation;
-    }
-
-    @Override
-    public void setAssetInformation(AssetInformation assetInformation) {
-        this.assetInformation = assetInformation;
     }
 
     @Override
@@ -132,6 +115,16 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setDerivedFrom(Reference derivedFrom) {
         this.derivedFrom = derivedFrom;
+    }
+
+    @Override
+    public AssetInformation getAssetInformation() {
+        return assetInformation;
+    }
+
+    @Override
+    public void setAssetInformation(AssetInformation assetInformation) {
+        this.assetInformation = assetInformation;
     }
 
     @Override
@@ -185,26 +178,6 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
-    }
-
-    @Override
     public String getIdShort() {
         return idShort;
     }
@@ -215,6 +188,26 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     }
 
     @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -222,6 +215,15 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultAssetAdministrationShell (" + "derivedFrom=%s,"
+                + "assetInformation=%s,"
+                + "submodels=%s,"
+                + ")",
+            this.derivedFrom, this.assetInformation, this.submodels);
     }
 
     /**

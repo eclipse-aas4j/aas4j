@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -38,8 +39,8 @@ public class DefaultProperty implements Property {
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
-    protected Reference semanticID;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    protected Reference semanticId;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -47,11 +48,11 @@ public class DefaultProperty implements Property {
     @IRI("https://admin-shell.io/aas/3/0/Property/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/Property/valueID")
-    protected Reference valueID;
+    @IRI("https://admin-shell.io/aas/3/0/Property/valueId")
+    protected Reference valueId;
 
     @IRI("https://admin-shell.io/aas/3/0/Property/valueType")
-    protected DataTypeDefXSD valueType;
+    protected DataTypeDefXsd valueType;
 
     @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
@@ -68,24 +69,22 @@ public class DefaultProperty implements Property {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultProperty() {
-
-    }
+    public DefaultProperty() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.value,
-            this.valueID,
-            this.valueType,
+        return Objects.hash(this.valueType,
+            this.value,
+            this.valueId,
             this.embeddedDataSpecifications,
-            this.semanticID,
+            this.semanticId,
             this.supplementalSemanticIds,
+            this.qualifiers,
             this.category,
-            this.description,
-            this.displayName,
             this.idShort,
-            this.extensions,
-            this.qualifiers);
+            this.displayName,
+            this.description,
+            this.extensions);
     }
 
     @Override
@@ -98,19 +97,29 @@ public class DefaultProperty implements Property {
             return false;
         } else {
             DefaultProperty other = (DefaultProperty) obj;
-            return Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueID, other.valueID) &&
-                Objects.equals(this.valueType, other.valueType) &&
+            return Objects.equals(this.valueType, other.valueType) &&
+                Objects.equals(this.value, other.value) &&
+                Objects.equals(this.valueId, other.valueId) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticID, other.semanticID) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.description, other.description) &&
+                Objects.equals(this.extensions, other.extensions);
         }
+    }
+
+    @Override
+    public DataTypeDefXsd getValueType() {
+        return valueType;
+    }
+
+    @Override
+    public void setValueType(DataTypeDefXsd valueType) {
+        this.valueType = valueType;
     }
 
     @Override
@@ -124,23 +133,13 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public Reference getValueID() {
-        return valueID;
+    public Reference getValueId() {
+        return valueId;
     }
 
     @Override
-    public void setValueID(Reference valueID) {
-        this.valueID = valueID;
-    }
-
-    @Override
-    public DataTypeDefXSD getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXSD valueType) {
-        this.valueType = valueType;
+    public void setValueId(Reference valueId) {
+        this.valueId = valueId;
     }
 
     @Override
@@ -154,13 +153,13 @@ public class DefaultProperty implements Property {
     }
 
     @Override
-    public Reference getSemanticID() {
-        return semanticID;
+    public Reference getSemanticId() {
+        return semanticId;
     }
 
     @Override
-    public void setSemanticID(Reference semanticID) {
-        this.semanticID = semanticID;
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
     }
 
     @Override
@@ -174,6 +173,16 @@ public class DefaultProperty implements Property {
     }
 
     @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
+    @Override
     public String getCategory() {
         return category;
     }
@@ -181,26 +190,6 @@ public class DefaultProperty implements Property {
     @Override
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> description) {
-        this.description = description;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayName) {
-        this.displayName = displayName;
     }
 
     @Override
@@ -214,6 +203,26 @@ public class DefaultProperty implements Property {
     }
 
     @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayNames) {
+        this.displayName = displayNames;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> descriptions) {
+        this.description = descriptions;
+    }
+
+    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -223,14 +232,13 @@ public class DefaultProperty implements Property {
         this.extensions = extensions;
     }
 
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
+    public String toString() {
+        return String.format(
+            "DefaultProperty (" + "valueType=%s,"
+                + "value=%s,"
+                + "valueId=%s,"
+                + ")",
+            this.valueType, this.value, this.valueId);
     }
 
     /**
