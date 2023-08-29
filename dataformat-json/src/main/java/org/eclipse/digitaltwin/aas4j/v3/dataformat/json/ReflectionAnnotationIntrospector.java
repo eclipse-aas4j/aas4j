@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -31,7 +32,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * This class helps to dynamically decide how to de-/serialize classes and
+ * This utility class has package-private visibility and helps to dynamically decide how to de-/serialize classes and
  * properties defined in the AAS model library.
  *
  * This is equivalent to adding the following annotations
@@ -52,7 +53,7 @@ import java.util.stream.Collectors;
  * </ul>
  * </ul>
  */
-public class ReflectionAnnotationIntrospector extends JacksonAnnotationIntrospector {
+class ReflectionAnnotationIntrospector extends JacksonAnnotationIntrospector {
 
     private static final long serialVersionUID = 1L;
 
@@ -108,5 +109,4 @@ public class ReflectionAnnotationIntrospector extends JacksonAnnotationIntrospec
         }
         return result;
     }
-
 }

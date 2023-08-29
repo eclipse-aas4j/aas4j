@@ -27,73 +27,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createMapper;
-//import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createTypeResolver;
-
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createTypeResolver;
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
 public class JsonDeserializer {
-
-    protected JsonMapper mapper;
-//    protected ObjectMapper mapper;
-    protected SimpleAbstractTypeResolver typeResolver;
-
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+    protected ObjectMapper mapper;
+    protected final SimpleAbstractTypeResolver typeResolver;
 
     public JsonDeserializer() {
-        initTypeResolver();
-        buildMapper();
-//        typeResolver = createTypeResolver();
-//        mapper = createMapper(typeResolver);
-    }
-
-    protected void buildMapper() {
-        mapper = JsonMapper.builder()
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .addModule(buildEnumModule())
-                .addModule(buildImplementationModule())
-                .build();
-        ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-    @SuppressWarnings("unchecked")
-    private void initTypeResolver() {
-        typeResolver = new SimpleAbstractTypeResolver();
-        ReflectionHelper.DEFAULT_IMPLEMENTATIONS
-                .stream()
-                .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
-    }
-
-    protected SimpleModule buildEnumModule() {
-        SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
-        return module;
-    }
-
-    protected SimpleModule buildImplementationModule() {
-        SimpleModule module = new SimpleModule();
-        module.setAbstractTypes(typeResolver);
-        return module;
+        typeResolver = createTypeResolver();
+        mapper = createMapper(typeResolver);
     }
 
     /**
@@ -161,7 +118,7 @@ public class JsonDeserializer {
      * @throws FileNotFoundException if file is not present
      * @throws DeserializationException if deserialization fails
      */
-    public Environment read(java.io.File file, Charset charset)
+    public Environment read(File file, Charset charset)
             throws FileNotFoundException, DeserializationException {
         return read(new FileInputStream(file), charset);
     }
@@ -174,7 +131,7 @@ public class JsonDeserializer {
      * @throws FileNotFoundException if the file is not present
      * @throws DeserializationException if deserialization fails
      */
-    public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
+    public Environment read(File file) throws FileNotFoundException, DeserializationException {
         return read(file, DEFAULT_CHARSET);
     }
 
