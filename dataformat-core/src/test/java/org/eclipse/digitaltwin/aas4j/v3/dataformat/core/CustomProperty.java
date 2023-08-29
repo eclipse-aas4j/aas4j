@@ -35,7 +35,7 @@ public class CustomProperty implements Property {
 
 	protected Reference valueId;
 
-	protected DataTypeDefXSD valueType;
+	protected DataTypeDefXsd valueType;
 
 	protected List<Qualifier> qualifiers;
 
@@ -82,12 +82,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public DataTypeDefXSD getValueType() {
+	final public DataTypeDefXsd getValueType() {
 		return this.valueType;
 	}
 
 	@Override
-	final public void setValueType(DataTypeDefXSD dataType) {
+	final public void setValueType(DataTypeDefXsd dataType) {
 		this.valueType = dataType;
 	}
 
@@ -102,12 +102,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getValueID() {
+	final public Reference getValueId() {
 		return valueId;
 	}
 
 	@Override
-	final public void setValueID(Reference valueId) {
+	final public void setValueId(Reference valueId) {
 		this.valueId = valueId;
 	}
 
@@ -172,12 +172,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getSemanticID() {
+	final public Reference getSemanticId() {
 		return semanticId;
 	}
 
 	@Override
-	final public void setSemanticID(Reference semanticId) {
+	final public void setSemanticId(Reference semanticId) {
 		this.semanticId = semanticId;
 	}
 

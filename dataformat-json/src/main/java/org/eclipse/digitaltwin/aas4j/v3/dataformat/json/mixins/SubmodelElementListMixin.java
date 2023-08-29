@@ -21,8 +21,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.Collection;
-import org.eclipse.digitaltwin.aas4j.v3.model.AASSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 
 public interface SubmodelElementListMixin {
 
@@ -41,16 +41,16 @@ public interface SubmodelElementListMixin {
     public void setSemanticIdListElement(Reference semanticIdListElement);
 
     @JsonProperty("typeValueListElement")
-    public AASSubmodelElements getTypeValueListElement();
+    public AasSubmodelElements getTypeValueListElement();
 
     @JsonProperty("typeValueListElement")
-    public void setTypeValueListElement(AASSubmodelElements typeValueListElement);
+    public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
 
     @JsonProperty("valueTypeListElement")
-    public DataTypeDefXSD getValueTypeListElement();
+    public DataTypeDefXsd getValueTypeListElement();
 
     @JsonProperty("valueTypeListElement")
-    public void setValueTypeListElement(DataTypeDefXSD valueTypeListElement);
+    public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 
     @JsonProperty("value")
     public Collection<SubmodelElement> getValues();

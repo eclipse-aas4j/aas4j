@@ -37,7 +37,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
 public class Examples {
@@ -58,11 +58,11 @@ public class Examples {
                     .id("https://example.org/AssetAdministrationShell")
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.INSTANCE)
-                            .globalAssetID("https://example.org/Asset")
-                            .specificAssetIds(new DefaultSpecificAssetID.Builder()
+                            .globalAssetId("https://example.org/Asset")
+                            .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                     .name("ExampleAssetId")
                                     .value("ExampleValue")
-                                    .externalSubjectID(new DefaultReference.Builder()
+                                    .externalSubjectId(new DefaultReference.Builder()
                                             .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                             .keys(new DefaultKey.Builder()
                                                     .type(KeyTypes.GLOBAL_REFERENCE)

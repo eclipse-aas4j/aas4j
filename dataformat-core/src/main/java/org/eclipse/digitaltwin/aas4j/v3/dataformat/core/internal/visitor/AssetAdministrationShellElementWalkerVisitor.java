@@ -98,7 +98,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticID());
+        visit(hasSemantics.getSemanticId());
         hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
@@ -113,11 +113,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetID specificAssetId) {
+    public default void visit(SpecificAssetId specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectID());
+        visit(specificAssetId.getExternalSubjectId());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -127,7 +127,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueID());
+        visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -145,7 +145,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueID());
+        visit(property.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -163,7 +163,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueID());
+        visit(qualifier.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 
@@ -295,5 +295,4 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         operation.getOutputVariables().forEach(x -> visit(x.getValue()));
         AssetAdministrationShellElementVisitor.super.visit(operation);
     }
-
 }

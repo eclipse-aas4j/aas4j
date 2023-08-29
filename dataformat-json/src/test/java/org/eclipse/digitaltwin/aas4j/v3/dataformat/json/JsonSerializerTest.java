@@ -132,7 +132,7 @@ public class JsonSerializerTest {
         AssetInformation assetInfo = new DefaultAssetInformation.Builder()
             .assetKind(AssetKind.INSTANCE)
             .assetType("asset-type")
-            .globalAssetID("global-asset-id").build();
+            .globalAssetId("global-asset-id").build();
         String jsonString = new JsonSerializer().write(assetInfo);
         assertNotNull(jsonString);
         AssetInformation assetInfo2 = new JsonDeserializer().read(jsonString, AssetInformation.class);
@@ -145,7 +145,7 @@ public class JsonSerializerTest {
         AssetInformation assetInfo = new DefaultAssetInformation.Builder()
                 .assetKind(AssetKind.INSTANCE)
                 .assetType("asset-type")
-                .globalAssetID("global-asset-id").build();
+                .globalAssetId("global-asset-id").build();
         ObjectMapper mapper = ObjectMapperFactory.createMapper();
         String jsonString = mapper.writeValueAsString(assetInfo);
         assertNotNull(jsonString);

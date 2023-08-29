@@ -14,6 +14,6 @@ public class ValueReferencePairNodeDeserializer implements CustomJsonNodeDeseria
     public ValueReferencePair readValue(JsonNode node, JsonParser parser) throws IOException {
         String value = node.get("value").asText();
 		Reference valueId = DeserializationHelper.createInstanceFromNode(parser, node.get("valueId"), Reference.class);
-		return new DefaultValueReferencePair.Builder().value(value).valueID(valueId).build();
+		return new DefaultValueReferencePair.Builder().value(value).valueId(valueId).build();
     }
 }
