@@ -140,8 +140,7 @@ public class XmlSerializerTest {
 
     @Test
     public void validateGYearAgainstXsdSchema() throws SerializationException, SAXException {
-        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(
-            new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
+        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
         Set<String> errors = validateAgainstXsdSchema(xml);
         assertTrue(errors.isEmpty());
