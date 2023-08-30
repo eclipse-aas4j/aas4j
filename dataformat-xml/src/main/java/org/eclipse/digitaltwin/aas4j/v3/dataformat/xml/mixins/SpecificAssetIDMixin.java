@@ -31,5 +31,5 @@ public interface SpecificAssetIDMixin {
     public String getValue();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
-    public Reference getExternalSubjectID();
+	public Reference getExternalSubjectID();
 }
