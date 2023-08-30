@@ -27,7 +27,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
@@ -35,6 +34,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.ObjectMapperFactory.createMapper;
@@ -118,7 +118,7 @@ public class JsonDeserializer {
      * @throws FileNotFoundException if file is not present
      * @throws DeserializationException if deserialization fails
      */
-    public Environment read(File file, Charset charset)
+    public Environment read(java.io.File file, Charset charset)
             throws FileNotFoundException, DeserializationException {
         return read(new FileInputStream(file), charset);
     }
@@ -131,7 +131,7 @@ public class JsonDeserializer {
      * @throws FileNotFoundException if the file is not present
      * @throws DeserializationException if deserialization fails
      */
-    public Environment read(File file) throws FileNotFoundException, DeserializationException {
+    public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
         return read(file, DEFAULT_CHARSET);
     }
 
