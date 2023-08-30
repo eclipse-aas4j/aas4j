@@ -295,4 +295,5 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         operation.getOutputVariables().forEach(x -> visit(x.getValue()));
         AssetAdministrationShellElementVisitor.super.visit(operation);
     }
+
 }
