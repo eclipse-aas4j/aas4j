@@ -49,7 +49,7 @@ import java.util.Objects;
 //import java.util.List;
 
 /**
- * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
+ *  Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
  */
 public class JsonSerializer {
 
