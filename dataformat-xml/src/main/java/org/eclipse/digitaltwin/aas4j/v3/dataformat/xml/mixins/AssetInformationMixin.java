@@ -33,7 +33,7 @@ public interface AssetInformationMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-	public void setSpecificAssetIds(List<SpecificAssetID> SpecificAssetIds);
+	public void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
