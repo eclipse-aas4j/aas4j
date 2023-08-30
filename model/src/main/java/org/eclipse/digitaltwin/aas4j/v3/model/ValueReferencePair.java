@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -31,7 +30,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueReferencePair;
 public interface ValueReferencePair {
 
     /**
-     * The value of the referenced concept definition of the value in 'valueId'.
+     * The value of the referenced concept definition of the value in 'valueID'.
      *
      * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/value
      *
@@ -41,7 +40,7 @@ public interface ValueReferencePair {
     String getValue();
 
     /**
-     * The value of the referenced concept definition of the value in 'valueId'.
+     * The value of the referenced concept definition of the value in 'valueID'.
      *
      * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/value
      *
@@ -52,20 +51,20 @@ public interface ValueReferencePair {
     /**
      * Global unique id of the value.
      *
-     * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/valueId
+     * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/valueID
      *
-     * @return Returns the Reference for the property valueId.
+     * @return Returns the Reference for the property valueID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
-    Reference getValueId();
+    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueID")
+    Reference getValueID();
 
     /**
      * Global unique id of the value.
      *
-     * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/valueId
+     * More information under https://admin-shell.io/aas/3/0/ValueReferencePair/valueID
      *
-     * @param valueId desired value for the property valueId.
+     * @param valueID desired value for the property valueID.
      */
-    void setValueId(Reference valueId);
+    void setValueID(Reference valueID);
 
 }

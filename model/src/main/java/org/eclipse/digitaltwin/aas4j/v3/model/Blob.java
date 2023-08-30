@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -31,25 +30,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
 public interface Blob extends DataElement {
 
     /**
-     * The value of the 'Blob' instance of a blob data element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Blob/value
-     *
-     * @return Returns the byte[] for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Blob/value")
-    byte[] getValue();
-
-    /**
-     * The value of the 'Blob' instance of a blob data element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Blob/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(byte[] value);
-
-    /**
      * Content type of the content of the 'Blob'.
      *
      * More information under https://admin-shell.io/aas/3/0/Blob/contentType
@@ -67,5 +47,24 @@ public interface Blob extends DataElement {
      * @param contentType desired value for the property contentType.
      */
     void setContentType(String contentType);
+
+    /**
+     * The value of the 'Blob' instance of a blob data element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Blob/value
+     *
+     * @return Returns the byte[] for the property value.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Blob/value")
+    byte[] getValue();
+
+    /**
+     * The value of the 'Blob' instance of a blob data element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Blob/value
+     *
+     * @param value desired value for the property value.
+     */
+    void setValue(byte[] value);
 
 }

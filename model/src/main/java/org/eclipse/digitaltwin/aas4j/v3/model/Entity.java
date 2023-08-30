@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -31,27 +30,6 @@ import java.util.List;
 public interface Entity extends SubmodelElement {
 
     /**
-     * Describes statements applicable to the entity by a set of submodel elements, typically with a
-     * qualified value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Entity/statements
-     *
-     * @return Returns the List of SubmodelElements for the property statements.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
-    List<SubmodelElement> getStatements();
-
-    /**
-     * Describes statements applicable to the entity by a set of submodel elements, typically with a
-     * qualified value.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Entity/statements
-     *
-     * @param statements desired value for the property statements.
-     */
-    void setStatements(List<SubmodelElement> statements);
-
-    /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
      *
      * More information under https://admin-shell.io/aas/3/0/Entity/entityType
@@ -73,21 +51,21 @@ public interface Entity extends SubmodelElement {
     /**
      * Global identifier of the asset the entity is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetId
+     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetID
      *
-     * @return Returns the String for the property globalAssetId.
+     * @return Returns the String for the property globalAssetID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetId")
-    String getGlobalAssetId();
+    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetID")
+    String getGlobalAssetID();
 
     /**
      * Global identifier of the asset the entity is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetId
+     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetID
      *
-     * @param globalAssetId desired value for the property globalAssetId.
+     * @param globalAssetID desired value for the property globalAssetID.
      */
-    void setGlobalAssetId(String globalAssetId);
+    void setGlobalAssetID(String globalAssetID);
 
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
@@ -95,10 +73,10 @@ public interface Entity extends SubmodelElement {
      *
      * More information under https://admin-shell.io/aas/3/0/Entity/specificAssetIds
      *
-     * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
+     * @return Returns the List of SpecificAssetIDs for the property specificAssetIds.
      */
     @IRI("https://admin-shell.io/aas/3/0/Entity/specificAssetIds")
-    List<SpecificAssetId> getSpecificAssetIds();
+    List<SpecificAssetID> getSpecificAssetIds();
 
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
@@ -108,6 +86,27 @@ public interface Entity extends SubmodelElement {
      *
      * @param specificAssetIds desired value for the property specificAssetIds.
      */
-    void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
+    void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds);
+
+    /**
+     * Describes statements applicable to the entity by a set of submodel elements, typically with a
+     * qualified value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Entity/statements
+     *
+     * @return Returns the List of SubmodelElements for the property statements.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
+    List<SubmodelElement> getStatements();
+
+    /**
+     * Describes statements applicable to the entity by a set of submodel elements, typically with a
+     * qualified value.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Entity/statements
+     *
+     * @param statements desired value for the property statements.
+     */
+    void setStatements(List<SubmodelElement> statements);
 
 }

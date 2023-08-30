@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -25,8 +24,8 @@ import java.util.List;
  * An element that is referable by its 'idShort'.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SubmodelElement.class),
-    @KnownSubtypes.Type(value = Identifiable.class)
+    @KnownSubtypes.Type(value = Identifiable.class),
+    @KnownSubtypes.Type(value = SubmodelElement.class)
 })
 public interface Referable extends HasExtensions {
 
@@ -52,6 +51,44 @@ public interface Referable extends HasExtensions {
     void setCategory(String category);
 
     /**
+     * Description or comments on the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Referable/description
+     *
+     * @return Returns the List of LangStringTextTypes for the property description.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+    List<LangStringTextType> getDescription();
+
+    /**
+     * Description or comments on the element.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Referable/description
+     *
+     * @param description desired value for the property description.
+     */
+    void setDescription(List<LangStringTextType> description);
+
+    /**
+     * Display name. Can be provided in several languages.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
+     *
+     * @return Returns the List of LangStringNameTypes for the property displayName.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+    List<LangStringNameType> getDisplayName();
+
+    /**
+     * Display name. Can be provided in several languages.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
+     *
+     * @param displayName desired value for the property displayName.
+     */
+    void setDisplayName(List<LangStringNameType> displayName);
+
+    /**
      * In case of identifiables this attribute is a short name of the element. In case of referable this
      * ID is an identifying string of the element within its name space.
      *
@@ -71,43 +108,5 @@ public interface Referable extends HasExtensions {
      * @param idShort desired value for the property idShort.
      */
     void setIdShort(String idShort);
-
-    /**
-     * Display name. Can be provided in several languages.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
-     *
-     * @return Returns the List of LangStringNameTypes for the property displayName.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
-    List<LangStringNameType> getDisplayName();
-
-    /**
-     * Display name. Can be provided in several languages.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/displayName
-     *
-     * @param displayNames desired value for the property displayName.
-     */
-    void setDisplayName(List<LangStringNameType> displayNames);
-
-    /**
-     * Description or comments on the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/description
-     *
-     * @return Returns the List of LangStringTextTypes for the property description.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
-    List<LangStringTextType> getDescription();
-
-    /**
-     * Description or comments on the element.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Referable/description
-     *
-     * @param descriptions desired value for the property description.
-     */
-    void setDescription(List<LangStringTextType> descriptions);
 
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -25,7 +24,7 @@ import java.util.List;
  * Element that can have a semantic definition plus some supplemental semantic definitions.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SpecificAssetId.class),
+    @KnownSubtypes.Type(value = SpecificAssetID.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class),
     @KnownSubtypes.Type(value = Extension.class),
@@ -37,22 +36,22 @@ public interface HasSemantics {
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticID
      *
-     * @return Returns the Reference for the property semanticId.
+     * @return Returns the Reference for the property semanticID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
-    Reference getSemanticId();
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    Reference getSemanticID();
 
     /**
      * Identifier of the semantic definition of the element. It is called semantic ID of the element or
      * also main semantic ID of the element.
      *
-     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticId
+     * More information under https://admin-shell.io/aas/3/0/HasSemantics/semanticID
      *
-     * @param semanticId desired value for the property semanticId.
+     * @param semanticID desired value for the property semanticID.
      */
-    void setSemanticId(Reference semanticId);
+    void setSemanticID(Reference semanticID);
 
     /**
      * Identifier of a supplemental semantic definition of the element. It is called supplemental

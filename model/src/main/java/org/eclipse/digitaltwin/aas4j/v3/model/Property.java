@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -30,25 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 public interface Property extends DataElement {
 
     /**
-     * Data type of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/Property/valueType
-     *
-     * @return Returns the DataTypeDefXsd for the property valueType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Property/valueType")
-    DataTypeDefXsd getValueType();
-
-    /**
-     * Data type of the value
-     *
-     * More information under https://admin-shell.io/aas/3/0/Property/valueType
-     *
-     * @param valueType desired value for the property valueType.
-     */
-    void setValueType(DataTypeDefXsd valueType);
-
-    /**
      * The value of the property instance.
      *
      * More information under https://admin-shell.io/aas/3/0/Property/value
@@ -70,20 +50,39 @@ public interface Property extends DataElement {
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Property/valueId
+     * More information under https://admin-shell.io/aas/3/0/Property/valueID
      *
-     * @return Returns the Reference for the property valueId.
+     * @return Returns the Reference for the property valueID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Property/valueId")
-    Reference getValueId();
+    @IRI("https://admin-shell.io/aas/3/0/Property/valueID")
+    Reference getValueID();
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Property/valueId
+     * More information under https://admin-shell.io/aas/3/0/Property/valueID
      *
-     * @param valueId desired value for the property valueId.
+     * @param valueID desired value for the property valueID.
      */
-    void setValueId(Reference valueId);
+    void setValueID(Reference valueID);
+
+    /**
+     * Data type of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/Property/valueType
+     *
+     * @return Returns the DataTypeDefXSD for the property valueType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Property/valueType")
+    DataTypeDefXSD getValueType();
+
+    /**
+     * Data type of the value
+     *
+     * More information under https://admin-shell.io/aas/3/0/Property/valueType
+     *
+     * @param valueType desired value for the property valueType.
+     */
+    void setValueType(DataTypeDefXSD valueType);
 
 }

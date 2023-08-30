@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,13 +34,13 @@ public abstract class ValueReferencePairBuilder<T extends ValueReferencePair, B 
     }
 
     /**
-     * This function allows setting a value for valueId
+     * This function allows setting a value for valueID
      * 
-     * @param valueId desired value to be set
-     * @return Builder object with new value for valueId
+     * @param valueID desired value to be set
+     * @return Builder object with new value for valueID
      */
-    public B valueId(Reference valueId) {
-        getBuildingInstance().setValueId(valueId);
+    public B valueID(Reference valueID) {
+        getBuildingInstance().setValueID(valueID);
         return getSelf();
     }
 }

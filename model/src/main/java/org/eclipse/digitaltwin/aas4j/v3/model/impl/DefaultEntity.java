@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -36,11 +35,11 @@ public class DefaultEntity implements Entity {
     @IRI("https://admin-shell.io/aas/3/0/Entity/entityType")
     protected EntityType entityType;
 
-    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetId")
-    protected String globalAssetId;
+    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetID")
+    protected String globalAssetID;
 
     @IRI("https://admin-shell.io/aas/3/0/Entity/specificAssetIds")
-    protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
+    protected List<SpecificAssetID> specificAssetIds = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
     protected List<SubmodelElement> statements = new ArrayList<>();
@@ -51,8 +50,8 @@ public class DefaultEntity implements Entity {
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
-    protected Reference semanticId;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    protected Reference semanticID;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -72,23 +71,25 @@ public class DefaultEntity implements Entity {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultEntity() {}
+    public DefaultEntity() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.statements,
-            this.entityType,
-            this.globalAssetId,
+        return Objects.hash(this.entityType,
+            this.globalAssetID,
             this.specificAssetIds,
+            this.statements,
             this.embeddedDataSpecifications,
-            this.semanticId,
+            this.semanticID,
             this.supplementalSemanticIds,
-            this.qualifiers,
             this.category,
-            this.idShort,
-            this.displayName,
             this.description,
-            this.extensions);
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -101,30 +102,20 @@ public class DefaultEntity implements Entity {
             return false;
         } else {
             DefaultEntity other = (DefaultEntity) obj;
-            return Objects.equals(this.statements, other.statements) &&
-                Objects.equals(this.entityType, other.entityType) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
+            return Objects.equals(this.entityType, other.entityType) &&
+                Objects.equals(this.globalAssetID, other.globalAssetID) &&
                 Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
+                Objects.equals(this.statements, other.statements) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.semanticID, other.semanticID) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
-    }
-
-    @Override
-    public List<SubmodelElement> getStatements() {
-        return statements;
-    }
-
-    @Override
-    public void setStatements(List<SubmodelElement> statements) {
-        this.statements = statements;
     }
 
     @Override
@@ -138,23 +129,33 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public String getGlobalAssetId() {
-        return globalAssetId;
+    public String getGlobalAssetID() {
+        return globalAssetID;
     }
 
     @Override
-    public void setGlobalAssetId(String globalAssetId) {
-        this.globalAssetId = globalAssetId;
+    public void setGlobalAssetID(String globalAssetID) {
+        this.globalAssetID = globalAssetID;
     }
 
     @Override
-    public List<SpecificAssetId> getSpecificAssetIds() {
+    public List<SpecificAssetID> getSpecificAssetIds() {
         return specificAssetIds;
     }
 
     @Override
-    public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds) {
+    public void setSpecificAssetIds(List<SpecificAssetID> specificAssetIds) {
         this.specificAssetIds = specificAssetIds;
+    }
+
+    @Override
+    public List<SubmodelElement> getStatements() {
+        return statements;
+    }
+
+    @Override
+    public void setStatements(List<SubmodelElement> statements) {
+        this.statements = statements;
     }
 
     @Override
@@ -168,13 +169,13 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public Reference getSemanticId() {
-        return semanticId;
+    public Reference getSemanticID() {
+        return semanticID;
     }
 
     @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
+    public void setSemanticID(Reference semanticID) {
+        this.semanticID = semanticID;
     }
 
     @Override
@@ -188,16 +189,6 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
-    }
-
-    @Override
     public String getCategory() {
         return category;
     }
@@ -205,6 +196,26 @@ public class DefaultEntity implements Entity {
     @Override
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
+    }
+
+    @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -218,26 +229,6 @@ public class DefaultEntity implements Entity {
     }
 
     @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
-    }
-
-    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -247,14 +238,14 @@ public class DefaultEntity implements Entity {
         this.extensions = extensions;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultEntity (" + "statements=%s,"
-                + "entityType=%s,"
-                + "globalAssetId=%s,"
-                + "specificAssetIds=%s,"
-                + ")",
-            this.statements, this.entityType, this.globalAssetId, this.specificAssetIds);
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

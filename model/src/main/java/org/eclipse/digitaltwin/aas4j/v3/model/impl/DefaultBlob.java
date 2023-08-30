@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -47,8 +46,8 @@ public class DefaultBlob implements Blob {
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
-    protected Reference semanticId;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    protected Reference semanticID;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -68,21 +67,23 @@ public class DefaultBlob implements Blob {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultBlob() {}
+    public DefaultBlob() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Arrays.hashCode(this.value),
-            this.contentType,
+        return Objects.hash(this.contentType,
+            Arrays.hashCode(this.value),
             this.embeddedDataSpecifications,
-            this.semanticId,
+            this.semanticID,
             this.supplementalSemanticIds,
-            this.qualifiers,
             this.category,
-            this.idShort,
-            this.displayName,
             this.description,
-            this.extensions);
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -95,28 +96,18 @@ public class DefaultBlob implements Blob {
             return false;
         } else {
             DefaultBlob other = (DefaultBlob) obj;
-            return Arrays.equals(this.value, other.value) &&
-                Objects.equals(this.contentType, other.contentType) &&
+            return Objects.equals(this.contentType, other.contentType) &&
+                Arrays.equals(this.value, other.value) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.semanticID, other.semanticID) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
-    }
-
-    @Override
-    public byte[] getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(byte[] value) {
-        this.value = value;
     }
 
     @Override
@@ -130,6 +121,16 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
+    public byte[] getValue() {
+        return value;
+    }
+
+    @Override
+    public void setValue(byte[] value) {
+        this.value = value;
+    }
+
+    @Override
     public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
         return embeddedDataSpecifications;
     }
@@ -140,13 +141,13 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public Reference getSemanticId() {
-        return semanticId;
+    public Reference getSemanticID() {
+        return semanticID;
     }
 
     @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
+    public void setSemanticID(Reference semanticID) {
+        this.semanticID = semanticID;
     }
 
     @Override
@@ -160,16 +161,6 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
-    }
-
-    @Override
     public String getCategory() {
         return category;
     }
@@ -177,6 +168,26 @@ public class DefaultBlob implements Blob {
     @Override
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
+    }
+
+    @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -190,26 +201,6 @@ public class DefaultBlob implements Blob {
     }
 
     @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
-    }
-
-    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -219,12 +210,14 @@ public class DefaultBlob implements Blob {
         this.extensions = extensions;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultBlob (" + "value=%s,"
-                + "contentType=%s,"
-                + ")",
-            this.value, this.contentType);
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

@@ -98,7 +98,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticId());
+        visit(hasSemantics.getSemanticID());
         hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
@@ -113,11 +113,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetId specificAssetId) {
+    public default void visit(SpecificAssetID specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectId());
+        visit(specificAssetId.getExternalSubjectID());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -127,7 +127,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueId());
+        visit(multiLanguageProperty.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -145,7 +145,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueId());
+        visit(property.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -163,7 +163,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueId());
+        visit(qualifier.getValueID());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 

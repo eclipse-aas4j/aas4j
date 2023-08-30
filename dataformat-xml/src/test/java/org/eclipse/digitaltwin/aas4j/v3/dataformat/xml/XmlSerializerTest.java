@@ -31,7 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
@@ -128,7 +128,7 @@ public class XmlSerializerTest {
                                 .value(new DefaultProperty.Builder()
                                         .idShort("inputProperty")
                                         .value("1")
-                                        .valueType(DataTypeDefXsd.INT)
+                                        .valueType(DataTypeDefXSD.INT)
                                         .build())
                                 .build())
                         .build())
@@ -140,7 +140,8 @@ public class XmlSerializerTest {
 
     @Test
     public void validateGYearAgainstXsdSchema() throws SerializationException, SAXException {
-        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXsd.GYEAR).build()).build();
+        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(
+            new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
         Set<String> errors = validateAgainstXsdSchema(xml);
         assertTrue(errors.isEmpty());

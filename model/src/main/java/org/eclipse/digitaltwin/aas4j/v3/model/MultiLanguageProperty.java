@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -45,27 +44,27 @@ public interface MultiLanguageProperty extends DataElement {
      *
      * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
      *
-     * @param values desired value for the property value.
+     * @param value desired value for the property value.
      */
-    void setValue(List<LangStringTextType> values);
+    void setValue(List<LangStringTextType> value);
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
+     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID
      *
-     * @return Returns the Reference for the property valueId.
+     * @return Returns the Reference for the property valueID.
      */
-    @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId")
-    Reference getValueId();
+    @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID")
+    Reference getValueID();
 
     /**
      * Reference to the global unique ID of a coded value.
      *
-     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
+     * More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueID
      *
-     * @param valueId desired value for the property valueId.
+     * @param valueID desired value for the property valueID.
      */
-    void setValueId(Reference valueId);
+    void setValueID(Reference valueID);
 
 }

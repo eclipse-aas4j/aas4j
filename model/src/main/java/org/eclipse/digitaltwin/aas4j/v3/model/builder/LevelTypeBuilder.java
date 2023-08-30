@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -20,6 +19,17 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 
 public abstract class LevelTypeBuilder<T extends LevelType, B extends LevelTypeBuilder<T, B>> extends ExtendableBuilder<T, B> {
+
+    /**
+     * This function allows setting a value for max
+     * 
+     * @param max desired value to be set
+     * @return Builder object with new value for max
+     */
+    public B max(boolean max) {
+        getBuildingInstance().setMax(max);
+        return getSelf();
+    }
 
     /**
      * This function allows setting a value for min
@@ -51,17 +61,6 @@ public abstract class LevelTypeBuilder<T extends LevelType, B extends LevelTypeB
      */
     public B typ(boolean typ) {
         getBuildingInstance().setTyp(typ);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for max
-     * 
-     * @param max desired value to be set
-     * @return Builder object with new value for max
-     */
-    public B max(boolean max) {
-        getBuildingInstance().setMax(max);
         return getSelf();
     }
 }

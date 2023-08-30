@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -42,8 +41,8 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/revision")
     protected String revision;
 
-    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId")
-    protected String templateId;
+    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateID")
+    protected String templateID;
 
     @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/version")
     protected String version;
@@ -51,14 +50,16 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    public DefaultAdministrativeInformation() {}
+    public DefaultAdministrativeInformation() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.version,
+        return Objects.hash(this.creator,
             this.revision,
-            this.creator,
-            this.templateId,
+            this.templateID,
+            this.version,
             this.embeddedDataSpecifications);
     }
 
@@ -72,32 +73,12 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
             return false;
         } else {
             DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
-            return Objects.equals(this.version, other.version) &&
+            return Objects.equals(this.creator, other.creator) &&
                 Objects.equals(this.revision, other.revision) &&
-                Objects.equals(this.creator, other.creator) &&
-                Objects.equals(this.templateId, other.templateId) &&
+                Objects.equals(this.templateID, other.templateID) &&
+                Objects.equals(this.version, other.version) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
         }
-    }
-
-    @Override
-    public String getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    @Override
-    public String getRevision() {
-        return revision;
-    }
-
-    @Override
-    public void setRevision(String revision) {
-        this.revision = revision;
     }
 
     @Override
@@ -111,13 +92,33 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     }
 
     @Override
-    public String getTemplateId() {
-        return templateId;
+    public String getRevision() {
+        return revision;
     }
 
     @Override
-    public void setTemplateId(String templateId) {
-        this.templateId = templateId;
+    public void setRevision(String revision) {
+        this.revision = revision;
+    }
+
+    @Override
+    public String getTemplateID() {
+        return templateID;
+    }
+
+    @Override
+    public void setTemplateID(String templateID) {
+        this.templateID = templateID;
+    }
+
+    @Override
+    public String getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override
@@ -128,16 +129,6 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @Override
     public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultAdministrativeInformation (" + "version=%s,"
-                + "revision=%s,"
-                + "creator=%s,"
-                + "templateId=%s,"
-                + ")",
-            this.version, this.revision, this.creator, this.templateId);
     }
 
     /**

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -38,19 +37,21 @@ public class DefaultReference implements Reference {
     @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
     protected List<Key> keys = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
-    protected Reference referredSemanticId;
+    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticID")
+    protected Reference referredSemanticID;
 
     @IRI("https://admin-shell.io/aas/3/0/Reference/type")
     protected ReferenceTypes type;
 
-    public DefaultReference() {}
+    public DefaultReference() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.type,
-            this.referredSemanticId,
-            this.keys);
+        return Objects.hash(this.keys,
+            this.referredSemanticID,
+            this.type);
     }
 
     @Override
@@ -63,30 +64,10 @@ public class DefaultReference implements Reference {
             return false;
         } else {
             DefaultReference other = (DefaultReference) obj;
-            return Objects.equals(this.type, other.type) &&
-                Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                Objects.equals(this.keys, other.keys);
+            return Objects.equals(this.keys, other.keys) &&
+                Objects.equals(this.referredSemanticID, other.referredSemanticID) &&
+                Objects.equals(this.type, other.type);
         }
-    }
-
-    @Override
-    public ReferenceTypes getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(ReferenceTypes type) {
-        this.type = type;
-    }
-
-    @Override
-    public Reference getReferredSemanticId() {
-        return referredSemanticId;
-    }
-
-    @Override
-    public void setReferredSemanticId(Reference referredSemanticId) {
-        this.referredSemanticId = referredSemanticId;
     }
 
     @Override
@@ -99,13 +80,24 @@ public class DefaultReference implements Reference {
         this.keys = keys;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultReference (" + "type=%s,"
-                + "referredSemanticId=%s,"
-                + "keys=%s,"
-                + ")",
-            this.type, this.referredSemanticId, this.keys);
+    @Override
+    public Reference getReferredSemanticID() {
+        return referredSemanticID;
+    }
+
+    @Override
+    public void setReferredSemanticID(Reference referredSemanticID) {
+        this.referredSemanticID = referredSemanticID;
+    }
+
+    @Override
+    public ReferenceTypes getType() {
+        return type;
+    }
+
+    @Override
+    public void setType(ReferenceTypes type) {
+        this.type = type;
     }
 
     /**

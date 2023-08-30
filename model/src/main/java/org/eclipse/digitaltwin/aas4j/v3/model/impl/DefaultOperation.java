@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -39,8 +38,8 @@ public class DefaultOperation implements Operation {
     @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
-    protected Reference semanticId;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    protected Reference semanticID;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -69,22 +68,24 @@ public class DefaultOperation implements Operation {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultOperation() {}
+    public DefaultOperation() {
+
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.inputVariables,
+        return Objects.hash(this.inoutputVariables,
+            this.inputVariables,
             this.outputVariables,
-            this.inoutputVariables,
             this.embeddedDataSpecifications,
-            this.semanticId,
+            this.semanticID,
             this.supplementalSemanticIds,
-            this.qualifiers,
             this.category,
-            this.idShort,
-            this.displayName,
             this.description,
-            this.extensions);
+            this.displayName,
+            this.idShort,
+            this.extensions,
+            this.qualifiers);
     }
 
     @Override
@@ -97,19 +98,29 @@ public class DefaultOperation implements Operation {
             return false;
         } else {
             DefaultOperation other = (DefaultOperation) obj;
-            return Objects.equals(this.inputVariables, other.inputVariables) &&
+            return Objects.equals(this.inoutputVariables, other.inoutputVariables) &&
+                Objects.equals(this.inputVariables, other.inputVariables) &&
                 Objects.equals(this.outputVariables, other.outputVariables) &&
-                Objects.equals(this.inoutputVariables, other.inoutputVariables) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.semanticID, other.semanticID) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
+    }
+
+    @Override
+    public List<OperationVariable> getInoutputVariables() {
+        return inoutputVariables;
+    }
+
+    @Override
+    public void setInoutputVariables(List<OperationVariable> inoutputVariables) {
+        this.inoutputVariables = inoutputVariables;
     }
 
     @Override
@@ -133,16 +144,6 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
-    public List<OperationVariable> getInoutputVariables() {
-        return inoutputVariables;
-    }
-
-    @Override
-    public void setInoutputVariables(List<OperationVariable> inoutputVariables) {
-        this.inoutputVariables = inoutputVariables;
-    }
-
-    @Override
     public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
         return embeddedDataSpecifications;
     }
@@ -153,13 +154,13 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
-    public Reference getSemanticId() {
-        return semanticId;
+    public Reference getSemanticID() {
+        return semanticID;
     }
 
     @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
+    public void setSemanticID(Reference semanticID) {
+        this.semanticID = semanticID;
     }
 
     @Override
@@ -173,16 +174,6 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
-    }
-
-    @Override
     public String getCategory() {
         return category;
     }
@@ -190,6 +181,26 @@ public class DefaultOperation implements Operation {
     @Override
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
+    }
+
+    @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -203,26 +214,6 @@ public class DefaultOperation implements Operation {
     }
 
     @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
-    }
-
-    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -232,13 +223,14 @@ public class DefaultOperation implements Operation {
         this.extensions = extensions;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultOperation (" + "inputVariables=%s,"
-                + "outputVariables=%s,"
-                + "inoutputVariables=%s,"
-                + ")",
-            this.inputVariables, this.outputVariables, this.inoutputVariables);
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     /**

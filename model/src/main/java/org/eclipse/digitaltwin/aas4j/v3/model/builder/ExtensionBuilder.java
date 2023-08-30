@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +14,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
@@ -36,35 +35,13 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
     }
 
     /**
-     * This function allows setting a value for valueType
-     * 
-     * @param valueType desired value to be set
-     * @return Builder object with new value for valueType
-     */
-    public B valueType(DataTypeDefXsd valueType) {
-        getBuildingInstance().setValueType(valueType);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for value
-     * 
-     * @param value desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B value(String value) {
-        getBuildingInstance().setValue(value);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for refersTo
      * 
-     * @param refersTos desired value to be set
+     * @param refersTo desired value to be set
      * @return Builder object with new value for refersTo
      */
-    public B refersTo(List<Reference> refersTos) {
-        getBuildingInstance().setRefersTo(refersTos);
+    public B refersTo(List<Reference> refersTo) {
+        getBuildingInstance().setRefersTo(refersTo);
         return getSelf();
     }
 
@@ -80,13 +57,35 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
     }
 
     /**
-     * This function allows setting a value for semanticId
+     * This function allows setting a value for value
      * 
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
+     * @param value desired value to be set
+     * @return Builder object with new value for value
      */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
+    public B value(String value) {
+        getBuildingInstance().setValue(value);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for valueType
+     * 
+     * @param valueType desired value to be set
+     * @return Builder object with new value for valueType
+     */
+    public B valueType(DataTypeDefXSD valueType) {
+        getBuildingInstance().setValueType(valueType);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for semanticID
+     * 
+     * @param semanticID desired value to be set
+     * @return Builder object with new value for semanticID
+     */
+    public B semanticID(Reference semanticID) {
+        getBuildingInstance().setSemanticID(semanticID);
         return getSelf();
     }
 

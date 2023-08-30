@@ -16,7 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -37,7 +37,7 @@ public class Examples {
                             .build())
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.NOT_APPLICABLE)
-                            .globalAssetId("something_eea66fa1")
+                            .globalAssetID("something_eea66fa1")
                             .build())
                     .build())
             .build();
@@ -48,7 +48,7 @@ public class Examples {
                     .extensions(new DefaultExtension.Builder()
                             .name("something_aae6caf4")
                             .value("10233")
-                            .valueType(DataTypeDefXsd.UNSIGNED_SHORT)
+                            .valueType(DataTypeDefXSD.UNSIGNED_SHORT)
                             .refersTo(new DefaultReference.Builder()
                                     .keys(new DefaultKey.Builder()
                                             .type(KeyTypes.SUBMODEL)
@@ -56,7 +56,7 @@ public class Examples {
                                             .build())
                                     .type(ReferenceTypes.MODEL_REFERENCE)
                                     .build())
-                            .semanticId(new DefaultReference.Builder()
+                            .semanticID(new DefaultReference.Builder()
                                     .keys(new DefaultKey.Builder()
                                             .type(KeyTypes.GLOBAL_REFERENCE)
                                             .value("urn:another-company07:4d1bd2cb")
@@ -73,7 +73,7 @@ public class Examples {
                             .build())
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.NOT_APPLICABLE)
-                            .globalAssetId("something_eea66fa1")
+                            .globalAssetID("something_eea66fa1")
                             .build())
                     .build())
             .build();

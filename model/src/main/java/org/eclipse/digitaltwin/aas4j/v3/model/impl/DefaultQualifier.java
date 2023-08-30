@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +14,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -37,8 +36,8 @@ import java.util.Objects;
 @IRI("aas:Qualifier")
 public class DefaultQualifier implements Qualifier {
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
-    protected Reference semanticId;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
+    protected Reference semanticID;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
@@ -52,22 +51,24 @@ public class DefaultQualifier implements Qualifier {
     @IRI("https://admin-shell.io/aas/3/0/Qualifier/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueId")
-    protected Reference valueId;
+    @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueID")
+    protected Reference valueID;
 
     @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
-    protected DataTypeDefXsd valueType;
+    protected DataTypeDefXSD valueType;
 
-    public DefaultQualifier() {}
+    public DefaultQualifier() {
+
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.kind,
             this.type,
-            this.valueType,
             this.value,
-            this.valueId,
-            this.semanticId,
+            this.valueID,
+            this.valueType,
+            this.semanticID,
             this.supplementalSemanticIds);
     }
 
@@ -83,10 +84,10 @@ public class DefaultQualifier implements Qualifier {
             DefaultQualifier other = (DefaultQualifier) obj;
             return Objects.equals(this.kind, other.kind) &&
                 Objects.equals(this.type, other.type) &&
-                Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueId, other.valueId) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.valueID, other.valueID) &&
+                Objects.equals(this.valueType, other.valueType) &&
+                Objects.equals(this.semanticID, other.semanticID) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
     }
@@ -112,16 +113,6 @@ public class DefaultQualifier implements Qualifier {
     }
 
     @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
-    }
-
-    @Override
     public String getValue() {
         return value;
     }
@@ -132,23 +123,33 @@ public class DefaultQualifier implements Qualifier {
     }
 
     @Override
-    public Reference getValueId() {
-        return valueId;
+    public Reference getValueID() {
+        return valueID;
     }
 
     @Override
-    public void setValueId(Reference valueId) {
-        this.valueId = valueId;
+    public void setValueID(Reference valueID) {
+        this.valueID = valueID;
     }
 
     @Override
-    public Reference getSemanticId() {
-        return semanticId;
+    public DataTypeDefXSD getValueType() {
+        return valueType;
     }
 
     @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
+    public void setValueType(DataTypeDefXSD valueType) {
+        this.valueType = valueType;
+    }
+
+    @Override
+    public Reference getSemanticID() {
+        return semanticID;
+    }
+
+    @Override
+    public void setSemanticID(Reference semanticID) {
+        this.semanticID = semanticID;
     }
 
     @Override
@@ -159,17 +160,6 @@ public class DefaultQualifier implements Qualifier {
     @Override
     public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
         this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultQualifier (" + "kind=%s,"
-                + "type=%s,"
-                + "valueType=%s,"
-                + "value=%s,"
-                + "valueId=%s,"
-                + ")",
-            this.kind, this.type, this.valueType, this.value, this.valueId);
     }
 
     /**

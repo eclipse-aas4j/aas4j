@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -61,7 +60,9 @@ public class DefaultConceptDescription implements ConceptDescription {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultConceptDescription() {}
+    public DefaultConceptDescription() {
+
+    }
 
     @Override
     public int hashCode() {
@@ -70,9 +71,9 @@ public class DefaultConceptDescription implements ConceptDescription {
             this.administration,
             this.id,
             this.category,
-            this.idShort,
-            this.displayName,
             this.description,
+            this.displayName,
+            this.idShort,
             this.extensions);
     }
 
@@ -91,9 +92,9 @@ public class DefaultConceptDescription implements ConceptDescription {
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
+                Objects.equals(this.displayName, other.displayName) &&
+                Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.extensions, other.extensions);
         }
     }
@@ -104,8 +105,8 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public void setIsCaseOf(List<Reference> isCaseOfs) {
-        this.isCaseOf = isCaseOfs;
+    public void setIsCaseOf(List<Reference> isCaseOf) {
+        this.isCaseOf = isCaseOf;
     }
 
     @Override
@@ -149,6 +150,26 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
+    public List<LangStringTextType> getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
+    }
+
+    @Override
+    public List<LangStringNameType> getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
+    }
+
+    @Override
     public String getIdShort() {
         return idShort;
     }
@@ -159,26 +180,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     }
 
     @Override
-    public List<LangStringNameType> getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
-    }
-
-    @Override
     public List<Extension> getExtensions() {
         return extensions;
     }
@@ -186,13 +187,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultConceptDescription (" + "isCaseOf=%s,"
-                + ")",
-            this.isCaseOf);
     }
 
     /**

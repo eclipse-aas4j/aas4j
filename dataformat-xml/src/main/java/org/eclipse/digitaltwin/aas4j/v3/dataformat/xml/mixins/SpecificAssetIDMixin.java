@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
-public interface SpecificAssetIdMixin {
+public interface SpecificAssetIDMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
     public String getName();
@@ -31,5 +31,5 @@ public interface SpecificAssetIdMixin {
     public String getValue();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
-	public Reference getExternalSubjectId();
+    public Reference getExternalSubjectID();
 }
