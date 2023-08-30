@@ -35,7 +35,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 /**
- * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
+ *  Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to JSON.
  */
 public class JsonSerializer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
