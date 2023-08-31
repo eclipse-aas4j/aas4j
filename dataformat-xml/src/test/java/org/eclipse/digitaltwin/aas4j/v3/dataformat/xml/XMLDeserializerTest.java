@@ -123,7 +123,7 @@ public class XMLDeserializerTest {
     @Test
     public void deserializeAASWithExtensionMinimal() throws SerializationException, SAXException, FileNotFoundException, DeserializationException {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MINIMAL);
-
+        //String xml = new XmlSerializer().write(env);
         Assert.assertEquals(Examples.EXTENSION_MINIMAL, env);
     }
 
