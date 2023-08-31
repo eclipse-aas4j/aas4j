@@ -41,6 +41,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
@@ -110,7 +111,7 @@ public class AASXSerializer {
         // Save the XML to aasx/xml/content.xml
         PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
 
-        storeFilesInAASX(environment.getSubmodels(), files, rootPackage, xmlPart);
+        storeFilesInAASX(environment, files, rootPackage, xmlPart);
 
         saveAASX(os, rootPackage);
     }
@@ -118,15 +119,25 @@ public class AASXSerializer {
     /**
      * Stores the files from the Submodels in the .aasx file
      * 
-     * @param submodelList the Submodels
+     * @param environment the Environment
      * @param files the content of the files
      * @param rootPackage the OPCPackage
      * @param xmlPart the Part the files should be related to
      */
-    private void storeFilesInAASX(List<Submodel> submodelList, Collection<InMemoryFile> files, OPCPackage rootPackage,
+    private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
-
-        for (Submodel sm : submodelList) {
+        for (AssetAdministrationShell aas : environment.getAssetAdministrationShells()) {
+            String filePath = AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath());
+            try {
+                InMemoryFile content = findFileByPath(files, filePath);
+                logger.trace("Writing file '" + filePath + "' to .aasx.");
+                createAASXPart(rootPackage, xmlPart, filePath, aas.getAssetInformation().getDefaultThumbnail().getContentType(), AASSUPPL_RELTYPE, content.getFileContent());
+            } catch (RuntimeException e) {
+                // Log that a file is missing and continue building the .aasx
+                logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
+            }
+        }
+        for (Submodel sm : environment.getSubmodels()) {
             for (File file : findFileElements(sm.getSubmodelElements())) {
                 String filePath = AASXUtils.getPathFromURL(file.getValue());
                 try {

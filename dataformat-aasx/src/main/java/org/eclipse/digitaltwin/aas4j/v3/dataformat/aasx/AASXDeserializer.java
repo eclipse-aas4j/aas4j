@@ -39,6 +39,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 
 /**
  * The AASX package converter converts a aasx package into a list of aas, a list
@@ -148,6 +149,9 @@ public class AASXDeserializer {
         read();
 
         List<String> paths = new ArrayList<>();
+        for (AssetAdministrationShell aas : environment.getAssetAdministrationShells()) {
+            paths.add(aas.getAssetInformation().getDefaultThumbnail().getPath());
+        }
         for (Submodel sm : environment.getSubmodels()) {
             paths.addAll(parseElements(sm.getSubmodelElements()));
         }
