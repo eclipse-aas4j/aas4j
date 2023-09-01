@@ -18,14 +18,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public class SubmodelElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
 
@@ -39,9 +39,11 @@ public class SubmodelElementsSerializer extends JsonSerializer<List<SubmodelElem
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeStartObject();
         for (SubmodelElement element : value) {
-            ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to <statements />, which is not allowed according to the schema
+            List<Runnable> resetRunnables = ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
+                                                                                            // <statements />, which is not allowed according to the schema
             xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
             ser.serialize(element, xgen, serializers);
+            resetRunnables.stream().forEach(r -> r.run());
         }
         xgen.writeEndObject();
     }
