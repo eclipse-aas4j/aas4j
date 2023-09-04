@@ -20,12 +20,20 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.json.JSONException;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -57,6 +65,16 @@ public class JsonReferableSerializerTest {
     @Test
     public void testSerializeSubmodel() throws IOException, SerializationException, JSONException {
         compare(Examples.SUBMODEL);
+    }
+
+    @Test
+    public void testSerializeSubmodelWithExtensions() throws DeserializationException, SerializationException, JsonProcessingException {
+        Submodel submodel = new JsonDeserializer().readReferable(Examples.SUBMODEL.fileContentStream(), Submodel.class);
+        submodel.getExtensions().add(new DefaultExtension.Builder()
+                .name("myExtension").value("my extension value").valueType(DataTypeDefXsd.STRING)
+                .build());
+        JsonNode jsonNode = new ObjectMapper().readTree(new JsonSerializer().writeReferable(submodel));
+        Assert.assertTrue(jsonNode.has("extensions"));
     }
 
     @Test
