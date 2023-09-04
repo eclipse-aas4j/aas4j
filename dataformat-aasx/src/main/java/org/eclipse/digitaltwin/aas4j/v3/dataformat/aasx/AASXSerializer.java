@@ -127,6 +127,10 @@ public class AASXSerializer {
     private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
         for (AssetAdministrationShell aas : environment.getAssetAdministrationShells()) {
+            AssetInformation information = aas.getAssetInformation();
+            if(information == null || information.getDefaultThumbnail() == null || information.getDefaultThumbnail().getPath() == null) {
+                continue;
+            }
             String filePath = AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath());
             try {
                 InMemoryFile content = findFileByPath(files, filePath);
