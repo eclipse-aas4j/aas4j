@@ -14,7 +14,7 @@ jobs:
     name: Build and publish documentation
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build docfx
       uses: nikeee/docfx-action@v1.0.0
