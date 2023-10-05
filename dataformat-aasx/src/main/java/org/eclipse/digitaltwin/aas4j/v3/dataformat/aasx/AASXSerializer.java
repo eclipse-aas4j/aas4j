@@ -128,8 +128,8 @@ public class AASXSerializer {
     private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
         environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
-                || aas.getAssetInformation().getDefaultThumbnail() != null
-                || aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                && aas.getAssetInformation().getDefaultThumbnail() != null
+                && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
                 .forEach(aas -> createParts(files,
                         AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath()),
                         rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
