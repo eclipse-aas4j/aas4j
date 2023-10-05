@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.deserialization;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
@@ -50,8 +52,11 @@ public class AASXDeserializerTest {
 
         List<InMemoryFile> fileList = new ArrayList<>();
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
+        byte[] thumbnail = { 0, 1, 2, 3, 4 };
         InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(inMemoryFile);
+        fileList.add(inMemoryFileThumbnail);
 
         File file = tempFolder.newFile("output.aasx");
 
@@ -61,6 +66,6 @@ public class AASXDeserializerTest {
         AASXDeserializer deserializer = new AASXDeserializer(in);
 
         assertEquals(AASSimple.createEnvironment(), deserializer.read());
-        assertEquals(fileList, deserializer.getRelatedFiles());
+        assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
     }
 }
