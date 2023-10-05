@@ -127,33 +127,35 @@ public class AASXSerializer {
      */
     private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
-        for (AssetAdministrationShell aas : environment.getAssetAdministrationShells()) {
-            AssetInformation information = aas.getAssetInformation();
-            if(information == null || information.getDefaultThumbnail() == null || information.getDefaultThumbnail().getPath() == null) {
-                continue;
-            }
-            String filePath = AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath());
-            try {
-                InMemoryFile content = findFileByPath(files, filePath);
-                logger.trace("Writing file '" + filePath + "' to .aasx.");
-                createAASXPart(rootPackage, xmlPart, filePath, aas.getAssetInformation().getDefaultThumbnail().getContentType(), AASSUPPL_RELTYPE, content.getFileContent());
-            } catch (RuntimeException e) {
-                // Log that a file is missing and continue building the .aasx
-                logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
-            }
-        }
-        for (Submodel sm : environment.getSubmodels()) {
-            for (File file : findFileElements(sm.getSubmodelElements())) {
-                String filePath = AASXUtils.getPathFromURL(file.getValue());
-                try {
-                    InMemoryFile content = findFileByPath(files, filePath);
-                    logger.trace("Writing file '" + filePath + "' to .aasx.");
-                    createAASXPart(rootPackage, xmlPart, filePath, file.getContentType(), AASSUPPL_RELTYPE, content.getFileContent());
-                } catch (RuntimeException e) {
-                    // Log that a file is missing and continue building the .aasx
-                    logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
-                }
-            }
+        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
+                || aas.getAssetInformation().getDefaultThumbnail() != null
+                || aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                .forEach(aas -> createParts(files,
+                        AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath()),
+                        rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
+        environment.getSubmodels().forEach(sm ->
+            findFileElements(sm.getSubmodelElements()).forEach(file -> createParts(files,
+                    AASXUtils.getPathFromURL(file.getValue()), rootPackage, xmlPart, file.getContentType())));
+    }
+
+    /**
+     * Adds a part to the .aasx file with the given file, filePath and contentType
+     *
+     * @param files the content of the files
+     * @param filePath the path of the file
+     * @param rootPackage the OPCPackage
+     * @param xmlPart the Part the files should be related to
+     * @param contentType the contentType of the file
+     */
+    private void createParts(Collection<InMemoryFile> files, String filePath, OPCPackage rootPackage,
+                        PackagePart xmlPart, String contentType) {
+        try {
+            InMemoryFile content = findFileByPath(files, filePath);
+            logger.trace("Writing file '" + filePath + "' to .aasx.");
+            createAASXPart(rootPackage, xmlPart, filePath, contentType, AASSUPPL_RELTYPE, content.getFileContent());
+        } catch (RuntimeException e) {
+            // Log that a file is missing and continue building the .aasx
+            logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
         }
     }
 

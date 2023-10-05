@@ -150,16 +150,11 @@ public class AASXDeserializer {
         read();
 
         List<String> paths = new ArrayList<>();
-        for (AssetAdministrationShell aas : environment.getAssetAdministrationShells()) {
-            AssetInformation information = aas.getAssetInformation();
-            if(information == null || information.getDefaultThumbnail() == null || information.getDefaultThumbnail().getPath() == null) {
-                continue;
-            }
-            paths.add(aas.getAssetInformation().getDefaultThumbnail().getPath());
-        }
-        for (Submodel sm : environment.getSubmodels()) {
-            paths.addAll(parseElements(sm.getSubmodelElements()));
-        }
+        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
+                        || aas.getAssetInformation().getDefaultThumbnail() != null
+                        || aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                .forEach(aas -> paths.add(aas.getAssetInformation().getDefaultThumbnail().getPath()));
+        environment.getSubmodels().forEach(sm -> paths.addAll(parseElements(sm.getSubmodelElements())));
         return paths;
     }
 
