@@ -22,20 +22,20 @@ import java.util.List;
 public interface OperationMixin {
 
     @JsonProperty("inputVariables")
-    List<OperationVariable> getInputVariables();
+    public List<OperationVariable> getInputVariables();
 
     @JsonProperty("inputVariables")
-    void setInputVariables(List<OperationVariable> inputVariables);
+    public void setInputVariables(List<OperationVariable> inputVariables);
 
     @JsonProperty("inoutputVariables")
-    List<OperationVariable> getInoutputVariables();
+    public List<OperationVariable> getInoutputVariables();
 
     @JsonProperty("inoutputVariables")
-    void setInoutputVariables(List<OperationVariable> inoutputVariables);
+    public void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
     @JsonProperty("outputVariables")
-    List<OperationVariable> getOutputVariables();
+    public List<OperationVariable> getOutputVariables();
 
     @JsonProperty("outputVariables")
-    void setOutputVariables(List<OperationVariable> outputVariables);
+    public void setOutputVariables(List<OperationVariable> outputVariables);
 }

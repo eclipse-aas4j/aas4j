@@ -25,12 +25,12 @@ import java.util.List;
 public interface ReferenceMixin {
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("keys")
-    List<Key> getKeys();
+    public List<Key> getKeys();
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
     @JsonProperty("type")
-    ReferenceTypes getType();
+    public ReferenceTypes getType();
 
     @JsonProperty("type")
-    void setType(ReferenceTypes type);
+    public void setType(ReferenceTypes type);
 }

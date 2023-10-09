@@ -20,5 +20,5 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public interface ExtensionMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    String getName();
+    public String getName();
 }

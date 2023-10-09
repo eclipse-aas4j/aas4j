@@ -22,11 +22,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 public interface EntityMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    EntityType getEntityType();
+    public EntityType getEntityType();
 
     @JsonProperty("globalAssetId")
-    String getGlobalAssetId();
+    public String getGlobalAssetId();
 
     @JsonProperty("globalAssetId")
-    void setGlobalAssetId(String globalAssetId);
+    public void setGlobalAssetId(String globalAssetId);
 }

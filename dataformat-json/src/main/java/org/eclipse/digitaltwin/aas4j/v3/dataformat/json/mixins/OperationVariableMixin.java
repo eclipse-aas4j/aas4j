@@ -21,5 +21,5 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 public interface OperationVariableMixin {
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    SubmodelElement getValue();
+    public SubmodelElement getValue();
 }

@@ -27,11 +27,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 public interface EnvironmentMixin {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    Set<AssetAdministrationShell> getAssetAdministrationShells();
+    public Set<AssetAdministrationShell> getAssetAdministrationShells();
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    List<Submodel> getSubmodels();
+    public List<Submodel> getSubmodels();
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    List<ConceptDescription> getConceptDescriptions();
+    public List<ConceptDescription> getConceptDescriptions();
 }

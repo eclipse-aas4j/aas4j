@@ -23,14 +23,14 @@ import java.util.List;
 
 public interface ReferableMixin {
     @JsonProperty("description")
-    List<LangStringTextType> getDescription();
+    public List<LangStringTextType> getDescription();
 
     @JsonProperty("description")
-    void setDescription(List<LangStringTextType> description);
+    public void setDescription(List<LangStringTextType> description);
 
     @JsonProperty("displayName")
-    List<LangStringNameType> getDisplayName();
+    public List<LangStringNameType> getDisplayName();
 
     @JsonProperty("displayName")
-    void setDisplayName(List<LangStringNameType> displayNames);
+    public void setDisplayName(List<LangStringNameType> displayNames);
 }

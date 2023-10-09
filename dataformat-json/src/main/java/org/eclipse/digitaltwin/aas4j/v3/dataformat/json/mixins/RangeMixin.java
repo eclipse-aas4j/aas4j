@@ -19,5 +19,5 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface RangeMixin {
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    String getValueType();
+    public String getValueType();
 }

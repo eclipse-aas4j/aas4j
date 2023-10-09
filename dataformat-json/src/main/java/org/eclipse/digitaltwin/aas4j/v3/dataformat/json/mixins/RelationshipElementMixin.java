@@ -20,8 +20,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface RelationshipElementMixin {
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    Reference getFirst();
+    public Reference getFirst();
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    Reference getSecond();
+    public Reference getSecond();
 }

@@ -20,8 +20,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface ValueReferencePairMixin {
     @JsonProperty("valueId")
-    Reference getValueId();
+    public Reference getValueId();
 
     @JsonProperty("valueId")
-    void setValueId(Reference valueId);
+    public void setValueId(Reference valueId);
 }

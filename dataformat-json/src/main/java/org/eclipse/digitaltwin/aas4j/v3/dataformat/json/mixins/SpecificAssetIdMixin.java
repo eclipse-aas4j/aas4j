@@ -20,8 +20,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface SpecificAssetIdMixin {
     @JsonProperty("externalSubjectId")
-    Reference getExternalSubjectId();
+    public Reference getExternalSubjectId();
     
     @JsonProperty("externalSubjectId")
-    void setExternalSubjectId(Reference reference);
+    public void setExternalSubjectId(Reference reference);
 }
