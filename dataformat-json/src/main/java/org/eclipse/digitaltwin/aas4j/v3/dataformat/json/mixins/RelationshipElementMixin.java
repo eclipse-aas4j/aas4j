@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface RelationshipElementMixin {
+
     @JsonInclude(JsonInclude.Include.ALWAYS)
     public Reference getFirst();
 

@@ -26,6 +26,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 
 public interface SubmodelElementListMixin {
+
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     @JsonProperty("orderRelevant")
     public boolean getOrdered();

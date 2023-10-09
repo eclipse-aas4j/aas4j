@@ -22,6 +22,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import java.util.List;
 
 public interface ReferableMixin {
+
     @JsonProperty("description")
     public List<LangStringTextType> getDescription();
 
