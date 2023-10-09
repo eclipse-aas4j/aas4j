@@ -17,7 +17,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import com.google.common.reflect.TypeToken;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.MostSpecificTypeTokenComparator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -29,6 +28,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.ClassUtils;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

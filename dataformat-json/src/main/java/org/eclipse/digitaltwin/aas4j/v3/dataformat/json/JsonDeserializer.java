@@ -172,6 +172,19 @@ public class JsonDeserializer {
         return read(file, DEFAULT_CHARSET);
     }
 
+
+    /**
+     * Enables usage of custom implementation to be used for deserialization instead of default implementation, e.g.
+     * defining a custom implementation of the Submodel interface {@code class
+     * CustomSubmodel implements Submodel {}} and calling
+     * {@code useImplementation(Submodel.class, CustomSubmodel.class);} will result in all instances of Submodel will be
+     * deserialized as CustomSubmodel. Subsequent class with the same aasInterface parameter will override the effects
+     * of all previous calls.
+     *
+     * @param <T> the type of the interface to replace
+     * @param aasInterface the class of the interface to replace
+     * @param implementation the class implementing the interface that should be used for deserialization.
+     */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
         buildMapper();
@@ -236,9 +249,9 @@ public class JsonDeserializer {
      */
     public <T extends Referable> T readReferable(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
         return readReferable(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
+                new InputStreamReader(src, charset))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())),
                 outputClass);
     }
 
@@ -331,9 +344,9 @@ public class JsonDeserializer {
      */
     public <T extends Referable> List<T> readReferables(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
         return readReferables(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
+                new InputStreamReader(src, charset))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())),
                 outputClass);
     }
 

@@ -46,7 +46,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified.xml", "src/test/resources/test_demo_full_example.xml" })
+    @Parameters({ "src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified.xml", "src/test/resources/test_demo_full_example.xml" })
     // import from admin-shell.io -> is actually V3
     // -> fix name, as soon as it is fixed externally
     public void validateValidXml(String file) throws IOException {
@@ -56,7 +56,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid.xml" })
+    @Parameters({ "src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid.xml" })
     public void validateInvalidXml(String file) throws IOException {
         Set<String> errors = validateXmlFile(file);
         logErrors(file, errors);

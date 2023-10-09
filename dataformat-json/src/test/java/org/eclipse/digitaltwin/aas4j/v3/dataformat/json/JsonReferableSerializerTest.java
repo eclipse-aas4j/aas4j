@@ -16,22 +16,25 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.IOException;
+import java.util.Collection;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -47,7 +50,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeWithAssetInformation() throws SerializationException, JSONException, IOException {
+    public void testSerializeAASWithAssetInformation() throws SerializationException, JSONException, IOException {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
     }
 
@@ -57,7 +60,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
+    @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
     public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }
@@ -76,6 +79,7 @@ public class JsonReferableSerializerTest {
         JsonNode jsonNode = new ObjectMapper().readTree(new JsonSerializer().writeReferable(submodel));
         Assert.assertTrue(jsonNode.has("extensions"));
     }
+
 
     @Test
     public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {
@@ -107,17 +111,39 @@ public class JsonReferableSerializerTest {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
-	@SuppressWarnings("unchecked")
-	private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
+    @Test
+    public void testSerializePropertyToNode() throws IOException, SerializationException, JSONException {
+        Property property = new DefaultProperty.Builder()
+                .idShort("exampleId")
+                .build();
+        ObjectNode expected = JsonNodeFactory.instance.objectNode();
+        expected.put("idShort", "exampleId");
+        expected.put("modelType", "Property");
+        JsonNode actual = new JsonSerializer().toNode(property);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MINIMAL);
+    }
+
+    @Test
+    public void testSerializeExtensionMaximal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MAXIMAL);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
         String actual = null;
         if (Environment.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = new JsonSerializer().write((Environment) exampleData.getModel());
         } else if (Referable.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = new JsonSerializer().writeReferable((Referable) exampleData.getModel());
+            actual = new JsonSerializer().write((Referable) exampleData.getModel());
         } else if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())
-				&& ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
-            actual = new JsonSerializer().writeReferables((List<Referable>) exampleData.getModel());
+                && ((Collection<?>) exampleData.getModel()).stream().allMatch(x -> x != null && Referable.class.isAssignableFrom(x.getClass()))) {
+            actual = new JsonSerializer().write((Collection<Referable>) exampleData.getModel());
         }
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);

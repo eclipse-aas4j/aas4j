@@ -15,6 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.junit.Assert.assertEquals;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
@@ -52,8 +54,16 @@ public class JsonDeserializerTest {
     }
 
     @Test
+    public void testFullExampleFromNode() throws Exception {
+        Environment expected = Examples.EXAMPLE_FULL.getModel();
+        JsonNode node = new ObjectMapper().readTree(Examples.EXAMPLE_FULL.fileContentStream());
+        Environment actual = new JsonDeserializer().read(node);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testCustomImplementationClass() throws Exception {
-		String json = new JsonSerializer().write(AASSimple.createEnvironment());
+        String json = new JsonSerializer().write(AASSimple.createEnvironment());
         JsonDeserializer deserializer = new JsonDeserializer();
         Environment environment = deserializer.read(json);
         checkImplementationClasses(environment, DefaultSubmodel.class, DefaultProperty.class);
