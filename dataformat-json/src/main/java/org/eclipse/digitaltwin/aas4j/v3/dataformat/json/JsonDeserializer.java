@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +17,26 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 // TODO import io.adminshell.aas.v3.dataformat.core.deserialization.EmbeddedDataSpecificationDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
@@ -42,13 +47,12 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
-public class JsonDeserializer implements Deserializer, ReferableDeserializer, ReferenceDeserializer, SpecificAssetIdDeserializer {
+public class JsonDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
-    // TODO
-    protected static Map<Class<?>, com.fasterxml.jackson.databind.JsonDeserializer> customDeserializers = Map.of(
-            /* EmbeddedDataSpecification.class, new EmbeddedDataSpecificationDeserializer() */);
+
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public JsonDeserializer() {
         initTypeResolver();
@@ -62,22 +66,15 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
                 .annotationIntrospector(new ReflectionAnnotationIntrospector())
                 .addModule(buildEnumModule())
                 .addModule(buildImplementationModule())
-                .addModule(buildCustomDeserializerModule())
                 .build();
         ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
     }
 
-    protected SimpleModule buildCustomDeserializerModule() {
-        SimpleModule module = new SimpleModule();
-        customDeserializers.forEach(module::addDeserializer);
-        return module;
-    }
-
+    @SuppressWarnings("unchecked")
     private void initTypeResolver() {
         typeResolver = new SimpleAbstractTypeResolver();
         ReflectionHelper.DEFAULT_IMPLEMENTATIONS
                 .stream()
-                .filter(x -> !customDeserializers.containsKey(x.getInterfaceType()))
                 .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
     }
 
@@ -93,65 +90,282 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         return module;
     }
 
-    @Override
+    /**
+     * Deserializes a given string into an instance of AssetAdministrationShellEnvironment
+     *
+     * @param value a string representation of the AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
     public Environment read(String value) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(value), Environment.class);
-            return mapper.treeToValue(new ObjectMapper().readTree(value), Environment.class);
+            return mapper.readValue(value, Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
         }
     }
 
-    @Override
+    /**
+     * Deserializes a given JSON node into an instance of AssetAdministrationShellEnvironment
+     *
+     * @param root root node of the document to parse
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(JsonNode root) throws DeserializationException {
+        try {
+            return mapper.treeToValue(root, Environment.class);
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
+        }
+    }
+
+    /**
+     * Deserializes a given InputStream into an instance of AssetAdministrationShellEnvironment using DEFAULT_CHARSET
+     *
+     * @param src an InputStream containing the string representation of the AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(InputStream src) throws DeserializationException {
+        return read(src, DEFAULT_CHARSET);
+    }
+
+    /**
+     * Deserializes a given InputStream into an instance of AssetAdministrationShellEnvironment using a given charset
+     *
+     * @param src An InputStream containing the string representation of the AssetAdministrationShellEnvironment
+     * @param charset the charset to use for deserialization
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(InputStream src, Charset charset) throws DeserializationException {
+        return read(new BufferedReader(
+                new InputStreamReader(src, charset))
+                .lines()
+                .collect(Collectors.joining(System.lineSeparator())));
+    }
+
+    /**
+     * Deserializes a given File into an instance of AssetAdministrationShellEnvironment using DEFAULT_CHARSET
+     *
+     * @param file A java.io.File containing the string representation of the AssetAdministrationShellEnvironment
+     * @param charset the charset to use for deserialization
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws FileNotFoundException if file is not present
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(java.io.File file, Charset charset)
+            throws FileNotFoundException, DeserializationException {
+        return read(new FileInputStream(file), charset);
+    }
+
+    /**
+     * Deserializes a given File into an instance of AssetAdministrationShellEnvironment using a given charset
+     *
+     * @param file a java.io.File containing the string representation of the AssetAdministrationShellEnvironment
+     * @return an instance of AssetAdministrationShellEnvironment
+     * @throws FileNotFoundException if the file is not present
+     * @throws DeserializationException if deserialization fails
+     */
+    public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
+        return read(file, DEFAULT_CHARSET);
+    }
+
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
         buildMapper();
     }
 
-    @Override
-    public <T extends Referable> T readReferable(String referable, Class<T> outputClass) throws DeserializationException {
+    /**
+     * Deserializes a given string into an instance of the given Referable
+     *
+     * @param src a string representation of the Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T extends Referable> T readReferable(String src, Class<T> outputClass) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(referable), outputClass);
-            return mapper.treeToValue(new ObjectMapper().readTree(referable), outputClass);
+            return mapper.readValue(src, outputClass);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing Referable", ex);
         }
     }
 
-    @Override
+    /**
+     * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
+     *
+     * @param src a input stream representing a Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
     public <T extends Referable> T readReferable(InputStream src, Class<T> outputClass) throws DeserializationException {
-        return readReferable(new BufferedReader(
-            new InputStreamReader(src, DEFAULT_CHARSET))
-                .lines()
-                .collect(Collectors.joining(System.lineSeparator())),
-            outputClass);
+        return readReferable(src, DEFAULT_CHARSET, outputClass);
     }
 
-    @Override
-    public <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException {
+    /**
+     * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
+     *
+     * @param root JSON node representing a Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T extends Referable> T readReferable(JsonNode root, Class<T> outputClass) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            // String parsed = mapper.writeValueAsString(ModelTypeProcessor.preprocess(referables)) ;
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(referables)) ;
-            return mapper.readValue(parsed,new TypeReference<List<T>>(){});
+            return mapper.treeToValue(root, outputClass);
         } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of Referables", ex);
+            throw new DeserializationException("error deserializing Referable", ex);
         }
     }
 
-    @Override
-    public <T extends Referable> List<T> readReferables(InputStream src, Class<T> outputClass) throws DeserializationException {
-        return readReferables(new BufferedReader(
-            new InputStreamReader(src, DEFAULT_CHARSET))
-                .lines()
-                .collect(Collectors.joining(System.lineSeparator())),
+    /**
+     * Deserializes a given input stream into an instance of the given Referable
+     *
+     * @param src a input stream representing a Referable
+     * @param charset the charset to use
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T extends Referable> T readReferable(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
+        return readReferable(new BufferedReader(
+                        new InputStreamReader(src, charset))
+                        .lines()
+                        .collect(Collectors.joining(System.lineSeparator())),
                 outputClass);
     }
 
-    @Override
+    /**
+     * Deserializes a given file into an instance of the given Referable using DEFAULT_CHARSET
+     *
+     * @param src a file containing string representation of a Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     * @throws java.io.FileNotFoundException if file is not found
+     */
+    public <T extends Referable> T readReferable(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
+        return readReferable(src, DEFAULT_CHARSET, outputClass);
+    }
+
+    /**
+     * Deserializes a given file into an instance of the given Referable
+     *
+     * @param src a file containing string representation of a Referable
+     * @param charset the charset to use
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     * @throws java.io.FileNotFoundException if file is not found
+     */
+    public <T extends Referable> T readReferable(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
+        return readReferable(new FileInputStream(src), charset, outputClass);
+    }
+
+    /**
+     * Deserializes a given string into an instance of a list of the given Referables
+     *
+     * @param referables a string representation of an array of Referables
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of a list of the referables
+     * @throws DeserializationException if deserialization of referable fails
+     */
+    public <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException {
+        try {
+            return mapper.readValue(referables, new TypeReference<List<T>>() {
+            });
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing list of Referable", ex);
+        }
+    }
+
+    /**
+     * Deserializes a given string into an instance of a list of the given Referables
+     *
+     * @param root JSON node representation of an array of Referables
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of a list of the referables
+     * @throws DeserializationException if deserialization of referable fails
+     */
+    public <T extends Referable> List<T> readReferables(JsonNode root, Class<T> outputClass) throws DeserializationException {
+        try {
+            return mapper.treeToValue(root, mapper.getTypeFactory().constructCollectionLikeType(List.class, outputClass));
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing list of Referable", ex);
+        }
+    }
+
+    /**
+     * Deserializes a given input stream into an instance of a list of the given Referable using DEFAULT_CHARSET
+     *
+     * @param src a input stream representing a Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T extends Referable> List<T> readReferables(InputStream src, Class<T> outputClass) throws DeserializationException {
+        return readReferables(src, DEFAULT_CHARSET, outputClass);
+    }
+
+    /**
+     * Deserializes a given input stream into an instance of a list of the given Referable
+     *
+     * @param src a input stream representing a Referable
+     * @param charset the charset to use
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T extends Referable> List<T> readReferables(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
+        return readReferables(new BufferedReader(
+                        new InputStreamReader(src, charset))
+                        .lines()
+                        .collect(Collectors.joining(System.lineSeparator())),
+                outputClass);
+    }
+
+    /**
+     * Deserializes a given file into an instance of a list of the given Referable using DEFAULT_CHARSET
+     *
+     * @param src a file containing string representation of a Referable
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     * @throws java.io.FileNotFoundException if file is not found
+     */
+    public <T extends Referable> List<T> readReferables(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
+        return readReferables(src, DEFAULT_CHARSET, outputClass);
+    }
+
+    /**
+     * Deserializes a given file into an instance of a list of the given Referable
+     *
+     * @param src a file containing string representation of a Referable
+     * @param charset the charset to use
+     * @param outputClass most specific class of the given Referable
+     * @param <T> type of the returned element
+     * @return an instance of the referable
+     * @throws DeserializationException if deserialization fails
+     * @throws java.io.FileNotFoundException if file is not found
+     */
+    public <T extends Referable> List<T> readReferables(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
+        return readReferables(new FileInputStream(src), charset, outputClass);
+    }
+
     public Reference readReference(String reference) throws DeserializationException {
         try {
             return mapper.treeToValue(new ObjectMapper().readTree(reference), Reference.class);
@@ -160,7 +374,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<Reference> readReferences(String references) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(references)) ;
@@ -170,7 +383,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public SpecificAssetId readSpecificAssetId(String specificAssetId) throws DeserializationException {
         try {
             return mapper.treeToValue(new ObjectMapper().readTree(specificAssetId), SpecificAssetId.class);
@@ -179,7 +391,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(specificAssetIds)) ;
