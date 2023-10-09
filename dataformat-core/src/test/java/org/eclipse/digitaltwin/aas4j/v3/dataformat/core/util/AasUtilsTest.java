@@ -27,8 +27,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
@@ -38,9 +36,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import junitparams.JUnitParamsRunner;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 
 @RunWith(JUnitParamsRunner.class)
 public class AasUtilsTest {
+
     @Test
     public void whenResolve_withProperty_success() {
         String submodelId = "http://example.org/submodel";
@@ -69,6 +73,144 @@ public class AasUtilsTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void whenResolve_withInvalidType_fail() {
+        String submodelId = "http://example.org/submodel";
+        String submodelElementIdShort = "foo";
+        SubmodelElement expected = new DefaultProperty.Builder()
+                .idShort(submodelElementIdShort)
+                .value("bar")
+                .build();
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(new DefaultSubmodel.Builder()
+                        .id(submodelId)
+                        .submodelElements(expected)
+                        .build())
+                .build();
+        Reference reference = new DefaultReference.Builder()
+                .type(ReferenceTypes.MODEL_REFERENCE)
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
+                        .value(submodelId)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT)
+                        .value(submodelElementIdShort)
+                        .build())
+                .build();
+        AasUtils.resolve(reference, environment, Operation.class);
+    }
+
+    @Test
+    public void whenResolve_insideSubmodelElementList_success() {
+        String submodelId = "http://example.org/submodel";
+        String submodelElementIdShort = "foo";
+        String submodelElementListIdShort = "list";
+        SubmodelElement expected = new DefaultProperty.Builder()
+                .idShort(submodelElementIdShort)
+                .value("bar")
+                .build();
+        SubmodelElementList list = new DefaultSubmodelElementList.Builder()
+                .idShort(submodelElementListIdShort)
+                .value(expected)
+                .build();
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(new DefaultSubmodel.Builder()
+                        .id(submodelId)
+                        .submodelElements(list)
+                        .build())
+                .build();
+        Reference reference = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
+                        .value(submodelId)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT_LIST)
+                        .value(submodelElementListIdShort)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT)
+                        .value("0")
+                        .build())
+                .build();
+        Referable actual = AasUtils.resolve(reference, environment);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenResolve_insideSubmodelElementList_indexOutOfBounds() {
+        String submodelId = "http://example.org/submodel";
+        String submodelElementIdShort = "foo";
+        String submodelElementListIdShort = "list";
+        SubmodelElement expected = new DefaultProperty.Builder()
+                .idShort(submodelElementIdShort)
+                .value("bar")
+                .build();
+        SubmodelElementList list = new DefaultSubmodelElementList.Builder()
+                .idShort(submodelElementListIdShort)
+                .value(expected)
+                .build();
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(new DefaultSubmodel.Builder()
+                        .id(submodelId)
+                        .submodelElements(list)
+                        .build())
+                .build();
+        Reference reference = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
+                        .value(submodelId)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT_LIST)
+                        .value(submodelElementListIdShort)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT)
+                        .value("1")
+                        .build())
+                .build();
+        AasUtils.resolve(reference, environment);
+    }
+
+    @Test
+    public void whenResolve_insideSubmodelElementCollection_success() {
+        String submodelId = "http://example.org/submodel";
+        String submodelElementIdShort = "foo";
+        String submodelElementCollectionIdShort = "collection";
+        SubmodelElement expected = new DefaultProperty.Builder()
+                .idShort(submodelElementIdShort)
+                .value("bar")
+                .build();
+        SubmodelElementCollection list = new DefaultSubmodelElementCollection.Builder()
+                .idShort(submodelElementCollectionIdShort)
+                .value(expected)
+                .build();
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(new DefaultSubmodel.Builder()
+                        .id(submodelId)
+                        .submodelElements(list)
+                        .build())
+                .build();
+        Reference reference = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
+                        .value(submodelId)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT_LIST)
+                        .value(submodelElementCollectionIdShort)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT)
+                        .value(submodelElementIdShort)
+                        .build())
+                .build();
+        Referable actual = AasUtils.resolve(reference, environment);
+        Assert.assertEquals(expected, actual);
+    }
+
     @Test
     public void whenResolve_withSubmodel_success() {
         assertNotNull(AasUtils.resolve(AASFull.AAS_1.getSubmodels().get(0), AASFull.createEnvironment()));
@@ -78,47 +220,9 @@ public class AasUtilsTest {
                 AASFull.createEnvironment(),
                 Submodel.class
         );
-        
+
         assertNotNull(asSubmodel);
         assertEquals(DefaultSubmodel.class, asSubmodel.getClass());
-    }
-    
-    @Test
-    public void whenResolve_withOperation_success() {
-        String submodelId = "http://example.org/submodel";
-        String submodelElementIdShort = "foo";
-        String submodelElement2IdShort = "bar";
-        SubmodelElement expected = new DefaultProperty.Builder()
-                .idShort(submodelElement2IdShort)
-                .value("bar")
-                .build();
-        Environment environment = new DefaultEnvironment.Builder()
-                .submodels(new DefaultSubmodel.Builder()
-                        .id(submodelId)
-                        .submodelElements(new DefaultOperation.Builder()
-                                .idShort(submodelElementIdShort)
-                                .inputVariables(new DefaultOperationVariable.Builder()
-                                        .value(expected)
-                                        .build())
-                                .build())
-                        .build())
-                .build();
-        Reference reference = new DefaultReference.Builder()
-                .keys(new DefaultKey.Builder()
-                        .type(KeyTypes.SUBMODEL)
-                        .value(submodelId)
-                        .build())
-                .keys(new DefaultKey.Builder()
-                        .type(KeyTypes.SUBMODEL_ELEMENT)
-                        .value(submodelElementIdShort)
-                        .build())
-                .keys(new DefaultKey.Builder()
-                        .type(KeyTypes.SUBMODEL_ELEMENT)
-                        .value(submodelElement2IdShort)
-                        .build())
-                .build();
-        Referable actual = AasUtils.resolve(reference, environment);
-        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -155,4 +259,127 @@ public class AasUtilsTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void whenSameAs_withDifferentKeyTypesButSameValues_success() {
+        String value = "0173-1#01-ADS698#010";
+        Reference ref1 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.FRAGMENT_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withDifferentKeyTypesAndValues_fail() {
+        Reference ref1 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value("foo")
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.FRAGMENT_REFERENCE)
+                        .value("bar")
+                        .build())
+                .build();
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withSameKeyTypesAndValues_success() {
+        String value = "0173-1#01-ADS698#010";
+        Reference ref1 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withSameKeyTypesButDifferentValues_fail() {
+        Reference ref1 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value("foo")
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value("bar")
+                        .build())
+                .build();
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withDifferentReferredSemanticId_fail() {
+        String value = "0173-1#01-ADS698#010";
+        Reference ref1 = new DefaultReference.Builder()
+                .referredSemanticID(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("foo")
+                                .build())
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .referredSemanticID(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("bar")
+                                .build())
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        // actually, this behavior is not defined in the specification.
+        // There is no statement whether references with different referredSemanticId should be considered equal or not.
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenAsString_withSubmodelElementList_success() {
+        Reference reference = new DefaultReference.Builder()
+                .type(ReferenceTypes.MODEL_REFERENCE)
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL)
+                        .value("submodel")
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.SUBMODEL_ELEMENT_LIST)
+                        .value("list")
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.PROPERTY)
+                        .value("0")
+                        .build())
+                .build();
+        String expected = "[ModelRef](Submodel)submodel, (SubmodelElementList)list, (Property)0";
+        String actual = AasUtils.asString(reference);
+        Assert.assertEquals(expected, actual);
+    }
 }
