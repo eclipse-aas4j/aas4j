@@ -20,7 +20,6 @@ import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
