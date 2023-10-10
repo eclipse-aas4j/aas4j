@@ -379,38 +379,4 @@ public class JsonDeserializer {
         return readReferables(new FileInputStream(src), charset, outputClass);
     }
 
-    public Reference readReference(String reference) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(reference), Reference.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the Reference", ex);
-        }
-    }
-
-    public List<Reference> readReferences(String references) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(references)) ;
-            return mapper.readValue(parsed,new TypeReference<List<Reference>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of References", ex);
-        }
-    }
-
-    public SpecificAssetId readSpecificAssetId(String specificAssetId) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(specificAssetId), SpecificAssetId.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the SpecificAssetId", ex);
-        }
-    }
-
-    public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(specificAssetIds)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SpecificAssetId>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of SpecificAssetIds", ex);
-        }
-    }
-
 }
