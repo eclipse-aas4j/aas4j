@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 
 
 public abstract class LangStringNameTypeBuilder<T extends LangStringNameType, B extends LangStringNameTypeBuilder<T, B>>

@@ -15,11 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+
+import java.util.List;
 
 
 public abstract class CapabilityBuilder<T extends Capability, B extends CapabilityBuilder<T, B>> extends ExtendableBuilder<T, B> {
