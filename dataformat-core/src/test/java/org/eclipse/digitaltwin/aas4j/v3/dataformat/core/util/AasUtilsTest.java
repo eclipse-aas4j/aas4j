@@ -330,6 +330,36 @@ public class AasUtilsTest {
     }
 
     @Test
+    public void whenSameAs_withDifferentReferredSemanticId_success() {
+        String value = "0173-1#01-ADS698#010";
+        Reference ref1 = new DefaultReference.Builder()
+                .referredSemanticID(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("foo")
+                                .build())
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Reference ref2 = new DefaultReference.Builder()
+                .referredSemanticID(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("bar")
+                                .build())
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
     public void whenSameAs_withDifferentReferredSemanticId_fail() {
         String value = "0173-1#01-ADS698#010";
         Reference ref1 = new DefaultReference.Builder()
@@ -356,9 +386,7 @@ public class AasUtilsTest {
                         .value(value)
                         .build())
                 .build();
-        // actually, this behavior is not defined in the specification.
-        // There is no statement whether references with different referredSemanticId should be considered equal or not.
-        Assert.assertFalse(AasUtils.sameAs(ref1, ref2));
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2, true));
     }
 
     @Test

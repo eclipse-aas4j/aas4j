@@ -226,13 +226,25 @@ public class AasUtils {
     }
 
     /**
-     * Checks if two references are refering to the same element
+     * Checks if two references are refering to the same element ignoring referredSemanticId.
      *
      * @param ref1 reference 1
      * @param ref2 reference 2
      * @return returns true if both references are refering to the same element, otherwise false
      */
     public static boolean sameAs(Reference ref1, Reference ref2) {
+        return sameAs(ref1, ref2, false);
+    }
+
+    /**
+     * Checks if two references are refering to the same element.
+     *
+     * @param ref1 reference 1
+     * @param ref2 reference 2
+     * @param compareReferredSemanticId true if referredSemanticId should be comparsed, false otherwise
+     * @return returns true if both references are refering to the same element, otherwise false
+     */
+    public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
         boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
         boolean ref2Empty = ref2 == null || ref2.getKeys() == null || ref2.getKeys().isEmpty();
         if (ref1Empty && ref2Empty) {
@@ -244,7 +256,7 @@ public class AasUtils {
         if (ref1.getType() != ref2.getType()) {
             return false;
         }
-        if (!sameAs(ref1.getReferredSemanticID(), ref2.getReferredSemanticID())) {
+        if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticID(), ref2.getReferredSemanticID())) {
             return false;
         }
         if (ref1.getKeys().size() != ref2.getKeys().size()) {
