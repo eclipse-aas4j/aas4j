@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +48,14 @@ public class JsonDeserializerTest {
     }
 
     @Test
+    public void testSimpleExampleDirectly() throws Exception {
+        ObjectMapper mapper = ObjectMapperFactory.createMapper();
+        Environment expected = Examples.EXAMPLE_SIMPLE.getModel();
+        Environment actual = mapper.readValue(Examples.EXAMPLE_SIMPLE.fileContentStream(), Environment.class);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testFullExample() throws Exception {
         Environment expected = Examples.EXAMPLE_FULL.getModel();
         Environment actual = new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream());
@@ -58,6 +67,14 @@ public class JsonDeserializerTest {
         Environment expected = Examples.EXAMPLE_FULL.getModel();
         JsonNode node = new ObjectMapper().readTree(Examples.EXAMPLE_FULL.fileContentStream());
         Environment actual = new JsonDeserializer().read(node);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testFullExampleDirectly() throws Exception {
+        ObjectMapper mapper = ObjectMapperFactory.createMapper();
+        Environment expected = Examples.EXAMPLE_FULL.getModel();
+        Environment actual = mapper.readValue(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
         Assert.assertEquals(expected, actual);
     }
 
