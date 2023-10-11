@@ -17,9 +17,9 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface MultiLanguagePropertyMixin {
 
