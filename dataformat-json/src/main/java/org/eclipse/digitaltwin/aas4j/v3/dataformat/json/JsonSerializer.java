@@ -68,7 +68,6 @@ public class JsonSerializer {
 
     protected SimpleModule buildCustomSerializerModule() {
         SimpleModule module = new SimpleModule();
-        // TODO: module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
         return module;
     }
 

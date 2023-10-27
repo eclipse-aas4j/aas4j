@@ -219,8 +219,8 @@ public class XmlSerializerTest {
         aasXml = aasXml.replace("<test:kind>Instance</test:kind>", "");
         aasXml = aasXml.replace("<aas:category>VARIABLE</aas:category>", "");
         aasXml = aasXml.replace("<test:category>VARIABLE</test:category>", "");
-        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", ""); // TODO: only for ConceptDescriptions
-        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", ""); // TODO: only for ConceptDescriptions
+        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", "");
+        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", "");
         aasXml = aasXml.replace("<aas:kind>ConceptQualifier</aas:kind>", "");
         aasXml = aasXml.replace("<test:kind>ConceptQualifier</test:kind>", "");
         aasXml = aasXml.replace("<aas:orderRelevant>true</aas:orderRelevant>", "");
@@ -243,7 +243,7 @@ public class XmlSerializerTest {
 
         if (node.getLocalName() != null 
                 && node.getLocalName().equals("category") 
-                && node.getFirstChild().getNodeValue().equals("PROPERTY")) { // TODO: only for ConceptDescriptions
+                && node.getFirstChild().getNodeValue().equals("PROPERTY")) {
             return false;
         }
 
