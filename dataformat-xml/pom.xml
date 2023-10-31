@@ -7,6 +7,7 @@
         <groupId>org.eclipse.digitaltwin.aas4j</groupId>
         <artifactId>dataformat-parent</artifactId>
         <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>dataformat-xml</artifactId>
     <name>Asset Administration Shell XML-Serializer</name>
