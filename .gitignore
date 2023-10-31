@@ -24,10 +24,6 @@ local.properties
 .loadpath
 .recommenders
 *.iml
-
-.classpath
-.project
-
 **/.flattened-pom.xml
 **/nb-configuration.xml
 **.iml

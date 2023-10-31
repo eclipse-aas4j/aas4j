@@ -23,9 +23,4 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-
-.classpath
-.project
-
 testJsonSerialization.json
-
