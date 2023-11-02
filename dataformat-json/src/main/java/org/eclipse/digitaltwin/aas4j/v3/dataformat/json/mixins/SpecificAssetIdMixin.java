@@ -18,11 +18,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-public interface SpecificAssetIDMixin {
+public interface SpecificAssetIdMixin {
 
     @JsonProperty("externalSubjectId")
-    public Reference getExternalSubjectID();
+    public Reference getExternalSubjectId();
     
     @JsonProperty("externalSubjectId")
-    public void setExternalSubjectID(Reference reference);
+    public void setExternalSubjectId(Reference reference);
 }

@@ -25,17 +25,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins.HasSemanticsMixin;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins.HasSemanticsMixin;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Serializes the RefersTo value of {@link Extension}. <br>

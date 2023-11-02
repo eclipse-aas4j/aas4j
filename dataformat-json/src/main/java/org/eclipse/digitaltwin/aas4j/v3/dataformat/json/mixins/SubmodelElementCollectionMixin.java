@@ -17,13 +17,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
 import java.util.Collection;
 
 public interface SubmodelElementCollectionMixin {
 
     @JsonProperty("value")
-    public Collection<SubmodelElement> getValues();
+    public Collection<SubmodelElement> getValue();
 
     @JsonProperty("value")
-    public void setValues(Collection<SubmodelElement> values);
+    public void setValue(Collection<SubmodelElement> values);
 }

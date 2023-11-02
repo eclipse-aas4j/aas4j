@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +16,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
-import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({
         "semanticId", "supplementalSemanticIds", // --> HasSemantics
@@ -36,7 +36,7 @@ public interface QualifierMixin {
     void setType(String type);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueType")
-	void setType(DataTypeDefXSD valueType);
+	void setType(DataTypeDefXsd valueType);
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
     void setValue(String value);

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +16,21 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.IOException;
-import java.util.Collection;
-
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.json.JSONException;
 import org.junit.Assert;
@@ -34,6 +38,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+
+import java.io.IOException;
+import java.util.Collection;
 
 public class JsonReferableSerializerTest {
 
@@ -62,6 +69,17 @@ public class JsonReferableSerializerTest {
     public void testSerializeSubmodel() throws IOException, SerializationException, JSONException {
         compare(Examples.SUBMODEL);
     }
+
+    @Test
+    public void testSerializeSubmodelWithExtensions() throws DeserializationException, SerializationException, JsonProcessingException {
+        Submodel submodel = new JsonDeserializer().readReferable(Examples.SUBMODEL.fileContentStream(), Submodel.class);
+        submodel.getExtensions().add(new DefaultExtension.Builder()
+                .name("myExtension").value("my extension value").valueType(DataTypeDefXsd.STRING)
+                .build());
+        JsonNode jsonNode = new ObjectMapper().readTree(new JsonSerializer().writeReferable(submodel));
+        Assert.assertTrue(jsonNode.has("extensions"));
+    }
+
 
     @Test
     public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {

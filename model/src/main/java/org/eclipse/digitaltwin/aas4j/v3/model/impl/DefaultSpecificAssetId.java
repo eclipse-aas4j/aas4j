@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,9 +16,9 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIDBuilder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIdBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,39 +26,37 @@ import java.util.Objects;
 
 
 /**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId
  * 
  * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
 
-@IRI("aas:SpecificAssetID")
-public class DefaultSpecificAssetID implements SpecificAssetID {
+@IRI("aas:SpecificAssetId")
+public class DefaultSpecificAssetId implements SpecificAssetId {
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticID")
-    protected Reference semanticID;
+    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    protected Reference semanticId;
 
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID")
-    protected Reference externalSubjectID;
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
+    protected Reference externalSubjectId;
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/name")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
     protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/value")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
     protected String value;
 
-    public DefaultSpecificAssetID() {
-
-    }
+    public DefaultSpecificAssetId() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.externalSubjectID,
-            this.name,
+        return Objects.hash(this.name,
             this.value,
-            this.semanticID,
+            this.externalSubjectId,
+            this.semanticId,
             this.supplementalSemanticIds);
     }
 
@@ -70,23 +69,13 @@ public class DefaultSpecificAssetID implements SpecificAssetID {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultSpecificAssetID other = (DefaultSpecificAssetID) obj;
-            return Objects.equals(this.externalSubjectID, other.externalSubjectID) &&
-                Objects.equals(this.name, other.name) &&
+            DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
+            return Objects.equals(this.name, other.name) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.semanticID, other.semanticID) &&
+                Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
-    }
-
-    @Override
-    public Reference getExternalSubjectID() {
-        return externalSubjectID;
-    }
-
-    @Override
-    public void setExternalSubjectID(Reference externalSubjectID) {
-        this.externalSubjectID = externalSubjectID;
     }
 
     @Override
@@ -110,13 +99,23 @@ public class DefaultSpecificAssetID implements SpecificAssetID {
     }
 
     @Override
-    public Reference getSemanticID() {
-        return semanticID;
+    public Reference getExternalSubjectId() {
+        return externalSubjectId;
     }
 
     @Override
-    public void setSemanticID(Reference semanticID) {
-        this.semanticID = semanticID;
+    public void setExternalSubjectId(Reference externalSubjectId) {
+        this.externalSubjectId = externalSubjectId;
+    }
+
+    @Override
+    public Reference getSemanticId() {
+        return semanticId;
+    }
+
+    @Override
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
     }
 
     @Override
@@ -129,10 +128,19 @@ public class DefaultSpecificAssetID implements SpecificAssetID {
         this.supplementalSemanticIds = supplementalSemanticIds;
     }
 
+    public String toString() {
+        return String.format(
+            "DefaultSpecificAssetId (" + "name=%s,"
+                + "value=%s,"
+                + "externalSubjectId=%s,"
+                + ")",
+            this.name, this.value, this.externalSubjectId);
+    }
+
     /**
-     * This builder class can be used to construct a DefaultSpecificAssetID bean.
+     * This builder class can be used to construct a DefaultSpecificAssetId bean.
      */
-    public static class Builder extends SpecificAssetIDBuilder<DefaultSpecificAssetID, Builder> {
+    public static class Builder extends SpecificAssetIdBuilder<DefaultSpecificAssetId, Builder> {
 
         @Override
         protected Builder getSelf() {
@@ -140,8 +148,8 @@ public class DefaultSpecificAssetID implements SpecificAssetID {
         }
 
         @Override
-        protected DefaultSpecificAssetID newBuildingInstance() {
-            return new DefaultSpecificAssetID();
+        protected DefaultSpecificAssetId newBuildingInstance() {
+            return new DefaultSpecificAssetId();
         }
     }
 }

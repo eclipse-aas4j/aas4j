@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +54,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
@@ -132,8 +133,8 @@ public interface AssetAdministrationShellElementVisitor {
         Class<?> type = hasSemantics.getClass();
         if (Extension.class.isAssignableFrom(type)) {
             visit((Extension) hasSemantics);
-        } else if (SpecificAssetID.class.isAssignableFrom(type)) {
-            visit((SpecificAssetID) hasSemantics);
+        } else if (SpecificAssetId.class.isAssignableFrom(type)) {
+            visit((SpecificAssetId) hasSemantics);
         } else if (Submodel.class.isAssignableFrom(type)) {
             visit((Submodel) hasSemantics);
         } else if (SubmodelElement.class.isAssignableFrom(type)) {
@@ -245,7 +246,7 @@ public interface AssetAdministrationShellElementVisitor {
     public default void visit(File file) {
     }
 
-    public default void visit(SpecificAssetID identifierKeyValuePair) {
+    public default void visit(SpecificAssetId identifierKeyValuePair) {
     }
 
     public default void visit(Key key) {

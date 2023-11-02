@@ -21,8 +21,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 public interface PropertyMixin {
 
     @JsonProperty("valueId")
-    public Reference getValueID();
+    public Reference getValueId();
 
     @JsonProperty("valueId")
-    void setValueID(Reference valueID);
+    public void setValueId(Reference valueId);
 }

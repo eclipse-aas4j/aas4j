@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +16,36 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.HasDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.HasExtensions;
+import org.eclipse.digitaltwin.aas4j.v3.model.HasSemantics;
+import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifiable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 
 public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdministrationShellElementVisitor {
 
@@ -98,7 +128,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticID());
+        visit(hasSemantics.getSemanticId());
         hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
@@ -113,11 +143,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetID specificAssetId) {
+    public default void visit(SpecificAssetId specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectID());
+        visit(specificAssetId.getExternalSubjectId());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -127,7 +157,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueID());
+        visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -145,7 +175,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueID());
+        visit(property.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -163,7 +193,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueID());
+        visit(qualifier.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 

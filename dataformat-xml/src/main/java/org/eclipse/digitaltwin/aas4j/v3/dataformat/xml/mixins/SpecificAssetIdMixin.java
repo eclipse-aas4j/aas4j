@@ -15,14 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 @JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
-public interface SpecificAssetIDMixin {
+public interface SpecificAssetIdMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
     public String getName();
@@ -31,5 +30,5 @@ public interface SpecificAssetIDMixin {
     public String getValue();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
-	public Reference getExternalSubjectID();
+	public Reference getExternalSubjectId();
 }

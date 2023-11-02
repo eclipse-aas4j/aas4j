@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -24,6 +25,28 @@ import java.util.List;
 public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     /**
+     * This function allows setting a value for type
+     * 
+     * @param type desired value to be set
+     * @return Builder object with new value for type
+     */
+    public B type(ReferenceTypes type) {
+        getBuildingInstance().setType(type);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for referredSemanticId
+     * 
+     * @param referredSemanticId desired value to be set
+     * @return Builder object with new value for referredSemanticId
+     */
+    public B referredSemanticId(Reference referredSemanticId) {
+        getBuildingInstance().setReferredSemanticId(referredSemanticId);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for keys
      * 
      * @param keys desired value to be set
@@ -42,28 +65,6 @@ public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceB
      */
     public B keys(Key keys) {
         getBuildingInstance().getKeys().add(keys);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for referredSemanticID
-     * 
-     * @param referredSemanticID desired value to be set
-     * @return Builder object with new value for referredSemanticID
-     */
-    public B referredSemanticID(Reference referredSemanticID) {
-        getBuildingInstance().setReferredSemanticID(referredSemanticID);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for type
-     * 
-     * @param type desired value to be set
-     * @return Builder object with new value for type
-     */
-    public B type(ReferenceTypes type) {
-        getBuildingInstance().setType(type);
         return getSelf();
     }
 }

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -30,44 +31,6 @@ import java.util.List;
 public interface Reference {
 
     /**
-     * Unique references in their name space.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Reference/keys
-     *
-     * @return Returns the List of Keys for the property keys.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
-    List<Key> getKeys();
-
-    /**
-     * Unique references in their name space.
-     *
-     * More information under https://admin-shell.io/aas/3/0/Reference/keys
-     *
-     * @param keys desired value for the property keys.
-     */
-    void setKeys(List<Key> keys);
-
-    /**
-     * 'semanticID' of the referenced model element ('type' = 'ModelReference').
-     *
-     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticID
-     *
-     * @return Returns the Reference for the property referredSemanticID.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticID")
-    Reference getReferredSemanticID();
-
-    /**
-     * 'semanticID' of the referenced model element ('type' = 'ModelReference').
-     *
-     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticID
-     *
-     * @param referredSemanticID desired value for the property referredSemanticID.
-     */
-    void setReferredSemanticID(Reference referredSemanticID);
-
-    /**
      * Type of the reference.
      *
      * More information under https://admin-shell.io/aas/3/0/Reference/type
@@ -85,5 +48,43 @@ public interface Reference {
      * @param type desired value for the property type.
      */
     void setType(ReferenceTypes type);
+
+    /**
+     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+     *
+     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+     *
+     * @return Returns the Reference for the property referredSemanticId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+    Reference getReferredSemanticId();
+
+    /**
+     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+     *
+     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+     *
+     * @param referredSemanticId desired value for the property referredSemanticId.
+     */
+    void setReferredSemanticId(Reference referredSemanticId);
+
+    /**
+     * Unique references in their name space.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Reference/keys
+     *
+     * @return Returns the List of Keys for the property keys.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+    List<Key> getKeys();
+
+    /**
+     * Unique references in their name space.
+     *
+     * More information under https://admin-shell.io/aas/3/0/Reference/keys
+     *
+     * @param keys desired value for the property keys.
+     */
+    void setKeys(List<Key> keys);
 
 }

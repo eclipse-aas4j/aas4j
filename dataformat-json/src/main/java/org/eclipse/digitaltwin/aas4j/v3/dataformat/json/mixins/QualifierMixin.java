@@ -25,8 +25,8 @@ public interface QualifierMixin {
     public String getType();
 
     @JsonProperty("valueId")
-    public Reference getValueID();
+    public Reference getValueId();
 
     @JsonProperty("valueId")
-    void setValueID(Reference valueID);
+    public void setValueId(Reference valueId);
 }

@@ -15,14 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
-
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.xml.sax.SAXException;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
 
 /**
  * Class to validate the XML file inside an AASX-package
