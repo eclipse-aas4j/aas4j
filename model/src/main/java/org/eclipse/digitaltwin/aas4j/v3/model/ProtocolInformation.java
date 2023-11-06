@@ -15,13 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProtocolInformation;
+
+import java.util.List;
 
 
 /**
@@ -132,5 +130,22 @@ public interface ProtocolInformation {
      * @param subprotocolBodyEncoding desired value for the property subprotocolBodyEncoding.
      */
     void setSubprotocolBodyEncoding(String subprotocolBodyEncoding);
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes
+     *
+     * @return Returns the List of SecurityAttributeObjects for the property securityAttributes.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes")
+    List<SecurityAttributeObject> getSecurityAttributes();
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes
+     *
+     * @param securityAttributes desired value for the property securityAttributes.
+     */
+    void setSecurityAttributes(List<SecurityAttributeObject> securityAttributes);
 
 }

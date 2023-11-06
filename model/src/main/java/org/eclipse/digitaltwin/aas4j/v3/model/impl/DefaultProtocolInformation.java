@@ -42,6 +42,9 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/href")
     protected String href;
 
+    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes")
+    protected List<SecurityAttributeObject> securityAttributes = new ArrayList<>();
+
     @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocol")
     protected String subprotocol;
 
@@ -60,7 +63,8 @@ public class DefaultProtocolInformation implements ProtocolInformation {
             this.endpointProtocolVersion,
             this.subprotocol,
             this.subprotocolBody,
-            this.subprotocolBodyEncoding);
+            this.subprotocolBodyEncoding,
+            this.securityAttributes);
     }
 
     @Override
@@ -78,7 +82,8 @@ public class DefaultProtocolInformation implements ProtocolInformation {
                 Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
                 Objects.equals(this.subprotocol, other.subprotocol) &&
                 Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
-                Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding);
+                Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding) &&
+                Objects.equals(this.securityAttributes, other.securityAttributes);
         }
     }
 
@@ -142,6 +147,16 @@ public class DefaultProtocolInformation implements ProtocolInformation {
         this.subprotocolBodyEncoding = subprotocolBodyEncoding;
     }
 
+    @Override
+    public List<SecurityAttributeObject> getSecurityAttributes() {
+        return securityAttributes;
+    }
+
+    @Override
+    public void setSecurityAttributes(List<SecurityAttributeObject> securityAttributes) {
+        this.securityAttributes = securityAttributes;
+    }
+
     public String toString() {
         return String.format(
             "DefaultProtocolInformation (" + "href=%s,"
@@ -150,9 +165,10 @@ public class DefaultProtocolInformation implements ProtocolInformation {
                 + "subprotocol=%s,"
                 + "subprotocolBody=%s,"
                 + "subprotocolBodyEncoding=%s,"
+                + "securityAttributes=%s,"
                 + ")",
             this.href, this.endpointProtocol, this.endpointProtocolVersion, this.subprotocol, this.subprotocolBody,
-            this.subprotocolBodyEncoding);
+            this.subprotocolBodyEncoding, this.securityAttributes);
     }
 
     /**

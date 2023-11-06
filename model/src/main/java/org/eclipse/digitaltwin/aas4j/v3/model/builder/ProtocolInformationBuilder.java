@@ -101,4 +101,26 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
         getBuildingInstance().setSubprotocolBodyEncoding(subprotocolBodyEncoding);
         return getSelf();
     }
+
+    /**
+     * This function allows setting a value for securityAttributes
+     * 
+     * @param securityAttributes desired value to be set
+     * @return Builder object with new value for securityAttributes
+     */
+    public B securityAttributes(List<SecurityAttributeObject> securityAttributes) {
+        getBuildingInstance().setSecurityAttributes(securityAttributes);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List securityAttributes
+     * 
+     * @param securityAttributes desired value to be added
+     * @return Builder object with new value for securityAttributes
+     */
+    public B securityAttributes(SecurityAttributeObject securityAttributes) {
+        getBuildingInstance().getSecurityAttributes().add(securityAttributes);
+        return getSelf();
+    }
 }
