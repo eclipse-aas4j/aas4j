@@ -42,9 +42,9 @@ public interface SubmodelMixin {
     @JsonProperty("displayName")
     public void setDisplayName(List<LangStringNameType> displayName);
 
-    @JsonProperty("extension")
+    @JsonProperty("extensions")
     List<Extension> getExtensions();
 
-    @JsonProperty("extension")
+    @JsonProperty("extensions")
     void setExtensions(List<Extension> extensions);
 }
