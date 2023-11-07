@@ -16,8 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
 
-import java.util.List;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
@@ -30,14 +28,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+
+import java.util.List;
+
 
 public class Examples {
 
-	public static final ExampleData<Environment> EXAMPLE_FULL = ExampleData.of(AASFull.createEnvironment(), "Example-Full.json");
+    public static final ExampleData<Environment> EXAMPLE_FULL = ExampleData.of(AASFull.createEnvironment(), "Example-Full.json");
 
-	public static final ExampleData<Environment> EXAMPLE_SIMPLE = ExampleData.of(AASSimple.createEnvironment(), "Example-Simple.json");
+    public static final ExampleData<Environment> EXAMPLE_SIMPLE = ExampleData.of(AASSimple.createEnvironment(), "Example-Simple.json");
 
     public static final ExampleData<Environment> ENVIRONMENT_EMPTY = ExampleData.of(new DefaultEnvironment.Builder().build(), "Environment-Empty.json");
 
@@ -71,8 +80,8 @@ public class Examples {
                     .build(),
             "AssetAdministrationShell-WithAssetInformation.json");
 
-	public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL = ExampleData.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0), "AssetAdministrationShell.json");
-    
+    public static final ExampleData<AssetAdministrationShell> ASSET_ADMINISTRATION_SHELL = ExampleData.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0), "AssetAdministrationShell.json");
+
     public static final ExampleData<ConceptDescription> CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT = ExampleData.of(
             new DefaultConceptDescription.Builder()
                     .id("https://example.org/ConceptDescription")
@@ -85,29 +94,29 @@ public class Examples {
                                             .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02")
                                             .build())
                                     .build())
-//                            .dataSpecificationContent(new DefaultDataSpecificationPhysicalUnit.Builder()
-//                                    .conversionFactor("1.0")
-//                                    .eceCode("ece-code")
-//                                    .eceName("ece-name")
-//                                    .definition(new DefaultLangStringTextType.Builder()
-//                                            .language("en")
-//                                            .text("definition-en")
-//                                            .build())
-//                                    .definition(new DefaultLangStringTextType.Builder()
-//                                            .language("de")
-//                                            .text("definition-de")
-//                                            .build())
-//                                    .nistName("nist-name")
-//                                    .dinNotation("din-notation")
-//                                    .siName("si-name")
-//                                    .registrationAuthorityId("registration-authority-id")
-//                                    .siNotation("si-notation")
-//                                    .sourceOfDefinition("source-of-definition")
-//                                    .supplier("supplier")
-//                                    .unitName("unit-name")
-//                                    .unitSymbol("unit-symbol")
-//                                    .build())
-                           .build())
+                            //                            .dataSpecificationContent(new DefaultDataSpecificationPhysicalUnit.Builder()
+                            //                                    .conversionFactor("1.0")
+                            //                                    .eceCode("ece-code")
+                            //                                    .eceName("ece-name")
+                            //                                    .definition(new DefaultLangString.Builder()
+                            //                                            .language("en")
+                            //                                            .text("definition-en")
+                            //                                            .build())
+                            //                                    .definition(new DefaultLangString.Builder()
+                            //                                            .language("de")
+                            //                                            .text("definition-de")
+                            //                                            .build())
+                            //                                    .nistName("nist-name")
+                            //                                    .dinNotation("din-notation")
+                            //                                    .siName("si-name")
+                            //                                    .registrationAuthorityId("registration-authority-id")
+                            //                                    .siNotation("si-notation")
+                            //                                    .sourceOfDefinition("source-of-definition")
+                            //                                    .supplier("supplier")
+                            //                                    .unitName("unit-name")
+                            //                                    .unitSymbol("unit-symbol")
+                            //                                    .build())
+                            .build())
                     .build(),
             "ConceptDescription-DataSpecificationPhysicalUnit.json");
 
@@ -115,24 +124,28 @@ public class Examples {
             List.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0),
                     AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(1)),
             "SubmodelElement-List.json");
-    
+
     public static final ExampleData<List<Submodel>> SUBMODEL_LIST_OF = ExampleData.of(
             List.of(AASFull.createEnvironment().getSubmodels().get(0),
                     AASFull.createEnvironment().getSubmodels().get(1)),
             "Submodel-List.json");
 
-	public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0), "Submodel.json");
+    public static final ExampleData<Submodel> SUBMODEL = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0), "Submodel.json");
 
-	public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
+    public static final ExampleData<SubmodelElement> SUBMODEL_ELEMENT = ExampleData.of(AASFull.createEnvironment().getSubmodels().get(0).getSubmodelElements().get(0), "SubmodelElement.json");
 
-	public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(6),
-			"SubmodelElementCollection.json");
+    public static final ExampleData<SubmodelElementCollection> SUBMODEL_ELEMENT_COLLECTION = ExampleData.of((SubmodelElementCollection) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(6),
+            "SubmodelElementCollection.json");
 
     public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST_EMPTY = ExampleData.of(
             new DefaultSubmodelElementList.Builder()
                     .idShort("submodelElementList")
                     .orderRelevant(true)
                     .build(), "SubmodelElementList-Empty.json");
-    
-	public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
+
+    public static final ExampleData<SubmodelElementList> SUBMODEL_ELEMENT_LIST = ExampleData.of((SubmodelElementList) AASFull.createEnvironment().getSubmodels().get(6).getSubmodelElements().get(5), "SubmodelElementList.json");
+
+	public static final ExampleData<Environment> EXTENSION_MINIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MINIMAL, "admin-shell-io/Extension/Minimal.json");
+
+	public static final ExampleData<Environment> EXTENSION_MAXIMAL = ExampleData.of(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.EXTENSION_MAXIMAL, "admin-shell-io/Extension/Maximal.json");
 }

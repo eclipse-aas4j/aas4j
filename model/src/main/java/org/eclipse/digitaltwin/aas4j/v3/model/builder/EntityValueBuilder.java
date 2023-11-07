@@ -15,11 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityValue;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceValue;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class EntityValueBuilder<T extends EntityValue, B extends EntityValueBuilder<T, B>> extends ExtendableBuilder<T, B> {

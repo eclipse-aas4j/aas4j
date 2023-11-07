@@ -18,43 +18,44 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.Collection;
-import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 
 public interface SubmodelElementListMixin {
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-    @JsonProperty("orderRelevant")
-    boolean getOrdered();
 
     @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     @JsonProperty("orderRelevant")
-    void setOrdered(boolean orderRelevant);
+    public boolean getOrdered();
+
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    @JsonProperty("orderRelevant")
+    public void setOrdered(boolean orderRelevant);
 
     @JsonProperty("semanticIdListElement")
-    Reference getSemanticIdListElement();
+    public Reference getSemanticIdListElement();
 
     @JsonProperty("semanticIdListElement")
-    void setSemanticIdListElement(Reference semanticIdListElement);
+    public void setSemanticIdListElement(Reference semanticIdListElement);
 
     @JsonProperty("typeValueListElement")
-    AasSubmodelElements getTypeValueListElement();
+    public AasSubmodelElements getTypeValueListElement();
 
     @JsonProperty("typeValueListElement")
-    void setTypeValueListElement(AasSubmodelElements typeValueListElement);
+    public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
 
     @JsonProperty("valueTypeListElement")
-    DataTypeDefXsd getValueTypeListElement();
+    public DataTypeDefXsd getValueTypeListElement();
 
     @JsonProperty("valueTypeListElement")
-    void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
+    public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 
     @JsonProperty("value")
-    Collection<SubmodelElement> getValue();
+    public Collection<SubmodelElement> getValue();
 
     @JsonProperty("value")
-    void setValue(Collection<SubmodelElement> value);
+    public void setValue(Collection<SubmodelElement> value);
 }

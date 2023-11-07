@@ -15,13 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+
+import java.util.List;
 
 
 /**
@@ -29,11 +26,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  */
 @KnownSubtypes({
     @KnownSubtypes.Type(value = SpecificAssetId.class),
-    @KnownSubtypes.Type(value = Extension.class),
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-    @KnownSubtypes.Type(value = SubmodelMetadata.class),
     @KnownSubtypes.Type(value = SubmodelElement.class),
     @KnownSubtypes.Type(value = Submodel.class),
+    @KnownSubtypes.Type(value = Extension.class),
     @KnownSubtypes.Type(value = Qualifier.class)
 })
 public interface HasSemantics {

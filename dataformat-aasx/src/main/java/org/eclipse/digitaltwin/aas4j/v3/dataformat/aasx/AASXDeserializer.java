@@ -15,6 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackagePart;
+import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
+import org.apache.poi.openxml4j.opc.PackagingURIHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -23,22 +37,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.openxml4j.opc.PackagePart;
-import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
-import org.apache.poi.openxml4j.opc.PackagingURIHelper;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 
 /**
  * The AASX package converter converts a aasx package into a list of aas, a list
@@ -148,9 +146,11 @@ public class AASXDeserializer {
         read();
 
         List<String> paths = new ArrayList<>();
-        for (Submodel sm : environment.getSubmodels()) {
-            paths.addAll(parseElements(sm.getSubmodelElements()));
-        }
+        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
+                        && aas.getAssetInformation().getDefaultThumbnail() != null
+                        && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                .forEach(aas -> paths.add(aas.getAssetInformation().getDefaultThumbnail().getPath()));
+        environment.getSubmodels().forEach(sm -> paths.addAll(parseElements(sm.getSubmodelElements())));
         return paths;
     }
 

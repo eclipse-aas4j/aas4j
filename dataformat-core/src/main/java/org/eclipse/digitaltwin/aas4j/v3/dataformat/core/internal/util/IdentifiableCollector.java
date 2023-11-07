@@ -15,15 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Collects all Identifiable elements within an

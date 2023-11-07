@@ -15,16 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-import java.util.List;
-
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 
@@ -41,10 +40,11 @@ public class LangStringsNameTypeSerializer extends NoEntryWrapperListSerializer<
 		ToXmlGenerator xgen = (ToXmlGenerator) gen;
 		xgen.writeStartObject();
 		for (LangStringNameType element : langStrings) {
-			ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
+			List<Runnable> resetRunnables = ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
 															// <statements />, which is not allowed according to the schema
 			xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
 			ser.serialize(element, xgen, serializers);
+			resetRunnables.stream().forEach(r -> r.run());
 		}
 		xgen.writeEndObject();
 

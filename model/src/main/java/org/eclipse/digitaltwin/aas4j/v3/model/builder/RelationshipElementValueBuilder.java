@@ -16,9 +16,8 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceValue;
+import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElementValue;
 
 
 public abstract class RelationshipElementValueBuilder<T extends RelationshipElementValue, B extends RelationshipElementValueBuilder<T, B>>

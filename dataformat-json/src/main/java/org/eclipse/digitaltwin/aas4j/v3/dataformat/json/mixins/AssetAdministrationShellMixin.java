@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
 
 public interface AssetAdministrationShellMixin {

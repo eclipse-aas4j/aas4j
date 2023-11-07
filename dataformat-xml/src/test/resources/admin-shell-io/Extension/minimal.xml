@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
+	<aas:assetAdministrationShells>
+		<aas:assetAdministrationShell>
+			<aas:extensions>
+				<aas:extension>
+					<aas:name>something_aae6caf4</aas:name>
+					<aas:valueType>xs:string</aas:valueType>
+				</aas:extension>
+			</aas:extensions>
+			<aas:id>something_142922d6</aas:id>
+			<aas:assetInformation>
+				<aas:assetKind>NotApplicable</aas:assetKind>
+				<aas:globalAssetId>something_eea66fa1</aas:globalAssetId>
+			</aas:assetInformation>
+		</aas:assetAdministrationShell>
+	</aas:assetAdministrationShells>
+</aas:environment>

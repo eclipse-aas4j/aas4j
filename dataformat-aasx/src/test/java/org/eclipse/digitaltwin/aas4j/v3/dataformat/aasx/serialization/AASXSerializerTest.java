@@ -16,9 +16,15 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.serialization;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.junit.Before;
+import org.junit.Test;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -27,16 +33,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AASXSerializerTest {
 
@@ -48,8 +46,11 @@ public class AASXSerializerTest {
     @Before
     public void setup() throws IOException {
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
+        byte[] thumbnail = { 0, 1, 2, 3, 4 };
         InMemoryFile file = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(file);
+        fileList.add(inMemoryFileThumbnail);
     }
 
     @Test

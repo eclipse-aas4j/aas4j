@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
 
 public abstract class LevelTypeBuilder<T extends LevelType, B extends LevelTypeBuilder<T, B>> extends ExtendableBuilder<T, B> {

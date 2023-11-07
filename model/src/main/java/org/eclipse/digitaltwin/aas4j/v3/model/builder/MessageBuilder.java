@@ -16,9 +16,8 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.Message;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 
 
 public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> extends ExtendableBuilder<T, B> {

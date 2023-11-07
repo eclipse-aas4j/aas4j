@@ -19,9 +19,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface PropertyMixin {
-    @JsonProperty("valueId")
-    Reference getValueId();
 
     @JsonProperty("valueId")
-    void setValueId(Reference valueId);
+    public Reference getValueId();
+
+    @JsonProperty("valueId")
+    public void setValueId(Reference valueId);
 }

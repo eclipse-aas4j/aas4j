@@ -16,9 +16,8 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 
 
 public abstract class SecurityAttributeObjectBuilder<T extends SecurityAttributeObject, B extends SecurityAttributeObjectBuilder<T, B>>

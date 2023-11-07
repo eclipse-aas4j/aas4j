@@ -17,17 +17,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
@@ -54,6 +47,15 @@ import org.xmlunit.diff.ElementSelectors;
 import org.xmlunit.matchers.CompareMatcher;
 import org.xmlunit.util.Predicate;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 public class XmlSerializerTest {
     public static final java.io.File AASFULL_FILE = new java.io.File("src/test/resources/test_demo_full_example.xml");
@@ -62,6 +64,8 @@ public class XmlSerializerTest {
     public static final java.io.File AASFULL_FILE_WITH_ANNOTATED_RELATIONSHIP = new java.io.File("src/test/resources/annotated_relationship_example.xml");
     public static final java.io.File AASFULL_FILE_WITH_QUALIFIERS = new java.io.File("src/test/resources/qualifier_example.xml");
     public static final java.io.File AASFULL_FILE_WITH_OPERATIONS = new java.io.File("src/test/resources/operation_example.xml");
+    public static final java.io.File AAS_WITH_EXTENSION_MINIMAL = new java.io.File("src/test/resources/admin-shell-io/Extension/minimal.xml");
+    public static final java.io.File AAS_WITH_EXTENSION_MAXIMAL = new java.io.File("src/test/resources/admin-shell-io/Extension/maximal.xml");
 
     private static final Logger logger = LoggerFactory.getLogger(XmlSerializerTest.class);
 
@@ -69,14 +73,14 @@ public class XmlSerializerTest {
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
-    public void testWriteToFile() throws IOException, SerializationException {
+    public void writeToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.xml");
-		new XmlSerializer().write(file, AASSimple.createEnvironment());
+        new XmlSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
     @Test
-    public void testSerializeMinimal() throws SerializationException, SAXException {
+    public void serializeMinimal() throws SerializationException, SAXException {
         File file = new File("src/test/resources/minimum.xml");
         Environment environment = new DefaultEnvironment.Builder()
                 .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
@@ -90,25 +94,32 @@ public class XmlSerializerTest {
     }
 
     @Test
-    public void testSerializeSimpleWithTestNamespacePrefix() throws SerializationException, SAXException {
+    public void serializeSimpleWithTestNamespacePrefix() throws SerializationException, SAXException {
         Map<String, String> nsPrefixes = new HashMap<>(AasXmlNamespaceContext.PREFERRED_PREFIX_CONTEXT);
         nsPrefixes.put("test", nsPrefixes.get("aas"));
         nsPrefixes.remove("aas");
-		validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.createEnvironment(), new XmlSerializer(nsPrefixes));
+        validateXmlSerializer(AASSIMPLE_FILE_WITH_TEST_NAMESPACE, AASSimple.createEnvironment(), new XmlSerializer(nsPrefixes));
     }
 
     @Test
-    public void testSerializeSimple() throws SerializationException, SAXException {
-		validateXmlSerializer(AASSIMPLE_FILE, AASSimple.createEnvironment());
+    public void serializeSimple() throws SerializationException, SAXException {
+        validateXmlSerializer(AASSIMPLE_FILE, AASSimple.createEnvironment());
     }
 
     @Test
-    public void testSerializeFull() throws SerializationException, SAXException {
-		validateXmlSerializer(AASFULL_FILE, AASFull.createEnvironment());
+    public void serializeFull() throws SerializationException, SAXException {
+        validateXmlSerializer(AASFULL_FILE, AASFull.createEnvironment());
     }
 
     @Test
-    public void testConceptDescriptionAgainstXsdSchema() throws SerializationException, SAXException {
+    public void serializationDoesNotChangeEnvironment() throws SerializationException, SAXException {
+        Environment env = AASSimple.createEnvironment();
+        validateXmlSerializer(AASSIMPLE_FILE, env);
+        assertEquals(AASSimple.createEnvironment(), env);
+    }
+
+    @Test
+    public void validateConceptDescriptionAgainstXsdSchema() throws SerializationException, SAXException {
         ConceptDescription object = AASSimple.createConceptDescriptionMaxRotationSpeed();
         Set<String> errors = validateAgainstXsdSchema( new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build()));
         assertTrue(errors.isEmpty());
@@ -116,7 +127,7 @@ public class XmlSerializerTest {
 
 
     @Test
-    public void testMinimalOperationAgainstXsdSchema() throws SerializationException, SAXException {
+    public void validateMinimalOperationAgainstXsdSchema() throws SerializationException, SAXException {
         Submodel object = new DefaultSubmodel.Builder()
                 .id("testSubmodel")
                 .idShort("testSubmodel")
@@ -136,17 +147,18 @@ public class XmlSerializerTest {
         assertTrue(errors.isEmpty());
     }
 
-	@Test
-	public void testGYear() throws SerializationException, SAXException {
-		Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXsd.GYEAR).build()).build();
-		String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
-		Set<String> errors = validateAgainstXsdSchema(xml);
-		assertTrue(errors.isEmpty());
-	}
+
+    @Test
+    public void validateGYearAgainstXsdSchema() throws SerializationException, SAXException {
+        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXsd.GYEAR).build()).build();
+        String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
+        Set<String> errors = validateAgainstXsdSchema(xml);
+        assertTrue(errors.isEmpty());
+    }
 
 
     @Test
-    public void testDocumentationSubmodelAgainstXsdSchema() throws SerializationException, SAXException {
+    public void validateDocumentationSubmodelAgainstXsdSchema() throws SerializationException, SAXException {
         Submodel object = AASSimple.createSubmodelDocumentation();
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
         Set<String> errors = validateAgainstXsdSchema( xml );
@@ -155,12 +167,24 @@ public class XmlSerializerTest {
 
 
     @Test
-    public void testIsCaseOfAgainstXsdSchema() throws SerializationException, SAXException {
-		ConceptDescription object = AASFull.createEnvironment().getConceptDescriptions().get(0);
+    public void validateIsCaseOfAgainstXsdSchema() throws SerializationException, SAXException {
+        ConceptDescription object = AASFull.createEnvironment().getConceptDescriptions().get(0);
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().conceptDescriptions(object).build());
         Set<String> errors = validateAgainstXsdSchema( xml );
         assertTrue(errors.isEmpty());
     }
+
+
+    @Test
+    public void serializeAASWithExtensionMinimal() throws SerializationException, SAXException {
+        validateXmlSerializer(AAS_WITH_EXTENSION_MINIMAL, Examples.EXTENSION_MINIMAL, new XmlSerializer());
+    }
+
+    @Test
+    public void serializeAASWithExtensionMaximal() throws SerializationException, SAXException {
+        validateXmlSerializer(AAS_WITH_EXTENSION_MAXIMAL, Examples.EXTENSION_MAXIMAL, new XmlSerializer());
+    }
+
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
         return new XmlSchemaValidator().validateSchema(xml);
@@ -175,7 +199,7 @@ public class XmlSerializerTest {
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
         Set<String> errors = validateAgainstXsdSchema(actual);
-        logger.debug(actual);
+        logger.info(actual);
         logErrors(expectedFile.getName(), errors);
         assertTrue(errors.isEmpty());
         CompareMatcher xmlTestMatcher = CompareMatcher
@@ -195,8 +219,8 @@ public class XmlSerializerTest {
         aasXml = aasXml.replace("<test:kind>Instance</test:kind>", "");
         aasXml = aasXml.replace("<aas:category>VARIABLE</aas:category>", "");
         aasXml = aasXml.replace("<test:category>VARIABLE</test:category>", "");
-        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", ""); // TODO: only for ConceptDescriptions
-        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", ""); // TODO: only for ConceptDescriptions
+        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", "");
+        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", "");
         aasXml = aasXml.replace("<aas:kind>ConceptQualifier</aas:kind>", "");
         aasXml = aasXml.replace("<test:kind>ConceptQualifier</test:kind>", "");
         aasXml = aasXml.replace("<aas:orderRelevant>true</aas:orderRelevant>", "");
@@ -217,18 +241,18 @@ public class XmlSerializerTest {
             return false;
         }
 
-		if (node.getLocalName() != null 
-				&& node.getLocalName().equals("category") 
-				&& node.getFirstChild().getNodeValue().equals("PROPERTY")) { // TODO: only for ConceptDescriptions
-			return false;
-		}
+        if (node.getLocalName() != null 
+                && node.getLocalName().equals("category") 
+                && node.getFirstChild().getNodeValue().equals("PROPERTY")) {
+            return false;
+        }
 
-		if (node.getLocalName() != null 
-				&& node.getLocalName().equals("orderRelevant") 
-				&& node.getFirstChild().getNodeValue().equals("true")) {
-			return false;
-		}
-		
+        if (node.getLocalName() != null 
+                && node.getLocalName().equals("orderRelevant") 
+                && node.getFirstChild().getNodeValue().equals("true")) {
+            return false;
+        }
+        
         return true;
     }
 

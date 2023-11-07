@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Message;
+import org.eclipse.digitaltwin.aas4j.v3.model.Result;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class ResultBuilder<T extends Result, B extends ResultBuilder<T, B>> extends ExtendableBuilder<T, B> {

@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguagePropertyValue;
 
 
 public abstract class MultiLanguagePropertyValueBuilder<T extends MultiLanguagePropertyValue, B extends MultiLanguagePropertyValueBuilder<T, B>>

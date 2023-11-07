@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
 import java.math.BigInteger;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class OperationRequestBuilder<T extends OperationRequest, B extends OperationRequestBuilder<T, B>>

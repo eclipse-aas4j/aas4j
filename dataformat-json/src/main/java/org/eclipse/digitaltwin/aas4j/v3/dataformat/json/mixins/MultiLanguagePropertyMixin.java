@@ -17,20 +17,20 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public interface MultiLanguagePropertyMixin {
 
     @JsonProperty("value")
-    List<LangStringTextType> getValue();
+    public List<LangStringTextType> getValue();
 
     @JsonProperty("value")
-    void setValue(LangStringTextType value);
+    public void setValue(LangStringTextType value);
 
     @JsonProperty("valueId")
-    Reference getValueId();
+    public Reference getValueId();
 
     @JsonProperty("valueId")
     public void setValueId(Reference valueId);

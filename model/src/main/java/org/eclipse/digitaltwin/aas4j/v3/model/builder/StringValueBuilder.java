@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.StringValue;
 
 
 public abstract class StringValueBuilder<T extends StringValue, B extends StringValueBuilder<T, B>> extends ExtendableBuilder<T, B> {

@@ -15,14 +15,19 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.ConceptDescriptionBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -67,14 +72,14 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public int hashCode() {
         return Objects.hash(this.isCaseOf,
+            this.embeddedDataSpecifications,
             this.administration,
             this.id,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions,
-            this.embeddedDataSpecifications);
+            this.extensions);
     }
 
     @Override
@@ -88,14 +93,14 @@ public class DefaultConceptDescription implements ConceptDescription {
         } else {
             DefaultConceptDescription other = (DefaultConceptDescription) obj;
             return Objects.equals(this.isCaseOf, other.isCaseOf) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.administration, other.administration) &&
                 Objects.equals(this.id, other.id) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -107,6 +112,16 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setIsCaseOf(List<Reference> isCaseOfs) {
         this.isCaseOf = isCaseOfs;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -177,16 +192,6 @@ public class DefaultConceptDescription implements ConceptDescription {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     public String toString() {

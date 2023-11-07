@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle;
 
 
 public abstract class OperationHandleBuilder<T extends OperationHandle, B extends OperationHandleBuilder<T, B>>

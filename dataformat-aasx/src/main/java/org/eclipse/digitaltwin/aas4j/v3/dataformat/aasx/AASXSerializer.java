@@ -15,15 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackagePart;
@@ -32,19 +23,24 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.apache.poi.openxml4j.opc.RelationshipSource;
 import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
 
 /**
  * This class can be used to generate an .aasx file from Metamodel Objects and
@@ -110,7 +106,7 @@ public class AASXSerializer {
         // Save the XML to aasx/xml/content.xml
         PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
 
-        storeFilesInAASX(environment.getSubmodels(), files, rootPackage, xmlPart);
+        storeFilesInAASX(environment, files, rootPackage, xmlPart);
 
         saveAASX(os, rootPackage);
     }
@@ -118,26 +114,42 @@ public class AASXSerializer {
     /**
      * Stores the files from the Submodels in the .aasx file
      * 
-     * @param submodelList the Submodels
+     * @param environment the Environment
      * @param files the content of the files
      * @param rootPackage the OPCPackage
      * @param xmlPart the Part the files should be related to
      */
-    private void storeFilesInAASX(List<Submodel> submodelList, Collection<InMemoryFile> files, OPCPackage rootPackage,
+    private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
+        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
+                && aas.getAssetInformation().getDefaultThumbnail() != null
+                && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                .forEach(aas -> createParts(files,
+                        AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath()),
+                        rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
+        environment.getSubmodels().forEach(sm ->
+            findFileElements(sm.getSubmodelElements()).forEach(file -> createParts(files,
+                    AASXUtils.getPathFromURL(file.getValue()), rootPackage, xmlPart, file.getContentType())));
+    }
 
-        for (Submodel sm : submodelList) {
-            for (File file : findFileElements(sm.getSubmodelElements())) {
-                String filePath = AASXUtils.getPathFromURL(file.getValue());
-                try {
-                    InMemoryFile content = findFileByPath(files, filePath);
-                    logger.trace("Writing file '" + filePath + "' to .aasx.");
-                    createAASXPart(rootPackage, xmlPart, filePath, file.getContentType(), AASSUPPL_RELTYPE, content.getFileContent());
-                } catch (RuntimeException e) {
-                    // Log that a file is missing and continue building the .aasx
-                    logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
-                }
-            }
+    /**
+     * Adds a part to the .aasx file with the given file, filePath and contentType
+     *
+     * @param files the content of the files
+     * @param filePath the path of the file
+     * @param rootPackage the OPCPackage
+     * @param xmlPart the Part the files should be related to
+     * @param contentType the contentType of the file
+     */
+    private void createParts(Collection<InMemoryFile> files, String filePath, OPCPackage rootPackage,
+                        PackagePart xmlPart, String contentType) {
+        try {
+            InMemoryFile content = findFileByPath(files, filePath);
+            logger.trace("Writing file '" + filePath + "' to .aasx.");
+            createAASXPart(rootPackage, xmlPart, filePath, contentType, AASSUPPL_RELTYPE, content.getFileContent());
+        } catch (RuntimeException e) {
+            // Log that a file is missing and continue building the .aasx
+            logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
         }
     }
 

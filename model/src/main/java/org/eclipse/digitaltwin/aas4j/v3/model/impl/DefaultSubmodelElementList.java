@@ -15,14 +15,22 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelElementListBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -88,14 +96,14 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
             this.valueTypeListElement,
             this.value,
             this.embeddedDataSpecifications,
+            this.semanticId,
+            this.supplementalSemanticIds,
+            this.qualifiers,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers);
+            this.extensions);
     }
 
     @Override
@@ -114,14 +122,14 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
                 Objects.equals(this.valueTypeListElement, other.valueTypeListElement) &&
                 Objects.equals(this.value, other.value) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -186,6 +194,36 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     }
 
     @Override
+    public Reference getSemanticId() {
+        return semanticId;
+    }
+
+    @Override
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
+    }
+
+    @Override
+    public List<Reference> getSupplementalSemanticIds() {
+        return supplementalSemanticIds;
+    }
+
+    @Override
+    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        this.supplementalSemanticIds = supplementalSemanticIds;
+    }
+
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
+    @Override
     public String getCategory() {
         return category;
     }
@@ -233,36 +271,6 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
     }
 
     public String toString() {

@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.Key;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElementValue;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class ReferenceElementValueBuilder<T extends ReferenceElementValue, B extends ReferenceElementValueBuilder<T, B>>

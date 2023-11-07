@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElementValue;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceValue;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class BasicEventElementValueBuilder<T extends BasicEventElementValue, B extends BasicEventElementValueBuilder<T, B>>

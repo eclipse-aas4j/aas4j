@@ -15,12 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
+
+import java.io.IOException;
 
 public class LangStringContentDeserializer implements CustomJsonNodeDeserializer<LangStringContent> {
     @Override

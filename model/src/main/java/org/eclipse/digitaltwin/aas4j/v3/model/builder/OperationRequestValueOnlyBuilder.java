@@ -15,11 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequestValueOnly;
+
 import java.math.BigInteger;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class OperationRequestValueOnlyBuilder<T extends OperationRequestValueOnly, B extends OperationRequestValueOnlyBuilder<T, B>>

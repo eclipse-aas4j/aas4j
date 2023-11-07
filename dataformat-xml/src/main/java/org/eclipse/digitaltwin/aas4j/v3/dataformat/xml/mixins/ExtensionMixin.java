@@ -16,7 +16,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.RefersToSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({"semanticId", "name", "valueType", "value", "refersTo"})
+import java.util.List;
+
+@JsonPropertyOrder({ "semanticId", "supplementalSemanticIds", "name", "valueType", "value", "refersTo" })
 public interface ExtensionMixin {
+    @JsonSerialize(using = RefersToSerializer.class)
+    List<Reference> getRefersTo();
 }

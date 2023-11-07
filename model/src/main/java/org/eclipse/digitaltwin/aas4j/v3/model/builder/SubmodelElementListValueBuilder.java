@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementListValue;
 
 
 public abstract class SubmodelElementListValueBuilder<T extends SubmodelElementListValue, B extends SubmodelElementListValueBuilder<T, B>>

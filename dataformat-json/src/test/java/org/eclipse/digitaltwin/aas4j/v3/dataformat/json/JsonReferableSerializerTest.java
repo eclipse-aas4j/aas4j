@@ -16,20 +16,35 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+
 import org.json.JSONException;
+
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
 
 public class JsonReferableSerializerTest {
 
@@ -39,7 +54,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    public void testSerializeWithAssetInformation() throws SerializationException, JSONException, IOException {
+    public void testSerializeAASWithAssetInformation() throws SerializationException, JSONException, IOException {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
     }
 
@@ -49,7 +64,7 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
-    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
+    @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
     public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }
@@ -70,6 +85,16 @@ public class JsonReferableSerializerTest {
     }
 
     @Test
+    public void testSerializeSubmodelWithExtensions() throws DeserializationException, SerializationException, JsonProcessingException {
+        Submodel submodel = new JsonDeserializer().readReferable(Examples.SUBMODEL.fileContentStream(), Submodel.class);
+        submodel.getExtensions().add(new DefaultExtension.Builder()
+                .name("myExtension").value("my extension value").valueType(DataTypeDefXsd.STRING)
+                .build());
+        JsonNode jsonNode = new ObjectMapper().readTree(new JsonSerializer().writeReferable(submodel));
+        Assert.assertTrue(jsonNode.has("extensions"));
+    }
+
+    @Test
     public void testSerializeSubmodelElements() throws IOException, SerializationException, JSONException {
         compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
     }
@@ -87,6 +112,26 @@ public class JsonReferableSerializerTest {
     @Test
     public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
+    }
+
+    @Test
+    public void testSerializePropertyToNode() throws IOException, SerializationException, JSONException {
+        Property property = new DefaultProperty.Builder()
+                .idShort("exampleId")
+                .build();
+        ObjectNode expected = JsonNodeFactory.instance.objectNode();
+        expected.put("idShort", "exampleId");
+        expected.put("modelType", "Property");
+        JsonNode actual = new JsonSerializer().toNode(property);
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MINIMAL);
+    }
+    @Test
+    public void testSerializeExtensionMaximal() throws SerializationException, JSONException, IOException {
+        compare(Examples.EXTENSION_MAXIMAL);
     }
 
 	@SuppressWarnings("unchecked")

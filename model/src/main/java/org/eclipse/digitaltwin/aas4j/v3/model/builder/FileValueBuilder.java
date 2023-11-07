@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.FileValue;
 
 
 public abstract class FileValueBuilder<T extends FileValue, B extends FileValueBuilder<T, B>> extends ExtendableBuilder<T, B> {

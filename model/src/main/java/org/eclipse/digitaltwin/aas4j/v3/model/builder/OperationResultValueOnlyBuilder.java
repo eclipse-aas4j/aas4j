@@ -15,11 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationResultValueOnly;
+import org.eclipse.digitaltwin.aas4j.v3.model.Result;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class OperationResultValueOnlyBuilder<T extends OperationResultValueOnly, B extends OperationResultValueOnlyBuilder<T, B>>

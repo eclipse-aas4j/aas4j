@@ -15,9 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util;
 
-import java.util.Comparator;
-
 import com.google.common.reflect.TypeToken;
+
+import java.util.Comparator;
 
 /**
  * Comparator comparing two TypeToken regarding which type is more specific.

@@ -16,9 +16,8 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
+import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 
 
 public abstract class EndpointBuilder<T extends Endpoint, B extends EndpointBuilder<T, B>> extends ExtendableBuilder<T, B> {

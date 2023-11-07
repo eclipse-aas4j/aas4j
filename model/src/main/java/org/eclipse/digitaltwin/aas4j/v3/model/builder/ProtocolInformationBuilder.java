@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
+
 import java.util.List;
-
-
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, B extends ProtocolInformationBuilder<T, B>>
