@@ -25,7 +25,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
@@ -51,7 +50,7 @@ import java.util.stream.Collectors;
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
-public class JsonDeserializer implements Deserializer, ReferableDeserializer, ReferenceDeserializer, SpecificAssetIdDeserializer, SubmodelDescriptorDeserializer, AssetAdministrationShellDescriptorDeserializer {
+public class JsonDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
@@ -386,7 +385,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         return readReferables(new FileInputStream(src), charset, outputClass);
     }
 
-    @Override
     public Reference readReference(String reference) throws DeserializationException {
         try {
             return mapper.treeToValue(new ObjectMapper().readTree(reference), Reference.class);
@@ -395,7 +393,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<Reference> readReferences(String references) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(references)) ;
@@ -414,7 +411,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(specificAssetIds)) ;
@@ -424,7 +420,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public SubmodelDescriptor readSubmodelDescriptor(String submodelDescriptor) throws DeserializationException {
         try {
             return mapper.treeToValue(new ObjectMapper().readTree(submodelDescriptor), SubmodelDescriptor.class);
@@ -433,7 +428,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<SubmodelDescriptor> readSubmodelDescriptors(String submodelDescriptors) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(submodelDescriptors)) ;
@@ -443,7 +437,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public AssetAdministrationShellDescriptor readAssetAdministrationShellDescriptor(String assetAdministrationShellDescriptor) throws DeserializationException {
         try {
             return mapper.treeToValue(new ObjectMapper().readTree(assetAdministrationShellDescriptor), AssetAdministrationShellDescriptor.class);
@@ -452,7 +445,6 @@ public class JsonDeserializer implements Deserializer, ReferableDeserializer, Re
         }
     }
 
-    @Override
     public List<AssetAdministrationShellDescriptor> readAssetAdministrationShellDescriptors(String assetAdministrationShellDescriptors) throws DeserializationException {
         try {
             String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(assetAdministrationShellDescriptors)) ;
