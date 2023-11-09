@@ -241,9 +241,7 @@ public class JsonSerializer {
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.get(0).getClass()));
-            String json = objectWriter.writeValueAsString(referables);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(referables);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of Referables", ex);
@@ -265,9 +263,7 @@ public class JsonSerializer {
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, Reference.class));
-            String json = objectWriter.writeValueAsString(references);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(references);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of References", ex);
@@ -290,9 +286,7 @@ public class JsonSerializer {
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, SpecificAssetId.class));
-            String json = objectWriter.writeValueAsString(specificAssetIds);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(specificAssetIds);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of SpecificAssetIds", ex);
@@ -316,9 +310,7 @@ public class JsonSerializer {
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, SubmodelDescriptor.class));
-            String json = objectWriter.writeValueAsString(submodelDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(submodelDescriptors);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of SubmodelDescriptors", ex);
@@ -342,9 +334,7 @@ public class JsonSerializer {
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, AssetAdministrationShellDescriptor.class));
-            String json = objectWriter.writeValueAsString(assetAdministrationShellDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(assetAdministrationShellDescriptors);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of AssetAdministrationShellDescriptors", ex);
