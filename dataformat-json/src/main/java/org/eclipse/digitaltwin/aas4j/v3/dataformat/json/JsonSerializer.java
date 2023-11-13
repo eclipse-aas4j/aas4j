@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,28 +19,41 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-// TODO import io.adminshell.aas.v3.dataformat.core.serialization.EmbeddedDataSpecificationSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-// TODO import io.adminshell.aas.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to
  * JSON.
  */
-public class JsonSerializer implements Serializer, ReferableSerializer, ReferenceSerializer, SpecificAssetIdSerializer, SubmodelDescriptorSerializer, AssetAdministrationShellDescriptorSerializer {
+public class JsonSerializer {
 
     protected JsonMapper mapper;
+
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public JsonSerializer() {
         buildMapper();
@@ -58,7 +72,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
     protected SimpleModule buildCustomSerializerModule() {
         SimpleModule module = new SimpleModule();
-        // TODO: module.addSerializer(EmbeddedDataSpecification.class, new EmbeddedDataSpecificationSerializer());
         return module;
     }
 
@@ -68,19 +81,151 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         return module;
     }
 
-    @Override
+    /**
+     * Serializes a given instance of AssetAdministrationShellEnvironment to string
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
+     * @return the string representation of the environment
+     * @throws SerializationException if serialization fails
+     */
     public String write(Environment aasEnvironment) throws SerializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            // return mapper.writeValueAsString(ModelTypeProcessor.postprocess(mapper.valueToTree(aasEnvironment)));
-            return mapper.writeValueAsString(mapper.valueToTree(aasEnvironment));
+            return mapper.writeValueAsString(aasEnvironment);
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
         }
     }
 
+    /**
+     * Converts a given instance of AssetAdministrationShellEnvironment as JSON node.
+     *
+     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
+     * @return the JSON node representation of the environment
+     */
+    public JsonNode toNode(Environment aasEnvironment) {
+        return mapper.valueToTree(aasEnvironment);
+    }
 
-    @Override
+    /**
+     * Serializes a given instance of Environment to an OutputStream using DEFAULT_CHARSET
+     *
+     * @param out the Outputstream to serialize to
+     * @param aasEnvironment the Environment to serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
+        write(out, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of Environment to an OutputStream using given charset
+     *
+     * @param out the Outputstream to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to serialize
+     * @throws IOException if writing to the stream fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(OutputStream out, Charset charset, Environment aasEnvironment)
+            throws IOException, SerializationException {
+        try (OutputStreamWriter writer = new OutputStreamWriter(out, charset)) {
+            writer.write(write(aasEnvironment));
+        }
+    }
+
+    // Note that the AAS also defines a file class
+    /**
+     * Serializes a given instance of Environment to a java.io.File using DEFAULT_CHARSET
+     *
+     * @param file the java.io.File to serialize to
+     * @param charset the Charset to use for serialization
+     * @param aasEnvironment the Environment to serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Charset charset, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        try (OutputStream out = new FileOutputStream(file)) {
+            write(out, charset, aasEnvironment);
+        }
+    }
+
+    /**
+     * Serializes a given instance of Environment to a java.io.File using given charset
+     *
+     * @param file the java.io.File to serialize to
+     * @param aasEnvironment the Environment to serialize
+     * @throws FileNotFoundException if the fail does not exist
+     * @throws IOException if writing to the file fails
+     * @throws SerializationException if serialization fails
+     */
+    void write(java.io.File file, Environment aasEnvironment)
+            throws FileNotFoundException, IOException, SerializationException {
+        write(file, DEFAULT_CHARSET, aasEnvironment);
+    }
+
+    /**
+     * Serializes a given instance of a Referable to string
+     *
+     * @param referable the referable to serialize
+     * @return the string representation of the referable
+     * @throws SerializationException if serialization fails
+     */
+    public String write(Referable referable) throws SerializationException {
+        try {
+            return mapper.writeValueAsString(referable);
+        } catch (JsonProcessingException ex) {
+            throw new SerializationException("error serializing Referable", ex);
+        }
+    }
+
+    /**
+     * Converts a given instance of a Referable to a JSON node.
+     *
+     * @param referable the referable to serialize
+     * @return the JSON node representation of the referable
+     */
+    public JsonNode toNode(Referable referable) {
+        return mapper.valueToTree(referable);
+    }
+
+    /**
+     *
+     * @param referables the referables to serialize
+     * @return the string representation of the list of referables
+     * @throws SerializationException if serialization fails
+     */
+    public String write(Collection<? extends Referable> referables) throws SerializationException {
+        if (referables == null) {
+            return null;
+        } else if (referables.isEmpty()) {
+            return mapper.createArrayNode().toString();
+        }
+
+        try {
+            return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.iterator().next().getClass()))
+                    .writeValueAsString(referables);
+        } catch (JsonProcessingException ex) {
+            throw new SerializationException("error serializing list of Referables", ex);
+        }
+    }
+
+    /**
+     *
+     * @param referables the referables to serialize
+     * @return the string representation of the list of referables
+     */
+    public JsonNode toNode(Collection<? extends Referable> referables) {
+        if (referables == null) {
+            return null;
+        } else if (referables.isEmpty()) {
+            return mapper.createArrayNode();
+        }
+        return mapper.valueToTree(referables);
+    }
+
     public String writeReferable(Referable referable) throws SerializationException {
         try {
             return mapper.writeValueAsString(mapper.valueToTree(referable));
@@ -89,7 +234,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    @Override
     public String writeReferables(List<Referable> referables) throws SerializationException {
         if(referables.isEmpty()){
             return "[]";
@@ -97,16 +241,13 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.get(0).getClass()));
-            String json = objectWriter.writeValueAsString(referables);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(referables);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of Referables", ex);
         }
     }
 
-    @Override
     public String writeReference(Reference reference) throws SerializationException {
         try {
             return mapper.writeValueAsString(mapper.valueToTree(reference));
@@ -115,7 +256,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    @Override
     public String writeReferences(List<Reference> references) throws SerializationException {
         if(references.isEmpty()){
             return null;
@@ -123,16 +263,13 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, Reference.class));
-            String json = objectWriter.writeValueAsString(references);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(references);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of References", ex);
         }
     }
 
-    @Override
     public String writeSpecificAssetId(SpecificAssetId specificAssetId) throws SerializationException {
         try {
             return mapper.writeValueAsString(mapper.valueToTree(specificAssetId));
@@ -141,7 +278,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    @Override
+
     public String writeSpecificAssetIds(List<SpecificAssetId> specificAssetIds) throws SerializationException {
         if(specificAssetIds.isEmpty()){
             return null;
@@ -149,16 +286,14 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, SpecificAssetId.class));
-            String json = objectWriter.writeValueAsString(specificAssetIds);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(specificAssetIds);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of SpecificAssetIds", ex);
         }
     }
 
-    @Override
+
     public String writeSubmodelDescriptor(SubmodelDescriptor submodelDescriptor) throws SerializationException {
         try {
             return mapper.writeValueAsString(mapper.valueToTree(submodelDescriptor));
@@ -167,7 +302,7 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    @Override
+
     public String writeSubmodelDescriptors(List<SubmodelDescriptor> submodelDescriptors) throws SerializationException {
         if(submodelDescriptors.isEmpty()){
             return null;
@@ -175,16 +310,14 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, SubmodelDescriptor.class));
-            String json = objectWriter.writeValueAsString(submodelDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(submodelDescriptors);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of SubmodelDescriptors", ex);
         }
     }
 
-    @Override
+
     public String writeAssetAdministrationShellDescriptor(AssetAdministrationShellDescriptor assetAdministrationShellDescriptor) throws SerializationException {
         try {
             return mapper.writeValueAsString(mapper.valueToTree(assetAdministrationShellDescriptor));
@@ -193,7 +326,6 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
         }
     }
 
-    @Override
     public String writeAssetAdministrationShellDescriptors(List<AssetAdministrationShellDescriptor> assetAdministrationShellDescriptors) throws SerializationException {
         if(assetAdministrationShellDescriptors.isEmpty()){
             return null;
@@ -201,43 +333,10 @@ public class JsonSerializer implements Serializer, ReferableSerializer, Referenc
 
         try {
             ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, AssetAdministrationShellDescriptor.class));
-            String json = objectWriter.writeValueAsString(assetAdministrationShellDescriptors);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
+            return objectWriter.writeValueAsString(assetAdministrationShellDescriptors);
 
         } catch (JsonProcessingException ex) {
             throw new SerializationException("error serializing list of AssetAdministrationShellDescriptors", ex);
         }
     }
-
-
-
-//    @Override
-//    public String write(Object aas_element) throws SerializationException {
-//        try {
-//            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-//            //return mapper.writeValueAsString(ModelTypeProcessor.postprocess(this.mapper.readTree(json)));
-//            return mapper.writeValueAsString(mapper.valueToTree(aas_element));
-//
-//        } catch (JsonProcessingException ex) {
-//            throw new SerializationException("error serializing an aas-element", ex);
-//        }
-//    }
-
-//    @Override
-//    public <T> String writeList(List<? extends T> aas_elements, Class<T> outputClass) throws SerializationException {
-//        if(aas_elements.isEmpty()){
-//            return null;
-//        }
-//
-//        try {
-//            ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, outputClass));
-//            String json = objectWriter.writeValueAsString(aas_elements);
-//
-//            return mapper.writeValueAsString(this.mapper.readTree(json));
-//
-//        } catch (JsonProcessingException ex) {
-//            throw new SerializationException("error serializing list of AAS elements", ex);
-//        }
-//    }
 }
