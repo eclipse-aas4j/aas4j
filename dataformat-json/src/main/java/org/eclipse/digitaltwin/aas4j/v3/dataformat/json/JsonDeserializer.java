@@ -46,7 +46,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
@@ -103,9 +102,7 @@ public class JsonDeserializer {
      */
     public Environment read(String value) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(value), Environment.class);
-            return mapper.treeToValue(new ObjectMapper().readTree(value), Environment.class);
+            return mapper.readValue(value, Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
         }
