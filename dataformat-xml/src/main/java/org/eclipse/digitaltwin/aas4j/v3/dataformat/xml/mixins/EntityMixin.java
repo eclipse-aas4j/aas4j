@@ -15,17 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.SubmodelElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.util.List;
 
 public interface EntityMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")

@@ -7,7 +7,8 @@
             },
             "extensions": [
                 {
-                    "name": "something_aae6caf4"
+                    "name": "something_aae6caf4",
+                    "valueType": "xs:string"
                 }
             ],
             "id": "something_142922d6",

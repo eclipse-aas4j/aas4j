@@ -15,15 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeserializationHelper {
     public static <T> T createInstanceFromNode(JsonParser parser, JsonNode node, Class<T> clazz) throws IOException {

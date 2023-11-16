@@ -15,12 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
@@ -29,9 +23,14 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class DataElementsDeserializer extends JsonDeserializer<List<DataElement>> {
 

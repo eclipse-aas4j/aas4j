@@ -84,7 +84,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -135,7 +135,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -186,7 +186,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -247,7 +247,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -295,7 +295,7 @@
                             },
                             {
                                 "language": "EN",
-                                "text": "ActRotationSpeed"
+                                "text": "ActualRotationSpeed"
                             }
                         ]
                     }
@@ -313,7 +313,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -368,6 +368,7 @@
             },
             "id": "http://i40.customer.com/type/1/1/7A7104BDAB57E184",
             "idShort": "TechnicalData",
+            "kind": "Instance",
             "submodelElements": [
                 {
                     "modelType": "Property",

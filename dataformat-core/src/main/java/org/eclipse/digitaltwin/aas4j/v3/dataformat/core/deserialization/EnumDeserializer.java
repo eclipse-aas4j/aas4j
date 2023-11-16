@@ -15,12 +15,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+
+import java.io.IOException;
 
 /**
  * Deserializes enum values converting element names from UpperCamelCase to

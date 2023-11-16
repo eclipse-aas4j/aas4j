@@ -15,12 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 
 @JsonPropertyOrder({"dataSpecifications", "embeddedDataSpecifications", "version", "revision"})

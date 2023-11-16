@@ -25,8 +25,8 @@ public interface EntityMixin {
     public EntityType getEntityType();
 
     @JsonProperty("globalAssetId")
-    public String getGlobalAssetID();
+    public String getGlobalAssetId();
 
     @JsonProperty("globalAssetId")
-    public void setGlobalAssetID(String globalAssetID);
+    public void setGlobalAssetId(String globalAssetId);
 }

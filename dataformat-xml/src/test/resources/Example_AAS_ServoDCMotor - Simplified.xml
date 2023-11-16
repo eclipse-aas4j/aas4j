@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <aas:environment xmlns:aas="https://admin-shell.io/aas/3/0"
-				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://www.admin-shell.io/aas/3/0 AAS.xsd">
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="">
 	<aas:assetAdministrationShells>
 		<aas:assetAdministrationShell>
 			<aas:idShort>ExampleMotor</aas:idShort>

@@ -15,15 +15,14 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+
+import java.io.IOException;
 
 
 /**
@@ -47,7 +46,7 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
 
     @Override
     public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
-            TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
+                                  TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }
 }

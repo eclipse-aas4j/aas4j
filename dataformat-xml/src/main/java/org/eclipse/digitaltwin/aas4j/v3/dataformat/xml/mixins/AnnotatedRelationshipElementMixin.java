@@ -15,14 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.mixins;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.DataElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.DataElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
+
+import java.util.List;
 
 
 public interface AnnotatedRelationshipElementMixin {

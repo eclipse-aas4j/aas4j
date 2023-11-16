@@ -4,7 +4,7 @@
 > following artifacts implementing the _AAS Specs – Part 1 V3.0 (final)_: `dataformat-core`, `dataformat-aasx`, 
 > `dataformat-xml`, `dataformat-json`, `dataformat-parent`, and `model`.
 
-[Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration 
+[Eclipse AAS4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration 
 Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation 
 libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 
 'Specification of the Asset Administration Shell Part 1: Meta-Model' published on 

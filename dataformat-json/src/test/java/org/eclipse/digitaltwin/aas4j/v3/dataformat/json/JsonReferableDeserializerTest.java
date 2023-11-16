@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,29 +18,29 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.List;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 
 
 public class JsonReferableDeserializerTest {
@@ -107,6 +108,18 @@ public class JsonReferableDeserializerTest {
         List<Referable> deserialized = new JsonDeserializer().readReferables("[]", Referable.class);
         assertEquals(emptyList, deserialized);
     }
+
+    @Test
+    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
+    public void testDeserializeConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
+        ExampleData<ConceptDescription> exampleData = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT;
+        Object expected = exampleData.getModel();
+        try (InputStream fileContent = exampleData.fileContentStream()) {
+            Object actual = new JsonDeserializer().readReferable(fileContent, (Class<? extends Referable>) exampleData.getModel().getClass());
+            Assert.assertEquals(expected, actual);
+        }
+    }
+
 
     @Test
     public void testPropertyFromNode() throws Exception {

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -14,24 +15,20 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
 
 
 public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for assetInformation
-     * 
-     * @param assetInformation desired value to be set
-     * @return Builder object with new value for assetInformation
-     */
-    public B assetInformation(AssetInformation assetInformation) {
-        getBuildingInstance().setAssetInformation(assetInformation);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for derivedFrom
@@ -41,6 +38,17 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
      */
     public B derivedFrom(Reference derivedFrom) {
         getBuildingInstance().setDerivedFrom(derivedFrom);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for assetInformation
+     * 
+     * @param assetInformation desired value to be set
+     * @return Builder object with new value for assetInformation
+     */
+    public B assetInformation(AssetInformation assetInformation) {
+        getBuildingInstance().setAssetInformation(assetInformation);
         return getSelf();
     }
 
@@ -122,35 +130,24 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
     }
 
     /**
-     * This function allows setting a value for description
+     * This function allows setting a value for idShort
      * 
-     * @param description desired value to be set
-     * @return Builder object with new value for description
+     * @param idShort desired value to be set
+     * @return Builder object with new value for idShort
      */
-    public B description(List<LangStringTextType> description) {
-        getBuildingInstance().setDescription(description);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List description
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for description
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescription().add(description);
+    public B idShort(String idShort) {
+        getBuildingInstance().setIdShort(idShort);
         return getSelf();
     }
 
     /**
      * This function allows setting a value for displayName
      * 
-     * @param displayName desired value to be set
+     * @param displayNames desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangStringNameType> displayName) {
-        getBuildingInstance().setDisplayName(displayName);
+    public B displayName(List<LangStringNameType> displayNames) {
+        getBuildingInstance().setDisplayName(displayNames);
         return getSelf();
     }
 
@@ -166,13 +163,24 @@ public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrat
     }
 
     /**
-     * This function allows setting a value for idShort
+     * This function allows setting a value for description
      * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
+     * @param descriptions desired value to be set
+     * @return Builder object with new value for description
      */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
+    public B description(List<LangStringTextType> descriptions) {
+        getBuildingInstance().setDescription(descriptions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List description
+     * 
+     * @param description desired value to be added
+     * @return Builder object with new value for description
+     */
+    public B description(LangStringTextType description) {
+        getBuildingInstance().getDescription().add(description);
         return getSelf();
     }
 

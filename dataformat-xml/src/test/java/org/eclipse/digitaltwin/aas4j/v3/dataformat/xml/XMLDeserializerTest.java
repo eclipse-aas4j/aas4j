@@ -15,9 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -32,6 +29,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xml.sax.SAXException;
+
+import java.io.FileNotFoundException;
+import java.util.List;
 
 public class XMLDeserializerTest {
 

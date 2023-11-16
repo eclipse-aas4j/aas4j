@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,8 +129,8 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (hasSemantics == null) {
             return;
         }
-        visit(hasSemantics.getSemanticID());
-        hasSemantics.getSupplementalSemanticIds().forEach(x -> visit(x));
+        visit(hasSemantics.getSemanticId());
+        hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
 
@@ -143,11 +144,11 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(SpecificAssetID specificAssetId) {
+    public default void visit(SpecificAssetId specificAssetId) {
         if (specificAssetId == null) {
             return;
         }
-        visit(specificAssetId.getExternalSubjectID());
+        visit(specificAssetId.getExternalSubjectId());
         AssetAdministrationShellElementVisitor.super.visit(specificAssetId);
     }
 
@@ -157,7 +158,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         multiLanguageProperty.getValue().forEach(x -> visit(x));
-        visit(multiLanguageProperty.getValueID());
+        visit(multiLanguageProperty.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
     }
 
@@ -175,7 +176,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (property == null) {
             return;
         }
-        visit(property.getValueID());
+        visit(property.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(property);
     }
 
@@ -193,7 +194,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         if (qualifier == null) {
             return;
         }
-        visit(qualifier.getValueID());
+        visit(qualifier.getValueId());
         AssetAdministrationShellElementVisitor.super.visit(qualifier);
     }
 
