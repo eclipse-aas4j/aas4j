@@ -8,7 +8,6 @@ import java.util.Objects;
  * This interface is needed to test the serialization/deserialization of a custom data specification content.
  * See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
-
 public class DefaultCustomDataSpecificationContent implements CustomDataSpecificationContent {
     private LangStringNameType name;
     private String text;
