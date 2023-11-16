@@ -40,6 +40,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 @RunWith(JUnitParamsRunner.class)
 public class AasUtilsTest {
 
@@ -68,7 +71,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Referable actual = AasUtils.resolve(reference, environment);
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -133,7 +136,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Referable actual = AasUtils.resolve(reference, environment);
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -206,7 +209,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Referable actual = AasUtils.resolve(reference, environment);
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -254,7 +257,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Referable actual = AasUtils.resolve(reference, environment);
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -331,7 +334,7 @@ public class AasUtilsTest {
     public void whenSameAs_withDifferentReferredSemanticId_success() {
         String value = "0173-1#01-ADS698#010";
         Reference ref1 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("foo")
@@ -343,7 +346,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Reference ref2 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("bar")
@@ -361,7 +364,7 @@ public class AasUtilsTest {
     public void whenSameAs_withDifferentReferredSemanticId_fail() {
         String value = "0173-1#01-ADS698#010";
         Reference ref1 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("foo")
@@ -373,7 +376,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Reference ref2 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("bar")
@@ -406,6 +409,6 @@ public class AasUtilsTest {
                 .build();
         String expected = "[ModelRef](Submodel)submodel, (SubmodelElementList)list, (Property)0";
         String actual = AasUtils.asString(reference);
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 }

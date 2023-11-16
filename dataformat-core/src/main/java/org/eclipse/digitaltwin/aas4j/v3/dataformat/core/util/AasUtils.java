@@ -91,7 +91,7 @@ public class AasUtils {
         String result = "";
         if (includeReferenceType) {
             String referredSemanticId = includeReferredSemanticId
-                    ? asString(reference.getReferredSemanticID(), includeReferenceType, false)
+                    ? asString(reference.getReferredSemanticId(), includeReferenceType, false)
                     : "";
             result = String.format("[%s%s]",
                     asString(reference.getType()),
@@ -257,7 +257,7 @@ public class AasUtils {
         if (ref1.getType() != ref2.getType()) {
             return false;
         }
-        if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticID(), ref2.getReferredSemanticID())) {
+        if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticId(), ref2.getReferredSemanticId())) {
             return false;
         }
         if (ref1.getKeys().size() != ref2.getKeys().size()) {
