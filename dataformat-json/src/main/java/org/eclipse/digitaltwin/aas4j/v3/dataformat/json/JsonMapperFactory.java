@@ -57,7 +57,7 @@ public class JsonMapperFactory {
 
     protected SimpleModule buildEnumModule() {
         SimpleModule module = new SimpleModule();
-        module.addSerializer(Enum.class, new EnumSerializer());
+        ReflectionHelper.ENUMS.forEach(x -> module.addSerializer(x, new EnumSerializer()));
         ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
         return module;
     }
