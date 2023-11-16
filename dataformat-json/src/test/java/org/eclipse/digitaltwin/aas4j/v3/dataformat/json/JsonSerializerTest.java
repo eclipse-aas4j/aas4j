@@ -121,7 +121,7 @@ public class JsonSerializerTest {
         JsonSerializer serializer = new JsonSerializer();
         JsonDeserializer deserializer = new JsonDeserializer();
         // This is the only way to make the serialization to work.
-         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
         subtypes.add(DefaultCustomDataSpecificationContent.class);
 
         org.eclipse.digitaltwin.aas4j.v3.model.File origin = new DefaultFile.Builder()
