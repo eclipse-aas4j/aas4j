@@ -5,6 +5,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtendableBuilder;
 
 /**
  * This interface is needed to test the serialization/deserialization of a custom data specification content.
+ *
  * See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
 public abstract class CustomDataSpecificationContentBuilder<T extends CustomDataSpecificationContent,

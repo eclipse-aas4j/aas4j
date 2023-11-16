@@ -1,7 +1,5 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 
