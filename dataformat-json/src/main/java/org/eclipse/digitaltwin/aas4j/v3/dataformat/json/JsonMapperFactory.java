@@ -16,6 +16,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
@@ -25,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
@@ -37,16 +41,21 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 public class JsonMapperFactory {
 
     public JsonMapper create(SimpleAbstractTypeResolver typeResolver) {
-        final JsonMapper mapper = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+        Builder builder = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .addModule(buildEnumModule())
-                .addModule(buildImplementationModule(typeResolver))
                 .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .build();
+                .serializationInclusion(JsonInclude.Include.NON_NULL);
+
+        getModulesToInstall(typeResolver).stream().forEach(m -> builder.addModule(m));
+
+        JsonMapper mapper = builder.build();
         ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
 
         return mapper;
+    }
+
+    protected List<SimpleModule> getModulesToInstall(SimpleAbstractTypeResolver typeResolver) {
+        return Arrays.asList(buildEnumModule(), buildImplementationModule(typeResolver));
     }
 
     protected SimpleModule buildImplementationModule(SimpleAbstractTypeResolver typeResolver) {
