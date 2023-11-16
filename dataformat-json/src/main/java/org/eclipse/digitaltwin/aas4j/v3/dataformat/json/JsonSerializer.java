@@ -16,21 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,6 +25,15 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 /**
  * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to
@@ -52,29 +46,7 @@ public class JsonSerializer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public JsonSerializer() {
-        buildMapper();
-    }
-
-    protected void buildMapper() {
-        mapper = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT)
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .addModule(buildEnumModule())
-                .addModule(buildCustomSerializerModule())
-                .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .build();
-        ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-    protected SimpleModule buildCustomSerializerModule() {
-        SimpleModule module = new SimpleModule();
-        return module;
-    }
-
-    protected SimpleModule buildEnumModule() {
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(Enum.class, new EnumSerializer());
-        return module;
+        mapper = new JsonMapperFactory().create(new SimpleAbstractTypeResolverFactory().create());
     }
 
     /**
