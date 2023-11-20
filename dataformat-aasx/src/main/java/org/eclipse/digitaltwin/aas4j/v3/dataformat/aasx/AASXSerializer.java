@@ -52,16 +52,16 @@ public class AASXSerializer {
     private static final String MIME_PLAINTXT = "text/plain";
     private static final String MIME_XML = "application/xml";
 
-	public static final String AASX_NAMESPACE = "http://admin-shell.io/aasx/relationships";
+    public static final String AASX_NAMESPACE = "http://admin-shell.io/aasx/relationships";
 
-	public static final String ORIGIN_RELTYPE = AASX_NAMESPACE + "/aasx-origin";
-	public static final String ORIGIN_PATH = "/aasx/aasx-origin";
-	public static final String ORIGIN_CONTENT = "Intentionally empty.";
+    public static final String ORIGIN_RELTYPE = AASX_NAMESPACE + "/aasx-origin";
+    public static final String ORIGIN_PATH = "/aasx/aasx-origin";
+    public static final String ORIGIN_CONTENT = "Intentionally empty.";
 
-	public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
-	public static final String XML_PATH = "/aasx/xml/content.xml";
+    public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
+    public static final String XML_PATH = "/aasx/xml/content.xml";
 
-	public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
+    public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
