@@ -28,7 +28,7 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultSubmodel.class)
 })
-public interface Submodel extends HasDataSpecification, HasKind, HasSemantics, Identifiable, Qualifiable {
+public interface Submodel extends Identifiable, HasDataSpecification, HasSemantics, Qualifiable, HasKind {
 
     /**
      * A submodel consists of zero or more submodel elements.

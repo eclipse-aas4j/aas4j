@@ -53,9 +53,7 @@ public class DefaultExtension implements Extension {
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    public DefaultExtension() {
-        this.valueType = DataTypeDefXsd.STRING;
-    }
+    public DefaultExtension() {}
 
     @Override
     public int hashCode() {

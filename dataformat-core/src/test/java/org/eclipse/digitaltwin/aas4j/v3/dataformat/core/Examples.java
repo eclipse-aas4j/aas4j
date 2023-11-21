@@ -34,6 +34,7 @@ public class Examples {
                     .id("something_142922d6")
                     .extensions(new DefaultExtension.Builder()
                             .name("something_aae6caf4")
+                            .valueType(DataTypeDefXsd.STRING)
                             .build())
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.NOT_APPLICABLE)

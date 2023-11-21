@@ -30,13 +30,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementAttribu
     @KnownSubtypes.Type(value = BlobMetadata.class),
     @KnownSubtypes.Type(value = CapabilityMetadata.class),
     @KnownSubtypes.Type(value = EntityMetadata.class),
-    @KnownSubtypes.Type(value = FileMetadata.class),
     @KnownSubtypes.Type(value = MultiLanguagePropertyMetadata.class),
     @KnownSubtypes.Type(value = OperationMetadata.class),
     @KnownSubtypes.Type(value = PropertyMetadata.class),
     @KnownSubtypes.Type(value = RangeMetadata.class),
     @KnownSubtypes.Type(value = ReferenceElementMetadata.class),
-    @KnownSubtypes.Type(value = RelationshipElementMetadata.class),
     @KnownSubtypes.Type(value = SubmodelElementListMetadata.class),
     @KnownSubtypes.Type(value = SubmodelElementCollectionMetadata.class)
 })
