@@ -40,9 +40,9 @@
         <revision.major>1</revision.major>
         <revision.minor>0</revision.minor>
         <revision.patch>0</revision.patch>
-        <revision.suffix>-SNAPSHOT</revision.suffix>
+        <revision.suffix>-milestone-04</revision.suffix>
         <revision>${revision.major}.${revision.minor}.${revision.patch}${revision.suffix}</revision>
-        <model.version>1.0.0-SNAPSHOT</model.version>
+        <model.version>1.0.0-milestone-04</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -52,19 +52,19 @@
         <plugin.flatten.version>1.5.0</plugin.flatten.version>
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
         <plugin.jar.version>3.3.0</plugin.jar.version>
-        <plugin.javadoc.version>3.6.0</plugin.javadoc.version>
-        <plugin.projectinfo.version>3.4.5</plugin.projectinfo.version>
+        <plugin.javadoc.version>3.6.2</plugin.javadoc.version>
+        <plugin.projectinfo.version>3.5.0</plugin.projectinfo.version>
         <plugin.source.version>3.3.0</plugin.source.version>
-        <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
-        <classgraph.version>4.8.164</classgraph.version>
+        <plugin.jacoco.version>0.8.11</plugin.jacoco.version>
+        <classgraph.version>4.8.165</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.15.0</commons-io.version>
-        <commons-compress.version>1.24.0</commons-compress.version>
+        <commons-compress.version>1.25.0</commons-compress.version>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <guava.version>32.1.3-jre</guava.version>
         <guice.version>5.0.1</guice.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <jackson.version>2.15.3</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <jaxb.version>2.3.1</jaxb.version>
         <jaxb-rich-contract.version>2.1.0</jaxb-rich-contract.version>
@@ -80,7 +80,7 @@
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
         <xmlunit.version>2.9.1</xmlunit.version>
-        <mockito.version>5.6.0</mockito.version>
+        <mockito.version>5.7.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
     </properties>
     <build>
