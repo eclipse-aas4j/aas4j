@@ -17,22 +17,36 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
@@ -54,6 +68,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
@@ -185,6 +200,81 @@ public class XmlSerializerTest {
         validateXmlSerializer(AAS_WITH_EXTENSION_MAXIMAL, Examples.EXTENSION_MAXIMAL, new XmlSerializer());
     }
 
+
+    /**
+     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
+     *
+     * @throws SerializationException
+     * @throws DeserializationException
+     */
+    @Test
+    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException {
+        XmlSerializer serializer = new XmlSerializer();
+        XmlDeserializer deserializer = new XmlDeserializer();
+        // This is the only way to make the serialization to work.
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        subtypes.add(DefaultCustomDataSpecification.class);
+
+        org.eclipse.digitaltwin.aas4j.v3.model.File file = new DefaultFile.Builder()
+                .idShort("myIdShort").value("FileValue")
+                .embeddedDataSpecifications(
+                        new DefaultEmbeddedDataSpecification.Builder()
+                                .dataSpecificationContent(
+                                        new DefaultCustomDataSpecification.Builder()
+                                                .name(new DefaultLangStringNameType.Builder()
+                                                        .language("en").text("myName").build())
+                                                .text("myText")
+                                                .pages(42)
+                                                .build())
+                                .dataSpecification(
+                                        new DefaultReference.Builder()
+                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                .keys(
+                                                        new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                .value("https://admin-shell.io/aas/3/0/CustomDataSpecification")
+                                                                .build()
+                                                )
+                                                .build()
+                                )
+                                .build())
+                .embeddedDataSpecifications(
+                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
+                                new DefaultDataSpecificationIec61360.Builder()
+                                        .dataType(DataTypeIec61360.BLOB)
+                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
+                                                .language("en").text("myDefinition")
+                                                .build())
+                                        .build()
+                        )
+                                .dataSpecification(
+                                        new DefaultReference.Builder()
+                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                .keys(
+                                                        new DefaultKey.Builder()
+                                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                .value("https://admin-shell.io/aas/3/0/DataSpecificationIec61360")
+                                                                .build()
+                                                )
+                                                .build()
+                                )
+                                .build())
+                .build();
+
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(
+                        new DefaultSubmodel.Builder()
+                                .id("urn:test")
+                                .submodelElements(file)
+                                .build()
+                ).build();
+
+        String xmlString = serializer.write(environment);
+        assertNotNull(xmlString);
+        Environment copy = deserializer.read(xmlString);
+        assertNotNull(copy);
+        assertTrue(environment.equals(copy));
+    }
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
         return new XmlSchemaValidator().validateSchema(xml);
