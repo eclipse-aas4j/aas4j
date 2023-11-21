@@ -23,13 +23,13 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -208,15 +208,23 @@ public class XmlSerializerTest {
      * @throws DeserializationException
      */
     @Test
-    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException {
+    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException, SAXException {
         XmlSerializer serializer = new XmlSerializer();
         XmlDeserializer deserializer = new XmlDeserializer();
+
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
         subtypes.add(DefaultCustomDataSpecification.class);
 
         org.eclipse.digitaltwin.aas4j.v3.model.File file = new DefaultFile.Builder()
                 .idShort("myIdShort").value("FileValue")
+                .build();
+
+        Environment environment = new DefaultEnvironment.Builder()
+                .submodels(
+                        new DefaultSubmodel.Builder()
+                                .id("urn:test")
+                                .submodelElements(file)
                 .embeddedDataSpecifications(
                         new DefaultEmbeddedDataSpecification.Builder()
                                 .dataSpecificationContent(
@@ -238,39 +246,33 @@ public class XmlSerializerTest {
                                                 .build()
                                 )
                                 .build())
-                .embeddedDataSpecifications(
-                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
-                                new DefaultDataSpecificationIec61360.Builder()
-                                        .dataType(DataTypeIec61360.BLOB)
-                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
-                                                .language("en").text("myDefinition")
-                                                .build())
-                                        .build()
-                        )
-                                .dataSpecification(
-                                        new DefaultReference.Builder()
-                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                .keys(
-                                                        new DefaultKey.Builder()
-                                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                .value("https://admin-shell.io/aas/3/0/DataSpecificationIec61360")
+                                .embeddedDataSpecifications(
+                                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
+                                                        new DefaultDataSpecificationIec61360.Builder()
+                                                                .dataType(DataTypeIec61360.BLOB)
+                                                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
+                                                                        .language("en").text("myDefinition")
+                                                                        .build())
                                                                 .build()
                                                 )
-                                                .build()
-                                )
-                                .build())
-                .build();
-
-        Environment environment = new DefaultEnvironment.Builder()
-                .submodels(
-                        new DefaultSubmodel.Builder()
-                                .id("urn:test")
-                                .submodelElements(file)
+                                                .dataSpecification(
+                                                        new DefaultReference.Builder()
+                                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                                .keys(
+                                                                        new DefaultKey.Builder()
+                                                                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                                .value("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360")
+                                                                                .build()
+                                                                )
+                                                                .build()
+                                                )
+                                                .build())
                                 .build()
                 ).build();
 
         String xmlString = serializer.write(environment);
         assertNotNull(xmlString);
+//        validateAgainstXsdSchema(xmlString);
         Environment copy = deserializer.read(xmlString);
         assertNotNull(copy);
         assertTrue(environment.equals(copy));
