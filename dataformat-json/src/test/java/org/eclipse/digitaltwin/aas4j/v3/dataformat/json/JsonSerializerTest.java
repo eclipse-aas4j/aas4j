@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +19,26 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.json.JSONException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -40,6 +55,7 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSerializerTest {
@@ -90,6 +106,58 @@ public class JsonSerializerTest {
         String serialized = new JsonSerializer().write(emptyList);
         assertEquals("[]", serialized);
     }
+
+    /**
+     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
+     *
+     * @throws SerializationException
+     * @throws DeserializationException
+     */
+    @Test
+    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException {
+        JsonSerializer serializer = new JsonSerializer();
+        JsonDeserializer deserializer = new JsonDeserializer();
+        // This is the only way to make the serialization to work.
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        subtypes.add(DefaultCustomDataSpecification.class);
+
+        org.eclipse.digitaltwin.aas4j.v3.model.File origin = new DefaultFile.Builder()
+                .idShort("myIdShort").value("FileValue")
+                .embeddedDataSpecifications(
+                        new DefaultEmbeddedDataSpecification.Builder()
+                                .dataSpecificationContent(
+                                        new DefaultCustomDataSpecification.Builder()
+                                                .name(new DefaultLangStringNameType.Builder()
+                                                        .language("en").text("myName").build())
+                                                .text("myText")
+                                                .pages(42)
+                                                .build())
+                                .dataSpecification(
+                                        new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                .keys(new DefaultKey.Builder().type(KeyTypes.REFERENCE_ELEMENT)
+                                                        .build())
+                                                .build()
+                                )
+                                .build())
+                .embeddedDataSpecifications(
+                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
+                                new DefaultDataSpecificationIec61360.Builder()
+                                        .dataType(DataTypeIec61360.BLOB)
+                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
+                                                .language("en").text("myDefinition")
+                                                .build())
+                                        .build()
+                        ).build())
+                .build();
+
+        String jsonString = serializer.write(origin);
+        assertNotNull(jsonString);
+        org.eclipse.digitaltwin.aas4j.v3.model.File copy = deserializer.readReferable(
+                jsonString, org.eclipse.digitaltwin.aas4j.v3.model.File.class);
+        assertNotNull(copy);
+        assertTrue(origin.equals(copy));
+    }
+
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
