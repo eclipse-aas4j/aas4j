@@ -16,13 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-import java.util.Objects;
-import java.util.Set;
-
-import org.apache.commons.lang3.tuple.Pair;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -33,12 +26,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 
 import java.io.IOException;
-
-import static java.util.Spliterator.ORDERED;
-import static java.util.Spliterators.spliteratorUnknownSize;
-import static java.util.stream.StreamSupport.stream;
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ReflectionHelper.getDefaultImplementation;
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.DeserializationHelper.createInstanceFromNode;
 
 public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIec61360> {
 

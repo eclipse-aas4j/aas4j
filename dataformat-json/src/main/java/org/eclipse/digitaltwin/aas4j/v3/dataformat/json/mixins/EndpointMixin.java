@@ -17,9 +17,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-
-import java.util.List;
 
 public interface EndpointMixin {
 

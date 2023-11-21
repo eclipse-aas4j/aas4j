@@ -19,7 +19,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.junit.Before;
@@ -30,7 +29,6 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class JsonReferenceDeserializerTest {
 
@@ -46,7 +44,6 @@ public class JsonReferenceDeserializerTest {
         JsonSerializer serializer = new JsonSerializer();
         reference_string = serializer.writeReference(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
         reference_list_string = serializer.writeReferences(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
-//        valueReferencePair_string = serializer.write(((DataSpecificationIec61360) AASFull.ENVIRONMENT.getConceptDescriptions().get(3).getEmbeddedDataSpecifications().get(0).getDataSpecificationContent()).getValueList().getValueReferencePairs().get(0));
     }
 
 
@@ -58,29 +55,6 @@ public class JsonReferenceDeserializerTest {
 
         assertTrue(!reference.getKeys().get(0).getValue().isEmpty());
     }
-
-//    @Test
-//    public void testValueReferencePair() throws DeserializationException {
-//        JsonDeserializer deserializer = new JsonDeserializer();
-//
-//        ValueReferencePair valueReferencePair = deserializer.read(valueReferencePair_string, ValueReferencePair.class);
-//
-//        assertTrue(!valueReferencePair.getValue().isEmpty());
-//    }
-
-//    @Test
-//    @Ignore("No comparison of input string object to expected class implememted yet.")
-//    public void testNonAasElement() {
-//        JsonDeserializer deserializer = new JsonDeserializer();
-//
-//        try {
-//            ValueReferencePair valueReferencePair = deserializer.read(reference_string, ValueReferencePair.class);
-//        } catch (DeserializationException e) {
-//            // fine
-//        }
-//
-//        fail("DeserializationException expected");
-//    }
 
 
     @Test

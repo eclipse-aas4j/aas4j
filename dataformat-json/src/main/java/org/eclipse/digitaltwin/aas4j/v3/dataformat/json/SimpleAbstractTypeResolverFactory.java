@@ -16,9 +16,8 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 
 /**
  * Factory for creating a {@link SimpleAbstractTypeResolver} configured with the

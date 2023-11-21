@@ -18,16 +18,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.junit.Ignore;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class JsonReferenceSerializerTest {
 
@@ -45,23 +43,6 @@ public class JsonReferenceSerializerTest {
 
         assertTrue(serializedReference.contains("\"http://acplt.org/SubmodelTemplates/AssetIdentification\""));
     }
-
-
-//    @Test
-//    @Ignore("If the input parameter is not an AAS-defined element, plain Jackson works nevertheless...")
-//    public void testNonAasElement() throws SerializationException {
-//        JsonSerializer serializer = new JsonSerializer();
-//
-//        Object object = new ArrayList<String>() {{ add("something"); }};
-//
-//        try {
-//            String output = serializer.write(object);
-//        } catch (SerializationException e) {
-//            // fine
-//        }
-//
-//        fail("SerializationException expected");
-//    }
 
 
 
