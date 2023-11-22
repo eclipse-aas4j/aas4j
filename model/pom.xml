@@ -22,7 +22,6 @@
         <plugin.flatten.version>1.5.0</plugin.flatten.version>
         <plugin.javadoc.version>3.6.2</plugin.javadoc.version>
         <plugin.projectinfo.version>3.5.0</plugin.projectinfo.version>
-        <gpg.keyname>0xDFCC34A6</gpg.keyname>
     </properties>
     <build>
         <plugins>
