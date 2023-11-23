@@ -237,12 +237,12 @@ public class AasUtils {
     }
 
     /**
-     * Checks if two references are refering to the same element.
+     * Checks if two references are referring to the same element.
      *
      * @param ref1 reference 1
      * @param ref2 reference 2
-     * @param compareReferredSemanticId true if referredSemanticId should be comparsed, false otherwise
-     * @return returns true if both references are refering to the same element, otherwise false
+     * @param compareReferredSemanticId true if referredSemanticId should be compared, false otherwise
+     * @return returns true if both references are referring to the same element, otherwise false
      */
     public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
         boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();

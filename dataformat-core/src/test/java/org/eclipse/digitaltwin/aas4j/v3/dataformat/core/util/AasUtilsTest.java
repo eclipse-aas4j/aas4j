@@ -16,32 +16,32 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import junitparams.JUnitParamsRunner;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import junitparams.JUnitParamsRunner;
-import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(JUnitParamsRunner.class)
 public class AasUtilsTest {
@@ -276,6 +276,38 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withDifferentKeyTypesButSameValuesAndSemanticIDs_success() {
+        String value = "0173-1#01-ADS698#010";
+        Reference semanticId1 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .type(KeyTypes.GLOBAL_REFERENCE)
+                .value(value)
+                .build())
+            .build();
+        Reference semanticId2 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .type(KeyTypes.FRAGMENT_REFERENCE)
+                .value(value)
+                .build())
+            .build();
+        Reference ref1 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .type(KeyTypes.GLOBAL_REFERENCE)
+                .value(value)
+                .build())
+            .referredSemanticID(semanticId1)
+            .build();
+        Reference ref2 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .type(KeyTypes.FRAGMENT_REFERENCE)
+                .value(value)
+                .build())
+            .referredSemanticID(semanticId2)
+            .build();
+        Assert.assertTrue(AasUtils.sameAs(ref1, ref2, true));
     }
 
     @Test
