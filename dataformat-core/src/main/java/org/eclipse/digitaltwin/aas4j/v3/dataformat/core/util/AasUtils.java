@@ -247,9 +247,6 @@ public class AasUtils {
     public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
         boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
         boolean ref2Empty = ref2 == null || ref2.getKeys() == null || ref2.getKeys().isEmpty();
-        if (ref1Empty && ref2Empty) {
-            return true;
-        }
         if (ref1Empty != ref2Empty) {
             return false;
         }
@@ -258,6 +255,9 @@ public class AasUtils {
         }
         if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticID(), ref2.getReferredSemanticID())) {
             return false;
+        }
+        if (ref1Empty && ref2Empty) {
+            return true;
         }
         if (ref1.getKeys().size() != ref2.getKeys().size()) {
             return false;

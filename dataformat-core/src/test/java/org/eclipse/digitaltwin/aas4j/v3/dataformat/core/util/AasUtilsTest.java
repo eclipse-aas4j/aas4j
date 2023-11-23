@@ -40,6 +40,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -276,6 +278,48 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withoutKeys_success() {
+        Reference ref1 = new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE).build();
+        ref1.setKeys(null);
+        Reference ref2 = new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE).build();
+        ref2.setKeys(new ArrayList<>());
+        Assert.assertTrue(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withoutKeysAndDifferentTypes_fail() {
+        Reference ref1 = new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE).build();
+        ref1.setKeys(null);
+        Reference ref2 = new DefaultReference.Builder().type(ReferenceTypes.MODEL_REFERENCE).build();
+        ref2.setKeys(new ArrayList<>());
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2));
+    }
+
+    @Test
+    public void whenSameAs_withoutKeysAndDifferentSemaniticIDs_fail() {
+        Reference semanticId1 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .value("value1")
+                .build())
+            .build();
+        Reference semanticId2 = new DefaultReference.Builder()
+            .keys(new DefaultKey.Builder()
+                .type(KeyTypes.FRAGMENT_REFERENCE)
+                .value("value2")
+                .build())
+            .build();
+        Reference ref1 = new DefaultReference.Builder()
+            .referredSemanticID(semanticId1)
+            .build();
+        ref1.setKeys(null);
+        Reference ref2 = new DefaultReference.Builder()
+            .referredSemanticID(semanticId2)
+            .build();
+        ref2.setKeys(new ArrayList<>());
+        Assert.assertFalse(AasUtils.sameAs(ref1, ref2, true));
     }
 
     @Test
