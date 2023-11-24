@@ -487,4 +487,26 @@ public class AasUtilsTest {
         String actual = AasUtils.asString(reference);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void whenAsString_withReferredSemanticId_success() {
+        String value = "0173-1#01-ADS698#010";
+        Reference reference = new DefaultReference.Builder()
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .referredSemanticID(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .value("foo")
+                                .build())
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .build())
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value(value)
+                        .build())
+                .build();
+        String expected = "[ExternalRef- [ModelRef](GlobalReference)foo -](GlobalReference)0173-1#01-ADS698#010";
+        String actual = AasUtils.asString(reference);
+        Assert.assertEquals(expected, actual);
+    }
 }
