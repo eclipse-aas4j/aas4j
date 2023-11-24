@@ -26,19 +26,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.json.JSONException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -120,42 +110,16 @@ public class JsonSerializerTest {
 
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
-        subtypes.add(DefaultCustomDataSpecification.class);
+        subtypes.add(DefaultDummyDataSpecification.class);
 
-        org.eclipse.digitaltwin.aas4j.v3.model.File origin = new DefaultFile.Builder()
-                .idShort("myIdShort").value("FileValue")
-                .embeddedDataSpecifications(
-                        new DefaultEmbeddedDataSpecification.Builder()
-                                .dataSpecificationContent(
-                                        new DefaultCustomDataSpecification.Builder()
-                                                .name(new DefaultLangStringNameType.Builder()
-                                                        .language("en").text("myName").build())
-                                                .text("myText")
-                                                .pages(42)
-                                                .build())
-                                .dataSpecification(
-                                        new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                .keys(new DefaultKey.Builder().type(KeyTypes.REFERENCE_ELEMENT)
-                                                        .build())
-                                                .build()
-                                )
-                                .build())
-                .embeddedDataSpecifications(
-                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
-                                new DefaultDataSpecificationIec61360.Builder()
-                                        .dataType(DataTypeIec61360.BLOB)
-                                        .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
-                                                .language("en").text("myDefinition")
-                                                .build())
-                                        .build()
-                        ).build())
-                .build();
+        Environment origin = org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.ENVIRONMENT_WITH_DUMMYDATASPEC ;
 
         String jsonString = serializer.write(origin);
         assertNotNull(jsonString);
-        org.eclipse.digitaltwin.aas4j.v3.model.File copy = deserializer.readReferable(
-                jsonString, org.eclipse.digitaltwin.aas4j.v3.model.File.class);
+
+        Environment copy = deserializer.read(jsonString);
         assertNotNull(copy);
+
         assertTrue(origin.equals(copy));
     }
 

@@ -21,7 +21,7 @@ import java.util.Objects;
  * This interface is needed to test the serialization/deserialization of a custom data specification content.
  * See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
-public class DefaultCustomDataSpecification implements CustomDataSpecification {
+public class DefaultDummyDataSpecification implements DummyDataSpecification {
     private LangStringNameType name;
     private String text;
     private int pages;
@@ -63,7 +63,7 @@ public class DefaultCustomDataSpecification implements CustomDataSpecification {
         } else if (this.getClass() != obj.getClass()) {
             return false;
         } else {
-            DefaultCustomDataSpecification other = (DefaultCustomDataSpecification) obj;
+            DefaultDummyDataSpecification other = (DefaultDummyDataSpecification) obj;
             return Objects.equals(this.name, other.name) &&
                     Objects.equals(this.text, other.text) &&
                     Objects.equals(this.pages, other.pages);
@@ -73,17 +73,17 @@ public class DefaultCustomDataSpecification implements CustomDataSpecification {
     /**
      * This builder class can be used to construct a DefaultCustomDataSpecificationContent.
      */
-    public static class Builder extends CustomDataSpecificationBuilder<DefaultCustomDataSpecification,
-                Builder> {
+    public static class Builder extends DummyDataSpecificationBuilder<DefaultDummyDataSpecification,
+                    Builder> {
 
         @Override
-        protected DefaultCustomDataSpecification.Builder getSelf() {
+        protected DefaultDummyDataSpecification.Builder getSelf() {
             return this;
         }
 
         @Override
-        protected DefaultCustomDataSpecification newBuildingInstance() {
-            return new DefaultCustomDataSpecification();
+        protected DefaultDummyDataSpecification newBuildingInstance() {
+            return new DefaultDummyDataSpecification();
         }
     }
 }

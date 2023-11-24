@@ -28,25 +28,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DefaultCustomDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
@@ -214,68 +204,17 @@ public class XmlSerializerTest {
 
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
-        subtypes.add(DefaultCustomDataSpecification.class);
+        subtypes.add(DefaultDummyDataSpecification.class);
 
-        org.eclipse.digitaltwin.aas4j.v3.model.File file = new DefaultFile.Builder()
-                .idShort("myIdShort").value("FileValue")
-                .build();
-
-        Environment environment = new DefaultEnvironment.Builder()
-                .submodels(
-                        new DefaultSubmodel.Builder()
-                                .id("urn:test")
-                                .submodelElements(file)
-                .embeddedDataSpecifications(
-                        new DefaultEmbeddedDataSpecification.Builder()
-                                .dataSpecificationContent(
-                                        new DefaultCustomDataSpecification.Builder()
-                                                .name(new DefaultLangStringNameType.Builder()
-                                                        .language("en").text("myName").build())
-                                                .text("myText")
-                                                .pages(42)
-                                                .build())
-                                .dataSpecification(
-                                        new DefaultReference.Builder()
-                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                .keys(
-                                                        new DefaultKey.Builder()
-                                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                .value("https://admin-shell.io/aas/3/0/CustomDataSpecification")
-                                                                .build()
-                                                )
-                                                .build()
-                                )
-                                .build())
-                                .embeddedDataSpecifications(
-                                        new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
-                                                        new DefaultDataSpecificationIec61360.Builder()
-                                                                .dataType(DataTypeIec61360.BLOB)
-                                                                .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
-                                                                        .language("en").text("myDefinition")
-                                                                        .build())
-                                                                .build()
-                                                )
-                                                .dataSpecification(
-                                                        new DefaultReference.Builder()
-                                                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                                .keys(
-                                                                        new DefaultKey.Builder()
-                                                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                                .value("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360")
-                                                                                .build()
-                                                                )
-                                                                .build()
-                                                )
-                                                .build())
-                                .build()
-                ).build();
-
-        String xmlString = serializer.write(environment);
+        String xmlString = serializer.write(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC);
         assertNotNull(xmlString);
-//        validateAgainstXsdSchema(xmlString);
+
+        validateAgainstXsdSchema(xmlString);
+
         Environment copy = deserializer.read(xmlString);
         assertNotNull(copy);
-        assertTrue(environment.equals(copy));
+
+        assertTrue(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC.equals(copy));
     }
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {

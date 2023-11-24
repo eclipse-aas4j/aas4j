@@ -41,9 +41,10 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
         }
         String class_name = "dataSpecification"; // default
         try {
+            // known limitation: Only one interface must be implemented by the class, and the name of this interface must match exactly to the name of the DataSpecification
             class_name = data.getClass().getInterfaces()[0].getSimpleName();
         } catch (Exception e) {
-            // do nothing
+            // do nothing and continue with the default
         }
         class_name = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, class_name);
         generator.writeStartObject();

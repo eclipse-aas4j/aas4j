@@ -22,8 +22,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtendableBuilder;
  *
  * See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
-public abstract class CustomDataSpecificationBuilder<T extends CustomDataSpecification,
-        B extends CustomDataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
+public abstract class DummyDataSpecificationBuilder<T extends DummyDataSpecification,
+        B extends DummyDataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
 
     public B name(LangStringNameType name) {
         getBuildingInstance().setName(name);

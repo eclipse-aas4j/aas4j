@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,7 +31,7 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Dat
 
 
     @Override
-    public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
@@ -53,12 +52,12 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Dat
                     JsonNode nodeContent = node.get(class_name);
                     return (DataSpecificationContent) DeserializationHelper.createInstanceFromNode(parser, nodeContent, clazz);
                 } catch (Exception e) {
-                    // do nothing
+                    // do nothing and try next in list
                 }
             }
         };
 
-        return null;
+        throw new IOException("Was expecting a known subclass of DataSpecificationContent but found " + class_name);
     }
 
 }
