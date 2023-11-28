@@ -11,6 +11,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
@@ -21,6 +22,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNam
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSecurityAttributeObject;
 
 import java.util.List;
 
@@ -88,6 +90,11 @@ public class TestDataHelper {
                 .endpointProtocolVersion(List.of("defaultEndpointProtocolVersion"))
                 .subprotocol("defaultSubprotocol")
                 .subprotocolBody("defaultSubprotocolBody")
-                .subprotocolBodyEncoding("defaultSubprotocolBodyEncoding");
+                .subprotocolBodyEncoding("defaultSubprotocolBodyEncoding")
+                .securityAttributes(new DefaultSecurityAttributeObject.Builder()
+                        .key("NONE")
+                        .type(SecurityTypeEnum.NONE)
+                        .value("NONE")
+                        .build());
     }
 }

@@ -6,7 +6,12 @@
       "endpointProtocolVersion" : ["defaultEndpointProtocolVersion"],
       "subprotocol" : "defaultSubprotocol",
       "subprotocolBody" : "defaultSubprotocolBody",
-      "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
+      "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding",
+      "securityAttributes": [ {
+        "type": "NONE",
+        "key": "NONE",
+        "value": "NONE"
+      } ]
     },
     "interface" : "defaultInterface"
   } ],
@@ -67,7 +72,12 @@
         "endpointProtocolVersion" : ["defaultEndpointProtocolVersion"],
         "subprotocol" : "defaultSubprotocol",
         "subprotocolBody" : "defaultSubprotocolBody",
-        "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding"
+        "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding",
+        "securityAttributes": [ {
+          "type": "NONE",
+          "key": "NONE",
+          "value": "NONE"
+        } ]
       },
       "interface" : "defaultInterface"
     } ],

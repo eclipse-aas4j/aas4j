@@ -23,6 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 
 import java.io.IOException;
@@ -52,6 +53,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             }
         } else if (value instanceof DataTypeIec61360) {
             gen.writeString(value.name().toUpperCase());
+		} else if (value instanceof SecurityTypeEnum) {
+			gen.writeString(value.name().toUpperCase());
         } else if (value instanceof Direction || value instanceof StateOfEvent) {
             gen.writeString(value.name().toLowerCase());
         } else if (ReflectionHelper.ENUMS.contains(value.getClass())) {
