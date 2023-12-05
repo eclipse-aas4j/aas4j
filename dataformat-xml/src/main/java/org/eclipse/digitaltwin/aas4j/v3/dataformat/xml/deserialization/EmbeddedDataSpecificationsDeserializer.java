@@ -16,22 +16,22 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
-public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationIec61360> {
+public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<DataSpecificationContent> {
 
-    private static final String PROP_DATA_SPECIFICATION_CONTENT = "dataSpecificationIec61360";
 
     @Override
-    public DataSpecificationIec61360 deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
         ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
         if (node == null) {
             return null;
@@ -41,13 +41,23 @@ public class EmbeddedDataSpecificationsDeserializer extends JsonDeserializer<Dat
     }
 
 
-    private DataSpecificationIec61360 createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
-        JsonNode nodeContent = node.get(PROP_DATA_SPECIFICATION_CONTENT);
-        return createDefaultDataSpecificationIec61360FromNode(parser, nodeContent);
-    }
+    private DataSpecificationContent createEmbeddedDataSpecificationsFromContent(JsonParser parser, JsonNode node) throws IOException {
+        String class_name = node.fieldNames().next();
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        Iterator<Class<?>> iter = subtypes.iterator();
+        while (iter.hasNext()) {
+            Class clazz = iter.next();
+            if (clazz.getSimpleName().toLowerCase().contains(class_name.toLowerCase())) {
+                try {
+                    JsonNode nodeContent = node.get(class_name);
+                    return (DataSpecificationContent) DeserializationHelper.createInstanceFromNode(parser, nodeContent, clazz);
+                } catch (Exception e) {
+                    // do nothing and try next in list
+                }
+            }
+        };
 
-    private DataSpecificationIec61360 createDefaultDataSpecificationIec61360FromNode(JsonParser parser, JsonNode nodeContent) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, nodeContent, DefaultDataSpecificationIec61360.class);
+        throw new IOException("Was expecting a known subclass of DataSpecificationContent but found " + class_name);
     }
 
 }
