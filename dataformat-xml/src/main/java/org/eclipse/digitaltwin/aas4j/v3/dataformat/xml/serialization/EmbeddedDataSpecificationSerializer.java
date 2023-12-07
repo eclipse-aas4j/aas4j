@@ -15,15 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization;
 
-import java.io.IOException;
-
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+import com.google.common.base.CaseFormat;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+
+import java.io.IOException;
 
 
 /**
@@ -31,23 +31,31 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
  * of a reference. Uses DataSpecificationManager to resolve java type to
  * reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationIec61360> {
+public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationContent> {
 
     @Override
-    public void serialize(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider)
+    public void serialize(DataSpecificationContent data, JsonGenerator generator, SerializerProvider provider)
             throws IOException {
         if (data == null) {
             return;
         }
+        String class_name = "dataSpecification"; // default
+        try {
+            // known limitation: Only one interface must be implemented by the class, and the name of this interface must match exactly to the name of the DataSpecification
+            class_name = data.getClass().getInterfaces()[0].getSimpleName();
+        } catch (Exception e) {
+            // do nothing and continue with the default
+        }
+        class_name = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, class_name);
         generator.writeStartObject();
-        generator.writeObjectField("dataSpecificationIec61360", data);
+        generator.writeObjectField(class_name, data);
         generator.writeEndObject();
 
     }
 
     @Override
-    public void serializeWithType(DataSpecificationIec61360 data, JsonGenerator generator, SerializerProvider provider,
-            TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
+    public void serializeWithType(DataSpecificationContent data, JsonGenerator generator, SerializerProvider provider,
+                                  TypeSerializer typedSerializer) throws IOException, JsonProcessingException {
         serialize(data, generator, provider);
     }
 }

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +17,18 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
@@ -54,6 +50,16 @@ import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
 import org.xmlunit.matchers.CompareMatcher;
 import org.xmlunit.util.Predicate;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 
 public class XmlSerializerTest {
@@ -136,7 +142,7 @@ public class XmlSerializerTest {
                                 .value(new DefaultProperty.Builder()
                                         .idShort("inputProperty")
                                         .value("1")
-                                        .valueType(DataTypeDefXSD.INT)
+                                        .valueType(DataTypeDefXsd.INT)
                                         .build())
                                 .build())
                         .build())
@@ -146,9 +152,10 @@ public class XmlSerializerTest {
         assertTrue(errors.isEmpty());
     }
 
+
     @Test
     public void validateGYearAgainstXsdSchema() throws SerializationException, SAXException {
-        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXSD.GYEAR).build()).build();
+        Submodel submodel = new DefaultSubmodel.Builder().id("yearTestSm").submodelElements(new DefaultProperty.Builder().idShort("yearTestProp").valueType(DataTypeDefXsd.GYEAR).build()).build();
         String xml = new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
         Set<String> errors = validateAgainstXsdSchema(xml);
         assertTrue(errors.isEmpty());
@@ -172,6 +179,7 @@ public class XmlSerializerTest {
         assertTrue(errors.isEmpty());
     }
 
+
     @Test
     public void serializeAASWithExtensionMinimal() throws SerializationException, SAXException {
         validateXmlSerializer(AAS_WITH_EXTENSION_MINIMAL, Examples.EXTENSION_MINIMAL, new XmlSerializer());
@@ -180,6 +188,33 @@ public class XmlSerializerTest {
     @Test
     public void serializeAASWithExtensionMaximal() throws SerializationException, SAXException {
         validateXmlSerializer(AAS_WITH_EXTENSION_MAXIMAL, Examples.EXTENSION_MAXIMAL, new XmlSerializer());
+    }
+
+
+    /**
+     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
+     *
+     * @throws SerializationException
+     * @throws DeserializationException
+     */
+    @Test
+    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException, SAXException {
+        XmlSerializer serializer = new XmlSerializer();
+        XmlDeserializer deserializer = new XmlDeserializer();
+
+        // This is the only way to make the serialization to work.
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        subtypes.add(DefaultDummyDataSpecification.class);
+
+        String xmlString = serializer.write(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC);
+        assertNotNull(xmlString);
+
+        validateAgainstXsdSchema(xmlString);
+
+        Environment copy = deserializer.read(xmlString);
+        assertNotNull(copy);
+
+        assertTrue(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC.equals(copy));
     }
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
@@ -215,8 +250,8 @@ public class XmlSerializerTest {
         aasXml = aasXml.replace("<test:kind>Instance</test:kind>", "");
         aasXml = aasXml.replace("<aas:category>VARIABLE</aas:category>", "");
         aasXml = aasXml.replace("<test:category>VARIABLE</test:category>", "");
-        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", ""); // TODO: only for ConceptDescriptions
-        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", ""); // TODO: only for ConceptDescriptions
+        aasXml = aasXml.replace("<aas:category>PROPERTY</aas:category>", "");
+        aasXml = aasXml.replace("<test:category>PROPERTY</test:category>", "");
         aasXml = aasXml.replace("<aas:kind>ConceptQualifier</aas:kind>", "");
         aasXml = aasXml.replace("<test:kind>ConceptQualifier</test:kind>", "");
         aasXml = aasXml.replace("<aas:orderRelevant>true</aas:orderRelevant>", "");
@@ -239,7 +274,7 @@ public class XmlSerializerTest {
 
         if (node.getLocalName() != null 
                 && node.getLocalName().equals("category") 
-                && node.getFirstChild().getNodeValue().equals("PROPERTY")) { // TODO: only for ConceptDescriptions
+                && node.getFirstChild().getNodeValue().equals("PROPERTY")) {
             return false;
         }
 

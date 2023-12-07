@@ -21,7 +21,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -32,21 +31,16 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.apache.poi.openxml4j.opc.RelationshipSource;
 import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class can be used to generate an .aasx file from Metamodel Objects and
@@ -58,14 +52,16 @@ public class AASXSerializer {
     private static final String MIME_PLAINTXT = "text/plain";
     private static final String MIME_XML = "application/xml";
 
-    private static final String ORIGIN_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aasx-origin";
-    private static final String ORIGIN_PATH = "/aasx/aasx-origin";
-    private static final String ORIGIN_CONTENT = "Intentionally empty.";
+    public static final String AASX_NAMESPACE = "http://admin-shell.io/aasx/relationships";
 
-    private static final String AASSPEC_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aas-spec";
-    private static final String XML_PATH = "/aasx/xml/content.xml";
+    public static final String ORIGIN_RELTYPE = AASX_NAMESPACE + "/aasx-origin";
+    public static final String ORIGIN_PATH = "/aasx/aasx-origin";
+    public static final String ORIGIN_CONTENT = "Intentionally empty.";
 
-    private static final String AASSUPPL_RELTYPE = "http://www.admin-shell.io/aasx/relationships/aas-suppl";
+    public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
+    public static final String XML_PATH = "/aasx/xml/content.xml";
+
+    public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 

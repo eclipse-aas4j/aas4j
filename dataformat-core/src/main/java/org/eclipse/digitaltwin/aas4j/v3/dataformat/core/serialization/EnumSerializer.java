@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +16,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization;
 
-import java.io.IOException;
-
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import java.io.IOException;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will
@@ -37,11 +37,11 @@ public class EnumSerializer extends JsonSerializer<Enum> {
 
 	@Override
 	public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        if (value instanceof DataTypeDefXSD) {
+        if (value instanceof DataTypeDefXsd) {
             // only for the DataTypeDefXsd notation
-            if (value.equals(DataTypeDefXSD.ANY_URI)) {
+            if (value.equals(DataTypeDefXsd.ANY_URI)) {
                 gen.writeString("xs:anyURI");
-            } else if (value.equals(DataTypeDefXSD.NON_NEGATIVE_INTEGER)) {
+            } else if (value.equals(DataTypeDefXsd.NON_NEGATIVE_INTEGER)) {
                 gen.writeString("xs:nonNegativeInteger");
             } else if(isTimeRelatedValue(value)) {
 				handleTimeRelatedValue(gen, value);

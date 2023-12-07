@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -17,50 +18,31 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 
 
 /**
  * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultSpecificAssetID.class)
+    @KnownSubtypes.Type(value = DefaultSpecificAssetId.class)
 })
-public interface SpecificAssetID extends HasSemantics {
-
-    /**
-     * The (external) subject the key belongs to or has meaning to.
-     *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID
-     *
-     * @return Returns the Reference for the property externalSubjectID.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID")
-    Reference getExternalSubjectID();
-
-    /**
-     * The (external) subject the key belongs to or has meaning to.
-     *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/externalSubjectID
-     *
-     * @param externalSubjectID desired value for the property externalSubjectID.
-     */
-    void setExternalSubjectID(Reference externalSubjectID);
+public interface SpecificAssetId extends HasSemantics {
 
     /**
      * Name of the identifier
      *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/name
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/name
      *
      * @return Returns the String for the property name.
      */
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/name")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
     String getName();
 
     /**
      * Name of the identifier
      *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/name
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/name
      *
      * @param name desired value for the property name.
      */
@@ -69,20 +51,39 @@ public interface SpecificAssetID extends HasSemantics {
     /**
      * The value of the specific asset identifier with the corresponding name.
      *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/value
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetID/value")
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
     String getValue();
 
     /**
      * The value of the specific asset identifier with the corresponding name.
      *
-     * More information under https://admin-shell.io/aas/3/0/SpecificAssetID/value
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/value
      *
      * @param value desired value for the property value.
      */
     void setValue(String value);
+
+    /**
+     * The (external) subject the key belongs to or has meaning to.
+     *
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId
+     *
+     * @return Returns the Reference for the property externalSubjectId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
+    Reference getExternalSubjectId();
+
+    /**
+     * The (external) subject the key belongs to or has meaning to.
+     *
+     * More information under https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId
+     *
+     * @param externalSubjectId desired value for the property externalSubjectId.
+     */
+    void setExternalSubjectId(Reference externalSubjectId);
 
 }

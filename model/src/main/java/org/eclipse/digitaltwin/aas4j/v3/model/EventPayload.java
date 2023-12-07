@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,63 +30,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEventPayload;
 public interface EventPayload {
 
     /**
-     * Reference to the referable, which defines the scope of the event.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
-     *
-     * @return Returns the Reference for the property observableReference.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableReference")
-    Reference getObservableReference();
-
-    /**
-     * Reference to the referable, which defines the scope of the event.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
-     *
-     * @param observableReference desired value for the property observableReference.
-     */
-    void setObservableReference(Reference observableReference);
-
-    /**
-     * 'semanticID' of the referable which defines the scope of the event, if available.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticID
-     *
-     * @return Returns the Reference for the property observableSemanticID.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableSemanticID")
-    Reference getObservableSemanticID();
-
-    /**
-     * 'semanticID' of the referable which defines the scope of the event, if available.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticID
-     *
-     * @param observableSemanticID desired value for the property observableSemanticID.
-     */
-    void setObservableSemanticID(Reference observableSemanticID);
-
-    /**
-     * Event specific payload.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
-     *
-     * @return Returns the byte[] for the property payload.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/payload")
-    byte[] getPayload();
-
-    /**
-     * Event specific payload.
-     *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
-     *
-     * @param payload desired value for the property payload.
-     */
-    void setPayload(byte[] payload);
-
-    /**
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
      * 'Submodel', 'SubmodelElement''s.
      *
@@ -107,61 +51,61 @@ public interface EventPayload {
     void setSource(Reference source);
 
     /**
-     * 'semanticID' of the source event element, if available
+     * 'semanticId' of the source event element, if available
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticID
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId
      *
-     * @return Returns the Reference for the property sourceSemanticID.
+     * @return Returns the Reference for the property sourceSemanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticID")
-    Reference getSourceSemanticID();
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId")
+    Reference getSourceSemanticId();
 
     /**
-     * 'semanticID' of the source event element, if available
+     * 'semanticId' of the source event element, if available
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticID
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId
      *
-     * @param sourceSemanticID desired value for the property sourceSemanticID.
+     * @param sourceSemanticId desired value for the property sourceSemanticId.
      */
-    void setSourceSemanticID(Reference sourceSemanticID);
+    void setSourceSemanticId(Reference sourceSemanticId);
 
     /**
-     * Subject, who/which initiated the creation.
+     * Reference to the referable, which defines the scope of the event.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectID
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
      *
-     * @return Returns the Reference for the property subjectID.
+     * @return Returns the Reference for the property observableReference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/subjectID")
-    Reference getSubjectID();
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableReference")
+    Reference getObservableReference();
 
     /**
-     * Subject, who/which initiated the creation.
+     * Reference to the referable, which defines the scope of the event.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectID
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
      *
-     * @param subjectID desired value for the property subjectID.
+     * @param observableReference desired value for the property observableReference.
      */
-    void setSubjectID(Reference subjectID);
+    void setObservableReference(Reference observableReference);
 
     /**
-     * Timestamp in UTC, when this event was triggered.
+     * 'semanticId' of the referable which defines the scope of the event, if available.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId
      *
-     * @return Returns the String for the property timeStamp.
+     * @return Returns the Reference for the property observableSemanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/timeStamp")
-    String getTimeStamp();
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId")
+    Reference getObservableSemanticId();
 
     /**
-     * Timestamp in UTC, when this event was triggered.
+     * 'semanticId' of the referable which defines the scope of the event, if available.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId
      *
-     * @param timeStamp desired value for the property timeStamp.
+     * @param observableSemanticId desired value for the property observableSemanticId.
      */
-    void setTimeStamp(String timeStamp);
+    void setObservableSemanticId(Reference observableSemanticId);
 
     /**
      * Information for the outer message infrastructure for scheduling the event to the respective
@@ -183,5 +127,62 @@ public interface EventPayload {
      * @param topic desired value for the property topic.
      */
     void setTopic(String topic);
+
+    /**
+     * Subject, who/which initiated the creation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectId
+     *
+     * @return Returns the Reference for the property subjectId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/subjectId")
+    Reference getSubjectId();
+
+    /**
+     * Subject, who/which initiated the creation.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectId
+     *
+     * @param subjectId desired value for the property subjectId.
+     */
+    void setSubjectId(Reference subjectId);
+
+    /**
+     * Timestamp in UTC, when this event was triggered.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     *
+     * @return Returns the String for the property timeStamp.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/timeStamp")
+    String getTimeStamp();
+
+    /**
+     * Timestamp in UTC, when this event was triggered.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     *
+     * @param timeStamp desired value for the property timeStamp.
+     */
+    void setTimeStamp(String timeStamp);
+
+    /**
+     * Event specific payload.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
+     *
+     * @return Returns the byte[] for the property payload.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/EventPayload/payload")
+    byte[] getPayload();
+
+    /**
+     * Event specific payload.
+     *
+     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
+     *
+     * @param payload desired value for the property payload.
+     */
+    void setPayload(byte[] payload);
 
 }

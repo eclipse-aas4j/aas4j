@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,24 +16,13 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 
 import java.util.List;
 
 
-public abstract class SpecificAssetIDBuilder<T extends SpecificAssetID, B extends SpecificAssetIDBuilder<T, B>>
+public abstract class SpecificAssetIdBuilder<T extends SpecificAssetId, B extends SpecificAssetIdBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for externalSubjectID
-     * 
-     * @param externalSubjectID desired value to be set
-     * @return Builder object with new value for externalSubjectID
-     */
-    public B externalSubjectID(Reference externalSubjectID) {
-        getBuildingInstance().setExternalSubjectID(externalSubjectID);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for name
@@ -57,13 +47,24 @@ public abstract class SpecificAssetIDBuilder<T extends SpecificAssetID, B extend
     }
 
     /**
-     * This function allows setting a value for semanticID
+     * This function allows setting a value for externalSubjectId
      * 
-     * @param semanticID desired value to be set
-     * @return Builder object with new value for semanticID
+     * @param externalSubjectId desired value to be set
+     * @return Builder object with new value for externalSubjectId
      */
-    public B semanticID(Reference semanticID) {
-        getBuildingInstance().setSemanticID(semanticID);
+    public B externalSubjectId(Reference externalSubjectId) {
+        getBuildingInstance().setExternalSubjectId(externalSubjectId);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for semanticId
+     * 
+     * @param semanticId desired value to be set
+     * @return Builder object with new value for semanticId
+     */
+    public B semanticId(Reference semanticId) {
+        getBuildingInstance().setSemanticId(semanticId);
         return getSelf();
     }
 

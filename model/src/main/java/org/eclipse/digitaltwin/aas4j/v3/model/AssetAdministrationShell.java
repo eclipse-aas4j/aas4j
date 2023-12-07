@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -30,25 +31,6 @@ import java.util.List;
 public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
 
     /**
-     * Meta-information about the asset the AAS is representing.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
-     *
-     * @return Returns the AssetInformation for the property assetInformation.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
-    AssetInformation getAssetInformation();
-
-    /**
-     * Meta-information about the asset the AAS is representing.
-     *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
-     *
-     * @param assetInformation desired value for the property assetInformation.
-     */
-    void setAssetInformation(AssetInformation assetInformation);
-
-    /**
      * The reference to the AAS the AAS was derived from.
      *
      * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
@@ -66,6 +48,25 @@ public interface AssetAdministrationShell extends HasDataSpecification, Identifi
      * @param derivedFrom desired value for the property derivedFrom.
      */
     void setDerivedFrom(Reference derivedFrom);
+
+    /**
+     * Meta-information about the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     *
+     * @return Returns the AssetInformation for the property assetInformation.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
+    AssetInformation getAssetInformation();
+
+    /**
+     * Meta-information about the asset the AAS is representing.
+     *
+     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     *
+     * @param assetInformation desired value for the property assetInformation.
+     */
+    void setAssetInformation(AssetInformation assetInformation);
 
     /**
      * References to submodels of the AAS.

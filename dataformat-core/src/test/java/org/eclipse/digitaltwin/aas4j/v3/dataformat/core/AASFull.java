@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +16,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import java.util.Arrays;
-import java.util.Base64;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.AASSubmodelElements;
+import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXSD;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
@@ -51,6 +49,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultMultiLanguageProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
@@ -65,6 +64,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollect
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueReferencePair;
+
+import java.util.Arrays;
+import java.util.Base64;
 
 public class AASFull {
 
@@ -83,7 +85,8 @@ public class AASFull {
     public final static ConceptDescription CONCEPT_DESCRIPTION_2 = createConceptDescription2();
     public final static ConceptDescription CONCEPT_DESCRIPTION_3 = createConceptDescription3();
     public final static ConceptDescription CONCEPT_DESCRIPTION_4 = createConceptDescription4();
-    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360";
+    public static final Environment ENVIRONMENT = createEnvironment();
+    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360";
 
     public static AssetAdministrationShell createAAS1() {
         return new DefaultAssetAdministrationShell.Builder()
@@ -106,7 +109,13 @@ public class AASFull {
                         .build())
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetID("https://acplt.org/Test_Asset")
+                        .globalAssetId("https://acplt.org/Test_Asset")
+                        //.billOfMaterial((new DefaultReference.Builder()
+                        //        .keys(new DefaultKey.Builder()
+                        //                .type(KeyTypes.SUBMODEL)
+                        //                .value("http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial")
+                        //                .build()))
+                        //        .build())
                         .build())
                 .submodels(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
@@ -138,7 +147,7 @@ public class AASFull {
                 .id("https://acplt.org/Test_AssetAdministrationShell_Mandatory")
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetID("https://acplt.org/Test_Asset_Mandatory")
+                        .globalAssetId("https://acplt.org/Test_Asset_Mandatory")
                         .build())
                 .submodels(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
@@ -163,7 +172,7 @@ public class AASFull {
                 .id("https://acplt.org/Test_AssetAdministrationShell2_Mandatory")
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetID("https://acplt.org/Test_Asset_Mandatory")
+                        .globalAssetId("https://acplt.org/Test_Asset_Mandatory")
                         .build())
                 .build();
     }
@@ -182,7 +191,7 @@ public class AASFull {
                         .build())
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
-                        .globalAssetID("https://acplt.org/Test_Asset_Missing")
+                        .globalAssetId("https://acplt.org/Test_Asset_Missing")
                         .build())
                 .submodels(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
@@ -207,7 +216,7 @@ public class AASFull {
                         .revision("9")
                         .build())
                 .kind(ModellingKind.INSTANCE)
-                .semanticID(new DefaultReference.Builder()
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.SUBMODEL)
                                 .value("http://acplt.org/SubmodelTemplates/AssetIdentification")
@@ -216,14 +225,12 @@ public class AASFull {
                         .build())
                 .submodelElements(new DefaultProperty.Builder()
                         .idShort("ManufacturerName")
-                        .displayName(
-                                new DefaultLangStringNameType.Builder().text("Manufacturer Name").language("en-us").build()
-                        )
+                        .displayName(new DefaultLangStringNameType.Builder().language("en-us").text("Manufacturer Name").build())
                         .description(Arrays.asList(
                                 new DefaultLangStringTextType.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("0173-1#02-AAO677#002")
@@ -234,16 +241,16 @@ public class AASFull {
                         .qualifiers(new DefaultQualifier.Builder()
                                 .value("100")
                                 .type("http://acplt.org/Qualifier/ExampleQualifier")
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
                         .qualifiers(new DefaultQualifier.Builder()
                                 .value("50")
                                 .type("http://acplt.org/Qualifier/ExampleQualifier2")
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
                         .value("http://acplt.org/ValueId/ACPLT")
-                        .valueType(DataTypeDefXSD.STRING)
-                        .valueID(new DefaultReference.Builder()
+                        .valueType(DataTypeDefXsd.STRING)
+                        .valueId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/ValueId/ACPLT")
@@ -252,13 +259,13 @@ public class AASFull {
                                 .build())
                         .build())
                 .submodelElements(new DefaultProperty.Builder()
-                        .idShort("InstanceId")
                         .category("VARIABLE")
+                        .idShort("InstanceId")
                         .description(Arrays.asList(
                                 new DefaultLangStringTextType.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber")
@@ -266,24 +273,15 @@ public class AASFull {
                                 )
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
-                        .supplementalSemanticIds(Arrays.asList(
-                                new DefaultReference.Builder()
-                                        .keys(new DefaultKey.Builder()
-                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value("something_random_e14ad770")
-                                                .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                        .build(),
-                                new DefaultReference.Builder()
-                                        .keys(new DefaultKey.Builder()
-                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value("something_random_bd061acd")
-                                                .build())
-                                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                        .build()))
+                        .supplementalSemanticIds(new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .keys(new DefaultKey.Builder().type(KeyTypes.GLOBAL_REFERENCE).value("something_random_e14ad770").build())
+                                .build())
+                        .supplementalSemanticIds(new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .keys(new DefaultKey.Builder().type(KeyTypes.GLOBAL_REFERENCE).value("something_random_bd061acd").build())
+                                .build())
                         .value("978-8234-234-342")
-                        .valueType(DataTypeDefXSD.STRING)
-                        .valueID(new DefaultReference.Builder()
+                        .valueType(DataTypeDefXsd.STRING)
+                        .valueId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("978-8234-234-342")
@@ -306,7 +304,7 @@ public class AASFull {
                         .version("0")
                         .build())
                 .kind(ModellingKind.INSTANCE)
-                .semanticID(new DefaultReference.Builder()
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.SUBMODEL)
                                 .value("http://acplt.org/SubmodelTemplates/BillOfMaterial")
@@ -319,7 +317,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber")
@@ -333,7 +331,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Properties/ExampleProperty")
@@ -341,8 +339,8 @@ public class AASFull {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .value("http://acplt.org/ValueId/ExampleValue2")
-                                .valueType(DataTypeDefXSD.STRING)
-                                .valueID(new DefaultReference.Builder()
+                                .valueType(DataTypeDefXsd.STRING)
+                                .valueId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ValueId/ExampleValue2")
@@ -357,7 +355,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Properties/ExampleProperty")
@@ -365,8 +363,8 @@ public class AASFull {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .value("http://acplt.org/ValueId/ExampleValueId")
-                                .valueType(DataTypeDefXSD.STRING)
-                                .valueID(new DefaultReference.Builder()
+                                .valueType(DataTypeDefXsd.STRING)
+                                .valueId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ValueId/ExampleValueId")
@@ -382,7 +380,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Legally valid designation of the natural or judicial person which is directly responsible for the design, production, packaging and labeling of a product in respect to its being brought into circulation.").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Bezeichnung für eine natürliche oder juristische Person, die für die Auslegung, Herstellung und Verpackung sowie die Etikettierung eines Produkts im Hinblick auf das 'Inverkehrbringen' im eigenen Namen verantwortlich ist").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://opcfoundation.org/UA/DI/1.1/DeviceType/Serialnumber")
@@ -390,7 +388,7 @@ public class AASFull {
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
                         .entityType(EntityType.SELF_MANAGED_ENTITY)
-                        .globalAssetID("https://acplt.org/Test_Asset2")
+                        .globalAssetId("https://acplt.org/Test_Asset2")
                         .build())
                 .build();
     }
@@ -408,7 +406,7 @@ public class AASFull {
                         .revision("9")
                         .build())
                 .kind(ModellingKind.INSTANCE)
-                .semanticID(new DefaultReference.Builder()
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("http://acplt.org/SubmodelTemplates/ExampleSubmodel")
@@ -422,7 +420,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel RelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleRelationshipElement")
@@ -467,7 +465,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleAnnotatedRelationshipElement")
@@ -508,7 +506,7 @@ public class AASFull {
                                 .idShort("ExampleProperty3")
                                 .category("PARAMETER")
                                 .value("some example annotation")
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .build())
                 .submodelElements(new DefaultOperation.Builder()
@@ -518,7 +516,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Operation Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Operations/ExampleOperation")
@@ -533,7 +531,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -541,14 +539,14 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value("http://acplt.org/ValueId/ExampleValueId")
-                                        .valueID(new DefaultReference.Builder()
+                                        .valueId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/ValueId/ExampleValueId")
                                                         .build())
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .outputVariables(new DefaultOperationVariable.Builder()
@@ -559,7 +557,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -567,14 +565,14 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value("http://acplt.org/ValueId/ExampleValueId")
-                                        .valueID(new DefaultReference.Builder()
+                                        .valueId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/ValueId/ExampleValueId")
                                                         .build())
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .inoutputVariables(new DefaultOperationVariable.Builder()
@@ -585,7 +583,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -593,14 +591,14 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value("http://acplt.org/ValueId/ExampleValueId")
-                                        .valueID(new DefaultReference.Builder()
+                                        .valueId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/ValueId/ExampleValueId")
                                                         .build())
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .build())
@@ -611,7 +609,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Capability Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Capabilities/ExampleCapability")
@@ -628,7 +626,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example BasicEvent object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel BasicEvent Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Events/ExampleBasicEvent")
@@ -659,14 +657,14 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example ExampleSubmodelElementListOrdered object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel ExampleSubmodelElementListOrdered Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered")
                                         .build())
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
                                 .category("CONSTANT")
@@ -674,7 +672,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Properties/ExampleProperty")
@@ -682,14 +680,14 @@ public class AASFull {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .value("http://acplt.org/ValueId/ExampleValueId")
-                                .valueID(new DefaultReference.Builder()
+                                .valueId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ValueId/ExampleValueId")
                                                 .build())
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
@@ -698,7 +696,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example value of a MultiLanguageProperty element").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispielswert für ein MultiLanguageProperty-Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty")
@@ -709,7 +707,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example MultiLanguageProperty object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel MultiLanguageProperty Element").language("de").build()
                                 ))
-                                .valueID(new DefaultReference.Builder()
+                                .valueId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ValueId/ExampleMultiLanguageValueId")
@@ -717,14 +715,14 @@ public class AASFull {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .build())
-                        .value(new DefaultRange.Builder() // TODO: a SME-List must only contain one SME-Type, e.g. Property or Range
+                        .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange")
                                 .category("PARAMETER")
                                 .description(Arrays.asList(
                                         new DefaultLangStringTextType.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Range Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Ranges/ExampleRange")
@@ -733,9 +731,8 @@ public class AASFull {
                                         .build())
                                 .min("0")
                                 .max("100")
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -744,7 +741,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection")
@@ -758,7 +755,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Blob Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder().type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Blobs/ExampleBlob")
                                                 .build())
@@ -774,7 +771,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel File Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Files/ExampleFile")
@@ -791,7 +788,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Reference Element Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE).value(
                                                         "http://acplt.org/ReferenceElements/ExampleReferenceElement")
@@ -918,11 +915,11 @@ public class AASFull {
                 .submodelElements(new DefaultSubmodelElementList.Builder()
                         .idShort("ExampleSubmodelElementListUnordered")
                         .orderRelevant(false)
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
                                 .value(null)
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
@@ -931,9 +928,8 @@ public class AASFull {
                                 .idShort("ExampleRange")
                                 .min(null)
                                 .max(null)
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -975,9 +971,8 @@ public class AASFull {
                 .kind(ModellingKind.INSTANCE)
                 .administration(new DefaultAdministrativeInformation.Builder()
                         .version("0")
-                        .revision("9")
-                        .build())
-                .semanticID(new DefaultReference.Builder()
+                        .revision("9").build())
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("http://acplt.org/SubmodelTemplates/ExampleSubmodel")
@@ -991,7 +986,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel RelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleRelationshipElement")
@@ -1036,7 +1031,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleAnnotatedRelationshipElement")
@@ -1077,7 +1072,7 @@ public class AASFull {
                                 .idShort("ExampleProperty")
                                 .category("PARAMETER")
                                 .value("some example annotation")
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .build())
                 .submodelElements(new DefaultOperation.Builder()
@@ -1087,7 +1082,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Operation Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Operations/ExampleOperation")
@@ -1102,7 +1097,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1111,10 +1106,10 @@ public class AASFull {
                                                 .build())
                                         .qualifiers(new DefaultQualifier.Builder()
                                                 .type("http://acplt.org/Qualifier/ExampleQualifier")
-                                                .valueType(DataTypeDefXSD.STRING)
+                                                .valueType(DataTypeDefXsd.STRING)
                                                 .build())
                                         .value("exampleValue")
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .outputVariables(new DefaultOperationVariable.Builder()
@@ -1125,7 +1120,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1134,10 +1129,10 @@ public class AASFull {
                                                 .build())
                                         .qualifiers(new DefaultQualifier.Builder()
                                                 .type("http://acplt.org/Qualifier/ExampleQualifier")
-                                                .valueType(DataTypeDefXSD.STRING)
+                                                .valueType(DataTypeDefXsd.STRING)
                                                 .build())
                                         .value("exampleValue")
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .inoutputVariables(new DefaultOperationVariable.Builder()
@@ -1148,7 +1143,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1157,10 +1152,10 @@ public class AASFull {
                                                 .build())
                                         .qualifiers(new DefaultQualifier.Builder()
                                                 .type("http://acplt.org/Qualifier/ExampleQualifier")
-                                                .valueType(DataTypeDefXSD.STRING)
+                                                .valueType(DataTypeDefXsd.STRING)
                                                 .build())
                                         .value("exampleValue")
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .build())
@@ -1171,7 +1166,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Capability Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Capabilities/ExampleCapability")
@@ -1188,7 +1183,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example BasicEvent object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel BasicEvent Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Events/ExampleBasicEvent")
@@ -1215,12 +1210,12 @@ public class AASFull {
                         .idShort("ExampleSubmodelElementListOrdered")
                         .category("PARAMETER")
                         .orderRelevant(true)
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .description(Arrays.asList(
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementListOrdered object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementListOrdered Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered")
@@ -1234,7 +1229,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Properties/ExampleProperty")
@@ -1243,10 +1238,10 @@ public class AASFull {
                                         .build())
                                 .qualifiers(new DefaultQualifier.Builder()
                                         .type("http://acplt.org/Qualifier/ExampleQualifier")
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .value("exampleValue")
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
@@ -1255,7 +1250,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example value of a MultiLanguageProperty element").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispielswert für ein MultiLanguageProperty-Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty")
@@ -1274,7 +1269,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Range Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Ranges/ExampleRange")
@@ -1283,9 +1278,8 @@ public class AASFull {
                                         .build())
                                 .min("0")
                                 .max("100")
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -1294,7 +1288,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection")
@@ -1308,7 +1302,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Blob Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Blobs/ExampleBlob")
@@ -1325,7 +1319,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel File Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Files/ExampleFile")
@@ -1342,7 +1336,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Reference Element Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ReferenceElements/ExampleReferenceElement")
@@ -1382,7 +1376,7 @@ public class AASFull {
                         .version("0")
                         .revision("9")
                         .build())
-                .semanticID(new DefaultReference.Builder()
+                .semanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("http://acplt.org/SubmodelTemplates/ExampleSubmodel")
@@ -1397,7 +1391,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example RelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel RelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleRelationshipElement")
@@ -1442,7 +1436,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example AnnotatedRelationshipElement object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel AnnotatedRelationshipElement Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/RelationshipElements/ExampleAnnotatedRelationshipElement")
@@ -1487,7 +1481,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Operation object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Operation Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Operations/ExampleOperation")
@@ -1502,7 +1496,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1510,7 +1504,7 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value(null)
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .outputVariables(new DefaultOperationVariable.Builder()
@@ -1521,7 +1515,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1529,7 +1523,7 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value(null)
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .inoutputVariables(new DefaultOperationVariable.Builder()
@@ -1540,7 +1534,7 @@ public class AASFull {
                                                 new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                                 new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                         ))
-                                        .semanticID(new DefaultReference.Builder()
+                                        .semanticId(new DefaultReference.Builder()
                                                 .keys(new DefaultKey.Builder()
                                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                                         .value("http://acplt.org/Properties/ExampleProperty")
@@ -1548,7 +1542,7 @@ public class AASFull {
                                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                                 .build())
                                         .value(null)
-                                        .valueType(DataTypeDefXSD.STRING)
+                                        .valueType(DataTypeDefXsd.STRING)
                                         .build())
                                 .build())
                         .build())
@@ -1559,7 +1553,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example Capability object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel Capability Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Capabilities/ExampleCapability")
@@ -1576,7 +1570,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example BasicEvent object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel BasicEvent Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/Events/ExampleBasicEvent")
@@ -1607,14 +1601,14 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementListOrdered object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementListOrdered Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementLists/ExampleSubmodelElementListOrdered")
                                         .build())
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
+                        .typeValueListElement(AasSubmodelElements.SUBMODEL_ELEMENT)
                         .value(new DefaultProperty.Builder()
                                 .idShort("ExampleProperty")
                                 .category("CONSTANT")
@@ -1622,7 +1616,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Property object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Property Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Properties/ExampleProperty")
@@ -1630,7 +1624,7 @@ public class AASFull {
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
                                 .value(null)
-                                .valueType(DataTypeDefXSD.STRING)
+                                .valueType(DataTypeDefXsd.STRING)
                                 .build())
                         .value(new DefaultMultiLanguageProperty.Builder()
                                 .idShort("ExampleMultiLanguageProperty")
@@ -1639,7 +1633,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example MultiLanguageProperty object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel MultiLanguageProperty Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE).value(
                                                         "http://acplt.org/MultiLanguageProperties/ExampleMultiLanguageProperty")
@@ -1654,7 +1648,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Range Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Ranges/ExampleRange")
@@ -1663,7 +1657,7 @@ public class AASFull {
                                         .build())
                                 .min(null)
                                 .max("100")
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
                         .value(new DefaultRange.Builder()
                                 .idShort("ExampleRange2")
@@ -1672,7 +1666,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Range object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Range Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Ranges/ExampleRange")
@@ -1681,9 +1675,8 @@ public class AASFull {
                                         .build())
                                 .min("0")
                                 .max(null)
-                                .valueType(DataTypeDefXSD.INT)
+                                .valueType(DataTypeDefXsd.INT)
                                 .build())
-                        .typeValueListElement(AASSubmodelElements.SUBMODEL_ELEMENT)
                         .build())
                 .submodelElements(new DefaultSubmodelElementCollection.Builder()
                         .idShort("ExampleSubmodelElementCollection")
@@ -1692,7 +1685,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection")
@@ -1706,7 +1699,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Blob object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Blob Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Blobs/ExampleBlob")
@@ -1722,7 +1715,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example File object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel File Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Files/ExampleFile")
@@ -1739,7 +1732,7 @@ public class AASFull {
                                         new DefaultLangStringTextType.Builder().text("Example Reference Element object").language("en-us").build(),
                                         new DefaultLangStringTextType.Builder().text("Beispiel Reference Element Element").language("de").build()
                                 ))
-                                .semanticID(new DefaultReference.Builder()
+                                .semanticId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/ReferenceElements/ExampleReferenceElement")
@@ -1755,7 +1748,7 @@ public class AASFull {
                                 new DefaultLangStringTextType.Builder().text("Example SubmodelElementCollection object").language("en-us").build(),
                                 new DefaultLangStringTextType.Builder().text("Beispiel SubmodelElementCollection Element").language("de").build()
                         ))
-                        .semanticID(new DefaultReference.Builder()
+                        .semanticId(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
                                         .value("http://acplt.org/SubmodelElementCollections/ExampleSubmodelElementCollection")
@@ -1802,8 +1795,8 @@ public class AASFull {
                         new DefaultLangStringTextType.Builder().text("An example concept description for the test application").language("en-us").build(),
                         new DefaultLangStringTextType.Builder().text("Ein Beispiel-ConceptDescription für eine Test-Anwendung").language("de").build()
                 ))
-                .category("PROPERTY")
                 .id("https://acplt.org/Test_ConceptDescription_Missing")
+                .category("PROPERTY")
                 .administration(new DefaultAdministrativeInformation.Builder()
                         .version("0")
                         .revision("9")
@@ -1845,7 +1838,7 @@ public class AASFull {
                                 .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("Test Spec").language("de").build())
                                 .shortName(new DefaultLangStringShortNameTypeIec61360.Builder().text("TestSpec").language("en-us").build())
                                 .unit("SpaceUnit")
-                                .unitID(new DefaultReference.Builder()
+                                .unitId(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                 .value("http://acplt.org/Units/SpaceUnit")
@@ -1856,10 +1849,11 @@ public class AASFull {
                                 .symbol("SU")
                                 .valueFormat("string")
                                 .value("TEST")
+                                .levelType(new DefaultLevelType.Builder().max(true).build())
                                 .valueList(new DefaultValueList.Builder()
                                         .valueReferencePairs(new DefaultValueReferencePair.Builder()
                                                 .value("http://acplt.org/ValueId/ExampleValueId")
-                                                .valueID(new DefaultReference.Builder()
+                                                .valueId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value("http://acplt.org/ValueId/ExampleValueId")
@@ -1869,7 +1863,7 @@ public class AASFull {
                                                 .build())
                                         .valueReferencePairs(new DefaultValueReferencePair.Builder()
                                                 .value("http://acplt.org/ValueId/ExampleValueId2")
-                                                .valueID(new DefaultReference.Builder()
+                                                .valueId(new DefaultReference.Builder()
                                                         .keys(new DefaultKey.Builder()
                                                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                                                 .value("http://acplt.org/ValueId/ExampleValueId2")

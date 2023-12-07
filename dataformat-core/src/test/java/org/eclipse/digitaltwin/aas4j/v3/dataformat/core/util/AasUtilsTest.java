@@ -17,7 +17,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
 import junitparams.JUnitParamsRunner;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
@@ -309,11 +308,11 @@ public class AasUtilsTest {
                 .build())
             .build();
         Reference ref1 = new DefaultReference.Builder()
-            .referredSemanticID(semanticId1)
+            .referredSemanticId(semanticId1)
             .build();
         ref1.setKeys(null);
         Reference ref2 = new DefaultReference.Builder()
-            .referredSemanticID(semanticId2)
+            .referredSemanticId(semanticId2)
             .build();
         ref2.setKeys(new ArrayList<>());
         Assert.assertFalse(AasUtils.sameAs(ref1, ref2, true));
@@ -339,14 +338,14 @@ public class AasUtilsTest {
                 .type(KeyTypes.GLOBAL_REFERENCE)
                 .value(value)
                 .build())
-            .referredSemanticID(semanticId1)
+            .referredSemanticId(semanticId1)
             .build();
         Reference ref2 = new DefaultReference.Builder()
             .keys(new DefaultKey.Builder()
                 .type(KeyTypes.FRAGMENT_REFERENCE)
                 .value(value)
                 .build())
-            .referredSemanticID(semanticId2)
+            .referredSemanticId(semanticId2)
             .build();
         Assert.assertTrue(AasUtils.sameAs(ref1, ref2, true));
     }
@@ -407,7 +406,7 @@ public class AasUtilsTest {
     public void whenSameAs_withDifferentReferredSemanticId_success() {
         String value = "0173-1#01-ADS698#010";
         Reference ref1 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("foo")
@@ -419,7 +418,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Reference ref2 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("bar")
@@ -437,7 +436,7 @@ public class AasUtilsTest {
     public void whenSameAs_withDifferentReferredSemanticId_fail() {
         String value = "0173-1#01-ADS698#010";
         Reference ref1 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("foo")
@@ -449,7 +448,7 @@ public class AasUtilsTest {
                         .build())
                 .build();
         Reference ref2 = new DefaultReference.Builder()
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("bar")
@@ -490,7 +489,7 @@ public class AasUtilsTest {
         String value = "0173-1#01-ADS698#010";
         Reference reference = new DefaultReference.Builder()
                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                .referredSemanticID(new DefaultReference.Builder()
+                .referredSemanticId(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .type(KeyTypes.GLOBAL_REFERENCE)
                                 .value("foo")

@@ -17,11 +17,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
 public interface DataSpecificationIec61360Mixin {
 
@@ -39,8 +39,8 @@ public interface DataSpecificationIec61360Mixin {
     public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
     @JsonProperty("unitId")
-    public Reference getUnitID();
+    public Reference getUnitId();
 
-    public @JsonProperty("unitId")
-    void setUnitID(Reference unitID);
+    @JsonProperty("unitId")
+    public void setUnitId(Reference unitId);
 }

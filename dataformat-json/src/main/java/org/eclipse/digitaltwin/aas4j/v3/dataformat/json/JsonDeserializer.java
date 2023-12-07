@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,19 +28,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
@@ -48,43 +45,14 @@ public class JsonDeserializer {
 
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
+    private JsonMapperFactory jsonMapperFactory;
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public JsonDeserializer() {
-        initTypeResolver();
-        buildMapper();
-    }
-
-    protected void buildMapper() {
-        mapper = JsonMapper.builder()
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .addModule(buildEnumModule())
-                .addModule(buildImplementationModule())
-                .build();
-        ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-    @SuppressWarnings("unchecked")
-    private void initTypeResolver() {
-        typeResolver = new SimpleAbstractTypeResolver();
-        ReflectionHelper.DEFAULT_IMPLEMENTATIONS
-                .stream()
-                .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
-    }
-
-    protected SimpleModule buildEnumModule() {
-        SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
-        return module;
-    }
-
-    protected SimpleModule buildImplementationModule() {
-        SimpleModule module = new SimpleModule();
-        module.setAbstractTypes(typeResolver);
-        return module;
+        typeResolver = new SimpleAbstractTypeResolverFactory().create();
+        jsonMapperFactory = new JsonMapperFactory();
+        mapper = jsonMapperFactory.create(typeResolver);
     }
 
     /**
@@ -169,6 +137,7 @@ public class JsonDeserializer {
         return read(file, DEFAULT_CHARSET);
     }
 
+
     /**
      * Enables usage of custom implementation to be used for deserialization instead of default implementation, e.g.
      * defining a custom implementation of the Submodel interface {@code class
@@ -183,7 +152,7 @@ public class JsonDeserializer {
      */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
-        buildMapper();
+        mapper = jsonMapperFactory.create(typeResolver);
     }
 
     /**
@@ -374,4 +343,5 @@ public class JsonDeserializer {
     public <T extends Referable> List<T> readReferables(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
         return readReferables(new FileInputStream(src), charset, outputClass);
     }
+
 }

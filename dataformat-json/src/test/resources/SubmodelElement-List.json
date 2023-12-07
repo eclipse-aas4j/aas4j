@@ -33,12 +33,14 @@
             {
                 "type": "http://acplt.org/Qualifier/ExampleQualifier",
                 "value": "100",
-                "valueType": "xs:int"
+                "valueType": "xs:int",
+                "kind": "ConceptQualifier"
             },
             {
                 "type": "http://acplt.org/Qualifier/ExampleQualifier2",
                 "value": "50",
-                "valueType": "xs:int"
+                "valueType": "xs:int",
+                "kind": "ConceptQualifier"
             }
         ],
         "idShort": "ManufacturerName",

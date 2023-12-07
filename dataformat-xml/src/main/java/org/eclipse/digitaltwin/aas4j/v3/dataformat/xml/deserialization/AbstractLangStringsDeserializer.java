@@ -16,17 +16,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.helper.LangStringContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 

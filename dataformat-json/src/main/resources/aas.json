@@ -879,7 +879,7 @@
                 {
                     "properties": {
                         "text": {
-                            "maxLength": 18
+                            "maxLength": 64
                         }
                     }
                 }

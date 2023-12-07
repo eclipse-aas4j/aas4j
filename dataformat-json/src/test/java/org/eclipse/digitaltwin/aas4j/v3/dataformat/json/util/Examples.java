@@ -1,5 +1,6 @@
 /*
  * Copyright 2022 jab.
+ * Copyright (c) 2023 SAP SE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +15,6 @@
  * limitations under the License.
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
-
-import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
@@ -37,8 +36,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetID;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+
+import java.util.List;
+
 
 public class Examples {
 
@@ -58,11 +60,11 @@ public class Examples {
                     .id("https://example.org/AssetAdministrationShell")
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.INSTANCE)
-                            .globalAssetID("https://example.org/Asset")
-                            .specificAssetIds(new DefaultSpecificAssetID.Builder()
+                            .globalAssetId("https://example.org/Asset")
+                            .specificAssetIds(new DefaultSpecificAssetId.Builder()
                                     .name("ExampleAssetId")
                                     .value("ExampleValue")
-                                    .externalSubjectID(new DefaultReference.Builder()
+                                    .externalSubjectId(new DefaultReference.Builder()
                                             .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                             .keys(new DefaultKey.Builder()
                                                     .type(KeyTypes.GLOBAL_REFERENCE)
@@ -83,6 +85,7 @@ public class Examples {
     public static final ExampleData<ConceptDescription> CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT = ExampleData.of(
             new DefaultConceptDescription.Builder()
                     .id("https://example.org/ConceptDescription")
+					.category("PROPERTY")
                     .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
                             .dataSpecification(new DefaultReference.Builder()
                                     .type(ReferenceTypes.EXTERNAL_REFERENCE)

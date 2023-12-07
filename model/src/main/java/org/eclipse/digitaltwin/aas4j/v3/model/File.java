@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,25 +30,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
 public interface File extends DataElement {
 
     /**
-     * Content type of the content of the file.
-     *
-     * More information under https://admin-shell.io/aas/3/0/File/contentType
-     *
-     * @return Returns the String for the property contentType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/File/contentType")
-    String getContentType();
-
-    /**
-     * Content type of the content of the file.
-     *
-     * More information under https://admin-shell.io/aas/3/0/File/contentType
-     *
-     * @param contentType desired value for the property contentType.
-     */
-    void setContentType(String contentType);
-
-    /**
      * Path and name of the referenced file (with file extension).
      *
      * More information under https://admin-shell.io/aas/3/0/File/value
@@ -65,5 +47,24 @@ public interface File extends DataElement {
      * @param value desired value for the property value.
      */
     void setValue(String value);
+
+    /**
+     * Content type of the content of the file.
+     *
+     * More information under https://admin-shell.io/aas/3/0/File/contentType
+     *
+     * @return Returns the String for the property contentType.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/File/contentType")
+    String getContentType();
+
+    /**
+     * Content type of the content of the file.
+     *
+     * More information under https://admin-shell.io/aas/3/0/File/contentType
+     *
+     * @param contentType desired value for the property contentType.
+     */
+    void setContentType(String contentType);
 
 }

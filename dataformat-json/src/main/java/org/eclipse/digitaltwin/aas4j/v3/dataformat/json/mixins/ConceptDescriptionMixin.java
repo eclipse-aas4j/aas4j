@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import java.util.List;
 
 public interface ConceptDescriptionMixin {
@@ -25,5 +26,5 @@ public interface ConceptDescriptionMixin {
     public List<Reference> getIsCaseOf();
 
     @JsonProperty("isCaseOf")
-    public void setIsCaseOfs(List<Reference> isCaseOf);
+    public void setIsCaseOf(List<Reference> isCaseOf);
 }

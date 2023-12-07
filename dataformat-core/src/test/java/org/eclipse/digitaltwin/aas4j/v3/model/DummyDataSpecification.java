@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
+package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
+/**
+ * This interface is needed to test the serialization/deserialization of a custom data specification content.
+ * See: https://github.com/eclipse-aas4j/aas4j/issues/196
+ */
+public interface DummyDataSpecification extends CustomDataSpecification {
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+    LangStringNameType getName();
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+    void setName(LangStringNameType name);
 
-public interface HasExtensionsMixin {
 
-    @JsonProperty("extensions")
-    public List<Extension> getExtensions();
+    String getText();
 
-    @JsonProperty("extensions")
-    public void setExtensions(List<Extension> extensions);
+    void setText(String text);
+
+
+    int getPages();
+
+    void setPages(int pages);
 }

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -35,17 +36,15 @@ public class DefaultValueReferencePair implements ValueReferencePair {
     @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueID")
-    protected Reference valueID;
+    @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
+    protected Reference valueId;
 
-    public DefaultValueReferencePair() {
-
-    }
+    public DefaultValueReferencePair() {}
 
     @Override
     public int hashCode() {
         return Objects.hash(this.value,
-            this.valueID);
+            this.valueId);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class DefaultValueReferencePair implements ValueReferencePair {
         } else {
             DefaultValueReferencePair other = (DefaultValueReferencePair) obj;
             return Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueID, other.valueID);
+                Objects.equals(this.valueId, other.valueId);
         }
     }
 
@@ -74,13 +73,21 @@ public class DefaultValueReferencePair implements ValueReferencePair {
     }
 
     @Override
-    public Reference getValueID() {
-        return valueID;
+    public Reference getValueId() {
+        return valueId;
     }
 
     @Override
-    public void setValueID(Reference valueID) {
-        this.valueID = valueID;
+    public void setValueId(Reference valueId) {
+        this.valueId = valueId;
+    }
+
+    public String toString() {
+        return String.format(
+            "DefaultValueReferencePair (" + "value=%s,"
+                + "valueId=%s,"
+                + ")",
+            this.value, this.valueId);
     }
 
     /**

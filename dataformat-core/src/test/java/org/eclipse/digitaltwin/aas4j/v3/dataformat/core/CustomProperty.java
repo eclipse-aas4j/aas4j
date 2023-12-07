@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +16,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +44,7 @@ public class CustomProperty implements Property {
 
 	protected Reference valueId;
 
-	protected DataTypeDefXSD valueType;
+	protected DataTypeDefXsd valueType;
 
 	protected List<Qualifier> qualifiers;
 
@@ -71,23 +80,27 @@ public class CustomProperty implements Property {
 			return false;
 		} else {
 			CustomProperty other = (CustomProperty) obj;
-			return Objects.equals(this.valueType, other.valueType) && Objects.equals(this.value, other.value)
-					&& Objects.equals(this.valueId, other.valueId) && Objects.equals(this.category, other.category)
+			return Objects.equals(this.valueType, other.valueType)
+					&& Objects.equals(this.value, other.value)
+					&& Objects.equals(this.valueId, other.valueId)
+					&& Objects.equals(this.category, other.category)
 					&& Objects.equals(this.description, other.description)
 					&& Objects.equals(this.displayName, other.displayName)
-					&& Objects.equals(this.idShort, other.idShort) && Objects.equals(this.qualifiers, other.qualifiers)
+					&& Objects.equals(this.idShort, other.idShort)
+					&& Objects.equals(this.qualifiers, other.qualifiers)
 					&& Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
-					&& Objects.equals(this.kind, other.kind) && Objects.equals(this.semanticId, other.semanticId);
+					&& Objects.equals(this.kind, other.kind)
+					&& Objects.equals(this.semanticId, other.semanticId);
 		}
 	}
 
 	@Override
-	final public DataTypeDefXSD getValueType() {
+	final public DataTypeDefXsd getValueType() {
 		return this.valueType;
 	}
 
 	@Override
-	final public void setValueType(DataTypeDefXSD dataType) {
+	final public void setValueType(DataTypeDefXsd dataType) {
 		this.valueType = dataType;
 	}
 
@@ -102,12 +115,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getValueID() {
+	final public Reference getValueId() {
 		return valueId;
 	}
 
 	@Override
-	final public void setValueID(Reference valueId) {
+	final public void setValueId(Reference valueId) {
 		this.valueId = valueId;
 	}
 
@@ -172,12 +185,12 @@ public class CustomProperty implements Property {
 	}
 
 	@Override
-	final public Reference getSemanticID() {
+	final public Reference getSemanticId() {
 		return semanticId;
 	}
 
 	@Override
-	final public void setSemanticID(Reference semanticId) {
+	final public void setSemanticId(Reference semanticId) {
 		this.semanticId = semanticId;
 	}
 
