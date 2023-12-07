@@ -181,13 +181,13 @@ public class AasUtilsTest {
     public void whenResolve_insideSubmodelElementCollection_success() {
         String submodelId = "http://example.org/submodel";
         String submodelElementIdShort = "foo";
-        String submodelElementCollectionIdShort = "collection";
+        String submodelElementListIdShort = "list";
         SubmodelElement expected = new DefaultProperty.Builder()
                 .idShort(submodelElementIdShort)
                 .value("bar")
                 .build();
         SubmodelElementCollection list = new DefaultSubmodelElementCollection.Builder()
-                .idShort(submodelElementCollectionIdShort)
+                .idShort(submodelElementListIdShort)
                 .value(expected)
                 .build();
         Environment environment = new DefaultEnvironment.Builder()
@@ -203,7 +203,7 @@ public class AasUtilsTest {
                         .build())
                 .keys(new DefaultKey.Builder()
                         .type(KeyTypes.SUBMODEL_ELEMENT_LIST)
-                        .value(submodelElementCollectionIdShort)
+                        .value(submodelElementListIdShort)
                         .build())
                 .keys(new DefaultKey.Builder()
                         .type(KeyTypes.SUBMODEL_ELEMENT)
@@ -216,16 +216,13 @@ public class AasUtilsTest {
 
     @Test
     public void whenResolve_withSubmodel_success() {
-        assertNotNull(AasUtils.resolve(AASFull.AAS_1.getSubmodels().get(0), AASFull.createEnvironment()));
-
-        Submodel asSubmodel = AasUtils.resolve(
-                AASFull.AAS_1.getSubmodels().get(0),
-                AASFull.createEnvironment(),
-                Submodel.class
-        );
-
-        assertNotNull(asSubmodel);
-        assertEquals(DefaultSubmodel.class, asSubmodel.getClass());
+        Environment environment = AASFull.createEnvironment();
+        Reference submodelRef = AASFull.AAS_1.getSubmodels().get(0);
+        Submodel expected = AASFull.SUBMODEL_3;
+        Referable asReferable = AasUtils.resolve(submodelRef, environment);
+        assertEquals(expected, asReferable);
+        Submodel asSubmodel = AasUtils.resolve(submodelRef, environment, Submodel.class);
+        assertEquals(expected, asSubmodel);
     }
 
     @Test
