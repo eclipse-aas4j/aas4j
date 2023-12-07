@@ -15,36 +15,38 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import com.google.common.reflect.TypeToken;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.IdentifiableCollector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.reflect.TypeToken;
+import java.util.Map;
+import java.util.Objects;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetIdentifierVisitor;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
 /**
  * Provides utility functions related to AAS
@@ -53,26 +55,62 @@ public class AasUtils {
 
     private static final Logger log = LoggerFactory.getLogger(AasUtils.class);
 
-	private static final String REFERENCE_ELEMENT_DELIMITER = ", ";
+    private static final String REFERENCE_ELEMENT_DELIMITER = ", ";
+
+    private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION = Map.of(
+            ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
+            ReferenceTypes.MODEL_REFERENCE, "ModelRef");
 
     private AasUtils() {
     }
 
-	/**
-	 * Formats a Reference as string
-	 *
-	 * @param reference
-	 *            Reference to serialize
-	 * @return string representation of the reference for serialization, null if
-	 *         reference is null
-	 */
-	private static String asString(Reference reference) {
-		if (reference == null) {
-			return null;
-		}
-		return String.format("[%s]%s", reference.getType(),
-				reference.getKeys().stream().map(x -> String.format("(%s)%s", EnumSerializer.serializeEnumName(x.getType().name()), x.getValue())).collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
-	}
+    /**
+     * Formats a Reference as string
+     *
+     * @param reference Reference to serialize
+     * @return string representation of the reference for serialization, null if reference is null
+     */
+    public static String asString(Reference reference) {
+        return asString(reference, true, true);
+    }
+
+    /**
+     * Serializes a {@link Reference} to string.
+     *
+     * @param reference the reference to serialize
+     * @param includeReferenceType if reference type information should be included
+     * @param includeReferredSemanticId if referred semanticId should be included
+     * @return the serialized reference or null if reference is null, reference.keys is null or reference does not
+     * contain any keys
+     */
+    public static String asString(Reference reference, boolean includeReferenceType, boolean includeReferredSemanticId) {
+        if (Objects.isNull(reference) || Objects.isNull(reference.getKeys()) || reference.getKeys().isEmpty()) {
+            return null;
+        }
+        String result = "";
+        if (includeReferenceType) {
+            String referredSemanticId = includeReferredSemanticId
+                    ? asString(reference.getReferredSemanticId(), includeReferenceType, false)
+                    : "";
+            result = String.format("[%s%s]",
+                    asString(reference.getType()),
+                    (Objects.nonNull(referredSemanticId) && !referredSemanticId.isBlank()) ? String.format("- %s -", referredSemanticId)
+                    : "");
+        }
+        result += reference.getKeys().stream()
+                .map(x -> String.format("(%s)%s",
+                EnumSerializer.serializeEnumName(x.getType().name()),
+                x.getValue()))
+                .collect(Collectors.joining(", "));
+        return result;
+    }
+
+    private static String asString(ReferenceTypes referenceType) {
+        if (!REFERENCE_TYPE_REPRESENTATION.containsKey(referenceType)) {
+            throw new IllegalArgumentException(String.format("Unsupported reference type '%s'", referenceType));
+        }
+        return REFERENCE_TYPE_REPRESENTATION.get(referenceType);
+    }
 
     /**
      * Creates a reference for an Identifiable instance using provided implementation types for reference and key
@@ -128,9 +166,9 @@ public class AasUtils {
      * @return a Java interface representing the provided KeyElements type or null if no matching Class/interface could
      * be found. It also returns abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
      */
-	private static Class<?> keyTypeToClass(KeyTypes key) {
+    private static Class<?> keyTypeToClass(KeyTypes key) {
         return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
-				.filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
+                .filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
                 .findAny()
                 .orElse(null);
     }
@@ -188,36 +226,53 @@ public class AasUtils {
     }
 
     /**
-     * Checks if two references are refering to the same element
+     * Checks if two references are refering to the same element ignoring referredSemanticId.
      *
      * @param ref1 reference 1
      * @param ref2 reference 2
      * @return returns true if both references are refering to the same element, otherwise false
      */
     public static boolean sameAs(Reference ref1, Reference ref2) {
+        return sameAs(ref1, ref2, false);
+    }
+
+    /**
+     * Checks if two references are referring to the same element.
+     *
+     * @param ref1 reference 1
+     * @param ref2 reference 2
+     * @param compareReferredSemanticId true if referredSemanticId should be compared, false otherwise
+     * @return returns true if both references are referring to the same element, otherwise false
+     */
+    public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
         boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
         boolean ref2Empty = ref2 == null || ref2.getKeys() == null || ref2.getKeys().isEmpty();
-        if (ref1Empty && ref2Empty) {
-            return true;
-        }
         if (ref1Empty != ref2Empty) {
             return false;
         }
-        int keyLength = Math.min(ref1.getKeys().size(), ref2.getKeys().size());
-        for (int i = 0; i < keyLength; i++) {
-            Key ref1Key = ref1.getKeys().get(ref1.getKeys().size() - (i + 1));
-            Key ref2Key = ref2.getKeys().get(ref2.getKeys().size() - (i + 1));
-            Class<?> ref1Type = keyTypeToClass(ref1Key.getType());
-            Class<?> ref2Type = keyTypeToClass(ref2Key.getType());
-            if ((ref1Type == null && ref2Type != null)
-                    || (ref1Type != null && ref2Type == null)) {
+        if (ref1.getType() != ref2.getType()) {
+            return false;
+        }
+        if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticId(), ref2.getReferredSemanticId())) {
+            return false;
+        }
+        if (ref1Empty && ref2Empty) {
+            return true;
+        }
+        if (ref1.getKeys().size() != ref2.getKeys().size()) {
+            return false;
+        }
+        for (int i = 0; i < ref1.getKeys().size(); i++) {
+            Key key1 = ref1.getKeys().get(ref1.getKeys().size() - (i + 1));
+            Key key2 = ref2.getKeys().get(ref2.getKeys().size() - (i + 1));
+            if (Objects.isNull(key1) != Objects.isNull(key2)) {
                 return false;
             }
-            if (ref1Type != ref2Type) {
-                if (!(ref1Type.isAssignableFrom(ref2Type)
-                        || ref2Type.isAssignableFrom(ref1Type))) {
-                    return false;
-                }
+            if (Objects.isNull(key1)) {
+                return true;
+            }
+            if (!Objects.equals(key1.getValue(), key2.getValue())) {
+                return false;
             }
         }
         return true;
@@ -232,7 +287,7 @@ public class AasUtils {
      *
      * @return the cloned reference
      */
-	private static Reference clone(Reference reference, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
+    private static Reference clone(Reference reference, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
         if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
             return null;
         }
@@ -278,114 +333,52 @@ public class AasUtils {
      * @return returns an instance of T if the reference could successfully be resolved, otherwise null
      * @throws IllegalArgumentException if something goes wrong while resolving
      */
-	@SuppressWarnings("unchecked")
-	public static <T extends Referable> T resolve(Reference reference, Environment env, Class<T> type) {
+    @SuppressWarnings("unchecked")
+    public static <T extends Referable> T resolve(Reference reference, Environment env, Class<T> type) {
         if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
             return null;
         }
-        Set<Identifiable> identifiables = new IdentifiableCollector(env).collect();
-        Object current = null;
-        int i = reference.getKeys().size() - 1;
-        if (type != null) {
-            Class<?> actualType = keyTypeToClass(reference.getKeys().get(i).getType());
-            if (actualType == null) {
-                log.warn("reference {} could not be resolved as key type has no known class.",
-                        asString(reference));
-                return null;
-            }
-            if (!type.isAssignableFrom(actualType)) {
-                log.warn("reference {} could not be resolved as target type is not assignable from actual type (target: {}, actual: {})",
-                        asString(reference), type.getName(), actualType.getName());
-                return null;
-            }
-        }
-        for (; i >= 0; i--) {
+        GetChildrenVisitor findChildrenVisitor = new GetChildrenVisitor(env);
+        findChildrenVisitor.visit(env);
+        Referable current = null;
+        for (int i = 0; i < reference.getKeys().size(); i++) {
             Key key = reference.getKeys().get(i);
-            Class<?> referencedType = keyTypeToClass(key.getType());
-            if (referencedType != null) {
-                List<Identifiable> matchingIdentifiables = identifiables.stream()
-                        .filter(x -> referencedType.isAssignableFrom(x.getClass()))
-                        .filter(x -> x.getId().equals(key.getValue()))
-                        .collect(Collectors.toList());
-                if (matchingIdentifiables.size() > 1) {
-                    throw new IllegalArgumentException("found multiple matching Identifiables for id '" + key.getValue() + "'");
+            try {
+                int index = Integer.parseInt(key.getValue());
+                if (Objects.isNull(current) || !SubmodelElementList.class.isAssignableFrom(current.getClass())) {
+                    throw new IllegalArgumentException("reference uses index notation on an element that is not a SubmodelElementList");
                 }
-                if (matchingIdentifiables.size() == 1) {
-                    current = matchingIdentifiables.get(0);
-                    break;
+                List<SubmodelElement> list = ((SubmodelElementList) current).getValue();
+                if (list.size() <= index) {
+                    throw new IllegalArgumentException(String.format(
+                            "index notation out of bounds (list size: %s, requested index: %s)",
+                            list.size(),
+                            index));
                 }
+                current = list.get(index);
+            } catch (NumberFormatException e) {
+                current = findChildrenVisitor.getChildren().stream()
+                        .filter(x -> Objects.equals(key.getValue(), GetIdentifierVisitor.getIdentifier(x)))
+                        .findFirst()
+                        .orElseThrow(() -> new IllegalArgumentException(String.format(
+                        "unable to resolve reference '%s' as element '%s' does not exist",
+                        asString(reference),
+                        key.getValue())));
             }
+            findChildrenVisitor.reset();
+            findChildrenVisitor.visit(current);
         }
         if (current == null) {
             return null;
         }
-        i++;
-        if (i == reference.getKeys().size()) {
-            return (T) current;
+        if (!type.isAssignableFrom(current.getClass())) {
+            throw new IllegalArgumentException(String.format(
+                    "reference '%s' could not be resolved as target type is not assignable from actual type (target: %s, actual: %s)",
+                    asString(reference),
+                    type.getName(),
+                    current.getClass().getName()));
         }
-        // follow idShort path until target
-        for (; i < reference.getKeys().size(); i++) {
-            Key key = reference.getKeys().get(i);
-            Class<?> keyType = keyTypeToClass(key.getType());
-            if (keyType != null) {
-                if (SubmodelElementList.class.isAssignableFrom(current.getClass())) {
-                    try {
-                        current = ((SubmodelElementList) current).getValue().get(Integer.parseInt(key.getValue()));
-                    } catch (NumberFormatException ex) {
-                        throw new IllegalArgumentException(String.format("invalid value for key with index %d, expected integer values >= 0, but found '%s'",
-                                i, key.getValue()));
-                    } catch (IndexOutOfBoundsException ex) {
-                        throw new IllegalArgumentException(String.format("index out of bounds exception for key with index %d, expected integer values >= 0 and < %d, but found '%s'",
-                                i,
-                                ((SubmodelElementList) current).getValue().size(),
-                                key.getValue()));
-                    }
-                } else {
-					Collection<?> collection;
-                    if (Operation.class.isAssignableFrom(current.getClass())) {
-                        Operation operation = (Operation) current;
-                        collection = Stream.of(operation.getInputVariables().stream(),
-                                        operation.getOutputVariables().stream(),
-                                        operation.getInoutputVariables().stream())
-                                .flatMap(x -> x.map(y -> y.getValue()))
-                                .collect(Collectors.toSet());
-                    } else {
-                        List<PropertyDescriptor> matchingProperties = getAasProperties(current.getClass()).stream()
-                                .filter(x -> Collection.class.isAssignableFrom(x.getReadMethod().getReturnType()))
-                                .filter(x -> TypeToken.of(x.getReadMethod().getGenericReturnType())
-                                        .resolveType(Collection.class.getTypeParameters()[0])
-                                        .isSupertypeOf(keyType))
-                                .collect(Collectors.toList());
-                        if (matchingProperties.isEmpty()) {
-                            throw new IllegalArgumentException(String.format("error resolving reference - could not find matching property for type %s in class %s",
-                                    keyType.getSimpleName(),
-                                    current.getClass().getSimpleName()));
-                        }
-                        if (matchingProperties.size() > 1) {
-                            throw new IllegalArgumentException(String.format("error resolving reference - found %d possible property paths for class %s (%s)",
-                                    matchingProperties.size(),
-                                    current.getClass().getSimpleName(),
-                                    matchingProperties.stream()
-                                            .map(x -> x.getName())
-                                            .collect(Collectors.joining(", "))));
-                        }
-                        try {
-							collection = (Collection<?>) matchingProperties.get(0).getReadMethod().invoke(current);
-                        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                            throw new IllegalArgumentException("error resolving reference", ex);
-                        }
-                    }
-					Optional<?> next = collection.stream()
-                            .filter(x -> ((Referable) x).getIdShort().equals(key.getValue()))
-                            .findFirst();
-                    if (next.isEmpty()) {
-                        throw new IllegalArgumentException("error resolving reference - could not find idShort " + key.getValue());
-                    }
-                    current = next.get();
-                }
-            }
-        }
-        return (T) current;
+        return type.cast(current);
     }
 
     /**
@@ -396,7 +389,7 @@ public class AasUtils {
      * @return a list of all properties defined in any of AAS interface implemented by type. If type does not implement
      * any AAS interface an empty list is returned.
      */
-	private static List<PropertyDescriptor> getAasProperties(Class<?> type) {
+    private static List<PropertyDescriptor> getAasProperties(Class<?> type) {
         Class<?> aasType = ReflectionHelper.getAasInterface(type);
         if (aasType == null) {
             aasType = ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream()
