@@ -68,8 +68,6 @@ public class JsonDeserializer {
      */
     public Environment read(String value) throws DeserializationException {
         try {
-            // the new schema (version 3.0.RC02) defines modelType as a string, therefore the ModelTypeProcessor is not needed anymore
-            //return mapper.treeToValue(ModelTypeProcessor.preprocess(value), Environment.class);
             return mapper.treeToValue(new ObjectMapper().readTree(value), Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
@@ -360,8 +358,7 @@ public class JsonDeserializer {
 
     public List<Reference> readReferences(String references) throws DeserializationException {
         try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(references)) ;
-            return mapper.readValue(parsed,new TypeReference<List<Reference>>(){});
+            return mapper.readValue(references,new TypeReference<List<Reference>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of References", ex);
         }
@@ -378,8 +375,7 @@ public class JsonDeserializer {
 
     public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
         try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(specificAssetIds)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SpecificAssetId>>(){});
+            return mapper.readValue(specificAssetIds,new TypeReference<List<SpecificAssetId>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of SpecificAssetIds", ex);
         }
@@ -395,8 +391,7 @@ public class JsonDeserializer {
 
     public List<SubmodelDescriptor> readSubmodelDescriptors(String submodelDescriptors) throws DeserializationException {
         try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(submodelDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SubmodelDescriptor>>(){});
+            return mapper.readValue(submodelDescriptors,new TypeReference<List<SubmodelDescriptor>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of SubmodelDescriptors", ex);
         }
