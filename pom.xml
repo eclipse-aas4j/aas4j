@@ -47,7 +47,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <plugin.compiler.version>3.11.0</plugin.compiler.version>
+        <plugin.compiler.version>3.12.1</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
         <plugin.flatten.version>1.5.0</plugin.flatten.version>
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
