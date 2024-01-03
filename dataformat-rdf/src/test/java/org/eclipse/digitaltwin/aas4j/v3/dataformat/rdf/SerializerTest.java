@@ -46,7 +46,7 @@ public class SerializerTest {
                 .displayName(Arrays.asList(
                         new DefaultLangStringNameType.Builder().text("Anzeigename 2").language("de").build(),
                         new DefaultLangStringNameType.Builder().text("Display Name 1").language("en").build()
-                        ))
+                ))
                 .build();
 
         Submodel submodel = new DefaultSubmodel.Builder()
@@ -54,21 +54,21 @@ public class SerializerTest {
                 .displayName(Arrays.asList(
                         new DefaultLangStringNameType.Builder().text("First Submodel Element name").language("en").build(),
                         new DefaultLangStringNameType.Builder().text("Second Submodel Element name").language("en").build()
-                        ))
+                ))
                 .category("Example category")
                 .build();
 
         ConceptDescription conceptDescription = new DefaultConceptDescription.Builder()
                 .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
-                    .dataSpecification(new DefaultReference.Builder()
-                        .keys(new DefaultKey.Builder()
-                            .value("https://example.org")
-                            .build())
+                        .dataSpecification(new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .value("https://example.org")
+                                        .build())
+                                .build())
+                        .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
+                                .dataType(DataTypeIec61360.RATIONAL)
+                                .build())
                         .build())
-                    .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
-                        .dataType(DataTypeIec61360.RATIONAL)
-                        .build())
-                    .build())
                 .build();
 
         List<AssetAdministrationShell> aasList = new ArrayList<>(Collections.singletonList(aas));

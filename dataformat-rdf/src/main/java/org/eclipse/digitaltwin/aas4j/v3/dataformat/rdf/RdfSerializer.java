@@ -3,6 +3,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFLanguages;
+import org.apache.jena.riot.system.Serializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
@@ -16,6 +17,7 @@ import java.util.List;
 public class RdfSerializer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
+    SerializerHelper serializerHelper = new SerializerHelper();
     /**
      * Serializes a given instance of AssetAdministrationShellEnvironment to string
      *
@@ -26,7 +28,7 @@ public class RdfSerializer {
      */
     public String write(Environment aasEnvironment, Lang serializationFormat) throws SerializationException {
         try {
-            throw new RuntimeException("Not Implemented");
+            return serializerHelper.write(aasEnvironment, serializationFormat);
         } catch (Exception ex) {
             throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
         }
