@@ -35,6 +35,7 @@
         <module>dataformat-core</module>
         <module>dataformat-json</module>
         <module>dataformat-xml</module>
+        <module>dataformat-rdf</module>
     </modules>
     <properties>
         <revision.major>1</revision.major>
