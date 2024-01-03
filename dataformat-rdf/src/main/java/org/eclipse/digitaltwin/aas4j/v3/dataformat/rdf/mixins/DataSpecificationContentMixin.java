@@ -15,18 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.mixins;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
-import java.util.List;
-
 @JsonTypeName("aas:DataSpecificationContent")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = DataSpecificationIEC61360.class)
+        @JsonSubTypes.Type(value = DataSpecificationIec61360.class)
 })
 public interface DataSpecificationContentMixin {
 

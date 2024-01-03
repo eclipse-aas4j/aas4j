@@ -26,15 +26,15 @@ import java.util.List;
 @JsonTypeName("aas:Resource")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ResourceMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Resource/contentType")
     String getContentType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Resource/contentType")
     void setContentType(String contentType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Resource/path")
     String getPath();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Resource/path")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Resource/path")
     void setPath(String path);
 }

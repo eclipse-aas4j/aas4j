@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.mixins;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
@@ -26,15 +26,15 @@ import java.util.List;
 @JsonTypeName("aas:MultiLanguageProperty")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface MultiLanguagePropertyMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
-    List<LangString> getValues();
+    @JsonProperty("https://admin-shell.io/aas/3/0/MultiLanguageProperty/value")
+    List<LangStringTextType> getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/value")
-    void setValues(List<LangString> values);
+    @JsonProperty("https://admin-shell.io/aas/3/0/MultiLanguageProperty/value")
+    void setValue(List<LangStringTextType> values);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId")
     Reference getValueId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/MultiLanguageProperty/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId")
     void setValueId(Reference valueId);
 }

@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:AnnotatedRelationshipElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface AnnotatedRelationshipElementMixin extends RelationshipElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AnnotatedRelationshipElement/annotation")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotation")
     List<DataElement> getAnnotations();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AnnotatedRelationshipElement/annotation")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotation")
     void setAnnotations(List<DataElement> annotations);
 }

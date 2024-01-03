@@ -35,15 +35,15 @@ import java.util.List;
     @JsonSubTypes.Type(value = Extension.class)
 })
 public interface HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     Reference getSemanticId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/semanticId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
     void setSemanticId(Reference semanticId);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     List<Reference> getSupplementalSemanticIds();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds")
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     void setSupplementalSemanticIds(List<Reference> references);
 }

@@ -25,15 +25,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface KeyMixin {
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Key/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Key/type")
     KeyTypes getType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Key/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Key/type")
     void setType(KeyTypes type);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Key/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Key/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Key/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Key/value")
     void setValue(String value);
 }

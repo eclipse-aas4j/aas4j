@@ -29,33 +29,33 @@ import java.util.List;
 @JsonTypeName("aas:SubmodelElementList")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface SubmodelElementListMixin extends SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/orderRelevant")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant")
     boolean getOrderRelevant();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/orderRelevant")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant")
     void setOrderRelevant(boolean orderRelevant);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement")
     Reference getSemanticIdListElement();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/semanticIdListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement")
     void setSemanticIdListElement(Reference semanticIdListElement);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/typeValueListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement")
     AasSubmodelElements getTypeValueListElement();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/typeValueListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement")
     void setTypeValueListElement(AasSubmodelElements typeValueListElement);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
     List<SubmodelElement> getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
     void setValue(List<SubmodelElement> value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement")
     DataTypeDefXsd getValueTypeListElement();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementList/valueTypeListElement")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement")
     void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 }

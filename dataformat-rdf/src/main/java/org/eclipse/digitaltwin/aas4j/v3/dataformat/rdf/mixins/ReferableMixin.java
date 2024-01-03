@@ -20,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.util.List;
@@ -32,27 +33,27 @@ import java.util.List;
     @JsonSubTypes.Type(value = SubmodelElement.class)
 })
 public interface ReferableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/category")
     String getCategory();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/category")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/category")
     void setCategory(String category);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    List<LangString> getDescription();
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/description")
+    List<LangStringTextType> getDescription();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/description")
-    void setDescription(List<LangString> description);
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/description")
+    void setDescription(List<LangStringTextType> description);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    List<LangString> getDisplayName();
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/displayName")
+    List<LangStringNameType> getDisplayName();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/displayName")
-    void setDisplayName(List<LangString> displayName);
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/displayName")
+    void setDisplayName(List<LangStringNameType> displayName);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/idShort")
     String getIdShort();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Referable/idShort")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Referable/idShort")
     void setIdShort(String idShort);
 }

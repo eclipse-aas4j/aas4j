@@ -24,15 +24,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:Blob")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface BlobMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Blob/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Blob/contentType")
     String getContentType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Blob/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Blob/contentType")
     void setConentType(String mimeType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Blob/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Blob/value")
     byte[] getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Blob/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Blob/value")
     void setValue(byte[] value);
 }

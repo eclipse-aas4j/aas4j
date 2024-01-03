@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.custom.BigDecimalSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.custom.XMLGregorianCalendarDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.custom.XMLGregorianCalendarSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 
 import java.math.BigDecimal;
 import java.net.URI;
@@ -46,7 +46,7 @@ public class JsonLDModule extends SimpleModule {
         addSerializer(BigDecimal.class, new BigDecimalSerializer());
         
         addSerializer(URI.class, new UriSerializer());
-        addSerializer(LangString.class, new LangStringSerializer());
+        addSerializer(AbstractLangString.class, new LangStringSerializer());
     }
 
 }

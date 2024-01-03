@@ -26,22 +26,22 @@ import java.util.List;
 @JsonTypeName("aas:AssetAdministrationShell")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface AssetAdministrationShellMixin extends HasDataSpecificationMixin, IdentifiableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
     AssetInformation getAssetInformation();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
     void setAssetInformation(AssetInformation assetInformation);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
     Reference getDerivedFrom();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/derivedFrom")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
     void setDerivedFrom(Reference derivedFrom);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodel")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodel")
     List<Reference> getSubmodels();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodel")
+    @JsonProperty("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodel")
     void setSubmodels(List<Reference> submodels);
 
 }

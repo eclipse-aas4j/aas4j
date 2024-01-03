@@ -24,27 +24,27 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonTypeName("aas:Extension")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ExtensionMixin extends HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/name")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/name")
     String getName();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/name")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/name")
     void setName(String name);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/valueType")
     String getValueType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/valueType")
     void setValueType(String valueType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/refersTo")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/refersTo")
     Reference getRefersTo();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Extension/refersTo")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Extension/refersTo")
     void setRefersTo(Reference refersTo);
 }

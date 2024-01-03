@@ -27,21 +27,21 @@ import java.util.List;
 @JsonTypeName("aas:Environment")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface EnvironmentMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
     List<AssetAdministrationShell> getAssetAdministrationShells();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
     void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
     List<ConceptDescription> getConceptDescriptions();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/conceptDescriptions")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
     void setConceptDescriptions(List<ConceptDescription> conceptDescriptions);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/submodels")
     List<Submodel> getSubmodels();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Environment/submodels")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Environment/submodels")
     void setSubmodels(List<Submodel> submodels);
 }

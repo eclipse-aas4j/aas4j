@@ -26,22 +26,22 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 @JsonTypeName("aas:SpecificAssetId")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface SpecificAssetIdMixin extends HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
     String getName();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/name")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
     void setName(String name);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
     Reference getExternalSubjectId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SpecificAssetId/externalSubjectId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
     void setExternalSubjectId(Reference reference);
 
 }

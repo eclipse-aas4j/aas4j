@@ -24,21 +24,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonTypeName("aas:IdentifierKeyValuePair")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface IdentifierKeyValuePairMixin extends HasSemanticsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/key")
     String getKey();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/key")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/key")
     void setKey(String key);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/externalSubjectId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/externalSubjectId")
     Reference getExternalSubjectId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/IdentifierKeyValuePair/externalSubjectId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/IdentifierKeyValuePair/externalSubjectId")
     void setExternalSubjectId(Reference externalSubjectId);
 }

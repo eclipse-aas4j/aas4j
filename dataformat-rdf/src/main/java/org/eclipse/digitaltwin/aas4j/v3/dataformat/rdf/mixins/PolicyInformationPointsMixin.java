@@ -25,15 +25,15 @@ import java.util.List;
 @JsonTypeName("aas:PolicyInformationPoints")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface PolicyInformationPointsMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyInformationPoints/externalInformationPoints")
+    @JsonProperty("https://admin-shell.io/aas/3/0/PolicyInformationPoints/externalInformationPoints")
     boolean getExternalInformationPoints();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyInformationPoints/externalInformationPoints")
+    @JsonProperty("https://admin-shell.io/aas/3/0/PolicyInformationPoints/externalInformationPoints")
     void setExternalInformationPoints(boolean externalInformationPoints);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyInformationPoints/internalInformationPoint")
+    @JsonProperty("https://admin-shell.io/aas/3/0/PolicyInformationPoints/internalInformationPoint")
     List<Reference> getInternalInformationPoints();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/PolicyInformationPoints/internalInformationPoint")
+    @JsonProperty("https://admin-shell.io/aas/3/0/PolicyInformationPoints/internalInformationPoint")
     void setInternalInformationPoints(List<Reference> internalInformationPoints);
 }

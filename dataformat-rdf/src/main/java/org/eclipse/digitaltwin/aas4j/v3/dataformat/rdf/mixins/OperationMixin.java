@@ -25,21 +25,21 @@ import java.util.List;
 @JsonTypeName("aas:Operation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface OperationMixin extends SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/inputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/inputVariable")
     List<OperationVariable> getInputVariables();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/inputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/inputVariable")
     void setInputVariables(List<OperationVariable> inputVariables);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/inoutputVariable")
     List<OperationVariable> getInoutputVariables();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/inoutputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/inoutputVariable")
     void setInoutputVariables(List<OperationVariable> inoutputVariables);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/outputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/outputVariable")
     List<OperationVariable> getOutputVariables();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Operation/outputVariable")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Operation/outputVariable")
     void setOutputVariables(List<OperationVariable> outputVariables);
 }

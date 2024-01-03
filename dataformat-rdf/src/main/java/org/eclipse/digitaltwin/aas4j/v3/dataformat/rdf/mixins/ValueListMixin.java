@@ -28,9 +28,9 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ValueListMixin {
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
     List<ValueReferencePair> getValueReferencePairs();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueList/valueReferencePairs")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
     void setValueReferencePairs(List<ValueReferencePair> valueReferencePairs);
 }

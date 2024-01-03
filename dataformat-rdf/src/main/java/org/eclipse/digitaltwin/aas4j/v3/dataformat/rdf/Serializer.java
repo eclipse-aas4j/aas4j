@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.preprocessing.JsonPreprocessor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.preprocessing.TypeNamePreprocessor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.custom.ReflectiveMixInResolver;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
@@ -40,18 +39,15 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.Serializer, Deserializer {
+public class Serializer {
 
     private static final ObjectMapper mapper = new ObjectMapper();
-    private final List<JsonPreprocessor> preprocessors;
-    private final Logger logger = LoggerFactory.getLogger(Serializer.class);
-
     public static String implementingClassesNamePrefix = "Default";
     public static String implementingClassesNameSuffix = "";
-
     static Map<Class<?>, Class<?>> customImplementationMap = new HashMap<>();
-
     private static boolean charsetWarningPrinted = false;
+    private final List<JsonPreprocessor> preprocessors;
+    private final Logger logger = LoggerFactory.getLogger(Serializer.class);
 
     public Serializer() {
         mapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
@@ -61,8 +57,7 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
         preprocessors = new ArrayList<>();
         this.addPreprocessor(new TypeNamePreprocessor());
 
-        if(!Charset.defaultCharset().equals(StandardCharsets.UTF_8) && !charsetWarningPrinted)
-        {
+        if (!Charset.defaultCharset().equals(StandardCharsets.UTF_8) && !charsetWarningPrinted) {
             charsetWarningPrinted = true;
             logger.warn("Standard Charset is set to " + Charset.defaultCharset() + " - expecting " + StandardCharsets.UTF_8 + ". Some characters might not be displayed correctly.\nThis warning is only printed once");
         }
@@ -71,10 +66,21 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
         addKnownNamespace("xsd", "http://www.w3.org/2001/XMLSchema#");
         addKnownNamespace("owl", "http://www.w3.org/2002/07/owl#");
         addKnownNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-        addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/RC02/");
-        //addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/");
+        addKnownNamespace("aas", "https://admin-shell.io/aas/3/0/");
+        //addKnownNamespace("iec61360", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0/RC02/");
         //addKnownNamespace("phys_unit", "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationPhysicalUnit/3/0/RC02/");
 
+    }
+
+    /**
+     * Allows to add further known namespaces to the message parser. Allows parsing to Java objects with JsonSubTypes annotations with other prefixes than "ids:".
+     *
+     * @param prefix       Prefix to be added
+     * @param namespaceUrl URL of the prefix
+     */
+    public static void addKnownNamespace(String prefix, String namespaceUrl) {
+        Parser.knownNamespaces.put(prefix, namespaceUrl);
+        JsonLDSerializer.contextItems.put(prefix, namespaceUrl);
     }
 
     /**
@@ -94,14 +100,13 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
      * input instance must be annotated using AAS Metamodel annotations.
      *
      * @param instance the instance to be serialized
-     * @param format the RDF format to be returned (only RDFLanguages.TTL, RDFLanguages.JSONLD, RDFLanguages.RDFXML)
+     * @param format   the RDF format to be returned (only RDFLanguages.TTL, RDFLanguages.JSONLD, RDFLanguages.RDFXML)
      * @return RDF serialization of the provided object graph
      * @throws IOException if the serialization fails
      */
     public synchronized String serialize(Object instance, Lang format) throws IOException {
-        return serialize(instance, format, new HashMap<>() );
+        return serialize(instance, format, new HashMap<>());
     }
-
 
     //Synchronized is required for thread safety. Without it, context elements might be missing in case of multiple simultaneous calls to this function
     public synchronized String serialize(Object instance, Lang format, Map<Object, String> idMap) throws IOException {
@@ -164,9 +169,7 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
     public <T> T deserialize(String serialization, Class<T> valueType) throws DeserializationException {
         try {
             return new Parser().parseMessage(serialization, valueType);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new DeserializationException("Failed to deserialize input.", e);
         }
     }
@@ -174,10 +177,10 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
     /**
      * Inverse method of "serialize"
      *
-     * @param serialization JSON(-LD) string
-     * @param valueType     class of top level type
+     * @param serialization       JSON(-LD) string
+     * @param valueType           class of top level type
      * @param serializationFormat RDF input format
-     * @param <T>           deserialized type
+     * @param <T>                 deserialized type
      * @return an object representing the provided JSON(-LD) structure
      * @throws DeserializationException thrown, if deserialization fails, e.g. because the input is not valid RDF
      */
@@ -185,9 +188,7 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
         try {
 
             return new Parser().parseMessage(serialization, valueType, serializationFormat);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new DeserializationException("Failed to deserialize input.", e);
         }
     }
@@ -195,31 +196,18 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
     /**
      * Inverse method of "serialize"
      *
-     * @param rdfModel Input RDF Model to be turned into an Instance of the IDS Java classes
-     * @param valueType     class of top level type
-     * @param <T>           deserialized type
+     * @param rdfModel  Input RDF Model to be turned into an Instance of the IDS Java classes
+     * @param valueType class of top level type
+     * @param <T>       deserialized type
      * @return an object representing the provided JSON(-LD) structure
      * @throws DeserializationException thrown, if deserialization fails, e.g. because the input is not valid RDF
      */
     public <T> T deserialize(Model rdfModel, Class<T> valueType) throws DeserializationException {
         try {
             return new Parser().parseMessage(rdfModel, valueType);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new DeserializationException("Failed to deserialize input.", e);
         }
-    }
-
-    /**
-     * Allows to add further known namespaces to the message parser. Allows parsing to Java objects with JsonSubTypes annotations with other prefixes than "ids:".
-     * @param prefix Prefix to be added
-     * @param namespaceUrl URL of the prefix
-     */
-    public static void addKnownNamespace(String prefix, String namespaceUrl)
-    {
-        Parser.knownNamespaces.put(prefix, namespaceUrl);
-        JsonLDSerializer.contextItems.put(prefix, namespaceUrl);
     }
 
     /**
@@ -255,13 +243,11 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
         preprocessors.remove(preprocessor);
     }
 
-    @Override
+
     public String write(Environment aasEnvironment) throws SerializationException {
         try {
             return serialize(aasEnvironment);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new SerializationException("Failed to serialize environment.", e);
         }
     }
@@ -273,19 +259,15 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
     public String write(Environment aasEnvironment, Lang format, Map<Object, String> idMap) throws SerializationException {
         try {
             return serialize(aasEnvironment, format, idMap);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new SerializationException("Failed to serialize environment.", e);
         }
     }
-    @Override
+
     public Environment read(String value) throws DeserializationException {
         try {
             return new Parser().parseMessage(value, Environment.class);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new DeserializationException("Could not deserialize to environment.", e);
         }
     }
@@ -293,14 +275,12 @@ public class Serializer implements org.eclipse.digitaltwin.aas4j.v3.dataformat.S
     public Environment read(String value, Lang serializationFormat) throws DeserializationException {
         try {
             return new Parser().parseMessage(value, Environment.class, serializationFormat);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new DeserializationException("Could not deserialize to environment.", e);
         }
     }
 
-    @Override
+
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         customImplementationMap.put(aasInterface, implementation);
         //throw new NotImplementedException("Custom implementation support not yet implemented");
