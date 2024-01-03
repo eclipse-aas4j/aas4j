@@ -1,0 +1,88 @@
+{
+  "@context" : {
+    "aas" : "https://admin-shell.io/aas/3/0/RC02/"
+  },
+  "@id" : "https://admin-shell.io/autogen/DefaultEnvironment/7e646a58-7419-41e2-99e8-163a7abb7b46",
+  "@type" : "aas:Environment",
+  "https://admin-shell.io/aas/3/0/RC02/Environment/assetAdministrationShells" : [ {
+    "@id" : "https://admin-shell.io/autogen/DefaultAssetAdministrationShell/b869a629-8d69-4754-9c50-804b0e9eb35a",
+    "@type" : "aas:AssetAdministrationShell",
+    "https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/assetInformation" : {
+      "@id" : "https://admin-shell.io/autogen/DefaultAssetInformation/6882a093-6831-445d-a884-f2ebc37aaa29",
+      "@type" : "aas:AssetInformation",
+      "https://admin-shell.io/aas/3/0/RC02/AssetInformation/assetKind" : {
+        "@type" : "aas:AssetKind",
+        "@id" : "https://admin-shell.io/aas/3/0/RC02/AssetKind/Instance"
+      },
+      "https://admin-shell.io/aas/3/0/RC02/AssetInformation/specificAssetIds" : [ ]
+    },
+    "https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/submodel" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiation" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/Referable/description" : [ {
+      "@language" : "en-us",
+      "@value" : "This is a test AAS"
+    } ],
+    "https://admin-shell.io/aas/3/0/RC02/Referable/displayName" : [ {
+      "@language" : "de",
+      "@value" : "Anzeigename 2"
+    }, {
+      "@language" : "en",
+      "@value" : "Display Name 1"
+    } ],
+    "https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications" : [ ]
+  } ],
+  "https://admin-shell.io/aas/3/0/RC02/Environment/conceptdescriptions" : [ {
+    "@id" : "https://admin-shell.io/autogen/DefaultConceptDescription/14b4a819-7ca0-4cb2-b2c7-33a1c443c899",
+    "@type" : "aas:ConceptDescription",
+    "https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications" : [ {
+      "@id" : "https://admin-shell.io/autogen/DefaultDataSpecification/66cf9a6c-e656-4c95-91be-2ddc1779ec71",
+      "@type" : "aas:EmbeddedDataSpecification",
+        "https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecifiation" : {
+          "@id" : "https://admin-shell.io/autogen/DefaultReference/251d9f19-b36b-4c39-b517-3d7e93bd8c96",
+          "@type" : "aas:Reference",
+          "https://admin-shell.io/aas/3/0/RC02/Reference/key" : [ {
+            "@id" : "https://admin-shell.io/autogen/DefaultKey/ad4e8527-e002-4776-87ca-7049e7be440f",
+            "@type" : "aas:Key",
+            "https://admin-shell.io/aas/3/0/RC02/Key/value" : "https://example.org"
+          } ]
+        } ,
+      "https://admin-shell.io/aas/3/0/RC02/EmbeddedDataSpecification/dataSpecificationContent" : {
+        "@id" : "https://admin-shell.io/autogen/DefaultDataSpecificationIEC61360/5319d62e-7ca1-4954-addf-76db6bf1e241",
+        "@type" : "aas:DataSpecificationIEC61360",
+        "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/dataType" : {
+          "@type" : "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/DataTypeIEC61360",
+          "@id" : "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0/RC02/RATIONAL"
+        },
+        "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/definition" : [ ],
+        "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/preferredName" : [ ],
+        "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360/shortName" : [ ]
+      },
+      "https://admin-shell.io/aas/3/0/RC02/DataSpecification/id" : "http://example.org/DataSpecification1"
+    } ]
+  } ],
+  "https://admin-shell.io/aas/3/0/RC02/Environment/submodels" : [ {
+    "@id" : "https://admin-shell.io/autogen/DefaultSubmodel/18810336-c309-42f8-9986-438f7068f0d6",
+    "@type" : "aas:Submodel",
+    "https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/dataSpecifiation" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasExtensions/extension" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasSemantics/supplementalSemanticIds" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/Qualifiable/qualifier" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/Referable/category" : "Example category",
+    "https://admin-shell.io/aas/3/0/RC02/Referable/description" : [ {
+      "@language" : "en-us",
+      "@value" : "My Submodel"
+    } ],
+    "https://admin-shell.io/aas/3/0/RC02/Referable/displayName" : [ {
+      "@language" : "en",
+      "@value" : "First Submodel Element name"
+    }, {
+      "@language" : "en",
+      "@value" : "Second Submodel Element name"
+    } ],
+    "https://admin-shell.io/aas/3/0/RC02/Submodel/submodelElement" : [ ],
+    "https://admin-shell.io/aas/3/0/RC02/HasDataSpecification/embeddedDataSpecifications" : [ ]
+  } ]
+}
