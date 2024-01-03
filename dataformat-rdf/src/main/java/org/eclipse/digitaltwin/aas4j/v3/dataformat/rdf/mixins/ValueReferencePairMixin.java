@@ -24,15 +24,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonTypeName("aas:ValueReferencePair")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ValueReferencePairMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueReferencePair/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueReferencePair/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
     Reference getValueId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ValueReferencePair/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
     void setValueId(Reference valueId);
 }

@@ -21,9 +21,9 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 
-public class LangStringSerializer extends StdSerializer<LangString> {
+public class LangStringSerializer extends StdSerializer<AbstractLangString> {
 
 
     public LangStringSerializer() {
@@ -36,7 +36,7 @@ public class LangStringSerializer extends StdSerializer<LangString> {
 
 
     @Override
-    public void serialize(LangString value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(AbstractLangString value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         gen.writeStartObject();
         if(value.getLanguage() != null && !value.getLanguage().isEmpty())
         {

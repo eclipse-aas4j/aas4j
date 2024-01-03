@@ -29,15 +29,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
     @JsonSubTypes.Type(value = AnnotatedRelationshipElement.class)
 })
 public interface RelationshipElementMixin extends SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/first")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RelationshipElement/first")
     Reference getFirst();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/first")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RelationshipElement/first")
     void setFirst(Reference first);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/second")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RelationshipElement/second")
     Reference getSecond();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/RelationshipElement/second")
+    @JsonProperty("https://admin-shell.io/aas/3/0/RelationshipElement/second")
     void setSecond(Reference second);
 }

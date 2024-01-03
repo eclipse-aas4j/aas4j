@@ -17,13 +17,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.apache.jena.riot.RDFLanguages;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIEC61360;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -46,18 +41,18 @@ public class SerializerTest {
                 .assetInformation(new DefaultAssetInformation.Builder()
                         .assetKind(AssetKind.INSTANCE)
                         .build())
-                .description(Arrays.asList(new DefaultLangString.Builder().text("This is a test AAS").language("en-us").build()))
+                .description(Arrays.asList(new DefaultLangStringTextType.Builder().text("This is a test AAS").language("en-us").build()))
                 .displayName(Arrays.asList(
-                        new DefaultLangString.Builder().text("Anzeigename 2").language("de").build(),
-                        new DefaultLangString.Builder().text("Display Name 1").language("en").build()
+                        new DefaultLangStringNameType.Builder().text("Anzeigename 2").language("de").build(),
+                        new DefaultLangStringNameType.Builder().text("Display Name 1").language("en").build()
                         ))
                 .build();
 
         Submodel submodel = new DefaultSubmodel.Builder()
-                .description(Arrays.asList(new DefaultLangString.Builder().text("My Submodel").language("en-us").build()))
+                .description(Arrays.asList(new DefaultLangStringTextType.Builder().text("My Submodel").language("en-us").build()))
                 .displayName(Arrays.asList(
-                        new DefaultLangString.Builder().text("First Submodel Element name").language("en").build(),
-                        new DefaultLangString.Builder().text("Second Submodel Element name").language("en").build()
+                        new DefaultLangStringNameType.Builder().text("First Submodel Element name").language("en").build(),
+                        new DefaultLangStringNameType.Builder().text("Second Submodel Element name").language("en").build()
                         ))
                 .category("Example category")
                 .build();
@@ -69,8 +64,8 @@ public class SerializerTest {
                             .value("https://example.org")
                             .build())
                         .build())
-                    .dataSpecificationContent(new DefaultDataSpecificationIEC61360.Builder()
-                        .dataType(DataTypeIEC61360.RATIONAL)
+                    .dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder()
+                        .dataType(DataTypeIec61360.RATIONAL)
                         .build())
                     .build())
                 .build();
@@ -83,7 +78,7 @@ public class SerializerTest {
                 .build();
 
         String output = new Serializer().serialize(aasEnv, RDFLanguages.JSONLD);
-        //System.out.println(output);
+        System.out.println(output);
 
         Assert.assertTrue(output.contains("@context"));
         // Assert.assertTrue(output.contains("rdf:")); // TODO: why should the output contain the 'rdf' prefix?

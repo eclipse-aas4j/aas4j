@@ -25,21 +25,21 @@ import java.util.Collection;
 @JsonTypeName("aas:SubmodelElementCollection")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface SubmodelElementCollectionMixin extends SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/allowDuplicates")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/allowDuplicates")
     boolean getAllowDuplicates();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/allowDuplicates")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/allowDuplicates")
     void setAllowDuplicates(boolean allowDuplicates);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/ordered")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/ordered")
     boolean getOrdered();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/ordered")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/ordered")
     void setOrdered(boolean ordered);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
     Collection<SubmodelElement> getValues();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/SubmodelElementCollection/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
     void setValues(Collection<SubmodelElement> values);
 }

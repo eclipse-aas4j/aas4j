@@ -15,10 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangString;
+import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangString;
 import org.apache.jena.datatypes.DatatypeFormatException;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
@@ -72,6 +71,7 @@ class Parser {
      * @throws IOException thrown if the parsing fails
      */
     private <T> T handleObject(Model inputModel, String objectUri, Class<T> targetClass) throws IOException {
+
         try {
 
             //if(!targetClass.getSimpleName().endsWith("Impl")) //This would not work for "TypedLiteral", "RdfResource" and so on
@@ -321,7 +321,7 @@ class Parser {
             //Query for all unknown properties and their values
             //Select properties and values only
 
-            if(!targetClass.equals(LangString.class)) { //LangString has no additional properties map. Skip this step
+            if(!targetClass.equals(AbstractLangString.class)) { //LangString has no additional properties map. Skip this step
 
                 //CONSTRUCT { ?s ?p ?o } { ?s ?p ?o. FILTER(?p NOT IN (list of ids properties)) }
                 for (Map.Entry<String, String> entry : knownNamespaces.entrySet()) {
@@ -657,20 +657,25 @@ class Parser {
     }
 
     private Object handleForeignLiteral(Literal literal) throws URISyntaxException {
-        if(literal.getLanguage() != null && !literal.getLanguage().equals(""))
-        {
-            return new DefaultLangString.Builder().text(literal.getValue().toString()).language(literal.getLanguage()).build();
-        }
+//        // TODO: LangTag is not native
+//        START
+//        if(literal.getLanguage() != null && !literal.getLanguage().equals(""))
+//        {
+//            return new DefaultLangString.Builder().text(literal.getValue().toString()).language(literal.getLanguage()).build();
+//        }
+//
+//        else
+//        {
+//            return literal.getString();
+//        }
+//        END
         //If not, does it have some datatype URI?
         //else if(literal.getDatatypeURI() != null && !literal.getDatatypeURI().equals(""))
         //{
         //    return new TypedLiteral(literal.getString(), new URI(literal.getDatatypeURI()));
         //}
         //If both is not true, add it as normal string
-        else
-        {
-            return literal.getString();
-        }
+        return literal.getString();
     }
 
     private HashMap<String, Object> handleForeignNode(RDFNode node, HashMap<String, Object> map, Model model) throws IOException, URISyntaxException {
@@ -866,14 +871,17 @@ class Parser {
             }
         }
 
-        //TypedLiteral
-        if (LangString.class.isAssignableFrom(currentType)) {
-            //Either a language tagged string OR literal with type. Only one allowed
-            if (!literal.getLanguage().equals("")) {
-                return new DefaultLangString.Builder().text(literal.getValue().toString()).language(literal.getLanguage()).build();
-            }
-            return new DefaultLangString.Builder().text(currentSparqlBinding).language("en-us").build(); // TODO: find a better language tag
-        }
+//        // TODO: Abstract lan is no longer native type
+//        START
+//        //TypedLiteral
+//        if (LangString.class.isAssignableFrom(currentType)) {
+//            //Either a language tagged string OR literal with type. Only one allowed
+//            if (!literal.getLanguage().equals("")) {
+//                return new DefaultLangString.Builder().text(literal.getValue().toString()).language(literal.getLanguage()).build();
+//            }
+//            return new DefaultLangString.Builder().text(currentSparqlBinding).language("en-us").build(); // TODO: find a better language tag
+//        }
+//        END
 
         //BigInteger
         if (BigInteger.class.isAssignableFrom(currentType)) {
@@ -957,7 +965,7 @@ class Parser {
         return (URI.class.isAssignableFrom(input) ||
                 String.class.isAssignableFrom(input) ||
                 XMLGregorianCalendar.class.isAssignableFrom(input) ||
-                LangString.class.isAssignableFrom(input) ||
+                AbstractLangString.class.isAssignableFrom(input) ||
                 BigInteger.class.isAssignableFrom(input) ||
                 BigDecimal.class.isAssignableFrom(input) ||
                 byte[].class.isAssignableFrom(input) ||

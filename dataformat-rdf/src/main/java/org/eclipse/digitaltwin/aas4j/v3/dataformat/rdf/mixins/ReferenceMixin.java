@@ -27,15 +27,15 @@ import java.util.List;
 @JsonTypeName("aas:Reference")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ReferenceMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Reference/keys")
     List<Key> getKeys();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/keys")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Reference/keys")
     void setKeys(List<Key> keys);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Reference/type")
     ReferenceTypes getType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Reference/type")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Reference/type")
     void setType(ReferenceTypes type);
 }

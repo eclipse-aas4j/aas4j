@@ -24,15 +24,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:File")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface FileMixin extends DataElementMixin, SubmodelElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/File/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/File/contentType")
     String getContentType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/File/contentType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/File/contentType")
     void setContentType(String contentType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/File/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/File/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/File/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/File/value")
     void setValue(String value);
 }

@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:ConceptDescription")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface ConceptDescriptionMixin extends HasDataSpecificationMixin, IdentifiableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
     List<Reference> getIsCaseOf();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/ConceptDescription/isCaseOf")
+    @JsonProperty("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
     void setIsCaseOf(List<Reference> isCaseOf);
 }

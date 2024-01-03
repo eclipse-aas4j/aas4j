@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModelingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
@@ -31,9 +31,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
     @JsonSubTypes.Type(value = SubmodelElement.class)
 })
 public interface HasKindMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
-    ModelingKind getKind();
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasKind/kind")
+    ModellingKind getKind();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/HasKind/kind")
-    void setKind(ModelingKind kind);
+    @JsonProperty("https://admin-shell.io/aas/3/0/HasKind/kind")
+    void setKind(ModellingKind kind);
 }

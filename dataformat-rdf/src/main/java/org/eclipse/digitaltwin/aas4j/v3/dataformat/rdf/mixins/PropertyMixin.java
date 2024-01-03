@@ -24,21 +24,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonTypeName("aas:Property")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface PropertyMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/valueType")
     String getValueType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/valueType")
     void setValueType(String valueType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/value")
     String getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/value")
     void setValue(String value);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/valueId")
     Reference getValueId();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Property/valueId")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Property/valueId")
     void setValueId(Reference valueId);
 }

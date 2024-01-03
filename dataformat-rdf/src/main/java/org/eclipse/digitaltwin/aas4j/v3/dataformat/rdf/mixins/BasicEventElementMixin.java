@@ -28,52 +28,52 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface BasicEventElementMixin extends EventElementMixin {
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/direction")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/direction")
     Direction getDirection();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/direction")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/direction")
     void setDirection(Direction direction);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate")
     String getLastUpdate();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/lastUpdate")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate")
     void setLastUpdate(String lastUpdate);
 
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval")
     String getMaxInterval();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/maxInterval")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval")
     void setMaxInterval(String maxInterval);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageBroker")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker")
     Reference getMessageBroker();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageBroker")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker")
     void setMessageBroker(Reference messageBroker);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic")
     String getMessageTopic();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/messageTopic")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic")
     void setMessageTopic(String messageTopic);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/minInterval")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/minInterval")
     String getMinInterval();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/minInterval")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/minInterval")
     void setMinInterval(String minInterval);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/observed")
     Reference getObserved();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/observed")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/observed")
     void setObserved(Reference observed);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/state")
     StateOfEvent getState();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/BasicEventElement/state")
+    @JsonProperty("https://admin-shell.io/aas/3/0/BasicEventElement/state")
     void setState(StateOfEvent state);
 }

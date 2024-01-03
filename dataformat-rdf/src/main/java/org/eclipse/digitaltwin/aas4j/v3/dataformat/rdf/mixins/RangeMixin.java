@@ -24,21 +24,21 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("aas:Range")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface RangeMixin extends DataElementMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/valueType")
     String getValueType();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/valueType")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/valueType")
     void setValueType(String valueType);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/max")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/max")
     String getMax();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/max")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/max")
     void setMax(String max);
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/min")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/min")
     String getMin();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Range/min")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Range/min")
     void setMin(String min);
 }

@@ -24,9 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 @JsonTypeName("aas:OperationVariable")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface OperationVariableMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/OperationVariable/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/OperationVariable/value")
     SubmodelElement getValue();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/OperationVariable/value")
+    @JsonProperty("https://admin-shell.io/aas/3/0/OperationVariable/value")
     void setValue(SubmodelElement value);
 }

@@ -25,9 +25,9 @@ import java.util.List;
 @JsonTypeName("aas:Formula")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type")
 public interface FormulaMixin {
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Formula/dependsOn")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Formula/dependsOn")
     List<Reference> getDependsOns();
 
-    @JsonProperty("https://admin-shell.io/aas/3/0/RC02/Formula/dependsOn")
+    @JsonProperty("https://admin-shell.io/aas/3/0/Formula/dependsOn")
     void setDependsOns(List<Reference> dependsOns);
 }
