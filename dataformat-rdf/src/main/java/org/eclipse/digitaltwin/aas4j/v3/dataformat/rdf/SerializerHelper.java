@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.preprocessing.JsonPreprocessor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.preprocessing.TypeNamePreprocessor;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.custom.ReflectiveMixInResolver;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
@@ -39,7 +38,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class Serializer {
+class SerializerHelper {
 
     private static final ObjectMapper mapper = new ObjectMapper();
     public static String implementingClassesNamePrefix = "Default";
@@ -47,9 +46,9 @@ public class Serializer {
     static Map<Class<?>, Class<?>> customImplementationMap = new HashMap<>();
     private static boolean charsetWarningPrinted = false;
     private final List<JsonPreprocessor> preprocessors;
-    private final Logger logger = LoggerFactory.getLogger(Serializer.class);
+    private final Logger logger = LoggerFactory.getLogger(SerializerHelper.class);
 
-    public Serializer() {
+    public SerializerHelper() {
         mapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
         mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         mapper.setMixInResolver(new ReflectiveMixInResolver());
@@ -79,7 +78,7 @@ public class Serializer {
      * @param namespaceUrl URL of the prefix
      */
     public static void addKnownNamespace(String prefix, String namespaceUrl) {
-        Parser.knownNamespaces.put(prefix, namespaceUrl);
+        ParserHelper.knownNamespaces.put(prefix, namespaceUrl);
         JsonLDSerializer.contextItems.put(prefix, namespaceUrl);
     }
 
@@ -157,58 +156,6 @@ public class Serializer {
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(instance);
     }
 
-    /**
-     * Inverse method of "serialize"
-     *
-     * @param serialization JSON(-LD) string
-     * @param valueType     class of top level type
-     * @param <T>           deserialized type
-     * @return an object representing the provided JSON(-LD) structure
-     * @throws DeserializationException thrown, if deserialization fails, e.g. because the input is not valid RDF
-     */
-    public <T> T deserialize(String serialization, Class<T> valueType) throws DeserializationException {
-        try {
-            return new Parser().parseMessage(serialization, valueType);
-        } catch (IOException e) {
-            throw new DeserializationException("Failed to deserialize input.", e);
-        }
-    }
-
-    /**
-     * Inverse method of "serialize"
-     *
-     * @param serialization       JSON(-LD) string
-     * @param valueType           class of top level type
-     * @param serializationFormat RDF input format
-     * @param <T>                 deserialized type
-     * @return an object representing the provided JSON(-LD) structure
-     * @throws DeserializationException thrown, if deserialization fails, e.g. because the input is not valid RDF
-     */
-    public <T> T deserialize(String serialization, Class<T> valueType, Lang serializationFormat) throws DeserializationException {
-        try {
-
-            return new Parser().parseMessage(serialization, valueType, serializationFormat);
-        } catch (IOException e) {
-            throw new DeserializationException("Failed to deserialize input.", e);
-        }
-    }
-
-    /**
-     * Inverse method of "serialize"
-     *
-     * @param rdfModel  Input RDF Model to be turned into an Instance of the IDS Java classes
-     * @param valueType class of top level type
-     * @param <T>       deserialized type
-     * @return an object representing the provided JSON(-LD) structure
-     * @throws DeserializationException thrown, if deserialization fails, e.g. because the input is not valid RDF
-     */
-    public <T> T deserialize(Model rdfModel, Class<T> valueType) throws DeserializationException {
-        try {
-            return new Parser().parseMessage(rdfModel, valueType);
-        } catch (IOException e) {
-            throw new DeserializationException("Failed to deserialize input.", e);
-        }
-    }
 
     /**
      * Method to add a preprocessor for deserialization.
@@ -264,21 +211,6 @@ public class Serializer {
         }
     }
 
-    public Environment read(String value) throws DeserializationException {
-        try {
-            return new Parser().parseMessage(value, Environment.class);
-        } catch (IOException e) {
-            throw new DeserializationException("Could not deserialize to environment.", e);
-        }
-    }
-
-    public Environment read(String value, Lang serializationFormat) throws DeserializationException {
-        try {
-            return new Parser().parseMessage(value, Environment.class, serializationFormat);
-        } catch (IOException e) {
-            throw new DeserializationException("Could not deserialize to environment.", e);
-        }
-    }
 
 
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {

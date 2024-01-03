@@ -51,22 +51,38 @@ import java.util.stream.Collectors;
 
 /**
  * Internal class to handle the parsing of JSON-LD into java objects
+ *
  * @author maboeckmann
  */
-class Parser {
-
-    private final Logger logger = LoggerFactory.getLogger(Parser.class);
+class ParserHelper {
 
     private static final URI blankNodeIdPropertyUri = URI.create("https://admin-shell.io/aas/blankNodeId");
-
     static Map<String, String> knownNamespaces = new HashMap<>();
+    private final Logger logger = LoggerFactory.getLogger(ParserHelper.class);
+    /**
+     * This list contains all primitive Java types
+     */
+    private final Map<String, Class<?>> builtInMap = new HashMap<>();
+
+    {
+        builtInMap.put("int", Integer.TYPE);
+        builtInMap.put("long", Long.TYPE);
+        builtInMap.put("double", Double.TYPE);
+        builtInMap.put("float", Float.TYPE);
+        builtInMap.put("bool", Boolean.TYPE);
+        builtInMap.put("char", Character.TYPE);
+        builtInMap.put("byte", Byte.TYPE);
+        builtInMap.put("void", Void.TYPE);
+        builtInMap.put("short", Short.TYPE);
+    }
 
     /**
      * Main internal method for creating a java object from a given RDF graph and a URI of the object to handle
-     * @param inputModel Model on which queries are to be evaluated from which information can be retrieved
-     * @param objectUri URI of the object to be handled
+     *
+     * @param inputModel  Model on which queries are to be evaluated from which information can be retrieved
+     * @param objectUri   URI of the object to be handled
      * @param targetClass Variable containing the class which should be returned
-     * @param <T> Class which should be returned
+     * @param <T>         Class which should be returned
      * @return Object of desired class, filled with the values extracted from inputModel
      * @throws IOException thrown if the parsing fails
      */
@@ -85,18 +101,13 @@ class Parser {
                 //In case of a blank node, the "object URI" will just be a string and no valid URI. In that  case, we need a different query syntax
                 try {
                     new URL(objectUri);
-                }
-                catch (MalformedURLException e)
-                {
+                } catch (MalformedURLException e) {
                     currentObjectIsBlankNode = true;
                 }
-                if(currentObjectIsBlankNode)
-                {
+                if (currentObjectIsBlankNode) {
                     //Object is a blank node, so the subject URI cannot be used
                     queryString = "SELECT ?type { ?s <" + blankNodeIdPropertyUri + "> \"" + objectUri + "\" ; a ?type . }";
-                }
-                else
-                {
+                } else {
                     //Not a blank node, so we can work with the subject URI
                     queryString = "SELECT ?type { BIND(<" + objectUri + "> AS ?s). ?s a ?type . }";
                 }
@@ -128,7 +139,7 @@ class Parser {
                         //Is this class instantiable?
                         if (!currentClass.isInterface() && !Modifier.isAbstract(currentClass.getModifiers())) {
                             //candidateClass = currentClass;
-                            if (currentClass.getSimpleName().equals(className) || currentClass.getSimpleName().equals(Serializer.implementingClassesNamePrefix + className + Serializer.implementingClassesNameSuffix)) {
+                            if (currentClass.getSimpleName().equals(className) || currentClass.getSimpleName().equals(SerializerHelper.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
                                 targetClass = (Class<T>) currentClass;
                                 break;
                             }
@@ -147,8 +158,7 @@ class Parser {
             }
 
             //Enums have no constructors
-            if(targetClass.isEnum())
-            {
+            if (targetClass.isEnum()) {
                 return handleEnum(targetClass, objectUri);
             }
 
@@ -196,8 +206,7 @@ class Parser {
              */
 
             //Is this a trivial class with 0 fields? If so, the generated query would be "SELECT { }", which is illegal
-            if(methodMap.isEmpty())
-            {
+            if (methodMap.isEmpty()) {
                 return returnObject;
             }
 
@@ -207,11 +216,9 @@ class Parser {
 
             StringBuilder queryStringBuilder = new StringBuilder();
 
-            for(Map.Entry<String, String> entry : knownNamespaces.entrySet())
-            {
+            for (Map.Entry<String, String> entry : knownNamespaces.entrySet()) {
                 queryStringBuilder.append("PREFIX ").append(entry.getKey());
-                if(!entry.getKey().endsWith(":"))
-                {
+                if (!entry.getKey().endsWith(":")) {
                     queryStringBuilder.append(":");
                 }
                 queryStringBuilder.append(" <").append(entry.getValue()).append(">\n");
@@ -251,12 +258,9 @@ class Parser {
             queryStringBuilder.append(" { ");
 
             //In case of blank nodes, we can't work with the subject URI
-            if(currentObjectIsBlankNode)
-            {
+            if (currentObjectIsBlankNode) {
                 queryStringBuilder.append("?s <").append(blankNodeIdPropertyUri).append("> \"").append(objectUri).append("\" ;");
-            }
-            else
-            {
+            } else {
                 queryStringBuilder.append(" <").append(objectUri).append(">");
             }
 
@@ -274,23 +278,20 @@ class Parser {
                 //In AAS, every field is optional, as there are no validation annotations in the model
                 queryStringBuilder.append(" OPTIONAL {");
 
-                if(currentObjectIsBlankNode)
-                {
+                if (currentObjectIsBlankNode) {
                     queryStringBuilder.append(" ?s ");
-                }
-                else {
+                } else {
                     queryStringBuilder.append(" <").append(objectUri).append("> "); //subject, as passed to the function
                 }
                 //For the field, get the JsonAlias annotation (present for all classes generated by the CodeGen tool)
                 //Find the annotation value containing a colon and interpret this as "prefix:predicate"
                 boolean foundAnnotation = false;
-                if(field.getAnnotation(IRI.class) != null) {
+                if (field.getAnnotation(IRI.class) != null) {
                     Optional<String> currentAnnotation = Arrays.stream(field.getAnnotation(IRI.class).value()).map(this::wrapIfUri).filter(annotation -> annotation.contains(":")).findFirst();
                     currentAnnotation.ifPresent(queryStringBuilder::append);
                     foundAnnotation = true;
                 }
-                if(!foundAnnotation)
-                {
+                if (!foundAnnotation) {
                     logger.warn("Failed to retrieve JsonAlias for field " + field + ". Assuming aas:" + entry.getKey());
                     queryStringBuilder.append("aas:").append(entry.getKey());
                 }
@@ -321,7 +322,7 @@ class Parser {
             //Query for all unknown properties and their values
             //Select properties and values only
 
-            if(!targetClass.equals(AbstractLangString.class)) { //LangString has no additional properties map. Skip this step
+            if (!targetClass.equals(AbstractLangString.class)) { //LangString has no additional properties map. Skip this step
 
                 //CONSTRUCT { ?s ?p ?o } { ?s ?p ?o. FILTER(?p NOT IN (list of ids properties)) }
                 for (Map.Entry<String, String> entry : knownNamespaces.entrySet()) {
@@ -420,21 +421,16 @@ class Parser {
                         }
                     }
                     externalPropertiesQueryExecution.close();
-                }
-                catch (NoSuchMethodException ignored)
-                {
+                } catch (NoSuchMethodException ignored) {
                     //Method does not exist, skip
                 }
             }
 
 
-
             Query query;
             try {
                 query = QueryFactory.create(queryString);
-            }
-            catch (QueryParseException e)
-            {
+            } catch (QueryParseException e) {
                 logger.error(queryString);
                 throw e;
             }
@@ -459,13 +455,10 @@ class Parser {
                     String value1 = "", value2 = "", parameterName = "";
                     QuerySolution querySolution2 = resultSet.next();
                     Iterator<String> varNamesIt = querySolution2.varNames();
-                    while(varNamesIt.hasNext())
-                    {
+                    while (varNamesIt.hasNext()) {
                         String varName = varNamesIt.next();
-                        if(querySolution.contains(varName))
-                        {
-                            if(!querySolution.get(varName).equals(querySolution2.get(varName)))
-                            {
+                        if (querySolution.contains(varName)) {
+                            if (!querySolution.get(varName).equals(querySolution2.get(varName))) {
                                 parameterName = varName;
                                 value1 = querySolution.get(varName).toString();
                                 value2 = querySolution2.get(varName).toString();
@@ -473,8 +466,7 @@ class Parser {
                             }
                         }
                     }
-                    if(!value1.isEmpty())
-                    {
+                    if (!value1.isEmpty()) {
                         throw new IOException(objectUri + " has multiple values for " + parameterName + ", which is not allowed. Values are: " + value1 + " and " + value2);
                     }
                     throw new IOException("Multiple bindings for SPARQL query which should only have one binding. Input contains multiple values for a field which may occur only once.");
@@ -491,8 +483,7 @@ class Parser {
                     if (Collection.class.isAssignableFrom(currentType)) {
                         sparqlParameterName += "s"; //plural form for the concatenated values
                     }
-                    if(!querySolution.contains(sparqlParameterName))
-                    {
+                    if (!querySolution.contains(sparqlParameterName)) {
                         sparqlParameterName += "Blank"; //If not present, try to go with the option for blank nodes instead
                         //TODO: Note: This would not yield full results yet in case some of the values are encapsulated
                         // in blank nodes and some are not, for the same property
@@ -504,7 +495,7 @@ class Parser {
                         String blankNodeId = "";
                         //If the object is a blank node, we will struggle to make follow-up queries starting at the blank node as subject
                         //For that case, we add some artificial identifiers here
-                        if(objectIsBlankNode) {
+                        if (objectIsBlankNode) {
                             blankNodeId = querySolution.get(sparqlParameterName).asNode().getBlankNodeId().toString();
                         }
                         if (currentType.isEnum()) {
@@ -512,8 +503,7 @@ class Parser {
                             //1: The URI of the enum value is given directly e.g. ?s ?p <someUri>
                             //2: The URI of the enum value is encapsulated in a blank node, e.g.
                             //  ?s ?p [ a demo:myEnum, demo:enumValue ]
-                            if(objectIsBlankNode)
-                            {
+                            if (objectIsBlankNode) {
 
                                 Query innerEnumQuery = QueryFactory.create("SELECT ?type { ?s <" + blankNodeIdPropertyUri + "> + \"" + blankNodeId + "\" ; a ?type } ");
                                 QueryExecution innerEnumQueryExecution = QueryExecutionFactory.create(innerEnumQuery, inputModel);
@@ -522,24 +512,22 @@ class Parser {
                                 //Only throw this if there is no successful execution
                                 IOException anyIOException = null;
                                 boolean oneSuccessfulEnumFound = false;
-                                while(innerEnumQueryExecutionResultSet.hasNext())
-                                {
+                                while (innerEnumQueryExecutionResultSet.hasNext()) {
                                     try {
                                         entry.getValue().invoke(returnObject, handleEnum(currentType, innerEnumQueryExecutionResultSet.next().get("type").toString()));
                                         oneSuccessfulEnumFound = true;
                                         break; //Stop after the first successful execution
-                                    }
-                                    catch (IOException e) //There might be errors, if multiple types are present, see example above
+                                    } catch (
+                                            IOException e) //There might be errors, if multiple types are present, see example above
                                     {
                                         anyIOException = e;
                                     }
                                 }
                                 //If nothing worked, but something failed (i.e. there exists a problematic element, but no proper element), we throw an exception
-                                if(anyIOException != null && !oneSuccessfulEnumFound)
+                                if (anyIOException != null && !oneSuccessfulEnumFound)
                                     throw new IOException("Could not parse Enum. ", anyIOException);
                                 innerEnumQueryExecution.close();
-                            }
-                            else {
+                            } else {
                                 entry.getValue().invoke(returnObject, handleEnum(currentType, currentSparqlBinding));
                             }
                             continue;
@@ -635,23 +623,23 @@ class Parser {
             queryExecution.close();
 
             return returnObject;
-        } catch (NoSuchMethodException | NullPointerException | IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchFieldException | URISyntaxException | DatatypeConfigurationException | ClassNotFoundException e) {
+        } catch (NoSuchMethodException | NullPointerException | IllegalAccessException | InstantiationException |
+                 InvocationTargetException | NoSuchFieldException | URISyntaxException |
+                 DatatypeConfigurationException | ClassNotFoundException e) {
             throw new IOException("Failed to instantiate desired class (" + targetClass.getName() + ")", e);
         }
     }
 
     /**
      * This function wraps a URI with "<" ">", if needed, to avoid errors about "unknown namespace http(s):"
+     *
      * @param input Input URI, possibly a prefixed value
      * @return If this is a full URI, starting with http or https, the URI will be encapsulated in "<" ">"
      */
-    private String wrapIfUri(String input)
-    {
-        if(input.startsWith("http://") || input.startsWith("https://"))
-        {
+    private String wrapIfUri(String input) {
+        if (input.startsWith("http://") || input.startsWith("https://")) {
             return "<" + input + ">";
-        }
-        else {
+        } else {
             return input;
         }
     }
@@ -681,8 +669,7 @@ class Parser {
     private HashMap<String, Object> handleForeignNode(RDFNode node, HashMap<String, Object> map, Model model) throws IOException, URISyntaxException {
         //Make sure it is not a literal. If it were, we would not know the property name and could not add this to the map
         //Literals must be handled "one recursion step above"
-        if(node.isLiteral())
-        {
+        if (node.isLiteral()) {
             throw new IOException("Literal passed to handleForeignNode. Must be non-literal RDF node");
         }
 
@@ -693,15 +680,13 @@ class Parser {
         ResultSet resultSet = queryExecution.execSelect();
 
 
-
         //Handle outgoing properties of this foreign node
-        while(resultSet.hasNext())
-        {
+        while (resultSet.hasNext()) {
             QuerySolution querySolution = resultSet.next();
 
             String propertyUri = querySolution.get("p").toString();
 
-            if(map.containsKey(propertyUri)) {
+            if (map.containsKey(propertyUri)) {
                 //If it is not an array list yet, turn it into one
                 if (!(map.get(propertyUri) instanceof ArrayList)) {
                     ArrayList<Object> newList = new ArrayList<>();
@@ -711,36 +696,28 @@ class Parser {
             }
 
             //Check the type of object we have. If it is a literal, just add it as "flat value" to the map
-            if(querySolution.get("o").isLiteral())
-            {
+            if (querySolution.get("o").isLiteral()) {
                 //Handle some small literal. This function will turn this into a TypedLiteral if appropriate
                 Object o = handleForeignLiteral(querySolution.getLiteral("o"));
-                if(map.containsKey(propertyUri))
-                {
-                    map.put(querySolution.get("p").toString(), ((ArrayList)map.get(propertyUri)).add(o));
-                }
-                else
-                {
+                if (map.containsKey(propertyUri)) {
+                    map.put(querySolution.get("p").toString(), ((ArrayList) map.get(propertyUri)).add(o));
+                } else {
                     map.put(querySolution.get("p").toString(), o);
                 }
             }
 
             //If it is not a literal, we need to call this function recursively. Create new map for sub object
-            else
-            {
+            else {
                 //logger.info("Calling handleForeignNode for " + querySolution.getResource("o").toString());
-                if(querySolution.getResource("s").toString().equals(querySolution.getResource("o").toString()))
-                {
+                if (querySolution.getResource("s").toString().equals(querySolution.getResource("o").toString())) {
                     logger.warn("Found self-reference on " + querySolution.getResource("s").toString() + " via predicate " + querySolution.getResource("p").toString() + " .");
                     continue;
                 }
                 HashMap<String, Object> subMap = handleForeignNode(querySolution.getResource("o"), new HashMap<>(), model);
                 subMap.put("@id", querySolution.getResource("o").getURI());
-                if(map.containsKey(propertyUri))
-                {
-                    map.put(querySolution.get("p").toString(), ((ArrayList)map.get(propertyUri)).add(subMap));
-                }
-                else {
+                if (map.containsKey(propertyUri)) {
+                    map.put(querySolution.get("p").toString(), ((ArrayList) map.get(propertyUri)).add(subMap));
+                } else {
                     map.put(querySolution.get("p").toString(), subMap);
                 }
             }
@@ -749,11 +726,11 @@ class Parser {
         return map;
     }
 
-
     /**
      * Utility function, used to obtain the field corresponding to a setter function
+     *
      * @param targetClass Class object in which we search for a field
-     * @param fieldName Guessed name of the field to search for
+     * @param fieldName   Guessed name of the field to search for
      * @return Field object matching the name (possibly with leading underscore)
      * @throws NoSuchFieldException thrown, if no such field exists
      */
@@ -766,9 +743,7 @@ class Parser {
             } catch (NoSuchFieldException e2) {
                 try {
                     return targetClass.getDeclaredField("_" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1));
-                }
-                catch (NoSuchFieldException e3)
-                {
+                } catch (NoSuchFieldException e3) {
                     throw new NoSuchFieldException("Failed to find field which is set by method " + fieldName);
                 }
             }
@@ -777,9 +752,10 @@ class Parser {
 
     /**
      * Internal function to create a single enum object from a given desired class and a URL
+     *
      * @param enumClass The enum class
-     * @param url The URL of the enum value
-     * @param <T> Enum class
+     * @param url       The URL of the enum value
+     * @param <T>       Enum class
      * @return Value of enumClass matching the input URL
      * @throws IOException thrown if no matching enum value could be found
      */
@@ -788,8 +764,7 @@ class Parser {
             throw new RuntimeException("Non-Enum class passed to handleEnum function.");
         }
         T[] constants = enumClass.getEnumConstants();
-        if(url.contains("/"))
-        {
+        if (url.contains("/")) {
             url = url.substring(url.lastIndexOf("/") + 1);
         }
         for (T constant : constants) {
@@ -803,13 +778,14 @@ class Parser {
 
     /**
      * Function for handling a rather primitive object, i.e. not a complex sub-object (e.g. URI, TypedLiteral, GregorianCalendar values, ...)
-     * @param currentType Input Class (or primitive)
-     * @param literal Value as literal (can be null in some cases)
+     *
+     * @param currentType          Input Class (or primitive)
+     * @param literal              Value as literal (can be null in some cases)
      * @param currentSparqlBinding Value as SPARQL Binding (can be null in some cases)
      * @return Object of type currentType
-     * @throws URISyntaxException thrown, if currentType is URI, but the value cannot be parsed to a URI
+     * @throws URISyntaxException             thrown, if currentType is URI, but the value cannot be parsed to a URI
      * @throws DatatypeConfigurationException thrown, if currentType is XMLGregorianCalendar or Duration, but parsing fails
-     * @throws IOException thrown, if no matching "simple class" could be found
+     * @throws IOException                    thrown, if no matching "simple class" could be found
      */
     private Object handlePrimitive(Class<?> currentType, Literal literal, String currentSparqlBinding) throws URISyntaxException, DatatypeConfigurationException, IOException {
         //Java way of checking for primitives, i.e. int, char, float, double, ...
@@ -853,18 +829,14 @@ class Parser {
             //Try parsing this as dateTimeStamp (most specific). If seconds / timezone is missing, DatatypeFormatException will be thrown
             try {
                 return DatatypeFactory.newInstance().newXMLGregorianCalendar(GregorianCalendar.from(ZonedDateTime.parse(literal.getValue().toString())));
-            }
-            catch (DatatypeFormatException | DateTimeParseException ignored)
-            {
+            } catch (DatatypeFormatException | DateTimeParseException ignored) {
                 //Not a valid dateTimeStamp. Try parsing just to Date
                 try {
                     Date date = new SimpleDateFormat().parse(literal.getValue().toString());
                     GregorianCalendar calendar = new GregorianCalendar();
                     calendar.setTime(date);
                     return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
-                }
-                catch (ParseException | DateTimeParseException | DatatypeFormatException e2)
-                {
+                } catch (ParseException | DateTimeParseException | DatatypeFormatException e2) {
                     //Do NOT use literal.getValue(), as that can already cause yet another DatatypeFormatException
                     throw new IOException("Could not turn " + literal.getString() + " into " + literal.getDatatypeURI(), e2);
                 }
@@ -906,22 +878,6 @@ class Parser {
         throw new IOException("Unrecognized primitive type: " + currentType.getName());
     }
 
-    /**
-     * This list contains all primitive Java types
-     */
-    private final Map<String, Class<?>> builtInMap = new HashMap<>();
-    {
-        builtInMap.put("int", Integer.TYPE);
-        builtInMap.put("long", Long.TYPE);
-        builtInMap.put("double", Double.TYPE);
-        builtInMap.put("float", Float.TYPE);
-        builtInMap.put("bool", Boolean.TYPE);
-        builtInMap.put("char", Character.TYPE);
-        builtInMap.put("byte", Byte.TYPE);
-        builtInMap.put("void", Void.TYPE);
-        builtInMap.put("short", Short.TYPE);
-    }
-
     private boolean isArrayListTypePrimitive(Type t) throws IOException {
         String typeName = extractTypeNameFromCollection(t);
 
@@ -940,14 +896,12 @@ class Parser {
             throw new IOException("Illegal argument encountered while interpreting type parameter");
         }
         //"<? extends XYZ>" or super instead of extends
-        if(typeName.contains("?"))
-        {
+        if (typeName.contains("?")) {
             //last space is where we want to cut off (right after the "extends"), as well as removing the last closing braces
             return typeName.substring(typeName.lastIndexOf(" ") + 1, typeName.length() - 1);
         }
         //No extends
-        else
-        {
+        else {
             return typeName.substring(typeName.indexOf("<") + 1, typeName.indexOf(">"));
         }
     }
@@ -974,9 +928,10 @@ class Parser {
 
     /**
      * Entry point to this class. Takes an RDF Model and a desired target class (can be an interface)
-     * @param rdfModel RDF input to be parsed
+     *
+     * @param rdfModel    RDF input to be parsed
      * @param targetClass Desired target class (something as abstract as "Message.class" is allowed)
-     * @param <T> Desired target class
+     * @param <T>         Desired target class
      * @return Object of desired target class, representing the values contained in input message
      * @throws IOException if the parsing of the message fails
      */
@@ -1004,7 +959,7 @@ class Parser {
             String className = fullName.substring(fullName.lastIndexOf('/') + 1);
 
             //In case of hash-namespaces
-            if(className.contains("#")) {
+            if (className.contains("#")) {
                 className = className.substring(className.lastIndexOf("#"));
             }
 
@@ -1014,7 +969,7 @@ class Parser {
             }
 
             for (Class<?> currentClass : implementingClasses) {
-                if (currentClass.getSimpleName().equals(Serializer.implementingClassesNamePrefix + className + Serializer.implementingClassesNameSuffix)) {
+                if (currentClass.getSimpleName().equals(SerializerHelper.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
                     returnCandidates.put(solution.get("id").toString(), currentClass);
                 }
             }
@@ -1028,13 +983,11 @@ class Parser {
 
         //At this point, we parsed the model and know to which implementing class we want to parse
         //Check if there are several options available
-        if(returnCandidates.size() > 1)
-        {
+        if (returnCandidates.size() > 1) {
             String bestCandidateId = null;
             Class<?> bestCandidateClass = null;
             long bestNumRelations = -1L;
-            for(Map.Entry<String, Class<?>> entry : returnCandidates.entrySet())
-            {
+            for (Map.Entry<String, Class<?>> entry : returnCandidates.entrySet()) {
                 String determineBestCandidateQueryString = "CONSTRUCT { ?s ?p ?o . ?o ?p2 ?o2 . ?o2 ?p3 ?o3 . ?o3 ?p4 ?o4 . ?o4 ?p5 ?o5 . }" +
                         " WHERE {" +
                         " BIND(<" + entry.getKey() + "> AS ?s). ?s ?p ?o ." +
@@ -1042,8 +995,7 @@ class Parser {
                 Query determineBestCandidateQuery = QueryFactory.create(determineBestCandidateQueryString);
                 QueryExecution determineBestCandidateQueryExecution = QueryExecutionFactory.create(determineBestCandidateQuery, rdfModel);
                 long graphSize = determineBestCandidateQueryExecution.execConstruct().size();
-                if(graphSize > bestNumRelations)
-                {
+                if (graphSize > bestNumRelations) {
                     bestNumRelations = graphSize;
                     bestCandidateId = entry.getKey();
                     bestCandidateClass = entry.getValue();
@@ -1065,9 +1017,10 @@ class Parser {
 
     /**
      * Entry point to this class. Takes a message and a desired target class (can be an interface)
-     * @param message Object to be parsed. Note that the name is misleading: One can also parse non-message IDS objects with this function
+     *
+     * @param message     Object to be parsed. Note that the name is misleading: One can also parse non-message IDS objects with this function
      * @param targetClass Desired target class (something as abstract as "Message.class" is allowed)
-     * @param <T> Desired target class
+     * @param <T>         Desired target class
      * @return Object of desired target class, representing the values contained in input message
      * @throws IOException if the parsing of the message fails
      */
@@ -1078,10 +1031,11 @@ class Parser {
 
     /**
      * Entry point to this class. Takes a message and a desired target class (can be an interface)
-     * @param message Object to be parsed. Note that the name is misleading: One can also parse non-message IDS objects with this function
-     * @param targetClass Desired target class (something as abstract as "Message.class" is allowed)
+     *
+     * @param message             Object to be parsed. Note that the name is misleading: One can also parse non-message IDS objects with this function
+     * @param targetClass         Desired target class (something as abstract as "Message.class" is allowed)
      * @param serializationFormat Input RDF format
-     * @param <T> Desired target class
+     * @param <T>                 Desired target class
      * @return Object of desired target class, representing the values contained in input message
      * @throws IOException if the parsing of the message fails
      */
@@ -1119,7 +1073,7 @@ class Parser {
      * Reads a message into an Apache Jena model, guessing the input language.
      * Note: Guessing the language may cause some error messages during parsing attempts
      *
-     * @param message Message to be read
+     * @param message  Message to be read
      * @param language The RDF serialization of the input. Supported formats are JSON-LD, N-Triple, Turtle, and RDF-XML
      * @return The model of the message
      */
@@ -1129,9 +1083,7 @@ class Parser {
 
         try {
             RDFDataMgr.read(targetModel, new ByteArrayInputStream(message.getBytes()), language);
-        }
-        catch (RiotException e)
-        {
+        } catch (RiotException e) {
             throw new IOException("Failed to parse input as " + language, e);
         }
         return targetModel;
@@ -1139,6 +1091,7 @@ class Parser {
 
     /**
      * Get a list of all subclasses (by JsonSubTypes annotation) which can be instantiated
+     *
      * @param someClass Input class of which implementable subclasses need to be found
      * @return ArrayList of instantiable subclasses
      */
@@ -1152,20 +1105,18 @@ class Parser {
             }
         }
         if (!someClass.isInterface() && !Modifier.isAbstract(someClass.getModifiers())) {
-            result.add(Serializer.customImplementationMap.getOrDefault(someClass, someClass));
+            result.add(SerializerHelper.customImplementationMap.getOrDefault(someClass, someClass));
         }
         return result;
     }
 
-    private void addArtificialBlankNodeLabels(Model m)
-    {
+    private void addArtificialBlankNodeLabels(Model m) {
         //Get all blank nodes
         Query q = QueryFactory.create("SELECT DISTINCT ?s { ?s ?p ?o . FILTER(isBlank(?s)) } ");
         QueryExecution qe = QueryExecutionFactory.create(q, m);
         ResultSet rs = qe.execSelect();
         List<Statement> statementsToAdd = new ArrayList<>();
-        while(rs.hasNext())
-        {
+        while (rs.hasNext()) {
             QuerySolution qs = rs.next();
             statementsToAdd.add(ResourceFactory.createStatement(qs.get("?s").asResource(),
                     ResourceFactory.createProperty(blankNodeIdPropertyUri.toString()),
