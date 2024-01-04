@@ -1,40 +1,48 @@
+/*
+ * Copyright (c) 2024 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal;
 
+/**
+ * @author schnicke
+ */
 public class AASXUtils {
 
 
     /**
-     * Gets the path from a URL e.g "http://localhost:8080/path/to/test.file"
-     * results in "/path/to/test.file"
+     * Removes the file: or file:// suffix of an URI
      *
-     * @param url URL to get the path for
-     * @return the path from the URL
+     * @param uri
+     *            URI to remove the file suffix from
+     * @return the URI without the file suffix
      */
-    public static String getPathFromURL(String url) {
-        if (url == null) {
+    public static String removeFilePartOfURI(String uri) {
+        if (uri == null) {
             return null;
         }
 
-        if (url.contains("://")) {
-
-            // Find the ":" and and remove the "http://" from the url
-            int index = url.indexOf(":") + 3;
-            url = url.substring(index);
-
-            // Find the first "/" from the URL (now without the "http://") and remove
-            // everything before that
-            index = url.indexOf("/");
-            url = url.substring(index);
-
-            // Recursive call to deal with more than one server parts
-            // (e.g. basyx://127.0.0.1:6998//https://localhost/test/)
-            return getPathFromURL(url);
-        } else {
-            // Make sure the path has a / at the start
-            if (!url.startsWith("/")) {
-                url = "/" + url;
-            }
-            return url;
+        if (uri.startsWith("file://")) {
+            return uri.replaceFirst("file://", "");
+        } else if (uri.startsWith("file:")) {
+            return uri.replaceFirst("file:", "");
         }
+
+        return uri;
+    }
+    
+    public static boolean isFilePath(String uri) {
+        return uri.startsWith("/") || uri.startsWith("file:") || uri.startsWith("./") || uri.startsWith("../");
     }
 }

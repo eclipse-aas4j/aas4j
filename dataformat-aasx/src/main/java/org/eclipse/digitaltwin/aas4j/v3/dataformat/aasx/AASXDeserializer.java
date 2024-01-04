@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -123,10 +124,14 @@ public class AASXDeserializer {
      *             if deserialization of the serialized aas environment fails
      */
     public List<InMemoryFile> getRelatedFiles() throws InvalidFormatException, IOException, DeserializationException {
-        List<String> filePaths = parseReferencedFilePathsFromAASX();
+        List<String> filePaths = parseReferencedFilePathsFromAASX().stream().filter(AASXUtils::isFilePath).collect(Collectors.toList());
         List<InMemoryFile> files = new ArrayList<>();
         for (String filePath : filePaths) {
-            files.add(readFile(aasxRoot, filePath));
+            try {
+                files.add(readFile(aasxRoot, filePath));
+            } catch (Exception e) {
+                logger.warn("Loading file " + filePath + " failed and will not be included. Exception: " + e);
+            }
         }
         return files;
     }
@@ -227,7 +232,7 @@ public class AASXDeserializer {
     }
 
     private InMemoryFile readFile(OPCPackage aasxRoot, String filePath) throws InvalidFormatException, IOException {
-        PackagePart part = aasxRoot.getPart(PackagingURIHelper.createPartName(AASXUtils.getPathFromURL(filePath)));
+        PackagePart part = aasxRoot.getPart(PackagingURIHelper.createPartName(AASXUtils.removeFilePartOfURI(filePath)));
         InputStream stream = part.getInputStream();
         return new InMemoryFile(stream.readAllBytes(), filePath);
     }
