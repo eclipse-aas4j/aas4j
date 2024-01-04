@@ -30,6 +30,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFLanguages;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,11 +41,11 @@ import java.util.*;
 
 class SerializerHelper {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
-    public static String implementingClassesNamePrefix = "Default";
-    public static String implementingClassesNameSuffix = "";
+    private final ObjectMapper mapper = new ObjectMapper();
+    public String implementingClassesNamePrefix = "Default";
+    public String implementingClassesNameSuffix = "";
     static Map<Class<?>, Class<?>> customImplementationMap = new HashMap<>();
-    private static boolean charsetWarningPrinted = false;
+    private  boolean charsetWarningPrinted = false;
     private final List<JsonPreprocessor> preprocessors;
     private final Logger logger = LoggerFactory.getLogger(SerializerHelper.class);
 
@@ -77,7 +78,7 @@ class SerializerHelper {
      * @param prefix       Prefix to be added
      * @param namespaceUrl URL of the prefix
      */
-    public static void addKnownNamespace(String prefix, String namespaceUrl) {
+    public void addKnownNamespace(String prefix, String namespaceUrl) {
         ParserHelper.knownNamespaces.put(prefix, namespaceUrl);
         JsonLDSerializer.contextItems.put(prefix, namespaceUrl);
     }
@@ -103,12 +104,13 @@ class SerializerHelper {
      * @return RDF serialization of the provided object graph
      * @throws IOException if the serialization fails
      */
-    public synchronized String serialize(Object instance, Lang format) throws IOException {
+    public String serialize(Object instance, Lang format) throws IOException {
         return serialize(instance, format, new HashMap<>());
     }
 
     //Synchronized is required for thread safety. Without it, context elements might be missing in case of multiple simultaneous calls to this function
-    public synchronized String serialize(Object instance, Lang format, Map<Object, String> idMap) throws IOException {
+    //HoRi: No, bad design
+    public String serialize(Object instance, Lang format, Map<Object, String> idMap) throws IOException {
         if (format != RDFLanguages.JSONLD && format != RDFLanguages.TURTLE && format != RDFLanguages.RDFXML) {
             throw new IOException("RDFFormat " + format + " is currently not supported by the serializer.");
         }
@@ -206,6 +208,26 @@ class SerializerHelper {
     public String write(Environment aasEnvironment, Lang format, Map<Object, String> idMap) throws SerializationException {
         try {
             return serialize(aasEnvironment, format, idMap);
+        } catch (IOException e) {
+            throw new SerializationException("Failed to serialize environment.", e);
+        }
+    }
+
+    public String write(Referable referable) throws SerializationException {
+        try {
+            return serialize(referable);
+        } catch (IOException e) {
+            throw new SerializationException("Failed to serialize environment.", e);
+        }
+    }
+
+    public String write(Referable referable, Lang format) throws SerializationException {
+        return write(referable, format, new HashMap<>());
+    }
+
+    public String write(Referable referable, Lang format, Map<Object, String> idMap) throws SerializationException {
+        try {
+            return serialize(referable, format, idMap);
         } catch (IOException e) {
             throw new SerializationException("Failed to serialize environment.", e);
         }

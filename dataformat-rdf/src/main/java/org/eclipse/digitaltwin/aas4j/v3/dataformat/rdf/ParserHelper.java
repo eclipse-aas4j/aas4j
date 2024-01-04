@@ -135,16 +135,16 @@ class ParserHelper {
                         className = className.substring(className.lastIndexOf("#") + 1);
                     }
 
-                    for (Class<?> currentClass : implementingClasses) {
-                        //Is this class instantiable?
-                        if (!currentClass.isInterface() && !Modifier.isAbstract(currentClass.getModifiers())) {
-                            //candidateClass = currentClass;
-                            if (currentClass.getSimpleName().equals(className) || currentClass.getSimpleName().equals(SerializerHelper.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
-                                targetClass = (Class<T>) currentClass;
-                                break;
-                            }
-                        }
-                    }
+//                    for (Class<?> currentClass : implementingClasses) {
+//                        //Is this class instantiable?
+//                        if (!currentClass.isInterface() && !Modifier.isAbstract(currentClass.getModifiers())) {
+//                            //candidateClass = currentClass;
+//                            if (currentClass.getSimpleName().equals(className) || currentClass.getSimpleName().equals(this.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
+//                                targetClass = (Class<T>) currentClass;
+//                                break;
+//                            }
+//                        }
+//                    }
                 }
                 queryExecution.close();
                 //Did we find "the" class, i.e. instantiable and name matches?
@@ -968,11 +968,11 @@ class ParserHelper {
                 className = className.substring(4);
             }
 
-            for (Class<?> currentClass : implementingClasses) {
-                if (currentClass.getSimpleName().equals(SerializerHelper.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
-                    returnCandidates.put(solution.get("id").toString(), currentClass);
-                }
-            }
+//            for (Class<?> currentClass : implementingClasses) {
+//                if (currentClass.getSimpleName().equals(SerializerHelper.implementingClassesNamePrefix + className + SerializerHelper.implementingClassesNameSuffix)) {
+//                    returnCandidates.put(solution.get("id").toString(), currentClass);
+//                }
+//            }
             //if (returnCandidates.size() > 0) break;
         }
         queryExecution.close();
