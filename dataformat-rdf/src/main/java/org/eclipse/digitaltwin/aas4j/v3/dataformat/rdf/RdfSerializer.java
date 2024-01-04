@@ -55,7 +55,7 @@ public class RdfSerializer {
      */
     public String write(Referable referable, Lang serializationFormat) throws SerializationException {
         try {
-            throw new RuntimeException("Not Implemented");
+            return serializerHelper.write(referable, serializationFormat);
         } catch (Exception ex) {
             throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
         }
