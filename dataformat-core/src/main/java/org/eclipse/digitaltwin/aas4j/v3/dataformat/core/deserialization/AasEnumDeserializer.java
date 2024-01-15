@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,11 +29,11 @@ import java.io.IOException;
  *
  * @param <T> Type of enum to deserialize
  */
-public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
+public class AasEnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
 
     protected final Class<T> type;
 
-    public EnumDeserializer(Class<T> type) {
+    public AasEnumDeserializer(Class<T> type) {
         this.type = type;
     }
 

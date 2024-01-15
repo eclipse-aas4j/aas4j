@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsDefinitionTypeIec61360Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsPreferredNameTypeIec61360Deserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.LangStringsShortNameTypeIec61360Deserializer;
@@ -97,7 +98,7 @@ public interface DataSpecificationIec61360Mixin {
     public Reference getValueId();
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataType")
-    @JsonSerialize(using = EnumSerializer.class)
+    @JsonSerialize(using = AasEnumSerializer.class)
     public DataTypeIec61360 getDataType();
 
 }

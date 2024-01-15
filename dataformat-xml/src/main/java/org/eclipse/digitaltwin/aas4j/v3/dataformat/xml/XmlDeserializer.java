@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.AasEnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.XmlDataformatAnnotationIntrospector;
@@ -93,7 +94,7 @@ public class XmlDeserializer {
 
     protected SimpleModule buildEnumModule() {
         SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
+        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new AasEnumDeserializer<>(x)));
         return module;
     }
 

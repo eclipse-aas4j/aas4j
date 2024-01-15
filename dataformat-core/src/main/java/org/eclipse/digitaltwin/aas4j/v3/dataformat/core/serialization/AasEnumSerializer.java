@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import java.io.IOException;
  * serialization will be used
  */
 @SuppressWarnings("rawtypes")
-public class EnumSerializer extends JsonSerializer<Enum> {
+public class AasEnumSerializer extends JsonSerializer<Enum> {
 
 	@Override
 	public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {

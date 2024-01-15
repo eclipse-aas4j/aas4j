@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +17,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
 import com.google.common.reflect.TypeToken;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.AasEnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.IdentifiableCollector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
@@ -71,7 +72,7 @@ public class AasUtils {
 			return null;
 		}
 		return String.format("[%s]%s", reference.getType(),
-				reference.getKeys().stream().map(x -> String.format("(%s)%s", EnumSerializer.serializeEnumName(x.getType().name()), x.getValue())).collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
+				reference.getKeys().stream().map(x -> String.format("(%s)%s", AasEnumSerializer.serializeEnumName(x.getType().name()), x.getValue())).collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
 	}
 
     /**
@@ -116,7 +117,7 @@ public class AasUtils {
     public static KeyTypes referableToKeyType(Referable referable) {
         Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
         if (aasInterface != null) {
-            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
+            return KeyTypes.valueOf(AasEnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
         }
         return null;
     }
@@ -130,7 +131,7 @@ public class AasUtils {
      */
 	private static Class<?> keyTypeToClass(KeyTypes key) {
         return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
-				.filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
+				.filter(x -> x.getSimpleName().equals(AasEnumSerializer.serializeEnumName(key.name())))
                 .findAny()
                 .orElse(null);
     }
