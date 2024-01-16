@@ -34,7 +34,7 @@ import java.io.IOException;
  * serialization will be used
  */
 @SuppressWarnings("rawtypes")
-public class EnumSerializer extends JsonSerializer<Enum> {
+public class AasEnumSerializer extends JsonSerializer<Enum> {
 
 	@Override
 	public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider) throws IOException {

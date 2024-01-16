@@ -98,11 +98,7 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(InputStream src) throws DeserializationException {
-        try {
-            return mapper.readValue(new InputStreamReader(src, DEFAULT_CHARSET), Environment.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return read(src, DEFAULT_CHARSET);
     }
 
     /**
@@ -131,7 +127,7 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(java.io.File file, Charset charset)
-            throws FileNotFoundException, DeserializationException {
+        throws FileNotFoundException, DeserializationException {
         return read(new FileInputStream(file), charset);
     }
 
@@ -223,11 +219,11 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public <T extends Referable> T readReferable(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
-        return readReferable(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
-                outputClass);
+        try {
+            return mapper.readValue(new InputStreamReader(src, charset), outputClass);
+        } catch (IOException ex) {
+            throw new DeserializationException("error deserializing Referable", ex);
+        }
     }
 
     /**
@@ -318,11 +314,11 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public <T extends Referable> List<T> readReferables(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
-        return readReferables(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
-                outputClass);
+        try {
+            return mapper.readValue(new InputStreamReader(src, charset), mapper.getTypeFactory().constructCollectionLikeType(List.class, outputClass));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -356,7 +352,7 @@ public class JsonDeserializer {
 
     public Reference readReference(String reference) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(reference), Reference.class);
+            return mapper.readValue(reference, Reference.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing the Reference", ex);
         }
@@ -373,7 +369,7 @@ public class JsonDeserializer {
 
     public SpecificAssetId readSpecificAssetId(String specificAssetId) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(specificAssetId), SpecificAssetId.class);
+            return mapper.readValue(specificAssetId, SpecificAssetId.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing the SpecificAssetId", ex);
         }
@@ -381,7 +377,7 @@ public class JsonDeserializer {
 
     public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
         try {
-            return mapper.readValue(specificAssetIds,new TypeReference<List<SpecificAssetId>>(){});
+            return mapper.readValue(specificAssetIds, new TypeReference<List<SpecificAssetId>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of SpecificAssetIds", ex);
         }
@@ -389,7 +385,7 @@ public class JsonDeserializer {
 
     public SubmodelDescriptor readSubmodelDescriptor(String submodelDescriptor) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(submodelDescriptor), SubmodelDescriptor.class);
+            return mapper.readValue(submodelDescriptor, SubmodelDescriptor.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing the SubmodelDescriptor", ex);
         }
@@ -397,7 +393,7 @@ public class JsonDeserializer {
 
     public List<SubmodelDescriptor> readSubmodelDescriptors(String submodelDescriptors) throws DeserializationException {
         try {
-            return mapper.readValue(submodelDescriptors,new TypeReference<List<SubmodelDescriptor>>(){});
+            return mapper.readValue(submodelDescriptors, new TypeReference<List<SubmodelDescriptor>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of SubmodelDescriptors", ex);
         }
@@ -405,7 +401,7 @@ public class JsonDeserializer {
 
     public AssetAdministrationShellDescriptor readAssetAdministrationShellDescriptor(String assetAdministrationShellDescriptor) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(assetAdministrationShellDescriptor), AssetAdministrationShellDescriptor.class);
+            return mapper.readValue(assetAdministrationShellDescriptor, AssetAdministrationShellDescriptor.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing the AssetAdministrationShellDescriptor", ex);
         }
@@ -413,8 +409,7 @@ public class JsonDeserializer {
 
     public List<AssetAdministrationShellDescriptor> readAssetAdministrationShellDescriptors(String assetAdministrationShellDescriptors) throws DeserializationException {
         try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(assetAdministrationShellDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<AssetAdministrationShellDescriptor>>(){});
+            return mapper.readValue(assetAdministrationShellDescriptors, new TypeReference<List<AssetAdministrationShellDescriptor>>(){});
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of AssetAdministrationShellDescriptors", ex);
         }

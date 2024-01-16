@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
 
@@ -66,7 +66,7 @@ public class JsonMapperFactory {
 
     protected SimpleModule buildEnumModule() {
         SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addSerializer(x, new EnumSerializer()));
+        ReflectionHelper.ENUMS.forEach(x -> module.addSerializer(x, new AasEnumSerializer()));
         ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
         return module;
     }

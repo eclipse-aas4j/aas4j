@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
@@ -34,7 +34,7 @@ public class EnumSerializerTest {
 
     private JsonGenerator jsonGeneratorMock;
     private SerializerProvider serializerProviderMock;
-    private EnumSerializer enumSerializer;
+    private AasEnumSerializer enumSerializer;
     private StringBuffer serializationOutput;
 
     @Before
@@ -47,7 +47,7 @@ public class EnumSerializerTest {
             return null;
         }).when(jsonGeneratorMock).writeString(Mockito.anyString());
         serializerProviderMock = Mockito.mock(SerializerProvider.class);
-        this.enumSerializer = new EnumSerializer();
+        this.enumSerializer = new AasEnumSerializer();
     }
 
     @Test

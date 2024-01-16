@@ -30,13 +30,38 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class JsonDeserializerTest {
 
     @Test
-    public void testReadFromFile() throws Exception {
+    public void testReadFromStream() throws Exception {
         new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream());
+    }
+
+    @Test
+    public void testReadFromFile() throws Exception {
+        File file = Paths.get("src", "test", "resources", "Example-Full.json").toFile();
+        assertTrue(file.exists());
+        Environment env = new JsonDeserializer().read(file);
+        assertNotNull(env);
+    }
+
+
+    @Test
+    public void testReadReferable() throws Exception {
+        Path path = Paths.get("src", "test", "resources", "Submodel.json");
+        assertTrue(path.toFile().exists());
+        String jsonSubmodel = Files.readString(path);
+        Submodel submodel = new JsonDeserializer().readReferable(jsonSubmodel, Submodel.class);
+        assertNotNull(submodel);
     }
 
     @Test
