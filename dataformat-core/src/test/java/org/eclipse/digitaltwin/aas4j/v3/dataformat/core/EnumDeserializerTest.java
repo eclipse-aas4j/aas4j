@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.AasEnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
@@ -42,18 +42,18 @@ public class EnumDeserializerTest {
 
 	@Test
 	public void whenDeserializingEnumNames_withUpperCamelCase_shouldReturnScreamingSnakeCase() {
-		Assert.assertEquals("ANY_ENUM", AasEnumDeserializer.deserializeEnumName("AnyEnum"));
+		Assert.assertEquals("ANY_ENUM", EnumDeserializer.deserializeEnumName("AnyEnum"));
 	}
 
 	@Test
 	public void whenDeserializingEnumNames_withLowerCamelCase_shouldReturnScreamingSnakeCase() {
-		Assert.assertEquals("ANY_ENUM", AasEnumDeserializer.deserializeEnumName("anyEnum"));
+		Assert.assertEquals("ANY_ENUM", EnumDeserializer.deserializeEnumName("anyEnum"));
 	}
 
 	@Test
 	public void whenDeserializingEnumNames_withScreamingSnakeCase_shouldReturnUnchanged() {
 		final String name = "ANY_ENUM";
-		Assert.assertEquals(name, AasEnumDeserializer.deserializeEnumName(name));
+		Assert.assertEquals(name, EnumDeserializer.deserializeEnumName(name));
 	}
 
     @Test
@@ -91,7 +91,7 @@ public class EnumDeserializerTest {
         try {
             Mockito.doReturn(value).when(jsonParserMock).getText();
             Class<? extends Enum> type = expected.getClass();
-            AasEnumDeserializer<? extends Enum> enumDeserializer = new AasEnumDeserializer<>(type);
+            EnumDeserializer<? extends Enum> enumDeserializer = new EnumDeserializer<>(type);
             Enum actual = enumDeserializer.deserialize(jsonParserMock, deserializationContextMock);
             Assert.assertEquals(expected, actual);
         } catch (IOException ex) {

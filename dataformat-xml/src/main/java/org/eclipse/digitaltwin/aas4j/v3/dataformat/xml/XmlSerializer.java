@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.XmlDataformatAnnotationIntrospector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.serialization.AssetAdministrationShellEnvironmentSerializer;
@@ -94,7 +94,7 @@ public class XmlSerializer {
 
     protected SimpleModule buildEnumModule() {
         SimpleModule module = new SimpleModule();
-        module.addSerializer(Enum.class, new AasEnumSerializer());
+        module.addSerializer(Enum.class, new EnumSerializer());
         return module;
     }
 

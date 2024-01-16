@@ -34,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -68,7 +69,7 @@ public class JsonDeserializer {
      */
     public Environment read(String value) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(value), Environment.class);
+            return mapper.readValue(value, Environment.class);
         } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
         }
@@ -97,7 +98,11 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(InputStream src) throws DeserializationException {
-        return read(src, DEFAULT_CHARSET);
+        try {
+            return mapper.readValue(new InputStreamReader(src, DEFAULT_CHARSET), Environment.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -109,10 +114,11 @@ public class JsonDeserializer {
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(InputStream src, Charset charset) throws DeserializationException {
-        return read(new BufferedReader(
-                new InputStreamReader(src, charset))
-                .lines()
-                .collect(Collectors.joining(System.lineSeparator())));
+        try {
+            return mapper.readValue(new InputStreamReader(src, charset), Environment.class);
+        } catch (IOException ex) {
+            throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
+        }
     }
 
     /**

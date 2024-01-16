@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.AasEnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization.SubmodelElementDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.XmlDataformatAnnotationIntrospector;
@@ -94,7 +94,7 @@ public class XmlDeserializer {
 
     protected SimpleModule buildEnumModule() {
         SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new AasEnumDeserializer<>(x)));
+        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
         return module;
     }
 

@@ -29,11 +29,11 @@ import java.io.IOException;
  *
  * @param <T> Type of enum to deserialize
  */
-public class AasEnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
+public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
 
     protected final Class<T> type;
 
-    public AasEnumDeserializer(Class<T> type) {
+    public EnumDeserializer(Class<T> type) {
         this.type = type;
     }
 
