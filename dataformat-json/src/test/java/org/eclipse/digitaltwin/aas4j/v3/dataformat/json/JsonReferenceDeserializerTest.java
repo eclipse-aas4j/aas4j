@@ -21,22 +21,17 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
 public class JsonReferenceDeserializerTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(JsonReferenceDeserializerTest.class);
-
     private String reference_string;
     private String reference_list_string;
-    private String valueReferencePair_string;
 
 
     @Before
@@ -45,7 +40,6 @@ public class JsonReferenceDeserializerTest {
         reference_string = serializer.writeReference(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
         reference_list_string = serializer.writeReferences(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
     }
-
 
     @Test
     public void testDeserializeReference() throws DeserializationException {
@@ -65,6 +59,4 @@ public class JsonReferenceDeserializerTest {
 
         assertTrue(referenceList.get(0).getType().equals(ReferenceTypes.EXTERNAL_REFERENCE));
     }
-
-
 }

@@ -63,7 +63,7 @@ public class JsonAssetAdministrationShellDescriptorDeserializerTest {
 
     @Test
     public void testReadAasDescriptor() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/assetAdministrationShellDescriptor.json");
+        File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
         String expected = Files.readString(fileExpected.toPath());
         AssetAdministrationShellDescriptor assetAdministrationShellDescriptor = new JsonDeserializer().readAssetAdministrationShellDescriptor(expected);
         AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
@@ -71,4 +71,15 @@ public class JsonAssetAdministrationShellDescriptorDeserializerTest {
         assertEquals(aasExpected, assetAdministrationShellDescriptor);
     }
 
+
+    @Test
+    public void testReadAasDescriptorsList() throws IOException, DeserializationException {
+        File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
+        String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
+        List<AssetAdministrationShellDescriptor> assetAdministrationShellDescriptors =
+            new JsonDeserializer().readAssetAdministrationShellDescriptors(expected);
+        AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
+
+        assertEquals(aasExpected, assetAdministrationShellDescriptors.get(0));
+    }
 }
