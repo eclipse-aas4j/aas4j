@@ -20,7 +20,7 @@ import com.google.common.reflect.TypeToken;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.IdentifiableCollector;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
@@ -72,7 +72,7 @@ public class AasUtils {
 			return null;
 		}
 		return String.format("[%s]%s", reference.getType(),
-				reference.getKeys().stream().map(x -> String.format("(%s)%s", AasEnumSerializer.serializeEnumName(x.getType().name()), x.getValue())).collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
+				reference.getKeys().stream().map(x -> String.format("(%s)%s", EnumSerializer.serializeEnumName(x.getType().name()), x.getValue())).collect(Collectors.joining(REFERENCE_ELEMENT_DELIMITER)));
 	}
 
     /**
@@ -131,7 +131,7 @@ public class AasUtils {
      */
 	private static Class<?> keyTypeToClass(KeyTypes key) {
         return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
-				.filter(x -> x.getSimpleName().equals(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.AasEnumSerializer.serializeEnumName(key.name())))
+				.filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
                 .findAny()
                 .orElse(null);
     }
