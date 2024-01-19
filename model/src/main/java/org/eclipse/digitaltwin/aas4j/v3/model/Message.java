@@ -47,12 +47,29 @@ public interface Message {
 
     /**
      *
+     * More information under https://admin-shell.io/aas/3/0/Message/correlationId
+     *
+     * @return Returns the String for the property correlationId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/Message/correlationId")
+    String getCorrelationId();
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/0/Message/correlationId
+     *
+     * @param correlationId desired value for the property correlationId.
+     */
+    void setCorrelationId(String correlationId);
+
+    /**
+     *
      * More information under https://admin-shell.io/aas/3/0/Message/messageType
      *
-     * @return Returns the MessageType for the property messageType.
+     * @return Returns the MessageTypeEnum for the property messageType.
      */
     @IRI("https://admin-shell.io/aas/3/0/Message/messageType")
-    MessageType getMessageType();
+    MessageTypeEnum getMessageType();
 
     /**
      *
@@ -60,7 +77,7 @@ public interface Message {
      *
      * @param messageType desired value for the property messageType.
      */
-    void setMessageType(MessageType messageType);
+    void setMessageType(MessageTypeEnum messageType);
 
     /**
      *

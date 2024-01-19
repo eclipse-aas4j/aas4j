@@ -20,7 +20,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
 
-import java.math.BigInteger;
+import javax.xml.datatype.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -32,17 +34,14 @@ import java.util.Objects;
 @IRI("aas:OperationRequest")
 public class DefaultOperationRequest implements OperationRequest {
 
+    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
+    protected Duration clientTimeoutDuration;
+
     @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
-    protected OperationVariable inoutputArguments;
+    protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
-    protected OperationVariable inputArguments;
-
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/requestId")
-    protected String requestId;
-
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/timeout")
-    protected BigInteger timeout;
+    protected List<OperationVariable> inputArguments = new ArrayList<>();
 
     public DefaultOperationRequest() {}
 
@@ -50,8 +49,7 @@ public class DefaultOperationRequest implements OperationRequest {
     public int hashCode() {
         return Objects.hash(this.inoutputArguments,
             this.inputArguments,
-            this.requestId,
-            this.timeout);
+            this.clientTimeoutDuration);
     }
 
     @Override
@@ -66,59 +64,47 @@ public class DefaultOperationRequest implements OperationRequest {
             DefaultOperationRequest other = (DefaultOperationRequest) obj;
             return Objects.equals(this.inoutputArguments, other.inoutputArguments) &&
                 Objects.equals(this.inputArguments, other.inputArguments) &&
-                Objects.equals(this.requestId, other.requestId) &&
-                Objects.equals(this.timeout, other.timeout);
+                Objects.equals(this.clientTimeoutDuration, other.clientTimeoutDuration);
         }
     }
 
     @Override
-    public OperationVariable getInoutputArguments() {
+    public List<OperationVariable> getInoutputArguments() {
         return inoutputArguments;
     }
 
     @Override
-    public void setInoutputArguments(OperationVariable inoutputArguments) {
+    public void setInoutputArguments(List<OperationVariable> inoutputArguments) {
         this.inoutputArguments = inoutputArguments;
     }
 
     @Override
-    public OperationVariable getInputArguments() {
+    public List<OperationVariable> getInputArguments() {
         return inputArguments;
     }
 
     @Override
-    public void setInputArguments(OperationVariable inputArguments) {
+    public void setInputArguments(List<OperationVariable> inputArguments) {
         this.inputArguments = inputArguments;
     }
 
     @Override
-    public String getRequestId() {
-        return requestId;
+    public Duration getClientTimeoutDuration() {
+        return clientTimeoutDuration;
     }
 
     @Override
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    @Override
-    public BigInteger getTimeout() {
-        return timeout;
-    }
-
-    @Override
-    public void setTimeout(BigInteger timeout) {
-        this.timeout = timeout;
+    public void setClientTimeoutDuration(Duration clientTimeoutDuration) {
+        this.clientTimeoutDuration = clientTimeoutDuration;
     }
 
     public String toString() {
         return String.format(
             "DefaultOperationRequest (" + "inoutputArguments=%s,"
                 + "inputArguments=%s,"
-                + "requestId=%s,"
-                + "timeout=%s,"
+                + "clientTimeoutDuration=%s,"
                 + ")",
-            this.inoutputArguments, this.inputArguments, this.requestId, this.timeout);
+            this.inoutputArguments, this.inputArguments, this.clientTimeoutDuration);
     }
 
     /**

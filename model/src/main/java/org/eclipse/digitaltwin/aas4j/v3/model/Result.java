@@ -25,7 +25,8 @@ import java.util.List;
 /**
 */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultResult.class)
+    @KnownSubtypes.Type(value = DefaultResult.class),
+    @KnownSubtypes.Type(value = BaseOperationResult.class)
 })
 public interface Result {
 
@@ -45,22 +46,5 @@ public interface Result {
      * @param messages desired value for the property messages.
      */
     void setMessages(List<Message> messages);
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/Result/success
-     *
-     * @return Returns the boolean for the property success.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Result/success")
-    boolean getSuccess();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/Result/success
-     *
-     * @param success desired value for the property success.
-     */
-    void setSuccess(boolean success);
 
 }

@@ -15,13 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Result;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationResultBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -33,30 +33,18 @@ import java.util.Objects;
 @IRI("aas:OperationResult")
 public class DefaultOperationResult implements OperationResult {
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/executionResult")
-    protected Result executionResult;
-
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/executionState")
-    protected ExecutionState executionState;
-
     @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
-    protected OperationVariable inoutputArguments;
+    protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
     @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
-    protected OperationVariable outputArguments;
-
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/requestId")
-    protected String requestId;
+    protected List<OperationVariable> outputArguments = new ArrayList<>();
 
     public DefaultOperationResult() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.executionResult,
-            this.executionState,
-            this.inoutputArguments,
-            this.outputArguments,
-            this.requestId);
+        return Objects.hash(this.inoutputArguments,
+            this.outputArguments);
     }
 
     @Override
@@ -69,73 +57,37 @@ public class DefaultOperationResult implements OperationResult {
             return false;
         } else {
             DefaultOperationResult other = (DefaultOperationResult) obj;
-            return Objects.equals(this.executionResult, other.executionResult) &&
-                Objects.equals(this.executionState, other.executionState) &&
-                Objects.equals(this.inoutputArguments, other.inoutputArguments) &&
-                Objects.equals(this.outputArguments, other.outputArguments) &&
-                Objects.equals(this.requestId, other.requestId);
+            return Objects.equals(this.inoutputArguments, other.inoutputArguments) &&
+                Objects.equals(this.outputArguments, other.outputArguments);
         }
     }
 
     @Override
-    public Result getExecutionResult() {
-        return executionResult;
-    }
-
-    @Override
-    public void setExecutionResult(Result executionResult) {
-        this.executionResult = executionResult;
-    }
-
-    @Override
-    public ExecutionState getExecutionState() {
-        return executionState;
-    }
-
-    @Override
-    public void setExecutionState(ExecutionState executionState) {
-        this.executionState = executionState;
-    }
-
-    @Override
-    public OperationVariable getInoutputArguments() {
+    public List<OperationVariable> getInoutputArguments() {
         return inoutputArguments;
     }
 
     @Override
-    public void setInoutputArguments(OperationVariable inoutputArguments) {
+    public void setInoutputArguments(List<OperationVariable> inoutputArguments) {
         this.inoutputArguments = inoutputArguments;
     }
 
     @Override
-    public OperationVariable getOutputArguments() {
+    public List<OperationVariable> getOutputArguments() {
         return outputArguments;
     }
 
     @Override
-    public void setOutputArguments(OperationVariable outputArguments) {
+    public void setOutputArguments(List<OperationVariable> outputArguments) {
         this.outputArguments = outputArguments;
-    }
-
-    @Override
-    public String getRequestId() {
-        return requestId;
-    }
-
-    @Override
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
     }
 
     public String toString() {
         return String.format(
-            "DefaultOperationResult (" + "executionResult=%s,"
-                + "executionState=%s,"
-                + "inoutputArguments=%s,"
+            "DefaultOperationResult (" + "inoutputArguments=%s,"
                 + "outputArguments=%s,"
-                + "requestId=%s,"
                 + ")",
-            this.executionResult, this.executionState, this.inoutputArguments, this.outputArguments, this.requestId);
+            this.inoutputArguments, this.outputArguments);
     }
 
     /**

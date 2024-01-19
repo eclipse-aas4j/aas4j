@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationResult;
+
+import java.util.List;
 
 
 /**
@@ -30,46 +31,12 @@ public interface OperationResult {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/executionResult
-     *
-     * @return Returns the Result for the property executionResult.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/executionResult")
-    Result getExecutionResult();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/executionResult
-     *
-     * @param executionResult desired value for the property executionResult.
-     */
-    void setExecutionResult(Result executionResult);
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/executionState
-     *
-     * @return Returns the ExecutionState for the property executionState.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/executionState")
-    ExecutionState getExecutionState();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/executionState
-     *
-     * @param executionState desired value for the property executionState.
-     */
-    void setExecutionState(ExecutionState executionState);
-
-    /**
-     *
      * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
      *
-     * @return Returns the OperationVariable for the property inoutputArguments.
+     * @return Returns the List of OperationVariables for the property inoutputArguments.
      */
     @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
-    OperationVariable getInoutputArguments();
+    List<OperationVariable> getInoutputArguments();
 
     /**
      *
@@ -77,16 +44,16 @@ public interface OperationResult {
      *
      * @param inoutputArguments desired value for the property inoutputArguments.
      */
-    void setInoutputArguments(OperationVariable inoutputArguments);
+    void setInoutputArguments(List<OperationVariable> inoutputArguments);
 
     /**
      *
      * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
      *
-     * @return Returns the OperationVariable for the property outputArguments.
+     * @return Returns the List of OperationVariables for the property outputArguments.
      */
     @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
-    OperationVariable getOutputArguments();
+    List<OperationVariable> getOutputArguments();
 
     /**
      *
@@ -94,23 +61,6 @@ public interface OperationResult {
      *
      * @param outputArguments desired value for the property outputArguments.
      */
-    void setOutputArguments(OperationVariable outputArguments);
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/requestId
-     *
-     * @return Returns the String for the property requestId.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/requestId")
-    String getRequestId();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/requestId
-     *
-     * @param requestId desired value for the property requestId.
-     */
-    void setRequestId(String requestId);
+    void setOutputArguments(List<OperationVariable> outputArguments);
 
 }

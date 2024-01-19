@@ -45,21 +45,4 @@ public interface OperationHandle {
      */
     void setHandleId(String handleId);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationHandle/requestId
-     *
-     * @return Returns the String for the property requestId.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationHandle/requestId")
-    String getRequestId();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationHandle/requestId
-     *
-     * @param requestId desired value for the property requestId.
-     */
-    void setRequestId(String requestId);
-
 }

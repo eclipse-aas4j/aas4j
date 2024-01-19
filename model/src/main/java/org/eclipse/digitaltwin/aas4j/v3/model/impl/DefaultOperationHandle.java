@@ -33,15 +33,11 @@ public class DefaultOperationHandle implements OperationHandle {
     @IRI("https://admin-shell.io/aas/3/0/OperationHandle/handleId")
     protected String handleId;
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationHandle/requestId")
-    protected String requestId;
-
     public DefaultOperationHandle() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.handleId,
-            this.requestId);
+        return Objects.hash(this.handleId);
     }
 
     @Override
@@ -54,8 +50,7 @@ public class DefaultOperationHandle implements OperationHandle {
             return false;
         } else {
             DefaultOperationHandle other = (DefaultOperationHandle) obj;
-            return Objects.equals(this.handleId, other.handleId) &&
-                Objects.equals(this.requestId, other.requestId);
+            return Objects.equals(this.handleId, other.handleId);
         }
     }
 
@@ -69,22 +64,11 @@ public class DefaultOperationHandle implements OperationHandle {
         this.handleId = handleId;
     }
 
-    @Override
-    public String getRequestId() {
-        return requestId;
-    }
-
-    @Override
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
     public String toString() {
         return String.format(
             "DefaultOperationHandle (" + "handleId=%s,"
-                + "requestId=%s,"
                 + ")",
-            this.handleId, this.requestId);
+            this.handleId);
     }
 
     /**

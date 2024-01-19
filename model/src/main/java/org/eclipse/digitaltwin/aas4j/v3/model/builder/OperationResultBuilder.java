@@ -15,37 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
-import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Result;
+
+import java.util.List;
 
 
 public abstract class OperationResultBuilder<T extends OperationResult, B extends OperationResultBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for executionResult
-     * 
-     * @param executionResult desired value to be set
-     * @return Builder object with new value for executionResult
-     */
-    public B executionResult(Result executionResult) {
-        getBuildingInstance().setExecutionResult(executionResult);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for executionState
-     * 
-     * @param executionState desired value to be set
-     * @return Builder object with new value for executionState
-     */
-    public B executionState(ExecutionState executionState) {
-        getBuildingInstance().setExecutionState(executionState);
-        return getSelf();
-    }
 
     /**
      * This function allows setting a value for inoutputArguments
@@ -53,8 +30,19 @@ public abstract class OperationResultBuilder<T extends OperationResult, B extend
      * @param inoutputArguments desired value to be set
      * @return Builder object with new value for inoutputArguments
      */
-    public B inoutputArguments(OperationVariable inoutputArguments) {
+    public B inoutputArguments(List<OperationVariable> inoutputArguments) {
         getBuildingInstance().setInoutputArguments(inoutputArguments);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List inoutputArguments
+     * 
+     * @param inoutputArguments desired value to be added
+     * @return Builder object with new value for inoutputArguments
+     */
+    public B inoutputArguments(OperationVariable inoutputArguments) {
+        getBuildingInstance().getInoutputArguments().add(inoutputArguments);
         return getSelf();
     }
 
@@ -64,19 +52,19 @@ public abstract class OperationResultBuilder<T extends OperationResult, B extend
      * @param outputArguments desired value to be set
      * @return Builder object with new value for outputArguments
      */
-    public B outputArguments(OperationVariable outputArguments) {
+    public B outputArguments(List<OperationVariable> outputArguments) {
         getBuildingInstance().setOutputArguments(outputArguments);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for requestId
+     * This function allows adding a value to the List outputArguments
      * 
-     * @param requestId desired value to be set
-     * @return Builder object with new value for requestId
+     * @param outputArguments desired value to be added
+     * @return Builder object with new value for outputArguments
      */
-    public B requestId(String requestId) {
-        getBuildingInstance().setRequestId(requestId);
+    public B outputArguments(OperationVariable outputArguments) {
+        getBuildingInstance().getOutputArguments().add(outputArguments);
         return getSelf();
     }
 }

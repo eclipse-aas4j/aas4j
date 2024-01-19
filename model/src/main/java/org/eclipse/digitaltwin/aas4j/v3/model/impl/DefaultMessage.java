@@ -16,7 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.MessageBuilder;
 
@@ -34,8 +34,11 @@ public class DefaultMessage implements Message {
     @IRI("https://admin-shell.io/aas/3/0/Message/code")
     protected String code;
 
+    @IRI("https://admin-shell.io/aas/3/0/Message/correlationId")
+    protected String correlationId;
+
     @IRI("https://admin-shell.io/aas/3/0/Message/messageType")
-    protected MessageType messageType;
+    protected MessageTypeEnum messageType;
 
     @IRI("https://admin-shell.io/aas/3/0/Message/text")
     protected String text;
@@ -48,6 +51,7 @@ public class DefaultMessage implements Message {
     @Override
     public int hashCode() {
         return Objects.hash(this.code,
+            this.correlationId,
             this.messageType,
             this.text,
             this.timestamp);
@@ -64,6 +68,7 @@ public class DefaultMessage implements Message {
         } else {
             DefaultMessage other = (DefaultMessage) obj;
             return Objects.equals(this.code, other.code) &&
+                Objects.equals(this.correlationId, other.correlationId) &&
                 Objects.equals(this.messageType, other.messageType) &&
                 Objects.equals(this.text, other.text) &&
                 Objects.equals(this.timestamp, other.timestamp);
@@ -81,12 +86,22 @@ public class DefaultMessage implements Message {
     }
 
     @Override
-    public MessageType getMessageType() {
+    public String getCorrelationId() {
+        return correlationId;
+    }
+
+    @Override
+    public void setCorrelationId(String correlationId) {
+        this.correlationId = correlationId;
+    }
+
+    @Override
+    public MessageTypeEnum getMessageType() {
         return messageType;
     }
 
     @Override
-    public void setMessageType(MessageType messageType) {
+    public void setMessageType(MessageTypeEnum messageType) {
         this.messageType = messageType;
     }
 
@@ -113,11 +128,12 @@ public class DefaultMessage implements Message {
     public String toString() {
         return String.format(
             "DefaultMessage (" + "code=%s,"
+                + "correlationId=%s,"
                 + "messageType=%s,"
                 + "text=%s,"
                 + "timestamp=%s,"
                 + ")",
-            this.code, this.messageType, this.text, this.timestamp);
+            this.code, this.correlationId, this.messageType, this.text, this.timestamp);
     }
 
     /**

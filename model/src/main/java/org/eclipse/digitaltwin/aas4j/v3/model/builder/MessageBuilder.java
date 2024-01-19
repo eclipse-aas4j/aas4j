@@ -17,7 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
 
 
 public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> extends ExtendableBuilder<T, B> {
@@ -34,12 +34,23 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
     }
 
     /**
+     * This function allows setting a value for correlationId
+     * 
+     * @param correlationId desired value to be set
+     * @return Builder object with new value for correlationId
+     */
+    public B correlationId(String correlationId) {
+        getBuildingInstance().setCorrelationId(correlationId);
+        return getSelf();
+    }
+
+    /**
      * This function allows setting a value for messageType
      * 
      * @param messageType desired value to be set
      * @return Builder object with new value for messageType
      */
-    public B messageType(MessageType messageType) {
+    public B messageType(MessageTypeEnum messageType) {
         getBuildingInstance().setMessageType(messageType);
         return getSelf();
     }

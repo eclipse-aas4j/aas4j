@@ -230,7 +230,7 @@ public class DefaultBlob implements Blob {
             "DefaultBlob (" + "value=%s,"
                 + "contentType=%s,"
                 + ")",
-            this.value, this.contentType);
+                Arrays.toString(this.value), this.contentType);
     }
 
     /**

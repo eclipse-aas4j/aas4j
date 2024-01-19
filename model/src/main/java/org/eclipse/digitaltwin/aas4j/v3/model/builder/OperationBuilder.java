@@ -96,28 +96,6 @@ public abstract class OperationBuilder<T extends Operation, B extends OperationB
     }
 
     /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
      * This function allows setting a value for category
      * 
      * @param category desired value to be set
@@ -202,6 +180,28 @@ public abstract class OperationBuilder<T extends Operation, B extends OperationB
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 

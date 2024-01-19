@@ -25,7 +25,6 @@ import java.util.List;
  * An element that is referable by its 'idShort'.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
     @KnownSubtypes.Type(value = Identifiable.class),
     @KnownSubtypes.Type(value = SubmodelElement.class)
 })

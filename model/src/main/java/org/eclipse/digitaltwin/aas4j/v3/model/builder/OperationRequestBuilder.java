@@ -18,7 +18,8 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
-import java.math.BigInteger;
+import javax.xml.datatype.Duration;
+import java.util.List;
 
 
 public abstract class OperationRequestBuilder<T extends OperationRequest, B extends OperationRequestBuilder<T, B>>
@@ -30,8 +31,19 @@ public abstract class OperationRequestBuilder<T extends OperationRequest, B exte
      * @param inoutputArguments desired value to be set
      * @return Builder object with new value for inoutputArguments
      */
-    public B inoutputArguments(OperationVariable inoutputArguments) {
+    public B inoutputArguments(List<OperationVariable> inoutputArguments) {
         getBuildingInstance().setInoutputArguments(inoutputArguments);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List inoutputArguments
+     * 
+     * @param inoutputArguments desired value to be added
+     * @return Builder object with new value for inoutputArguments
+     */
+    public B inoutputArguments(OperationVariable inoutputArguments) {
+        getBuildingInstance().getInoutputArguments().add(inoutputArguments);
         return getSelf();
     }
 
@@ -41,30 +53,30 @@ public abstract class OperationRequestBuilder<T extends OperationRequest, B exte
      * @param inputArguments desired value to be set
      * @return Builder object with new value for inputArguments
      */
-    public B inputArguments(OperationVariable inputArguments) {
+    public B inputArguments(List<OperationVariable> inputArguments) {
         getBuildingInstance().setInputArguments(inputArguments);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for requestId
+     * This function allows adding a value to the List inputArguments
      * 
-     * @param requestId desired value to be set
-     * @return Builder object with new value for requestId
+     * @param inputArguments desired value to be added
+     * @return Builder object with new value for inputArguments
      */
-    public B requestId(String requestId) {
-        getBuildingInstance().setRequestId(requestId);
+    public B inputArguments(OperationVariable inputArguments) {
+        getBuildingInstance().getInputArguments().add(inputArguments);
         return getSelf();
     }
 
     /**
-     * This function allows setting a value for timeout
+     * This function allows setting a value for clientTimeoutDuration
      * 
-     * @param timeout desired value to be set
-     * @return Builder object with new value for timeout
+     * @param clientTimeoutDuration desired value to be set
+     * @return Builder object with new value for clientTimeoutDuration
      */
-    public B timeout(BigInteger timeout) {
-        getBuildingInstance().setTimeout(timeout);
+    public B clientTimeoutDuration(Duration clientTimeoutDuration) {
+        getBuildingInstance().setClientTimeoutDuration(clientTimeoutDuration);
         return getSelf();
     }
 }

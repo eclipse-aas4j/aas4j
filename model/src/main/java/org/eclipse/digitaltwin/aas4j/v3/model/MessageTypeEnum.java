@@ -16,15 +16,32 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntityMetadata;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
 
-/**
+/**  
 */
-@KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEntityMetadata.class)
-})
-public interface EntityMetadata extends SubmodelElementAttributes {
+@IRI("aas:MessageTypeEnum")
+public enum MessageTypeEnum {
+
+    /** 
+    */
+    @IRI("https://admin-shell.io/aas/3/0/MessageType/Error")
+    ERROR,
+
+    /** 
+    */
+    @IRI("https://admin-shell.io/aas/3/0/MessageType/Exception")
+    EXCEPTION,
+
+    /** 
+    */
+    @IRI("https://admin-shell.io/aas/3/0/MessageType/Info")
+    INFO,
+
+    /** 
+    */
+    @IRI("https://admin-shell.io/aas/3/0/MessageType/Warning")
+    WARNING;
 
 }

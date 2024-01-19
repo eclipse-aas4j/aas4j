@@ -36,15 +36,11 @@ public class DefaultResult implements Result {
     @IRI("https://admin-shell.io/aas/3/0/Result/messages")
     protected List<Message> messages = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Result/success")
-    protected boolean success;
-
     public DefaultResult() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.messages,
-            this.success);
+        return Objects.hash(this.messages);
     }
 
     @Override
@@ -57,8 +53,7 @@ public class DefaultResult implements Result {
             return false;
         } else {
             DefaultResult other = (DefaultResult) obj;
-            return Objects.equals(this.messages, other.messages) &&
-                Objects.equals(this.success, other.success);
+            return Objects.equals(this.messages, other.messages);
         }
     }
 
@@ -72,22 +67,11 @@ public class DefaultResult implements Result {
         this.messages = messages;
     }
 
-    @Override
-    public boolean getSuccess() {
-        return success;
-    }
-
-    @Override
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
     public String toString() {
         return String.format(
             "DefaultResult (" + "messages=%s,"
-                + "success=%s,"
                 + ")",
-            this.messages, this.success);
+            this.messages);
     }
 
     /**

@@ -32,15 +32,4 @@ public abstract class OperationHandleBuilder<T extends OperationHandle, B extend
         getBuildingInstance().setHandleId(handleId);
         return getSelf();
     }
-
-    /**
-     * This function allows setting a value for requestId
-     * 
-     * @param requestId desired value to be set
-     * @return Builder object with new value for requestId
-     */
-    public B requestId(String requestId) {
-        getBuildingInstance().setRequestId(requestId);
-        return getSelf();
-    }
 }
