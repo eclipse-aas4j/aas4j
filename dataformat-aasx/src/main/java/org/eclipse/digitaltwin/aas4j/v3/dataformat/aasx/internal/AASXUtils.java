@@ -15,9 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal;
 
-/**
- * @author schnicke
- */
 public class AASXUtils {
 
 
