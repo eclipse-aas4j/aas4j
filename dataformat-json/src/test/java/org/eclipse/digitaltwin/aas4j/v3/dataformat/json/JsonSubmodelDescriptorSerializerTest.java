@@ -37,7 +37,7 @@ public class JsonSubmodelDescriptorSerializerTest {
 
     @Test
     public void testReadSubmodelDescriptor() throws IOException, SerializationException, JSONException {
-        File fileExpected = new File("src/test/resources/submodelDescriptor.json");
+        File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         validateAndCompare(fileExpected, JsonSubmodelDescriptorDeserializerTest.getDefaultSubmodelDescriptor());
     }
 
