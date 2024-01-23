@@ -31,30 +31,19 @@ public class JsonReferenceSerializerTest {
 
     private static final Logger logger = LoggerFactory.getLogger(JsonReferenceSerializerTest.class);
 
-
-
     @Test
     public void testSerializeReference() throws SerializationException {
         JsonSerializer serializer = new JsonSerializer();
-
         Reference reference = AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId();
-
-        String serializedReference = serializer.writeReference(reference);
-
+        String serializedReference = serializer.write(reference);
         assertTrue(serializedReference.contains("\"http://acplt.org/SubmodelTemplates/AssetIdentification\""));
     }
-
-
 
     @Test
     public void testSerializeReferenceList() throws SerializationException {
         JsonSerializer serializer = new JsonSerializer();
-
         List<Reference> referenceList = AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels();
-
-        String serializedReferenceArray = serializer.writeReferences(referenceList);
-
+        String serializedReferenceArray = serializer.write(referenceList);
         assertTrue(serializedReferenceArray.contains("\"https://acplt.org/Test_Submodel\""));
     }
-
 }

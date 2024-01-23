@@ -35,53 +35,91 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class JsonReferableDeserializerTest {
 
     @Test
-    public void testReadAAS() throws IOException, DeserializationException {
+    public void testReadAAS() throws DeserializationException {
         AssetAdministrationShell expected = Examples.ASSET_ADMINISTRATION_SHELL.getModel();
         AssetAdministrationShell actual = new JsonDeserializer().readReferable(Examples.ASSET_ADMINISTRATION_SHELL.fileContentStream(), AssetAdministrationShell.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadAASs() throws IOException, DeserializationException {
+    public void testReadAASs() throws DeserializationException {
         List<AssetAdministrationShell> expected = Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.getModel();
         List<AssetAdministrationShell> actual = new JsonDeserializer().readReferables(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.fileContentStream(), AssetAdministrationShell.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodel() throws IOException, DeserializationException {
+    public void testReadSubmodelUsingUtf8Charset() throws DeserializationException {
+        Submodel expected = Examples.SUBMODEL.getModel();
+        Submodel actual = new JsonDeserializer().readReferable(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testReadSubmodelFromFileUsingUtf8Charset() throws DeserializationException, FileNotFoundException {
+        Submodel expected = Examples.SUBMODEL.getModel();
+        File file = new File("src/test/resources/Submodel.json");
+        assertTrue(file.exists());
+        Submodel actual = new JsonDeserializer().readReferable(file, StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testReadSubmodelsFromFileUsingUtf8Charset() throws DeserializationException, FileNotFoundException {
+        List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
+        File file = new File("src/test/resources/Submodel-List.json");
+        assertTrue(file.exists());
+        List<Submodel> actual = new JsonDeserializer().readReferables(file, StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testReadSubmodelsFromStreamUsingUtf8Charset() throws DeserializationException {
+        List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
+        List<Submodel> actual = new JsonDeserializer().readReferables(
+            Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testReadSubmodel() throws DeserializationException {
         Submodel expected = Examples.SUBMODEL.getModel();
         Submodel actual = new JsonDeserializer().readReferable(Examples.SUBMODEL.fileContentStream(), Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodels() throws IOException, DeserializationException {
+    public void testReadSubmodels() throws DeserializationException {
         List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
         List<Submodel> actual = new JsonDeserializer().readReferables(Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodelElement() throws IOException, DeserializationException {
+    public void testReadSubmodelElement() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT.getModel();
         SubmodelElement actual = new JsonDeserializer().readReferable(Examples.SUBMODEL_ELEMENT.fileContentStream(), SubmodelElement.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodelElements() throws IOException, DeserializationException {
+    public void testReadSubmodelElements() throws DeserializationException {
         List<SubmodelElement> expected = Examples.SUBMODEL_ELEMENT_LIST_OF.getModel();
         List<SubmodelElement> actual = new JsonDeserializer().readReferables(
                 Examples.SUBMODEL_ELEMENT_LIST_OF.fileContentStream(), SubmodelElement.class);
@@ -89,14 +127,14 @@ public class JsonReferableDeserializerTest {
     }
 
     @Test
-    public void testReadSubmodelElementList() throws IOException, DeserializationException {
+    public void testReadSubmodelElementList() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT_LIST.getModel();
         SubmodelElementList actual = new JsonDeserializer().readReferable(Examples.SUBMODEL_ELEMENT_LIST.fileContentStream(), SubmodelElementList.class);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodelElementCollection() throws IOException, DeserializationException {
+    public void testReadSubmodelElementCollection() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT_COLLECTION.getModel();
         SubmodelElementCollection actual = new JsonDeserializer().readReferable(Examples.SUBMODEL_ELEMENT_COLLECTION.fileContentStream(), SubmodelElementCollection.class);
         assertEquals(expected, actual);

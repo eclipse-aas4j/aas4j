@@ -37,26 +37,21 @@ public class JsonReferenceDeserializerTest {
     @Before
     public void prepare() throws SerializationException {
         JsonSerializer serializer = new JsonSerializer();
-        reference_string = serializer.writeReference(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
-        reference_list_string = serializer.writeReferences(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
+        reference_string = serializer.write(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
+        reference_list_string = serializer.writeList(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
     }
 
     @Test
     public void testDeserializeReference() throws DeserializationException {
         JsonDeserializer deserializer = new JsonDeserializer();
-
-        Reference reference = deserializer.readReference(reference_string);
-
+        Reference reference = deserializer.read(reference_string, Reference.class);
         assertTrue(!reference.getKeys().get(0).getValue().isEmpty());
     }
-
 
     @Test
     public void testDeserializeReferenceList() throws DeserializationException {
         JsonDeserializer deserializer = new JsonDeserializer();
-
-        List<Reference> referenceList = deserializer.readReferences(reference_list_string);
-
+        List<Reference> referenceList = deserializer.readList(reference_list_string, Reference.class);
         assertTrue(referenceList.get(0).getType().equals(ReferenceTypes.EXTERNAL_REFERENCE));
     }
 }

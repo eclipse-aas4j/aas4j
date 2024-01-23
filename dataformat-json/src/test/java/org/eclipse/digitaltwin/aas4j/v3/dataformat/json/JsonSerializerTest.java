@@ -49,26 +49,26 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSerializerTest {
-
     private static final Logger logger = LoggerFactory.getLogger(JsonSerializerTest.class);
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
-    public void testSerializeNull() throws JsonProcessingException, IOException, SerializationException {
-        assertEquals("null", new JsonSerializer().write((Environment) null));
+    public void testSerializeNull() throws SerializationException {
+        Environment env = null;
+        assertEquals("null", new JsonSerializer().write(env));
     }
 
     @Test
-    public void testWriteToFile() throws JsonProcessingException, IOException, SerializationException {
+    public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
         new JsonSerializer().write(file, AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
     @Test
-    public void testSerializeEmpty() throws JsonProcessingException, IOException, SerializationException, JSONException {
+    public void testSerializeEmpty() throws IOException, SerializationException, JSONException {
         validateAndCompare(Examples.ENVIRONMENT_EMPTY);
     }
 
@@ -83,7 +83,7 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeFullExampleToNode() throws SerializationException, JSONException, IOException {
+    public void testSerializeFullExampleToNode() throws JSONException, IOException {
         String expected = Examples.EXAMPLE_FULL.fileContent();
         JsonNode node = new JsonSerializer().toNode(Examples.EXAMPLE_FULL.getModel());
         String actual = new ObjectMapper().writeValueAsString(node);
@@ -91,10 +91,10 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeEmptyReferableList() throws SerializationException {
+    public void testSerializeEmptyReferableList() throws SerializationException, JSONException {
         List<Referable> emptyList = Collections.emptyList();
-        String serialized = new JsonSerializer().write(emptyList);
-        assertEquals("[]", serialized);
+        String actual = new JsonSerializer().write(emptyList);
+        JSONAssert.assertEquals("[]", actual, JSONCompareMode.NON_EXTENSIBLE);
     }
 
     /**
@@ -130,12 +130,11 @@ public class JsonSerializerTest {
         validateAndCompare(expected, actual);
     }
 
-    private void validateAndCompare(String expected, String actual) throws IOException, SerializationException, JSONException {
+    private void validateAndCompare(String expected, String actual) throws JSONException {
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
     }
-
 }

@@ -44,7 +44,7 @@ public class JsonMapperFactory {
         Builder builder = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT).disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
                 .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .serializationInclusion(JsonInclude.Include.NON_NULL);
+                .serializationInclusion(JsonInclude.Include.NON_EMPTY);
 
         getModulesToInstall(typeResolver).stream().forEach(m -> builder.addModule(m));
 

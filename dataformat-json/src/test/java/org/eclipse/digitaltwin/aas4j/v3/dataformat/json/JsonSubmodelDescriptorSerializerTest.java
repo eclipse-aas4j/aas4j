@@ -33,21 +33,17 @@ import java.util.Set;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSubmodelDescriptorSerializerTest {
-
-
     private static final Logger logger = LoggerFactory.getLogger(JsonSubmodelDescriptorSerializerTest.class);
-
 
     @Test
     public void testReadSubmodelDescriptor() throws IOException, SerializationException, JSONException {
         File fileExpected = new File("src/test/resources/submodelDescriptor.json");
-
         validateAndCompare(fileExpected, JsonSubmodelDescriptorDeserializerTest.getDefaultSubmodelDescriptor());
     }
 
     private void validateAndCompare(File expectedFile, SubmodelDescriptor descriptor) throws IOException, SerializationException, JSONException {
         String expected = Files.readString(expectedFile.toPath());
-        String actual = new JsonSerializer().writeSubmodelDescriptor(descriptor);
+        String actual = new JsonSerializer().write(descriptor);
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());

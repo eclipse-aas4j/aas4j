@@ -31,9 +31,6 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSpecificAssetIdDeserializerTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(JsonSpecificAssetIdDeserializerTest.class);
-
     private String specificAssetId_string;
     private String specificAssetId_list_string;
 
@@ -46,22 +43,20 @@ public class JsonSpecificAssetIdDeserializerTest {
                 .name("testSpecificAssetId")
                 .value("testValue")
                 .build();
-        List<SpecificAssetId> specificAssetIds = new ArrayList<SpecificAssetId>() {{
+        List<SpecificAssetId> specificAssetIds = new ArrayList<>() {{
             add(specificAssetId);
             add(specificAssetId);
         }};
 
-        specificAssetId_string = serializer.writeSpecificAssetId(specificAssetId);
-        specificAssetId_list_string = serializer.writeSpecificAssetIds(specificAssetIds);
+        specificAssetId_string = serializer.write(specificAssetId);
+        specificAssetId_list_string = serializer.writeList(specificAssetIds);
     }
 
 
     @Test
     public void testDeserializeReference() throws DeserializationException {
         JsonDeserializer deserializer = new JsonDeserializer();
-
-        SpecificAssetId specificAssetId = deserializer.readSpecificAssetId(specificAssetId_string);
-
+        SpecificAssetId specificAssetId = deserializer.read(specificAssetId_string, SpecificAssetId.class);
         assertTrue(!specificAssetId.getValue().isEmpty());
     }
 
@@ -69,11 +64,8 @@ public class JsonSpecificAssetIdDeserializerTest {
     @Test
     public void testDeserializeReferenceList() throws DeserializationException {
         JsonDeserializer deserializer = new JsonDeserializer();
-
-        List<SpecificAssetId> specificAssetIdList = deserializer.readSpecificAssetIds(specificAssetId_list_string);
-
+        List<SpecificAssetId> specificAssetIdList = deserializer.readList(
+            specificAssetId_list_string, SpecificAssetId.class);
         assertTrue(specificAssetIdList.get(0).getValue().equalsIgnoreCase("testvalue"));
     }
-
-
 }

@@ -29,9 +29,6 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSpecificAssetIdSerializerTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(JsonSpecificAssetIdSerializerTest.class);
-
     SpecificAssetId specificAssetId = new DefaultSpecificAssetId.Builder()
             .name("testSpecificAssetId")
             .value("testValue")
@@ -41,28 +38,21 @@ public class JsonSpecificAssetIdSerializerTest {
     @Test
     public void testSerializeSpecificAssetId() throws SerializationException {
         JsonSerializer serializer = new JsonSerializer();
-
-        String specificAssetId_string = serializer.writeSpecificAssetId(specificAssetId);
-
+        String specificAssetId_string = serializer.write(specificAssetId);
         assertTrue(specificAssetId_string.contains("\"value\" : \"testValue\""));
     }
 
 
     @Test
     public void testSerializeSpecificAssetIdList() throws SerializationException {
-
-        List<SpecificAssetId> specificAssetIds = new ArrayList<SpecificAssetId>() {{
+        List<SpecificAssetId> specificAssetIds = new ArrayList<>() {{
             add(specificAssetId);
             add(specificAssetId);
         }};
 
         JsonSerializer serializer = new JsonSerializer();
-
-        String specificAssetId_list_string = serializer.writeSpecificAssetIds(specificAssetIds);
-
+        String specificAssetId_list_string = serializer.writeList(specificAssetIds);
         assertTrue(specificAssetId_list_string.startsWith("["));
         assertTrue(specificAssetId_list_string.contains("\"name\" : \"testSpecificAssetId\""));
     }
-
-
 }

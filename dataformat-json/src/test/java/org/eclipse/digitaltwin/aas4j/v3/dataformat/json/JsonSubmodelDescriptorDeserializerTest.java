@@ -46,7 +46,7 @@ public class JsonSubmodelDescriptorDeserializerTest {
     public void testReadSubmodelDescriptor() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         String expected = Files.readString(fileExpected.toPath());
-        SubmodelDescriptor submodelDescriptor = new JsonDeserializer().readSubmodelDescriptor(expected);
+        SubmodelDescriptor submodelDescriptor = new JsonDeserializer().read(expected, SubmodelDescriptor.class);
         SubmodelDescriptor submodelDescriptorExpected = getDefaultSubmodelDescriptor();
 
         assertEquals(submodelDescriptorExpected, submodelDescriptor);
@@ -56,7 +56,8 @@ public class JsonSubmodelDescriptorDeserializerTest {
     public void testReadSubmodelDescriptors() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
-        List<SubmodelDescriptor> submodelDescriptors = new JsonDeserializer().readSubmodelDescriptors(expected);
+        List<SubmodelDescriptor> submodelDescriptors =
+            new JsonDeserializer().readList(expected, SubmodelDescriptor.class);
         SubmodelDescriptor submodelDescriptorExpected = getDefaultSubmodelDescriptor();
         assertEquals(submodelDescriptorExpected, submodelDescriptors.get(0));
     }

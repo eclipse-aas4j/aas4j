@@ -40,6 +40,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -122,6 +123,18 @@ public class JsonReferableSerializerTest {
         JsonNode actual = new JsonSerializer().toNode(property);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testSerializeListOfReferablesToNode() throws IOException, SerializationException, JSONException {
+        List<Referable> referables = new ArrayList<>();
+        referables.add(new DefaultProperty.Builder()
+            .idShort("exampleId")
+            .build());
+        JsonNode node = new JsonSerializer().toNode(referables);
+        Assert.assertNotNull(node);
+        Assert.assertTrue(node.isArray());
+    }
+
     @Test
     public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
         compare(Examples.EXTENSION_MINIMAL);
