@@ -29,7 +29,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class JsonSubmodelDescriptorDeserializerTest {
-
     public static SubmodelDescriptor getDefaultSubmodelDescriptor () {
         return new DefaultSubmodelDescriptor.Builder()
                 .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
