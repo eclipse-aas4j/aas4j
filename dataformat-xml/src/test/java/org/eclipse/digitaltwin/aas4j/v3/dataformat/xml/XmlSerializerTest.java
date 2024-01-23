@@ -17,14 +17,18 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
@@ -54,6 +58,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
@@ -185,6 +190,32 @@ public class XmlSerializerTest {
         validateXmlSerializer(AAS_WITH_EXTENSION_MAXIMAL, Examples.EXTENSION_MAXIMAL, new XmlSerializer());
     }
 
+
+    /**
+     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
+     *
+     * @throws SerializationException
+     * @throws DeserializationException
+     */
+    @Test
+    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException, SAXException {
+        XmlSerializer serializer = new XmlSerializer();
+        XmlDeserializer deserializer = new XmlDeserializer();
+
+        // This is the only way to make the serialization to work.
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        subtypes.add(DefaultDummyDataSpecification.class);
+
+        String xmlString = serializer.write(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC);
+        assertNotNull(xmlString);
+
+        validateAgainstXsdSchema(xmlString);
+
+        Environment copy = deserializer.read(xmlString);
+        assertNotNull(copy);
+
+        assertTrue(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC.equals(copy));
+    }
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
         return new XmlSchemaValidator().validateSchema(xml);

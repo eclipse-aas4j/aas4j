@@ -58,6 +58,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
 public interface AssetAdministrationShellElementVisitor {
 
@@ -171,6 +172,8 @@ public interface AssetAdministrationShellElementVisitor {
             visit((Capability) submodelElement);
         } else if (SubmodelElementCollection.class.isAssignableFrom(type)) {
             visit((SubmodelElementCollection) submodelElement);
+        } else if (SubmodelElementList.class.isAssignableFrom(type)) {
+            visit((SubmodelElementList) submodelElement);
         } else if (Operation.class.isAssignableFrom(type)) {
             visit((Operation) submodelElement);
         } else if (EventElement.class.isAssignableFrom(type)) {
@@ -231,8 +234,8 @@ public interface AssetAdministrationShellElementVisitor {
     public default void visit(ConceptDescription conceptDescription) {
     }
 
-	public default void visit(DataSpecificationContent dataSpecificationContent) {
-	}
+    public default void visit(DataSpecificationContent dataSpecificationContent) {
+    }
 
     public default void visit(Entity entity) {
     }
@@ -295,6 +298,9 @@ public interface AssetAdministrationShellElementVisitor {
     }
 
     public default void visit(SubmodelElementCollection submodelElementCollection) {
+    }
+
+    public default void visit(SubmodelElementList submodelElementList) {
     }
 
     public default void visit(Resource resource) {
