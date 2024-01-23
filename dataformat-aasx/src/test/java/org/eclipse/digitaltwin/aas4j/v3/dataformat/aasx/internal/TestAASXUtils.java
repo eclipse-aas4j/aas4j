@@ -22,9 +22,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-/**
- * @author schnicke
- */
 public class TestAASXUtils {
 
 	@Test
