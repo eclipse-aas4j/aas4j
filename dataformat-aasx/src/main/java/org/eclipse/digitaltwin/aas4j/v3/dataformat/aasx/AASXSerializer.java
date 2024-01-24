@@ -174,7 +174,8 @@ public class AASXSerializer {
      * @return UUID
      */
     private String createUniqueID() {
-        return UUID.randomUUID().toString();
+		// The unique id has to start with a letter (cf. xs:ID). UUIDs do this only sometimes.
+		return "A" + UUID.randomUUID().toString();
     }
 
     /**
