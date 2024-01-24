@@ -127,11 +127,11 @@ public class AASXSerializer {
                 && aas.getAssetInformation().getDefaultThumbnail() != null
                 && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
                 .forEach(aas -> createParts(files,
-                        AASXUtils.getPathFromURL(aas.getAssetInformation().getDefaultThumbnail().getPath()),
+                        AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
                         rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
         environment.getSubmodels().forEach(sm ->
             findFileElements(sm.getSubmodelElements()).forEach(file -> createParts(files,
-                    AASXUtils.getPathFromURL(file.getValue()), rootPackage, xmlPart, file.getContentType())));
+                    AASXUtils.removeFilePartOfURI(file.getValue()), rootPackage, xmlPart, file.getContentType())));
     }
 
     /**
@@ -174,7 +174,8 @@ public class AASXSerializer {
      * @return UUID
      */
     private String createUniqueID() {
-        return UUID.randomUUID().toString();
+                // The unique id has to start with a letter (cf. xs:ID). UUIDs do this only sometimes
+                return "a" + UUID.randomUUID().toString();
     }
 
     /**
@@ -265,7 +266,7 @@ public class AASXSerializer {
      */
     private InMemoryFile findFileByPath(Collection<InMemoryFile> files, String path) {
         for (InMemoryFile file : files) {
-            if (AASXUtils.getPathFromURL(file.getPath()).equals(path)) {
+            if (AASXUtils.removeFilePartOfURI(file.getPath()).equals(path)) {
                 return file;
             }
         }
@@ -279,11 +280,10 @@ public class AASXSerializer {
      * @return the prepared path
      */
     private String preparePath(String path) {
-        String newPath = AASXUtils.getPathFromURL(path);
-        if (!newPath.startsWith("file://")) {
-            newPath = "file://" + newPath;
+        if (path.startsWith("/")) {
+            path = "file://" + path;
         }
-        return newPath;
+        return path;
     }
 
 }
