@@ -37,8 +37,6 @@ public class JsonDeserializer {
     protected SimpleAbstractTypeResolver typeResolver;
     private JsonMapperFactory jsonMapperFactory;
 
-    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-
     public JsonDeserializer() {
         typeResolver = new SimpleAbstractTypeResolverFactory().create();
         jsonMapperFactory = new JsonMapperFactory();
@@ -47,10 +45,11 @@ public class JsonDeserializer {
 
     /**
      * Enables usage of custom implementation to be used for deserialization instead of default implementation, e.g.
-     * defining a custom implementation of the Submodel interface {@code class CustomSubmodel implements Submodel {}}
-     * and calling {@code useImplementation(Submodel.class, CustomSubmodel.class);} will result in all instances of
-     * Submodel will be deserialized as CustomSubmodel. Subsequent class with the same aasInterface parameter will
-     * override the effects of all previous calls.
+     * defining a custom implementation of the Submodel interface {@code class
+     * CustomSubmodel implements Submodel {}} and calling
+     * {@code useImplementation(Submodel.class, CustomSubmodel.class);} will result in all instances of Submodel will be
+     * deserialized as CustomSubmodel. Subsequent class with the same aasInterface parameter will override the effects
+     * of all previous calls.
      *
      * @param <T> the type of the interface to replace
      * @param aasInterface the class of the interface to replace
@@ -65,7 +64,7 @@ public class JsonDeserializer {
      * Generic method to deserialize a given string into instance of an AAS type
      *
      * @param value a string representation of the AAS instance
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return the instance
      * @throws DeserializationException if deserialization fails
@@ -74,7 +73,7 @@ public class JsonDeserializer {
         try {
             return mapper.readValue(value, valueType);
         } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing "+ valueType.getSimpleName(), ex);
+            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
         }
     }
 
@@ -82,7 +81,7 @@ public class JsonDeserializer {
      * Generic method to deserialize a given JSON node into instance of an AAS type
      *
      * @param node the node to parse
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return an AAS instance
      *
@@ -100,13 +99,13 @@ public class JsonDeserializer {
      * Generic method to deserialize a given InputStream into instance of an AAS type, using the default UTF-8 charset
      *
      * @param stream An InputStream containing the string representation of the AAS instance
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return an AAS instance
      * @throws DeserializationException if deserialization fails
      */
     public <T> T read(InputStream stream, Class<T> valueType) throws DeserializationException {
-        return read(stream, DEFAULT_CHARSET, valueType);
+        return read(stream, StandardCharsets.UTF_8, valueType);
     }
 
     /**
@@ -114,7 +113,7 @@ public class JsonDeserializer {
      *
      * @param stream An InputStream containing the string representation of the AAS instance
      * @param charset the charset to use for deserialization
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return an AAS instance
      * @throws DeserializationException if deserialization fails
@@ -128,10 +127,10 @@ public class JsonDeserializer {
     }
 
     /**
-     * Deserializes a given string into a list of AAS instances
+     * Generic method to deserialize a given string into a list of AAS instances
      *
      * @param value a string representation of the AAS instances list
-     * @param valueType the class type of the instance
+     * @param valueType the class type of the instance. Not null.
      * @param <T> the AAS type
      * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
@@ -148,7 +147,7 @@ public class JsonDeserializer {
      * Deserializes a given JsonArray into a list of AAS instances
      *
      * @param node a JsonArray representing the AAS instances list
-     * @param valueType the class type of the instance
+     * @param valueType the class type of the instance. Not null.
      * @param <T> the AAS type
      * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
@@ -165,13 +164,13 @@ public class JsonDeserializer {
      * Deserializes a given input stream into a list of AAS instances using the default UTF-8 charset
      *
      * @param stream An InputStream containing the string representation of the AAS instances list
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
      */
     public <T> List<T> readList(InputStream stream, Class<T> valueType) throws DeserializationException {
-        return readList(stream, DEFAULT_CHARSET, valueType);
+        return readList(stream, StandardCharsets.UTF_8, valueType);
     }
 
     /**
@@ -179,7 +178,7 @@ public class JsonDeserializer {
      *
      * @param stream An InputStream containing the string representation of the AAS instances list
      * @param charset the charset to use for deserialization
-     * @param valueType the class type of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
      * @param <T> the AAS type
      * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails

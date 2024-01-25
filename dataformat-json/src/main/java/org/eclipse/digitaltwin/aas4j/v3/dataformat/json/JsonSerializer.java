@@ -51,9 +51,9 @@ public class JsonSerializer {
     }
 
     /**
-     * Generic method to serialize a given object to a string
+     * Generic method to serialize a given AAS instance to a string
      *
-     * @param aasInstance the object to serialize
+     * @param aasInstance the AAS instance to serialize
      * @return the string representation
      * @throws SerializationException if serialization fails
      */
@@ -67,9 +67,9 @@ public class JsonSerializer {
     }
 
     /**
-     * Generic method to convert a given object to a JSON node
+     * Generic method to convert a given AAS instance to a JSON node
      *
-     * @param aasInstance the object to serialize
+     * @param aasInstance the AAS instance to serialize
      * @return the JSON node representation
      * @throws IllegalArgumentException
      */
@@ -78,9 +78,9 @@ public class JsonSerializer {
     }
 
     /**
-     * Generic method to convert a collection of AAS objects to a JSON array
+     * Generic method to convert a collection of AAS instances to a JSON array
      *
-     * @param aasInstances the list of AAS objects to convert
+     * @param aasInstances the list of AAS instances to convert
      * @return the JSON array representation
      * @throws IllegalArgumentException
      */
@@ -96,11 +96,11 @@ public class JsonSerializer {
     }
 
     /**
-     * Generic method to serialize a given object to an output stream using given charset
+     * Generic method to serialize a given AAS instance to an output stream using given charset
      *
      * @param out the output stream to serialize to
      * @param charset the charset to use for serialization
-     * @param aasInstance the object to serialize
+     * @param aasInstance the AAS instance to serialize
      * @throws SerializationException if serialization fails
      */
     void write(OutputStream out, Charset charset, Object aasInstance) throws SerializationException {
@@ -113,18 +113,14 @@ public class JsonSerializer {
 
 
     /**
-     * Generic method to serialize a given object to an output stream using UTF-8 charset
+     * Generic method to serialize a given AAS instance to an output stream using UTF-8 charset
      *
      * @param out the output stream to serialize to
-     * @param aasInstance the object to serialize
+     * @param aasInstance the AAS instance to serialize
      * @throws SerializationException if serialization fails
      */
     void write(OutputStream out, Object aasInstance) throws SerializationException {
-        try {
-            mapper.writeValue(new OutputStreamWriter(out, StandardCharsets.UTF_8), aasInstance);
-        } catch (IOException ex) {
-            throw new SerializationException("error serializing " + aasInstance.getClass().getSimpleName() , ex);
-        }
+        write(out, StandardCharsets.UTF_8, aasInstance);
     }
 
     /**
