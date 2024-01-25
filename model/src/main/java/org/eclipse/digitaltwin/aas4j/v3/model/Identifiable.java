@@ -29,7 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
     @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface Identifiable extends Referable {
-    String id = "https://admin-shell.io/aas/3/0/Identifiable/id";
     /**
      * Administrative information of an identifiable element.
      *
@@ -56,7 +55,7 @@ public interface Identifiable extends Referable {
      *
      * @return Returns the String for the property id.
      */
-    @IRI(id)
+    @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
     String getId();
 
     /**
