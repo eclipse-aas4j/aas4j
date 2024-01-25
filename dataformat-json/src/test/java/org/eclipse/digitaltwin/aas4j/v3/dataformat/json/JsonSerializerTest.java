@@ -36,11 +36,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 
 import org.json.JSONException;
 import org.junit.Assert;
@@ -64,7 +62,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonDeserializerTest.getDefaultSubmodelDescriptor;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -153,7 +152,7 @@ public class JsonSerializerTest {
         Assert.assertTrue(fileExpected.exists());
         validateAndCompare(
             Files.readString(fileExpected.toPath()),
-            serializerToTest.write(JsonDeserializerTest.createAasDescriptor()));
+            serializerToTest.write(createAasDescriptor()));
     }
 
     @Test
@@ -301,7 +300,7 @@ public class JsonSerializerTest {
     @Test
     public void testReadSubmodelDescriptor() throws IOException, SerializationException, JSONException {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
-        validateAndCompare(fileExpected, getDefaultSubmodelDescriptor());
+        validateAndCompare(fileExpected, createDefaultSubmodelDescriptor());
     }
 
     private void validateAndCompare(File expectedFile, SubmodelDescriptor descriptor) throws IOException, SerializationException, JSONException {

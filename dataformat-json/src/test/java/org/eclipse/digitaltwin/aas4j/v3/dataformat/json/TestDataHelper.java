@@ -4,6 +4,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
@@ -13,7 +14,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEndpoint;
@@ -25,6 +28,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
 
 import java.util.List;
 
@@ -104,6 +108,39 @@ public class TestDataHelper {
         return new DefaultSpecificAssetId.Builder()
                 .name("testSpecificAssetId")
                 .value("testValue")
+                .build();
+    }
+
+    static AssetAdministrationShellDescriptor createAasDescriptor() {
+
+        SpecificAssetId specificAssetId = new DefaultSpecificAssetId.Builder()
+                .semanticId(TestDataHelper.DEFAULT_SEMANTIC_ID)
+                .externalSubjectId(TestDataHelper.createReference(
+                        ReferenceTypes.MODEL_REFERENCE, KeyTypes.ASSET_ADMINISTRATION_SHELL, "defaultSpecificAssetId"))
+                .name("defaultSpecificAssetIdName")
+                .value("http://example.company/myAsset").build();
+
+        return new DefaultAssetAdministrationShellDescriptor.Builder()
+                .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
+                .description(TestDataHelper.DEFAULT_DESCRIPTION)
+                .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
+                .id(TestDataHelper.DEFAULT_IDENTIFICATION)
+                .idShort(TestDataHelper.DEFAULT_ID_SHORT)
+                .specificAssetIds(List.of(specificAssetId))
+                .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
+                .globalAssetId("defaultGlobalAssetId")
+                .submodelDescriptors(List.of(createDefaultSubmodelDescriptor())).build();
+    }
+
+    static SubmodelDescriptor createDefaultSubmodelDescriptor () {
+        return new DefaultSubmodelDescriptor.Builder()
+                .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
+                .description(TestDataHelper.DEFAULT_DESCRIPTION)
+                .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
+                .id(TestDataHelper.DEFAULT_IDENTIFICATION)
+                .idShort(TestDataHelper.DEFAULT_ID_SHORT)
+                .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
+                .semanticId(TestDataHelper.DEFAULT_SEMANTIC_ID)
                 .build();
     }
 }

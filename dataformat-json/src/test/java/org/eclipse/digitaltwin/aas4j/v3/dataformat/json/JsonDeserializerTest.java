@@ -25,13 +25,11 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
@@ -43,11 +41,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -58,19 +54,15 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class JsonDeserializerTest {
@@ -109,66 +101,48 @@ public class JsonDeserializerTest {
 
     @Test
     public void testReadReferableFromStreamUsingCharset() throws Exception {
-        Submodel submodel = new JsonDeserializer().read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
         assertEquals(Examples.SUBMODEL.getModel(), submodel);
     }
 
     @Test
     public void testReadReferables() throws Exception {
-        Path path = Paths.get("src", "test", "resources", "Submodel-List.json");
-        assertTrue(path.toFile().exists());
-        String jsonSubmodels = Files.readString(path);
-        List<Submodel> submodels = new JsonDeserializer().readList( jsonSubmodels, Submodel.class);
-        assertNotNull(submodels);
-        assertEquals(2, submodels.size());
-        assertNotNull(submodels.get(0));
-        assertNotNull(submodels.get(1));
+        List<Submodel> submodels = deserializerToTest.readList(Examples.SUBMODEL_LIST_OF.fileContent(), Submodel.class);
+        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
     }
 
     @Test
     public void testReadReferablesFromNode() throws Exception {
         JsonNode node = new ObjectMapper().readTree(Examples.SUBMODEL_LIST_OF.fileContentStream());
-        List<Submodel> submodels = new JsonDeserializer().readList(node, Submodel.class);
-        assertNotNull(submodels);
-        assertEquals(2, submodels.size());
-        assertNotNull(submodels.get(0));
-        assertNotNull(submodels.get(1));
+        List<Submodel> submodels = deserializerToTest.readList(node, Submodel.class);
+        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
     }
 
     @Test
     public void testReadReferablesFromStream() throws Exception {
-        List<Submodel> submodels = new JsonDeserializer().readList(
+        List<Submodel> submodels = deserializerToTest.readList(
             Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
-        assertNotNull(submodels);
-        assertEquals(2, submodels.size());
-        assertNotNull(submodels.get(0));
-        assertNotNull(submodels.get(1));
+        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
     }
 
     @Test
-    public void testReadReferablesFromFile() throws Exception {
-        File file = Paths.get("src", "test", "resources", "Submodel-List.json").toFile();
-        assertTrue(file.exists());
-        List<Submodel> submodels = new JsonDeserializer().readList(new FileInputStream(file), Submodel.class);
-        assertNotNull(submodels);
-        assertEquals(2, submodels.size());
-        assertNotNull(submodels.get(0));
-        assertNotNull(submodels.get(1));
+    public void testReadReferablesFromStreamUsingUtf8Charset() throws Exception {
+        List<Submodel> submodels = deserializerToTest.readList(
+            Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
     }
-
-
 
     @Test
     public void testSimpleExample() throws Exception {
         Environment expected = Examples.EXAMPLE_SIMPLE.getModel();
-        Environment actual = new JsonDeserializer().read(Examples.EXAMPLE_SIMPLE.fileContentStream(), Environment.class);
+        Environment actual = deserializerToTest.read(Examples.EXAMPLE_SIMPLE.fileContentStream(), Environment.class);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testFullExample() throws Exception {
         Environment expected = Examples.EXAMPLE_FULL.getModel();
-        Environment actual = new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
+        Environment actual = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
         Assert.assertEquals(expected, actual);
     }
 
@@ -176,7 +150,7 @@ public class JsonDeserializerTest {
     public void testFullExampleFromNode() throws Exception {
         Environment expected = Examples.EXAMPLE_FULL.getModel();
         JsonNode node = new ObjectMapper().readTree(Examples.EXAMPLE_FULL.fileContentStream());
-        Environment actual = new JsonDeserializer().read(node, Environment.class);
+        Environment actual = deserializerToTest.read(node, Environment.class);
         Assert.assertEquals(expected, actual);
     }
 
@@ -195,113 +169,93 @@ public class JsonDeserializerTest {
         checkImplementationClasses(environment, CustomSubmodel2.class, CustomProperty.class);
     }
 
-
     @Test
     public void testReadAAS() throws DeserializationException {
         AssetAdministrationShell expected = Examples.ASSET_ADMINISTRATION_SHELL.getModel();
-        AssetAdministrationShell actual = new JsonDeserializer().read(Examples.ASSET_ADMINISTRATION_SHELL.fileContentStream(), AssetAdministrationShell.class);
+        AssetAdministrationShell actual = deserializerToTest.read(Examples.ASSET_ADMINISTRATION_SHELL.fileContentStream(), AssetAdministrationShell.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadAASs() throws DeserializationException {
         List<AssetAdministrationShell> expected = Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.getModel();
-        List<AssetAdministrationShell> actual = new JsonDeserializer().readList(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.fileContentStream(), AssetAdministrationShell.class);
+        List<AssetAdministrationShell> actual = deserializerToTest.readList(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.fileContentStream(), AssetAdministrationShell.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelUsingUtf8Charset() throws DeserializationException {
         Submodel expected = Examples.SUBMODEL.getModel();
-        Submodel actual = new JsonDeserializer().read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelFromFileUsingUtf8Charset() throws DeserializationException, FileNotFoundException {
-        Submodel expected = Examples.SUBMODEL.getModel();
-        File file = new File("src/test/resources/Submodel.json");
-        assertTrue(file.exists());
-        Submodel actual = new JsonDeserializer().read(new FileInputStream(file), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelsFromFileUsingUtf8Charset() throws DeserializationException, FileNotFoundException {
-        List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
-        File file = new File("src/test/resources/Submodel-List.json");
-        assertTrue(file.exists());
-        List<Submodel> actual = new JsonDeserializer().readList(new FileInputStream(file), StandardCharsets.UTF_8, Submodel.class);
+        Submodel actual = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelsFromStreamUsingUtf8Charset() throws DeserializationException {
         List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
-        List<Submodel> actual = new JsonDeserializer().readList(
-                Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        List<Submodel> actual = deserializerToTest.readList(
+            Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodel() throws DeserializationException {
         Submodel expected = Examples.SUBMODEL.getModel();
-        Submodel actual = new JsonDeserializer().read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
+        Submodel actual = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodels() throws DeserializationException {
         List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
-        List<Submodel> actual = new JsonDeserializer().readList(Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
+        List<Submodel> actual = deserializerToTest.readList(Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelElement() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT.getModel();
-        SubmodelElement actual = new JsonDeserializer().read(Examples.SUBMODEL_ELEMENT.fileContentStream(), SubmodelElement.class);
+        SubmodelElement actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT.fileContentStream(), SubmodelElement.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelElements() throws DeserializationException {
         List<SubmodelElement> expected = Examples.SUBMODEL_ELEMENT_LIST_OF.getModel();
-        List<SubmodelElement> actual = new JsonDeserializer().readList(
-                Examples.SUBMODEL_ELEMENT_LIST_OF.fileContentStream(), SubmodelElement.class);
+        List<SubmodelElement> actual = deserializerToTest.readList(
+            Examples.SUBMODEL_ELEMENT_LIST_OF.fileContentStream(), SubmodelElement.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelElementList() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT_LIST.getModel();
-        SubmodelElementList actual = new JsonDeserializer().read(Examples.SUBMODEL_ELEMENT_LIST.fileContentStream(), SubmodelElementList.class);
+        SubmodelElementList actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT_LIST.fileContentStream(), SubmodelElementList.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadSubmodelElementCollection() throws DeserializationException {
         SubmodelElement expected = Examples.SUBMODEL_ELEMENT_COLLECTION.getModel();
-        SubmodelElementCollection actual = new JsonDeserializer().read(Examples.SUBMODEL_ELEMENT_COLLECTION.fileContentStream(), SubmodelElementCollection.class);
+        SubmodelElementCollection actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT_COLLECTION.fileContentStream(), SubmodelElementCollection.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadEmptyReferableList() throws DeserializationException {
         List<Referable> emptyList = Collections.emptyList();
-        List<Referable> deserialized = new JsonDeserializer().readList("[]", Referable.class);
+        List<Referable> deserialized = deserializerToTest.readList("[]", Referable.class);
         assertEquals(emptyList, deserialized);
     }
 
     @Test
     @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
     public void testDeserializeConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
-        ExampleData<ConceptDescription> exampleData = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT;
-        Object expected = exampleData.getModel();
-        try (InputStream fileContent = exampleData.fileContentStream()) {
-            Object actual = new JsonDeserializer().read(fileContent, (Class<? extends Referable>) exampleData.getModel().getClass());
-            Assert.assertEquals(expected, actual);
-        }
+        ConceptDescription expected = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.getModel();
+        ConceptDescription actual = deserializerToTest.read(
+            Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.fileContentStream(),
+            ConceptDescription.class);
+        assertEquals(expected, actual);
     }
 
 
@@ -310,47 +264,28 @@ public class JsonDeserializerTest {
         Property expected = new DefaultProperty.Builder()
                 .idShort("exampleId")
                 .build();
-        ObjectNode input = JsonNodeFactory.instance.objectNode();
-        input.put("idShort", "exampleId");
-        input.put("modelType", "Property");
-        Property actual = new JsonDeserializer().read(input, Property.class);
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("idShort", "exampleId");
+        node.put("modelType", "Property");
+        Property actual = deserializerToTest.read(node, Property.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testExtensionMinimal() throws Exception {
         Environment expected = Examples.EXTENSION_MINIMAL.getModel();
-        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MINIMAL.fileContentStream(), Environment.class);
+        Environment actual = deserializerToTest.read(Examples.EXTENSION_MINIMAL.fileContentStream(), Environment.class);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testExtensionMaximal() throws Exception {
         Environment expected = Examples.EXTENSION_MAXIMAL.getModel();
-        Environment actual = new JsonDeserializer().read(Examples.EXTENSION_MAXIMAL.fileContentStream(), Environment.class);
+        Environment actual = deserializerToTest.read(Examples.EXTENSION_MAXIMAL.fileContentStream(), Environment.class);
         assertEquals(expected, actual);
     }
 
-    static AssetAdministrationShellDescriptor createAasDescriptor() {
 
-        SpecificAssetId specificAssetId = new DefaultSpecificAssetId.Builder()
-                .semanticId(TestDataHelper.DEFAULT_SEMANTIC_ID)
-                .externalSubjectId(TestDataHelper.createReference(
-                        ReferenceTypes.MODEL_REFERENCE, KeyTypes.ASSET_ADMINISTRATION_SHELL, "defaultSpecificAssetId"))
-                .name("defaultSpecificAssetIdName")
-                .value("http://example.company/myAsset").build();
-
-        return new DefaultAssetAdministrationShellDescriptor.Builder()
-                .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
-                .description(TestDataHelper.DEFAULT_DESCRIPTION)
-                .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
-                .id(TestDataHelper.DEFAULT_IDENTIFICATION)
-                .idShort(TestDataHelper.DEFAULT_ID_SHORT)
-                .specificAssetIds(List.of(specificAssetId))
-                .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
-                .globalAssetId("defaultGlobalAssetId")
-                .submodelDescriptors(List.of(getDefaultSubmodelDescriptor())).build();
-    }
 
     @Test
     public void testReadAasDescriptor() throws IOException, DeserializationException {
@@ -432,7 +367,7 @@ public class JsonDeserializerTest {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         String expected = Files.readString(fileExpected.toPath());
         SubmodelDescriptor submodelDescriptor = new JsonDeserializer().read(expected, SubmodelDescriptor.class);
-        SubmodelDescriptor submodelDescriptorExpected = getDefaultSubmodelDescriptor();
+        SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
 
         assertEquals(submodelDescriptorExpected, submodelDescriptor);
     }
@@ -443,7 +378,7 @@ public class JsonDeserializerTest {
         String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
         List<SubmodelDescriptor> submodelDescriptors =
                 new JsonDeserializer().readList(expected, SubmodelDescriptor.class);
-        SubmodelDescriptor submodelDescriptorExpected = getDefaultSubmodelDescriptor();
+        SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
         assertEquals(submodelDescriptorExpected, submodelDescriptors.get(0));
     }
 
@@ -457,15 +392,5 @@ public class JsonDeserializerTest {
         });
     }
 
-    static SubmodelDescriptor getDefaultSubmodelDescriptor () {
-        return new DefaultSubmodelDescriptor.Builder()
-                .administration(TestDataHelper.DEFAULT_ADMINISTRATIVE_INFORMATION)
-                .description(TestDataHelper.DEFAULT_DESCRIPTION)
-                .displayName(TestDataHelper.DEFAULT_DISPLAY_NAME)
-                .id(TestDataHelper.DEFAULT_IDENTIFICATION)
-                .idShort(TestDataHelper.DEFAULT_ID_SHORT)
-                .endpoints(List.of(TestDataHelper.createEndpointBuilder().build()))
-                .semanticId(TestDataHelper.DEFAULT_SEMANTIC_ID)
-                .build();
-    }
+
 }
