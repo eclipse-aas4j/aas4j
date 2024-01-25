@@ -47,10 +47,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShe
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
+
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -62,12 +62,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -76,48 +74,43 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class JsonDeserializerTest {
-    @Test
-    public void testReadEnvironmentFromStream() throws Exception {
-        Environment env = new JsonDeserializer().read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
-        assertNotNull(env);
+
+    private static JsonDeserializer deserializerToTest;
+
+    @BeforeClass
+    public static void initialize() {
+        deserializerToTest = new JsonDeserializer();
     }
 
     @Test
-    public void testReadEnvironmentFromFile() throws Exception {
-        File file = Paths.get("src", "test", "resources", "Example-Full.json").toFile();
-        assertTrue(file.exists());
-        Environment env = new JsonDeserializer().read(new FileInputStream(file), Environment.class);
-        assertNotNull(env);
+    public void testReadEnvironmentFromStream() throws DeserializationException {
+        Environment env = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
+        assertEquals(Examples.EXAMPLE_FULL.getModel(), env);
     }
 
     @Test
-    public void testReadReferable() throws Exception {
-        Path path = Paths.get("src", "test", "resources", "Submodel.json");
-        assertTrue(path.toFile().exists());
-        String jsonSubmodel = Files.readString(path);
-        Submodel submodel = new JsonDeserializer().read(jsonSubmodel, Submodel.class);
-        assertNotNull(submodel);
+    public void testReadReferable() throws IOException, DeserializationException {
+        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContent(), Submodel.class);
+        assertEquals(Examples.SUBMODEL.getModel(), submodel);
     }
 
     @Test
-    public void testReadReferableFromStream() throws Exception {
-        Submodel submodel = new JsonDeserializer().read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
-        assertNotNull(submodel);
+    public void testReadReferableFromStream() throws DeserializationException {
+        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
+        assertEquals(Examples.SUBMODEL.getModel(), submodel);
     }
 
     @Test
     public void testReadReferableFromNode() throws Exception {
         JsonNode node = new ObjectMapper().readTree(Examples.SUBMODEL.fileContentStream());
-        Submodel submodel = new JsonDeserializer().read(node, Submodel.class);
-        assertNotNull(submodel);
+        Submodel submodel = deserializerToTest.read(node, Submodel.class);
+        assertEquals(Examples.SUBMODEL.getModel(), submodel);
     }
 
     @Test
-    public void testReadReferableFromFile() throws Exception {
-        File file = Paths.get("src", "test", "resources", "Submodel.json").toFile();
-        assertTrue(file.exists());
-        Submodel submodel = new JsonDeserializer().read(new FileInputStream(file), Submodel.class);
-        assertNotNull(submodel);
+    public void testReadReferableFromStreamUsingCharset() throws Exception {
+        Submodel submodel = new JsonDeserializer().read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
+        assertEquals(Examples.SUBMODEL.getModel(), submodel);
     }
 
     @Test
@@ -125,7 +118,7 @@ public class JsonDeserializerTest {
         Path path = Paths.get("src", "test", "resources", "Submodel-List.json");
         assertTrue(path.toFile().exists());
         String jsonSubmodels = Files.readString(path);
-        List<Submodel> submodels = new JsonDeserializer().readList(jsonSubmodels, Submodel.class);
+        List<Submodel> submodels = new JsonDeserializer().readList( jsonSubmodels, Submodel.class);
         assertNotNull(submodels);
         assertEquals(2, submodels.size());
         assertNotNull(submodels.get(0));
