@@ -53,8 +53,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
             }
         } else if (value instanceof DataTypeIec61360) {
             gen.writeString(value.name().toUpperCase());
-		} else if (value instanceof SecurityTypeEnum) {
-			gen.writeString(value.name().toUpperCase());
+        } else if (value instanceof SecurityTypeEnum) {
+            gen.writeString(value.name().toUpperCase());
         } else if (value instanceof Direction || value instanceof StateOfEvent) {
             gen.writeString(value.name().toLowerCase());
         } else if (ReflectionHelper.ENUMS.contains(value.getClass())) {
