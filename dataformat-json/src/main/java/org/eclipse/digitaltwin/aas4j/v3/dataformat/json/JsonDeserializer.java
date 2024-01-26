@@ -16,18 +16,19 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
