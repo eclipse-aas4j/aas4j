@@ -15,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 
 public class ValueReferencePairsDeserializer extends NoEntryWrapperListDeserializer<ValueReferencePair> {
