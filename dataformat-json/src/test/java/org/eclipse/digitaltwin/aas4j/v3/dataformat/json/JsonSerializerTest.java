@@ -318,7 +318,6 @@ public class JsonSerializerTest {
         } else {
             actual = serializerToTest.write(exampleData.getModel());
         }
-        //validateAndCompare(expected, actual);
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
         JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
     }
