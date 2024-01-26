@@ -13,13 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
+package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.Key;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
+import java.util.List;
 
-public class ValueReferencePairsDeserializer extends NoEntryWrapperListDeserializer<ValueReferencePair> {
-    public ValueReferencePairsDeserializer() {
-        super("valueReferencePair", new ValueReferencePairNodeDeserializer());
-    }
+public interface ReferenceMixin {
+    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonProperty("keys")
+    List<Key> getKeys();
+
+    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonProperty("type")
+    ReferenceTypes getType();
+
+    @JsonProperty("type")
+    void setType(ReferenceTypes type);
 }
