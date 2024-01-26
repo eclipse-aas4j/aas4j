@@ -15,11 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 
-public interface KeyMixin {
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+public interface KeyMixin {
     @JsonInclude(JsonInclude.Include.ALWAYS)
     KeyTypes getType();
 
