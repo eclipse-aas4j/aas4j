@@ -16,10 +16,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -40,6 +46,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -52,18 +63,9 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -268,17 +270,15 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeReferenceList() throws SerializationException {
-        JsonSerializer serializer = new JsonSerializer();
         List<Reference> referenceList = AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels();
-        String serializedReferenceArray = serializer.write(referenceList);
+        String serializedReferenceArray = serializerToTest.write(referenceList);
         assertTrue(serializedReferenceArray.contains("\"https://acplt.org/Test_Submodel\""));
     }
 
     @Test
     public void testSerializeSpecificAssetId() throws SerializationException {
-        JsonSerializer serializer = new JsonSerializer();
         SpecificAssetId specificAssetId = TestDataHelper.createSpecificAssetId();
-        String specificAssetId_string = serializer.write(specificAssetId);
+        String specificAssetId_string = serializerToTest.write(specificAssetId);
         assertTrue(specificAssetId_string.contains("\"value\" : \"testValue\""));
     }
 
@@ -291,8 +291,7 @@ public class JsonSerializerTest {
             add(specificAssetId);
         }};
 
-        JsonSerializer serializer = new JsonSerializer();
-        String specificAssetId_list_string = serializer.writeList(specificAssetIds);
+        String specificAssetId_list_string = serializerToTest.writeList(specificAssetIds);
         assertTrue(specificAssetId_list_string.startsWith("["));
         assertTrue(specificAssetId_list_string.contains("\"name\" : \"testSpecificAssetId\""));
     }
@@ -305,7 +304,7 @@ public class JsonSerializerTest {
 
     private void validateAndCompare(File expectedFile, SubmodelDescriptor descriptor) throws IOException, SerializationException, JSONException {
         String expected = Files.readString(expectedFile.toPath());
-        String actual = new JsonSerializer().write(descriptor);
+        String actual = serializerToTest.write(descriptor);
         validateAndCompare(expected, actual);
     }
 
@@ -315,9 +314,9 @@ public class JsonSerializerTest {
         String expected = exampleData.fileContent();
         String actual;
         if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = new JsonSerializer().writeList((Collection<?>) exampleData.getModel());
+            actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
         } else {
-            actual = new JsonSerializer().write(exampleData.getModel());
+            actual = serializerToTest.write(exampleData.getModel());
         }
         //validateAndCompare(expected, actual);
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
@@ -326,7 +325,7 @@ public class JsonSerializerTest {
 
     private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
         String expected = exampleData.fileContent();
-        String actual = new JsonSerializer().write(exampleData.getModel());
+        String actual = serializerToTest.write(exampleData.getModel());
         validateAndCompare(expected, actual);
     }
 

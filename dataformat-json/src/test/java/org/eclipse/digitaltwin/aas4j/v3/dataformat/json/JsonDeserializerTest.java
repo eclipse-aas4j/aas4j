@@ -14,10 +14,23 @@
  * limitations under the License.
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.Collections;
+import java.util.List;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -51,18 +64,9 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.Duration;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.Collections;
-import java.util.List;
-
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
 import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -304,9 +308,8 @@ public class JsonDeserializerTest {
         File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
         String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
         List<AssetAdministrationShellDescriptor> assetAdministrationShellDescriptors =
-                new JsonDeserializer().readList(expected, AssetAdministrationShellDescriptor.class);
+            deserializerToTest.readList(expected, AssetAdministrationShellDescriptor.class);
         AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
-
         assertEquals(aasExpected, assetAdministrationShellDescriptors.get(0));
     }
 
@@ -324,17 +327,15 @@ public class JsonDeserializerTest {
 
     @Test
     public void testDeserializeReference() throws DeserializationException, SerializationException {
-        JsonDeserializer deserializer = new JsonDeserializer();
         String jsonReference = new JsonSerializer().write(AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId());
-        Reference reference = deserializer.read(jsonReference, Reference.class);
+        Reference reference = deserializerToTest.read(jsonReference, Reference.class);
         assertTrue(!reference.getKeys().get(0).getValue().isEmpty());
     }
 
     @Test
     public void testDeserializeReferenceList() throws DeserializationException, SerializationException {
-        JsonDeserializer deserializer = new JsonDeserializer();
         String jsonReferenceList = new JsonSerializer().writeList(AASFull.ENVIRONMENT.getAssetAdministrationShells().get(0).getSubmodels());
-        List<Reference> referenceList = deserializer.readList(jsonReferenceList, Reference.class);
+        List<Reference> referenceList = deserializerToTest.readList(jsonReferenceList, Reference.class);
         assertTrue(referenceList.get(0).getType().equals(ReferenceTypes.EXTERNAL_REFERENCE));
     }
 
@@ -346,8 +347,7 @@ public class JsonDeserializerTest {
                 .build();
 
         String specificAssetIdString = new JsonSerializer().write(expected);
-        JsonDeserializer deserializer = new JsonDeserializer();
-        assertEquals(expected, deserializer.read(specificAssetIdString, SpecificAssetId.class));
+        assertEquals(expected, deserializerToTest.read(specificAssetIdString, SpecificAssetId.class));
     }
 
     @Test
@@ -360,8 +360,7 @@ public class JsonDeserializerTest {
                 .build();
 
         String specificAssetId_list_string = serializer.writeList(List.of(expected));
-        JsonDeserializer deserializer = new JsonDeserializer();
-        List<SpecificAssetId> specificAssetIdList = deserializer.readList(
+        List<SpecificAssetId> specificAssetIdList = deserializerToTest.readList(
              specificAssetId_list_string, SpecificAssetId.class);
         assertEquals(expected, specificAssetIdList.get(0));
     }
@@ -370,7 +369,7 @@ public class JsonDeserializerTest {
     public void testReadSubmodelDescriptor() throws IOException, DeserializationException {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         String expected = Files.readString(fileExpected.toPath());
-        SubmodelDescriptor submodelDescriptor = new JsonDeserializer().read(expected, SubmodelDescriptor.class);
+        SubmodelDescriptor submodelDescriptor = deserializerToTest.read(expected, SubmodelDescriptor.class);
         SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
 
         assertEquals(submodelDescriptorExpected, submodelDescriptor);
@@ -381,7 +380,7 @@ public class JsonDeserializerTest {
         File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
         String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
         List<SubmodelDescriptor> submodelDescriptors =
-                new JsonDeserializer().readList(expected, SubmodelDescriptor.class);
+            deserializerToTest.readList(expected, SubmodelDescriptor.class);
         SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
         assertEquals(submodelDescriptorExpected, submodelDescriptors.get(0));
     }
