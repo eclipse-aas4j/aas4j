@@ -41,6 +41,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
@@ -292,7 +293,7 @@ public class JsonDeserializerTest {
         File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
         String expected = Files.readString(fileExpected.toPath());
         AssetAdministrationShellDescriptor assetAdministrationShellDescriptor =
-                new JsonDeserializer().read(expected, AssetAdministrationShellDescriptor.class);
+            deserializerToTest.read(expected, AssetAdministrationShellDescriptor.class);
         AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
 
         assertEquals(aasExpected, assetAdministrationShellDescriptor);
@@ -310,12 +311,15 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testDeserializeDuration() throws DeserializationException, DatatypeConfigurationException, SerializationException {
+    public void testDeserializeOperationRequest() throws DeserializationException, DatatypeConfigurationException, SerializationException {
+        OperationRequest expected = new DefaultOperationRequest.Builder()
+                        .clientTimeoutDuration(DatatypeFactory.newInstance().newDurationDayTime("PT3M"))  // three minutes
+                        .build();
         Duration duration = DatatypeFactory.newInstance().newDurationDayTime("P0DT0H3M0S"); // three minutes
-        JsonDeserializer deserializer = new JsonDeserializer();
-        String operationRequestString = new JsonSerializer().write(org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.OPERATION_REQUEST);
-        OperationRequest operationRequest = deserializer.read(operationRequestString, OperationRequest.class);
-        assertEquals( operationRequest.getClientTimeoutDuration() , duration);
+        String operationRequestString = new JsonSerializer().write(expected);
+        OperationRequest actual = deserializerToTest.read(operationRequestString, OperationRequest.class);
+        assertEquals( actual.getClientTimeoutDuration() , duration);
+        assertEquals(expected, actual);
     }
 
     @Test
