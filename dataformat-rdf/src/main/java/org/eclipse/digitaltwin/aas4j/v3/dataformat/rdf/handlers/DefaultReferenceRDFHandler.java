@@ -42,7 +42,7 @@ public class DefaultReferenceRDFHandler implements RDFHandler<Reference> {
         }
         String typeString = model.getProperty(subjectToParse, AASNamespace.Reference.type).getResource().getURI();
         Map<Integer, Key> keysMap = new HashMap<>();
-        NodeIterator keysIterator = model.listObjectsOfProperty(AASNamespace.Reference.keys);
+        NodeIterator keysIterator = model.listObjectsOfProperty(subjectToParse,AASNamespace.Reference.keys);
         keysIterator.forEachRemaining(node->{
             Key key = new DefaultKeyRDFHandler().fromModel(model, (Resource) node);
             int index = model.getProperty((Resource) node, AASNamespace.index).getInt();

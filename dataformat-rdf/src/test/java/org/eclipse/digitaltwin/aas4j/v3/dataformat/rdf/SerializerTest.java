@@ -22,6 +22,7 @@ import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultConceptDescriptionRDFHandler;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultDataSpecificationIEC61360RDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultKeyRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultReferableRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultReferenceRDFHandler;
@@ -55,7 +56,18 @@ public class SerializerTest {
 
     @Test
     public void testReference() throws IncompatibleTypeException {
-        Reference reference = new DefaultReference.Builder().type(ReferenceTypes.EXTERNAL_REFERENCE).keys(Arrays.asList(new DefaultKey.Builder().value("https://example.com").type(KeyTypes.GLOBAL_REFERENCE).build(), new DefaultKey.Builder().value("fragment").type(KeyTypes.FRAGMENT_REFERENCE).build())).build();
+        Reference reference = new DefaultReference.Builder()
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .keys(Arrays.asList(
+                        new DefaultKey.Builder()
+                                .value("https://example.com")
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .build(),
+                        new DefaultKey.Builder()
+                                .value("fragment")
+                                .type(KeyTypes.FRAGMENT_REFERENCE)
+                                .build()))
+                .build();
         RDFSerializationResult rdfSerializationResult = new DefaultReferenceRDFHandler().toModel(reference);
         rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
         Resource createdResource = rdfSerializationResult.getResource();
@@ -82,13 +94,75 @@ public class SerializerTest {
 
     @Test
     public void complexConceptDescription() throws IOException {
-        ConceptDescription conceptDescription = new DefaultConceptDescription.Builder().id("complex").extensions(Arrays.asList(new DefaultExtension.Builder().name("extension1").value("extension1Value").build(), new DefaultExtension.Builder().name("extension2").value("extension2Value").build())).category("myCategory").idShort("exampleIdShort").displayName(Arrays.asList(new DefaultLangStringNameType.Builder().text("text in English").language("en").build(), new DefaultLangStringNameType.Builder().text("متن به فارسی").language("fa").build())).description(Arrays.asList(new DefaultLangStringTextType.Builder().text("A long text in English").language("en").build(), new DefaultLangStringTextType.Builder().text("영어로 된 긴 텍스트").language("ko").build())).administration(new DefaultAdministrativeInformation.Builder().version("1").revision("0").creator(new DefaultReference.Builder().keys(Arrays.asList(new DefaultKey.Builder().value("https://example.com").type(KeyTypes.GLOBAL_REFERENCE).build(), new DefaultKey.Builder().value("fragment").type(KeyTypes.FRAGMENT_REFERENCE).build())).type(ReferenceTypes.EXTERNAL_REFERENCE).build()).build()).isCaseOf(Arrays.asList(new DefaultReference.Builder().keys(new DefaultKey.Builder().value("https://example.com/outside").type(KeyTypes.GLOBAL_REFERENCE).build()).type(ReferenceTypes.EXTERNAL_REFERENCE).build())).embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder().dataSpecification(new DefaultReference.Builder().keys(new DefaultKey.Builder().value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0").type(KeyTypes.GLOBAL_REFERENCE).build()).build()).dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder().levelType(new DefaultLevelType.Builder().max(true).min(true).nom(false).typ(false).build()).unit("gram").symbol("g")
+        ConceptDescription conceptDescription = new DefaultConceptDescription.Builder()
+                .id("complex")
+                .extensions(Arrays.asList(
+                        new DefaultExtension.Builder()
+                                .name("extension1")
+                                .value("extension1Value")
+                                .build(),
+                        new DefaultExtension.Builder()
+                                .name("extension2")
+                                .value("extension2Value")
+                                .build()))
+                .category("myCategory")
+                .idShort("exampleIdShort")
+                .displayName(Arrays.asList(
+                        new DefaultLangStringNameType.Builder()
+                                .text("text in English")
+                                .language("en")
+                                .build(),
+                        new DefaultLangStringNameType.Builder()
+                                .text("متن به فارسی")
+                                .language("fa")
+                                .build()))
+                .description(Arrays.asList(
+                        new DefaultLangStringTextType.Builder()
+                                .text("A long text in English")
+                                .language("en")
+                                .build(),
+                        new DefaultLangStringTextType.Builder()
+                                .text("영어로 된 긴 텍스트")
+                                .language("ko")
+                                .build()))
+                .administration(new DefaultAdministrativeInformation.Builder()
+                        .version("1")
+                        .revision("0")
+                        .creator(new DefaultReference.Builder().keys(
+                                Arrays.asList(new DefaultKey.Builder()
+                                        .value("https://example.com")
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .build(),
+                                        new DefaultKey.Builder()
+                                                .value("fragment")
+                                                .type(KeyTypes.FRAGMENT_REFERENCE)
+                                                .build()))
+                                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                .build())
+                        .build())
+                .isCaseOf(Arrays.asList(
+                        new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .value("https://example.com/outside")
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .build())
+                                .type(ReferenceTypes.EXTERNAL_REFERENCE).build()))
+                .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder().dataSpecification(
+                        new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .value("https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0")
+                                        .type(KeyTypes.GLOBAL_REFERENCE).build()).build())
+                        .dataSpecificationContent(
+                                new DefaultDataSpecificationIec61360.Builder()
+                                        .levelType(new DefaultLevelType.Builder().max(true).min(true).nom(false).typ(false).build())
+                                        .unit("gram")
+                                        .symbol("g")
 //                                .definition()
 //                                .shortName()
 //                                .preferredName()
 //                                .valueFormat()
 //                                .valueList()
-                .dataType(DataTypeIec61360.INTEGER_MEASURE).build()).build()).build();
+                        .dataType(DataTypeIec61360.INTEGER_MEASURE).build()).build()).build();
 
 
     }
@@ -108,4 +182,24 @@ public class SerializerTest {
         String output = new RDFSerializer().write(aasEnv);
         System.out.println(output);
     }
+
+    @Test
+    public void testDataSpecificationIec61360() throws IncompatibleTypeException {
+        DataSpecificationIec61360 dataSpecificationIec61360 = new DefaultDataSpecificationIec61360.Builder()
+                .preferredName(List.of(new DefaultLangStringPreferredNameTypeIec61360.Builder()
+                                .language("en")
+                                .text("preferred name")
+                        .build()))
+                .build();
+        RDFSerializationResult rdfSerializationResult = new DefaultDataSpecificationIEC61360RDFHandler().toModel(dataSpecificationIec61360);
+        Model model = rdfSerializationResult.getModel();
+        model.write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert model.contains(createdResource, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
+//        assert model.contains(createdResource, AASNamespace.Identifiable.id, conceptDescription.getId());
+
+        DataSpecificationIec61360 recreatedDataSpecification = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
+        assert dataSpecificationIec61360.equals(recreatedDataSpecification);
+    }
+
 }
