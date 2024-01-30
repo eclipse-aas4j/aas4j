@@ -4,23 +4,28 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.DefaultRDFHandlerResult;
+import org.apache.jena.vocabulary.RDF;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 
 public class DefaultAssetAdministrationShellRDFHandler implements RDFHandler<AssetAdministrationShell> {
     @Override
-    public RDFSerializationResult toModel(AssetAdministrationShell key) {
+    public RDFSerializationResult toModel(AssetAdministrationShell object) {
         Model model = ModelFactory.createDefaultModel();
-        if (key == null) {
+        if (object == null) {
             return new DefaultRDFHandlerResult(model, ResourceFactory.createResource());
         }
-        return null;
+        Resource subject = model.createResource();
+        return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
-    public AssetAdministrationShell fromModel(Model model, Resource subjectToParse) {
+    public AssetAdministrationShell fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
+        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.AdministrativeInformation) == false){
+            throw new IncompatibleTypeException("AssetAdministrationShell");
+        }
+
         return null;
     }
+
 }

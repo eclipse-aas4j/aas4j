@@ -21,7 +21,9 @@ public class DefaultReferenceRDFHandler implements RDFHandler<Reference> {
         }
         Resource subject = model.createResource();
         subject.addProperty(RDF.type,AASNamespace.Types.Reference);
-        subject.addProperty(AASNamespace.Reference.type,AASNamespace.ReferenceTypes.valueOf(key.getType().name()));
+        if (key.getType()!=null){
+            subject.addProperty(AASNamespace.Reference.type,AASNamespace.ReferenceTypes.valueOf(key.getType().name()));
+        }
         int index = 0;
         for (Key item : key.getKeys()) {
             RDFSerializationResult resultItem = new DefaultKeyRDFHandler().toModel(item);
@@ -38,7 +40,7 @@ public class DefaultReferenceRDFHandler implements RDFHandler<Reference> {
     @Override
     public Reference fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Reference) == false){
-            throw new IncompatibleTypeException();
+            throw new IncompatibleTypeException("Reference");
         }
         String typeString = model.getProperty(subjectToParse, AASNamespace.Reference.type).getResource().getURI();
         Map<Integer, Key> keysMap = new HashMap<>();
