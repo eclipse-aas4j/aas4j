@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultDataSpecificationIEC61360RDFHandler;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEmbeddedDataSpecificationRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.DefaultLangStringShortNameTypeIec61360RDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.DefaultLevelTypeRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.DefaultValueListRDFHandler;
@@ -13,6 +14,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 import org.junit.Test;
 
 import java.util.List;
+
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.SerializerUtil.getDataSpecificationIec61360;
 
 public class DataSpecificationIec61360Test {
 
@@ -40,6 +43,29 @@ public class DataSpecificationIec61360Test {
         assert levelType.equals(recreatedLevelType);
     }
 
+    @Test
+    public void testEmbeddedDataSpecification() throws IncompatibleTypeException {
+        EmbeddedDataSpecification object = SerializerUtil.getEmbeddedDataSpecifications();
+        RDFSerializationResult rdfSerializationResult = new DefaultEmbeddedDataSpecificationRDFHandler().toModel(object);
+        Model model = rdfSerializationResult.getModel();
+        model.write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        EmbeddedDataSpecification recreatedObject = new DefaultEmbeddedDataSpecificationRDFHandler().fromModel(model, createdResource);
+        assert object.equals(recreatedObject);
+
+    }
+
+    @Test
+    public void testMaximalEmbeddedDataSpecification() throws IncompatibleTypeException {
+        EmbeddedDataSpecification object = SerializerUtil.getMaximalEmbeddedDataSpecifications();
+        RDFSerializationResult rdfSerializationResult = new DefaultEmbeddedDataSpecificationRDFHandler().toModel(object);
+        Model model = rdfSerializationResult.getModel();
+        model.write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        EmbeddedDataSpecification recreatedObject = new DefaultEmbeddedDataSpecificationRDFHandler().fromModel(model, createdResource);
+        assert object.equals(recreatedObject);
+
+    }
     @Test
     public void testLangStrings() throws IncompatibleTypeException {
         DefaultLangStringShortNameTypeIec61360 object = new DefaultLangStringShortNameTypeIec61360.Builder()
@@ -115,4 +141,19 @@ public class DataSpecificationIec61360Test {
         DataSpecificationIec61360 recreatedObject = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
         assert object.equals(recreatedObject);
     }
+
+    @Test
+    public void testMaximalDataSpecificationIec61360() throws IncompatibleTypeException {
+        DataSpecificationIec61360 object = getDataSpecificationIec61360();
+        RDFSerializationResult rdfSerializationResult = new DefaultDataSpecificationIEC61360RDFHandler().toModel(object);
+
+        Model model = rdfSerializationResult.getModel();
+        model.write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert model.contains(createdResource, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
+        DataSpecificationIec61360 recreatedObject = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+
 }

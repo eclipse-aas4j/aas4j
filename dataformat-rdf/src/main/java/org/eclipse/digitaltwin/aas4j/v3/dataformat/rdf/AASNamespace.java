@@ -3,6 +3,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -38,6 +39,10 @@ public final class AASNamespace {
     public static final class Reference {
         public static final Property keys = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/keys");
         public static final Property type = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/type");
+    }
+
+    public static final class HasExtensions {
+        public static final Property extensions = ResourceFactory.createProperty(AAS_NAMESPACE + "HasExtensions/extensions");
     }
 
     public static final class Referable {
@@ -254,6 +259,14 @@ public final class AASNamespace {
         public static final Property text = ResourceFactory.createProperty(AAS_NAMESPACE + "AbstractLangString/text");
     }
 
+    public static final class Extension {
+        public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/value");
+        public static final Property valueType = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/valueType");
+        public static final Property refersTo = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/refersTo");
+        public static final Property name = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/name");
+
+    }
+
     public static final class ValueReferencePair {
         public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/value");
         public static final Property valueId = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/valueId");
@@ -261,6 +274,35 @@ public final class AASNamespace {
 
     public static final class ValueList {
         public static final Property valueReferencePairs = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueList/valueReferencePairs");
+    }
+    public static final class EmbeddedDataSpecification {
+        public static final Property dataSpecification =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecification");
+        public static final Property dataSpecificationContent =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecificationContent");
+    }
+    public static final class HasDataSpecification {
+        public static final Property embeddedDataSpecifications =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "HasDataSpecification/embeddedDataSpecifications");
+    }
+    public static final class HasSemantics {
+        public static final Property semanticId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/semanticId");
+        public static final Property supplementalSemanticIds =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/supplementalSemanticIds");
+
+    }
+    public static final class AdministrativeInformation {
+        public static final Property version =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/version");
+        public static final Property revision =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/revision");
+        public static final Property creator =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/creator");
+        public static final Property templateId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/templateId");
+        public static final Property valueReferencePairs =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/valueReferencePairs");
     }
 
     public static final class DataSpecificationIec61360 {
@@ -438,6 +480,255 @@ public final class AASNamespace {
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360.TIMESTAMP.name())) {
                 return Timestamp;
             }
+
+            throw new IllegalArgumentException("Invalid DataTypeIec61360 provided.");
+        }
+    }
+
+    public static final class DataTypeDefXsd {
+        public static final Resource AnyUri =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/AnyUri");
+        public static final Resource Base64Binary =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Base64Binary");
+        public static final Resource Boolean =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Boolean");
+        public static final Resource Byte =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Byte");
+        public static final Resource Date =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Date");
+        public static final Resource DateTime =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/DateTime");
+        public static final Resource Decimal =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Decimal");
+        public static final Resource Double =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Double");
+        public static final Resource Duration =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Duration");
+        public static final Resource Float =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Float");
+        public static final Resource GDay =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GDay");
+        public static final Resource GMonth =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GMonth");
+        public static final Resource GMonthDay =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GMonthDay");
+        public static final Resource GYear =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GYear");
+        public static final Resource GYearMonth =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GYearMonth");
+        public static final Resource HexBinary =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/HexBinary");
+        public static final Resource Int =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Int");
+        public static final Resource Integer =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Integer");
+        public static final Resource Long =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Long");
+        public static final Resource NegativeInteger =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NegativeInteger");
+        public static final Resource NonNegativeInteger =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NonNegativeInteger");
+        public static final Resource NonPositiveInteger =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NonPositiveInteger");
+        public static final Resource PositiveInteger =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/PositiveInteger");
+        public static final Resource Short =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Short");
+        public static final Resource String =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/String");
+        public static final Resource Time =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Time");
+        public static final Resource UnsignedByte =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedByte");
+        public static final Resource UnsignedInt =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedInt");
+        public static final Resource UnsignedLong =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedLong");
+        public static final Resource UnsignedShort =
+                ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedShort");
+
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd fromIRI(String stringIRI) {
+            if (stringIRI.equals(AnyUri.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.ANY_URI;
+            }
+            if (stringIRI.equals(Base64Binary.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BASE64BINARY;
+            }
+            if (stringIRI.equals(Boolean.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BOOLEAN;
+            }
+            if (stringIRI.equals(Byte.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BYTE;
+            }
+            if (stringIRI.equals(Date.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DATE;
+            }
+            if (stringIRI.equals(DateTime.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DATE_TIME;
+            }
+            if (stringIRI.equals(Decimal.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DECIMAL;
+            }
+            if (stringIRI.equals(Double.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DOUBLE;
+            }
+            if (stringIRI.equals(Duration.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DURATION;
+            }
+            if (stringIRI.equals(Float.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.FLOAT;
+            }
+            if (stringIRI.equals(GDay.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GDAY;
+            }
+            if (stringIRI.equals(GMonth.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GMONTH;
+            }
+            if (stringIRI.equals(GMonthDay.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GMONTH_DAY;
+            }
+            if (stringIRI.equals(GYear.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GYEAR;
+            }
+            if (stringIRI.equals(GYearMonth.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GYEAR_MONTH;
+            }
+            if (stringIRI.equals(HexBinary.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.HEX_BINARY;
+            }
+            if (stringIRI.equals(Int.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.INT;
+            }
+            if (stringIRI.equals(Integer.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.INTEGER;
+            }
+            if (stringIRI.equals(Long.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.LONG;
+            }
+            if (stringIRI.equals(NegativeInteger.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.NEGATIVE_INTEGER;
+            }
+            if (stringIRI.equals(NonNegativeInteger.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.NON_NEGATIVE_INTEGER;
+            }
+            if (stringIRI.equals(NonPositiveInteger.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.NON_POSITIVE_INTEGER;
+            }
+            if (stringIRI.equals(PositiveInteger.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.POSITIVE_INTEGER;
+            }
+            if (stringIRI.equals(Short.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.SHORT;
+            }
+            if (stringIRI.equals(String.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.STRING;
+            }
+            if (stringIRI.equals(Time.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.TIME;
+            }
+            if (stringIRI.equals(UnsignedByte.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_BYTE;
+            }
+            if (stringIRI.equals(UnsignedInt.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_INT;
+            }
+            if (stringIRI.equals(UnsignedLong.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_LONG;
+            }
+            if (stringIRI.equals(UnsignedShort.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_SHORT;
+            }
+
+            throw new IllegalArgumentException("Invalid DataTypeIec61360 IRI provided.");
+        }
+
+        public static Resource valueOf(String type) {
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.ANY_URI.name())) {
+                return AnyUri;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BASE64BINARY.name())) {
+                return Base64Binary;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BOOLEAN.name())) {
+                return Boolean;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.BYTE.name())) {
+                return Byte;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DATE.name())) {
+                return Date;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DATE_TIME.name())) {
+                return DateTime;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DECIMAL.name())) {
+                return Decimal;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DOUBLE.name())) {
+                return Double;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.DURATION.name())) {
+                return Duration;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.FLOAT.name())) {
+                return Float;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GDAY.name())) {
+                return GDay;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GMONTH.name())) {
+                return GMonth;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GMONTH_DAY.name())) {
+                return GMonthDay;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GYEAR.name())) {
+                return GYear;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.GYEAR_MONTH.name())) {
+                return GYearMonth;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.HEX_BINARY.name())) {
+                return HexBinary;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.INT.name())) {
+                return Int;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.INTEGER.name())) {
+                return Integer;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.LONG.name())) {
+                return Long;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.NEGATIVE_INTEGER.name())) {
+                return NegativeInteger;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.NON_NEGATIVE_INTEGER.name())) {
+                return NonNegativeInteger;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.SHORT.name())) {
+                return Short;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.STRING.name())) {
+                return String;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.TIME.name())) {
+                return Time;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_BYTE.name())) {
+                return UnsignedByte;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_INT.name())) {
+                return UnsignedInt;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_LONG.name())) {
+                return UnsignedLong;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.UNSIGNED_SHORT.name())) {
+                return UnsignedShort;
+            }
+
 
             throw new IllegalArgumentException("Invalid DataTypeIec61360 provided.");
         }
