@@ -15,6 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -29,9 +32,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.junit.Assert;
 import org.junit.Test;
 import org.xml.sax.SAXException;
-
-import java.io.FileNotFoundException;
-import java.util.List;
 
 public class XMLDeserializerTest {
 
@@ -132,5 +132,11 @@ public class XMLDeserializerTest {
         Environment env = new XmlDeserializer().read(XmlSerializerTest.AAS_WITH_EXTENSION_MAXIMAL);
 
         Assert.assertEquals(Examples.EXTENSION_MAXIMAL, env);
+    }
+
+    @Test
+    public void deserializeWithEmptyKeys() throws FileNotFoundException, DeserializationException {
+        java.io.File file = new java.io.File("src/test/resources/empty_entries.xml");
+        new XmlDeserializer().read(file);
     }
 }

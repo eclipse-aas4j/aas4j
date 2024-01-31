@@ -1,0 +1,88 @@
+﻿<environment xmlns="https://admin-shell.io/aas/3/0">
+  <submodels>
+     <submodel>
+      <idShort>Nameplate</idShort>
+      <id>https://example.com/ids/sm/2593_9052_1042_2364</id>
+      <kind>Template</kind>
+      <semanticId>
+        <type>ExternalReference</type>
+        <keys>
+          <key>
+            <type>GlobalReference</type>
+            <value>https://admin-shell.io/zvei/nameplate/2/0/Nameplate</value>
+          </key>
+        </keys>
+      </semanticId>
+      <submodelElements>
+        <multiLanguageProperty>
+          <idShort>ManufacturerName</idShort>
+          <description>
+            <langStringTextType>
+              <language>en</language>
+              <text>Note: see also [IRDI] 0112/2///61987#ABA565#007 manufacturer Note: mandatory property according to EU Machine Directive 2006/42/EC. </text>
+            </langStringTextType>
+          </description>
+          <semanticId>
+            <type>ExternalReference</type>
+            <keys>
+              <key>
+                <type>GlobalReference</type>
+                <value>0173-1#02-AAO677#002</value>
+              </key>
+            </keys>
+          </semanticId>
+          <qualifiers>
+            <qualifier>
+              <type>Multiplicity</type>
+              <valueType>xs:string</valueType>
+              <value>One</value>
+            </qualifier>
+          </qualifiers>
+          <embeddedDataSpecifications>
+            <embeddedDataSpecification>
+              <dataSpecification>
+                <type>ExternalReference</type>
+                <keys>
+                  <key>
+                    <type>GlobalReference</type>
+                    <value>http://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0</value>
+                  </key>
+                </keys>
+              </dataSpecification>
+              <dataSpecificationContent>
+                <dataSpecificationIec61360>
+                  <preferredName />
+                </dataSpecificationIec61360>
+              </dataSpecificationContent>
+            </embeddedDataSpecification>
+            <embeddedDataSpecification>
+              <dataSpecification>
+                <type>ModelReference</type>
+                <keys />
+              </dataSpecification>
+              <dataSpecificationContent>
+                <dataSpecificationIec61360>
+                  <preferredName />
+                </dataSpecificationIec61360>
+              </dataSpecificationContent>
+            </embeddedDataSpecification>
+          </embeddedDataSpecifications>
+          <value>
+            <langStringTextType>
+              <language>de</language>
+              <text>Muster AG</text>
+            </langStringTextType>
+            <langStringTextType>
+              <language>en</language>
+              <text>Muster AG</text>
+            </langStringTextType>
+          </value>
+          <valueId>
+            <type>ExternalReference</type>
+            <keys />
+          </valueId>
+        </multiLanguageProperty>
+      </submodelElements>
+    </submodel>
+  </submodels>
+</environment>
