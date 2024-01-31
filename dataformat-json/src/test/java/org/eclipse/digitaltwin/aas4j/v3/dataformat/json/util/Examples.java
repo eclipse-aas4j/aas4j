@@ -50,6 +50,10 @@ public class Examples {
 
     public static final ExampleData<Environment> ENVIRONMENT_EMPTY = ExampleData.of(new DefaultEnvironment.Builder().build(), "Environment-Empty.json");
 
+    public static final ExampleData<Environment> ENVIRONMENT_CUSTOM_DATA = ExampleData.of(
+        org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.ENVIRONMENT_WITH_DUMMYDATASPEC,
+        "Environment-CustomDataSpec.json");
+
     public static final ExampleData<List<AssetAdministrationShell>> ASSET_ADMINISTRATION_SHELL_LIST_OF = ExampleData.of(
             List.of(AASFull.createEnvironment().getAssetAdministrationShells().get(0),
                     AASFull.createEnvironment().getAssetAdministrationShells().get(1)),

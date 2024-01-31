@@ -130,22 +130,11 @@ public class JsonSerializerTest {
      * @throws DeserializationException
      */
     @Test
-    public void testSerializeCustomDataSpecification() throws SerializationException, DeserializationException {
-        JsonDeserializer deserializer = new JsonDeserializer();
-
+    public void testSerializeCustomDataSpecification() throws SerializationException, IOException, JSONException {
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
         subtypes.add(DefaultDummyDataSpecification.class);
-
-        Environment origin = org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples.ENVIRONMENT_WITH_DUMMYDATASPEC;
-
-        String jsonString = serializerToTest.write(origin);
-        assertNotNull(jsonString);
-
-        Environment copy = deserializer.read(jsonString, Environment.class);
-        assertNotNull(copy);
-
-        assertTrue(origin.equals(copy));
+        compare(Examples.ENVIRONMENT_CUSTOM_DATA);
     }
 
     @Test
