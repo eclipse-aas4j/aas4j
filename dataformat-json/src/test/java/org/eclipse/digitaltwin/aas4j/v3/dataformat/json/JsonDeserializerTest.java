@@ -63,20 +63,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
-import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class JsonDeserializerTest {
-
     private static JsonDeserializer deserializerToTest;
 
     @BeforeClass
@@ -315,23 +310,17 @@ public class JsonDeserializerTest {
 
     @Test
     public void testReadAasDescriptor() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
-        String expected = Files.readString(fileExpected.toPath());
-        AssetAdministrationShellDescriptor assetAdministrationShellDescriptor =
-            deserializerToTest.read(expected, AssetAdministrationShellDescriptor.class);
-        AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
-
-        assertEquals(aasExpected, assetAdministrationShellDescriptor);
+        AssetAdministrationShellDescriptor shellDescriptor =
+            deserializerToTest.read(Examples.SHELL_DESCRIPTOR.fileContent(), AssetAdministrationShellDescriptor.class);
+        assertEquals(Examples.SHELL_DESCRIPTOR.getModel(), shellDescriptor);
     }
 
     @Test
     public void testReadAasDescriptorsList() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
-        String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
-        List<AssetAdministrationShellDescriptor> assetAdministrationShellDescriptors =
-            deserializerToTest.readList(expected, AssetAdministrationShellDescriptor.class);
-        AssetAdministrationShellDescriptor aasExpected = createAasDescriptor();
-        assertEquals(aasExpected, assetAdministrationShellDescriptors.get(0));
+        String jsonString = "[" + Examples.SHELL_DESCRIPTOR.fileContent() + "]";
+        List<AssetAdministrationShellDescriptor> shellDescriptors =
+            deserializerToTest.readList(jsonString, AssetAdministrationShellDescriptor.class);
+        assertEquals(Examples.SHELL_DESCRIPTOR.getModel(), shellDescriptors.get(0));
     }
 
     @Test
@@ -388,22 +377,17 @@ public class JsonDeserializerTest {
 
     @Test
     public void testReadSubmodelDescriptor() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
-        String expected = Files.readString(fileExpected.toPath());
-        SubmodelDescriptor submodelDescriptor = deserializerToTest.read(expected, SubmodelDescriptor.class);
-        SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
-
-        assertEquals(submodelDescriptorExpected, submodelDescriptor);
+        SubmodelDescriptor submodelDescriptor = deserializerToTest.read(
+            Examples.SUBMODEL_DESCRIPTOR.fileContentStream(), SubmodelDescriptor.class);
+        assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptor);
     }
 
     @Test
     public void testReadSubmodelDescriptors() throws IOException, DeserializationException {
-        File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
-        String expected = "[" + Files.readString(fileExpected.toPath()) + "]";
+        String jsonString = "[" + Examples.SUBMODEL_DESCRIPTOR.fileContent() + "]";
         List<SubmodelDescriptor> submodelDescriptors =
-            deserializerToTest.readList(expected, SubmodelDescriptor.class);
-        SubmodelDescriptor submodelDescriptorExpected = createDefaultSubmodelDescriptor();
-        assertEquals(submodelDescriptorExpected, submodelDescriptors.get(0));
+            deserializerToTest.readList(jsonString, SubmodelDescriptor.class);
+        assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptors.get(0));
     }
 
     private void checkImplementationClasses(Environment environment,

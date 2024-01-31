@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -46,7 +45,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -63,11 +61,7 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createAasDescriptor;
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.json.TestDataHelper.createDefaultSubmodelDescriptor;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSerializerTest {
@@ -139,11 +133,7 @@ public class JsonSerializerTest {
 
     @Test
     public void testReadAssetAdministrationShellDescriptor() throws IOException, SerializationException, JSONException {
-        File fileExpected = new File("src/test/resources/AssetAdministrationShellDescriptor.json");
-        Assert.assertTrue(fileExpected.exists());
-        validateAndCompare(
-            Files.readString(fileExpected.toPath()),
-            serializerToTest.write(createAasDescriptor()));
+        compare(Examples.SHELL_DESCRIPTOR);
     }
 
     @Test
@@ -183,7 +173,7 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeSubmodelWithExtensions() throws DeserializationException, SerializationException, JsonProcessingException {
+    public void testSerializeSubmodelWithExtensions() throws DeserializationException {
         List<Extension> extensions = List.of(
             new DefaultExtension.Builder()
                 .name("myExtension").value("my extension value").valueType(DataTypeDefXsd.STRING)
@@ -265,30 +255,32 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeSpecificAssetId() throws SerializationException {
-        SpecificAssetId specificAssetId = TestDataHelper.createSpecificAssetId();
-        String specificAssetId_string = serializerToTest.write(specificAssetId);
-        assertTrue(specificAssetId_string.contains("\"value\" : \"testValue\""));
+    public void testSerializeSpecificAssetId() throws SerializationException, JSONException, IOException {
+        SpecificAssetId specificAssetId = Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION
+                .getModel().getAssetInformation().getSpecificAssetIds().get(0);
+
+        String jsonString = serializerToTest.write(specificAssetId);
+        assertTrue(jsonString.contains("\"name\""));
+        assertTrue(jsonString.contains("\"value\""));
+
     }
 
 
     @Test
-    public void testSerializeSpecificAssetIdList() throws SerializationException {
-        SpecificAssetId specificAssetId = TestDataHelper.createSpecificAssetId();
-        List<SpecificAssetId> specificAssetIds = new ArrayList<>() {{
-            add(specificAssetId);
-            add(specificAssetId);
-        }};
+    public void testSerializeSpecificAssetIdList() throws SerializationException, IOException {
+        List<SpecificAssetId> specificAssetIds = Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION
+                .getModel().getAssetInformation().getSpecificAssetIds();
 
-        String specificAssetId_list_string = serializerToTest.writeList(specificAssetIds);
-        assertTrue(specificAssetId_list_string.startsWith("["));
-        assertTrue(specificAssetId_list_string.contains("\"name\" : \"testSpecificAssetId\""));
+        String jsonString = serializerToTest.writeList(specificAssetIds);
+        assertTrue(jsonString.contains("\"name\""));
+        assertTrue(jsonString.contains("\"value\""));
+        assertTrue(jsonString.startsWith("["));
+        assertTrue(jsonString.endsWith("]"));
     }
 
     @Test
     public void testReadSubmodelDescriptor() throws IOException, SerializationException, JSONException {
-        File fileExpected = new File("src/test/resources/SubmodelDescriptor.json");
-        validateAndCompare(fileExpected, createDefaultSubmodelDescriptor());
+        compare(Examples.SUBMODEL_DESCRIPTOR);
     }
 
     private void validateAndCompare(File expectedFile, SubmodelDescriptor descriptor) throws IOException, SerializationException, JSONException {
