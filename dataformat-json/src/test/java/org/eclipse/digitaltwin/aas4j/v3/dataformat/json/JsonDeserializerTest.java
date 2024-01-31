@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -38,10 +39,13 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
@@ -59,6 +63,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -83,6 +88,22 @@ public class JsonDeserializerTest {
     public void testReadEnvironmentFromStream() throws DeserializationException {
         Environment env = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
         assertEquals(Examples.EXAMPLE_FULL.getModel(), env);
+    }
+
+    /**
+     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
+     *
+     * @throws SerializationException
+     * @throws DeserializationException
+     */
+    @Test
+    public void testReadCustomDataSpecification() throws DeserializationException {
+        // This is the only way to make the serialization to work.
+        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
+        subtypes.add(DefaultDummyDataSpecification.class);
+        // We need to create a new deserializer instance here, to reflect the change in the subtypes.
+        Environment env = new JsonDeserializer().read(Examples.ENVIRONMENT_CUSTOM_DATA.fileContentStream(), Environment.class);
+        assertEquals(Examples.ENVIRONMENT_CUSTOM_DATA.getModel(), env);
     }
 
     @Test
