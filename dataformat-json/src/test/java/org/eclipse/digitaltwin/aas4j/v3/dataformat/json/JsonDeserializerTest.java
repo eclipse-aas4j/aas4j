@@ -332,14 +332,9 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testDeserializeOperationRequest() throws DeserializationException, DatatypeConfigurationException, SerializationException {
-        OperationRequest expected = new DefaultOperationRequest.Builder()
-                        .clientTimeoutDuration(DatatypeFactory.newInstance().newDurationDayTime("PT3M"))  // three minutes
-                        .build();
-        Duration duration = DatatypeFactory.newInstance().newDurationDayTime("P0DT0H3M0S"); // three minutes
-        String operationRequestString = new JsonSerializer().write(expected);
-        OperationRequest actual = deserializerToTest.read(operationRequestString, OperationRequest.class);
-        assertEquals( actual.getClientTimeoutDuration() , duration);
+    public void testDeserializeOperationRequest() throws DeserializationException, IOException {
+        OperationRequest expected = Examples.OPERATION_REQUEST.getModel();
+        OperationRequest actual = deserializerToTest.read(Examples.OPERATION_REQUEST.fileContent(), OperationRequest.class);
         assertEquals(expected, actual);
     }
 

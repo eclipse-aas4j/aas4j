@@ -19,7 +19,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +26,6 @@ import java.util.Set;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
@@ -36,10 +34,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-
 import com.fasterxml.jackson.databind.JsonNode;
 
 import org.json.JSONException;
@@ -81,22 +75,22 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeEmpty() throws IOException, SerializationException, JSONException {
+    public void testSerializeEmpty() {
         validateAndCompare(Examples.ENVIRONMENT_EMPTY);
     }
 
     @Test
-    public void testSerializeSimpleExample() throws SerializationException, JSONException, IOException {
+    public void testSerializeSimpleExample() {
         validateAndCompare(Examples.EXAMPLE_SIMPLE);
     }
 
     @Test
-    public void testSerializeFullExample() throws SerializationException, JSONException, IOException {
+    public void testSerializeFullExample() {
         validateAndCompare(Examples.EXAMPLE_FULL);
     }
 
     @Test
-    public void testSerializeFullExampleToNode() throws JSONException, IOException {
+    public void testSerializeFullExampleToNode() throws IOException {
         String expected = Examples.EXAMPLE_FULL.fileContent();
         JsonNode node = serializerToTest.toNode(Examples.EXAMPLE_FULL.getModel());
         validateAndCompare(expected, node.toPrettyString());
@@ -116,7 +110,7 @@ public class JsonSerializerTest {
      * @throws DeserializationException
      */
     @Test
-    public void testSerializeCustomDataSpecification() throws SerializationException, IOException, JSONException {
+    public void testSerializeCustomDataSpecification() {
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
         subtypes.add(DefaultDummyDataSpecification.class);
@@ -124,105 +118,122 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeShellDescriptor() throws IOException, SerializationException, JSONException {
+    public void testSerializeShellDescriptor() {
         compare(Examples.SHELL_DESCRIPTOR);
     }
 
     @Test
-    public void testSerializeShell() throws IOException, SerializationException, JSONException {
+    public void testSerializeShell() {
         compare(Examples.ASSET_ADMINISTRATION_SHELL);
     }
 
     @Test
-    public void testSerializeShellWithAssetInformation() throws SerializationException, JSONException, IOException {
+    public void testSerializeShellWithAssetInformation() {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
     }
 
     @Test
-    public void testSerializeShells() throws IOException, SerializationException, JSONException {
+    public void testSerializeShells() {
         compare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
     }
 
     @Test
     @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
-    public void testSerializeConceptDescriptionWithPhysicalUnit() throws IOException, SerializationException, JSONException {
+    public void testSerializeConceptDescriptionWithPhysicalUnit() {
         compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }
 
     @Test
-    public void testSerializeSubmodel() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodel() {
         compare(Examples.SUBMODEL);
     }
 
     @Test
-    public void testSerializeSubmodels() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodels() {
         compare(Examples.SUBMODEL_LIST_OF);
     }
 
     @Test
-    public void testSerializeSubmodelElement() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElement() {
         compare(Examples.SUBMODEL_ELEMENT);
     }
 
     @Test
-    public void testSerializeSubmodelElements() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElements() {
         compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
     }
 
     @Test
-    public void testSerializeSubmodelElementCollection() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElementCollection() {
         compare(Examples.SUBMODEL_ELEMENT_COLLECTION);
     }
 
     @Test
-    public void testSerializeSubmodelElementList() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelElementList() {
         compare(Examples.SUBMODEL_ELEMENT_LIST);
     }
 
     @Test
-    public void testSerializeSubmodelElementListEmpty() throws SerializationException, JSONException, IOException {
+    public void testSerializeSubmodelElementListEmpty() {
         compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
     @Test
-    public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
+    public void testSerializeExtensionMinimal() {
         compare(Examples.EXTENSION_MINIMAL);
     }
 
     @Test
-    public void testSerializeExtensionMaximal() throws SerializationException, JSONException, IOException {
+    public void testSerializeExtensionMaximal() {
         compare(Examples.EXTENSION_MAXIMAL);
     }
 
     @Test
-    public void testSerializeSubmodelDescriptor() throws IOException, SerializationException, JSONException {
+    public void testSerializeSubmodelDescriptor() {
         compare(Examples.SUBMODEL_DESCRIPTOR);
     }
 
+    @Test
+    public void testSerializeOperationRequest() {
+        compare(Examples.OPERATION_REQUEST);
+    }
+
     @SuppressWarnings("unchecked")
-    private void compare(ExampleData<?> exampleData) throws IOException, SerializationException, JSONException {
-        String expected = exampleData.fileContent();
-        String actual;
-        if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
-        } else {
-            actual = serializerToTest.write(exampleData.getModel());
+    private void compare(ExampleData<?> exampleData) {
+        try {
+            String expected = exampleData.fileContent();
+            String actual;
+            if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
+                actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
+            } else {
+                actual = serializerToTest.write(exampleData.getModel());
+            }
+            JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
+            JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+        } catch(Exception ex) {
+            throw new RuntimeException(ex);
         }
-        JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
-        JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
     }
 
-    private void validateAndCompare(ExampleData<Environment> exampleData) throws IOException, SerializationException, JSONException {
-        String expected = exampleData.fileContent();
-        String actual = serializerToTest.write(exampleData.getModel());
-        validateAndCompare(expected, actual);
+    private void validateAndCompare(ExampleData<Environment> exampleData) {
+        try {
+            String expected = exampleData.fileContent();
+            String actual = serializerToTest.write(exampleData.getModel());
+            validateAndCompare(expected, actual);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
-    private void validateAndCompare(String expected, String actual) throws JSONException {
+    private void validateAndCompare(String expected, String actual) {
         logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
         assertTrue(errors.isEmpty());
-        JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
-        JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+        try {
+            JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
+            JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+        } catch(JSONException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
