@@ -63,6 +63,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -105,6 +106,13 @@ public class JsonDeserializerTest {
     public void testReadReferable() throws IOException, DeserializationException {
         Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContent(), Submodel.class);
         assertEquals(Examples.SUBMODEL.getModel(), submodel);
+    }
+
+    @Test
+    public void testReadReference() throws IOException, DeserializationException {
+        Reference reference = Examples.EXAMPLE_FULL.getModel().getSubmodels().get(0).getSemanticId();
+        Environment env = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
+        assertEquals(reference, env.getSubmodels().get(0).getSemanticId());
     }
 
     @Test

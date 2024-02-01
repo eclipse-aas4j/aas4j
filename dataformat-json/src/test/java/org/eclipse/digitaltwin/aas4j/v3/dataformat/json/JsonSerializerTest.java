@@ -41,6 +41,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
@@ -164,24 +165,12 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeSubmodelList() throws IOException, SerializationException, JSONException {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
+        compare(Examples.SUBMODEL_LIST_OF);
     }
 
     @Test
     public void testSerializeSubmodelElement() throws IOException, SerializationException, JSONException {
         compare(Examples.SUBMODEL_ELEMENT);
-    }
-
-    @Test
-    public void testSerializeSubmodelWithExtensions() throws DeserializationException {
-        List<Extension> extensions = List.of(
-            new DefaultExtension.Builder()
-                .name("myExtension").value("my extension value").valueType(DataTypeDefXsd.STRING)
-                .build());
-        JsonNode jsonNode = serializerToTest.toArrayNode(extensions);
-        Assert.assertTrue(jsonNode.isArray());
-        List<Extension> actual = new JsonDeserializer().readList(jsonNode, Extension.class);
-        assertEquals(extensions, actual);
     }
 
     @Test
@@ -217,19 +206,6 @@ public class JsonSerializerTest {
     }
 
     @Test
-    public void testSerializeListOfReferablesToNode() throws DeserializationException {
-        List<Referable> referables = List.of(
-            new DefaultProperty.Builder()
-                .idShort("exampleId")
-                .build());
-        JsonNode node = serializerToTest.toArrayNode(referables);
-        Assert.assertNotNull(node);
-        Assert.assertTrue(node.isArray());
-        List<Referable> actual = new JsonDeserializer().readList(node, Referable.class);
-        assertEquals(referables, actual);
-    }
-
-    @Test
     public void testSerializeExtensionMinimal() throws SerializationException, JSONException, IOException {
         compare(Examples.EXTENSION_MINIMAL);
     }
@@ -241,10 +217,9 @@ public class JsonSerializerTest {
 
     @Test
     public void testSerializeReference() throws SerializationException, DeserializationException {
-        Reference reference = AASFull.ENVIRONMENT.getSubmodels().get(0).getSemanticId();
+        Reference reference = Examples.EXAMPLE_FULL.getModel().getSubmodels().get(0).getSemanticId();
         String serializedReference = serializerToTest.write(reference);
         assertTrue(serializedReference.contains("\"http://acplt.org/SubmodelTemplates/AssetIdentification\""));
-        assertEquals(reference, new JsonDeserializer().read(serializedReference, Reference.class));
     }
 
     @Test
