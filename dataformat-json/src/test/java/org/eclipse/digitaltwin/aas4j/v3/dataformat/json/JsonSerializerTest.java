@@ -63,43 +63,43 @@ public class JsonSerializerTest {
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
-    public void testSerializeNull() throws SerializationException {
+    public void testWriteNull() throws SerializationException {
         assertEquals("null", serializerToTest.write(null));
     }
 
     @Test
-    public void testSerializeToFile() throws IOException, SerializationException {
+    public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
         serializerToTest.write(new FileOutputStream(file), AASSimple.createEnvironment());
         assertTrue(file.exists());
     }
 
     @Test
-    public void testSerializeEmpty() {
-        validateAndCompare(Examples.ENVIRONMENT_EMPTY);
+    public void testWriteEmptyEnv() {
+        writeValidateAndCompare(Examples.ENVIRONMENT_EMPTY);
     }
 
     @Test
-    public void testSerializeSimpleExample() {
-        validateAndCompare(Examples.EXAMPLE_SIMPLE);
+    public void testWriteSimpleExampleEnv() {
+        writeValidateAndCompare(Examples.EXAMPLE_SIMPLE);
     }
 
     @Test
-    public void testSerializeFullExample() {
-        validateAndCompare(Examples.EXAMPLE_FULL);
+    public void testWriteFullExampleEnv() {
+        writeValidateAndCompare(Examples.EXAMPLE_FULL);
     }
 
     @Test
-    public void testSerializeFullExampleToNode() throws IOException {
+    public void testFullExampleEnvToNode() throws IOException {
         String expected = Examples.EXAMPLE_FULL.fileContent();
         JsonNode node = serializerToTest.toNode(Examples.EXAMPLE_FULL.getModel());
         validateAndCompare(expected, node.toPrettyString());
     }
 
     @Test
-    public void testSerializeEmptyReferableList() throws SerializationException, JSONException {
+    public void testWriteEmptyReferableList() throws SerializationException, JSONException {
         List<Referable> emptyList = Collections.emptyList();
-        String actual = serializerToTest.write(emptyList);
+        String actual = serializerToTest.writeList(emptyList);
         JSONAssert.assertEquals("[]", actual, JSONCompareMode.NON_EXTENSIBLE);
     }
 
@@ -110,104 +110,110 @@ public class JsonSerializerTest {
      * @throws DeserializationException
      */
     @Test
-    public void testSerializeCustomDataSpecification() {
+    public void testWriteCustomDataSpecification() {
         // This is the only way to make the serialization to work.
         Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
         subtypes.add(DefaultDummyDataSpecification.class);
-        compare(Examples.ENVIRONMENT_CUSTOM_DATA);
+        writeAndCompare(Examples.ENVIRONMENT_CUSTOM_DATA);
     }
 
     @Test
-    public void testSerializeShellDescriptor() {
-        compare(Examples.SHELL_DESCRIPTOR);
+    public void testWriteShellDescriptor() {
+        writeAndCompare(Examples.SHELL_DESCRIPTOR);
     }
 
     @Test
-    public void testSerializeShell() {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL);
+    public void testWriteShell() {
+        writeAndCompare(Examples.ASSET_ADMINISTRATION_SHELL);
     }
 
     @Test
-    public void testSerializeShellWithAssetInformation() {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
+    public void testWriteShellWithAssetInformation() {
+        writeAndCompare(Examples.ASSET_ADMINISTRATION_SHELL_WITH_ASSET_INFORMATION);
     }
 
     @Test
-    public void testSerializeShells() {
-        compare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
+    public void testWriteShells() {
+        writeAndCompare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
     }
 
     @Test
     @Ignore("Add test after DataSpecficationPhysicalUnit is supported again")
-    public void testSerializeConceptDescriptionWithPhysicalUnit() {
-        compare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
+    public void testWriteConceptDescriptionWithPhysicalUnit() {
+        writeAndCompare(Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT);
     }
 
     @Test
-    public void testSerializeSubmodel() {
-        compare(Examples.SUBMODEL);
+    public void testWriteSubmodel() {
+        writeAndCompare(Examples.SUBMODEL);
     }
 
     @Test
-    public void testSerializeSubmodels() {
-        compare(Examples.SUBMODEL_LIST_OF);
+    public void testWriteSubmodels() {
+        writeAndCompare(Examples.SUBMODEL_LIST_OF);
     }
 
     @Test
-    public void testSerializeSubmodelElement() {
-        compare(Examples.SUBMODEL_ELEMENT);
+    public void testWriteSubmodelElement() {
+        writeAndCompare(Examples.SUBMODEL_ELEMENT);
     }
 
     @Test
-    public void testSerializeSubmodelElements() {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_OF);
+    public void testWriteSubmodelElements() {
+        writeAndCompare(Examples.SUBMODEL_ELEMENT_LIST_OF);
     }
 
     @Test
-    public void testSerializeSubmodelElementCollection() {
-        compare(Examples.SUBMODEL_ELEMENT_COLLECTION);
+    public void testWriteSubmodelElementCollection() {
+        writeAndCompare(Examples.SUBMODEL_ELEMENT_COLLECTION);
     }
 
     @Test
-    public void testSerializeSubmodelElementList() {
-        compare(Examples.SUBMODEL_ELEMENT_LIST);
+    public void testWriteSubmodelElementList() {
+        writeAndCompare(Examples.SUBMODEL_ELEMENT_LIST);
     }
 
     @Test
-    public void testSerializeSubmodelElementListEmpty() {
-        compare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
+    public void testWriteSubmodelElementListEmpty() {
+        writeAndCompare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
     }
 
     @Test
-    public void testSerializeExtensionMinimal() {
-        compare(Examples.EXTENSION_MINIMAL);
+    public void testWriteExtensionMinimal() {
+        writeAndCompare(Examples.EXTENSION_MINIMAL);
     }
 
     @Test
-    public void testSerializeExtensionMaximal() {
-        compare(Examples.EXTENSION_MAXIMAL);
+    public void testWriteExtensionMaximal() {
+        writeAndCompare(Examples.EXTENSION_MAXIMAL);
     }
 
     @Test
-    public void testSerializeSubmodelDescriptor() {
-        compare(Examples.SUBMODEL_DESCRIPTOR);
+    public void testWriteSubmodelDescriptor() {
+        writeAndCompare(Examples.SUBMODEL_DESCRIPTOR);
     }
 
     @Test
-    public void testSerializeOperationRequest() {
-        compare(Examples.OPERATION_REQUEST);
+    public void testWriteOperationRequest() {
+        writeAndCompare(Examples.OPERATION_REQUEST);
     }
 
-    @SuppressWarnings("unchecked")
-    private void compare(ExampleData<?> exampleData) {
-        try {
-            String expected = exampleData.fileContent();
+    private String write(ExampleData<?> exampleData) throws SerializationException {
             String actual;
             if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
                 actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
             } else {
                 actual = serializerToTest.write(exampleData.getModel());
             }
+            return actual;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void writeAndCompare(ExampleData<?> exampleData) {
+        try {
+            String actual = write(exampleData);
+            String expected = exampleData.fileContent();
+
             JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
             JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
         } catch(Exception ex) {
@@ -215,10 +221,10 @@ public class JsonSerializerTest {
         }
     }
 
-    private void validateAndCompare(ExampleData<Environment> exampleData) {
+    private void writeValidateAndCompare(ExampleData<Environment> exampleData) {
         try {
+            String actual = write(exampleData);
             String expected = exampleData.fileContent();
-            String actual = serializerToTest.write(exampleData.getModel());
             validateAndCompare(expected, actual);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
