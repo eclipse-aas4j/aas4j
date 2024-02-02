@@ -59,6 +59,26 @@ public class JsonSerializer {
     }
 
     /**
+     * Generic method to serialize a collection.
+     * @param collection the collection to serialize. Not null.
+     * @return the string representation of the collection.
+     * @throws SerializationException if serialization fails
+     */
+    public String writeList(Collection<?> collection) throws SerializationException {
+        if (collection == null || collection.isEmpty()) {
+            return write(collection);
+        }
+
+        Class clazz = collection.iterator().next().getClass();
+        try {
+            return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+                    .writeValueAsString(collection);
+        } catch (JsonProcessingException ex) {
+            throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
+        }
+    }
+
+    /**
      * Generic method to convert a given AAS instance to a JSON node
      *
      * @param aasInstance the AAS instance to serialize
@@ -76,9 +96,9 @@ public class JsonSerializer {
      * @return the JSON array representation
      * @throws IllegalArgumentException
      */
-    public ArrayNode toArrayNode(Collection<?> aasInstances) {
+    public JsonNode toArrayNode(Collection<?> aasInstances) {
         if(aasInstances == null) {
-            return null;
+            return JsonNodeFactory.instance.nullNode();
         }
         ArrayNode result = JsonNodeFactory.instance.arrayNode();
         for (Object obj : aasInstances) {
@@ -95,14 +115,13 @@ public class JsonSerializer {
      * @param aasInstance the AAS instance to serialize
      * @throws SerializationException if serialization fails
      */
-    void write(OutputStream out, Charset charset, Object aasInstance) throws SerializationException {
+    public void write(OutputStream out, Charset charset, Object aasInstance) throws SerializationException {
         try {
             mapper.writeValue(new OutputStreamWriter(out, charset), aasInstance);
         } catch (IOException ex) {
             throw new SerializationException("error serializing " + aasInstance.getClass().getSimpleName() , ex);
         }
     }
-
 
     /**
      * Generic method to serialize a given AAS instance to an output stream using UTF-8 charset
@@ -111,31 +130,40 @@ public class JsonSerializer {
      * @param aasInstance the AAS instance to serialize
      * @throws SerializationException if serialization fails
      */
-    void write(OutputStream out, Object aasInstance) throws SerializationException {
+    public void write(OutputStream out, Object aasInstance) throws SerializationException {
         write(out, StandardCharsets.UTF_8, aasInstance);
     }
 
     /**
-     * Generic method to serialize a collection.
-     * @param collection the collection to serialize
-     * @return the string representation of the collection.
+     * Generic method to serialize a collection of AAS instances to an output stream using given charset
+     *
+     * @param out the output stream to serialize to
+     * @param charset the charset to use for serialization
+     * @param collection the collection of AAS instances to serialize
      * @throws SerializationException if serialization fails
      */
-    public String writeList(Collection<?> collection) throws SerializationException {
+    public void writeList(OutputStream out, Charset charset, Collection<?> collection) throws SerializationException {
         if (collection == null || collection.isEmpty()) {
+            write(out, charset, collection);
+        } else {
+           Class clazz = collection.iterator().next().getClass();
             try {
-                return mapper.writeValueAsString(collection);
-            } catch (JsonProcessingException e) {
-                throw new SerializationException("error serializing list");
+                mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+                    .writeValue(new OutputStreamWriter(out, charset), collection);
+            } catch (IOException ex) {
+                throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
             }
         }
+    }
 
-        Class clazz = collection.iterator().next().getClass();
-        try {
-            return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
-                .writeValueAsString(collection);
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
-        }
+    /**
+     * Generic method to serialize a collection of AAS instances to an output stream using UTF-8 charset
+     *
+     * @param out the output stream to serialize to
+     * @param collection the collection of AAS instances to serialize
+     * @throws SerializationException if serialization fails
+     */
+    public void writeList(OutputStream out, Collection<?> collection) throws SerializationException {
+        writeList(out, StandardCharsets.UTF_8, collection);
     }
 }

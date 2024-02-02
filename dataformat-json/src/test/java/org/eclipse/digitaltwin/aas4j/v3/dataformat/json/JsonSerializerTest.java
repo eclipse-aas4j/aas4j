@@ -16,17 +16,19 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
@@ -47,7 +49,7 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;;
 import static org.junit.Assert.assertTrue;
 
 public class JsonSerializerTest {
@@ -65,12 +67,24 @@ public class JsonSerializerTest {
     @Test
     public void testWriteNull() throws SerializationException {
         assertEquals("null", serializerToTest.write(null));
+        assertEquals("null", serializerToTest.writeList(null));
+
+        assertEquals(JsonNodeFactory.instance.nullNode(), serializerToTest.toNode(null));
+        assertEquals(JsonNodeFactory.instance.nullNode(), serializerToTest.toArrayNode(null));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        serializerToTest.write(baos, StandardCharsets.UTF_8, null);
+        assertEquals("null", baos.toString());
+
+        baos = new ByteArrayOutputStream();
+        serializerToTest.writeList(baos,null);
+        assertEquals("null", baos.toString());
     }
 
+    // This test is used only to show how to write to a file.
     @Test
     public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
-        serializerToTest.write(new FileOutputStream(file), AASSimple.createEnvironment());
+        serializerToTest.write(new FileOutputStream(file), Examples.EXAMPLE_SIMPLE.getModel());
         assertTrue(file.exists());
     }
 
@@ -199,23 +213,47 @@ public class JsonSerializerTest {
     }
 
     private String write(ExampleData<?> exampleData) throws SerializationException {
-            String actual;
-            if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
-                actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
-            } else {
-                actual = serializerToTest.write(exampleData.getModel());
-            }
-            return actual;
+        String actual;
+        if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
+            actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
+        } else {
+            actual = serializerToTest.write(exampleData.getModel());
+        }
+        return actual;
+    }
+
+    private String writeViaStream(ExampleData<?> exampleData) throws SerializationException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
+            serializerToTest.writeList(baos, StandardCharsets.UTF_8, (Collection<?>) exampleData.getModel());
+        } else {
+            serializerToTest.write(baos, StandardCharsets.UTF_8, exampleData.getModel());
+        }
+        return baos.toString(StandardCharsets.UTF_8);
+    }
+
+    private JsonNode toNode(ExampleData<?> exampleData) {
+        JsonNode actual;
+        if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
+            actual = serializerToTest.toArrayNode((Collection<?>) exampleData.getModel());
+        } else {
+            actual = serializerToTest.toNode(exampleData.getModel());
+        }
+        return actual;
+    }
+
+    private void compare(String expected, String actual) throws JSONException {
+        JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
+        JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
     }
 
     @SuppressWarnings("unchecked")
     private void writeAndCompare(ExampleData<?> exampleData) {
         try {
-            String actual = write(exampleData);
             String expected = exampleData.fileContent();
-
-            JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
-            JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+            compare(expected, write(exampleData));
+            assertEquals(exampleData.getJsonNode() , toNode(exampleData));
+            compare(expected, writeViaStream(exampleData));
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -232,12 +270,13 @@ public class JsonSerializerTest {
     }
 
     private void validateAndCompare(String expected, String actual) {
-        logger.info(actual);
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
+        if(errors.size() > 0) {
+            logger.error(String.join("\n", errors));
+        }
         assertTrue(errors.isEmpty());
         try {
-            JSONAssert.assertEquals(expected, actual, JSONCompareMode.NON_EXTENSIBLE);
-            JSONAssert.assertEquals(actual, expected, JSONCompareMode.NON_EXTENSIBLE);
+            compare(expected, actual);
         } catch(JSONException ex) {
             throw new RuntimeException(ex);
         }

@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
@@ -297,6 +299,7 @@ public class JsonDeserializerTest {
 
     @Test
     public void testReadOperationRequest() throws DeserializationException, IOException {
+        readAndCompare(Examples.OPERATION_REQUEST);
         OperationRequest expected = Examples.OPERATION_REQUEST.getModel();
         OperationRequest actual = deserializerToTest.read(Examples.OPERATION_REQUEST.fileContent(), OperationRequest.class);
         assertEquals(expected, actual);
@@ -309,12 +312,26 @@ public class JsonDeserializerTest {
         assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptor);
     }
 
+
     @Test
     public void testReadSubmodelDescriptors() throws IOException, DeserializationException {
         String jsonString = "[" + Examples.SUBMODEL_DESCRIPTOR.fileContent() + "]";
         List<SubmodelDescriptor> submodelDescriptors =
             deserializerToTest.readList(jsonString, SubmodelDescriptor.class);
         assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptors.get(0));
+    }
+
+    private void readAndCompare(ExampleData<?> exampleData) throws IOException, DeserializationException {
+        assertEquals(exampleData.getModel(), readFromString(exampleData));
+    }
+
+    private Object readFromString(ExampleData<?> exampleData) throws IOException, DeserializationException {
+        Object model = exampleData.getModel();
+        if(model instanceof Collection<?>) {
+            Collection<?> coll = (Collection<?>) model;
+            return deserializerToTest.readList(exampleData.fileContent(), coll.iterator().next().getClass());
+        }
+        return deserializerToTest.read(exampleData.fileContent(), model.getClass());
     }
 
     private void checkImplementationClasses(Environment environment,
