@@ -15,12 +15,14 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
@@ -46,6 +48,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class JsonDeserializerTest {
     private static JsonDeserializer deserializerToTest;
@@ -98,10 +101,33 @@ public class JsonDeserializerTest {
     }
 
     @Test
+    public void testReadNull() throws DeserializationException {
+        assertNull(deserializerToTest.read("null", Submodel.class));
+        assertNull(deserializerToTest.readList("null", Submodel.class));
+
+
+        assertNull(deserializerToTest.read(JsonNodeFactory.instance.nullNode(), Submodel.class));
+        assertNull(deserializerToTest.readList(JsonNodeFactory.instance.nullNode(), Submodel.class));
+
+        ByteArrayInputStream bais = new ByteArrayInputStream("null".getBytes());
+        assertNull(deserializerToTest.read(bais, Submodel.class));
+
+        bais = new ByteArrayInputStream("null".getBytes());
+        assertNull(deserializerToTest.readList(bais, Submodel.class));
+    }
+
+    @Test
     public void testReadEmptyReferableList() throws DeserializationException {
         List<Referable> emptyList = Collections.emptyList();
+
         List<Referable> deserialized = deserializerToTest.readList("[]", Referable.class);
         assertEquals(emptyList, deserialized);
+
+        deserialized = deserializerToTest.readList(JsonNodeFactory.instance.arrayNode(), Referable.class);
+        assertEquals(emptyList, deserialized);
+
+        ByteArrayInputStream bais = new ByteArrayInputStream("[]".getBytes());
+        assertEquals(emptyList, deserializerToTest.readList(bais, Submodel.class));
     }
 
     @Test
@@ -160,7 +186,7 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testReadExtensionMaximalEnv() throws Exception {
+    public void testReadExtensionMaximalEnv() {
         readAndCompare(Examples.EXTENSION_MAXIMAL);
     }
 
@@ -170,16 +196,16 @@ public class JsonDeserializerTest {
     }
 
     @Test
+    public void testReadOperationRequest() {
+        readAndCompare(Examples.OPERATION_REQUEST);
+    }
+
+    @Test
     public void testReadShellDescriptors() throws IOException, DeserializationException {
         String jsonString = "[" + Examples.SHELL_DESCRIPTOR.fileContent() + "]";
         List<AssetAdministrationShellDescriptor> shellDescriptors =
             deserializerToTest.readList(jsonString, AssetAdministrationShellDescriptor.class);
         assertEquals(Examples.SHELL_DESCRIPTOR.getModel(), shellDescriptors.get(0));
-    }
-
-    @Test
-    public void testReadOperationRequest() {
-        readAndCompare(Examples.OPERATION_REQUEST);
     }
 
     @Test

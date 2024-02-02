@@ -80,6 +80,19 @@ public class JsonSerializerTest {
         assertEquals("null", baos.toString());
     }
 
+    @Test
+    public void testWriteEmptyReferableList() throws SerializationException, JSONException {
+        List<Referable> emptyList = Collections.emptyList();
+        String actual = serializerToTest.writeList(emptyList);
+        JSONAssert.assertEquals("[]", actual, JSONCompareMode.NON_EXTENSIBLE);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        serializerToTest.writeList(baos, emptyList);
+        JSONAssert.assertEquals("[]", baos.toString(), JSONCompareMode.NON_EXTENSIBLE);
+
+        JSONAssert.assertEquals("[]", serializerToTest.toArrayNode(emptyList).toString(), JSONCompareMode.NON_EXTENSIBLE);
+    }
+
     // This test is used only to show how to write to a file.
     @Test
     public void testWriteToFile() throws IOException, SerializationException {
@@ -110,12 +123,6 @@ public class JsonSerializerTest {
         validateAndCompare(expected, node.toPrettyString());
     }
 
-    @Test
-    public void testWriteEmptyReferableList() throws SerializationException, JSONException {
-        List<Referable> emptyList = Collections.emptyList();
-        String actual = serializerToTest.writeList(emptyList);
-        JSONAssert.assertEquals("[]", actual, JSONCompareMode.NON_EXTENSIBLE);
-    }
 
     /**
      * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
@@ -212,7 +219,7 @@ public class JsonSerializerTest {
         writeAndCompare(Examples.OPERATION_REQUEST);
     }
 
-    private String write(ExampleData<?> exampleData) throws SerializationException {
+    private String writeToString(ExampleData<?> exampleData) throws SerializationException {
         String actual;
         if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = serializerToTest.writeList((Collection<?>) exampleData.getModel());
@@ -222,17 +229,17 @@ public class JsonSerializerTest {
         return actual;
     }
 
-    private String writeViaStream(ExampleData<?> exampleData) throws SerializationException {
+    private String writeToStream(ExampleData<?> exampleData) throws SerializationException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
-            serializerToTest.writeList(baos, StandardCharsets.UTF_8, (Collection<?>) exampleData.getModel());
+            serializerToTest.writeList(baos, (Collection<?>) exampleData.getModel());
         } else {
-            serializerToTest.write(baos, StandardCharsets.UTF_8, exampleData.getModel());
+            serializerToTest.write(baos, exampleData.getModel());
         }
         return baos.toString(StandardCharsets.UTF_8);
     }
 
-    private JsonNode toNode(ExampleData<?> exampleData) {
+    private JsonNode writeToNode(ExampleData<?> exampleData) {
         JsonNode actual;
         if (Collection.class.isAssignableFrom(exampleData.getModel().getClass())) {
             actual = serializerToTest.toArrayNode((Collection<?>) exampleData.getModel());
@@ -251,9 +258,9 @@ public class JsonSerializerTest {
     private void writeAndCompare(ExampleData<?> exampleData) {
         try {
             String expected = exampleData.fileContent();
-            compare(expected, write(exampleData));
-            assertEquals(exampleData.getJsonNode() , toNode(exampleData));
-            compare(expected, writeViaStream(exampleData));
+            compare(expected, writeToString(exampleData));
+            assertEquals(exampleData.getJsonNode(), writeToNode(exampleData));
+            compare(expected, writeToStream(exampleData));
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -261,7 +268,7 @@ public class JsonSerializerTest {
 
     private void writeValidateAndCompare(ExampleData<Environment> exampleData) {
         try {
-            String actual = write(exampleData);
+            String actual = writeToString(exampleData);
             String expected = exampleData.fileContent();
             validateAndCompare(expected, actual);
         } catch (Exception ex) {
