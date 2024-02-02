@@ -16,14 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
@@ -33,24 +29,18 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -63,12 +53,6 @@ public class JsonDeserializerTest {
     @BeforeClass
     public static void initialize() {
         deserializerToTest = new JsonDeserializer();
-    }
-
-    @Test
-    public void testReadEnvironmentFromStream() throws DeserializationException {
-        Environment env = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
-        assertEquals(Examples.EXAMPLE_FULL.getModel(), env);
     }
 
     /**
@@ -88,80 +72,6 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testReadReferable() throws IOException, DeserializationException {
-        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContent(), Submodel.class);
-        assertEquals(Examples.SUBMODEL.getModel(), submodel);
-    }
-
-    @Test
-    public void testReadReferableFromStream() throws DeserializationException {
-        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
-        assertEquals(Examples.SUBMODEL.getModel(), submodel);
-    }
-
-    @Test
-    public void testReadReferableFromNode() throws Exception {
-        JsonNode node = new ObjectMapper().readTree(Examples.SUBMODEL.fileContentStream());
-        Submodel submodel = deserializerToTest.read(node, Submodel.class);
-        assertEquals(Examples.SUBMODEL.getModel(), submodel);
-    }
-
-    @Test
-    public void testReadReferableFromStreamUsingCharset() throws Exception {
-        Submodel submodel = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(Examples.SUBMODEL.getModel(), submodel);
-    }
-
-    @Test
-    public void testReadReferables() throws Exception {
-        List<Submodel> submodels = deserializerToTest.readList(Examples.SUBMODEL_LIST_OF.fileContent(), Submodel.class);
-        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
-    }
-
-    @Test
-    public void testReadReferablesFromNode() throws Exception {
-        JsonNode node = new ObjectMapper().readTree(Examples.SUBMODEL_LIST_OF.fileContentStream());
-        List<Submodel> submodels = deserializerToTest.readList(node, Submodel.class);
-        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
-    }
-
-    @Test
-    public void testReadReferablesFromStream() throws Exception {
-        List<Submodel> submodels = deserializerToTest.readList(
-            Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
-        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
-    }
-
-    @Test
-    public void testReadReferablesFromStreamUsingUtf8Charset() throws Exception {
-        List<Submodel> submodels = deserializerToTest.readList(
-            Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(Examples.SUBMODEL_LIST_OF.getModel(), submodels);
-    }
-
-    @Test
-    public void testReadSimpleExampleEnv() throws Exception {
-        Environment expected = Examples.EXAMPLE_SIMPLE.getModel();
-        Environment actual = deserializerToTest.read(Examples.EXAMPLE_SIMPLE.fileContentStream(), Environment.class);
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadFullExampleEnv() throws Exception {
-        Environment expected = Examples.EXAMPLE_FULL.getModel();
-        Environment actual = deserializerToTest.read(Examples.EXAMPLE_FULL.fileContentStream(), Environment.class);
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadFullExampleEnvFromNode() throws Exception {
-        Environment expected = Examples.EXAMPLE_FULL.getModel();
-        JsonNode node = new ObjectMapper().readTree(Examples.EXAMPLE_FULL.fileContentStream());
-        Environment actual = deserializerToTest.read(node, Environment.class);
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
     public void testReadCustomImplementationClass() throws Exception {
         String json = Examples.EXAMPLE_SIMPLE.fileContent();
         // As we test useImplementation(), we need to create a new deserializer here.
@@ -178,74 +88,12 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testReadShell() throws DeserializationException {
-        AssetAdministrationShell expected = Examples.ASSET_ADMINISTRATION_SHELL.getModel();
-        AssetAdministrationShell actual = deserializerToTest.read(Examples.ASSET_ADMINISTRATION_SHELL.fileContentStream(), AssetAdministrationShell.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadShells() throws DeserializationException {
-        List<AssetAdministrationShell> expected = Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.getModel();
-        List<AssetAdministrationShell> actual = deserializerToTest.readList(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF.fileContentStream(), AssetAdministrationShell.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelUsingUtf8Charset() throws DeserializationException {
-        Submodel expected = Examples.SUBMODEL.getModel();
-        Submodel actual = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelsFromStreamUsingUtf8Charset() throws DeserializationException {
-        List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
-        List<Submodel> actual = deserializerToTest.readList(
-            Examples.SUBMODEL_LIST_OF.fileContentStream(), StandardCharsets.UTF_8, Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodel() throws DeserializationException {
-        Submodel expected = Examples.SUBMODEL.getModel();
-        Submodel actual = deserializerToTest.read(Examples.SUBMODEL.fileContentStream(), Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodels() throws DeserializationException {
-        List<Submodel> expected = Examples.SUBMODEL_LIST_OF.getModel();
-        List<Submodel> actual = deserializerToTest.readList(Examples.SUBMODEL_LIST_OF.fileContentStream(), Submodel.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelElement() throws DeserializationException {
-        SubmodelElement expected = Examples.SUBMODEL_ELEMENT.getModel();
-        SubmodelElement actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT.fileContentStream(), SubmodelElement.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelElements() throws DeserializationException {
-        List<SubmodelElement> expected = Examples.SUBMODEL_ELEMENT_LIST_OF.getModel();
-        List<SubmodelElement> actual = deserializerToTest.readList(
-            Examples.SUBMODEL_ELEMENT_LIST_OF.fileContentStream(), SubmodelElement.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelElementList() throws DeserializationException {
-        SubmodelElement expected = Examples.SUBMODEL_ELEMENT_LIST.getModel();
-        SubmodelElementList actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT_LIST.fileContentStream(), SubmodelElementList.class);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReadSubmodelElementCollection() throws DeserializationException {
-        SubmodelElement expected = Examples.SUBMODEL_ELEMENT_COLLECTION.getModel();
-        SubmodelElementCollection actual = deserializerToTest.read(Examples.SUBMODEL_ELEMENT_COLLECTION.fileContentStream(), SubmodelElementCollection.class);
+    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
+    public void testReadConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
+        ConceptDescription expected = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.getModel();
+        ConceptDescription actual = deserializerToTest.read(
+                Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.fileContentStream(),
+                ConceptDescription.class);
         assertEquals(expected, actual);
     }
 
@@ -257,36 +105,68 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    @Ignore("Physical Unit has been removed from the V3.0 metamodel. Might be added later again.")
-    public void testReadConceptDescriptionWithPhysicalUnit() throws IOException, DeserializationException {
-        ConceptDescription expected = Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.getModel();
-        ConceptDescription actual = deserializerToTest.read(
-            Examples.CONCEPT_DESCRIPTION_DATA_SPECIFICATION_PHYSICAL_UNIT.fileContentStream(),
-            ConceptDescription.class);
-        assertEquals(expected, actual);
+    public void testReadFullExampleEnv() {
+        readAndCompare(Examples.EXAMPLE_FULL);
     }
 
     @Test
-    public void testReadExtensionMinimalEnv() throws Exception {
-        Environment expected = Examples.EXTENSION_MINIMAL.getModel();
-        Environment actual = deserializerToTest.read(Examples.EXTENSION_MINIMAL.fileContentStream(), Environment.class);
-        assertEquals(expected, actual);
+    public void testReadSimpleExampleEnv() {
+        readAndCompare(Examples.EXAMPLE_SIMPLE);
+    }
+
+    @Test
+    public void testReadShell() {
+        readAndCompare(Examples.ASSET_ADMINISTRATION_SHELL);
+    }
+
+    @Test
+    public void testReadShells() {
+        readAndCompare(Examples.ASSET_ADMINISTRATION_SHELL_LIST_OF);
+    }
+
+    @Test
+    public void testReadSubmodel() {
+        readAndCompare(Examples.SUBMODEL);
+    }
+
+    @Test
+    public void testReadSubmodels() {
+        readAndCompare(Examples.SUBMODEL_LIST_OF);
+    }
+
+    @Test
+    public void testReadSubmodelElement() {
+        readAndCompare(Examples.SUBMODEL_ELEMENT);
+    }
+
+    @Test
+    public void testReadSubmodelElements() {
+        readAndCompare(Examples.SUBMODEL_ELEMENT_LIST_OF);
+    }
+
+    @Test
+    public void testReadSubmodelElementList() {
+        readAndCompare(Examples.SUBMODEL_ELEMENT_LIST);
+    }
+
+    @Test
+    public void testReadSubmodelElementCollection() {
+        readAndCompare(Examples.SUBMODEL_ELEMENT_COLLECTION);
+    }
+
+    @Test
+    public void testReadExtensionMinimalEnv() {
+        readAndCompare(Examples.EXTENSION_MINIMAL);
     }
 
     @Test
     public void testReadExtensionMaximalEnv() throws Exception {
-        Environment expected = Examples.EXTENSION_MAXIMAL.getModel();
-        Environment actual = deserializerToTest.read(Examples.EXTENSION_MAXIMAL.fileContentStream(), Environment.class);
-        assertEquals(expected, actual);
+        readAndCompare(Examples.EXTENSION_MAXIMAL);
     }
 
-
-
     @Test
-    public void testReadShellDescriptor() throws IOException, DeserializationException {
-        AssetAdministrationShellDescriptor shellDescriptor =
-            deserializerToTest.read(Examples.SHELL_DESCRIPTOR.fileContent(), AssetAdministrationShellDescriptor.class);
-        assertEquals(Examples.SHELL_DESCRIPTOR.getModel(), shellDescriptor);
+    public void testReadShellDescriptor() {
+        readAndCompare(Examples.SHELL_DESCRIPTOR);
     }
 
     @Test
@@ -298,20 +178,14 @@ public class JsonDeserializerTest {
     }
 
     @Test
-    public void testReadOperationRequest() throws DeserializationException, IOException {
+    public void testReadOperationRequest() {
         readAndCompare(Examples.OPERATION_REQUEST);
-        OperationRequest expected = Examples.OPERATION_REQUEST.getModel();
-        OperationRequest actual = deserializerToTest.read(Examples.OPERATION_REQUEST.fileContent(), OperationRequest.class);
-        assertEquals(expected, actual);
     }
 
     @Test
-    public void testReadSubmodelDescriptor() throws IOException, DeserializationException {
-        SubmodelDescriptor submodelDescriptor = deserializerToTest.read(
-            Examples.SUBMODEL_DESCRIPTOR.fileContentStream(), SubmodelDescriptor.class);
-        assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptor);
+    public void testReadSubmodelDescriptor() {
+        readAndCompare(Examples.SUBMODEL_DESCRIPTOR);
     }
-
 
     @Test
     public void testReadSubmodelDescriptors() throws IOException, DeserializationException {
@@ -321,8 +195,15 @@ public class JsonDeserializerTest {
         assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptors.get(0));
     }
 
-    private void readAndCompare(ExampleData<?> exampleData) throws IOException, DeserializationException {
-        assertEquals(exampleData.getModel(), readFromString(exampleData));
+    private void readAndCompare(ExampleData<?> exampleData) {
+        try {
+            Object expected = exampleData.getModel();
+            assertEquals(expected, readFromString(exampleData));
+            assertEquals(expected, readFromNode(exampleData));
+            assertEquals(expected, readFromStream(exampleData));
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     private Object readFromString(ExampleData<?> exampleData) throws IOException, DeserializationException {
@@ -332,6 +213,24 @@ public class JsonDeserializerTest {
             return deserializerToTest.readList(exampleData.fileContent(), coll.iterator().next().getClass());
         }
         return deserializerToTest.read(exampleData.fileContent(), model.getClass());
+    }
+
+    private Object readFromStream(ExampleData<?> exampleData) throws DeserializationException {
+        Object model = exampleData.getModel();
+        if(model instanceof Collection<?>) {
+            Collection<?> coll = (Collection<?>) model;
+            return deserializerToTest.readList(exampleData.fileContentStream(), coll.iterator().next().getClass());
+        }
+        return deserializerToTest.read(exampleData.fileContentStream(), model.getClass());
+    }
+
+    private Object readFromNode(ExampleData<?> exampleData) throws IOException, DeserializationException {
+        Object model = exampleData.getModel();
+        if(model instanceof Collection<?>) {
+            Collection<?> coll = (Collection<?>) model;
+            return deserializerToTest.readList(exampleData.getJsonNode(), coll.iterator().next().getClass());
+        }
+        return deserializerToTest.read(exampleData.getJsonNode(), model.getClass());
     }
 
     private void checkImplementationClasses(Environment environment,

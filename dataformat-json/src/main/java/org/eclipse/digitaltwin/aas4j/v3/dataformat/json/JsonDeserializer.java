@@ -79,20 +79,19 @@ public class JsonDeserializer {
     }
 
     /**
-     * Generic method to deserialize a given JSON node into instance of an AAS type
+     * Generic method to deserialize a given string into a list of AAS instances
      *
-     * @param node the node to parse
-     * @param valueType the class type of the AAS instance. Not null.
+     * @param value a string representation of the AAS instances list
+     * @param valueType the class type of the instance. Not null.
      * @param <T> the AAS type
-     * @return an AAS instance
-     *
+     * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
      */
-    public <T> T read(JsonNode node, Class<T> valueType) throws DeserializationException {
+    public <T> List<T> readList(String value, Class<T> valueType) throws DeserializationException {
         try {
-            return mapper.treeToValue(node, valueType);
+            return mapper.readValue(value, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
         } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
+            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
         }
     }
 
@@ -128,40 +127,6 @@ public class JsonDeserializer {
     }
 
     /**
-     * Generic method to deserialize a given string into a list of AAS instances
-     *
-     * @param value a string representation of the AAS instances list
-     * @param valueType the class type of the instance. Not null.
-     * @param <T> the AAS type
-     * @return a list of AAS instances
-     * @throws DeserializationException if deserialization fails
-     */
-    public <T> List<T> readList(String value, Class<T> valueType) throws DeserializationException {
-        try {
-            return mapper.readValue(value, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
-        }
-    }
-
-    /**
-     * Deserializes a given JsonArray into a list of AAS instances
-     *
-     * @param node a JsonArray representing the AAS instances list
-     * @param valueType the class type of the instance. Not null.
-     * @param <T> the AAS type
-     * @return a list of AAS instances
-     * @throws DeserializationException if deserialization fails
-     */
-    public <T> List<T> readList(JsonNode node, Class<T> valueType) throws DeserializationException {
-        try {
-            return mapper.treeToValue(node, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
-        }
-    }
-
-    /**
      * Deserializes a given input stream into a list of AAS instances using the default UTF-8 charset
      *
      * @param stream An InputStream containing the string representation of the AAS instances list
@@ -187,8 +152,43 @@ public class JsonDeserializer {
     public <T> List<T> readList(InputStream stream, Charset charset, Class<T> valueType) throws DeserializationException {
         try {
             return mapper.readValue(new InputStreamReader(stream, charset),
-                mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
+                    mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
         } catch (Exception ex) {
+            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
+        }
+    }
+
+    /**
+     * Generic method to deserialize a given JSON node into instance of an AAS type
+     *
+     * @param node the node to parse
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return an AAS instance
+     *
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T> T read(JsonNode node, Class<T> valueType) throws DeserializationException {
+        try {
+            return mapper.treeToValue(node, valueType);
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
+        }
+    }
+
+    /**
+     * Deserializes a given JsonArray into a list of AAS instances
+     *
+     * @param node a JsonArray representing the AAS instances list
+     * @param valueType the class type of the instance. Not null.
+     * @param <T> the AAS type
+     * @return a list of AAS instances
+     * @throws DeserializationException if deserialization fails
+     */
+    public <T> List<T> readList(JsonNode node, Class<T> valueType) throws DeserializationException {
+        try {
+            return mapper.treeToValue(node, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
+        } catch (JsonProcessingException ex) {
             throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
         }
     }
