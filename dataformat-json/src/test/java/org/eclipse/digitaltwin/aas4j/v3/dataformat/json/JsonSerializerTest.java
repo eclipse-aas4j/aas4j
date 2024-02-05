@@ -27,16 +27,13 @@ import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
-import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import org.json.JSONException;
 import org.junit.BeforeClass;
@@ -44,6 +41,7 @@ import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
@@ -93,7 +91,6 @@ public class JsonSerializerTest {
         JSONAssert.assertEquals("[]", serializerToTest.toArrayNode(emptyList).toString(), JSONCompareMode.NON_EXTENSIBLE);
     }
 
-    // This test is used only to show how to write to a file.
     @Test
     public void testWriteToFile() throws IOException, SerializationException {
         File file = tempFolder.newFile("output.json");
@@ -123,18 +120,8 @@ public class JsonSerializerTest {
         validateAndCompare(expected, node.toPrettyString());
     }
 
-
-    /**
-     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
-     *
-     * @throws SerializationException
-     * @throws DeserializationException
-     */
     @Test
     public void testWriteCustomDataSpecification() {
-        // This is the only way to make the serialization to work.
-        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
-        subtypes.add(DefaultDummyDataSpecification.class);
         writeAndCompare(Examples.ENVIRONMENT_CUSTOM_DATA);
     }
 

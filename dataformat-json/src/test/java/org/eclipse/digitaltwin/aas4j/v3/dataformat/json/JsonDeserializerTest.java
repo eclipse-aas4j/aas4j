@@ -58,19 +58,11 @@ public class JsonDeserializerTest {
         deserializerToTest = new JsonDeserializer();
     }
 
-    /**
-     * This test ensures that future DataSpecificationContents can be added without adjustments in the code.
-     *
-     * @throws SerializationException
-     * @throws DeserializationException
-     */
     @Test
     public void testReadCustomDataSpecification() throws DeserializationException {
-        // This is the only way to make the serialization to work.
-        Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
-        subtypes.add(DefaultDummyDataSpecification.class);
-        // We need to create a new deserializer instance here, to reflect the change in the subtypes.
-        Environment env = new JsonDeserializer().read(Examples.ENVIRONMENT_CUSTOM_DATA.fileContentStream(), Environment.class);
+        JsonDeserializer deserializer = new JsonDeserializer();
+        deserializer.useImplementation(DataSpecificationContent.class, DefaultDummyDataSpecification.class);
+        Environment env = deserializer.read(Examples.ENVIRONMENT_CUSTOM_DATA.fileContentStream(), Environment.class);
         assertEquals(Examples.ENVIRONMENT_CUSTOM_DATA.getModel(), env);
     }
 
