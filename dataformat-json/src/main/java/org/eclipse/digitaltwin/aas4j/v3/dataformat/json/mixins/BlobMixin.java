@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface BlobMixin {
-
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public String getMimeType();
+    String getMimeType();
 }

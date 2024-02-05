@@ -15,11 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class ExampleData<T> {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     private final T model;
     private final String file;
@@ -49,4 +54,11 @@ public class ExampleData<T> {
         return getClass().getClassLoader().getResourceAsStream(file);
     }
 
+    public JsonNode getJsonNode() {
+        try {
+            return mapper.readTree(fileContent());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

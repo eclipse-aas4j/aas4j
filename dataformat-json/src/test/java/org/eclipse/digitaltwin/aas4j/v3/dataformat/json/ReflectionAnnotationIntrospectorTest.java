@@ -28,7 +28,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins.ReferenceMixin;
 import org.eclipse.digitaltwin.aas4j.v3.model.ClassA;
 import org.eclipse.digitaltwin.aas4j.v3.model.ClassB;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
@@ -59,7 +58,7 @@ public class ReflectionAnnotationIntrospectorTest {
     private static ObjectMapper mapper;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         introspector = new ReflectionAnnotationIntrospector();
         mapper = new ObjectMapper();
     }
@@ -79,18 +78,17 @@ public class ReflectionAnnotationIntrospectorTest {
     }
 
     @Test
-    public void testFindTypeNameForClassesWithoutTypeInfo() throws Exception {
+    public void testFindTypeNameForClassesWithoutTypeInfo() {
         List.of(String.class,
                 Object.class,
                 Integer.class,
                 ReflectionAnnotationIntrospectorTest.class,
-                ReferenceMixin.class,
                 DummyInterface.class)
                 .forEach(x -> assertNull(introspector.findTypeName(getAnnotatedClass(x))));
     }
 
     @Test
-    public void testFindTypeNameForClassesWithTypeInfo() throws Exception {
+    public void testFindTypeNameForClassesWithTypeInfo() {
         Map.of(CustomProperty.class, Property.class,
                 CustomSubProperty.class, Property.class,
                 TypedProperty.class, TypedProperty.class,
@@ -104,12 +102,11 @@ public class ReflectionAnnotationIntrospectorTest {
     }
 
     @Test
-    public void testFindTypeResolverForClassesWithoutTypeInfo() throws Exception {
+    public void testFindTypeResolverForClassesWithoutTypeInfo() {
         List.of(String.class,
                 Object.class,
                 Integer.class,
                 ReflectionAnnotationIntrospectorTest.class,
-                ReferenceMixin.class,
                 DummyInterface.class)
                 .forEach(x -> {
                     TypeResolverBuilder<?> typeResolver = getTypeResolver(x);
@@ -118,7 +115,7 @@ public class ReflectionAnnotationIntrospectorTest {
     }
 
     @Test
-    public void testFindTypeResolverForClassesWithTypeInfo() throws Exception {
+    public void testFindTypeResolverForClassesWithTypeInfo() {
         List.of(CustomProperty.class,
                 CustomSubProperty.class,
                 TypedProperty.class,
@@ -141,7 +138,6 @@ public class ReflectionAnnotationIntrospectorTest {
                 Object.class,
                 Integer.class,
                 ReflectionAnnotationIntrospectorTest.class,
-                ReferenceMixin.class,
                 DummyInterface.class)
                 .forEach(x -> {
                     List<NamedType> subtypes = introspector.findSubtypes(getAnnotatedClass(x));
@@ -181,5 +177,4 @@ public class ReflectionAnnotationIntrospectorTest {
                     assertTrue(!subtypes.isEmpty());
                 });
     }
-
 }

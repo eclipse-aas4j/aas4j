@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023 SAP SE
+ * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 
 import java.io.IOException;
@@ -51,6 +52,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
                 gen.writeString("xs:" + enum_string.substring(0, 1).toLowerCase() + enum_string.substring(1));
             }
         } else if (value instanceof DataTypeIec61360) {
+            gen.writeString(value.name().toUpperCase());
+        } else if (value instanceof SecurityTypeEnum) {
             gen.writeString(value.name().toUpperCase());
         } else if (value instanceof Direction || value instanceof StateOfEvent) {
             gen.writeString(value.name().toLowerCase());
