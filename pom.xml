@@ -26,7 +26,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eclipse.digitaltwin.aas4j</groupId>
-    <artifactId>dataformat-parent</artifactId>
+    <artifactId>aas4j-dataformat-parent</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
@@ -290,22 +290,22 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dataformat-core</artifactId>
+                <artifactId>aas4j-dataformat-core</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dataformat-xml</artifactId>
+                <artifactId>aas4j-dataformat-xml</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>model</artifactId>
+                <artifactId>aas4j-model</artifactId>
                 <version>${model.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dataformat-core</artifactId>
+                <artifactId>aas4j-dataformat-core</artifactId>
                 <classifier>tests</classifier>
                 <version>${revision}</version>
             </dependency>
