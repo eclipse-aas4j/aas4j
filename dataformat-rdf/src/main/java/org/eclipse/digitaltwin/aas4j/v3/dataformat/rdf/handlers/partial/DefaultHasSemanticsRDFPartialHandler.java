@@ -1,13 +1,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial;
 
-import org.apache.jena.rdf.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultExtensionRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultLangStringTextTypeRDFHandler;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.NodeIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.AASNamespace;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.IncompatibleTypeException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFPartialHandler;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultReferenceRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.HasSemantics;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.ArrayList;
@@ -19,12 +20,12 @@ public class DefaultHasSemanticsRDFPartialHandler implements RDFPartialHandler<H
 
     @Override
     public void partialToModel(HasSemantics object, Model model, Resource parentNode) {
-        if(object.getSemanticId()!=null){
+        if (object.getSemanticId() != null) {
             RDFSerializationResult res = new DefaultReferenceRDFHandler().toModel(object.getSemanticId());
-            model.add(parentNode,AASNamespace.HasSemantics.semanticId,res.getResource());
+            model.add(parentNode, AASNamespace.HasSemantics.semanticId, res.getResource());
             model.add(res.getModel());
         }
-        if(object.getSupplementalSemanticIds()!=null && object.getSupplementalSemanticIds().isEmpty()==false){
+        if (object.getSupplementalSemanticIds() != null && object.getSupplementalSemanticIds().isEmpty() == false) {
             int index = 0;
             for (Reference item : object.getSupplementalSemanticIds()) {
                 RDFSerializationResult resultItem = new DefaultReferenceRDFHandler().toModel(item);

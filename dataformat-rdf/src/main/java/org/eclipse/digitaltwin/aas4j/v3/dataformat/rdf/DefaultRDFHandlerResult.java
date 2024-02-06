@@ -2,7 +2,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 
 public class DefaultRDFHandlerResult implements RDFSerializationResult {
     private final Model model;

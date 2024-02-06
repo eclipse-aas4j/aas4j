@@ -27,8 +27,8 @@ public class DefaultKeyRDFHandler implements RDFHandler<Key> {
         return new DefaultRDFHandlerResult(model, subject);
     }
 
-    public Key fromModel(Model model, Resource subjectToParse){
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Key) == false){
+    public Key fromModel(Model model, Resource subjectToParse) {
+        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Key) == false) {
             throw new IllegalArgumentException("Provided Resource is not a Key");
         }
         String value = model.getProperty(subjectToParse, AASNamespace.Key.value).getString();

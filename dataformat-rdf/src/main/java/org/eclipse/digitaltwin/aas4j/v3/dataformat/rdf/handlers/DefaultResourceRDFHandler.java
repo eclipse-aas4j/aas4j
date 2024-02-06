@@ -16,27 +16,27 @@ public class DefaultResourceRDFHandler implements RDFHandler<Resource> {
             return new DefaultRDFHandlerResult(model, ResourceFactory.createResource());
         }
         org.apache.jena.rdf.model.Resource subject = model.createResource();
-        model.add(subject,RDF.type,AASNamespace.Types.Resource);
-        if(object.getPath()!=null){
-            model.add(subject,AASNamespace.Resource.path,object.getPath());
+        model.add(subject, RDF.type, AASNamespace.Types.Resource);
+        if (object.getPath() != null) {
+            model.add(subject, AASNamespace.Resource.path, object.getPath());
         }
-        if(object.getContentType()!=null){
-            model.add(subject,AASNamespace.Resource.contentType,object.getContentType());
+        if (object.getContentType() != null) {
+            model.add(subject, AASNamespace.Resource.contentType, object.getContentType());
         }
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
     public Resource fromModel(Model model, org.apache.jena.rdf.model.Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Resource) == false){
+        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Resource) == false) {
             throw new IncompatibleTypeException("Resource");
         }
         DefaultResource.Builder builder = new DefaultResource.Builder();
-        if (model.contains(subjectToParse, AASNamespace.Resource.path)){
-            builder.path(model.getProperty(subjectToParse,AASNamespace.Resource.path).getString());
+        if (model.contains(subjectToParse, AASNamespace.Resource.path)) {
+            builder.path(model.getProperty(subjectToParse, AASNamespace.Resource.path).getString());
         }
-        if (model.contains(subjectToParse, AASNamespace.Resource.contentType)){
-            builder.contentType(model.getProperty(subjectToParse,AASNamespace.Resource.contentType).getString());
+        if (model.contains(subjectToParse, AASNamespace.Resource.contentType)) {
+            builder.contentType(model.getProperty(subjectToParse, AASNamespace.Resource.contentType).getString());
         }
         return builder.build();
     }

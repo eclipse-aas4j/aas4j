@@ -18,7 +18,7 @@ public class RDFSerializer {
     /**
      * Serializes a given instance of AssetAdministrationShellEnvironment to string
      *
-     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
+     * @param aasEnvironment      the AssetAdministrationShellEnvironment to serialize
      * @param serializationFormat the serialization format such as JSON-LD, RDF/Turtle, ...
      * @return the string representation of the environment
      * @throws SerializationException if serialization fails
@@ -45,7 +45,7 @@ public class RDFSerializer {
     /**
      * Serializes a given instance of a Referable to string
      *
-     * @param referable the referable to serialize
+     * @param referable           the referable to serialize
      * @param serializationFormat the serialization format such as JSON-LD, RDF/Turtle, ...
      * @return the string representation of the referable
      * @throws SerializationException if serialization fails
@@ -93,9 +93,9 @@ public class RDFSerializer {
     /**
      * Serializes a given instance of Environment to an OutputStream using DEFAULT_CHARSET
      *
-     * @param out the Outputstream to serialize to
+     * @param out            the Outputstream to serialize to
      * @param aasEnvironment the Environment to serialize
-     * @throws IOException if writing to the stream fails
+     * @throws IOException            if writing to the stream fails
      * @throws SerializationException if serialization fails
      */
     void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
@@ -105,10 +105,10 @@ public class RDFSerializer {
     /**
      * Serializes a given instance of Environment to an OutputStream using given charset
      *
-     * @param out the Outputstream to serialize to
-     * @param charset the Charset to use for serialization
+     * @param out            the Outputstream to serialize to
+     * @param charset        the Charset to use for serialization
      * @param aasEnvironment the Environment to serialize
-     * @throws IOException if writing to the stream fails
+     * @throws IOException            if writing to the stream fails
      * @throws SerializationException if serialization fails
      */
     void write(OutputStream out, Charset charset, Environment aasEnvironment)
@@ -119,14 +119,15 @@ public class RDFSerializer {
     }
 
     // Note that the AAS also defines a file class
+
     /**
      * Serializes a given instance of Environment to a java.io.File using DEFAULT_CHARSET
      *
-     * @param file the java.io.File to serialize to
-     * @param charset the Charset to use for serialization
+     * @param file           the java.io.File to serialize to
+     * @param charset        the Charset to use for serialization
      * @param aasEnvironment the Environment to serialize
-     * @throws FileNotFoundException if the fail does not exist
-     * @throws IOException if writing to the file fails
+     * @throws FileNotFoundException  if the fail does not exist
+     * @throws IOException            if writing to the file fails
      * @throws SerializationException if serialization fails
      */
     void write(java.io.File file, Charset charset, Environment aasEnvironment)
@@ -139,21 +140,16 @@ public class RDFSerializer {
     /**
      * Serializes a given instance of Environment to a java.io.File using given charset
      *
-     * @param file the java.io.File to serialize to
+     * @param file           the java.io.File to serialize to
      * @param aasEnvironment the Environment to serialize
-     * @throws FileNotFoundException if the fail does not exist
-     * @throws IOException if writing to the file fails
+     * @throws FileNotFoundException  if the fail does not exist
+     * @throws IOException            if writing to the file fails
      * @throws SerializationException if serialization fails
      */
     void write(java.io.File file, Environment aasEnvironment)
             throws FileNotFoundException, IOException, SerializationException {
         write(file, DEFAULT_CHARSET, aasEnvironment);
     }
-
-
-
-
-
 
 
 //    /**
@@ -178,7 +174,6 @@ public class RDFSerializer {
 //    public Model toModel(Collection<? extends Referable> referables) {
 //        throw new RuntimeException("Not Implemented");
 //    }
-
 
 
 //    public String writeReferables(List<Referable> referables) throws SerializationException {

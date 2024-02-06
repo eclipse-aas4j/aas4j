@@ -1,12 +1,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers;
 
-import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 
 import java.util.ArrayList;

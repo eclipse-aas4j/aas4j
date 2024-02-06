@@ -18,23 +18,23 @@ public class DefaultLevelTypeRDFHandler implements RDFHandler<LevelType> {
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.LevelType);
-        model.addLiteral(subject,AASNamespace.LevelType.min,object.getMin());
-        model.addLiteral(subject,AASNamespace.LevelType.max,object.getMax());
-        model.addLiteral(subject,AASNamespace.LevelType.nom,object.getNom());
-        model.addLiteral(subject,AASNamespace.LevelType.typ,object.getTyp());
+        model.addLiteral(subject, AASNamespace.LevelType.min, object.getMin());
+        model.addLiteral(subject, AASNamespace.LevelType.max, object.getMax());
+        model.addLiteral(subject, AASNamespace.LevelType.nom, object.getNom());
+        model.addLiteral(subject, AASNamespace.LevelType.typ, object.getTyp());
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
     public LevelType fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.LevelType) == false){
+        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.LevelType) == false) {
             throw new IllegalArgumentException("Provided Resource is not a LevelType");
         }
         return new DefaultLevelType.Builder()
-                .min(model.getProperty(subjectToParse,AASNamespace.LevelType.min).getBoolean())
-                .max(model.getProperty(subjectToParse,AASNamespace.LevelType.max).getBoolean())
-                .nom(model.getProperty(subjectToParse,AASNamespace.LevelType.nom).getBoolean())
-                .typ(model.getProperty(subjectToParse,AASNamespace.LevelType.typ).getBoolean())
+                .min(model.getProperty(subjectToParse, AASNamespace.LevelType.min).getBoolean())
+                .max(model.getProperty(subjectToParse, AASNamespace.LevelType.max).getBoolean())
+                .nom(model.getProperty(subjectToParse, AASNamespace.LevelType.nom).getBoolean())
+                .typ(model.getProperty(subjectToParse, AASNamespace.LevelType.typ).getBoolean())
                 .build();
     }
 }

@@ -66,6 +66,7 @@ public class DataSpecificationIec61360Test {
         assert object.equals(recreatedObject);
 
     }
+
     @Test
     public void testDataSpecificationIec61360() throws IncompatibleTypeException {
         DataSpecificationIec61360 dataSpecificationIec61360 = new DefaultDataSpecificationIec61360.Builder()
@@ -84,6 +85,7 @@ public class DataSpecificationIec61360Test {
         DataSpecificationIec61360 recreatedDataSpecification = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
         assert dataSpecificationIec61360.equals(recreatedDataSpecification);
     }
+
     @Test
     public void testLangStrings() throws IncompatibleTypeException {
         DefaultLangStringShortNameTypeIec61360 object = new DefaultLangStringShortNameTypeIec61360.Builder()

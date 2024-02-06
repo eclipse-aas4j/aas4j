@@ -2,8 +2,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.ResourceFactory;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 
 /**
  * Elements of Asset Administration Shell as org.apache.jena.rdf.model.Resource and Property compatible with Apache Jena.
