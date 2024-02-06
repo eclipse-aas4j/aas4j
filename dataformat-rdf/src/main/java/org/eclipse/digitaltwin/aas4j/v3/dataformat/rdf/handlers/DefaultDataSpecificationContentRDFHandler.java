@@ -8,12 +8,8 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.AASNamespace;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.IncompatibleTypeException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultAnnotatedRelationshipElementRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultRelationshipElementRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
 
 public class DefaultDataSpecificationContentRDFHandler implements RDFHandler<DataSpecificationContent> {
     @Override

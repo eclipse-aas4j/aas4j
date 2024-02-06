@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.sql.Ref;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.io.IOUtils;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
-/**
- * Helper class for Serializer Tests
- *
- * @author sbader
- */
+import java.util.Arrays;
+import java.util.List;
+
+
 public class SerializerUtil {
 
-    public static String readResourceToString(String resourceName) throws IOException {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream(resourceName);
-        StringWriter writer = new StringWriter();
-        IOUtils.copy(is, writer, "UTF-8");
-        return writer.toString();
-    }
-
-
-
-    public static String stripWhitespaces(String input) {
-        return input.replaceAll("\\s+", "");
-    }
 
     public static DefaultDataSpecificationIec61360 getDataSpecificationIec61360() {
         return new DefaultDataSpecificationIec61360.Builder()
@@ -206,7 +169,7 @@ public class SerializerUtil {
                         .build());
     }
 
-    static Extension getMaximalExtension(){
+    static Extension getMaximalExtension() {
         return new DefaultExtension.Builder()
                 .name("extension1")
                 .value("extension1Value")
@@ -234,7 +197,7 @@ public class SerializerUtil {
                 .build();
     }
 
-    static Reference getMinimalReference(){
+    static Reference getMinimalReference() {
         return new DefaultReference.Builder()
                 .keys(new DefaultKey.Builder()
                         .value("minimal")
@@ -244,13 +207,14 @@ public class SerializerUtil {
                 .build();
     }
 
-    static Qualifier getMinimalQualifier(){
+    static Qualifier getMinimalQualifier() {
         return new DefaultQualifier.Builder()
                 .type("type1")
                 .valueType(DataTypeDefXsd.STRING)
                 .build();
     }
-    static Qualifier getMaximalQualifier(){
+
+    static Qualifier getMaximalQualifier() {
         return new DefaultQualifier.Builder()
                 .type("type1")
                 .kind(QualifierKind.CONCEPT_QUALIFIER)
@@ -262,7 +226,7 @@ public class SerializerUtil {
                 .build();
     }
 
-    static SpecificAssetId getMaximalSpecificAssetId(){
+    static SpecificAssetId getMaximalSpecificAssetId() {
         return new DefaultSpecificAssetId.Builder()
                 .semanticId(getMinimalReference())
                 .supplementalSemanticIds(getMinimalReference())
@@ -271,38 +235,43 @@ public class SerializerUtil {
                 .value("value1")
                 .build();
     }
-    static SpecificAssetId getMinimalSpecificAssetId(){
+
+    static SpecificAssetId getMinimalSpecificAssetId() {
         return new DefaultSpecificAssetId.Builder()
                 .name("name1")
                 .value("value1")
                 .build();
     }
-    static Property getMinimalProperty(){
+
+    static Property getMinimalProperty() {
         return new DefaultProperty.Builder()
+                .idShort("idShort1")
+                .valueType(DataTypeDefXsd.DECIMAL)
                 .build();
     }
 
-    static Extension getMiniamlExtension(){
+    static Extension getMiniamlExtension() {
         return new DefaultExtension.Builder()
                 .name("extension2")
                 .value("extension2Value")
                 .build();
     }
 
-    static Resource getResource(){
+    static Resource getResource() {
         return new DefaultResource.Builder()
                 .path("path://")
                 .contentType("content/type")
                 .build();
     }
 
-    static AssetInformation getMinimalAssetInformation(){
+    static AssetInformation getMinimalAssetInformation() {
         return new DefaultAssetInformation.Builder()
                 .assetKind(AssetKind.INSTANCE)
                 .globalAssetId("global1")
                 .build();
     }
-    static AssetInformation getMaximalAssetInformation(){
+
+    static AssetInformation getMaximalAssetInformation() {
         return new DefaultAssetInformation.Builder()
                 .assetKind(AssetKind.NOT_APPLICABLE)
                 .globalAssetId("global2")
@@ -315,13 +284,14 @@ public class SerializerUtil {
                 .build();
     }
 
-    static AssetAdministrationShell getMinimalAssetAdministrationShell(){
+    static AssetAdministrationShell getMinimalAssetAdministrationShell() {
         return new DefaultAssetAdministrationShell.Builder()
                 .assetInformation(getMinimalAssetInformation())
                 .id("id1")
                 .build();
     }
-    static AssetAdministrationShell getMaximalAssetAdministrationShell(){
+
+    static AssetAdministrationShell getMaximalAssetAdministrationShell() {
         return new DefaultAssetAdministrationShell.Builder()
                 .assetInformation(getMaximalAssetInformation())
                 .administration(getAdministrativeInformation())
@@ -335,6 +305,7 @@ public class SerializerUtil {
                 .id("https://example.com")
                 .build();
     }
+
 
     static List<Extension> getExtensionList() {
         return Arrays.asList(

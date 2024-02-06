@@ -20,7 +20,7 @@ public class DefaultValueListRDFHandler implements RDFHandler<ValueList> {
             return new DefaultRDFHandlerResult(model, ResourceFactory.createResource());
         }
         Resource subject = model.createResource();
-        model.add(subject,RDF.type,AASNamespace.Types.ValueList);
+        model.add(subject, RDF.type, AASNamespace.Types.ValueList);
         int index = 0;
         for (ValueReferencePair valueReferencePair : object.getValueReferencePairs()) {
             RDFSerializationResult valueReferencePairSerializationResult = new DefaultValueReferencePairRDFHandler().toModel(valueReferencePair);

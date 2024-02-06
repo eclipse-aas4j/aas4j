@@ -3,15 +3,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
-import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultConceptDescriptionRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEmbeddedDataSpecificationRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class ConceptDescriptionTest {
 
@@ -28,7 +25,6 @@ public class ConceptDescriptionTest {
         ConceptDescription recreatedObject = new DefaultConceptDescriptionRDFHandler().fromModel(model, createdResource);
         assert object.equals(recreatedObject);
     }
-
 
 
     @Test

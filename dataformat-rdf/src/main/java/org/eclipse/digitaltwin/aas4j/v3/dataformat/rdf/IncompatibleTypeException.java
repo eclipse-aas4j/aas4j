@@ -4,7 +4,8 @@ public class IncompatibleTypeException extends Exception {
     public IncompatibleTypeException() {
         super("The RDF root node either has no type (rdf:type) or it does not match");
     }
+
     public IncompatibleTypeException(String message) {
-        super("The RDF root node does not match with "+message);
+        super("The RDF root node does not match with " + message);
     }
 }

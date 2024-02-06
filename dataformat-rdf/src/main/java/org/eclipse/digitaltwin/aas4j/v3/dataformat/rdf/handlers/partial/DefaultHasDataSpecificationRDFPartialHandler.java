@@ -1,5 +1,3 @@
-
-
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial;
 
 import org.apache.jena.rdf.model.Model;
@@ -10,12 +8,8 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.IncompatibleTypeException
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFPartialHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEmbeddedDataSpecificationRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultKeyRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultLangStringTextTypeRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.HasDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,11 +34,11 @@ public class DefaultHasDataSpecificationRDFPartialHandler implements RDFPartialH
 
     @Override
     public HasDataSpecification partialFromModel(HasDataSpecification object, Model model, Resource subjectToParse) {
-        if(model.contains(subjectToParse,AASNamespace.HasDataSpecification.embeddedDataSpecifications)){
+        if (model.contains(subjectToParse, AASNamespace.HasDataSpecification.embeddedDataSpecifications)) {
             Map<Integer, EmbeddedDataSpecification> keysMap = new HashMap<>();
             NodeIterator keysIterator = model.listObjectsOfProperty(subjectToParse,
                     AASNamespace.HasDataSpecification.embeddedDataSpecifications);
-            keysIterator.forEachRemaining(node->{
+            keysIterator.forEachRemaining(node -> {
                 EmbeddedDataSpecification key = null;
                 try {
                     key = new DefaultEmbeddedDataSpecificationRDFHandler().fromModel(model, (Resource) node);
@@ -52,10 +46,10 @@ public class DefaultHasDataSpecificationRDFPartialHandler implements RDFPartialH
                     throw new RuntimeException(e);
                 }
                 int index = model.getProperty((Resource) node, AASNamespace.index).getInt();
-                keysMap.put(index,key);
+                keysMap.put(index, key);
             });
             List<EmbeddedDataSpecification> keys = new ArrayList<>();
-            for(int index=0;index<keysMap.keySet().size();index++){
+            for (int index = 0; index < keysMap.keySet().size(); index++) {
                 keys.add(keysMap.get(index));
             }
             object.setEmbeddedDataSpecifications(keys);

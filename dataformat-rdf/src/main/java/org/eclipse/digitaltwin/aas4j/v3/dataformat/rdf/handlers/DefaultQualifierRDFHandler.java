@@ -1,10 +1,12 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers;
 
-import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultHasSemanticsRDFPartialHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultQualifier;
@@ -50,22 +52,22 @@ public class DefaultQualifierRDFHandler implements RDFHandler<Qualifier> {
             throw new IncompatibleTypeException("Qualifier");
         }
         DefaultQualifier.Builder builder = new DefaultQualifier.Builder();
-        if (model.contains(subjectToParse, AASNamespace.Qualifier.kind)){
+        if (model.contains(subjectToParse, AASNamespace.Qualifier.kind)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.Qualifier.kind).getResource();
             builder.kind(AASNamespace.QualifierKind.fromIRI(resource.getURI()));
         }
-        if (model.contains(subjectToParse, AASNamespace.Qualifier.type)){
+        if (model.contains(subjectToParse, AASNamespace.Qualifier.type)) {
             builder.type(model.getProperty(subjectToParse, AASNamespace.Qualifier.type).getString());
         }
-        if (model.contains(subjectToParse, AASNamespace.Qualifier.value)){
+        if (model.contains(subjectToParse, AASNamespace.Qualifier.value)) {
             builder.value(model.getProperty(subjectToParse, AASNamespace.Qualifier.value).getString());
         }
-        if (model.contains(subjectToParse, AASNamespace.Qualifier.valueId)){
+        if (model.contains(subjectToParse, AASNamespace.Qualifier.valueId)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.Qualifier.valueId).getResource();
             Reference reference = new DefaultReferenceRDFHandler().fromModel(model, resource);
             builder.valueId(reference);
         }
-        if (model.contains(subjectToParse, AASNamespace.Qualifier.valueType)){
+        if (model.contains(subjectToParse, AASNamespace.Qualifier.valueType)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.Qualifier.valueType).getResource();
             builder.valueType(AASNamespace.DataTypeDefXsd.fromIRI(resource.getURI()));
         }

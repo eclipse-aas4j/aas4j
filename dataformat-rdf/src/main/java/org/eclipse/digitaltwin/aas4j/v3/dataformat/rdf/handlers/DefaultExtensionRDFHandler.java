@@ -3,11 +3,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.DefaultLangStringDefinitionTypeIec61360RDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultHasSemanticsRDFPartialHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 
@@ -56,17 +53,17 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
             throw new IncompatibleTypeException("Extension");
         }
         DefaultExtension.Builder builder = new DefaultExtension.Builder();
-        if(model.contains(subjectToParse,AASNamespace.Extension.name)){
-            builder.name(model.getProperty(subjectToParse,AASNamespace.Extension.name).getString());
+        if (model.contains(subjectToParse, AASNamespace.Extension.name)) {
+            builder.name(model.getProperty(subjectToParse, AASNamespace.Extension.name).getString());
         }
-        if(model.contains(subjectToParse,AASNamespace.Extension.value)){
-            builder.value(model.getProperty(subjectToParse,AASNamespace.Extension.value).getString());
+        if (model.contains(subjectToParse, AASNamespace.Extension.value)) {
+            builder.value(model.getProperty(subjectToParse, AASNamespace.Extension.value).getString());
         }
-        if(model.contains(subjectToParse,AASNamespace.Extension.valueType)){
+        if (model.contains(subjectToParse, AASNamespace.Extension.valueType)) {
             String valueType = model.getProperty(subjectToParse, AASNamespace.Extension.valueType).getResource().getURI();
             builder.valueType(AASNamespace.DataTypeDefXsd.fromIRI(valueType));
         }
-        if(model.contains(subjectToParse,AASNamespace.Extension.refersTo)){
+        if (model.contains(subjectToParse, AASNamespace.Extension.refersTo)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.Extension.refersTo);
             Map<Integer, Reference> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {

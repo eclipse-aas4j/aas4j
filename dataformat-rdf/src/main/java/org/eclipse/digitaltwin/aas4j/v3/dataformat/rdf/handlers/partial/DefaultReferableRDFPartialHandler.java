@@ -1,14 +1,19 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial;
 
-import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.NodeIterator;
 import org.apache.jena.rdf.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.AASNamespace;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.IncompatibleTypeException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFPartialHandler;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultExtensionRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultKeyRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultLangStringNameTypeRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultLangStringTextTypeRDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360.DefaultLangStringPreferredNameTypeIec61360RDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,13 +69,13 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
 
     @Override
     public Referable partialFromModel(Referable object, Model model, Resource subjectToParse) {
-        if (model.contains(subjectToParse,AASNamespace.Referable.idShort)) {
-            object.setIdShort(model.getProperty(subjectToParse,AASNamespace.Referable.idShort).getString());
+        if (model.contains(subjectToParse, AASNamespace.Referable.idShort)) {
+            object.setIdShort(model.getProperty(subjectToParse, AASNamespace.Referable.idShort).getString());
         }
-        if (model.contains(subjectToParse,AASNamespace.Referable.category)) {
-            object.setCategory(model.getProperty(subjectToParse,AASNamespace.Referable.category).getString());
+        if (model.contains(subjectToParse, AASNamespace.Referable.category)) {
+            object.setCategory(model.getProperty(subjectToParse, AASNamespace.Referable.category).getString());
         }
-        if (model.contains(subjectToParse,AASNamespace.Referable.description)) {
+        if (model.contains(subjectToParse, AASNamespace.Referable.description)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.Referable.description);
             Map<Integer, LangStringTextType> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
@@ -89,7 +94,7 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
             }
             object.setDescription(langStringList);
         }
-        if (model.contains(subjectToParse,AASNamespace.Referable.displayName)) {
+        if (model.contains(subjectToParse, AASNamespace.Referable.displayName)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.Referable.displayName);
             Map<Integer, LangStringNameType> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
@@ -110,7 +115,7 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
         }
 
         //HasExtension
-        if (model.contains(subjectToParse,AASNamespace.HasExtensions.extensions)) {
+        if (model.contains(subjectToParse, AASNamespace.HasExtensions.extensions)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.HasExtensions.extensions);
             Map<Integer, Extension> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {

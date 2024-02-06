@@ -6,8 +6,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultHasDataSpecificationRDFPartialHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultIdentifiableRDFPartialHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
 
@@ -27,12 +25,12 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
         Resource conceptDescriptionResource = model.createResource(object.getId());
         model.add(conceptDescriptionResource, RDF.type, AASNamespace.Types.ConceptDescription);
 
-        if(object.getIsCaseOf()!=null && object.getIsCaseOf().isEmpty() == false) {
+        if (object.getIsCaseOf() != null && object.getIsCaseOf().isEmpty() == false) {
             int index = 0;
             for (Reference item : object.getIsCaseOf()) {
                 RDFSerializationResult resultItem = new DefaultReferenceRDFHandler().toModel(item);
                 resultItem.getResource().addLiteral(AASNamespace.index, index);
-                model.add(conceptDescriptionResource,AASNamespace.ConceptDescription.isCaseOf, resultItem.getResource());
+                model.add(conceptDescriptionResource, AASNamespace.ConceptDescription.isCaseOf, resultItem.getResource());
                 // It is important where to put model.add
                 model.add(resultItem.getModel());
                 index = index + 1;
@@ -54,7 +52,7 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
         }
         DefaultConceptDescription.Builder builder = new DefaultConceptDescription.Builder();
 
-        if(model.contains(subjectToParse,AASNamespace.ConceptDescription.isCaseOf)){
+        if (model.contains(subjectToParse, AASNamespace.ConceptDescription.isCaseOf)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ConceptDescription.isCaseOf);
             Map<Integer, Reference> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
@@ -77,7 +75,7 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
         //Identifiable
         new DefaultIdentifiableRDFPartialHandler().partialFromModel(object, model, subjectToParse);
         //HasDataSpecification
-        new DefaultHasDataSpecificationRDFPartialHandler().partialFromModel(object,model,subjectToParse);
+        new DefaultHasDataSpecificationRDFPartialHandler().partialFromModel(object, model, subjectToParse);
         return object;
     }
 }

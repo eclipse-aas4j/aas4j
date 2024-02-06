@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 public class RDFParser {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+
     /**
      * Deserializes a given string into an instance of AssetAdministrationShellEnvironment
      *
@@ -68,7 +69,7 @@ public class RDFParser {
     /**
      * Deserializes a given InputStream into an instance of AssetAdministrationShellEnvironment using a given charset
      *
-     * @param src An InputStream containing the string representation of the AssetAdministrationShellEnvironment
+     * @param src     An InputStream containing the string representation of the AssetAdministrationShellEnvironment
      * @param charset the charset to use for deserialization
      * @return an instance of AssetAdministrationShellEnvironment
      * @throws DeserializationException if deserialization fails
@@ -83,10 +84,10 @@ public class RDFParser {
     /**
      * Deserializes a given File into an instance of AssetAdministrationShellEnvironment using DEFAULT_CHARSET
      *
-     * @param file A java.io.File containing the string representation of the AssetAdministrationShellEnvironment
+     * @param file    A java.io.File containing the string representation of the AssetAdministrationShellEnvironment
      * @param charset the charset to use for deserialization
      * @return an instance of AssetAdministrationShellEnvironment
-     * @throws FileNotFoundException if file is not present
+     * @throws FileNotFoundException    if file is not present
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(java.io.File file, Charset charset)
@@ -99,7 +100,7 @@ public class RDFParser {
      *
      * @param file a java.io.File containing the string representation of the AssetAdministrationShellEnvironment
      * @return an instance of AssetAdministrationShellEnvironment
-     * @throws FileNotFoundException if the file is not present
+     * @throws FileNotFoundException    if the file is not present
      * @throws DeserializationException if deserialization fails
      */
     public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
@@ -115,8 +116,8 @@ public class RDFParser {
      * deserialized as CustomSubmodel. Subsequent class with the same aasInterface parameter will override the effects
      * of all previous calls.
      *
-     * @param <T> the type of the interface to replace
-     * @param aasInterface the class of the interface to replace
+     * @param <T>            the type of the interface to replace
+     * @param aasInterface   the class of the interface to replace
      * @param implementation the class implementing the interface that should be used for deserialization.
      */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
@@ -127,9 +128,9 @@ public class RDFParser {
     /**
      * Deserializes a given string into an instance of the given Referable
      *
-     * @param src a string representation of the Referable
+     * @param src         a string representation of the Referable
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -144,9 +145,9 @@ public class RDFParser {
     /**
      * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
      *
-     * @param src a input stream representing a Referable
+     * @param src         a input stream representing a Referable
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -157,9 +158,9 @@ public class RDFParser {
     /**
      * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
      *
-     * @param root Apache Jena Resource
+     * @param root        Apache Jena Resource
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -174,10 +175,10 @@ public class RDFParser {
     /**
      * Deserializes a given input stream into an instance of the given Referable
      *
-     * @param src a input stream representing a Referable
-     * @param charset the charset to use
+     * @param src         a input stream representing a Referable
+     * @param charset     the charset to use
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -192,11 +193,11 @@ public class RDFParser {
     /**
      * Deserializes a given file into an instance of the given Referable using DEFAULT_CHARSET
      *
-     * @param src a file containing string representation of a Referable
+     * @param src         a file containing string representation of a Referable
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
+     * @throws DeserializationException      if deserialization fails
      * @throws java.io.FileNotFoundException if file is not found
      */
     public <T extends Referable> T readReferable(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
@@ -206,12 +207,12 @@ public class RDFParser {
     /**
      * Deserializes a given file into an instance of the given Referable
      *
-     * @param src a file containing string representation of a Referable
-     * @param charset the charset to use
+     * @param src         a file containing string representation of a Referable
+     * @param charset     the charset to use
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
+     * @throws DeserializationException      if deserialization fails
      * @throws java.io.FileNotFoundException if file is not found
      */
     public <T extends Referable> T readReferable(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
@@ -221,9 +222,9 @@ public class RDFParser {
     /**
      * Deserializes a given string into an instance of a list of the given Referables
      *
-     * @param referables a string representation of an array of Referables
+     * @param referables  a string representation of an array of Referables
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of a list of the referables
      * @throws DeserializationException if deserialization of referable fails
      */
@@ -238,9 +239,9 @@ public class RDFParser {
     /**
      * Deserializes a given string into an instance of a list of the given Referables
      *
-     * @param root Apache Jena Resource
+     * @param root        Apache Jena Resource
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of a list of the referables
      * @throws DeserializationException if deserialization of referable fails
      */
@@ -255,9 +256,9 @@ public class RDFParser {
     /**
      * Deserializes a given input stream into an instance of a list of the given Referable using DEFAULT_CHARSET
      *
-     * @param src a input stream representing a Referable
+     * @param src         a input stream representing a Referable
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -268,10 +269,10 @@ public class RDFParser {
     /**
      * Deserializes a given input stream into an instance of a list of the given Referable
      *
-     * @param src a input stream representing a Referable
-     * @param charset the charset to use
+     * @param src         a input stream representing a Referable
+     * @param charset     the charset to use
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
      * @throws DeserializationException if deserialization fails
      */
@@ -286,11 +287,11 @@ public class RDFParser {
     /**
      * Deserializes a given file into an instance of a list of the given Referable using DEFAULT_CHARSET
      *
-     * @param src a file containing string representation of a Referable
+     * @param src         a file containing string representation of a Referable
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
+     * @throws DeserializationException      if deserialization fails
      * @throws java.io.FileNotFoundException if file is not found
      */
     public <T extends Referable> List<T> readReferables(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
@@ -300,12 +301,12 @@ public class RDFParser {
     /**
      * Deserializes a given file into an instance of a list of the given Referable
      *
-     * @param src a file containing string representation of a Referable
-     * @param charset the charset to use
+     * @param src         a file containing string representation of a Referable
+     * @param charset     the charset to use
      * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
+     * @param <T>         type of the returned element
      * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
+     * @throws DeserializationException      if deserialization fails
      * @throws java.io.FileNotFoundException if file is not found
      */
     public <T extends Referable> List<T> readReferables(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {

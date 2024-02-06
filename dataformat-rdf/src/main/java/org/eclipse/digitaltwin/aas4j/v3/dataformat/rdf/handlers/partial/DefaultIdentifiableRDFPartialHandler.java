@@ -1,6 +1,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial;
 
-import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.AASNamespace;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.IncompatibleTypeException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFPartialHandler;
@@ -8,7 +9,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultAdministrativeInformationRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 public class DefaultIdentifiableRDFPartialHandler implements RDFPartialHandler<Identifiable> {
 
