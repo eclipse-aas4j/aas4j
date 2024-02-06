@@ -54,7 +54,7 @@ public class SerializerTest {
     }
 
     @Test
-    public void testAdministrativeInformationSimple() throws IncompatibleTypeException {
+    public void testMinimalAdministrativeInformation() throws IncompatibleTypeException {
         AdministrativeInformation object = new DefaultAdministrativeInformation.Builder()
                 .version("1")
                 .revision("0")
@@ -72,7 +72,7 @@ public class SerializerTest {
     }
 
     @Test
-    public void testAdministrativeInformationComplex() throws IncompatibleTypeException {
+    public void testMaximalAdministrativeInformation() throws IncompatibleTypeException {
         AdministrativeInformation object = new DefaultAdministrativeInformation.Builder()
                 .version("1")
                 .revision("1")
@@ -124,6 +124,120 @@ public class SerializerTest {
         assert reference.equals(recreatedKey);
     }
 
+    @Test
+    public void testExtension() throws IncompatibleTypeException {
+        Extension object = SerializerUtil.getMaximalExtension();
+        RDFSerializationResult rdfSerializationResult = new DefaultExtensionRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Extension);
+
+        Extension recreatedObject = new DefaultExtensionRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+
+    @Test
+    public void testMinimalQualifier() throws IncompatibleTypeException {
+        Qualifier object = SerializerUtil.getMinimalQualifier();
+        RDFSerializationResult rdfSerializationResult = new DefaultQualifierRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Qualifier);
+
+        Qualifier recreatedObject = new DefaultQualifierRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMaximalQualifier() throws IncompatibleTypeException {
+        Qualifier object = SerializerUtil.getMaximalQualifier();
+        RDFSerializationResult rdfSerializationResult = new DefaultQualifierRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Qualifier);
+
+        Qualifier recreatedObject = new DefaultQualifierRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMaximalSpecificAssetId() throws IncompatibleTypeException {
+        SpecificAssetId object = SerializerUtil.getMaximalSpecificAssetId();
+        RDFSerializationResult rdfSerializationResult = new DefaultSpecificAssetIdRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.SpecificAssetId);
+
+        SpecificAssetId recreatedObject = new DefaultSpecificAssetIdRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testResource() throws IncompatibleTypeException {
+        org.eclipse.digitaltwin.aas4j.v3.model.Resource object = SerializerUtil.getResource();
+        RDFSerializationResult rdfSerializationResult = new DefaultResourceRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Resource);
+
+
+        org.eclipse.digitaltwin.aas4j.v3.model.Resource recreatedObject = new DefaultResourceRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMinimalAssetInformation() throws IncompatibleTypeException {
+        AssetInformation object = SerializerUtil.getMinimalAssetInformation();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetInformationRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetInformation);
+
+
+        AssetInformation recreatedObject = new DefaultAssetInformationRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMaximalAssetInformation() throws IncompatibleTypeException {
+        AssetInformation object = SerializerUtil.getMaximalAssetInformation();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetInformationRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetInformation);
+
+
+        AssetInformation recreatedObject = new DefaultAssetInformationRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMinimalAssetAdministrationShell() throws IncompatibleTypeException {
+        AssetAdministrationShell object = SerializerUtil.getMinimalAssetAdministrationShell();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetAdministrationShellRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetAdministrationShell);
+
+
+        AssetAdministrationShell recreatedObject = new DefaultAssetAdministrationShellRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMaximalAssetAdministrationShell() throws IncompatibleTypeException {
+        AssetAdministrationShell object = SerializerUtil.getMaximalAssetAdministrationShell();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetAdministrationShellRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetAdministrationShell);
+
+
+        AssetAdministrationShell recreatedObject = new DefaultAssetAdministrationShellRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
 
     @Test
     public void serializeEnvironmentSmokeTest() throws IOException, DeserializationException, SerializationException {
@@ -141,23 +255,6 @@ public class SerializerTest {
         System.out.println(output);
     }
 
-    @Test
-    public void testDataSpecificationIec61360() throws IncompatibleTypeException {
-        DataSpecificationIec61360 dataSpecificationIec61360 = new DefaultDataSpecificationIec61360.Builder()
-                .preferredName(List.of(new DefaultLangStringPreferredNameTypeIec61360.Builder()
-                        .language("en")
-                        .text("preferred name")
-                        .build()))
-                .build();
-        RDFSerializationResult rdfSerializationResult = new DefaultDataSpecificationIEC61360RDFHandler().toModel(dataSpecificationIec61360);
-        Model model = rdfSerializationResult.getModel();
-        model.write(System.out, Lang.TTL.getName());
-        Resource createdResource = rdfSerializationResult.getResource();
-        assert model.contains(createdResource, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
-//        assert model.contains(createdResource, AASNamespace.Identifiable.id, conceptDescription.getId());
 
-        DataSpecificationIec61360 recreatedDataSpecification = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
-        assert dataSpecificationIec61360.equals(recreatedDataSpecification);
-    }
 
 }
