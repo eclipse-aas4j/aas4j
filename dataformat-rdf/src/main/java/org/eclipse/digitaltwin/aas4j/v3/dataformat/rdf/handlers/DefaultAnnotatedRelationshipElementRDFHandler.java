@@ -21,7 +21,7 @@ public class DefaultAnnotatedRelationshipElementRDFHandler implements RDFHandler
 
     @Override
     public AnnotatedRelationshipElement fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.AdministrativeInformation) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.AdministrativeInformation)) {
             throw new IncompatibleTypeException("AssetAdministrationShell");
         }
 

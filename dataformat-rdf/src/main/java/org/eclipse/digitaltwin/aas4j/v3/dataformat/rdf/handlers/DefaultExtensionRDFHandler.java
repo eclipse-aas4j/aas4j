@@ -32,7 +32,7 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
             model.add(subject, AASNamespace.Extension.valueType,
                     AASNamespace.DataTypeDefXsd.valueOf(object.getValueType().name()));
         }
-        if (object.getRefersTo() != null && object.getRefersTo().isEmpty() == false) {
+        if (object.getRefersTo() != null && !object.getRefersTo().isEmpty()) {
             int index = 0;
             for (Reference reference : object.getRefersTo()) {
                 RDFSerializationResult res = new DefaultReferenceRDFHandler().toModel(reference);
@@ -49,7 +49,7 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
 
     @Override
     public Extension fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Extension) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Extension)) {
             throw new IncompatibleTypeException("Extension");
         }
         DefaultExtension.Builder builder = new DefaultExtension.Builder();

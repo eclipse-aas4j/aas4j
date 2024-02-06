@@ -25,7 +25,7 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
         Resource conceptDescriptionResource = model.createResource(object.getId());
         model.add(conceptDescriptionResource, RDF.type, AASNamespace.Types.ConceptDescription);
 
-        if (object.getIsCaseOf() != null && object.getIsCaseOf().isEmpty() == false) {
+        if (object.getIsCaseOf() != null && !object.getIsCaseOf().isEmpty()) {
             int index = 0;
             for (Reference item : object.getIsCaseOf()) {
                 RDFSerializationResult resultItem = new DefaultReferenceRDFHandler().toModel(item);
@@ -47,7 +47,7 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
 
     @Override
     public ConceptDescription fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.ConceptDescription) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.ConceptDescription)) {
             throw new IncompatibleTypeException();
         }
         DefaultConceptDescription.Builder builder = new DefaultConceptDescription.Builder();

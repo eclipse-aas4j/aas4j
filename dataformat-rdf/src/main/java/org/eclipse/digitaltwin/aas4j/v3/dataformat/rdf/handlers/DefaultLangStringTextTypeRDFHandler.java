@@ -18,20 +18,27 @@ public class DefaultLangStringTextTypeRDFHandler implements RDFHandler<LangStrin
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.LangStringTextType);
-        model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
-        model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+        if (object.getLanguage() != null) {
+            model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
+        }
+        if (object.getText() != null) {
+            model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+        }
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
     public LangStringTextType fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringTextType) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringTextType)) {
             throw new IllegalArgumentException("Provided Resource is not a LangStringTextType");
         }
-
-        return new DefaultLangStringTextType.Builder()
-                .text(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.text).getString())
-                .language(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.language).getString())
-                .build();
+        DefaultLangStringTextType.Builder builder = new DefaultLangStringTextType.Builder();
+        if (model.contains(subjectToParse, AASNamespace.AbstractLangString.text)) {
+            builder.text(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.text).getString());
+        }
+        if (model.contains(subjectToParse, AASNamespace.AbstractLangString.language)) {
+            builder.language(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.language).getString());
+        }
+        return builder.build();
     }
 }

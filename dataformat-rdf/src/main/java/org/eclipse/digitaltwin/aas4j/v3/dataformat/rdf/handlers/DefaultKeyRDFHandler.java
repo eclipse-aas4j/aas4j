@@ -11,7 +11,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.KeyBuilder;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 
 public class DefaultKeyRDFHandler implements RDFHandler<Key> {
@@ -22,21 +21,29 @@ public class DefaultKeyRDFHandler implements RDFHandler<Key> {
         }
         Resource subject = model.createResource();
         subject.addProperty(RDF.type, AASNamespace.Types.Key);
-        subject.addProperty(AASNamespace.Key.value, key.getValue());
-        subject.addProperty(AASNamespace.Key.type, AASNamespace.KeyTypes.valueOf(key.getType().name()));
+        if (key.getValue() != null) {
+            subject.addProperty(AASNamespace.Key.value, key.getValue());
+        }
+        if (key.getType() != null) {
+            subject.addProperty(AASNamespace.Key.type, AASNamespace.KeyTypes.valueOf(key.getType().name()));
+        }
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     public Key fromModel(Model model, Resource subjectToParse) {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Key) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Key)) {
             throw new IllegalArgumentException("Provided Resource is not a Key");
         }
-        String value = model.getProperty(subjectToParse, AASNamespace.Key.value).getString();
-        KeyTypes type = AASNamespace.KeyTypes.fromIRI(model.getProperty(subjectToParse, AASNamespace.Key.type).getResource().getURI());
-        KeyBuilder<DefaultKey, DefaultKey.Builder> builder = new DefaultKey.Builder();
+        DefaultKey.Builder builder = new DefaultKey.Builder();
+        if (model.contains(subjectToParse, AASNamespace.Key.value)) {
+            String value = model.getProperty(subjectToParse, AASNamespace.Key.value).getString();
+            builder.value(value);
+        }
+        if (model.contains(subjectToParse, AASNamespace.Key.type)) {
+            KeyTypes type = AASNamespace.KeyTypes.fromIRI(model.getProperty(subjectToParse, AASNamespace.Key.type).getResource().getURI());
+            builder.type(type);
+        }
         //Todo: in future instead of specific builder we can use a generic builder instantiator
-        return builder.type(type)
-                .value(value)
-                .build();
+        return builder.build();
     }
 }

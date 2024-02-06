@@ -14,46 +14,46 @@ public class DefaultSubmodelElementRDFHandler implements RDFHandler<SubmodelElem
     @Override
     public RDFSerializationResult toModel(SubmodelElement object) {
         // it should be bottom up in hierarchy
-        if (AnnotatedRelationshipElement.class.isInstance(object)) {
+        if (object instanceof AnnotatedRelationshipElement) {
             return new DefaultAnnotatedRelationshipElementRDFHandler().toModel((AnnotatedRelationshipElement) object);
         }
-        if (RelationshipElement.class.isInstance(object)) {
+        if (object instanceof RelationshipElement) {
             return new DefaultRelationshipElementRDFHandler().toModel((RelationshipElement) object);
         }
-        if (BasicEventElement.class.isInstance(object)) {
+        if (object instanceof BasicEventElement) {
             return new DefaultBasicEventElementRDFHandler().toModel((BasicEventElement) object);
         }
-        if (Blob.class.isInstance(object)) {
+        if (object instanceof Blob) {
             return new DefaultBlobRDFHandler().toModel((Blob) object);
         }
-        if (File.class.isInstance(object)) {
+        if (object instanceof File) {
             return new DefaultFileRDFHandler().toModel((File) object);
         }
-        if (MultiLanguageProperty.class.isInstance(object)) {
+        if (object instanceof MultiLanguageProperty) {
             return new DefaultMultiLanguagePropertyRDFHandler().toModel((MultiLanguageProperty) object);
         }
-        if (Property.class.isInstance(object)) {
+        if (object instanceof Property) {
             return new DefaultPropertyRDFHandler().toModel((Property) object);
         }
-        if (Range.class.isInstance(object)) {
+        if (object instanceof Range) {
             return new DefaultRangeRDFHandler().toModel((Range) object);
         }
-        if (ReferenceElement.class.isInstance(object)) {
+        if (object instanceof ReferenceElement) {
             return new DefaultReferenceElementRDFHandler().toModel((ReferenceElement) object);
         }
-        if (SubmodelElementCollection.class.isInstance(object)) {
+        if (object instanceof SubmodelElementCollection) {
             return new DefaultSubmodelElementCollectionRDFHandler().toModel((SubmodelElementCollection) object);
         }
-        if (SubmodelElementList.class.isInstance(object)) {
+        if (object instanceof SubmodelElementList) {
             return new DefaultSubmodelElementListRDFHandler().toModel((SubmodelElementList) object);
         }
-        if (Entity.class.isInstance(object)) {
+        if (object instanceof Entity) {
             return new DefaultEntityRDFHandler().toModel((Entity) object);
         }
-        if (Capability.class.isInstance(object)) {
+        if (object instanceof Capability) {
             return new DefaultCapabilityRDFHandler().toModel((Capability) object);
         }
-        if (Operation.class.isInstance(object)) {
+        if (object instanceof Operation) {
             return new DefaultOperationRDFHandler().toModel((Operation) object);
         }
 

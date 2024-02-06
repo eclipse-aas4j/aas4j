@@ -5,7 +5,7 @@ import org.apache.jena.rdf.model.Resource;
 
 public interface RDFPartialHandler<T> {
 
-    public void partialToModel(T object, Model model, Resource parentNode);
+    void partialToModel(T object, Model model, Resource parentNode);
 
-    public T partialFromModel(T object, Model model, Resource subjectToParse) throws IncompatibleTypeException;
+    T partialFromModel(T object, Model model, Resource subjectToParse) throws IncompatibleTypeException;
 }

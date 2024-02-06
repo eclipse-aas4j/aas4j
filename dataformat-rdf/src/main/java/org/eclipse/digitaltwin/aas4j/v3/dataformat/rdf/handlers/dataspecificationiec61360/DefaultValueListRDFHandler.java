@@ -34,7 +34,7 @@ public class DefaultValueListRDFHandler implements RDFHandler<ValueList> {
 
     @Override
     public ValueList fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.ValueList) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.ValueList)) {
             throw new IncompatibleTypeException("ValueList");
         }
         NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ValueList.valueReferencePairs);

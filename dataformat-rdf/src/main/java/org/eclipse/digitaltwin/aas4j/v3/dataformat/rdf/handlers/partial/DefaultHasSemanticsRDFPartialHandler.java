@@ -25,7 +25,7 @@ public class DefaultHasSemanticsRDFPartialHandler implements RDFPartialHandler<H
             model.add(parentNode, AASNamespace.HasSemantics.semanticId, res.getResource());
             model.add(res.getModel());
         }
-        if (object.getSupplementalSemanticIds() != null && object.getSupplementalSemanticIds().isEmpty() == false) {
+        if (object.getSupplementalSemanticIds() != null && !object.getSupplementalSemanticIds().isEmpty()) {
             int index = 0;
             for (Reference item : object.getSupplementalSemanticIds()) {
                 RDFSerializationResult resultItem = new DefaultReferenceRDFHandler().toModel(item);

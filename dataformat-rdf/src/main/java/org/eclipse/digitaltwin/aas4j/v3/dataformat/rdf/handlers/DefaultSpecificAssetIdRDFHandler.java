@@ -38,7 +38,7 @@ public class DefaultSpecificAssetIdRDFHandler implements RDFHandler<SpecificAsse
 
     @Override
     public SpecificAssetId fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.SpecificAssetId) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.SpecificAssetId)) {
             throw new IncompatibleTypeException("SpecificAssetId");
         }
         DefaultSpecificAssetId.Builder builder = new DefaultSpecificAssetId.Builder();

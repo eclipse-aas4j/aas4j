@@ -14,7 +14,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 public class DefaultDataSpecificationContentRDFHandler implements RDFHandler<DataSpecificationContent> {
     @Override
     public RDFSerializationResult toModel(DataSpecificationContent object) {
-        if (DataSpecificationIec61360.class.isInstance(object)) {
+        if (object instanceof DataSpecificationIec61360) {
             return new DefaultDataSpecificationIEC61360RDFHandler().toModel((DataSpecificationIec61360) object);
         }
 

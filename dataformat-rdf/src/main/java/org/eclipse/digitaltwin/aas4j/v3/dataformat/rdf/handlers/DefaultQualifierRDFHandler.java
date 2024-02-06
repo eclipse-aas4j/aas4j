@@ -48,7 +48,7 @@ public class DefaultQualifierRDFHandler implements RDFHandler<Qualifier> {
 
     @Override
     public Qualifier fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Qualifier) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Qualifier)) {
             throw new IncompatibleTypeException("Qualifier");
         }
         DefaultQualifier.Builder builder = new DefaultQualifier.Builder();

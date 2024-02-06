@@ -27,7 +27,7 @@ public class DefaultLevelTypeRDFHandler implements RDFHandler<LevelType> {
 
     @Override
     public LevelType fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.LevelType) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LevelType)) {
             throw new IllegalArgumentException("Provided Resource is not a LevelType");
         }
         return new DefaultLevelType.Builder()

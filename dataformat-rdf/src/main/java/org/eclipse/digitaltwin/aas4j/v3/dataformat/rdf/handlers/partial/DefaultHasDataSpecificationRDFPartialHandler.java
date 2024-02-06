@@ -19,7 +19,7 @@ import java.util.Map;
 public class DefaultHasDataSpecificationRDFPartialHandler implements RDFPartialHandler<HasDataSpecification> {
     @Override
     public void partialToModel(HasDataSpecification object, Model model, Resource parentNode) {
-        if (object.getEmbeddedDataSpecifications() != null && object.getEmbeddedDataSpecifications().isEmpty() == false) {
+        if (object.getEmbeddedDataSpecifications() != null && !object.getEmbeddedDataSpecifications().isEmpty()) {
             int index = 0;
             for (EmbeddedDataSpecification item : object.getEmbeddedDataSpecifications()) {
                 RDFSerializationResult resultItem = new DefaultEmbeddedDataSpecificationRDFHandler().toModel(item);

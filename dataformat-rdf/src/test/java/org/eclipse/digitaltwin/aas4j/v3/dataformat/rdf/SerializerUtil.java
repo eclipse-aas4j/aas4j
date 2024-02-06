@@ -250,6 +250,23 @@ public class SerializerUtil {
                 .build();
     }
 
+    static Property getMaximalProperty() {
+        return new DefaultProperty.Builder()
+                .idShort("idShort1")
+                .valueType(DataTypeDefXsd.DECIMAL)
+                .value("12.2")
+                .valueId(getMinimalReference())
+                .category("category1")
+                .description(getDescriptions())
+                .displayName(getDisplayNames())
+                .embeddedDataSpecifications(getMaximalEmbeddedDataSpecifications())
+                .extensions(getMaximalExtension())
+                .supplementalSemanticIds(getIsCaseOfs())
+                .semanticId(getMinimalReference())
+                .qualifiers(List.of(getMaximalQualifier(),getMinimalQualifier()))
+                .build();
+    }
+
     static Extension getMiniamlExtension() {
         return new DefaultExtension.Builder()
                 .name("extension2")

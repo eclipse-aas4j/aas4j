@@ -28,7 +28,7 @@ public class DefaultResourceRDFHandler implements RDFHandler<Resource> {
 
     @Override
     public Resource fromModel(Model model, org.apache.jena.rdf.model.Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Resource) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Resource)) {
             throw new IncompatibleTypeException("Resource");
         }
         DefaultResource.Builder builder = new DefaultResource.Builder();

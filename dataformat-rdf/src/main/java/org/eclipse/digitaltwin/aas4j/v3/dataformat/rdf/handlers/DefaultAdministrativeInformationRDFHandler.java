@@ -41,7 +41,7 @@ public class DefaultAdministrativeInformationRDFHandler implements RDFHandler<Ad
 
     @Override
     public AdministrativeInformation fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.AdministrativeInformation) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.AdministrativeInformation)) {
             throw new IncompatibleTypeException("AdministrativeInformation");
         }
         DefaultAdministrativeInformation.Builder builder = new DefaultAdministrativeInformation.Builder();

@@ -29,7 +29,7 @@ public class DefaultAssetAdministrationShellRDFHandler implements RDFHandler<Ass
             model.add(subject, AASNamespace.AssetAdministrationShell.assetInformation, res.getResource());
             model.add(res.getModel());
         }
-        if (object.getSubmodels() != null && object.getSubmodels().isEmpty() == false) {
+        if (object.getSubmodels() != null && !object.getSubmodels().isEmpty()) {
             int index = 0;
             for (Reference item : object.getSubmodels()) {
                 RDFSerializationResult resultItem = new DefaultReferenceRDFHandler().toModel(item);
@@ -54,7 +54,7 @@ public class DefaultAssetAdministrationShellRDFHandler implements RDFHandler<Ass
 
     @Override
     public AssetAdministrationShell fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.AssetAdministrationShell) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.AssetAdministrationShell)) {
             throw new IncompatibleTypeException("AssetAdministrationShell");
         }
         DefaultAssetAdministrationShell.Builder builder = new DefaultAssetAdministrationShell.Builder();
