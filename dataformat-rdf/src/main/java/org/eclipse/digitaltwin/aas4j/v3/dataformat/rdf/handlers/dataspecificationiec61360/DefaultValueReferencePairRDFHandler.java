@@ -20,23 +20,31 @@ public class DefaultValueReferencePairRDFHandler implements RDFHandler<ValueRefe
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.ValueReferencePair);
-        model.add(subject, AASNamespace.ValueReferencePair.value, object.getValue());
-        RDFSerializationResult referenceSerializationResult = new DefaultReferenceRDFHandler().toModel(object.getValueId());
-        model.add(referenceSerializationResult.getModel());
-        model.add(subject, AASNamespace.ValueReferencePair.valueId, referenceSerializationResult.getResource());
+        if (object.getValue() != null) {
+            model.add(subject, AASNamespace.ValueReferencePair.value, object.getValue());
+        }
+        if (object.getValueId() != null) {
+            RDFSerializationResult referenceSerializationResult = new DefaultReferenceRDFHandler().toModel(object.getValueId());
+            model.add(subject, AASNamespace.ValueReferencePair.valueId, referenceSerializationResult.getResource());
+            model.add(referenceSerializationResult.getModel());
+        }
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
     public ValueReferencePair fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.ValueReferencePair) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.ValueReferencePair)) {
             throw new IncompatibleTypeException("ValueReferencePair");
         }
-
-        Reference reference = new DefaultReferenceRDFHandler().fromModel(model, model.getProperty(subjectToParse, AASNamespace.ValueReferencePair.valueId).getResource());
-        return new DefaultValueReferencePair.Builder()
-                .value(model.getProperty(subjectToParse, AASNamespace.ValueReferencePair.value).getString())
-                .valueId(reference)
-                .build();
+        DefaultValueReferencePair.Builder builder = new DefaultValueReferencePair.Builder();
+        if (model.contains(subjectToParse, AASNamespace.ValueReferencePair.valueId)) {
+            Reference reference = new DefaultReferenceRDFHandler().fromModel(model,
+                    model.getProperty(subjectToParse, AASNamespace.ValueReferencePair.valueId).getResource());
+            builder.valueId(reference);
+        }
+        if (model.contains(subjectToParse, AASNamespace.ValueReferencePair.value)) {
+            builder.value(model.getProperty(subjectToParse, AASNamespace.ValueReferencePair.value).getString());
+        }
+        return builder.build();
     }
 }

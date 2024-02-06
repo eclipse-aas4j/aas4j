@@ -39,7 +39,7 @@ public class DefaultReferenceRDFHandler implements RDFHandler<Reference> {
 
     @Override
     public Reference fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.Reference) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Reference)) {
             throw new IncompatibleTypeException("Reference");
         }
         String typeString = model.getProperty(subjectToParse, AASNamespace.Reference.type).getResource().getURI();

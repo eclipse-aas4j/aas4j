@@ -21,5 +21,17 @@ public class SubmodelTest {
         assert object.equals(recreatedObject);
     }
 
+    @Test
+    public void testMaximalProperty() throws IncompatibleTypeException {
+        Property object = SerializerUtil.getMaximalProperty();
+        RDFSerializationResult rdfSerializationResult = new DefaultPropertyRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Property);
+
+        Property recreatedObject = new DefaultPropertyRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
 
 }

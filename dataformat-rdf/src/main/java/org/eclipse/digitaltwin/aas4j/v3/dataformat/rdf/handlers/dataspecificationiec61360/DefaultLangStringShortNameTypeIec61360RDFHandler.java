@@ -18,14 +18,18 @@ public class DefaultLangStringShortNameTypeIec61360RDFHandler implements RDFHand
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.LangStringShortNameTypeIec61360);
-        model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
-        model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+        if (object.getLanguage() != null) {
+            model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
+        }
+        if (object.getText() != null) {
+            model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+        }
         return new DefaultRDFHandlerResult(model, subject);
     }
 
     @Override
     public LangStringShortNameTypeIec61360 fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringShortNameTypeIec61360) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringShortNameTypeIec61360)) {
             throw new IllegalArgumentException("Provided Resource is not a LangStringShortNameTypeIec61360");
         }
 

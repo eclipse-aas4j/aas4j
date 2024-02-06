@@ -36,7 +36,7 @@ public class DefaultEmbeddedDataSpecificationRDFHandler implements RDFHandler<Em
 
     @Override
     public EmbeddedDataSpecification fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.EmbeddedDataSpecification) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.EmbeddedDataSpecification)) {
             throw new IncompatibleTypeException("EmbeddedDataSpecification");
         }
         DefaultEmbeddedDataSpecification.Builder builder = new DefaultEmbeddedDataSpecification.Builder();

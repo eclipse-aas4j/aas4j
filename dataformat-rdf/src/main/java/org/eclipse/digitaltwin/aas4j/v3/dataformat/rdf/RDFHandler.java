@@ -13,11 +13,11 @@ public interface RDFHandler<T> {
     /**
      * Convert to RDF model. This method is side effect free and idempotent.
      *
-     * @param element the object that should be converted to an RDF model
+     * @param object the object that should be converted to an RDF model
      * @return a {@link RDFSerializationResult} which holds the Model and created node that
      * represent the created root node in the model.
      */
-    public RDFSerializationResult toModel(T object);
+    RDFSerializationResult toModel(T object);
 
     /**
      * This method is side effect free and idempotent.
@@ -26,5 +26,5 @@ public interface RDFHandler<T> {
      * @param subjectToParse Root elements that correspond to the object.
      * @return instance of the object
      */
-    public T fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException;
+    T fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException;
 }

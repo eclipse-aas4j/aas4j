@@ -22,7 +22,7 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
-        if (object.getPreferredName() != null && object.getPreferredName().isEmpty() == false) {
+        if (object.getPreferredName() != null && !object.getPreferredName().isEmpty()) {
             int index = 0;
             for (LangStringPreferredNameTypeIec61360 langString : object.getPreferredName()) {
                 RDFSerializationResult res = new DefaultLangStringPreferredNameTypeIec61360RDFHandler().toModel(langString);
@@ -32,7 +32,7 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                 index++;
             }
         }
-        if (object.getShortName() != null && object.getShortName().isEmpty() == false) {
+        if (object.getShortName() != null && !object.getShortName().isEmpty()) {
             int index = 0;
             for (LangStringShortNameTypeIec61360 langString : object.getShortName()) {
                 RDFSerializationResult res = new DefaultLangStringShortNameTypeIec61360RDFHandler().toModel(langString);
@@ -42,7 +42,7 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                 index++;
             }
         }
-        if (object.getDefinition() != null && object.getDefinition().isEmpty() == false) {
+        if (object.getDefinition() != null && !object.getDefinition().isEmpty()) {
             int index = 0;
             for (LangStringDefinitionTypeIec61360 langString : object.getDefinition()) {
                 RDFSerializationResult res = new DefaultLangStringDefinitionTypeIec61360RDFHandler().toModel(langString);
@@ -90,7 +90,7 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
 
     @Override
     public DataSpecificationIec61360 fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.DataSpecificationIec61360) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.DataSpecificationIec61360)) {
             throw new IncompatibleTypeException("DataSpecificationIec61360");
         }
         DefaultDataSpecificationIec61360.Builder builder = new DefaultDataSpecificationIec61360.Builder();

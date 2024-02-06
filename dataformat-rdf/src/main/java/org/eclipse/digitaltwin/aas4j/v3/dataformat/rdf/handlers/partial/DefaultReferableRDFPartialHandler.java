@@ -31,7 +31,7 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
         if (object.getCategory() != null) {
             parentNode.addProperty(AASNamespace.Referable.category, object.getCategory());
         }
-        if (object.getDescription() != null && object.getDescription().isEmpty() == false) {
+        if (object.getDescription() != null && !object.getDescription().isEmpty()) {
             int index = 0;
             for (LangStringTextType item : object.getDescription()) {
                 RDFSerializationResult resultItem = new DefaultLangStringTextTypeRDFHandler().toModel(item);
@@ -42,7 +42,7 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
                 index = index + 1;
             }
         }
-        if (object.getDisplayName() != null && object.getDescription().isEmpty() == false) {
+        if (object.getDisplayName() != null && !object.getDescription().isEmpty()) {
             int index = 0;
             for (LangStringNameType item : object.getDisplayName()) {
                 RDFSerializationResult resultItem = new DefaultLangStringNameTypeRDFHandler().toModel(item);
@@ -54,7 +54,7 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
             }
         }
         //HasExtension
-        if (object.getExtensions() != null && object.getExtensions().isEmpty() == false) {
+        if (object.getExtensions() != null && !object.getExtensions().isEmpty()) {
             int index = 0;
             for (Extension item : object.getExtensions()) {
                 RDFSerializationResult resultItem = new DefaultExtensionRDFHandler().toModel(item);

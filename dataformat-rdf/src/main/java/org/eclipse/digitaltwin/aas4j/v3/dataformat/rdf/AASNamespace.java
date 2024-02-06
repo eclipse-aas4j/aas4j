@@ -1,15 +1,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
-import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.ResourceFactory;
 
 /**
- * Elements of Asset Administration Shell as org.apache.jena.rdf.model.Resource and Property compatible with Apache Jena.
+ * Elements of Asset Administration Shell as org.apache.jena.rdf.model.Resource and org.apache.jena.rdf.model.Property compatible with Apache Jena.
  */
 public final class AASNamespace {
     public static final String AAS_NAMESPACE = "https://admin-shell.io/aas/3/0/";
 
-    public static final Property index = ResourceFactory.createProperty(AAS_NAMESPACE + "index");
+    public static final org.apache.jena.rdf.model.Property index = ResourceFactory.createProperty(AAS_NAMESPACE + "index");
 
     private AASNamespace() {
 
@@ -24,39 +23,39 @@ public final class AASNamespace {
         /**
          * The key value, for example an IRDI or an URI
          */
-        public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "Key/value");
+        public static final org.apache.jena.rdf.model.Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "Key/value");
         /**
          * Denotes which kind of entity is referenced.
          */
-        public static final Property type = ResourceFactory.createProperty(AAS_NAMESPACE + "Key/type");
+        public static final org.apache.jena.rdf.model.Property type = ResourceFactory.createProperty(AAS_NAMESPACE + "Key/type");
     }
 
     public static final class Reference {
-        public static final Property keys = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/keys");
-        public static final Property type = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/type");
+        public static final org.apache.jena.rdf.model.Property keys = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/keys");
+        public static final org.apache.jena.rdf.model.Property type = ResourceFactory.createProperty(AAS_NAMESPACE + "Reference/type");
     }
 
     public static final class HasExtensions {
-        public static final Property extensions = ResourceFactory.createProperty(AAS_NAMESPACE + "HasExtensions/extensions");
+        public static final org.apache.jena.rdf.model.Property extensions = ResourceFactory.createProperty(AAS_NAMESPACE + "HasExtensions/extensions");
     }
 
     public static final class Referable {
-        public static final Property idShort = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/idShort");
-        public static final Property displayName = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/displayName");
-        public static final Property description = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/description");
-        public static final Property category = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/category");
+        public static final org.apache.jena.rdf.model.Property idShort = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/idShort");
+        public static final org.apache.jena.rdf.model.Property displayName = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/displayName");
+        public static final org.apache.jena.rdf.model.Property description = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/description");
+        public static final org.apache.jena.rdf.model.Property category = ResourceFactory.createProperty(AAS_NAMESPACE + "Referable/category");
     }
 
     public static final class Identifiable {
-        public static final Property id = ResourceFactory.createProperty(AAS_NAMESPACE + "Identifiable/id");
-        public static final Property administration = ResourceFactory.createProperty(AAS_NAMESPACE + "Identifiable/administration");
+        public static final org.apache.jena.rdf.model.Property id = ResourceFactory.createProperty(AAS_NAMESPACE + "Identifiable/id");
+        public static final org.apache.jena.rdf.model.Property administration = ResourceFactory.createProperty(AAS_NAMESPACE + "Identifiable/administration");
     }
 
     /**
      * The semantics of a property or other elements that may have a semantic description is defined by a concept description.
      */
     public static class ConceptDescription {
-        public static final Property isCaseOf = ResourceFactory.createProperty(AAS_NAMESPACE + "ConceptDescription/isCaseOf");
+        public static final org.apache.jena.rdf.model.Property isCaseOf = ResourceFactory.createProperty(AAS_NAMESPACE + "ConceptDescription/isCaseOf");
     }
 
     /**
@@ -243,139 +242,148 @@ public final class AASNamespace {
     }
 
     public static final class LevelType {
-        public static final Property min = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/min");
-        public static final Property nom = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/nom");
-        public static final Property typ = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/typ");
-        public static final Property max = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/max");
+        public static final org.apache.jena.rdf.model.Property min = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/min");
+        public static final org.apache.jena.rdf.model.Property nom = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/nom");
+        public static final org.apache.jena.rdf.model.Property typ = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/typ");
+        public static final org.apache.jena.rdf.model.Property max = ResourceFactory.createProperty(AAS_NAMESPACE + "LevelType/max");
     }
 
     public static final class AbstractLangString {
-        public static final Property language = ResourceFactory.createProperty(AAS_NAMESPACE + "AbstractLangString/language");
-        public static final Property text = ResourceFactory.createProperty(AAS_NAMESPACE + "AbstractLangString/text");
+        public static final org.apache.jena.rdf.model.Property language = ResourceFactory.createProperty(AAS_NAMESPACE + "AbstractLangString/language");
+        public static final org.apache.jena.rdf.model.Property text = ResourceFactory.createProperty(AAS_NAMESPACE + "AbstractLangString/text");
     }
 
     public static final class Extension {
-        public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/value");
-        public static final Property valueType = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/valueType");
-        public static final Property refersTo = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/refersTo");
-        public static final Property name = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/name");
+        public static final org.apache.jena.rdf.model.Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/value");
+        public static final org.apache.jena.rdf.model.Property valueType = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/valueType");
+        public static final org.apache.jena.rdf.model.Property refersTo = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/refersTo");
+        public static final org.apache.jena.rdf.model.Property name = ResourceFactory.createProperty(AAS_NAMESPACE + "Extension/name");
 
     }
 
     public static final class ValueReferencePair {
-        public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/value");
-        public static final Property valueId = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/valueId");
+        public static final org.apache.jena.rdf.model.Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/value");
+        public static final org.apache.jena.rdf.model.Property valueId = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueReferencePair/valueId");
     }
 
     public static final class ValueList {
-        public static final Property valueReferencePairs = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueList/valueReferencePairs");
+        public static final org.apache.jena.rdf.model.Property valueReferencePairs = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueList/valueReferencePairs");
     }
 
     public static final class EmbeddedDataSpecification {
-        public static final Property dataSpecification =
+        public static final org.apache.jena.rdf.model.Property dataSpecification =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecification");
-        public static final Property dataSpecificationContent =
+        public static final org.apache.jena.rdf.model.Property dataSpecificationContent =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecificationContent");
     }
 
     public static final class HasDataSpecification {
-        public static final Property embeddedDataSpecifications =
+        public static final org.apache.jena.rdf.model.Property embeddedDataSpecifications =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasDataSpecification/embeddedDataSpecifications");
     }
 
     public static final class HasSemantics {
-        public static final Property semanticId =
+        public static final org.apache.jena.rdf.model.Property semanticId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/semanticId");
-        public static final Property supplementalSemanticIds =
+        public static final org.apache.jena.rdf.model.Property supplementalSemanticIds =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/supplementalSemanticIds");
 
     }
 
     public static final class Qualifiable {
-        public static final Property qualifiers =
+        public static final org.apache.jena.rdf.model.Property qualifiers =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifiable/qualifiers");
 
     }
 
     public static final class Qualifier {
-        public static final Property kind =
+        public static final org.apache.jena.rdf.model.Property kind =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/kind");
-        public static final Property type =
+        public static final org.apache.jena.rdf.model.Property type =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/type");
-        public static final Property value =
+        public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/value");
-        public static final Property valueId =
+        public static final org.apache.jena.rdf.model.Property valueId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/valueId");
-        public static final Property valueType =
+        public static final org.apache.jena.rdf.model.Property valueType =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/valueType");
 
 
     }
 
     public static final class AdministrativeInformation {
-        public static final Property version =
+        public static final org.apache.jena.rdf.model.Property version =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/version");
-        public static final Property revision =
+        public static final org.apache.jena.rdf.model.Property revision =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/revision");
-        public static final Property creator =
+        public static final org.apache.jena.rdf.model.Property creator =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/creator");
-        public static final Property templateId =
+        public static final org.apache.jena.rdf.model.Property templateId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/templateId");
     }
 
     public static final class SpecificAssetId {
-        public static final Property externalSubjectId =
+        public static final org.apache.jena.rdf.model.Property externalSubjectId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/externalSubjectId");
-        public static final Property name =
+        public static final org.apache.jena.rdf.model.Property name =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/name");
-        public static final Property value =
+        public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/value");
     }
 
+    public static final class Property {
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Property/value");
+        public static final org.apache.jena.rdf.model.Property valueId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Property/valueId");
+        public static final org.apache.jena.rdf.model.Property valueType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Property/valueType");
+    }
+
     public static final class AssetAdministrationShell {
-        public static final Property assetInformation =
+        public static final org.apache.jena.rdf.model.Property assetInformation =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/assetInformation");
-        public static final Property derivedFrom =
+        public static final org.apache.jena.rdf.model.Property derivedFrom =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/derivedFrom");
-        public static final Property submodels =
+        public static final org.apache.jena.rdf.model.Property submodels =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/submodels");
     }
 
     public static final class AssetInformation {
-        public static final Property assetType =
+        public static final org.apache.jena.rdf.model.Property assetType =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/assetType");
-        public static final Property defaultThumbnail =
+        public static final org.apache.jena.rdf.model.Property defaultThumbnail =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/defaultThumbnail");
-        public static final Property globalAssetId =
+        public static final org.apache.jena.rdf.model.Property globalAssetId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/globalAssetId");
-        public static final Property specificAssetIds =
+        public static final org.apache.jena.rdf.model.Property specificAssetIds =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/specificAssetIds");
 
-        public static final Property assetKind =
+        public static final org.apache.jena.rdf.model.Property assetKind =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/assetKind");
 
     }
 
     public static final class Resource {
-        public static final Property contentType =
+        public static final org.apache.jena.rdf.model.Property contentType =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Resource/contentType");
-        public static final Property path =
+        public static final org.apache.jena.rdf.model.Property path =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Resource/path");
     }
 
     public static final class DataSpecificationIec61360 {
-        public static final Property levelType = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/levelType");
-        public static final Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/value");
-        public static final Property valueFormat = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueFormat");
-        public static final Property definition = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/definition");
-        public static final Property dataType = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/dataType");
-        public static final Property symbol = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/symbol");
-        public static final Property sourceOfDefinition = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/sourceOfDefinition");
-        public static final Property unitId = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/unitId");
-        public static final Property unit = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/unit");
-        public static final Property shortName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/shortName");
-        public static final Property preferredName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/preferredName");
-        public static final Property valueList = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueList");
+        public static final org.apache.jena.rdf.model.Property levelType = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/levelType");
+        public static final org.apache.jena.rdf.model.Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/value");
+        public static final org.apache.jena.rdf.model.Property valueFormat = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueFormat");
+        public static final org.apache.jena.rdf.model.Property definition = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/definition");
+        public static final org.apache.jena.rdf.model.Property dataType = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/dataType");
+        public static final org.apache.jena.rdf.model.Property symbol = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/symbol");
+        public static final org.apache.jena.rdf.model.Property sourceOfDefinition = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/sourceOfDefinition");
+        public static final org.apache.jena.rdf.model.Property unitId = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/unitId");
+        public static final org.apache.jena.rdf.model.Property unit = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/unit");
+        public static final org.apache.jena.rdf.model.Property shortName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/shortName");
+        public static final org.apache.jena.rdf.model.Property preferredName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/preferredName");
+        public static final org.apache.jena.rdf.model.Property valueList = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueList");
     }
 
     public static final class AssetKind {

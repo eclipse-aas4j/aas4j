@@ -39,7 +39,7 @@ public class DefaultAssetInformationRDFHandler implements RDFHandler<AssetInform
             model.add(subject, AASNamespace.AssetInformation.globalAssetId,
                     object.getGlobalAssetId());
         }
-        if (object.getSpecificAssetIds() != null && object.getSpecificAssetIds().isEmpty() == false) {
+        if (object.getSpecificAssetIds() != null && !object.getSpecificAssetIds().isEmpty()) {
             int index = 0;
             for (SpecificAssetId item : object.getSpecificAssetIds()) {
                 RDFSerializationResult resultItem = new DefaultSpecificAssetIdRDFHandler().toModel(item);
@@ -55,7 +55,7 @@ public class DefaultAssetInformationRDFHandler implements RDFHandler<AssetInform
 
     @Override
     public AssetInformation fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
-        if (model.contains(subjectToParse, RDF.type, AASNamespace.Types.AssetInformation) == false) {
+        if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.AssetInformation)) {
             throw new IncompatibleTypeException("AssetInformation");
         }
         DefaultAssetInformation.Builder builder = new DefaultAssetInformation.Builder();
