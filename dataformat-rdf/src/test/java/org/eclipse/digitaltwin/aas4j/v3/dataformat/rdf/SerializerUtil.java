@@ -19,6 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.sql.Ref;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
  * Helper class for Serializer Tests
  *
  * @author sbader
- *
  */
 public class SerializerUtil {
 
@@ -41,6 +41,8 @@ public class SerializerUtil {
         IOUtils.copy(is, writer, "UTF-8");
         return writer.toString();
     }
+
+
 
     public static String stripWhitespaces(String input) {
         return input.replaceAll("\\s+", "");
@@ -118,6 +120,7 @@ public class SerializerUtil {
                         .build())
                 .build();
     }
+
     public static EmbeddedDataSpecification getEmbeddedDataSpecifications() {
         return new DefaultEmbeddedDataSpecification.Builder()
                 .dataSpecification(
@@ -137,6 +140,7 @@ public class SerializerUtil {
                                 .dataType(DataTypeIec61360.INTEGER_MEASURE).build())
                 .build();
     }
+
     public static EmbeddedDataSpecification getMaximalEmbeddedDataSpecifications() {
         return new DefaultEmbeddedDataSpecification.Builder()
                 .dataSpecification(
@@ -202,15 +206,139 @@ public class SerializerUtil {
                         .build());
     }
 
+    static Extension getMaximalExtension(){
+        return new DefaultExtension.Builder()
+                .name("extension1")
+                .value("extension1Value")
+                .valueType(DataTypeDefXsd.ANY_URI)
+                .refersTo(Arrays.asList(
+                        new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .value("refersTo")
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .build())
+                                .type(ReferenceTypes.EXTERNAL_REFERENCE).build()))
+                .semanticId(new DefaultReference.Builder()
+                        .keys(new DefaultKey.Builder()
+                                .value("semanticId")
+                                .type(KeyTypes.GLOBAL_REFERENCE)
+                                .build())
+                        .type(ReferenceTypes.EXTERNAL_REFERENCE).build())
+                .supplementalSemanticIds(Arrays.asList(
+                        new DefaultReference.Builder()
+                                .keys(new DefaultKey.Builder()
+                                        .value("supplementalSemanticIds")
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .build())
+                                .type(ReferenceTypes.EXTERNAL_REFERENCE).build()))
+                .build();
+    }
+
+    static Reference getMinimalReference(){
+        return new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .value("minimal")
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .build())
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .build();
+    }
+
+    static Qualifier getMinimalQualifier(){
+        return new DefaultQualifier.Builder()
+                .type("type1")
+                .valueType(DataTypeDefXsd.STRING)
+                .build();
+    }
+    static Qualifier getMaximalQualifier(){
+        return new DefaultQualifier.Builder()
+                .type("type1")
+                .kind(QualifierKind.CONCEPT_QUALIFIER)
+                .valueId(getMinimalReference())
+                .supplementalSemanticIds(getMinimalReference())
+                .semanticId(getMinimalReference())
+                .value("value1")
+                .valueType(DataTypeDefXsd.STRING)
+                .build();
+    }
+
+    static SpecificAssetId getMaximalSpecificAssetId(){
+        return new DefaultSpecificAssetId.Builder()
+                .semanticId(getMinimalReference())
+                .supplementalSemanticIds(getMinimalReference())
+                .externalSubjectId(getMinimalReference())
+                .name("name1")
+                .value("value1")
+                .build();
+    }
+    static SpecificAssetId getMinimalSpecificAssetId(){
+        return new DefaultSpecificAssetId.Builder()
+                .name("name1")
+                .value("value1")
+                .build();
+    }
+    static Property getMinimalProperty(){
+        return new DefaultProperty.Builder()
+                .build();
+    }
+
+    static Extension getMiniamlExtension(){
+        return new DefaultExtension.Builder()
+                .name("extension2")
+                .value("extension2Value")
+                .build();
+    }
+
+    static Resource getResource(){
+        return new DefaultResource.Builder()
+                .path("path://")
+                .contentType("content/type")
+                .build();
+    }
+
+    static AssetInformation getMinimalAssetInformation(){
+        return new DefaultAssetInformation.Builder()
+                .assetKind(AssetKind.INSTANCE)
+                .globalAssetId("global1")
+                .build();
+    }
+    static AssetInformation getMaximalAssetInformation(){
+        return new DefaultAssetInformation.Builder()
+                .assetKind(AssetKind.NOT_APPLICABLE)
+                .globalAssetId("global2")
+                .assetType("type2")
+                .specificAssetIds(getMaximalSpecificAssetId())
+                .defaultThumbnail(new DefaultResource.Builder()
+                        .contentType("image/png")
+                        .path("s3://test.org")
+                        .build())
+                .build();
+    }
+
+    static AssetAdministrationShell getMinimalAssetAdministrationShell(){
+        return new DefaultAssetAdministrationShell.Builder()
+                .assetInformation(getMinimalAssetInformation())
+                .id("id1")
+                .build();
+    }
+    static AssetAdministrationShell getMaximalAssetAdministrationShell(){
+        return new DefaultAssetAdministrationShell.Builder()
+                .assetInformation(getMaximalAssetInformation())
+                .administration(getAdministrativeInformation())
+                .category("category1")
+                .derivedFrom(getMinimalReference())
+                .extensions(getMaximalExtension())
+                .description(getDescriptions())
+                .displayName(getDisplayNames())
+                .embeddedDataSpecifications(getEmbeddedDataSpecifications())
+                .submodels(getIsCaseOfs())
+                .id("https://example.com")
+                .build();
+    }
+
     static List<Extension> getExtensionList() {
         return Arrays.asList(
-                new DefaultExtension.Builder()
-                        .name("extension1")
-                        .value("extension1Value")
-                        .build(),
-                new DefaultExtension.Builder()
-                        .name("extension2")
-                        .value("extension2Value")
-                        .build());
+                getMaximalExtension(),
+                getMiniamlExtension());
     }
 }

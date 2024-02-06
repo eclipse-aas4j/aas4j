@@ -67,6 +67,24 @@ public class DataSpecificationIec61360Test {
 
     }
     @Test
+    public void testDataSpecificationIec61360() throws IncompatibleTypeException {
+        DataSpecificationIec61360 dataSpecificationIec61360 = new DefaultDataSpecificationIec61360.Builder()
+                .preferredName(List.of(new DefaultLangStringPreferredNameTypeIec61360.Builder()
+                        .language("en")
+                        .text("preferred name")
+                        .build()))
+                .build();
+        RDFSerializationResult rdfSerializationResult = new DefaultDataSpecificationIEC61360RDFHandler().toModel(dataSpecificationIec61360);
+        Model model = rdfSerializationResult.getModel();
+        model.write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert model.contains(createdResource, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
+//        assert model.contains(createdResource, AASNamespace.Identifiable.id, conceptDescription.getId());
+
+        DataSpecificationIec61360 recreatedDataSpecification = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
+        assert dataSpecificationIec61360.equals(recreatedDataSpecification);
+    }
+    @Test
     public void testLangStrings() throws IncompatibleTypeException {
         DefaultLangStringShortNameTypeIec61360 object = new DefaultLangStringShortNameTypeIec61360.Builder()
                 .text("test")

@@ -1,15 +1,12 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 
 /**
- * Elements of Asset Administration Shell as Resource and Property compatible with Apache Jena.
+ * Elements of Asset Administration Shell as org.apache.jena.rdf.model.Resource and Property compatible with Apache Jena.
  */
 public final class AASNamespace {
     public static final String AAS_NAMESPACE = "https://admin-shell.io/aas/3/0/";
@@ -70,51 +67,51 @@ public final class AASNamespace {
      * @see AASNamespace.Key
      */
     public static final class KeyTypes {
-        public static final Resource AnnotatedRelationshipElement =
+        public static final org.apache.jena.rdf.model.Resource AnnotatedRelationshipElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/AnnotatedRelationshipElement");
-        public static final Resource AssetAdministrationShell =
+        public static final org.apache.jena.rdf.model.Resource AssetAdministrationShell =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/AssetAdministrationShell");
-        public static final Resource BasicEventElement =
+        public static final org.apache.jena.rdf.model.Resource BasicEventElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/BasicEventElement");
-        public static final Resource Blob =
+        public static final org.apache.jena.rdf.model.Resource Blob =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Blob");
-        public static final Resource Capability =
+        public static final org.apache.jena.rdf.model.Resource Capability =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Capability");
-        public static final Resource ConceptDescription =
+        public static final org.apache.jena.rdf.model.Resource ConceptDescription =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/ConceptDescription");
-        public static final Resource DataElement =
+        public static final org.apache.jena.rdf.model.Resource DataElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/DataElement");
-        public static final Resource Entity =
+        public static final org.apache.jena.rdf.model.Resource Entity =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Entity");
-        public static final Resource EventElement =
+        public static final org.apache.jena.rdf.model.Resource EventElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/EventElement");
-        public static final Resource File =
+        public static final org.apache.jena.rdf.model.Resource File =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/File");
-        public static final Resource FragmentReference =
+        public static final org.apache.jena.rdf.model.Resource FragmentReference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/FragmentReference");
-        public static final Resource GlobalReference =
+        public static final org.apache.jena.rdf.model.Resource GlobalReference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/GlobalReference");
-        public static final Resource Identifiable =
+        public static final org.apache.jena.rdf.model.Resource Identifiable =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Identifiable");
-        public static final Resource MultiLanguageProperty =
+        public static final org.apache.jena.rdf.model.Resource MultiLanguageProperty =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/MultiLanguageProperty");
-        public static final Resource Operation =
+        public static final org.apache.jena.rdf.model.Resource Operation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Operation");
-        public static final Resource Property =
+        public static final org.apache.jena.rdf.model.Resource Property =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Property");
-        public static final Resource Range =
+        public static final org.apache.jena.rdf.model.Resource Range =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Range");
-        public static final Resource ReferenceElement =
+        public static final org.apache.jena.rdf.model.Resource ReferenceElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/ReferenceElement");
-        public static final Resource RelationshipElement =
+        public static final org.apache.jena.rdf.model.Resource RelationshipElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/RelationshipElement");
-        public static final Resource Submodel =
+        public static final org.apache.jena.rdf.model.Resource Submodel =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/Submodel");
-        public static final Resource SubmodelElement =
+        public static final org.apache.jena.rdf.model.Resource SubmodelElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/SubmodelElement");
-        public static final Resource SubmodelElementCollection =
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementCollection =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/SubmodelElementCollection");
-        public static final Resource SubmodelElementList =
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementList =
                 ResourceFactory.createResource(AAS_NAMESPACE + "KeyTypes/SubmodelElementList");
 
         public static org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes fromIRI(String stringIRI) {
@@ -127,7 +124,7 @@ public final class AASNamespace {
             throw new IllegalArgumentException("Invalid ReferenceType IRI provided.");
         }
 
-        public static Resource valueOf(String type) {
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes.ANNOTATED_RELATIONSHIP_ELEMENT.name())) {
                 return AnnotatedRelationshipElement;
             }
@@ -143,9 +140,9 @@ public final class AASNamespace {
     }
 
     public static final class ReferenceTypes {
-        public static final Resource ExternalReference =
+        public static final org.apache.jena.rdf.model.Resource ExternalReference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ReferenceTypes/ExternalReference");
-        public static final Resource ModelReference =
+        public static final org.apache.jena.rdf.model.Resource ModelReference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ReferenceTypes/ModelReference");
 
         public static org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes fromIRI(String stringIRI) {
@@ -158,7 +155,7 @@ public final class AASNamespace {
             throw new IllegalArgumentException("Invalid ReferenceType IRI provided.");
         }
 
-        public static Resource valueOf(String type) {
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes.EXTERNAL_REFERENCE.name())) {
                 return ExternalReference;
             }
@@ -171,78 +168,78 @@ public final class AASNamespace {
 
     public static final class Types {
 
-        public static final Resource AdministrativeInformation =
+        public static final org.apache.jena.rdf.model.Resource AdministrativeInformation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AdministrativeInformation");
-        public static final Resource AnnotatedRelationshipElement =
+        public static final org.apache.jena.rdf.model.Resource AnnotatedRelationshipElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AnnotatedRelationshipElement");
-        public static final Resource AssetAdministrationShell =
+        public static final org.apache.jena.rdf.model.Resource AssetAdministrationShell =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AssetAdministrationShell");
-        public static final Resource AssetInformation =
+        public static final org.apache.jena.rdf.model.Resource AssetInformation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AssetInformation");
-        public static final Resource BasicEventElement =
+        public static final org.apache.jena.rdf.model.Resource BasicEventElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "BasicEventElement");
-        public static final Resource Blob =
+        public static final org.apache.jena.rdf.model.Resource Blob =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Blob");
-        public static final Resource Capability =
+        public static final org.apache.jena.rdf.model.Resource Capability =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Capability");
-        public static final Resource ConceptDescription =
+        public static final org.apache.jena.rdf.model.Resource ConceptDescription =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ConceptDescription");
-        public static final Resource DataSpecificationIec61360 =
+        public static final org.apache.jena.rdf.model.Resource DataSpecificationIec61360 =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataSpecificationIec61360");
-        public static final Resource EmbeddedDataSpecification =
+        public static final org.apache.jena.rdf.model.Resource EmbeddedDataSpecification =
                 ResourceFactory.createResource(AAS_NAMESPACE + "EmbeddedDataSpecification");
-        public static final Resource Entity =
+        public static final org.apache.jena.rdf.model.Resource Entity =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Entity");
-        public static final Resource Extension =
+        public static final org.apache.jena.rdf.model.Resource Extension =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Extension");
-        public static final Resource File =
+        public static final org.apache.jena.rdf.model.Resource File =
                 ResourceFactory.createResource(AAS_NAMESPACE + "File");
 
-        public static final Resource Key =
+        public static final org.apache.jena.rdf.model.Resource Key =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Key");
-        public static final Resource LangStringDefinitionTypeIec61360 =
+        public static final org.apache.jena.rdf.model.Resource LangStringDefinitionTypeIec61360 =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LangStringDefinitionTypeIec61360");
-        public static final Resource LangStringNameType =
+        public static final org.apache.jena.rdf.model.Resource LangStringNameType =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LangStringNameType");
-        public static final Resource LangStringPreferredNameTypeIec61360 =
+        public static final org.apache.jena.rdf.model.Resource LangStringPreferredNameTypeIec61360 =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LangStringPreferredNameTypeIec61360");
-        public static final Resource LangStringShortNameTypeIec61360 =
+        public static final org.apache.jena.rdf.model.Resource LangStringShortNameTypeIec61360 =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LangStringShortNameTypeIec61360");
-        public static final Resource LangStringTextType =
+        public static final org.apache.jena.rdf.model.Resource LangStringTextType =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LangStringTextType");
-        public static final Resource LevelType =
+        public static final org.apache.jena.rdf.model.Resource LevelType =
                 ResourceFactory.createResource(AAS_NAMESPACE + "LevelType");
-        public static final Resource MultiLanguageProperty =
+        public static final org.apache.jena.rdf.model.Resource MultiLanguageProperty =
                 ResourceFactory.createResource(AAS_NAMESPACE + "MultiLanguageProperty");
-        public static final Resource Operation =
+        public static final org.apache.jena.rdf.model.Resource Operation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Operation");
-        public static final Resource OperationVariable =
+        public static final org.apache.jena.rdf.model.Resource OperationVariable =
                 ResourceFactory.createResource(AAS_NAMESPACE + "OperationVariable");
-        public static final Resource Property =
+        public static final org.apache.jena.rdf.model.Resource Property =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Property");
-        public static final Resource Qualifier =
+        public static final org.apache.jena.rdf.model.Resource Qualifier =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Qualifier");
-        public static final Resource Range =
+        public static final org.apache.jena.rdf.model.Resource Range =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Range");
-        public static final Resource Reference =
+        public static final org.apache.jena.rdf.model.Resource Reference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Reference");
-        public static final Resource ReferenceElement =
+        public static final org.apache.jena.rdf.model.Resource ReferenceElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ReferenceElement");
-        public static final Resource RelationshipElement =
+        public static final org.apache.jena.rdf.model.Resource RelationshipElement =
                 ResourceFactory.createResource(AAS_NAMESPACE + "RelationshipElement");
-        public static final Resource Resource =
+        public static final org.apache.jena.rdf.model.Resource Resource =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Resource");
-        public static final Resource SpecificAssetId =
+        public static final org.apache.jena.rdf.model.Resource SpecificAssetId =
                 ResourceFactory.createResource(AAS_NAMESPACE + "SpecificAssetId");
-        public static final Resource Submodel =
+        public static final org.apache.jena.rdf.model.Resource Submodel =
                 ResourceFactory.createResource(AAS_NAMESPACE + "Submodel");
-        public static final Resource SubmodelElementCollection =
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementCollection =
                 ResourceFactory.createResource(AAS_NAMESPACE + "SubmodelElementCollection");
-        public static final Resource SubmodelElementList =
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementList =
                 ResourceFactory.createResource(AAS_NAMESPACE + "SubmodelElementList");
-        public static final Resource ValueList =
+        public static final org.apache.jena.rdf.model.Resource ValueList =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ValueList");
-        public static final Resource ValueReferencePair =
+        public static final org.apache.jena.rdf.model.Resource ValueReferencePair =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ValueReferencePair");
 
     }
@@ -275,16 +272,19 @@ public final class AASNamespace {
     public static final class ValueList {
         public static final Property valueReferencePairs = ResourceFactory.createProperty(AAS_NAMESPACE + "ValueList/valueReferencePairs");
     }
+
     public static final class EmbeddedDataSpecification {
         public static final Property dataSpecification =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecification");
         public static final Property dataSpecificationContent =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "EmbeddedDataSpecification/dataSpecificationContent");
     }
+
     public static final class HasDataSpecification {
         public static final Property embeddedDataSpecifications =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasDataSpecification/embeddedDataSpecifications");
     }
+
     public static final class HasSemantics {
         public static final Property semanticId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/semanticId");
@@ -292,6 +292,28 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "HasSemantics/supplementalSemanticIds");
 
     }
+
+    public static final class Qualifiable {
+        public static final Property qualifiers =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifiable/qualifiers");
+
+    }
+
+    public static final class Qualifier {
+        public static final Property kind =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/kind");
+        public static final Property type =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/type");
+        public static final Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/value");
+        public static final Property valueId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/valueId");
+        public static final Property valueType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Qualifier/valueType");
+
+
+    }
+
     public static final class AdministrativeInformation {
         public static final Property version =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/version");
@@ -301,8 +323,46 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/creator");
         public static final Property templateId =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/templateId");
-        public static final Property valueReferencePairs =
-                ResourceFactory.createProperty(AAS_NAMESPACE + "AdministrativeInformation/valueReferencePairs");
+    }
+
+    public static final class SpecificAssetId {
+        public static final Property externalSubjectId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/externalSubjectId");
+        public static final Property name =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/name");
+        public static final Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SpecificAssetId/value");
+    }
+
+    public static final class AssetAdministrationShell {
+        public static final Property assetInformation =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/assetInformation");
+        public static final Property derivedFrom =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/derivedFrom");
+        public static final Property submodels =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/submodels");
+    }
+
+    public static final class AssetInformation {
+        public static final Property assetType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/assetType");
+        public static final Property defaultThumbnail =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/defaultThumbnail");
+        public static final Property globalAssetId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/globalAssetId");
+        public static final Property specificAssetIds =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/specificAssetIds");
+
+        public static final Property assetKind =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "AssetInformation/assetKind");
+
+    }
+
+    public static final class Resource {
+        public static final Property contentType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Resource/contentType");
+        public static final Property path =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Resource/path");
     }
 
     public static final class DataSpecificationIec61360 {
@@ -320,44 +380,80 @@ public final class AASNamespace {
         public static final Property valueList = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueList");
     }
 
+    public static final class AssetKind {
+        public static final org.apache.jena.rdf.model.Resource Instance =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AssetKind/Instance");
+        public static final org.apache.jena.rdf.model.Resource Type =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AssetKind/Type");
+        public static final org.apache.jena.rdf.model.Resource NotApplicable =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AssetKind/NotApplicable");
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.AssetKind fromIRI(String stringIRI) {
+            if (stringIRI.equals(Instance.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.INSTANCE;
+            }
+            if (stringIRI.equals(Type.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.TYPE;
+            }
+            if (stringIRI.equals(NotApplicable.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.NOT_APPLICABLE;
+            }
+            throw new IllegalArgumentException("Invalid AssetKind IRI provided.");
+        }
+
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.INSTANCE.name())) {
+                return Instance;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.TYPE.name())) {
+                return Type;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AssetKind.NOT_APPLICABLE.name())) {
+                return NotApplicable;
+            }
+
+            throw new IllegalArgumentException("Invalid AssetKind provided.");
+        }
+    }
+
     public static final class DataTypeIec61360 {
-        public static final Resource Blob =
+        public static final org.apache.jena.rdf.model.Resource Blob =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Blob");
-        public static final Resource Boolean =
+        public static final org.apache.jena.rdf.model.Resource Boolean =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Boolean");
-        public static final Resource Date =
+        public static final org.apache.jena.rdf.model.Resource Date =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Date");
-        public static final Resource File =
+        public static final org.apache.jena.rdf.model.Resource File =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/File");
-        public static final Resource Html =
+        public static final org.apache.jena.rdf.model.Resource Html =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Html");
-        public static final Resource IntegerCount =
+        public static final org.apache.jena.rdf.model.Resource IntegerCount =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/IntegerCount");
-        public static final Resource IntegerCurrency =
+        public static final org.apache.jena.rdf.model.Resource IntegerCurrency =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/IntegerCurrency");
-        public static final Resource IntegerMeasure =
+        public static final org.apache.jena.rdf.model.Resource IntegerMeasure =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/IntegerMeasure");
-        public static final Resource Irdi =
+        public static final org.apache.jena.rdf.model.Resource Irdi =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Irdi");
-        public static final Resource Iri =
+        public static final org.apache.jena.rdf.model.Resource Iri =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Iri");
-        public static final Resource Rational =
+        public static final org.apache.jena.rdf.model.Resource Rational =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Rational");
-        public static final Resource RationalMeasure =
+        public static final org.apache.jena.rdf.model.Resource RationalMeasure =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/RationalMeasure");
-        public static final Resource RealCount =
+        public static final org.apache.jena.rdf.model.Resource RealCount =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/RealCount");
-        public static final Resource RealCurrency =
+        public static final org.apache.jena.rdf.model.Resource RealCurrency =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/RealCurrency");
-        public static final Resource RealMeasure =
+        public static final org.apache.jena.rdf.model.Resource RealMeasure =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/RealMeasure");
-        public static final Resource String =
+        public static final org.apache.jena.rdf.model.Resource String =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/String");
-        public static final Resource StringTranslatable =
+        public static final org.apache.jena.rdf.model.Resource StringTranslatable =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/StringTranslatable");
-        public static final Resource Time =
+        public static final org.apache.jena.rdf.model.Resource Time =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Time");
-        public static final Resource Timestamp =
+        public static final org.apache.jena.rdf.model.Resource Timestamp =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeIec61360/Timestamp");
 
         public static org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360 fromIRI(String stringIRI) {
@@ -422,7 +518,7 @@ public final class AASNamespace {
             throw new IllegalArgumentException("Invalid DataTypeIec61360 IRI provided.");
         }
 
-        public static Resource valueOf(String type) {
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360.BLOB.name())) {
                 return Blob;
             }
@@ -486,65 +582,65 @@ public final class AASNamespace {
     }
 
     public static final class DataTypeDefXsd {
-        public static final Resource AnyUri =
+        public static final org.apache.jena.rdf.model.Resource AnyUri =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/AnyUri");
-        public static final Resource Base64Binary =
+        public static final org.apache.jena.rdf.model.Resource Base64Binary =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Base64Binary");
-        public static final Resource Boolean =
+        public static final org.apache.jena.rdf.model.Resource Boolean =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Boolean");
-        public static final Resource Byte =
+        public static final org.apache.jena.rdf.model.Resource Byte =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Byte");
-        public static final Resource Date =
+        public static final org.apache.jena.rdf.model.Resource Date =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Date");
-        public static final Resource DateTime =
+        public static final org.apache.jena.rdf.model.Resource DateTime =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/DateTime");
-        public static final Resource Decimal =
+        public static final org.apache.jena.rdf.model.Resource Decimal =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Decimal");
-        public static final Resource Double =
+        public static final org.apache.jena.rdf.model.Resource Double =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Double");
-        public static final Resource Duration =
+        public static final org.apache.jena.rdf.model.Resource Duration =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Duration");
-        public static final Resource Float =
+        public static final org.apache.jena.rdf.model.Resource Float =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Float");
-        public static final Resource GDay =
+        public static final org.apache.jena.rdf.model.Resource GDay =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GDay");
-        public static final Resource GMonth =
+        public static final org.apache.jena.rdf.model.Resource GMonth =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GMonth");
-        public static final Resource GMonthDay =
+        public static final org.apache.jena.rdf.model.Resource GMonthDay =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GMonthDay");
-        public static final Resource GYear =
+        public static final org.apache.jena.rdf.model.Resource GYear =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GYear");
-        public static final Resource GYearMonth =
+        public static final org.apache.jena.rdf.model.Resource GYearMonth =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/GYearMonth");
-        public static final Resource HexBinary =
+        public static final org.apache.jena.rdf.model.Resource HexBinary =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/HexBinary");
-        public static final Resource Int =
+        public static final org.apache.jena.rdf.model.Resource Int =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Int");
-        public static final Resource Integer =
+        public static final org.apache.jena.rdf.model.Resource Integer =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Integer");
-        public static final Resource Long =
+        public static final org.apache.jena.rdf.model.Resource Long =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Long");
-        public static final Resource NegativeInteger =
+        public static final org.apache.jena.rdf.model.Resource NegativeInteger =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NegativeInteger");
-        public static final Resource NonNegativeInteger =
+        public static final org.apache.jena.rdf.model.Resource NonNegativeInteger =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NonNegativeInteger");
-        public static final Resource NonPositiveInteger =
+        public static final org.apache.jena.rdf.model.Resource NonPositiveInteger =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/NonPositiveInteger");
-        public static final Resource PositiveInteger =
+        public static final org.apache.jena.rdf.model.Resource PositiveInteger =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/PositiveInteger");
-        public static final Resource Short =
+        public static final org.apache.jena.rdf.model.Resource Short =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Short");
-        public static final Resource String =
+        public static final org.apache.jena.rdf.model.Resource String =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/String");
-        public static final Resource Time =
+        public static final org.apache.jena.rdf.model.Resource Time =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/Time");
-        public static final Resource UnsignedByte =
+        public static final org.apache.jena.rdf.model.Resource UnsignedByte =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedByte");
-        public static final Resource UnsignedInt =
+        public static final org.apache.jena.rdf.model.Resource UnsignedInt =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedInt");
-        public static final Resource UnsignedLong =
+        public static final org.apache.jena.rdf.model.Resource UnsignedLong =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedLong");
-        public static final Resource UnsignedShort =
+        public static final org.apache.jena.rdf.model.Resource UnsignedShort =
                 ResourceFactory.createResource(AAS_NAMESPACE + "DataTypeDefXsd/UnsignedShort");
 
 
@@ -643,7 +739,7 @@ public final class AASNamespace {
             throw new IllegalArgumentException("Invalid DataTypeIec61360 IRI provided.");
         }
 
-        public static Resource valueOf(String type) {
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd.ANY_URI.name())) {
                 return AnyUri;
             }
@@ -732,5 +828,48 @@ public final class AASNamespace {
 
             throw new IllegalArgumentException("Invalid DataTypeIec61360 provided.");
         }
+
+
     }
+
+    public static final class QualifierKind {
+        public static final org.apache.jena.rdf.model.Resource ConceptQualifier =
+                ResourceFactory.createResource(AAS_NAMESPACE + "QualifierKind/ConceptQualifier");
+        public static final org.apache.jena.rdf.model.Resource TemplateQualifier =
+                ResourceFactory.createResource(AAS_NAMESPACE + "QualifierKind/TemplateQualifier");
+        public static final org.apache.jena.rdf.model.Resource ValueQualifier =
+                ResourceFactory.createResource(AAS_NAMESPACE + "QualifierKind/ValueQualifier");
+
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind fromIRI(String stringIRI) {
+            if (stringIRI.equals(ConceptQualifier.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.CONCEPT_QUALIFIER;
+            }
+            if (stringIRI.equals(TemplateQualifier.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.TEMPLATE_QUALIFIER;
+            }
+            if (stringIRI.equals(ValueQualifier.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.VALUE_QUALIFIER;
+            }
+
+
+            throw new IllegalArgumentException("Invalid QualifierKind IRI provided.");
+        }
+
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
+
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.CONCEPT_QUALIFIER.name())) {
+                return ConceptQualifier;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.TEMPLATE_QUALIFIER.name())) {
+                return TemplateQualifier;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind.VALUE_QUALIFIER.name())) {
+                return ValueQualifier;
+            }
+
+            throw new IllegalArgumentException("Invalid QualifierKind provided.");
+        }
+    }
+
 }

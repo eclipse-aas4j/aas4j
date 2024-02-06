@@ -35,7 +35,7 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
             model.add(subject, AASNamespace.Extension.valueType,
                     AASNamespace.DataTypeDefXsd.valueOf(object.getValueType().name()));
         }
-        if (object.getRefersTo() != null && object.getRefersTo().isEmpty() != false) {
+        if (object.getRefersTo() != null && object.getRefersTo().isEmpty() == false) {
             int index = 0;
             for (Reference reference : object.getRefersTo()) {
                 RDFSerializationResult res = new DefaultReferenceRDFHandler().toModel(reference);
