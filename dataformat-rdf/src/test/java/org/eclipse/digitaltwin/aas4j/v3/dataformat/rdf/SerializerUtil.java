@@ -263,7 +263,129 @@ public class SerializerUtil {
                 .extensions(getMaximalExtension())
                 .supplementalSemanticIds(getIsCaseOfs())
                 .semanticId(getMinimalReference())
-                .qualifiers(List.of(getMaximalQualifier(),getMinimalQualifier()))
+                .qualifiers(List.of(getMaximalQualifier(), getMinimalQualifier()))
+                .build();
+    }
+
+    static MultiLanguageProperty getMaximalMultiLanguageProperty() {
+        return new DefaultMultiLanguageProperty.Builder()
+                .idShort("MLP1")
+                .value(getDescriptions())
+                .valueId(getMinimalReference())
+                .category("category1")
+                .description(getDescriptions())
+                .displayName(getDisplayNames())
+                .embeddedDataSpecifications(getMaximalEmbeddedDataSpecifications())
+                .extensions(getMaximalExtension())
+                .supplementalSemanticIds(getIsCaseOfs())
+                .semanticId(getMinimalReference())
+                .qualifiers(List.of(getMaximalQualifier(), getMinimalQualifier()))
+                .build();
+
+    }
+
+    static AnnotatedRelationshipElement getMinimalAnnotatedRelationshipElement() {
+        return new DefaultAnnotatedRelationshipElement.Builder()
+                .idShort("ARE1")
+                .first(new DefaultReference.Builder()
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .keys(List.of(
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
+                                        .value("submodel_")
+                                        .build(),
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
+                                        .value("submodel_")
+                                        .build()
+                        )).build())
+                .second(new DefaultReference.Builder()
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .keys(List.of(
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.CONCEPT_DESCRIPTION)
+                                        .value("concept_")
+                                        .build()
+                        )).build())
+                .build();
+    }
+
+    static BasicEventElement getMinimalBasicEventElement() {
+        return new DefaultBasicEventElement.Builder()
+                .idShort("BEE1")
+                .direction(Direction.OUTPUT)
+                .state(StateOfEvent.OFF)
+                .observed(getMinimalReference())
+                .build();
+    }
+
+    static Blob getMinimalBlob() {
+        return new DefaultBlob.Builder()
+                .idShort("B1")
+                .contentType("image/png")
+                .build();
+    }
+
+    static Capability getMinimalCapability() {
+        return new DefaultCapability.Builder()
+                .idShort("C1")
+                .build();
+    }
+
+    static Entity getMinimalEntity() {
+        return new DefaultEntity.Builder()
+                .idShort("E1")
+                .entityType(EntityType.SELF_MANAGED_ENTITY)
+                .build();
+    }
+
+    static File getMinimalFile() {
+        return new DefaultFile.Builder()
+                .idShort("F1")
+                .contentType("image/png")
+                .build();
+    }
+
+    static Range getMinimalRange() {
+        return new DefaultRange.Builder()
+                .idShort("R1")
+                .valueType(DataTypeDefXsd.DECIMAL)
+                .build();
+    }
+
+    static ReferenceElement getMinimalReferenceElement() {
+        return new DefaultReferenceElement.Builder()
+                .idShort("RE1")
+                .build();
+    }
+
+    static RelationshipElement getMinimalRelationshipElement() {
+        return new DefaultRelationshipElement.Builder()
+                .idShort("ReE1")
+                .build();
+    }
+
+    static SubmodelElementCollection getMinimalSubmodelElementCollection() {
+        return new DefaultSubmodelElementCollection.Builder()
+                .idShort("SEC1")
+                .build();
+    }
+
+    static SubmodelElementList getMinimalSubmodelElementList() {
+        return new DefaultSubmodelElementList.Builder()
+                .idShort("SEL1")
+                .build();
+    }
+
+    static Operation getMinimalOperation() {
+        return new DefaultOperation.Builder()
+                .idShort("O1")
+                .build();
+    }
+
+    static MultiLanguageProperty getMinimalMultiLanguageProperty() {
+        return new DefaultMultiLanguageProperty.Builder()
+                .idShort("mlp1")
                 .build();
     }
 
