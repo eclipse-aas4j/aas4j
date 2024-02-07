@@ -356,6 +356,11 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Range/valueType");
     }
 
+    public static final class ReferenceElement {
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "ReferenceElement/value");
+    }
+
     public static final class Blob {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/value");
