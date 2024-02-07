@@ -446,6 +446,7 @@ public final class AASNamespace {
     }
 
     public static final class Types {
+        public static final org.apache.jena.rdf.model.Resource Environment = ResourceFactory.createResource(AAS_NAMESPACE + "Environment");
 
         public static final org.apache.jena.rdf.model.Resource AdministrativeInformation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AdministrativeInformation");
@@ -641,6 +642,11 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "MultiLanguageProperty/valueId");
     }
 
+    public static final class Submodel {
+        public static final org.apache.jena.rdf.model.Property submodelElements =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Submodel/submodelElements");
+    }
+
     public static final class Range {
         public static final org.apache.jena.rdf.model.Property max =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Range/max");
@@ -670,6 +676,15 @@ public final class AASNamespace {
     public static final class OperationVariable {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "OperationVariable/value");
+    }
+
+    public static final class Environment {
+        public static final org.apache.jena.rdf.model.Property assetAdministrationShells =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Environment/assetAdministrationShells");
+        public static final org.apache.jena.rdf.model.Property conceptDescriptions =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Environment/conceptDescriptions");
+        public static final org.apache.jena.rdf.model.Property submodels =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Environment/submodels");
     }
 
     public static final class BasicEventElement {
@@ -767,6 +782,12 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Resource/path");
     }
 
+    public static final class HasKind {
+        public static final org.apache.jena.rdf.model.Property kind =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "HasKind/kind");
+    }
+
+
     public static final class DataSpecificationIec61360 {
         public static final org.apache.jena.rdf.model.Property levelType = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/levelType");
         public static final org.apache.jena.rdf.model.Property value = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/value");
@@ -780,6 +801,33 @@ public final class AASNamespace {
         public static final org.apache.jena.rdf.model.Property shortName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/shortName");
         public static final org.apache.jena.rdf.model.Property preferredName = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/preferredName");
         public static final org.apache.jena.rdf.model.Property valueList = ResourceFactory.createProperty(AAS_NAMESPACE + "DataSpecificationIec61360/valueList");
+    }
+
+    public static final class ModellingKind {
+        public static final org.apache.jena.rdf.model.Resource Instance =
+                ResourceFactory.createResource(AAS_NAMESPACE + "ModellingKind/Instance");
+        public static final org.apache.jena.rdf.model.Resource Template =
+                ResourceFactory.createResource(AAS_NAMESPACE + "ModellingKind/Template");
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind fromIRI(String stringIRI) {
+            if (stringIRI.equals(Instance.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind.INSTANCE;
+            }
+            if (stringIRI.equals(Template.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind.TEMPLATE;
+            }
+            throw new IllegalArgumentException("Invalid ModellingKind IRI provided.");
+        }
+
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind.INSTANCE.name())) {
+                return Instance;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind.TEMPLATE.name())) {
+                return Template;
+            }
+            throw new IllegalArgumentException("Invalid ModellingKind provided.");
+        }
     }
 
     public static final class AssetKind {

@@ -22,7 +22,7 @@ public class DefaultAssetAdministrationShellRDFHandler implements RDFHandler<Ass
         if (object == null) {
             return new DefaultRDFHandlerResult(model, ResourceFactory.createResource());
         }
-        Resource subject = model.createResource();
+        Resource subject = model.createResource(object.getId());
         model.add(subject, RDF.type, AASNamespace.Types.AssetAdministrationShell);
         if (object.getAssetInformation() != null) {
             RDFSerializationResult res = new DefaultAssetInformationRDFHandler().toModel(object.getAssetInformation());

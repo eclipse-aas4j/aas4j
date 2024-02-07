@@ -148,11 +148,49 @@ public class SerializerTest {
     @Test
     public void serializeEnvironmentSmokeTest() throws IOException, DeserializationException, SerializationException {
 
-        AssetAdministrationShell aas = new DefaultAssetAdministrationShell.Builder().assetInformation(new DefaultAssetInformation.Builder().assetKind(AssetKind.INSTANCE).build()).description(Arrays.asList(new DefaultLangStringTextType.Builder().text("This is a test AAS").language("en-us").build())).displayName(Arrays.asList(new DefaultLangStringNameType.Builder().text("Anzeigename 2").language("de").build(), new DefaultLangStringNameType.Builder().text("Display Name 1").language("en").build())).build();
+        AssetAdministrationShell aas = new DefaultAssetAdministrationShell.Builder()
+                .id("test")
+                .assetInformation(new DefaultAssetInformation.Builder()
+                        .assetKind(AssetKind.INSTANCE)
+                        .build())
+                .description(
+                        Arrays.asList(
+                                new DefaultLangStringTextType.Builder()
+                                        .text("This is a test AAS")
+                                        .language("en-us").build()))
+                .displayName(Arrays.asList(new DefaultLangStringNameType.Builder()
+                                .text("Anzeigename 2").language("de").build(),
+                        new DefaultLangStringNameType.Builder().text("Display Name 1")
+                                .language("en").build())).build();
 
-        Submodel submodel = new DefaultSubmodel.Builder().description(Arrays.asList(new DefaultLangStringTextType.Builder().text("My Submodel").language("en-us").build())).displayName(Arrays.asList(new DefaultLangStringNameType.Builder().text("First Submodel Element name").language("en").build(), new DefaultLangStringNameType.Builder().text("Second Submodel Element name").language("en").build())).category("Example category").build();
+        Submodel submodel = new DefaultSubmodel.Builder()
+                .id("example")
+                .description(
+                        Arrays.asList(new DefaultLangStringTextType.Builder()
+                                .text("My Submodel")
+                                .language("en-us")
+                                .build()))
+                .displayName(Arrays.asList(new DefaultLangStringNameType.Builder()
+                                .text("First Submodel Element name")
+                                .language("en").build(),
+                        new DefaultLangStringNameType.Builder()
+                                .text("Second Submodel Element name")
+                                .language("en").build())).
+                category("Example category").build();
 
-        ConceptDescription conceptDescription = new DefaultConceptDescription.Builder().embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder().dataSpecification(new DefaultReference.Builder().keys(new DefaultKey.Builder().value("https://example.org").build()).build()).dataSpecificationContent(new DefaultDataSpecificationIec61360.Builder().dataType(DataTypeIec61360.RATIONAL).build()).build()).build();
+        ConceptDescription conceptDescription = new DefaultConceptDescription.Builder()
+                .id("concept1")
+                .embeddedDataSpecifications(new DefaultEmbeddedDataSpecification.Builder()
+                        .dataSpecification(
+                                new DefaultReference.Builder()
+                                        .keys(new DefaultKey.Builder()
+                                                .value("https://example.org")
+                                                .build()).build())
+                        .dataSpecificationContent(
+                                new DefaultDataSpecificationIec61360.Builder()
+                                        .dataType(DataTypeIec61360.RATIONAL)
+                                        .build()).build())
+                .build();
 
         List<AssetAdministrationShell> aasList = new ArrayList<>(Collections.singletonList(aas));
         Environment aasEnv = new DefaultEnvironment.Builder().assetAdministrationShells(aasList).submodels(submodel).conceptDescriptions(conceptDescription).build();
