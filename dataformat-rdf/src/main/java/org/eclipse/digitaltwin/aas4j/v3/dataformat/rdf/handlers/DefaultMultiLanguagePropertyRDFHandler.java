@@ -79,7 +79,7 @@ public class DefaultMultiLanguagePropertyRDFHandler implements RDFHandler<MultiL
             builder.value(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.MultiLanguageProperty.valueId)) {
-            Resource resource = model.getProperty(subjectToParse, AASNamespace.Property.valueId).getResource();
+            Resource resource = model.getProperty(subjectToParse, AASNamespace.MultiLanguageProperty.valueId).getResource();
             Reference reference = new DefaultReferenceRDFHandler().fromModel(model, resource);
             builder.valueId(reference);
         }
