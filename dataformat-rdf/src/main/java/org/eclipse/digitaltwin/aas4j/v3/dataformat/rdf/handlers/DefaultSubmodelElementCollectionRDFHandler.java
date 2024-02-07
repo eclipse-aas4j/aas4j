@@ -7,11 +7,8 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultH
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultHasSemanticsRDFPartialHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultQualifiableRDFPartialHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.partial.DefaultReferableRDFPartialHandler;
-import org.eclipse.digitaltwin.aas4j.v3.model.Capability;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultCapability;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class DefaultSubmodelElementCollectionRDFHandler implements RDFHandler<Su
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.SubmodelElementCollection);
-        if(object.getValue()!=null && object.getValue().isEmpty()==false){
+        if (object.getValue() != null && object.getValue().isEmpty() == false) {
             int index = 0;
             for (SubmodelElement item : object.getValue()) {
                 RDFSerializationResult resultItem = new DefaultSubmodelElementRDFHandler().toModel(item);
@@ -56,7 +53,7 @@ public class DefaultSubmodelElementCollectionRDFHandler implements RDFHandler<Su
             throw new IncompatibleTypeException("SubmodelElementCollection");
         }
         DefaultSubmodelElementCollection.Builder builder = new DefaultSubmodelElementCollection.Builder();
-        if(model.contains(subjectToParse, AASNamespace.SubmodelElementCollection.value)){
+        if (model.contains(subjectToParse, AASNamespace.SubmodelElementCollection.value)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ConceptDescription.isCaseOf);
             Map<Integer, SubmodelElement> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
