@@ -565,6 +565,11 @@ public final class AASNamespace {
         public static final org.apache.jena.rdf.model.Property contentType =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/contentType");
     }
+    public static final class SubmodelElementCollection {
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementCollection/value");
+
+    }
 
     public static final class AssetAdministrationShell {
         public static final org.apache.jena.rdf.model.Property assetInformation =
