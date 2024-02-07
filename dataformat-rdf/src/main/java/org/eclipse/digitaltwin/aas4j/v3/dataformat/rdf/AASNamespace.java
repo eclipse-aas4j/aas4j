@@ -340,6 +340,13 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Property/valueType");
     }
 
+    public static final class MultiLanguageProperty {
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "MultiLanguageProperty/value");
+        public static final org.apache.jena.rdf.model.Property valueId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "MultiLanguageProperty/valueId");
+    }
+
     public static final class Blob {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/value");
