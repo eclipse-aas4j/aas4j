@@ -510,6 +510,26 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "OperationVariable/value");
     }
 
+    public static final class BasicEventElement {
+        public static final org.apache.jena.rdf.model.Property direction =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/direction");
+        public static final org.apache.jena.rdf.model.Property lastUpdate =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/lastUpdate");
+        public static final org.apache.jena.rdf.model.Property maxInterval =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/maxInterval");
+        public static final org.apache.jena.rdf.model.Property messageBroker =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/messageBroker");
+        public static final org.apache.jena.rdf.model.Property messageTopic =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/messageTopic");
+        public static final org.apache.jena.rdf.model.Property minInterval =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/minInterval");
+        public static final org.apache.jena.rdf.model.Property observed =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/observed");
+        public static final org.apache.jena.rdf.model.Property state =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "BasicEventElement/state");
+
+    }
+
 
     public static final class Operation {
         public static final org.apache.jena.rdf.model.Property inoutputVariables =
