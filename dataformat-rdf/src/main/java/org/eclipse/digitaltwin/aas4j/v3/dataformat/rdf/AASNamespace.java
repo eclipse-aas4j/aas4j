@@ -347,6 +347,15 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "MultiLanguageProperty/valueId");
     }
 
+    public static final class Range {
+        public static final org.apache.jena.rdf.model.Property max =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Range/max");
+        public static final org.apache.jena.rdf.model.Property min =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Range/min");
+        public static final org.apache.jena.rdf.model.Property valueType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Range/valueType");
+    }
+
     public static final class Blob {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/value");
