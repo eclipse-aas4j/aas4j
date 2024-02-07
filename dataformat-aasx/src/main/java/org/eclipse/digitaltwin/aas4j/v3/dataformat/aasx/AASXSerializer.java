@@ -147,11 +147,11 @@ public class AASXSerializer {
                         PackagePart xmlPart, String contentType) {
         try {
             InMemoryFile content = findFileByPath(files, filePath);
-            logger.trace("Writing file '" + filePath + "' to .aasx.");
+            logger.trace("Writing file '{}' to .aasx.", filePath);
             createAASXPart(rootPackage, xmlPart, filePath, contentType, AASSUPPL_RELTYPE, content.getFileContent());
         } catch (RuntimeException e) {
             // Log that a file is missing and continue building the .aasx
-            logger.warn("Could not add File '" + filePath + "'. It was not contained in given InMemoryFiles.");
+            logger.warn("Could not add File '{}'. It was not contained in given InMemoryFiles.", filePath, e);
         }
     }
 

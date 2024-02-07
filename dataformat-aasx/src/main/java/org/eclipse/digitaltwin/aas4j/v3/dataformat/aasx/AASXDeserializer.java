@@ -130,7 +130,7 @@ public class AASXDeserializer {
             try {
                 files.add(readFile(aasxRoot, filePath));
             } catch (Exception e) {
-                logger.warn("Loading file " + filePath + " failed and will not be included. Exception: " + e);
+                logger.warn("Loading file {} failed and will not be included.", filePath, e);
             }
         }
         return files;
@@ -168,7 +168,7 @@ public class AASXDeserializer {
 
     private String getXMLPart(PackagePart originPart) throws InvalidFormatException {
         if (isCompatibilityModeNeeded(originPart)) {
-            logger.warn("AASX contains wrong Relationship namespace. This may be related to the AASX being created with an old version of AASX Package Explorer or an old version of AAS4J. Future compatibility with the wrong namespace may not be guaranteed");
+            logger.info("AASX contains wrong Relationship namespace. This may be related to the AASX being created with an old version of AASX Package Explorer or an old version of AAS4J. Future compatibility with the wrong namespace may not be guaranteed");
             return AASPEC_RELTYPE_BACKWARDSCOMPATIBLE;
         } else {
             return AASXSerializer.AASSPEC_RELTYPE;

@@ -216,7 +216,7 @@ public class ReflectionHelper {
         if (implementedAasInterfaces.size() == 1) {
             return implementedAasInterfaces.iterator().next();
         }
-        logger.warn("class '{}' implements more than one AAS interface, but only most specific one is returned", type.getName());
+        logger.debug("class '{}' implements more than one AAS interface, but only most specific one is returned", type.getName());
         return implementedAasInterfaces.stream().map(x -> TypeToken.of(x))
                 .sorted(new MostSpecificTypeTokenComparator())
                 .findFirst().get()
