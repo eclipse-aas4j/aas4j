@@ -12,14 +12,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 public class SerializerTest {
-
     @Test
     public void testKey() throws IOException {
         Key simpleKey = new DefaultKey.Builder()

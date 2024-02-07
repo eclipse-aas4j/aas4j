@@ -340,6 +340,13 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Property/valueType");
     }
 
+    public static final class Blob {
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/value");
+        public static final org.apache.jena.rdf.model.Property contentType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/contentType");
+    }
+
     public static final class AssetAdministrationShell {
         public static final org.apache.jena.rdf.model.Property assetInformation =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "AssetAdministrationShell/assetInformation");
