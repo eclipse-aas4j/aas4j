@@ -505,6 +505,18 @@ public final class AASNamespace {
                 ResourceFactory.createProperty(AAS_NAMESPACE + "ReferenceElement/value");
     }
 
+    public static final class Entity {
+        public static final org.apache.jena.rdf.model.Property entityType =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Entity/entityType");
+
+        public static final org.apache.jena.rdf.model.Property globalAssetId =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Entity/globalAssetId");
+        public static final org.apache.jena.rdf.model.Property specificAssetIds =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Entity/specificAssetIds");
+        public static final org.apache.jena.rdf.model.Property statements =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "Entity/statements");
+    }
+
     public static final class OperationVariable {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "OperationVariable/value");
@@ -633,6 +645,34 @@ public final class AASNamespace {
             }
 
             throw new IllegalArgumentException("Invalid AssetKind provided.");
+        }
+    }
+
+    public static final class EntityType {
+        public static final org.apache.jena.rdf.model.Resource CoManagedEntity =
+                ResourceFactory.createResource(AAS_NAMESPACE + "EntityType/CoManagedEntity");
+        public static final org.apache.jena.rdf.model.Resource SelfManagedEntity =
+                ResourceFactory.createResource(AAS_NAMESPACE + "EntityType/SelfManagedEntity");
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.EntityType fromIRI(String stringIRI) {
+            if (stringIRI.equals(CoManagedEntity.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.EntityType.CO_MANAGED_ENTITY;
+            }
+            if (stringIRI.equals(SelfManagedEntity.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.EntityType.SELF_MANAGED_ENTITY;
+            }
+            throw new IllegalArgumentException("Invalid EntityType IRI provided.");
+        }
+
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.EntityType.CO_MANAGED_ENTITY.name())) {
+                return CoManagedEntity;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.EntityType.SELF_MANAGED_ENTITY.name())) {
+                return SelfManagedEntity;
+            }
+
+            throw new IllegalArgumentException("Invalid EntityType provided.");
         }
     }
 
