@@ -5,6 +5,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -322,7 +323,8 @@ public class SerializerUtil {
     static Blob getMinimalBlob() {
         return new DefaultBlob.Builder()
                 .idShort("B1")
-                .contentType("image/png")
+                .value(Base64.getDecoder().decode("aGVsbG8=")) // a `hello` in a text file
+                .contentType("plain/text")
                 .build();
     }
 
