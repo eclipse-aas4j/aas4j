@@ -4,6 +4,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFLanguages;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEnvironmentRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
@@ -25,7 +26,10 @@ public class RDFSerializer {
      */
     public String write(Environment aasEnvironment, Lang serializationFormat) throws SerializationException {
         try {
-            throw new RuntimeException("Not Implemented");
+            RDFSerializationResult rdfSerializationResult = new DefaultEnvironmentRDFHandler().toModel(aasEnvironment);
+            StringWriter stringWriter = new StringWriter();
+            rdfSerializationResult.getModel().write(stringWriter, Lang.TTL.getName());
+            return stringWriter.toString();
         } catch (Exception ex) {
             throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
         }
