@@ -268,6 +268,156 @@ public final class AASNamespace {
         }
     }
 
+    public static final class AasSubmodelElements {
+        public static final org.apache.jena.rdf.model.Resource AnnotatedRelationshipElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/AnnotatedRelationshipElement");
+        public static final org.apache.jena.rdf.model.Resource BasicEventElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/BasicEventElement");
+        public static final org.apache.jena.rdf.model.Resource Blob =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Blob");
+        public static final org.apache.jena.rdf.model.Resource Capability =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Capability");
+        public static final org.apache.jena.rdf.model.Resource DataElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/DataElement");
+        public static final org.apache.jena.rdf.model.Resource Entity =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Entity");
+        public static final org.apache.jena.rdf.model.Resource EventElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/EventElement");
+        public static final org.apache.jena.rdf.model.Resource File =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/File");
+        public static final org.apache.jena.rdf.model.Resource MultiLanguageProperty =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/MultiLanguageProperty");
+        public static final org.apache.jena.rdf.model.Resource Operation =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Operation");
+        public static final org.apache.jena.rdf.model.Resource Property =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Property");
+        public static final org.apache.jena.rdf.model.Resource Range =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/Range");
+        public static final org.apache.jena.rdf.model.Resource ReferenceElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/ReferenceElement");
+        public static final org.apache.jena.rdf.model.Resource RelationshipElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/RelationshipElement");
+        public static final org.apache.jena.rdf.model.Resource SubmodelElement =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/SubmodelElement");
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementCollection =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/SubmodelElementCollection");
+        public static final org.apache.jena.rdf.model.Resource SubmodelElementList =
+                ResourceFactory.createResource(AAS_NAMESPACE + "AasSubmodelElements/SubmodelElementList");
+
+        public static org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements fromIRI(String stringIRI) {
+            if (stringIRI.equals(AnnotatedRelationshipElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ANNOTATED_RELATIONSHIP_ELEMENT;
+            }
+            if (stringIRI.equals(BasicEventElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.BASIC_EVENT_ELEMENT;
+            }
+            if (stringIRI.equals(Blob.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.BLOB;
+            }
+            if (stringIRI.equals(Capability.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.CAPABILITY;
+            }
+            if (stringIRI.equals(DataElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.DATA_ELEMENT;
+            }
+            if (stringIRI.equals(Entity.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ENTITY;
+            }
+            if (stringIRI.equals(EventElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.EVENT_ELEMENT;
+            }
+            if (stringIRI.equals(File.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.FILE;
+            }
+            if (stringIRI.equals(MultiLanguageProperty.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.MULTI_LANGUAGE_PROPERTY;
+            }
+            if (stringIRI.equals(Operation.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.OPERATION;
+            }
+            if (stringIRI.equals(Property.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.PROPERTY;
+            }
+            if (stringIRI.equals(Range.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.RANGE;
+            }
+            if (stringIRI.equals(ReferenceElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.REFERENCE_ELEMENT;
+            }
+            if (stringIRI.equals(RelationshipElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.RELATIONSHIP_ELEMENT;
+            }
+            if (stringIRI.equals(SubmodelElement.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT;
+            }
+            if (stringIRI.equals(SubmodelElementCollection.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT_COLLECTION;
+            }
+            if (stringIRI.equals(SubmodelElementList.getURI())) {
+                return org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT_LIST;
+            }
+            throw new IllegalArgumentException("Invalid AasSubmodelElements IRI provided.");
+        }
+
+        public static org.apache.jena.rdf.model.Resource valueOf(String type) {
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ANNOTATED_RELATIONSHIP_ELEMENT.name())) {
+                return AnnotatedRelationshipElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ANNOTATED_RELATIONSHIP_ELEMENT.name())) {
+                return AnnotatedRelationshipElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.BASIC_EVENT_ELEMENT.name())) {
+                return BasicEventElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.BLOB.name())) {
+                return Blob;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.CAPABILITY.name())) {
+                return Capability;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.DATA_ELEMENT.name())) {
+                return DataElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ENTITY.name())) {
+                return Entity;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.EVENT_ELEMENT.name())) {
+                return EventElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.FILE.name())) {
+                return File;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.MULTI_LANGUAGE_PROPERTY.name())) {
+                return MultiLanguageProperty;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.OPERATION.name())) {
+                return Operation;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.PROPERTY.name())) {
+                return Property;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.RANGE.name())) {
+                return Range;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.REFERENCE_ELEMENT.name())) {
+                return ReferenceElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.RELATIONSHIP_ELEMENT.name())) {
+                return RelationshipElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT.name())) {
+                return SubmodelElement;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT_COLLECTION.name())) {
+                return SubmodelElementCollection;
+            }
+            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.SUBMODEL_ELEMENT_LIST.name())) {
+                return SubmodelElementList;
+            }
+            throw new IllegalArgumentException("Invalid AasSubmodelElements provided.");
+        }
+    }
+
     public static final class ReferenceTypes {
         public static final org.apache.jena.rdf.model.Resource ExternalReference =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ReferenceTypes/ExternalReference");
@@ -565,9 +715,24 @@ public final class AASNamespace {
         public static final org.apache.jena.rdf.model.Property contentType =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "Blob/contentType");
     }
+
     public static final class SubmodelElementCollection {
         public static final org.apache.jena.rdf.model.Property value =
                 ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementCollection/value");
+
+    }
+
+    public static final class SubmodelElementList {
+        public static final org.apache.jena.rdf.model.Property orderRelevant =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementList/orderRelevant");
+        public static final org.apache.jena.rdf.model.Property semanticIdListElement =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementList/semanticIdListElement");
+        public static final org.apache.jena.rdf.model.Property typeValueListElement =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementList/typeValueListElement");
+        public static final org.apache.jena.rdf.model.Property value =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementList/value");
+        public static final org.apache.jena.rdf.model.Property valueTypeListElement =
+                ResourceFactory.createProperty(AAS_NAMESPACE + "SubmodelElementList/valueTypeListElement");
 
     }
 
