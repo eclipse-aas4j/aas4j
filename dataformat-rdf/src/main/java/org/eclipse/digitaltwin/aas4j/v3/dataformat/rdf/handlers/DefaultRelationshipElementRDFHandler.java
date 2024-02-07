@@ -47,7 +47,7 @@ public class DefaultRelationshipElementRDFHandler implements RDFHandler<Relation
     @Override
     public RelationshipElement fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.RelationshipElement)) {
-            throw new IncompatibleTypeException("Capability");
+            throw new IncompatibleTypeException("RelationshipElement");
         }
         DefaultRelationshipElement.Builder builder = new DefaultRelationshipElement.Builder();
         if (model.contains(subjectToParse, AASNamespace.RelationshipElement.second)) {
