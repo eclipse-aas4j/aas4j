@@ -5,22 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.digitaltwin.aas4j</groupId>
-        <artifactId>dataformat-parent</artifactId>
+        <artifactId>aas4j-dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>dataformat-rdf</artifactId>
+    <artifactId>aas4j-dataformat-rdf</artifactId>
     <name>Asset Administration Shell RDF-Serializer</name>
 
     <dependencies>
         <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
-            <version>${revision}</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>aas4j-dataformat-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
-            <version>${revision}</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>aas4j-dataformat-core</artifactId>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
