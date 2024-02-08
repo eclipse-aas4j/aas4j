@@ -31,12 +31,12 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;

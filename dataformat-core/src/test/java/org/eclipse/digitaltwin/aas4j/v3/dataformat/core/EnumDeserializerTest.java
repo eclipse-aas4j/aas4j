@@ -18,7 +18,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
