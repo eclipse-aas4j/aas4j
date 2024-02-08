@@ -30,49 +30,49 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Delete old dataformat-parent package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-parent'
 
     - name: Delete old dataformat-core package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-core'
     
     - name: Delete old dataformat-aasx package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-aasx'
         
     - name: Delete old dataformat-xml package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-xml'
         
     - name: Delete old dataformat-aml package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-aml'
         
     - name: Delete old dataformat-rdf package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-rdf'
 
     - name: Delete old dataformat-json package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-json'
         
     - name: Delete old validator package
-      uses: actions/delete-package-versions@v4
+      uses: actions/delete-package-versions@v5
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.validator'
