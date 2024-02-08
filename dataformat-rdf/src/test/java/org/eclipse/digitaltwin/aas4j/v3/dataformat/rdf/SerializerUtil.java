@@ -251,6 +251,44 @@ public class SerializerUtil {
                 .build();
     }
 
+    static List<SubmodelElement> getMinimalSubmodelElementsList() {
+        return List.of(
+                SerializerUtil.getMinimalAnnotatedRelationshipElement(),
+                SerializerUtil.getMinimalBasicEventElement(),
+                SerializerUtil.getMinimalBlob(),
+                SerializerUtil.getMinimalCapability(),
+                SerializerUtil.getMinimalEntity(),
+                SerializerUtil.getMinimalFile(),
+                SerializerUtil.getMinimalMultiLanguageProperty(),
+                SerializerUtil.getMinimalOperation(),
+                SerializerUtil.getMinimalProperty(),
+                SerializerUtil.getMinimalRange(),
+                SerializerUtil.getMinimalReferenceElement(),
+                SerializerUtil.getMinimalRelationshipElement(),
+                SerializerUtil.getMinimalSubmodelElementCollection(),
+                SerializerUtil.getMinimalSubmodelElementList()
+        );
+    }
+
+    static List<SubmodelElement> getMaximalSubmodelElementsList() {
+        return List.of(
+                SerializerUtil.getMaximalAnnotatedRelationshipElement(),
+                SerializerUtil.getMaximalBasicEventElement(),
+                SerializerUtil.getMaximalBlob(),
+                SerializerUtil.getMaximalCapability(),
+                SerializerUtil.getMaximalEntity(),
+                SerializerUtil.getMaximalFile(),
+                SerializerUtil.getMaximalMultiLanguageProperty(),
+                SerializerUtil.getMaximalOperation(),
+                SerializerUtil.getMaximalProperty(),
+                SerializerUtil.getMaximalRange(),
+                SerializerUtil.getMaximalReferenceElement(),
+                SerializerUtil.getMaximalRelationshipElement(),
+                SerializerUtil.getMaximalSubmodelElementCollection(),
+                SerializerUtil.getMaximalSubmodelElementList()
+        );
+    }
+
     static Property getMaximalProperty() {
         return new DefaultProperty.Builder()
                 .idShort("idShort1")
@@ -311,7 +349,42 @@ public class SerializerUtil {
                 .build();
     }
 
+    static AnnotatedRelationshipElement getMaximalAnnotatedRelationshipElement() {
+        return new DefaultAnnotatedRelationshipElement.Builder()
+                .idShort("ARE1_complex")
+                .first(new DefaultReference.Builder()
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .keys(List.of(
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
+                                        .value("submodel_")
+                                        .build(),
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
+                                        .value("submodel_")
+                                        .build()
+                        )).build())
+                .second(new DefaultReference.Builder()
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .keys(List.of(
+                                new DefaultKey.Builder()
+                                        .type(KeyTypes.CONCEPT_DESCRIPTION)
+                                        .value("concept_")
+                                        .build()
+                        )).build())
+                .build();
+    }
+
     static BasicEventElement getMinimalBasicEventElement() {
+        return new DefaultBasicEventElement.Builder()
+                .idShort("BEE1")
+                .direction(Direction.OUTPUT)
+                .state(StateOfEvent.OFF)
+                .observed(getMinimalReference())
+                .build();
+    }
+
+    static BasicEventElement getMaximalBasicEventElement() {
         return new DefaultBasicEventElement.Builder()
                 .idShort("BEE1")
                 .direction(Direction.OUTPUT)
@@ -328,13 +401,34 @@ public class SerializerUtil {
                 .build();
     }
 
+    static Blob getMaximalBlob() {
+        return new DefaultBlob.Builder()
+                .idShort("B1")
+                .value(Base64.getDecoder().decode("aGVsbG8=")) // a `hello` in a text file
+                .contentType("plain/text")
+                .build();
+    }
+
     static Capability getMinimalCapability() {
         return new DefaultCapability.Builder()
                 .idShort("C1")
                 .build();
     }
 
+    static Capability getMaximalCapability() {
+        return new DefaultCapability.Builder()
+                .idShort("C1")
+                .build();
+    }
+
     static Entity getMinimalEntity() {
+        return new DefaultEntity.Builder()
+                .idShort("E1")
+                .entityType(EntityType.SELF_MANAGED_ENTITY)
+                .build();
+    }
+
+    static Entity getMaximalEntity() {
         return new DefaultEntity.Builder()
                 .idShort("E1")
                 .entityType(EntityType.SELF_MANAGED_ENTITY)
@@ -348,7 +442,21 @@ public class SerializerUtil {
                 .build();
     }
 
+    static File getMaximalFile() {
+        return new DefaultFile.Builder()
+                .idShort("F1")
+                .contentType("image/png")
+                .build();
+    }
+
     static Range getMinimalRange() {
+        return new DefaultRange.Builder()
+                .idShort("R1")
+                .valueType(DataTypeDefXsd.DECIMAL)
+                .build();
+    }
+
+    static Range getMaximalRange() {
         return new DefaultRange.Builder()
                 .idShort("R1")
                 .valueType(DataTypeDefXsd.DECIMAL)
@@ -361,7 +469,19 @@ public class SerializerUtil {
                 .build();
     }
 
+    static ReferenceElement getMaximalReferenceElement() {
+        return new DefaultReferenceElement.Builder()
+                .idShort("RE1")
+                .build();
+    }
+
     static RelationshipElement getMinimalRelationshipElement() {
+        return new DefaultRelationshipElement.Builder()
+                .idShort("ReE1")
+                .build();
+    }
+
+    static RelationshipElement getMaximalRelationshipElement() {
         return new DefaultRelationshipElement.Builder()
                 .idShort("ReE1")
                 .build();
@@ -373,13 +493,31 @@ public class SerializerUtil {
                 .build();
     }
 
+    static SubmodelElementCollection getMaximalSubmodelElementCollection() {
+        return new DefaultSubmodelElementCollection.Builder()
+                .idShort("SEC1")
+                .build();
+    }
+
     static SubmodelElementList getMinimalSubmodelElementList() {
         return new DefaultSubmodelElementList.Builder()
                 .idShort("SEL1")
                 .build();
     }
 
+    static SubmodelElementList getMaximalSubmodelElementList() {
+        return new DefaultSubmodelElementList.Builder()
+                .idShort("SEL1")
+                .build();
+    }
+
     static Operation getMinimalOperation() {
+        return new DefaultOperation.Builder()
+                .idShort("O1")
+                .build();
+    }
+
+    static Operation getMaximalOperation() {
         return new DefaultOperation.Builder()
                 .idShort("O1")
                 .build();
@@ -428,7 +566,7 @@ public class SerializerUtil {
     static AssetAdministrationShell getMinimalAssetAdministrationShell() {
         return new DefaultAssetAdministrationShell.Builder()
                 .assetInformation(getMinimalAssetInformation())
-                .id("id1")
+                .id("AssetAdministrationShell_minimal")
                 .build();
     }
 

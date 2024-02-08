@@ -10,6 +10,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @RunWith(Parameterized.class)
 public class SubmodelElementTest {
     @Parameter
@@ -17,23 +20,10 @@ public class SubmodelElementTest {
 
     @Parameters(name = "{index}: SME - {0}")
     public static Object[] data() {
-        return new Object[]{
-                SerializerUtil.getMinimalAnnotatedRelationshipElement(),
-                SerializerUtil.getMinimalBasicEventElement(),
-                SerializerUtil.getMinimalBlob(),
-                SerializerUtil.getMinimalCapability(),
-                SerializerUtil.getMinimalEntity(),
-                SerializerUtil.getMinimalFile(),
-                SerializerUtil.getMinimalMultiLanguageProperty(),
-                SerializerUtil.getMinimalOperation(),
-                SerializerUtil.getMinimalProperty(),
-                SerializerUtil.getMinimalRange(),
-                SerializerUtil.getMinimalReferenceElement(),
-                SerializerUtil.getMinimalRelationshipElement(),
-                SerializerUtil.getMinimalSubmodelElementCollection(),
-                SerializerUtil.getMinimalSubmodelElementList(),
-                SerializerUtil.getMaximalMultiLanguageProperty()
-        };
+        List<SubmodelElement> list = new LinkedList<>();
+        list.addAll(SerializerUtil.getMaximalSubmodelElementsList());
+        list.addAll(SerializerUtil.getMinimalSubmodelElementsList());
+        return list.toArray();
     }
 
     @Test
