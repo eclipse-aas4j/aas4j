@@ -15,11 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
 
-public interface AssetAdministrationShellMixin {
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+public interface AssetAdministrationShellMixin {
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    public AssetInformation getAssetInformation();
+    AssetInformation getAssetInformation();
 }

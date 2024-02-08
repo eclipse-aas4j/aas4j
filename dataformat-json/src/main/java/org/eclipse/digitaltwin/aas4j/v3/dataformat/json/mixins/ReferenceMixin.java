@@ -15,23 +15,17 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface ReferenceMixin {
+    @JsonInclude(JsonInclude.Include.ALWAYS)
+    List<Key> getKeys();
 
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    @JsonProperty("keys")
-    public List<Key> getKeys();
-
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    @JsonProperty("type")
-    public ReferenceTypes getType();
-
-    @JsonProperty("type")
-    public void setType(ReferenceTypes type);
+    ReferenceTypes getType();
 }

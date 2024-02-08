@@ -2,13 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>dataformat-parent</artifactId>
+    <modelVersion>4.0.0</modelVersion> 
+	<parent>
         <groupId>org.eclipse.digitaltwin.aas4j</groupId>
+        <artifactId>aas4j-dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>model</artifactId>
+
+    <artifactId>aas4j-model</artifactId>
     <version>${model.version}</version>
 
     <!-- Description, name, URL, developers, and scm are required by Sonatype for the Central Repository release -->
@@ -19,7 +20,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <plugin.flatten.version>1.5.0</plugin.flatten.version>
+        <plugin.flatten.version>1.6.0</plugin.flatten.version>
         <plugin.javadoc.version>3.6.3</plugin.javadoc.version>
         <plugin.projectinfo.version>3.5.0</plugin.projectinfo.version>
     </properties>

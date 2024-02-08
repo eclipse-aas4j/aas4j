@@ -17,45 +17,8 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
-import java.util.Collection;
 
 public interface SubmodelElementListMixin {
-
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-    @JsonProperty("orderRelevant")
-    public boolean getOrdered();
-
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-    @JsonProperty("orderRelevant")
-    public void setOrdered(boolean orderRelevant);
-
-    @JsonProperty("semanticIdListElement")
-    public Reference getSemanticIdListElement();
-
-    @JsonProperty("semanticIdListElement")
-    public void setSemanticIdListElement(Reference semanticIdListElement);
-
-    @JsonProperty("typeValueListElement")
-    public AasSubmodelElements getTypeValueListElement();
-
-    @JsonProperty("typeValueListElement")
-    public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
-
-    @JsonProperty("valueTypeListElement")
-    public DataTypeDefXsd getValueTypeListElement();
-
-    @JsonProperty("valueTypeListElement")
-    public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
-
-    @JsonProperty("value")
-    public Collection<SubmodelElement> getValue();
-
-    @JsonProperty("value")
-    public void setValue(Collection<SubmodelElement> value);
+    @JsonInclude(JsonInclude.Include.ALWAYS)
+    boolean getOrderRelevant();
 }

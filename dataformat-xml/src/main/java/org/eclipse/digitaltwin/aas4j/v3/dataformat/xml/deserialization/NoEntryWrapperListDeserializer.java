@@ -15,6 +15,14 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.deserialization;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -23,19 +31,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Custom deserializer for lists without individual list entry wrappers for parametrized classes.
  * 
  * @param <T> deserialized class within the list
  */
-public class NoEntryWrapperListDeserializer<T extends Object> extends JsonDeserializer<List<T>> {
+public class NoEntryWrapperListDeserializer<T> extends JsonDeserializer<List<T>> {
     protected final String elementName;
     private CustomJsonNodeDeserializer<T> nodeDeserializer;
+    private static Logger logger = LoggerFactory.getLogger(NoEntryWrapperListDeserializer.class);
 
     public NoEntryWrapperListDeserializer(String elementName, CustomJsonNodeDeserializer<T> nodeDeserializer) {
         this.elementName = elementName;
@@ -44,12 +48,17 @@ public class NoEntryWrapperListDeserializer<T extends Object> extends JsonDeseri
 
     @Override
     public List<T> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
-        JsonNode langStringNode = node.get(elementName);
-        if (langStringNode.isObject()) {
-            return createEntriesFromObjectNode(langStringNode, parser);
-        } else {
-            return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
+        try {
+            ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
+            JsonNode langStringNode = node.get(elementName);
+            if (langStringNode.isObject()) {
+                return createEntriesFromObjectNode(langStringNode, parser);
+            } else {
+                return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
+            }
+        } catch (ClassCastException e) {
+            logger.info("Found empty list items (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
+            return new ArrayList<T>();
         }
     }
 

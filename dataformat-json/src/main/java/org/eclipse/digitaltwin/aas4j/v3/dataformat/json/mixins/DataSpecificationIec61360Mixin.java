@@ -15,32 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public interface DataSpecificationIec61360Mixin {
-
-    @JsonProperty("levelType")
-    public List<LevelType> getLevelTypes();
-
-    @JsonProperty("levelType")
-    public void setLevelTypes(List<LevelType> levelTypes);
-
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    @JsonProperty("preferredName")
-    public List<LangStringPreferredNameTypeIec61360> getPreferredName();
-
-    @JsonProperty("preferredName")
-    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
-
-    @JsonProperty("unitId")
-    public Reference getUnitId();
-
-    @JsonProperty("unitId")
-    public void setUnitId(Reference unitId);
+    List<LangStringPreferredNameTypeIec61360> getPreferredName();
 }

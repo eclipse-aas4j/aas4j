@@ -290,7 +290,7 @@ public class XmlSerializerTest {
     private void logErrors(String validatedFileName, Set<String> errors) {
         if (errors.isEmpty())
             return;
-        logger.info("Validate file: " + validatedFileName);
+        logger.info("Validate file: {}", validatedFileName);
         for (String error : errors) {
             logger.info(error);
         }

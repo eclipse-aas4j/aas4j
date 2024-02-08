@@ -66,7 +66,7 @@ public class XmlValidationTest {
         if (errors.isEmpty()) {
             return;
         }
-        logger.info("Validate file: " + validatedFileName);
+        logger.info("Validate file: {}", validatedFileName);
         for (String error : errors) {
             logger.info(error);
         }

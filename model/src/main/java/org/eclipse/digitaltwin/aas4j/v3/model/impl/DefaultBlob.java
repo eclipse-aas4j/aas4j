@@ -81,14 +81,14 @@ public class DefaultBlob implements Blob {
         return Objects.hash(Arrays.hashCode(this.value),
             this.contentType,
             this.embeddedDataSpecifications,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions);
+            this.extensions,
+            this.semanticId,
+            this.supplementalSemanticIds,
+            this.qualifiers);
     }
 
     @Override
@@ -104,14 +104,14 @@ public class DefaultBlob implements Blob {
             return Arrays.equals(this.value, other.value) &&
                 Objects.equals(this.contentType, other.contentType) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -143,36 +143,6 @@ public class DefaultBlob implements Blob {
     @Override
     public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
     }
 
     @Override
@@ -225,12 +195,42 @@ public class DefaultBlob implements Blob {
         this.extensions = extensions;
     }
 
+    @Override
+    public Reference getSemanticId() {
+        return semanticId;
+    }
+
+    @Override
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
+    }
+
+    @Override
+    public List<Reference> getSupplementalSemanticIds() {
+        return supplementalSemanticIds;
+    }
+
+    @Override
+    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        this.supplementalSemanticIds = supplementalSemanticIds;
+    }
+
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
     public String toString() {
         return String.format(
             "DefaultBlob (" + "value=%s,"
                 + "contentType=%s,"
                 + ")",
-            Arrays.toString(this.value), this.contentType);
+                Arrays.toString(this.value), this.contentType);
     }
 
     /**
