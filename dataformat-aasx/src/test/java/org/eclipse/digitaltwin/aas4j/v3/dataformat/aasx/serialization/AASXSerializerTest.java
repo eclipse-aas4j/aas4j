@@ -16,10 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.serialization;
 
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.junit.Before;
 import org.junit.Test;
 

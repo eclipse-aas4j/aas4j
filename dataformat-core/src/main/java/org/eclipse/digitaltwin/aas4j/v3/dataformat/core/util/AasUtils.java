@@ -23,13 +23,18 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetIdentifierVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
@@ -37,16 +42,12 @@ import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.reflect.TypeToken;
-import java.util.Map;
-import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetIdentifierVisitor;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
 /**
  * Provides utility functions related to AAS
@@ -54,8 +55,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 public class AasUtils {
 
     private static final Logger log = LoggerFactory.getLogger(AasUtils.class);
-
-    private static final String REFERENCE_ELEMENT_DELIMITER = ", ";
 
     private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION = Map.of(
             ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
