@@ -30,7 +30,7 @@ public class DefaultLangStringTextTypeRDFHandler implements RDFHandler<LangStrin
     @Override
     public LangStringTextType fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringTextType)) {
-            throw new IllegalArgumentException("Provided Resource is not a LangStringTextType");
+            throw new IncompatibleTypeException("LangStringTextType");
         }
         DefaultLangStringTextType.Builder builder = new DefaultLangStringTextType.Builder();
         if (model.contains(subjectToParse, AASNamespace.AbstractLangString.text)) {

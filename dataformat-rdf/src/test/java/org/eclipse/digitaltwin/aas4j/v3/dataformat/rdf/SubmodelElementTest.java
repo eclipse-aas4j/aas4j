@@ -13,6 +13,8 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class SubmodelElementTest {
     @Parameter
@@ -27,13 +29,13 @@ public class SubmodelElementTest {
     }
 
     @Test
-    public void testGeneric() throws IncompatibleTypeException {
+    public void testGenericSubmodelElement() throws IncompatibleTypeException {
         SubmodelElement object = submodelElement;
         RDFSerializationResult rdfSerializationResult = new DefaultSubmodelElementRDFHandler().toModel(object);
         rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
         Resource createdResource = rdfSerializationResult.getResource();
-        SubmodelElement submodelElement = new DefaultSubmodelElementRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
-        assert object.equals(submodelElement);
+        SubmodelElement recreatedObject = new DefaultSubmodelElementRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assertEquals(object, recreatedObject);
     }
 
 

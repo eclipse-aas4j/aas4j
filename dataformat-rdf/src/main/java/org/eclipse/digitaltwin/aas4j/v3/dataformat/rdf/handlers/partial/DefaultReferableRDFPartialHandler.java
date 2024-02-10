@@ -88,11 +88,13 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<LangStringTextType> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<LangStringTextType> langStringTextTypes = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    langStringTextTypes.add(keysMap.get(index));
+                }
+                object.setDescription(langStringTextTypes);
             }
-            object.setDescription(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.Referable.displayName)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.Referable.displayName);
@@ -107,11 +109,13 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<LangStringNameType> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<LangStringNameType> langStringNameTypes = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    langStringNameTypes.add(keysMap.get(index));
+                }
+                object.setDisplayName(langStringNameTypes);
             }
-            object.setDisplayName(langStringList);
         }
 
         //HasExtension
@@ -128,11 +132,13 @@ public class DefaultReferableRDFPartialHandler implements RDFPartialHandler<Refe
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<Extension> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<Extension> extensions = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    extensions.add(keysMap.get(index));
+                }
+                object.setExtensions(extensions);
             }
-            object.setExtensions(langStringList);
         }
         return object;
     }

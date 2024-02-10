@@ -42,17 +42,20 @@ public class DefaultHasDataSpecificationRDFPartialHandler implements RDFPartialH
                 EmbeddedDataSpecification key = null;
                 try {
                     key = new DefaultEmbeddedDataSpecificationRDFHandler().fromModel(model, (Resource) node);
+                    int index = model.getProperty((Resource) node, AASNamespace.index).getInt();
+                    keysMap.put(index, key);
                 } catch (IncompatibleTypeException e) {
                     throw new RuntimeException(e);
                 }
-                int index = model.getProperty((Resource) node, AASNamespace.index).getInt();
-                keysMap.put(index, key);
+
             });
-            List<EmbeddedDataSpecification> keys = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                keys.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    embeddedDataSpecifications.add(keysMap.get(index));
+                }
+                object.setEmbeddedDataSpecifications(embeddedDataSpecifications);
             }
-            object.setEmbeddedDataSpecifications(keys);
         }
         return object;
     }

@@ -51,21 +51,21 @@ public class DefaultPropertyRDFHandler implements RDFHandler<Property> {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Property)) {
             throw new IncompatibleTypeException("Property");
         }
-        DefaultProperty.Builder builder = new DefaultProperty.Builder();
+        //TODO: Get this from supplier
+        Property object = new DefaultProperty();
 
         if (model.contains(subjectToParse, AASNamespace.Property.value)) {
-            builder.value(model.getProperty(subjectToParse, AASNamespace.Property.value).getString());
+            object.setValue(model.getProperty(subjectToParse, AASNamespace.Property.value).getString());
         }
         if (model.contains(subjectToParse, AASNamespace.Property.valueId)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.Property.valueId).getResource();
             Reference reference = new DefaultReferenceRDFHandler().fromModel(model, resource);
-            builder.valueId(reference);
+            object.setValueId(reference);
         }
         if (model.contains(subjectToParse, AASNamespace.Property.valueType)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.Property.valueType).getResource();
-            builder.valueType(AASNamespace.DataTypeDefXsd.fromIRI(resource.getURI()));
+            object.setValueType(AASNamespace.DataTypeDefXsd.fromIRI(resource.getURI()));
         }
-        Property object = builder.build();
         //HasDataSpecification
         new DefaultHasDataSpecificationRDFPartialHandler().partialFromModel(object, model, subjectToParse);
         //HasSemantics

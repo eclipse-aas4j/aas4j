@@ -65,11 +65,13 @@ public class DefaultConceptDescriptionRDFHandler implements RDFHandler<ConceptDe
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<Reference> references = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                references.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<Reference> references = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    references.add(keysMap.get(index));
+                }
+                builder.isCaseOf(references);
             }
-            builder.isCaseOf(references);
         }
         ConceptDescription object = builder.build();
         //Identifiable

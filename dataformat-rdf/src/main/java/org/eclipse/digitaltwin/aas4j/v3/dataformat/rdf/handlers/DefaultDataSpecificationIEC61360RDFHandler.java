@@ -102,17 +102,20 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                 LangStringPreferredNameTypeIec61360 key = null;
                 try {
                     key = new DefaultLangStringPreferredNameTypeIec61360RDFHandler().fromModel(model, node.asResource());
+                    int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
+                    keysMap.put(index, key);
                 } catch (IncompatibleTypeException e) {
                     throw new RuntimeException(e);
                 }
-                int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
-                keysMap.put(index, key);
+
             });
-            List<LangStringPreferredNameTypeIec61360> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<LangStringPreferredNameTypeIec61360> langStringList = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    langStringList.add(keysMap.get(index));
+                }
+                builder.preferredName(langStringList);
             }
-            builder.preferredName(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.DataSpecificationIec61360.shortName)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.DataSpecificationIec61360.shortName);
@@ -127,11 +130,13 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<LangStringShortNameTypeIec61360> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<LangStringShortNameTypeIec61360> langStringList = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    langStringList.add(keysMap.get(index));
+                }
+                builder.shortName(langStringList);
             }
-            builder.shortName(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.DataSpecificationIec61360.definition)) {
             NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.DataSpecificationIec61360.definition);
@@ -146,11 +151,13 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<LangStringDefinitionTypeIec61360> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<LangStringDefinitionTypeIec61360> langStringList = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    langStringList.add(keysMap.get(index));
+                }
+                builder.definition(langStringList);
             }
-            builder.definition(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.DataSpecificationIec61360.unit)) {
             builder.unit(model.getProperty(subjectToParse, AASNamespace.DataSpecificationIec61360.unit).getString());
@@ -190,8 +197,6 @@ public class DefaultDataSpecificationIEC61360RDFHandler implements RDFHandler<Da
                     .fromModel(model, model.getProperty(subjectToParse, AASNamespace.DataSpecificationIec61360.levelType).getResource());
             builder.levelType(levelType);
         }
-
-
         return builder.build();
     }
 }

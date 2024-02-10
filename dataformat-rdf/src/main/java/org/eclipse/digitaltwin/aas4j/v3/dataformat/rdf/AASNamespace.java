@@ -2,6 +2,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.apache.jena.rdf.model.ResourceFactory;
 
+import java.util.List;
+
 /**
  * Elements of Asset Administration Shell as org.apache.jena.rdf.model.Resource and org.apache.jena.rdf.model.Property compatible with Apache Jena.
  */
@@ -360,9 +362,7 @@ public final class AASNamespace {
         }
 
         public static org.apache.jena.rdf.model.Resource valueOf(String type) {
-            if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ANNOTATED_RELATIONSHIP_ELEMENT.name())) {
-                return AnnotatedRelationshipElement;
-            }
+
             if (type.equalsIgnoreCase(org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements.ANNOTATED_RELATIONSHIP_ELEMENT.name())) {
                 return AnnotatedRelationshipElement;
             }
@@ -416,6 +416,8 @@ public final class AASNamespace {
             }
             throw new IllegalArgumentException("Invalid AasSubmodelElements provided.");
         }
+
+
     }
 
     public static final class ReferenceTypes {
@@ -446,7 +448,10 @@ public final class AASNamespace {
     }
 
     public static final class Types {
-        public static final org.apache.jena.rdf.model.Resource Environment = ResourceFactory.createResource(AAS_NAMESPACE + "Environment");
+
+
+        public static final org.apache.jena.rdf.model.Resource Environment =
+                ResourceFactory.createResource(AAS_NAMESPACE + "Environment");
 
         public static final org.apache.jena.rdf.model.Resource AdministrativeInformation =
                 ResourceFactory.createResource(AAS_NAMESPACE + "AdministrativeInformation");
@@ -522,6 +527,23 @@ public final class AASNamespace {
         public static final org.apache.jena.rdf.model.Resource ValueReferencePair =
                 ResourceFactory.createResource(AAS_NAMESPACE + "ValueReferencePair");
 
+        public static List<org.apache.jena.rdf.model.Resource> SUBMODEL_ELEMENTS =
+                List.of(
+                        AnnotatedRelationshipElement,
+                        BasicEventElement,
+                        Blob,
+                        Capability,
+                        Entity,
+                        File,
+                        MultiLanguageProperty,
+                        Operation,
+                        Property,
+                        Range,
+                        ReferenceElement,
+                        RelationshipElement,
+                        SubmodelElementCollection,
+                        SubmodelElementList
+                );
     }
 
     public static final class LevelType {

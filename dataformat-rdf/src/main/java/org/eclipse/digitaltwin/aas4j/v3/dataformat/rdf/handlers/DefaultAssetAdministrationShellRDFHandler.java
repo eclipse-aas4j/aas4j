@@ -76,11 +76,13 @@ public class DefaultAssetAdministrationShellRDFHandler implements RDFHandler<Ass
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<Reference> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<Reference> references = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    references.add(keysMap.get(index));
+                }
+                builder.submodels(references);
             }
-            builder.submodels(langStringList);
         }
         if (model.contains(subjectToParse, AASNamespace.AssetAdministrationShell.derivedFrom)) {
             Resource resource = model.getProperty(subjectToParse, AASNamespace.AssetAdministrationShell.derivedFrom).getResource();

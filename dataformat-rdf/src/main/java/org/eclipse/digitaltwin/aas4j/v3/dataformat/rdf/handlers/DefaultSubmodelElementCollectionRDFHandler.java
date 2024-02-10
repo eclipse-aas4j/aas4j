@@ -54,7 +54,7 @@ public class DefaultSubmodelElementCollectionRDFHandler implements RDFHandler<Su
         }
         DefaultSubmodelElementCollection.Builder builder = new DefaultSubmodelElementCollection.Builder();
         if (model.contains(subjectToParse, AASNamespace.SubmodelElementCollection.value)) {
-            NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ConceptDescription.isCaseOf);
+            NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.SubmodelElementCollection.value);
             Map<Integer, SubmodelElement> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
                 SubmodelElement key = null;
@@ -66,11 +66,13 @@ public class DefaultSubmodelElementCollectionRDFHandler implements RDFHandler<Su
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<SubmodelElement> references = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                references.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SubmodelElement> submodelElements = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    submodelElements.add(keysMap.get(index));
+                }
+                builder.value(submodelElements);
             }
-            builder.value(references);
         }
         SubmodelElementCollection object = builder.build();
         //HasDataSpecification

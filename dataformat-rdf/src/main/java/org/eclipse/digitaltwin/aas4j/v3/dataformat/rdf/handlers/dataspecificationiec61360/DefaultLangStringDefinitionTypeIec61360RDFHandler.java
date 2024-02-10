@@ -30,7 +30,7 @@ public class DefaultLangStringDefinitionTypeIec61360RDFHandler implements RDFHan
     @Override
     public LangStringDefinitionTypeIec61360 fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringDefinitionTypeIec61360)) {
-            throw new IllegalArgumentException("Provided Resource is not a LangStringDefinitionTypeIec61360");
+            throw new IncompatibleTypeException("LangStringDefinitionTypeIec61360");
         }
         DefaultLangStringDefinitionTypeIec61360.Builder builder = new DefaultLangStringDefinitionTypeIec61360.Builder();
         if (model.contains(subjectToParse, AASNamespace.AbstractLangString.text)) {

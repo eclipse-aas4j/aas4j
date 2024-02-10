@@ -13,14 +13,13 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 
 public class SerializerTest {
     @Test
-    public void testKey() throws IOException {
+    public void testKey() throws IOException, IncompatibleTypeException {
         Key simpleKey = new DefaultKey.Builder()
                 .value("simple")
                 .type(KeyTypes.GLOBAL_REFERENCE)
@@ -88,7 +87,7 @@ public class SerializerTest {
     public void testReference() throws IncompatibleTypeException {
         Reference reference = new DefaultReference.Builder()
                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                .keys(Arrays.asList(
+                .keys(List.of(
                         new DefaultKey.Builder()
                                 .value("https://example.com")
                                 .type(KeyTypes.GLOBAL_REFERENCE)
@@ -106,6 +105,20 @@ public class SerializerTest {
         Reference recreatedKey = new DefaultReferenceRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
         assert reference.equals(recreatedKey);
     }
+//
+//    @Test
+//    public void invalidEqualsLogic() {
+//        List<LangStringTextType> withArraysAsList = Arrays.asList(
+//                new DefaultLangStringTextType.Builder().text("").language("en-us").build(),
+//                new DefaultLangStringTextType.Builder().text("Ein Beispiel-Teilmodell für eine Test-Anwendung").language("de").build()
+//        );
+//        List<DefaultLangStringTextType> withListOf = List.of(
+//                new DefaultLangStringTextType.Builder().text("An example submodel for the test application").language("en-us").build(),
+//                new DefaultLangStringTextType.Builder().text("Ein Beispiel-Teilmodell für eine Test-Anwendung").language("de").build()
+//        );
+//        assert withListOf.equals(withArraysAsList);
+//        assertEquals(withListOf,withArraysAsList);
+//    }
 
     @Test
     public void testExtension() throws IncompatibleTypeException {
@@ -154,11 +167,11 @@ public class SerializerTest {
                         .assetKind(AssetKind.INSTANCE)
                         .build())
                 .description(
-                        Arrays.asList(
+                        List.of(
                                 new DefaultLangStringTextType.Builder()
                                         .text("This is a test AAS")
                                         .language("en-us").build()))
-                .displayName(Arrays.asList(new DefaultLangStringNameType.Builder()
+                .displayName(List.of(new DefaultLangStringNameType.Builder()
                                 .text("Anzeigename 2").language("de").build(),
                         new DefaultLangStringNameType.Builder().text("Display Name 1")
                                 .language("en").build())).build();
@@ -166,11 +179,11 @@ public class SerializerTest {
         Submodel submodel = new DefaultSubmodel.Builder()
                 .id("example")
                 .description(
-                        Arrays.asList(new DefaultLangStringTextType.Builder()
+                        List.of(new DefaultLangStringTextType.Builder()
                                 .text("My Submodel")
                                 .language("en-us")
                                 .build()))
-                .displayName(Arrays.asList(new DefaultLangStringNameType.Builder()
+                .displayName(List.of(new DefaultLangStringNameType.Builder()
                                 .text("First Submodel Element name")
                                 .language("en").build(),
                         new DefaultLangStringNameType.Builder()
@@ -197,6 +210,57 @@ public class SerializerTest {
 
         String output = new RDFSerializer().write(aasEnv);
         System.out.println(output);
+    }
+
+    @Test
+    public void testMaximalSpecificAssetId() throws IncompatibleTypeException {
+        SpecificAssetId object = SerializerUtil.getMaximalSpecificAssetId();
+        RDFSerializationResult rdfSerializationResult = new DefaultSpecificAssetIdRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.SpecificAssetId);
+
+        SpecificAssetId recreatedObject = new DefaultSpecificAssetIdRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testResource() throws IncompatibleTypeException {
+        org.eclipse.digitaltwin.aas4j.v3.model.Resource object = SerializerUtil.getResource();
+        RDFSerializationResult rdfSerializationResult = new DefaultResourceRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.Resource);
+
+
+        org.eclipse.digitaltwin.aas4j.v3.model.Resource recreatedObject = new DefaultResourceRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMinimalAssetInformation() throws IncompatibleTypeException {
+        AssetInformation object = SerializerUtil.getMinimalAssetInformation();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetInformationRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetInformation);
+
+
+        AssetInformation recreatedObject = new DefaultAssetInformationRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
+    }
+
+    @Test
+    public void testMaximalAssetInformation() throws IncompatibleTypeException {
+        AssetInformation object = SerializerUtil.getMaximalAssetInformation();
+        RDFSerializationResult rdfSerializationResult = new DefaultAssetInformationRDFHandler().toModel(object);
+        rdfSerializationResult.getModel().write(System.out, Lang.TTL.getName());
+        Resource createdResource = rdfSerializationResult.getResource();
+        assert rdfSerializationResult.getModel().contains(createdResource, RDF.type, AASNamespace.Types.AssetInformation);
+
+
+        AssetInformation recreatedObject = new DefaultAssetInformationRDFHandler().fromModel(rdfSerializationResult.getModel(), createdResource);
+        assert object.equals(recreatedObject);
     }
 
 
