@@ -59,7 +59,7 @@ public class DefaultSubmodelElementRDFHandler implements RDFHandler<SubmodelElem
 
         throw new IllegalArgumentException("Provided object " +
                 object.getClass() +
-                " is not a known type");
+                " is not a known SubmodelElement");
     }
 
     @Override

@@ -43,7 +43,7 @@ public class DefaultEntityRDFHandler implements RDFHandler<Entity> {
         if (object.getGlobalAssetId() != null) {
             model.add(subject, AASNamespace.Entity.globalAssetId, object.getGlobalAssetId());
         }
-        if (object.getSpecificAssetIds() != null && !object.getSpecificAssetIds().isEmpty()) {
+        if (object.getSpecificAssetIds() != null && object.getSpecificAssetIds().isEmpty() == false) {
             int index = 0;
             for (SpecificAssetId item : object.getSpecificAssetIds()) {
                 RDFSerializationResult resultItem = new DefaultSpecificAssetIdRDFHandler().toModel(item);
@@ -78,17 +78,19 @@ public class DefaultEntityRDFHandler implements RDFHandler<Entity> {
                 SubmodelElement key = null;
                 try {
                     key = new DefaultSubmodelElementRDFHandler().fromModel(model, node.asResource());
+                    int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
+                    keysMap.put(index, key);
                 } catch (IncompatibleTypeException e) {
                     throw new RuntimeException(e);
                 }
-                int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
-                keysMap.put(index, key);
             });
-            List<SubmodelElement> submodelElements = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                submodelElements.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SubmodelElement> submodelElements = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    submodelElements.add(keysMap.get(index));
+                }
+                builder.statements(submodelElements);
             }
-            builder.statements(submodelElements);
         }
         if (model.contains(subjectToParse, AASNamespace.Entity.globalAssetId)) {
             builder.globalAssetId(model.getProperty(subjectToParse, AASNamespace.Entity.globalAssetId).getString());
@@ -104,17 +106,19 @@ public class DefaultEntityRDFHandler implements RDFHandler<Entity> {
                 SpecificAssetId key = null;
                 try {
                     key = new DefaultSpecificAssetIdRDFHandler().fromModel(model, node.asResource());
+                    int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
+                    keysMap.put(index, key);
                 } catch (IncompatibleTypeException e) {
                     throw new RuntimeException(e);
                 }
-                int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
-                keysMap.put(index, key);
             });
-            List<SpecificAssetId> specificAssetIds = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                specificAssetIds.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SpecificAssetId> specificAssetIds = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    specificAssetIds.add(keysMap.get(index));
+                }
+                builder.specificAssetIds(specificAssetIds);
             }
-            builder.specificAssetIds(specificAssetIds);
         }
         Entity object = builder.build();
         //HasDataSpecification

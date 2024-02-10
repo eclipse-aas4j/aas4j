@@ -5,10 +5,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.vocabulary.RDF;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.AASNamespace;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.DefaultRDFHandlerResult;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFHandler;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.RDFSerializationResult;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
@@ -30,9 +27,9 @@ public class DefaultKeyRDFHandler implements RDFHandler<Key> {
         return new DefaultRDFHandlerResult(model, subject);
     }
 
-    public Key fromModel(Model model, Resource subjectToParse) {
+    public Key fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.Key)) {
-            throw new IllegalArgumentException("Provided Resource is not a Key");
+            throw new IncompatibleTypeException("Key");
         }
         DefaultKey.Builder builder = new DefaultKey.Builder();
         if (model.contains(subjectToParse, AASNamespace.Key.value)) {

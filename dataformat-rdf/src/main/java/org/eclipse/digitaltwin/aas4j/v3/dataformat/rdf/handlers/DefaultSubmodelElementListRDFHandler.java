@@ -70,7 +70,7 @@ public class DefaultSubmodelElementListRDFHandler implements RDFHandler<Submodel
             throw new IncompatibleTypeException("SubmodelElementList");
         }
         DefaultSubmodelElementList.Builder builder = new DefaultSubmodelElementList.Builder();
-        builder.orderRelevant(false);
+        builder.orderRelevant(true);
         if (model.contains(subjectToParse, AASNamespace.SubmodelElementList.orderRelevant)) {
             builder.orderRelevant(model.getProperty(subjectToParse,
                     AASNamespace.SubmodelElementList.orderRelevant).getBoolean());
@@ -91,12 +91,8 @@ public class DefaultSubmodelElementListRDFHandler implements RDFHandler<Submodel
                     AASNamespace.SubmodelElementList.typeValueListElement).getResource();
             builder.typeValueListElement(AASNamespace.AasSubmodelElements.fromIRI(resource.getURI()));
         }
-        if (model.contains(subjectToParse, AASNamespace.SubmodelElementList.orderRelevant)) {
-            builder.orderRelevant(model.getProperty(subjectToParse,
-                    AASNamespace.SubmodelElementList.orderRelevant).getBoolean());
-        }
         if (model.contains(subjectToParse, AASNamespace.SubmodelElementList.value)) {
-            NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ConceptDescription.isCaseOf);
+            NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.SubmodelElementList.value);
             Map<Integer, SubmodelElement> keysMap = new HashMap<>();
             nodeIterator.forEachRemaining(node -> {
                 SubmodelElement key = null;
@@ -108,11 +104,13 @@ public class DefaultSubmodelElementListRDFHandler implements RDFHandler<Submodel
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<SubmodelElement> references = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                references.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SubmodelElement> submodelElements = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    submodelElements.add(keysMap.get(index));
+                }
+                builder.value(submodelElements);
             }
-            builder.value(references);
         }
         SubmodelElementList object = builder.build();
         //HasDataSpecification

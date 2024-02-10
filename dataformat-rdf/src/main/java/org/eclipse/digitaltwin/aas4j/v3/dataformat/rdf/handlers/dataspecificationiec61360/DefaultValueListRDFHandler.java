@@ -21,14 +21,17 @@ public class DefaultValueListRDFHandler implements RDFHandler<ValueList> {
         }
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.ValueList);
-        int index = 0;
-        for (ValueReferencePair valueReferencePair : object.getValueReferencePairs()) {
-            RDFSerializationResult valueReferencePairSerializationResult = new DefaultValueReferencePairRDFHandler().toModel(valueReferencePair);
-            model.add(subject, AASNamespace.ValueList.valueReferencePairs, valueReferencePairSerializationResult.getResource());
-            model.addLiteral(valueReferencePairSerializationResult.getResource(), AASNamespace.index, index);
-            model.add(valueReferencePairSerializationResult.getModel());
-            index++;
+        if (object.getValueReferencePairs() != null && object.getValueReferencePairs().isEmpty() == false) {
+            int index = 0;
+            for (ValueReferencePair valueReferencePair : object.getValueReferencePairs()) {
+                RDFSerializationResult valueReferencePairSerializationResult = new DefaultValueReferencePairRDFHandler().toModel(valueReferencePair);
+                model.add(subject, AASNamespace.ValueList.valueReferencePairs, valueReferencePairSerializationResult.getResource());
+                model.addLiteral(valueReferencePairSerializationResult.getResource(), AASNamespace.index, index);
+                model.add(valueReferencePairSerializationResult.getModel());
+                index++;
+            }
         }
+
         return new DefaultRDFHandlerResult(model, subject);
     }
 
@@ -37,24 +40,28 @@ public class DefaultValueListRDFHandler implements RDFHandler<ValueList> {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.ValueList)) {
             throw new IncompatibleTypeException("ValueList");
         }
-        NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ValueList.valueReferencePairs);
-        Map<Integer, ValueReferencePair> keysMap = new HashMap<>();
-        nodeIterator.forEachRemaining(node -> {
-            ValueReferencePair key = null;
-            try {
-                key = new DefaultValueReferencePairRDFHandler().fromModel(model, node.asResource());
-            } catch (IncompatibleTypeException e) {
-                throw new RuntimeException(e);
+        DefaultValueList.Builder builder = new DefaultValueList.Builder();
+        if (model.contains(subjectToParse, AASNamespace.ValueList.valueReferencePairs)) {
+            NodeIterator nodeIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.ValueList.valueReferencePairs);
+            Map<Integer, ValueReferencePair> keysMap = new HashMap<>();
+            nodeIterator.forEachRemaining(node -> {
+                ValueReferencePair key = null;
+                try {
+                    key = new DefaultValueReferencePairRDFHandler().fromModel(model, node.asResource());
+                } catch (IncompatibleTypeException e) {
+                    throw new RuntimeException(e);
+                }
+                int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
+                keysMap.put(index, key);
+            });
+            if (keysMap.isEmpty() == false) {
+                List<ValueReferencePair> valueReferencePairList = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    valueReferencePairList.add(keysMap.get(index));
+                }
+                builder.valueReferencePairs(valueReferencePairList);
             }
-            int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
-            keysMap.put(index, key);
-        });
-        List<ValueReferencePair> valueReferencePairList = new ArrayList<>();
-        for (int index = 0; index < keysMap.keySet().size(); index++) {
-            valueReferencePairList.add(keysMap.get(index));
         }
-        return new DefaultValueList.Builder()
-                .valueReferencePairs(valueReferencePairList)
-                .build();
+        return builder.build();
     }
 }

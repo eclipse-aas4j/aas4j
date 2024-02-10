@@ -4,15 +4,32 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
 
 public class SerializerUtil {
+    public static ConceptDescription getMinimalConceptDescription() {
+        return new DefaultConceptDescription.Builder()
+                .id("simple")
+                .build();
+    }
 
+    public static ConceptDescription getMaximalConceptDescription() {
+        return new DefaultConceptDescription.Builder()
+                .id("complex")
+                .extensions(SerializerUtil.getExtensionList())
+                .category("myCategory")
+                .idShort("exampleIdShort")
+                .displayName(SerializerUtil.getDisplayNames())
+                .description(SerializerUtil.getDescriptions())
+                .administration(SerializerUtil.getAdministrativeInformation())
+                .isCaseOf(SerializerUtil.getIsCaseOfs())
+                .embeddedDataSpecifications(SerializerUtil.getMaximalEmbeddedDataSpecifications())
+                .build();
+    }
 
-    public static DefaultDataSpecificationIec61360 getDataSpecificationIec61360() {
+    public static DataSpecificationIec61360 getDataSpecificationIec61360() {
         return new DefaultDataSpecificationIec61360.Builder()
                 .dataType(DataTypeIec61360.STRING)
                 .value("exampleValue")
@@ -119,7 +136,7 @@ public class SerializerUtil {
     }
 
     static List<Reference> getIsCaseOfs() {
-        return Arrays.asList(
+        return List.of(
                 new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
                                 .value("https://example.com/outside")
@@ -132,22 +149,12 @@ public class SerializerUtil {
         return new DefaultAdministrativeInformation.Builder()
                 .version("1")
                 .revision("0")
-                .creator(new DefaultReference.Builder().keys(
-                                Arrays.asList(new DefaultKey.Builder()
-                                                .value("https://example.com")
-                                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .build(),
-                                        new DefaultKey.Builder()
-                                                .value("fragment")
-                                                .type(KeyTypes.FRAGMENT_REFERENCE)
-                                                .build()))
-                        .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                        .build())
+                .creator(getMaximalReference())
                 .build();
     }
 
     static List<LangStringTextType> getDescriptions() {
-        return Arrays.asList(
+        return List.of(
                 new DefaultLangStringTextType.Builder()
                         .text("A long text in English")
                         .language("en")
@@ -159,7 +166,7 @@ public class SerializerUtil {
     }
 
     static List<LangStringNameType> getDisplayNames() {
-        return Arrays.asList(
+        return List.of(
                 new DefaultLangStringNameType.Builder()
                         .text("text in English")
                         .language("en")
@@ -175,26 +182,9 @@ public class SerializerUtil {
                 .name("extension1")
                 .value("extension1Value")
                 .valueType(DataTypeDefXsd.ANY_URI)
-                .refersTo(Arrays.asList(
-                        new DefaultReference.Builder()
-                                .keys(new DefaultKey.Builder()
-                                        .value("refersTo")
-                                        .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE).build()))
-                .semanticId(new DefaultReference.Builder()
-                        .keys(new DefaultKey.Builder()
-                                .value("semanticId")
-                                .type(KeyTypes.GLOBAL_REFERENCE)
-                                .build())
-                        .type(ReferenceTypes.EXTERNAL_REFERENCE).build())
-                .supplementalSemanticIds(Arrays.asList(
-                        new DefaultReference.Builder()
-                                .keys(new DefaultKey.Builder()
-                                        .value("supplementalSemanticIds")
-                                        .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .build())
-                                .type(ReferenceTypes.EXTERNAL_REFERENCE).build()))
+                .refersTo(getMaximalReference())
+                .semanticId(getMaximalReference())
+                .supplementalSemanticIds(getMaximalReferenceList())
                 .build();
     }
 
@@ -206,6 +196,78 @@ public class SerializerUtil {
                         .build())
                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                 .build();
+    }
+
+    static Reference getMaximalReference() {
+        return new DefaultReference.Builder().keys(
+                        List.of(new DefaultKey.Builder()
+                                        .value("https://example.com")
+                                        .type(KeyTypes.GLOBAL_REFERENCE)
+                                        .build(),
+                                new DefaultKey.Builder()
+                                        .value("fragment")
+                                        .type(KeyTypes.FRAGMENT_REFERENCE)
+                                        .build()))
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .build();
+    }
+
+    static List<Reference> getMaximalReferenceList() {
+        return List.of(
+                getMaximalReference(),
+                getMinimalReference(),
+                new DefaultReference.Builder()
+                        .keys(
+                                List.of(
+                                        new DefaultKey.Builder()
+                                                .value("https://example.com")
+                                                .type(KeyTypes.SUBMODEL)
+                                                .build(),
+                                        new DefaultKey.Builder()
+                                                .value("property")
+                                                .type(KeyTypes.PROPERTY)
+                                                .build())
+                        )
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .build(),
+                new DefaultReference.Builder()
+                        .keys(
+                                List.of(
+                                        new DefaultKey.Builder()
+                                                .value("https://example.com")
+                                                .type(KeyTypes.CONCEPT_DESCRIPTION)
+                                                .build())
+                        )
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .build(),
+                new DefaultReference.Builder().keys(
+                                List.of(
+                                        new DefaultKey.Builder()
+                                                .value("https://example.com")
+                                                .type(KeyTypes.SUBMODEL)
+                                                .build(),
+                                        new DefaultKey.Builder()
+                                                .value("ANNOTATED_RELATIONSHIP_ELEMENT")
+                                                .type(KeyTypes.ANNOTATED_RELATIONSHIP_ELEMENT)
+                                                .build())
+                        )
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .build(),
+                new DefaultReference.Builder().keys(
+                                List.of(
+                                        new DefaultKey.Builder()
+                                                .value("https://example.com")
+                                                .type(KeyTypes.SUBMODEL)
+                                                .build(),
+                                        new DefaultKey.Builder()
+                                                .value("BASIC_EVENT_ELEMENT")
+                                                .type(KeyTypes.BASIC_EVENT_ELEMENT)
+                                                .build())
+                        )
+                        .type(ReferenceTypes.MODEL_REFERENCE)
+                        .build()
+
+        );
     }
 
     static Qualifier getMinimalQualifier() {
@@ -432,6 +494,13 @@ public class SerializerUtil {
         return new DefaultEntity.Builder()
                 .idShort("E1")
                 .entityType(EntityType.SELF_MANAGED_ENTITY)
+                .statements(List.of(getMinimalProperty(), getMinimalAnnotatedRelationshipElement()))
+                .embeddedDataSpecifications(getMaximalEmbeddedDataSpecifications())
+                .globalAssetId("global")
+                .description(getDescriptions())
+                .displayName(getDisplayNames())
+                .qualifiers(getMaximalQualifier())
+                .supplementalSemanticIds(getMaximalReferenceList())
                 .build();
     }
 
@@ -587,7 +656,7 @@ public class SerializerUtil {
 
 
     static List<Extension> getExtensionList() {
-        return Arrays.asList(
+        return List.of(
                 getMaximalExtension(),
                 getMiniamlExtension());
     }

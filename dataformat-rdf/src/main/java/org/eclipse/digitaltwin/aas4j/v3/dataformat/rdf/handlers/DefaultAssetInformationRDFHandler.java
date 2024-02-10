@@ -90,11 +90,13 @@ public class DefaultAssetInformationRDFHandler implements RDFHandler<AssetInform
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<SpecificAssetId> specificAssetIds = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                specificAssetIds.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SpecificAssetId> specificAssetIds = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    specificAssetIds.add(keysMap.get(index));
+                }
+                builder.specificAssetIds(specificAssetIds);
             }
-            builder.specificAssetIds(specificAssetIds);
         }
         return builder.build();
     }

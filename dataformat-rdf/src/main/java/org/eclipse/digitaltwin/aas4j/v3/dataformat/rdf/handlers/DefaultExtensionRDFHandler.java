@@ -76,11 +76,13 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<Reference> references = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                references.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<Reference> references = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    references.add(keysMap.get(index));
+                }
+                builder.refersTo(references);
             }
-            builder.refersTo(references);
         }
         //HasSemantics
         Extension object = builder.build();

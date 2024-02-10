@@ -46,7 +46,12 @@ public class DefaultReferenceRDFHandler implements RDFHandler<Reference> {
         Map<Integer, Key> keysMap = new HashMap<>();
         NodeIterator keysIterator = model.listObjectsOfProperty(subjectToParse, AASNamespace.Reference.keys);
         keysIterator.forEachRemaining(node -> {
-            Key key = new DefaultKeyRDFHandler().fromModel(model, (Resource) node);
+            Key key = null;
+            try {
+                key = new DefaultKeyRDFHandler().fromModel(model, (Resource) node);
+            } catch (IncompatibleTypeException e) {
+                throw new RuntimeException(e);
+            }
             int index = model.getProperty((Resource) node, AASNamespace.index).getInt();
             keysMap.put(index, key);
         });

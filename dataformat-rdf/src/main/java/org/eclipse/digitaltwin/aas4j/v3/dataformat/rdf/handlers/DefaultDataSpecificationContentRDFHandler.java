@@ -20,7 +20,7 @@ public class DefaultDataSpecificationContentRDFHandler implements RDFHandler<Dat
 
         throw new IllegalArgumentException("Provided object " +
                 object.getClass() +
-                " is not a known type");
+                " is not a known DataSpecificationContent");
     }
 
     @Override
@@ -32,6 +32,6 @@ public class DefaultDataSpecificationContentRDFHandler implements RDFHandler<Dat
         //Other data specification content should be discriminated here.
         throw new IllegalArgumentException("Provided Resource " +
                 typeStatement.getResource().getURI() +
-                " is not a SubmodelElement");
+                " is not a known DataSpecificationContent");
     }
 }

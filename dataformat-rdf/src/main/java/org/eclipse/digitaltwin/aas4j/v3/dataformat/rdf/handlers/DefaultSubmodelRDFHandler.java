@@ -70,11 +70,13 @@ public class DefaultSubmodelRDFHandler implements RDFHandler<Submodel> {
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<SubmodelElement> submodelElements = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                submodelElements.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<SubmodelElement> submodelElements = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    submodelElements.add(keysMap.get(index));
+                }
+                builder.submodelElements(submodelElements);
             }
-            builder.submodelElements(submodelElements);
         }
         //HasKind
         if (model.contains(subjectToParse, AASNamespace.HasKind.kind)) {

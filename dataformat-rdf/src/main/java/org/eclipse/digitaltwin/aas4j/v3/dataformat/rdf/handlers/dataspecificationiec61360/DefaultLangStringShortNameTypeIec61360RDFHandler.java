@@ -30,12 +30,15 @@ public class DefaultLangStringShortNameTypeIec61360RDFHandler implements RDFHand
     @Override
     public LangStringShortNameTypeIec61360 fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LangStringShortNameTypeIec61360)) {
-            throw new IllegalArgumentException("Provided Resource is not a LangStringShortNameTypeIec61360");
+            throw new IncompatibleTypeException("LangStringShortNameTypeIec61360");
         }
-
-        return new DefaultLangStringShortNameTypeIec61360.Builder()
-                .text(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.text).getString())
-                .language(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.language).getString())
-                .build();
+        DefaultLangStringShortNameTypeIec61360.Builder builder = new DefaultLangStringShortNameTypeIec61360.Builder();
+        if (model.contains(subjectToParse, AASNamespace.AbstractLangString.text)) {
+            builder.text(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.text).getString());
+        }
+        if (model.contains(subjectToParse, AASNamespace.AbstractLangString.language)) {
+            builder.language(model.getProperty(subjectToParse, AASNamespace.AbstractLangString.language).getString());
+        }
+        return builder.build();
     }
 }

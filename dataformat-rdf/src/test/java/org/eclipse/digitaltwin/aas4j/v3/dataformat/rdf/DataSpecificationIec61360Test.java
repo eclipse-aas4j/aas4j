@@ -80,7 +80,6 @@ public class DataSpecificationIec61360Test {
         model.write(System.out, Lang.TTL.getName());
         Resource createdResource = rdfSerializationResult.getResource();
         assert model.contains(createdResource, RDF.type, AASNamespace.Types.DataSpecificationIec61360);
-//        assert model.contains(createdResource, AASNamespace.Identifiable.id, conceptDescription.getId());
 
         DataSpecificationIec61360 recreatedDataSpecification = new DefaultDataSpecificationIEC61360RDFHandler().fromModel(model, createdResource);
         assert dataSpecificationIec61360.equals(recreatedDataSpecification);

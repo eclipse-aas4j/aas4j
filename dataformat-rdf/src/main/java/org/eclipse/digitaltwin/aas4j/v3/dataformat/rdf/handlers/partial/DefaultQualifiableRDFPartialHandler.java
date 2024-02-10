@@ -47,11 +47,13 @@ public class DefaultQualifiableRDFPartialHandler implements RDFPartialHandler<Qu
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<Qualifier> langStringList = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                langStringList.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<Qualifier> qualifiers = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    qualifiers.add(keysMap.get(index));
+                }
+                object.setQualifiers(qualifiers);
             }
-            object.setQualifiers(langStringList);
         }
         return object;
     }

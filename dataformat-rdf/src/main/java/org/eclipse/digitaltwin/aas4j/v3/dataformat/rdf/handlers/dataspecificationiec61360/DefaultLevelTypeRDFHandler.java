@@ -28,13 +28,21 @@ public class DefaultLevelTypeRDFHandler implements RDFHandler<LevelType> {
     @Override
     public LevelType fromModel(Model model, Resource subjectToParse) throws IncompatibleTypeException {
         if (!model.contains(subjectToParse, RDF.type, AASNamespace.Types.LevelType)) {
-            throw new IllegalArgumentException("Provided Resource is not a LevelType");
+            throw new IncompatibleTypeException("LevelType");
         }
-        return new DefaultLevelType.Builder()
-                .min(model.getProperty(subjectToParse, AASNamespace.LevelType.min).getBoolean())
-                .max(model.getProperty(subjectToParse, AASNamespace.LevelType.max).getBoolean())
-                .nom(model.getProperty(subjectToParse, AASNamespace.LevelType.nom).getBoolean())
-                .typ(model.getProperty(subjectToParse, AASNamespace.LevelType.typ).getBoolean())
-                .build();
+        DefaultLevelType.Builder builder = new DefaultLevelType.Builder();
+        if (model.contains(subjectToParse, AASNamespace.LevelType.min)) {
+            builder.min(model.getProperty(subjectToParse, AASNamespace.LevelType.min).getBoolean());
+        }
+        if (model.contains(subjectToParse, AASNamespace.LevelType.max)) {
+            builder.max(model.getProperty(subjectToParse, AASNamespace.LevelType.max).getBoolean());
+        }
+        if (model.contains(subjectToParse, AASNamespace.LevelType.nom)) {
+            builder.nom(model.getProperty(subjectToParse, AASNamespace.LevelType.nom).getBoolean());
+        }
+        if (model.contains(subjectToParse, AASNamespace.LevelType.min)) {
+            builder.typ(model.getProperty(subjectToParse, AASNamespace.LevelType.typ).getBoolean());
+        }
+        return builder.build();
     }
 }

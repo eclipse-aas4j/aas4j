@@ -81,11 +81,13 @@ public class DefaultAnnotatedRelationshipElementRDFHandler implements RDFHandler
                 int index = model.getProperty(node.asResource(), AASNamespace.index).getInt();
                 keysMap.put(index, key);
             });
-            List<DataElement> references = new ArrayList<>();
-            for (int index = 0; index < keysMap.keySet().size(); index++) {
-                references.add(keysMap.get(index));
+            if (keysMap.isEmpty() == false) {
+                List<DataElement> dataElements = new ArrayList<>();
+                for (int index = 0; index < keysMap.keySet().size(); index++) {
+                    dataElements.add(keysMap.get(index));
+                }
+                builder.annotations(dataElements);
             }
-            builder.annotations(references);
         }
         //RelationshipElement
         if (model.contains(subjectToParse, AASNamespace.RelationshipElement.first)) {
