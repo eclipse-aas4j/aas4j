@@ -26,7 +26,6 @@ import java.util.Objects;
 public class CustomProperty implements Property {
 
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new LinkedList<>();
-    ;
 
     protected Reference semanticId;
 
@@ -37,20 +36,16 @@ public class CustomProperty implements Property {
     protected DataTypeDefXsd valueType;
 
     protected List<Qualifier> qualifiers = new LinkedList<>();
-    ;
 
     protected String category;
 
     protected List<LangStringTextType> description = new LinkedList<>();
-    ;
 
     protected List<LangStringNameType> displayName = new LinkedList<>();
-    ;
 
     protected String idShort;
 
     protected List<Extension> extensions = new LinkedList<>();
-    ;
 
     protected List<Reference> supplementalSemanticIds = new LinkedList<>();
 
@@ -79,7 +74,7 @@ public class CustomProperty implements Property {
             return true;
         } else if (obj == null) {
             return false;
-        } else if ((obj instanceof Property) == false) {
+        } else if (!(obj instanceof Property)) {
             return false;
         } else {
             Property other = (Property) obj;
