@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.PackageDescriptionBuilder;
@@ -52,12 +53,12 @@ public class DefaultPackageDescription implements PackageDescription {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof PackageDescription) == false) {
             return false;
         } else {
-            DefaultPackageDescription other = (DefaultPackageDescription) obj;
-            return Objects.equals(this.items, other.items) &&
-                Objects.equals(this.packageId, other.packageId);
+            PackageDescription other = (PackageDescription) obj;
+            return Objects.equals(this.items, other.getItems()) &&
+                Objects.equals(this.packageId, other.getPackageId());
         }
     }
 

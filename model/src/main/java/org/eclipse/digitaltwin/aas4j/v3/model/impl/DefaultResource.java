@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
@@ -52,12 +53,12 @@ public class DefaultResource implements Resource {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Resource) == false) {
             return false;
         } else {
-            DefaultResource other = (DefaultResource) obj;
-            return Objects.equals(this.path, other.path) &&
-                Objects.equals(this.contentType, other.contentType);
+            Resource other = (Resource) obj;
+            return Objects.equals(this.path, other.getPath()) &&
+                Objects.equals(this.contentType, other.getContentType());
         }
     }
 

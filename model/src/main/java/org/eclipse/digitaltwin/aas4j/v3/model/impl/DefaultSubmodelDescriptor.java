@@ -15,13 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelDescriptorBuilder;
 
@@ -86,19 +80,19 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof SubmodelDescriptor) == false) {
             return false;
         } else {
-            DefaultSubmodelDescriptor other = (DefaultSubmodelDescriptor) obj;
-            return Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.endpoints, other.endpoints) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticId, other.supplementalSemanticId) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.extensions, other.extensions);
+            SubmodelDescriptor other = (SubmodelDescriptor) obj;
+            return Objects.equals(this.administration, other.getAdministration()) &&
+                Objects.equals(this.endpoints, other.getEndpoints()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.id, other.getId()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticId, other.getSupplementalSemanticId()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.extensions, other.getExtensions());
         }
     }
 

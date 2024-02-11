@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -54,12 +55,12 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof EmbeddedDataSpecification) == false) {
             return false;
         } else {
-            DefaultEmbeddedDataSpecification other = (DefaultEmbeddedDataSpecification) obj;
-            return Objects.equals(this.dataSpecification, other.dataSpecification) &&
-                Objects.equals(this.dataSpecificationContent, other.dataSpecificationContent);
+            EmbeddedDataSpecification other = (EmbeddedDataSpecification) obj;
+            return Objects.equals(this.dataSpecification, other.getDataSpecification()) &&
+                Objects.equals(this.dataSpecificationContent, other.getDataSpecificationContent());
         }
     }
 

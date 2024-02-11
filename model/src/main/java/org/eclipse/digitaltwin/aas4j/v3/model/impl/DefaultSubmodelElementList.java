@@ -15,16 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelElementListBuilder;
 
@@ -112,24 +103,24 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof SubmodelElementList) == false) {
             return false;
         } else {
-            DefaultSubmodelElementList other = (DefaultSubmodelElementList) obj;
-            return Objects.equals(this.orderRelevant, other.orderRelevant) &&
-                Objects.equals(this.semanticIdListElement, other.semanticIdListElement) &&
-                Objects.equals(this.typeValueListElement, other.typeValueListElement) &&
-                Objects.equals(this.valueTypeListElement, other.valueTypeListElement) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+            SubmodelElementList other = (SubmodelElementList) obj;
+            return Objects.equals(this.orderRelevant, other.getOrderRelevant()) &&
+                Objects.equals(this.semanticIdListElement, other.getSemanticIdListElement()) &&
+                Objects.equals(this.typeValueListElement, other.getTypeValueListElement()) &&
+                Objects.equals(this.valueTypeListElement, other.getValueTypeListElement()) &&
+                Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds()) &&
+                Objects.equals(this.qualifiers, other.getQualifiers()) &&
+                Objects.equals(this.category, other.getCategory()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.extensions, other.getExtensions());
         }
     }
 

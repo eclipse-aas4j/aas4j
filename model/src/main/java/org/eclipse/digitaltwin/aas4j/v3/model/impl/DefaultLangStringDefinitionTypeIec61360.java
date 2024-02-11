@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringDefinitionTypeIec61360Builder;
@@ -52,12 +53,12 @@ public class DefaultLangStringDefinitionTypeIec61360 implements LangStringDefini
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof LangStringDefinitionTypeIec61360) == false) {
             return false;
         } else {
-            DefaultLangStringDefinitionTypeIec61360 other = (DefaultLangStringDefinitionTypeIec61360) obj;
-            return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+            LangStringDefinitionTypeIec61360 other = (LangStringDefinitionTypeIec61360) obj;
+            return Objects.equals(this.language, other.getLanguage()) &&
+                Objects.equals(this.text, other.getText());
         }
     }
 

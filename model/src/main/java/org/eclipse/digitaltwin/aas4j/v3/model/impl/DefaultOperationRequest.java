@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -58,13 +59,13 @@ public class DefaultOperationRequest implements OperationRequest {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof OperationRequest) == false) {
             return false;
         } else {
-            DefaultOperationRequest other = (DefaultOperationRequest) obj;
-            return Objects.equals(this.inoutputArguments, other.inoutputArguments) &&
-                Objects.equals(this.inputArguments, other.inputArguments) &&
-                Objects.equals(this.clientTimeoutDuration, other.clientTimeoutDuration);
+            OperationRequest other = (OperationRequest) obj;
+            return Objects.equals(this.inoutputArguments, other.getInoutputArguments()) &&
+                Objects.equals(this.inputArguments, other.getInputArguments()) &&
+                Objects.equals(this.clientTimeoutDuration, other.getClientTimeoutDuration());
         }
     }
 

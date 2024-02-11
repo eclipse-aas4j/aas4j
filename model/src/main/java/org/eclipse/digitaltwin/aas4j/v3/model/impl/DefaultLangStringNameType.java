@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringNameTypeBuilder;
@@ -51,12 +52,12 @@ public class DefaultLangStringNameType implements LangStringNameType {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof LangStringNameType) == false) {
             return false;
         } else {
-            DefaultLangStringNameType other = (DefaultLangStringNameType) obj;
-            return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+            LangStringNameType other = (LangStringNameType) obj;
+            return Objects.equals(this.language, other.getLanguage()) &&
+                Objects.equals(this.text, other.getText());
         }
     }
 

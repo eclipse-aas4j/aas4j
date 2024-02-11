@@ -15,10 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.DescriptorBuilder;
 
@@ -59,13 +56,13 @@ public class DefaultDescriptor implements Descriptor {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Descriptor) == false) {
             return false;
         } else {
-            DefaultDescriptor other = (DefaultDescriptor) obj;
-            return Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.extensions, other.extensions);
+            Descriptor other = (Descriptor) obj;
+            return Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.extensions, other.getExtensions());
         }
     }
 
