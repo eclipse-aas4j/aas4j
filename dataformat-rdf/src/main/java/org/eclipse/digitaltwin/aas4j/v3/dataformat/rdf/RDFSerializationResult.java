@@ -15,10 +15,10 @@ public interface RDFSerializationResult {
     Model getModel();
 
     /**
-     * corresponding node created in the graph as a starting point
-     * note that this is a Apache Jena's {@link org.apache.jena.rdf.model.Resource}
+     * Corresponding node created in the graph as a starting point.
+     * Note that this is an Apache Jena's {@link org.apache.jena.rdf.model.Resource}
      *
-     * @return a Resource in the graph
+     * @return created Resource in the graph
      */
     Resource getResource();
 }

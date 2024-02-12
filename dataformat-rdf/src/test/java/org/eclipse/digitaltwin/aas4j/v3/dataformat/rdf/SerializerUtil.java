@@ -347,6 +347,20 @@ public class SerializerUtil {
                 SerializerUtil.getMaximalReferenceElement(),
                 SerializerUtil.getMaximalRelationshipElement(),
                 SerializerUtil.getMaximalSubmodelElementCollection(),
+                SerializerUtil.getMaximalSubmodelElementList(),
+                SerializerUtil.getMaximalAnnotatedRelationshipElement(),
+                SerializerUtil.getMaximalBasicEventElement(),
+                SerializerUtil.getMaximalBlob(),
+                SerializerUtil.getMaximalCapability(),
+                SerializerUtil.getMaximalEntity(),
+                SerializerUtil.getMaximalFile(),
+                SerializerUtil.getMaximalMultiLanguageProperty(),
+                SerializerUtil.getMaximalOperation(),
+                SerializerUtil.getMaximalProperty(),
+                SerializerUtil.getMaximalRange(),
+                SerializerUtil.getMaximalReferenceElement(),
+                SerializerUtil.getMaximalRelationshipElement(),
+                SerializerUtil.getMaximalSubmodelElementCollection(),
                 SerializerUtil.getMaximalSubmodelElementList()
         );
     }
@@ -451,6 +465,12 @@ public class SerializerUtil {
                 .idShort("BEE1")
                 .direction(Direction.OUTPUT)
                 .state(StateOfEvent.OFF)
+                .messageBroker(getMaximalReference())
+                .messageTopic("topic")
+                .minInterval("1s")
+                .maxInterval("2s")
+                .lastUpdate("3s")
+                .semanticId(getMinimalReference())
                 .observed(getMinimalReference())
                 .build();
     }
@@ -497,6 +517,7 @@ public class SerializerUtil {
                 .statements(List.of(getMinimalProperty(), getMinimalAnnotatedRelationshipElement()))
                 .embeddedDataSpecifications(getMaximalEmbeddedDataSpecifications())
                 .globalAssetId("global")
+                .specificAssetIds(getMaximalSpecificAssetId())
                 .description(getDescriptions())
                 .displayName(getDisplayNames())
                 .qualifiers(getMaximalQualifier())
@@ -529,6 +550,9 @@ public class SerializerUtil {
         return new DefaultRange.Builder()
                 .idShort("R1")
                 .valueType(DataTypeDefXsd.DECIMAL)
+                .max("19")
+                .min("10")
+
                 .build();
     }
 
@@ -541,6 +565,7 @@ public class SerializerUtil {
     static ReferenceElement getMaximalReferenceElement() {
         return new DefaultReferenceElement.Builder()
                 .idShort("RE1")
+                .value(getMaximalReference())
                 .build();
     }
 
@@ -553,18 +578,53 @@ public class SerializerUtil {
     static RelationshipElement getMaximalRelationshipElement() {
         return new DefaultRelationshipElement.Builder()
                 .idShort("ReE1")
+                .first(getMaximalReference())
+                .second(getMinimalReference())
                 .build();
     }
 
     static SubmodelElementCollection getMinimalSubmodelElementCollection() {
         return new DefaultSubmodelElementCollection.Builder()
-                .idShort("SEC1")
+                .idShort("MinimalSubmodelElementCollection")
                 .build();
     }
 
     static SubmodelElementCollection getMaximalSubmodelElementCollection() {
         return new DefaultSubmodelElementCollection.Builder()
-                .idShort("SEC1")
+                .idShort("MaximalSubmodelElementCollection")
+                .value(
+                        List.of(
+                                getMinimalSubmodelElementCollection(),
+                                getMaximalFile(),
+                                getMinimalSubmodelElementCollection(),
+                                SerializerUtil.getMinimalAnnotatedRelationshipElement(),
+                                SerializerUtil.getMinimalBasicEventElement(),
+                                SerializerUtil.getMinimalBlob(),
+                                SerializerUtil.getMinimalCapability(),
+                                SerializerUtil.getMinimalEntity(),
+                                SerializerUtil.getMinimalFile(),
+                                SerializerUtil.getMinimalMultiLanguageProperty(),
+                                SerializerUtil.getMinimalOperation(),
+                                SerializerUtil.getMinimalProperty(),
+                                SerializerUtil.getMinimalRange(),
+                                SerializerUtil.getMinimalReferenceElement(),
+                                SerializerUtil.getMinimalRelationshipElement(),
+                                SerializerUtil.getMinimalSubmodelElementCollection(),
+                                SerializerUtil.getMinimalSubmodelElementList(),
+                                SerializerUtil.getMaximalAnnotatedRelationshipElement(),
+                                SerializerUtil.getMaximalBasicEventElement(),
+                                SerializerUtil.getMaximalBlob(),
+                                SerializerUtil.getMaximalCapability(),
+                                SerializerUtil.getMaximalEntity(),
+                                SerializerUtil.getMaximalFile(),
+                                SerializerUtil.getMaximalMultiLanguageProperty(),
+                                SerializerUtil.getMaximalOperation(),
+                                SerializerUtil.getMaximalProperty(),
+                                SerializerUtil.getMaximalRange(),
+                                SerializerUtil.getMaximalReferenceElement(),
+                                SerializerUtil.getMaximalRelationshipElement()
+                        )
+                )
                 .build();
     }
 
@@ -577,6 +637,8 @@ public class SerializerUtil {
     static SubmodelElementList getMaximalSubmodelElementList() {
         return new DefaultSubmodelElementList.Builder()
                 .idShort("SEL1")
+                .semanticIdListElement(getMaximalReference())
+                .valueTypeListElement(DataTypeDefXsd.STRING)
                 .build();
     }
 

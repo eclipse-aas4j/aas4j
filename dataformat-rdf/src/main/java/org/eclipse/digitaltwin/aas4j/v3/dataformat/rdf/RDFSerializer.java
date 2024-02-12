@@ -1,10 +1,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
-import org.apache.jena.rdf.model.Model;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFLanguages;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEnvironmentRDFHandler;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultReferableRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
@@ -56,7 +56,10 @@ public class RDFSerializer {
      */
     public String write(Referable referable, Lang serializationFormat) throws SerializationException {
         try {
-            throw new RuntimeException("Not Implemented");
+            RDFSerializationResult rdfSerializationResult = new DefaultReferableRDFHandler().toModel(referable);
+            StringWriter stringWriter = new StringWriter();
+            rdfSerializationResult.getModel().write(stringWriter, serializationFormat.getName());
+            return stringWriter.toString();
         } catch (Exception ex) {
             throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
         }
@@ -79,8 +82,9 @@ public class RDFSerializer {
      * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
      * @return the Jena Model
      */
-    public Model toModel(Environment aasEnvironment) {
-        throw new RuntimeException("Not Implemented");
+    public RDFSerializationResult toModel(Environment aasEnvironment) {
+        RDFSerializationResult rdfSerializationResult = new DefaultEnvironmentRDFHandler().toModel(aasEnvironment);
+        return rdfSerializationResult;
     }
 
     /**
@@ -90,7 +94,8 @@ public class RDFSerializer {
      * @return the RDFSerializationResult contains the Apache Jena model as well as the corresponding created resource
      */
     public RDFSerializationResult toModel(Referable referable) {
-        return null;
+        RDFSerializationResult rdfSerializationResult = new DefaultReferableRDFHandler().toModel(referable);
+        return rdfSerializationResult;
     }
 
 
