@@ -33,6 +33,7 @@ import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
@@ -94,7 +95,7 @@ public class AASXSerializer {
      */
     public void write(Environment environment, Collection<InMemoryFile> files, OutputStream os)
             throws SerializationException, IOException {
-        prepareFilePaths(environment.getSubmodels());
+        prepareFilePaths(environment);
 
         OPCPackage rootPackage = OPCPackage.create(os);
 
@@ -129,9 +130,8 @@ public class AASXSerializer {
                 .forEach(aas -> createParts(files,
                         AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
                         rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
-        environment.getSubmodels().forEach(sm ->
-            findFileElements(sm.getSubmodelElements()).forEach(file -> createParts(files,
-                    AASXUtils.removeFilePartOfURI(file.getValue()), rootPackage, xmlPart, file.getContentType())));
+        findFileElements(environment).forEach(file -> createParts(files,
+                    AASXUtils.removeFilePartOfURI(file.getValue()), rootPackage, xmlPart, file.getContentType()));
     }
 
     /**
@@ -226,35 +226,32 @@ public class AASXSerializer {
     }
 
     /**
-     * Gets the File elements from a collection of elements Also recursively
+     * Gets the File elements from a environment
      * searches in SubmodelElementCollections
      * 
-     * @param elements the Elements to be searched for File elements
+     * @param environment the Environment
      * @return the found Files
      */
-    private Collection<File> findFileElements(Collection<SubmodelElement> elements) {
+    private Collection<File> findFileElements(Environment environment) {
         Collection<File> files = new ArrayList<>();
-
-        for (SubmodelElement element : elements) {
-            if (element instanceof File) {
-                files.add((File) element);
-            } else if (element instanceof SubmodelElementCollection) {
-                // Recursive call to deal with SubmodelElementCollections
-                files.addAll(findFileElements(((SubmodelElementCollection) element).getValue()));
+        new AssetAdministrationShellElementWalkerVisitor() {
+            @Override
+            public void visit(File file) {
+                if(file != null && file.getValue() != null) {
+                    files.add(file);
+                }
             }
-        }
-
+        }.visit(environment);
         return files;
     }
 
     /**
      * Replaces the path in all File Elements with the result of preparePath
      * 
-     * @param submodels the Submodels
+     * @param environment the Environment
      */
-    private void prepareFilePaths(Collection<Submodel> submodels) {
-        submodels.stream()
-                .forEach(sm -> findFileElements(sm.getSubmodelElements()).stream().forEach(f -> f.setValue(preparePath(f.getValue()))));
+    private void prepareFilePaths(Environment environment) {
+        findFileElements(environment).forEach(f -> f.setValue(preparePath(f.getValue())));
     }
 
     /**
