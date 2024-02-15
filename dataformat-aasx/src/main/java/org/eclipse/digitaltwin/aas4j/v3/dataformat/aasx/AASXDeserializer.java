@@ -33,6 +33,7 @@ import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
 import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
@@ -207,27 +208,14 @@ public class AASXDeserializer {
                         && aas.getAssetInformation().getDefaultThumbnail() != null
                         && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
                 .forEach(aas -> paths.add(aas.getAssetInformation().getDefaultThumbnail().getPath()));
-        environment.getSubmodels().forEach(sm -> paths.addAll(parseElements(sm.getSubmodelElements())));
-        return paths;
-    }
-
-    /**
-     * Gets the file paths from a collection of ISubmodelElement
-     * 
-     * @param elements the submodel elements to process
-     * @return the Paths from the File elements
-     */
-    private List<String> parseElements(Collection<SubmodelElement> elements) {
-        List<String> paths = new ArrayList<>();
-        for (SubmodelElement element : elements) {
-            if (element instanceof File) {
-                File file = (File) element;
-                paths.add(file.getValue());
-            } else if (element instanceof SubmodelElementCollection) {
-                SubmodelElementCollection collection = (SubmodelElementCollection) element;
-                paths.addAll(parseElements(collection.getValue()));
+        new AssetAdministrationShellElementWalkerVisitor() {
+            @Override
+            public void visit(File file) {
+                if(file != null && file.getValue() != null) {
+                    paths.add(file.getValue());
+                }
             }
-        }
+        }.visit(environment);
         return paths;
     }
 
