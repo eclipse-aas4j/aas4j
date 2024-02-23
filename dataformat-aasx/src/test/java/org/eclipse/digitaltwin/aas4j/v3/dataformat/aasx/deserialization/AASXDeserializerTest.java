@@ -95,7 +95,7 @@ public class AASXDeserializerTest {
 
     @Test
     public void emptyFiles() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
-        File emptyFile = new DefaultFile.Builder().idShort("emptyFile").contentType("").value("").build();
+        File emptyFile = new DefaultFile.Builder().idShort("emptyFile").contentType(null).value(null).build();
         Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(emptyFile).build();
         Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
 
