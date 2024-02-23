@@ -48,9 +48,11 @@ public class AASXSerializerTest {
     public void setup() throws IOException {
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
         byte[] thumbnail = { 0, 1, 2, 3, 4 };
-        InMemoryFile file = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile file = new InMemoryFile(operationManualContent, "file:///TestFile.pdf");
+        InMemoryFile file2 = new InMemoryFile(operationManualContent, "file:///TestFile2.pdf");
         InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(file);
+        fileList.add(file2);
         fileList.add(inMemoryFileThumbnail);
     }
 
