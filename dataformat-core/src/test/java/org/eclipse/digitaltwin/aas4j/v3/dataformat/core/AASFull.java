@@ -88,8 +88,6 @@ public class AASFull {
     public final static ConceptDescription CONCEPT_DESCRIPTION_4 = createConceptDescription4();
     public static final Environment ENVIRONMENT = createEnvironment();
     public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360";
-    private static final String FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG = "file:///master/verwaltungsschale-detail-part1.png";
-    private static final String IMAGE_PNG = "image/png";
 
     public static AssetAdministrationShell createAAS1() {
         return new DefaultAssetAdministrationShell.Builder()
@@ -119,10 +117,6 @@ public class AASFull {
                         //                .value("http://acplt.org/Submodels/Assets/TestAsset/BillOfMaterial")
                         //                .build()))
                         //        .build())
-                        .defaultThumbnail(new DefaultResource.Builder()
-                                .contentType(IMAGE_PNG)
-                                .path(FILE_MASTER_VERWALTUNGSSCHALE_DETAIL_PART1_PNG)
-                                .build())
                         .build())
                 .submodels(new DefaultReference.Builder()
                         .keys(new DefaultKey.Builder()
@@ -1333,7 +1327,7 @@ public class AASFull {
                                                 .build())
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
-                                .value("file:///TestFile2.pdf")
+                                .value("file:///TestFile.pdf")
                                 .contentType("application/pdf")
                                 .build())
                         .value(new DefaultReferenceElement.Builder()
