@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.serialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.junit.Before;
@@ -62,7 +63,7 @@ public class AASXSerializerTest {
         // This stream keeps the output of the AASXFactory only in memory
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, out);
+        new AASXSerializer().write(AASFull.createEnvironment(), fileList, out);
 
         validateAASX(out);
     }
