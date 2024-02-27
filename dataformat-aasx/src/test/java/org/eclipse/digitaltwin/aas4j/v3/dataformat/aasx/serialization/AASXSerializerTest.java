@@ -18,9 +18,9 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.serialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -43,19 +43,30 @@ public class AASXSerializerTest {
 
     private List<InMemoryFile> fileList = new ArrayList<>();
 
-    @Before
-    public void setup() throws IOException {
+    @Test
+    public void testBuildAASXFull() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
+        InMemoryFile file = new InMemoryFile(operationManualContent, "file:///TestFile.pdf");
+        fileList.add(file);
+        // This stream can be used to write the .aasx directly to a file
+        // FileOutputStream out = new FileOutputStream("path/to/test.aasx");
+
+        // This stream keeps the output of the AASXFactory only in memory
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        new AASXSerializer().write(AASFull.createEnvironment(), fileList, out);
+
+        validateAASX(out);
+    }
+
+    @Test
+    public void testBuildAASXSimple() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
         byte[] thumbnail = { 0, 1, 2, 3, 4 };
+        byte[] operationManualContent = { 0, 1, 2, 3, 4 };
         InMemoryFile file = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
         InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(file);
         fileList.add(inMemoryFileThumbnail);
-    }
-
-    @Test
-    public void testBuildAASX() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
-
         // This stream can be used to write the .aasx directly to a file
         // FileOutputStream out = new FileOutputStream("path/to/test.aasx");
 

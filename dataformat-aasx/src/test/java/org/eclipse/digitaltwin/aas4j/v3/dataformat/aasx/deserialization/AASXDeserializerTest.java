@@ -44,6 +44,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -89,6 +90,37 @@ public class AASXDeserializerTest {
         InputStream in = new FileInputStream(file);
         AASXDeserializer deserializer = new AASXDeserializer(in);
 
+        assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
+    }
+
+    @Test
+    public void emptyFiles() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
+        File emptyFile = new DefaultFile.Builder().idShort("emptyFile").contentType(null).value(null).build();
+        Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(emptyFile).build();
+        Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
+
+        java.io.File file = tempFolder.newFile("output.aasx");
+        new AASXSerializer().write(env, null, new FileOutputStream(file));
+
+        InputStream in = new FileInputStream(file);
+        AASXDeserializer deserializer = new AASXDeserializer(in);
+        assertTrue(deserializer.getRelatedFiles().isEmpty());
+    }
+
+    @Test
+    public void filesInElementList() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
+        DefaultSubmodelElementList elementList = new DefaultSubmodelElementList.Builder().value(createFileSubmodelElements()).build();
+        Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(elementList).build();
+        Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
+
+        byte[] image = { 0, 1, 2, 3, 4 };
+        InMemoryFile inMemoryFile = new InMemoryFile(image, "file:///aasx/internalFile.jpg");
+
+        java.io.File file = tempFolder.newFile("output.aasx");
+        new AASXSerializer().write(env, Collections.singleton(inMemoryFile), new FileOutputStream(file));
+
+        InputStream in = new FileInputStream(file);
+        AASXDeserializer deserializer = new AASXDeserializer(in);
         assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
     }
 
