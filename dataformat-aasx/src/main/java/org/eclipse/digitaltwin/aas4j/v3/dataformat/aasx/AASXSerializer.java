@@ -37,9 +37,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAd
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
-import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -226,7 +223,7 @@ public class AASXSerializer {
     }
 
     /**
-     * Gets the File elements from a environment
+     * Gets the File elements from an environment
      * searches in SubmodelElementCollections
      * 
      * @param environment the Environment
