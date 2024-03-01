@@ -15,10 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.QualifierBuilder;
 
@@ -79,17 +76,17 @@ public class DefaultQualifier implements Qualifier {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Qualifier) == false) {
             return false;
         } else {
-            DefaultQualifier other = (DefaultQualifier) obj;
-            return Objects.equals(this.kind, other.kind) &&
-                Objects.equals(this.type, other.type) &&
-                Objects.equals(this.valueType, other.valueType) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueId, other.valueId) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+            Qualifier other = (Qualifier) obj;
+            return Objects.equals(this.kind, other.getKind()) &&
+                Objects.equals(this.type, other.getType()) &&
+                Objects.equals(this.valueType, other.getValueType()) &&
+                Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.valueId, other.getValueId()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds());
         }
     }
 

@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -55,13 +56,13 @@ public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof SecurityAttributeObject) == false) {
             return false;
         } else {
-            DefaultSecurityAttributeObject other = (DefaultSecurityAttributeObject) obj;
-            return Objects.equals(this.type, other.type) &&
-                Objects.equals(this.key, other.key) &&
-                Objects.equals(this.value, other.value);
+            SecurityAttributeObject other = (SecurityAttributeObject) obj;
+            return Objects.equals(this.type, other.getType()) &&
+                Objects.equals(this.key, other.getKey()) &&
+                Objects.equals(this.value, other.getValue());
         }
     }
 

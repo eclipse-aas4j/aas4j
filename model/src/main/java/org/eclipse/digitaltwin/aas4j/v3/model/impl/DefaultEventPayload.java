@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.EventPayload;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -77,18 +78,18 @@ public class DefaultEventPayload implements EventPayload {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof EventPayload) == false) {
             return false;
         } else {
-            DefaultEventPayload other = (DefaultEventPayload) obj;
-            return Objects.equals(this.source, other.source) &&
-                Objects.equals(this.sourceSemanticId, other.sourceSemanticId) &&
-                Objects.equals(this.observableReference, other.observableReference) &&
-                Objects.equals(this.observableSemanticId, other.observableSemanticId) &&
-                Objects.equals(this.topic, other.topic) &&
-                Objects.equals(this.subjectId, other.subjectId) &&
-                Objects.equals(this.timeStamp, other.timeStamp) &&
-                Arrays.equals(this.payload, other.payload);
+            EventPayload other = (EventPayload) obj;
+            return Objects.equals(this.source, other.getSource()) &&
+                Objects.equals(this.sourceSemanticId, other.getSourceSemanticId()) &&
+                Objects.equals(this.observableReference, other.getObservableReference()) &&
+                Objects.equals(this.observableSemanticId, other.getObservableSemanticId()) &&
+                Objects.equals(this.topic, other.getTopic()) &&
+                Objects.equals(this.subjectId, other.getSubjectId()) &&
+                Objects.equals(this.timeStamp, other.getTimeStamp()) &&
+                Arrays.equals(this.payload, other.getPayload());
         }
     }
 

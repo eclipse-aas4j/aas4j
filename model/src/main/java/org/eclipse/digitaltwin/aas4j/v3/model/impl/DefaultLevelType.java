@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
@@ -60,14 +61,14 @@ public class DefaultLevelType implements LevelType {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof LevelType) == false) {
             return false;
         } else {
-            DefaultLevelType other = (DefaultLevelType) obj;
-            return Objects.equals(this.min, other.min) &&
-                Objects.equals(this.nom, other.nom) &&
-                Objects.equals(this.typ, other.typ) &&
-                Objects.equals(this.max, other.max);
+            LevelType other = (LevelType) obj;
+            return Objects.equals(this.min, other.getMin()) &&
+                Objects.equals(this.nom, other.getNom()) &&
+                Objects.equals(this.typ, other.getTyp()) &&
+                Objects.equals(this.max, other.getMax());
         }
     }
 

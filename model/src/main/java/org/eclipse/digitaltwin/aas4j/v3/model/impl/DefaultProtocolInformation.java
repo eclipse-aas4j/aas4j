@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -73,17 +74,17 @@ public class DefaultProtocolInformation implements ProtocolInformation {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof ProtocolInformation) == false) {
             return false;
         } else {
-            DefaultProtocolInformation other = (DefaultProtocolInformation) obj;
-            return Objects.equals(this.href, other.href) &&
-                Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
-                Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
-                Objects.equals(this.subprotocol, other.subprotocol) &&
-                Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
-                Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding) &&
-                Objects.equals(this.securityAttributes, other.securityAttributes);
+            ProtocolInformation other = (ProtocolInformation) obj;
+            return Objects.equals(this.href, other.getHref()) &&
+                Objects.equals(this.endpointProtocol, other.getEndpointProtocol()) &&
+                Objects.equals(this.endpointProtocolVersion, other.getEndpointProtocolVersion()) &&
+                Objects.equals(this.subprotocol, other.getSubprotocol()) &&
+                Objects.equals(this.subprotocolBody, other.getSubprotocolBody()) &&
+                Objects.equals(this.subprotocolBodyEncoding, other.getSubprotocolBodyEncoding()) &&
+                Objects.equals(this.securityAttributes, other.getSecurityAttributes());
         }
     }
 

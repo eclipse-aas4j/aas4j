@@ -15,15 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellDescriptorBuilder;
 
@@ -101,22 +93,22 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof AssetAdministrationShellDescriptor) == false) {
             return false;
         } else {
-            DefaultAssetAdministrationShellDescriptor other = (DefaultAssetAdministrationShellDescriptor) obj;
-            return Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.assetKind, other.assetKind) &&
-                Objects.equals(this.assetType, other.assetType) &&
-                Objects.equals(this.endpoints, other.endpoints) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
-                Objects.equals(this.submodelDescriptors, other.submodelDescriptors) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.extensions, other.extensions);
+            AssetAdministrationShellDescriptor other = (AssetAdministrationShellDescriptor) obj;
+            return Objects.equals(this.administration, other.getAdministration()) &&
+                Objects.equals(this.assetKind, other.getAssetKind()) &&
+                Objects.equals(this.assetType, other.getAssetType()) &&
+                Objects.equals(this.endpoints, other.getEndpoints()) &&
+                Objects.equals(this.globalAssetId, other.getGlobalAssetId()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.id, other.getId()) &&
+                Objects.equals(this.specificAssetIds, other.getSpecificAssetIds()) &&
+                Objects.equals(this.submodelDescriptors, other.getSubmodelDescriptors()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.extensions, other.getExtensions());
         }
     }
 

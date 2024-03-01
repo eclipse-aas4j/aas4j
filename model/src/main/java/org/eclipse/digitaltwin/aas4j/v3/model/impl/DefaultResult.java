@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.Result;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -49,11 +50,11 @@ public class DefaultResult implements Result {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Result) == false) {
             return false;
         } else {
-            DefaultResult other = (DefaultResult) obj;
-            return Objects.equals(this.messages, other.messages);
+            Result other = (Result) obj;
+            return Objects.equals(this.messages, other.getMessages());
         }
     }
 

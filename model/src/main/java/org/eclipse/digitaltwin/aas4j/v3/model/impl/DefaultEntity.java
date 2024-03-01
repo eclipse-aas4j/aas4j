@@ -15,16 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
-import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EntityBuilder;
 
@@ -106,23 +97,23 @@ public class DefaultEntity implements Entity {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Entity) == false) {
             return false;
         } else {
-            DefaultEntity other = (DefaultEntity) obj;
-            return Objects.equals(this.statements, other.statements) &&
-                Objects.equals(this.entityType, other.entityType) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+            Entity other = (Entity) obj;
+            return Objects.equals(this.statements, other.getStatements()) &&
+                Objects.equals(this.entityType, other.getEntityType()) &&
+                Objects.equals(this.globalAssetId, other.getGlobalAssetId()) &&
+                Objects.equals(this.specificAssetIds, other.getSpecificAssetIds()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications()) &&
+                Objects.equals(this.category, other.getCategory()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.extensions, other.getExtensions()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds()) &&
+                Objects.equals(this.qualifiers, other.getQualifiers());
         }
     }
 
