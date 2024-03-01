@@ -39,9 +39,9 @@
     <properties>
         <revision.major>1</revision.major>
         <revision.minor>0</revision.minor>
-        <revision.patch>0</revision.patch>
+        <revision.patch>1</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}</revision>
-        <model.version>1.0.0</model.version>
+        <model.version>1.0.1</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
