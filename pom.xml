@@ -55,7 +55,7 @@
         <plugin.projectinfo.version>3.5.0</plugin.projectinfo.version>
         <plugin.source.version>3.3.0</plugin.source.version>
         <plugin.jacoco.version>0.8.11</plugin.jacoco.version>
-        <classgraph.version>4.8.165</classgraph.version>
+        <classgraph.version>4.8.167</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.15.1</commons-io.version>
         <commons-compress.version>1.26.0</commons-compress.version>
