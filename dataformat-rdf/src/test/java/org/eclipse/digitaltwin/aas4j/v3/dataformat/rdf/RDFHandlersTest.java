@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class SerializerTest {
+public class RDFHandlersTest {
     @Test
     public void testKey() throws IOException, IncompatibleTypeException {
         Key simpleKey = new DefaultKey.Builder()
