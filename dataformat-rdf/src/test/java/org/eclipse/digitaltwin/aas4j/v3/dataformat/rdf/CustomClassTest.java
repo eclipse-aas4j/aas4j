@@ -8,12 +8,22 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultReferable
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-public class TestCustomClass {
+public class CustomClassTest {
 
     @Test
     public void testCustomProperty() throws IncompatibleTypeException {
+        List<String> one = new ArrayList<>();
+        one.add("test");
+        List<String> two = new LinkedList<>();
+        two.add("test");
+        assert one.equals(two);
+
 
         CustomSubProperty object = new CustomSubProperty();
         object.setIdShort("test");

@@ -33,7 +33,7 @@ public class EnvironmentTest {
     }
 
     @Test
-    public void testConceptDescription() throws IncompatibleTypeException {
+    public void testEnvironment() throws IncompatibleTypeException {
         Environment object = environment;
         RDFSerializationResult rdfSerializationResult = new DefaultEnvironmentRDFHandler().toModel(object);
         Model model = rdfSerializationResult.getModel();
