@@ -50,6 +50,7 @@ public class AASXSerializer {
     private static final String MIME_PLAINTXT = "text/plain";
     private static final String MIME_XML = "application/xml";
 
+    public static final String OPC_NAMESPACE = "http://schemas.openxmlformats.org/package/2006/relationships";
     public static final String AASX_NAMESPACE = "http://admin-shell.io/aasx/relationships";
 
     public static final String ORIGIN_RELTYPE = AASX_NAMESPACE + "/aasx-origin";
@@ -60,6 +61,8 @@ public class AASXSerializer {
     public static final String XML_PATH = "/aasx/xml/content.xml";
 
     public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
+
+    public static final String AAS_THUMBNAIL_RELTYPE = OPC_NAMESPACE + "/metadata/thumbnail";
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
@@ -74,7 +77,7 @@ public class AASXSerializer {
 
     /**
      * Constructor with a custom serializer for serializing the aas environment
-     * 
+     *
      * @param xmlSerializer a custom serializer used for serializing the aas environment
      */
     public AASXSerializer(XmlSerializer xmlSerializer) {
@@ -83,7 +86,7 @@ public class AASXSerializer {
 
     /**
      * Generates the .aasx file and writes it to the given OutputStream
-     * 
+     *
      * @param environment the aas environment that will be included in the aasx package as an xml serialization
      * @param files related inMemory files that belong to the given aas environment
      * @param os an output stream for writing the aasx package
@@ -106,6 +109,12 @@ public class AASXSerializer {
         // Save the XML to aasx/xml/content.xml
         PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
 
+        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
+                         && aas.getAssetInformation().getDefaultThumbnail() != null
+                         && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                   .forEach(aas -> createParts(files,
+                         AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
+                         rootPackage, rootPackage, aas.getAssetInformation().getDefaultThumbnail().getContentType(), AAS_THUMBNAIL_RELTYPE));
         storeFilesInAASX(environment, files, rootPackage, xmlPart);
 
         saveAASX(os, rootPackage);
@@ -113,7 +122,7 @@ public class AASXSerializer {
 
     /**
      * Stores the files from the Submodels in the .aasx file
-     * 
+     *
      * @param environment the Environment
      * @param files the content of the files
      * @param rootPackage the OPCPackage
@@ -121,14 +130,8 @@ public class AASXSerializer {
      */
     private void storeFilesInAASX(Environment environment, Collection<InMemoryFile> files, OPCPackage rootPackage,
                                   PackagePart xmlPart) {
-        environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
-                && aas.getAssetInformation().getDefaultThumbnail() != null
-                && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
-                .forEach(aas -> createParts(files,
-                        AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
-                        rootPackage, xmlPart, aas.getAssetInformation().getDefaultThumbnail().getContentType()));
         findFileElements(environment).forEach(file -> createParts(files,
-                    AASXUtils.removeFilePartOfURI(file.getValue()), rootPackage, xmlPart, file.getContentType()));
+                    AASXUtils.removeFilePartOfURI(file.getValue()), rootPackage, xmlPart, file.getContentType(), AASSUPPL_RELTYPE));
     }
 
     /**
@@ -139,13 +142,14 @@ public class AASXSerializer {
      * @param rootPackage the OPCPackage
      * @param xmlPart the Part the files should be related to
      * @param contentType the contentType of the file
+     * @param relType the relationship type
      */
     private void createParts(Collection<InMemoryFile> files, String filePath, OPCPackage rootPackage,
-                        PackagePart xmlPart, String contentType) {
+          RelationshipSource xmlPart, String contentType, String relType) {
         try {
             InMemoryFile content = findFileByPath(files, filePath);
             logger.trace("Writing file '{}' to .aasx.", filePath);
-            createAASXPart(rootPackage, xmlPart, filePath, contentType, AASSUPPL_RELTYPE, content.getFileContent());
+            createAASXPart(rootPackage, xmlPart, filePath, contentType, relType, content.getFileContent());
         } catch (RuntimeException e) {
             // Log that a file is missing and continue building the .aasx
             logger.warn("Could not add File '{}'. It was not contained in given InMemoryFiles.", filePath, e);
@@ -154,7 +158,7 @@ public class AASXSerializer {
 
     /**
      * Saves the OPCPackage to the given OutputStream
-     * 
+     *
      * @param os the Stream to be saved to
      * @param rootPackage the Package to be saved
      * @throws IOException if creating output streams for aasx fails
@@ -167,7 +171,7 @@ public class AASXSerializer {
     /**
      * Generates a UUID. Every element of the .aasx needs a unique Id according to
      * the specification
-     * 
+     *
      * @return UUID
      */
     private String createUniqueID() {
@@ -177,7 +181,7 @@ public class AASXSerializer {
 
     /**
      * Creates a Part (a file in the .aasx) of the .aasx and adds it to the Package
-     * 
+     *
      * @param root the OPCPackage
      * @param relateTo the Part of the OPC the relationship of the new Part should be added to
      * @param path the path inside the .aasx where the new Part should be created
@@ -209,7 +213,7 @@ public class AASXSerializer {
 
     /**
      * Writes the content of a byte[] to a Part
-     * 
+     *
      * @param part the Part to be written to
      * @param content the content to be written to the part
      */
@@ -225,7 +229,7 @@ public class AASXSerializer {
     /**
      * Gets the File elements from an environment
      * searches in SubmodelElementCollections
-     * 
+     *
      * @param environment the Environment
      * @return the found Files
      */
@@ -244,7 +248,7 @@ public class AASXSerializer {
 
     /**
      * Replaces the path in all File Elements with the result of preparePath
-     * 
+     *
      * @param environment the Environment
      */
     private void prepareFilePaths(Environment environment) {
@@ -253,7 +257,7 @@ public class AASXSerializer {
 
     /**
      * Finds an InMemoryFile by its path
-     * 
+     *
      * @param files the InMemoryFiles
      * @param path the path of the wanted file
      * @return the InMemoryFile if it was found; else null
@@ -269,7 +273,7 @@ public class AASXSerializer {
 
     /**
      * Removes the serverpart from a path and ensures it starts with "file://"
-     * 
+     *
      * @param path the path to be prepared
      * @return the prepared path
      */
