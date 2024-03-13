@@ -48,7 +48,7 @@ public class AASXSerializerTest {
 
     @Test
     public void testBuildAASXFull() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
-        byte[] operationManualContent = {0, 1, 2, 3, 4};
+        byte[] operationManualContent = { 0, 1, 2, 3, 4 };
         InMemoryFile file = new InMemoryFile(operationManualContent, "file:///TestFile.pdf");
         fileList.add(file);
         // This stream can be used to write the .aasx directly to a file
@@ -64,8 +64,8 @@ public class AASXSerializerTest {
 
     @Test
     public void testBuildAASXSimple() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
-        byte[] thumbnail = {0, 1, 2, 3, 4};
-        byte[] operationManualContent = {0, 1, 2, 3, 4};
+        byte[] thumbnail = { 0, 1, 2, 3, 4 };
+        byte[] operationManualContent = { 0, 1, 2, 3, 4 };
         InMemoryFile file = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
         InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(file);
