@@ -21,6 +21,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.UUID;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -234,7 +235,7 @@ public class AASXSerializer {
      * @return the found Files
      */
     private Collection<File> findFileElements(Environment environment) {
-        Collection<File> files = new ArrayList<>();
+        Collection<File> files = new HashSet<>();
         new AssetAdministrationShellElementWalkerVisitor() {
             @Override
             public void visit(File file) {
