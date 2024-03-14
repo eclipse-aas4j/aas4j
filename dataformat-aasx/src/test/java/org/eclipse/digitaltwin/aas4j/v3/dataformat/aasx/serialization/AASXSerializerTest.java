@@ -28,8 +28,10 @@ import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -38,6 +40,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AASXSerializerTest {
 
+    private static final String RELS_PATH_URI = "file:///_rels/.rels";
     private static final String XML_PATH_URI = "file:///aasx/xml/content.xml";
     private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
 
@@ -56,7 +59,7 @@ public class AASXSerializerTest {
 
         new AASXSerializer().write(AASFull.createEnvironment(), fileList, out);
 
-        validateAASX(out);
+        validateAASX(out, List.of(AASXSerializerTest::assertRootXml));
     }
 
     @Test
@@ -75,28 +78,26 @@ public class AASXSerializerTest {
 
         new AASXSerializer().write(AASSimple.createEnvironment(), fileList, out);
 
-        validateAASX(out);
+        validateAASX(out, List.of(AASXSerializerTest::assertRootXml, AASXSerializerTest::assertThumbnailReference));
     }
 
-    private void validateAASX(ByteArrayOutputStream byteStream) throws IOException {
+    private void validateAASX(ByteArrayOutputStream byteStream, List<BiConsumer<ZipEntry, ZipInputStream>> fileValidators) {
         ZipInputStream in = new ZipInputStream(new ByteArrayInputStream(byteStream.toByteArray()));
-        ZipEntry zipEntry = null;
+        ZipEntry zipEntry;
 
         ArrayList<String> filePaths = new ArrayList<>();
 
-        while ((zipEntry = in.getNextEntry()) != null) {
-            if (zipEntry.getName().equals(XML_PATH_URI)) {
+        try {
+            while ((zipEntry = in.getNextEntry()) != null) {
+                for (final BiConsumer<ZipEntry, ZipInputStream> validator : fileValidators) {
+                    validator.accept(zipEntry, in);
+                }
 
-                // Read the first 5 bytes of the XML file to make sure it is in fact XML file
-                // No further test of XML file necessary as XML-Converter is tested separately
-                byte[] buf = new byte[5];
-                in.read(buf);
-                assertEquals("<?xml", new String(buf));
-
+                // Write the paths of all files contained in the .aasx into filePaths
+                filePaths.add("file:///" + zipEntry.getName());
             }
-
-            // Write the paths of all files contained in the .aasx into filePaths
-            filePaths.add("file:///" + zipEntry.getName());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         assertTrue(filePaths.contains(XML_PATH_URI));
@@ -109,5 +110,34 @@ public class AASXSerializerTest {
             assertTrue(filePaths.contains(file.getPath()));
         }
 
+    }
+
+    private static void assertRootXml(ZipEntry zipEntry, ZipInputStream in) {
+        if (!XML_PATH_URI.endsWith(zipEntry.getName())) {
+            return;
+        }
+        // Read the first 5 bytes of the XML file to make sure it is in fact XML file
+        // No further test of XML file necessary as XML-Converter is tested separately
+        byte[] buf = new byte[5];
+        try {
+            in.read(buf);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertEquals("<?xml", new String(buf));
+    }
+
+    private static void assertThumbnailReference(ZipEntry zipEntry, ZipInputStream in) {
+        if (!RELS_PATH_URI.endsWith(zipEntry.getName())) {
+            return;
+        }
+        final String content;
+        try {
+            content = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertTrue(content.contains("Type=\"http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail\""));
+        assertTrue(content.contains("Target=\"master/verwaltungsschale-detail-part1.png\""));
     }
 }
