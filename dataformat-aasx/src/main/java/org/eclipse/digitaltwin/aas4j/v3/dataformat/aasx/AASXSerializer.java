@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
@@ -96,7 +95,6 @@ public class AASXSerializer {
      */
     public void write(Environment environment, Collection<InMemoryFile> files, OutputStream os)
             throws SerializationException, IOException {
-        prepareFilePaths(environment);
 
         OPCPackage rootPackage = OPCPackage.create(os);
 
@@ -248,15 +246,6 @@ public class AASXSerializer {
     }
 
     /**
-     * Replaces the path in all File Elements with the result of preparePath
-     *
-     * @param environment the Environment
-     */
-    private void prepareFilePaths(Environment environment) {
-        findFileElements(environment).forEach(f -> f.setValue(preparePath(f.getValue())));
-    }
-
-    /**
      * Finds an InMemoryFile by its path
      *
      * @param files the InMemoryFiles
@@ -270,19 +259,6 @@ public class AASXSerializer {
             }
         }
         throw new RuntimeException("The wanted file '" + path + "' was not found in the given files.");
-    }
-
-    /**
-     * Removes the serverpart from a path and ensures it starts with "file://"
-     *
-     * @param path the path to be prepared
-     * @return the prepared path
-     */
-    private String preparePath(String path) {
-        if (path.startsWith("/")) {
-            path = "file://" + path;
-        }
-        return path;
     }
 
 }

@@ -48,8 +48,11 @@ public class ValidationTest {
     public void validateXmlInsideAasx() throws SerializationException, IOException, InvalidFormatException, DeserializationException, ParserConfigurationException, SAXException {
         List<InMemoryFile> fileList = new ArrayList<>();
         byte[] operationManualContent = { 0, 1, 2, 3, 4 };
+        byte[] thumbnail = { 0, 1, 2, 3, 4 };
         InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+        InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
         fileList.add(inMemoryFile);
+        fileList.add(inMemoryFileThumbnail);
 
         File file = tempFolder.newFile("output.aasx");
 
