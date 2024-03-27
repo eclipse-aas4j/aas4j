@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Development Workflow | java-serializer Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Development Workflow | java-serializer Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/adminshellio-48x48.jpg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="development-workflow">Development Workflow</h1>
+
+<p>We develop with Github using pull requests (see this <a href="https://guides.github.com/introduction/flow/">Github guide</a> for a short introduction).</p>
+<p><strong>Development branch.</strong> The development branch is always <code>development</code>. Expect changes on this branch from time to time.</p>
+<p><strong>Releases.</strong> The releases mark the development milestones on the <code>main</code> branch with a certain feature completeness.</p>
+<h2 id="pull-requests">Pull Requests</h2>
+<p><strong>Feature branches.</strong> We develop using the feature branches, see this <a href="https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows">section of the Git book</a>. We use <code>feature/'feature-name'</code> and <code>bugfix/'bugfix-name'</code> as a naming convention.</p>
+<p>If you are a member of the development team, create a feature branch directly within the repository.</p>
+<p>Otherwise, if you are a non-member contributor, fork the repository and create the feature branch in your forked repository. See this Github tuturial for more guidance.</p>
+<p><strong>Branch Prefix.</strong> Each PullRequest must contained a list of the changed topics, for instance as a list of bulletpoints. Simply refering to the commit messages is not sufficient.</p>
+<p><strong>Reviews.</strong> Each PullRequest is reviewed by the Maintainers of the project. In order to simplify the workflow, please assign the PullRequest directly to the Maintainer you think is most knowledgable about your changes.</p>
+<h2 id="ci-workflows">CI Workflows</h2>
+<p>There are three workflows that will automatically handle specific events for the repository:</p>
+<ul>
+<li>Pull requests on one of the branches mentioned above will trigger CI actions that will automatically check, if all tests pass successfully</li>
+<li>Additionally, new commits on <code>main</code> will build the release artifacts and publish them on <a href="https://mvnrepository.com/artifact/io.admin-shell.aas">Maven Central</a></li>
+<li>The documentation found in /docs is automatically build with docFX and published to gh-pages, when a new release is pushed to the <code>main</code> branch</li>
+</ul>
+<h2 id="commit-messages">Commit Messages</h2>
+<p>The commit messages should follow the guidelines from <a href="https://chris.beams.io/posts/git-commit">https://chris.beams.io/posts/git-commit</a>:</p>
+<ul>
+<li>Separate subject from body with a blank line</li>
+<li>Limit the subject line to 50 characters</li>
+<li>Capitalize the subject line</li>
+<li>Do not end the subject line with a period</li>
+<li>Use the imperative mood in the subject line</li>
+<li>Wrap the body at 72 characters</li>
+<li>Use the body to explain what and why (instead of how)</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/eclipse-aas4j/aas4j/blob/main/docs/articles/development_workflow.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
