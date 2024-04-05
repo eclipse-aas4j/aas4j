@@ -128,7 +128,7 @@ public class AASXDeserializer {
             try {
                 files.add(readFile(aasxRoot, filePath));
             } catch (Exception e) {
-                logger.warn("Loading file {} failed and will not be included.", filePath, e);
+                logger.warn("Loading file {} failed and will not be included.", filePath);
             }
         }
         return files;

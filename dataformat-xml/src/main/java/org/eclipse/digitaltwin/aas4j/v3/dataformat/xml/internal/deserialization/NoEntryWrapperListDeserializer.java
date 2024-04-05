@@ -57,7 +57,7 @@ public class NoEntryWrapperListDeserializer<T> extends JsonDeserializer<List<T>>
                 return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
             }
         } catch (ClassCastException e) {
-            logger.info("Found empty list items (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
+            logger.info("Found empty list item (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
             return new ArrayList<T>();
         }
     }
