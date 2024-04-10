@@ -17,7 +17,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -30,6 +29,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.common.collect.Lists;
 
 /**
  * Custom deserializer for lists without individual list entry wrappers for parametrized classes.
@@ -57,7 +57,7 @@ public class NoEntryWrapperListDeserializer<T> extends JsonDeserializer<List<T>>
                 return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
             }
         } catch (ClassCastException e) {
-            logger.info("Found empty list items (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
+            logger.info("Found empty list item (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
             return new ArrayList<T>();
         }
     }
@@ -73,6 +73,6 @@ public class NoEntryWrapperListDeserializer<T> extends JsonDeserializer<List<T>>
 
     private List<T> createEntriesFromObjectNode(JsonNode langStringNode, JsonParser parser) throws IOException {
         T entry = nodeDeserializer.readValue(langStringNode, parser);
-        return Collections.singletonList(entry);
+        return Lists.newArrayList(entry);
     }
 }

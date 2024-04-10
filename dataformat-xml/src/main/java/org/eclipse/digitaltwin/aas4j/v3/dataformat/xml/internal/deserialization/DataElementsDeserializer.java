@@ -28,7 +28,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,7 +46,7 @@ public class DataElementsDeserializer extends JsonDeserializer<List<DataElement>
     public List<DataElement> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
         if (treeNode instanceof TextNode) {
-            return Collections.emptyList();
+            return new ArrayList<>();
         }
 
         ObjectNode node = (ObjectNode) treeNode;
