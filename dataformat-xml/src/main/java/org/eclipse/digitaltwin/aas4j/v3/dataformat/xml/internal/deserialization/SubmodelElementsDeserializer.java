@@ -29,7 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,14 +47,14 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
     public List<SubmodelElement> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
         if (treeNode instanceof TextNode) {
-            return Collections.emptyList();
+            return new ArrayList<>();
         } else {
             return createSubmodelElements(parser, ctxt, treeNode);
         }
     }
 
     private List<SubmodelElement> createSubmodelElements(JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws IOException, JsonProcessingException {
-		if (treeNode.isArray()) {
+        if (treeNode.isArray()) {
             return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
         } else {
             return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
@@ -100,7 +99,7 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
 
     private SubmodelElement getSubmodelElementFromJsonNode(JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement) throws IOException, JsonProcessingException {
         JsonParser parserReference = parser.getCodec().getFactory().getCodec().treeAsTokens(nodeSubmodelElement);
-		return deserializer.deserialize(parserReference, ctxt);
+        return deserializer.deserialize(parserReference, ctxt);
     }
 
 }

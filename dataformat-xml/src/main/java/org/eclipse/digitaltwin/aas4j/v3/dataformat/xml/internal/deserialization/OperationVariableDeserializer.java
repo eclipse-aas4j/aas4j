@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
@@ -32,6 +31,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.common.collect.Lists;
 
 
 public class OperationVariableDeserializer extends JsonDeserializer<List<OperationVariable>> {
@@ -43,18 +43,18 @@ public class OperationVariableDeserializer extends JsonDeserializer<List<Operati
             ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
 
             if (!node.has("operationVariable")) {
-                return Collections.emptyList();
+                return new ArrayList<>();
             }
             JsonNode operationVariableNode = node.get("operationVariable");
             if (operationVariableNode.isArray()) {
                 return createOperationVariablesFromArrayNode(parser, node);
             } else {
                 OperationVariable operationVariable = DeserializationHelper.createInstanceFromNode(parser, operationVariableNode, OperationVariable.class);
-                return Collections.singletonList(operationVariable);
+                return Lists.newArrayList(operationVariable);
             }
         } catch (ClassCastException e) {
             logger.info("Found empty list item in Operation (e.g., '<outputVariables />') in XML. This is most likely an error.");
-            return new ArrayList<OperationVariable>();
+            return new ArrayList<>();
         }
     }
 
