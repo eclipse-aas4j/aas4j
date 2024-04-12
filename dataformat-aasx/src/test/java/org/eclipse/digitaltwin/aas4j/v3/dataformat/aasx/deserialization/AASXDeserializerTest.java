@@ -34,6 +34,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.MetamodelContentType;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
@@ -65,8 +66,8 @@ public class AASXDeserializerTest {
         fileList.add(inMemoryFile);
         fileList.add(inMemoryFileThumbnail);
 
-        java.io.File file = tempFolder.newFile("output.aasx");
-
+        // check round trip with XML content
+        java.io.File file = tempFolder.newFile("output-xml.aasx");
         new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
 
         InputStream in = new FileInputStream(file);
@@ -74,8 +75,17 @@ public class AASXDeserializerTest {
 
         assertEquals(AASSimple.createEnvironment(), deserializer.read());
         assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
-    }
 
+        // check round trip with JSON content
+        file = tempFolder.newFile("output-json.aasx");
+        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file), MetamodelContentType.JSON);
+
+        in = new FileInputStream(file);
+        deserializer = new AASXDeserializer(in);
+
+        assertEquals(AASSimple.createEnvironment(), deserializer.read());
+        assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
+    }
     @Test
     public void relatedFilesAreOnlyResolvedIfWithinAASX() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
         Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(createFileSubmodelElements()).build();

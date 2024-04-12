@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.serialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.MetamodelContentType;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
@@ -42,6 +43,7 @@ public class AASXSerializerTest {
 
     private static final String RELS_PATH_URI = "file:///_rels/.rels";
     private static final String XML_PATH_URI = "file:///aasx/xml/content.xml";
+    private static final String JSON_PATH_URI = "file:///aasx/json/content.json";
     private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
 
     private List<InMemoryFile> fileList = new ArrayList<>();
@@ -56,10 +58,14 @@ public class AASXSerializerTest {
 
         // This stream keeps the output of the AASXFactory only in memory
         ByteArrayOutputStream out = new ByteArrayOutputStream();
+        // validate AASX with XML content
+        new AASXSerializer().write(AASFull.createEnvironment(), fileList, out, MetamodelContentType.XML);
+        validateAASX(out, XML_PATH_URI, List.of(AASXSerializerTest::assertRootXml));
 
-        new AASXSerializer().write(AASFull.createEnvironment(), fileList, out);
-
-        validateAASX(out, List.of(AASXSerializerTest::assertRootXml));
+        out = new ByteArrayOutputStream();
+        // validate AASX with JSON content
+        new AASXSerializer().write(AASFull.createEnvironment(), fileList, out, MetamodelContentType.JSON);
+        validateAASX(out, JSON_PATH_URI, List.of(AASXSerializerTest::assertRootJson));
     }
 
     @Test
@@ -75,13 +81,17 @@ public class AASXSerializerTest {
 
         // This stream keeps the output of the AASXFactory only in memory
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-
+        // validate AASX with XML content
         new AASXSerializer().write(AASSimple.createEnvironment(), fileList, out);
+        validateAASX(out, XML_PATH_URI, List.of(AASXSerializerTest::assertRootXml, AASXSerializerTest::assertThumbnailReference));
 
-        validateAASX(out, List.of(AASXSerializerTest::assertRootXml, AASXSerializerTest::assertThumbnailReference));
+        out = new ByteArrayOutputStream();
+        // validate AASX with JSON content
+        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, out, MetamodelContentType.JSON);
+        validateAASX(out, JSON_PATH_URI, List.of(AASXSerializerTest::assertRootJson, AASXSerializerTest::assertThumbnailReference));
     }
 
-    private void validateAASX(ByteArrayOutputStream byteStream, List<BiConsumer<ZipEntry, ZipInputStream>> fileValidators) {
+    private void validateAASX(ByteArrayOutputStream byteStream, String contentFilePath, List<BiConsumer<ZipEntry, ZipInputStream>> fileValidators) {
         ZipInputStream in = new ZipInputStream(new ByteArrayInputStream(byteStream.toByteArray()));
         ZipEntry zipEntry;
 
@@ -100,7 +110,7 @@ public class AASXSerializerTest {
             throw new RuntimeException(e);
         }
 
-        assertTrue(filePaths.contains(XML_PATH_URI));
+        assertTrue(filePaths.contains(contentFilePath));
         assertTrue(filePaths.contains(ORIGIN_PATH_URI));
 
         // Check if all expected files are present
@@ -125,6 +135,21 @@ public class AASXSerializerTest {
             throw new RuntimeException(e);
         }
         assertEquals("<?xml", new String(buf));
+    }
+
+    private static void assertRootJson(ZipEntry zipEntry, ZipInputStream in) {
+        if (!JSON_PATH_URI.endsWith(zipEntry.getName())) {
+            return;
+        }
+        // Read the first byte of the JSON file to make sure it is in fact XML file
+        // No further test of JSON file necessary as XML-Converter is tested separately
+        byte[] buf = new byte[1];
+        try {
+            in.read(buf);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertEquals("{", new String(buf));
     }
 
     private static void assertThumbnailReference(ZipEntry zipEntry, ZipInputStream in) {
