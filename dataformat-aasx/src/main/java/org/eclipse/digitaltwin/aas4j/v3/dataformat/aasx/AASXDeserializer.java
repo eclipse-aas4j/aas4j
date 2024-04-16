@@ -76,6 +76,21 @@ public class AASXDeserializer {
      * Constructor for custom deserialization
      *
      * @param xmlDeserializer a custom XML deserializer used for deserializing the aas environment
+     * @param inputStream an input stream to an aasx package that can be read with this instance
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
+     */
+    public AASXDeserializer(XmlDeserializer xmlDeserializer,
+                            InputStream inputStream) throws InvalidFormatException, IOException {
+        aasxRoot = OPCPackage.open(inputStream);
+        this.xmlDeserializer = xmlDeserializer;
+        this.jsonDeserializer = new JsonDeserializer();
+    }
+
+    /**
+     * Constructor for custom deserialization
+     *
+     * @param xmlDeserializer a custom XML deserializer used for deserializing the aas environment
      * @param jsonDeserializer a custom JSON deserializer used for deserializing the aas environment
      * @param inputStream an input stream to an aasx package that can be read with this instance
      * @throws InvalidFormatException if aasx package format is invalid
@@ -114,12 +129,11 @@ public class AASXDeserializer {
 
     /**
      * Currently XML and JSON are supported for deserializing.
-     * @return
-     * @throws InvalidFormatException
-     * @throws IOException
-     * @throws DeserializationException
+     * @return The content type of the metafile
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
      */
-    protected MetamodelContentType getContentType()  throws InvalidFormatException, IOException, DeserializationException {
+    protected MetamodelContentType getContentType()  throws InvalidFormatException, IOException {
         MetamodelContentType contentType;
         PackagePart packagePart = getPackagePart(aasxRoot);
         // We also check for the none official content types "test/xml" and "text/json", which are commonly used
@@ -133,9 +147,22 @@ public class AASXDeserializer {
                 contentType = MetamodelContentType.JSON;
                 break;
             default:
-                throw new DeserializationException("The following content type is not supported: " + packagePart.getContentType());
+                throw new RuntimeException("The following content type is not supported: " + packagePart.getContentType());
         }
         return contentType;
+    }
+
+    /**
+     * Return the Content of the xml file in the aasx-package as String
+     *
+     * @deprecated This method will be replaced by the method {@link AASXDeserializer#getResourceString()}.
+     *
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
+     */
+    @Deprecated
+    public String getXMLResourceString() throws InvalidFormatException, IOException {
+        return getResourceString(this.aasxRoot);
     }
 
     /**

@@ -47,13 +47,13 @@ public class AASXValidator {
      * @throws IOException failure during filehandling
      * @throws InvalidFormatException specified URI is invalid
      */
-    public Set<String> validateSchema() throws IOException, InvalidFormatException, DeserializationException {
+    public Set<String> validateSchema() throws IOException, InvalidFormatException {
         String file = deserializer.getResourceString();
         Set<String> errorMessages = null;
         if (MetamodelContentType.XML.equals(deserializer.getContentType())) {
             errorMessages = xmlValidator.validateSchema(file);
         }
-        if (MetamodelContentType.JSON.equals(deserializer.getContentType())) {
+        else if (MetamodelContentType.JSON.equals(deserializer.getContentType())) {
             errorMessages = jsonValidator.validateSchema(file);
         }
         return errorMessages;

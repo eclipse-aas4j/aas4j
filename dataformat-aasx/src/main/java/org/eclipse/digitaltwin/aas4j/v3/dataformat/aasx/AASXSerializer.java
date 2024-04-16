@@ -81,7 +81,17 @@ public class AASXSerializer {
     }
 
     /**
-     * Constructor with a custom serializer for serializing the aas environment
+     * Constructor with a custom XML serializer for serializing the aas environment
+     *
+     * @param xmlSerializer a custom serializer used for serializing the aas environment in XML
+     */
+    public AASXSerializer(XmlSerializer xmlSerializer) {
+        this.xmlSerializer = xmlSerializer;
+        this.jsonSerializer = new JsonSerializer();
+    }
+
+    /**
+     * Constructor with custom serializers for serializing the aas environment
      *
      * @param xmlSerializer a custom serializer used for serializing the aas environment in XML
      * @param jsonSerializer a custom serializer used for serializing the aas environment in JSON
