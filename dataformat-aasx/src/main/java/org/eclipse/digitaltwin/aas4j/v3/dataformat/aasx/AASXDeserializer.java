@@ -33,6 +33,7 @@ import org.apache.poi.openxml4j.opc.PackagingURIHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
@@ -52,7 +53,8 @@ public class AASXDeserializer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
 
-    private final XmlDeserializer deserializer;
+    private final XmlDeserializer xmlDeserializer;
+    private final JsonDeserializer jsonDeserializer;
 
     private Environment environment;
     private final OPCPackage aasxRoot;
@@ -66,20 +68,40 @@ public class AASXDeserializer {
      */
     public AASXDeserializer(InputStream inputStream) throws InvalidFormatException, IOException {
         aasxRoot = OPCPackage.open(inputStream);
-        this.deserializer = new XmlDeserializer();
+        this.xmlDeserializer = new XmlDeserializer();
+        this.jsonDeserializer = new JsonDeserializer();
     }
 
     /**
-     * Constructor for custom XML deserialization
-     * 
-     * @param deserializer a custom deserializer used for deserializing the aas environment
+     * Constructor for custom deserialization
+     *
+     * @param xmlDeserializer a custom XML deserializer used for deserializing the aas environment
      * @param inputStream an input stream to an aasx package that can be read with this instance
      * @throws InvalidFormatException if aasx package format is invalid
      * @throws IOException if creating input streams for aasx fails
      */
-    public AASXDeserializer(XmlDeserializer deserializer, InputStream inputStream) throws InvalidFormatException, IOException {
+    public AASXDeserializer(XmlDeserializer xmlDeserializer,
+                            InputStream inputStream) throws InvalidFormatException, IOException {
         aasxRoot = OPCPackage.open(inputStream);
-        this.deserializer = deserializer;
+        this.xmlDeserializer = xmlDeserializer;
+        this.jsonDeserializer = new JsonDeserializer();
+    }
+
+    /**
+     * Constructor for custom deserialization
+     *
+     * @param xmlDeserializer a custom XML deserializer used for deserializing the aas environment
+     * @param jsonDeserializer a custom JSON deserializer used for deserializing the aas environment
+     * @param inputStream an input stream to an aasx package that can be read with this instance
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
+     */
+    public AASXDeserializer(XmlDeserializer xmlDeserializer,
+                            JsonDeserializer jsonDeserializer,
+                            InputStream inputStream) throws InvalidFormatException, IOException {
+        aasxRoot = OPCPackage.open(inputStream);
+        this.xmlDeserializer = xmlDeserializer;
+        this.jsonDeserializer = jsonDeserializer;
     }
 
     /**
@@ -96,18 +118,61 @@ public class AASXDeserializer {
         if (environment != null) {
             return environment;
         }
-        environment = deserializer.read(getXMLResourceString(aasxRoot));
+        if (MetamodelContentType.XML.equals(getContentType())) {
+            environment = xmlDeserializer.read(getResourceString(aasxRoot));
+        }
+        if (MetamodelContentType.JSON.equals(getContentType())) {
+            environment = jsonDeserializer.read(getResourceString(aasxRoot), Environment.class);
+        }
         return environment;
     }
 
     /**
-     * Return the Content of the xml file in the aasx-package as String
-     * 
+     * Currently XML and JSON are supported for deserializing.
+     * @return The content type of the metafile
      * @throws InvalidFormatException if aasx package format is invalid
      * @throws IOException if creating input streams for aasx fails
      */
+    protected MetamodelContentType getContentType()  throws InvalidFormatException, IOException {
+        MetamodelContentType contentType;
+        PackagePart packagePart = getPackagePart(aasxRoot);
+        // We also check for the none official content types "test/xml" and "text/json", which are commonly used
+        switch (packagePart.getContentType()) {
+            case "text/xml":
+            case "application/xml":
+                contentType = MetamodelContentType.XML;
+                break;
+            case "text/json":
+            case "application/json":
+                contentType = MetamodelContentType.JSON;
+                break;
+            default:
+                throw new RuntimeException("The following content type is not supported: " + packagePart.getContentType());
+        }
+        return contentType;
+    }
+
+    /**
+     * Return the Content of the xml file in the aasx-package as String
+     *
+     * @deprecated This method will be replaced by the method {@link AASXDeserializer#getResourceString()}.
+     *
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
+     */
+    @Deprecated
     public String getXMLResourceString() throws InvalidFormatException, IOException {
-        return getXMLResourceString(this.aasxRoot);
+        return getResourceString(this.aasxRoot);
+    }
+
+    /**
+     * Return the Content of the xml or json file in the aasx-package as String
+     *
+     * @throws InvalidFormatException if aasx package format is invalid
+     * @throws IOException if creating input streams for aasx fails
+     */
+    public String getResourceString() throws InvalidFormatException, IOException {
+        return getResourceString(this.aasxRoot);
     }
 
     /**
@@ -134,13 +199,14 @@ public class AASXDeserializer {
         return files;
     }
 
-    private String getXMLResourceString(OPCPackage aasxPackage) throws InvalidFormatException, IOException {
+    private PackagePart getPackagePart(OPCPackage aasxPackage) throws InvalidFormatException, IOException {
         PackagePart originPart = getOriginPart(aasxPackage);
-
         PackageRelationshipCollection originRelationships = getXMLDocumentRelation(originPart);
+        return originPart.getRelatedPart(originRelationships.getRelationship(0));
+    }
 
-        PackagePart xmlPart = originPart.getRelatedPart(originRelationships.getRelationship(0));
-
+    private String getResourceString(OPCPackage aasxPackage) throws InvalidFormatException, IOException {
+        PackagePart xmlPart = getPackagePart(aasxPackage);
         return readContentFromPackagePart(xmlPart);
     }
 

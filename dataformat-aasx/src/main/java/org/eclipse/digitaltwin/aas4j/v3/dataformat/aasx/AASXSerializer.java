@@ -34,6 +34,7 @@ import org.apache.poi.openxml4j.opc.internal.MemoryPackagePart;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal.AASXUtils;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
@@ -49,6 +50,7 @@ public class AASXSerializer {
 
     private static final String MIME_PLAINTXT = "text/plain";
     private static final String MIME_XML = "application/xml";
+    private static final String MIME_JSON = "application/json";
 
     public static final String OPC_NAMESPACE = "http://schemas.openxmlformats.org/package/2006/relationships";
     public static final String AASX_NAMESPACE = "http://admin-shell.io/aasx/relationships";
@@ -59,6 +61,7 @@ public class AASXSerializer {
 
     public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
     public static final String XML_PATH = "/aasx/xml/content.xml";
+    public static final String JSON_PATH = "/aasx/json/content.json";
 
     public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
 
@@ -67,25 +70,39 @@ public class AASXSerializer {
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     private final XmlSerializer xmlSerializer;
+    private final JsonSerializer jsonSerializer;
 
     /**
      * Default constructor
      */
     public AASXSerializer() {
         this.xmlSerializer = new XmlSerializer();
+        this.jsonSerializer = new JsonSerializer();
     }
 
     /**
-     * Constructor with a custom serializer for serializing the aas environment
+     * Constructor with a custom XML serializer for serializing the aas environment
      *
-     * @param xmlSerializer a custom serializer used for serializing the aas environment
+     * @param xmlSerializer a custom serializer used for serializing the aas environment in XML
      */
     public AASXSerializer(XmlSerializer xmlSerializer) {
         this.xmlSerializer = xmlSerializer;
+        this.jsonSerializer = new JsonSerializer();
     }
 
     /**
-     * Generates the .aasx file and writes it to the given OutputStream
+     * Constructor with custom serializers for serializing the aas environment
+     *
+     * @param xmlSerializer a custom serializer used for serializing the aas environment in XML
+     * @param jsonSerializer a custom serializer used for serializing the aas environment in JSON
+     */
+    public AASXSerializer(XmlSerializer xmlSerializer, JsonSerializer jsonSerializer) {
+        this.xmlSerializer = xmlSerializer;
+        this.jsonSerializer = jsonSerializer;
+    }
+
+    /**
+     * Generates the .aasx file and writes it to the given OutputStream, by using XML as the default content type.
      *
      * @param environment the aas environment that will be included in the aasx package as an xml serialization
      * @param files related inMemory files that belong to the given aas environment
@@ -96,25 +113,53 @@ public class AASXSerializer {
     public void write(Environment environment, Collection<InMemoryFile> files, OutputStream os)
             throws SerializationException, IOException {
 
+        write(environment, files, os, MetamodelContentType.XML);
+    }
+
+    /**
+     * Generates the .aasx file and writes it to the given OutputStream
+     *
+     * @param environment the aas environment that will be included in the aasx package as an xml serialization
+     * @param files related inMemory files that belong to the given aas environment
+     * @param os an output stream for writing the aasx package
+     * @param contentType the content type for the metamodel serialization
+     * @throws SerializationException if serializing the given elements fails
+     * @throws IOException if creating output streams for aasx fails
+     */
+    public void write(Environment environment, Collection<InMemoryFile> files, OutputStream os, MetamodelContentType contentType)
+            throws SerializationException, IOException {
+
         OPCPackage rootPackage = OPCPackage.create(os);
 
         // Create the empty aasx-origin file
         PackagePart origin = createAASXPart(rootPackage, rootPackage, ORIGIN_PATH, MIME_PLAINTXT, ORIGIN_RELTYPE,
                 ORIGIN_CONTENT.getBytes());
 
-        // Convert the given Metamodels to XML
-        String xml = xmlSerializer.write(environment);
-
-        // Save the XML to aasx/xml/content.xml
-        PackagePart xmlPart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
+        PackagePart packagePart;
+        switch (contentType) {
+            case JSON:
+                // Convert the given Metamodels to JSON
+                String json = jsonSerializer.write(environment);
+                // Save the JSON to aasx/json/content.json
+                packagePart = createAASXPart(rootPackage, origin, JSON_PATH, MIME_JSON, AASSPEC_RELTYPE, json.getBytes(DEFAULT_CHARSET));
+                break;
+            case XML:
+                // Convert the given Metamodels to XML
+                String xml = xmlSerializer.write(environment);
+                // Save the XML to aasx/xml/content.xml
+                packagePart = createAASXPart(rootPackage, origin, XML_PATH, MIME_XML, AASSPEC_RELTYPE, xml.getBytes(DEFAULT_CHARSET));
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported content type: " + contentType);
+        }
 
         environment.getAssetAdministrationShells().stream().filter(aas -> aas.getAssetInformation() != null
-                         && aas.getAssetInformation().getDefaultThumbnail() != null
-                         && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
-                   .forEach(aas -> createParts(files,
-                         AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
-                         rootPackage, rootPackage, aas.getAssetInformation().getDefaultThumbnail().getContentType(), AAS_THUMBNAIL_RELTYPE));
-        storeFilesInAASX(environment, files, rootPackage, xmlPart);
+                        && aas.getAssetInformation().getDefaultThumbnail() != null
+                        && aas.getAssetInformation().getDefaultThumbnail().getPath() != null)
+                .forEach(aas -> createParts(files,
+                        AASXUtils.removeFilePartOfURI(aas.getAssetInformation().getDefaultThumbnail().getPath()),
+                        rootPackage, rootPackage, aas.getAssetInformation().getDefaultThumbnail().getContentType(), AAS_THUMBNAIL_RELTYPE));
+        storeFilesInAASX(environment, files, rootPackage, packagePart);
 
         saveAASX(os, rootPackage);
     }

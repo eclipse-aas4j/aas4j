@@ -299,6 +299,11 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>aas4j-dataformat-json</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>aas4j-model</artifactId>
                 <version>${model.version}</version>
             </dependency>
