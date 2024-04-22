@@ -19,7 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
@@ -28,6 +27,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer.serializeEnumName;
 /**
  * Entity is serialized as named JSON object with ${Entity/idShort} as the name of the containing JSON property. The
  * JSON object contains three JSON properties. The first is named “statements” ${Entity/statements} and contains an
@@ -65,7 +65,7 @@ class EntityMapper extends AbstractMapper<Entity> {
             }
             node.set(SPECIFIC_ASSET_ID, assetIdNode);
         }
-        node.set(ENTITY_TYPE, new TextNode(EnumSerializer.serializeEnumName(element.getEntityType().name())));
+        node.set(ENTITY_TYPE, new TextNode(serializeEnumName(element.getEntityType().name())));
          return asValueNode(node);
     }
 
