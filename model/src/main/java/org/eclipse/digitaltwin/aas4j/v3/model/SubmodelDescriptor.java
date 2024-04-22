@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (C) 2023 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * 
@@ -21,6 +21,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
 
 import java.util.List;
 
+
 /**
 */
 @KnownSubtypes({
@@ -30,16 +31,16 @@ public interface SubmodelDescriptor extends Descriptor {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/administration
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration
      *
      * @return Returns the AdministrativeInformation for the property administration.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/administration")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration")
     AdministrativeInformation getAdministration();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/administration
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration
      *
      * @param administration desired value for the property administration.
      */
@@ -47,50 +48,33 @@ public interface SubmodelDescriptor extends Descriptor {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/description
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints
      *
-     * @return Returns the LangStringSet for the property description.
+     * @return Returns the List of Endpoints for the property endpoints.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/description")
-    List<LangStringTextType> getDescription();
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints")
+    List<Endpoint> getEndpoints();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/description
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints
      *
-     * @param description desired value for the property description.
+     * @param endpoints desired value for the property endpoints.
      */
-    void setDescription(List<LangStringTextType> description);
+    void setEndpoints(List<Endpoint> endpoints);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/displayName
-     *
-     * @return Returns the LangStringSet for the property displayName.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/displayName")
-    List<LangStringNameType> getDisplayName();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/displayName
-     *
-     * @param displayName desired value for the property displayName.
-     */
-    void setDisplayName(List<LangStringNameType> displayName);
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/idShort
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort
      *
      * @return Returns the String for the property idShort.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/idShort")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort")
     String getIdShort();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/idShort
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort
      *
      * @param idShort desired value for the property idShort.
      */
@@ -98,36 +82,53 @@ public interface SubmodelDescriptor extends Descriptor {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/id
      *
-     * @return Returns the String for the property identification.
+     * @return Returns the String for the property id.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification")
-    String getIdentification();
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/id")
+    String getId();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/identification
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/id
      *
-     * @param identification desired value for the property identification.
+     * @param id desired value for the property id.
      */
-    void setIdentification(String identification);
+    void setId(String id);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/semanticId
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId
      *
      * @return Returns the Reference for the property semanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/semanticId")
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId")
     Reference getSemanticId();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/RC02/SubmodelDescriptor/semanticId
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId
      *
      * @param semanticId desired value for the property semanticId.
      */
     void setSemanticId(Reference semanticId);
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId
+     *
+     * @return Returns the List of References for the property supplementalSemanticId.
+     */
+    @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId")
+    List<Reference> getSupplementalSemanticId();
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId
+     *
+     * @param supplementalSemanticIds desired value for the property supplementalSemanticId.
+     */
+    void setSupplementalSemanticId(List<Reference> supplementalSemanticIds);
 
 }

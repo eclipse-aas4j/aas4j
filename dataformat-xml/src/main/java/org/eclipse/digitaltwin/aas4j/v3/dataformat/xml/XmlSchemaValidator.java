@@ -15,17 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
+import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SchemaValidator;
-import org.xml.sax.SAXException;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class XmlSchemaValidator implements SchemaValidator {
     private static final String SCHEMA = "/AAS.xsd";

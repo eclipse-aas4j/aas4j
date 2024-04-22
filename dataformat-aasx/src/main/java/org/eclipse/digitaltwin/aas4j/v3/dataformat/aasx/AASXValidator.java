@@ -15,14 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSchemaValidator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
-
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.xml.sax.SAXException;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
 
 /**
  * Class to validate the XML file inside an AASX-package
@@ -30,10 +31,12 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
 public class AASXValidator {
 
     private XmlSchemaValidator xmlValidator;
+    private JsonSchemaValidator jsonValidator;
     private AASXDeserializer deserializer;
 
     public AASXValidator(InputStream is) throws SAXException, IOException, InvalidFormatException {
         this.xmlValidator = new XmlSchemaValidator();
+        this.jsonValidator = new JsonSchemaValidator();
         this.deserializer = new AASXDeserializer(is);
     }
 
@@ -45,8 +48,15 @@ public class AASXValidator {
      * @throws InvalidFormatException specified URI is invalid
      */
     public Set<String> validateSchema() throws IOException, InvalidFormatException {
-        String file = deserializer.getXMLResourceString();
-        return xmlValidator.validateSchema(file);
+        String file = deserializer.getResourceString();
+        Set<String> errorMessages = null;
+        if (MetamodelContentType.XML.equals(deserializer.getContentType())) {
+            errorMessages = xmlValidator.validateSchema(file);
+        }
+        else if (MetamodelContentType.JSON.equals(deserializer.getContentType())) {
+            errorMessages = jsonValidator.validateSchema(file);
+        }
+        return errorMessages;
     }
 
 }

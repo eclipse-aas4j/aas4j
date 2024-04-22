@@ -22,7 +22,6 @@ import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersionDetector;
 import com.networknt.schema.ValidationMessage;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SchemaValidator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +29,8 @@ import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 
 /**
  * Class for validating a serialized instance of AssetAdministrationShellEnvironment against a json-schema.

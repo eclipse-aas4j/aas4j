@@ -16,165 +16,33 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 
 /**
  * Class for deserializing/parsing AAS JSON documents.
  */
 public class JsonDeserializer {
-
     protected JsonMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
-
-    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
+    private JsonMapperFactory jsonMapperFactory;
 
     public JsonDeserializer() {
-        initTypeResolver();
-        buildMapper();
+        typeResolver = new SimpleAbstractTypeResolverFactory().create();
+        jsonMapperFactory = new JsonMapperFactory();
+        mapper = jsonMapperFactory.create(typeResolver);
     }
-
-    protected void buildMapper() {
-        mapper = JsonMapper.builder()
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .addModule(buildEnumModule())
-                .addModule(buildImplementationModule())
-                .build();
-        ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    private void initTypeResolver() {
-        typeResolver = new SimpleAbstractTypeResolver();
-        ReflectionHelper.DEFAULT_IMPLEMENTATIONS
-                .stream()
-                .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
-    }
-
-    protected SimpleModule buildEnumModule() {
-        SimpleModule module = new SimpleModule();
-        ReflectionHelper.ENUMS.forEach(x -> module.addDeserializer(x, new EnumDeserializer<>(x)));
-        return module;
-    }
-
-    protected SimpleModule buildImplementationModule() {
-        SimpleModule module = new SimpleModule();
-        module.setAbstractTypes(typeResolver);
-        return module;
-    }
-
-    /**
-     * Deserializes a given string into an instance of AssetAdministrationShellEnvironment
-     *
-     * @param value a string representation of the AssetAdministrationShellEnvironment
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(String value) throws DeserializationException {
-        try {
-            return mapper.readValue(value, Environment.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
-        }
-    }
-
-    /**
-     * Deserializes a given JSON node into an instance of AssetAdministrationShellEnvironment
-     *
-     * @param root root node of the document to parse
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(JsonNode root) throws DeserializationException {
-        try {
-            return mapper.treeToValue(root, Environment.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing AssetAdministrationShellEnvironment", ex);
-        }
-    }
-
-    /**
-     * Deserializes a given InputStream into an instance of AssetAdministrationShellEnvironment using DEFAULT_CHARSET
-     *
-     * @param src an InputStream containing the string representation of the AssetAdministrationShellEnvironment
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(InputStream src) throws DeserializationException {
-        return read(src, DEFAULT_CHARSET);
-    }
-
-    /**
-     * Deserializes a given InputStream into an instance of AssetAdministrationShellEnvironment using a given charset
-     *
-     * @param src An InputStream containing the string representation of the AssetAdministrationShellEnvironment
-     * @param charset the charset to use for deserialization
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(InputStream src, Charset charset) throws DeserializationException {
-        return read(new BufferedReader(
-                new InputStreamReader(src, charset))
-                .lines()
-                .collect(Collectors.joining(System.lineSeparator())));
-    }
-
-    /**
-     * Deserializes a given File into an instance of AssetAdministrationShellEnvironment using DEFAULT_CHARSET
-     *
-     * @param file A java.io.File containing the string representation of the AssetAdministrationShellEnvironment
-     * @param charset the charset to use for deserialization
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws FileNotFoundException if file is not present
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(java.io.File file, Charset charset)
-            throws FileNotFoundException, DeserializationException {
-        return read(new FileInputStream(file), charset);
-    }
-
-    /**
-     * Deserializes a given File into an instance of AssetAdministrationShellEnvironment using a given charset
-     *
-     * @param file a java.io.File containing the string representation of the AssetAdministrationShellEnvironment
-     * @return an instance of AssetAdministrationShellEnvironment
-     * @throws FileNotFoundException if the file is not present
-     * @throws DeserializationException if deserialization fails
-     */
-    public Environment read(java.io.File file) throws FileNotFoundException, DeserializationException {
-        return read(file, DEFAULT_CHARSET);
-    }
-
 
     /**
      * Enables usage of custom implementation to be used for deserialization instead of default implementation, e.g.
@@ -190,264 +58,138 @@ public class JsonDeserializer {
      */
     public <T> void useImplementation(Class<T> aasInterface, Class<? extends T> implementation) {
         typeResolver.addMapping(aasInterface, implementation);
-        buildMapper();
+        mapper = jsonMapperFactory.create(typeResolver);
     }
 
     /**
-     * Deserializes a given string into an instance of the given Referable
+     * Generic method to deserialize a given string into instance of an AAS type
      *
-     * @param src a string representation of the Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param value a string representation of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return the instance
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> T readReferable(String src, Class<T> outputClass) throws DeserializationException {
+    public <T> T read(String value, Class<T> valueType) throws DeserializationException {
         try {
-            return mapper.readValue(src, outputClass);
+            return mapper.readValue(value, valueType);
         } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing Referable", ex);
+            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
         }
     }
 
     /**
-     * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
+     * Generic method to deserialize a given string into a list of AAS instances
      *
-     * @param src a input stream representing a Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param value a string representation of the AAS instances list
+     * @param valueType the class type of the instance. Not null.
+     * @param <T> the AAS type
+     * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> T readReferable(InputStream src, Class<T> outputClass) throws DeserializationException {
-        return readReferable(src, DEFAULT_CHARSET, outputClass);
+    public <T> List<T> readList(String value, Class<T> valueType) throws DeserializationException {
+        try {
+            return mapper.readValue(value, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
+        }
     }
 
     /**
-     * Deserializes a given input stream into an instance of the given Referable using DEFAULT_CHARSET
+     * Generic method to deserialize a given InputStream into instance of an AAS type, using the default UTF-8 charset
      *
-     * @param root JSON node representing a Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param stream An InputStream containing the string representation of the AAS instance
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return an AAS instance
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> T readReferable(JsonNode root, Class<T> outputClass) throws DeserializationException {
-        try {
-            return mapper.treeToValue(root, outputClass);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing Referable", ex);
-        }
+    public <T> T read(InputStream stream, Class<T> valueType) throws DeserializationException {
+        return read(stream, StandardCharsets.UTF_8, valueType);
     }
 
     /**
-     * Deserializes a given input stream into an instance of the given Referable
+     * Generic method to deserialize a given InputStream into instance of an AAS type, using a given charset
      *
-     * @param src a input stream representing a Referable
-     * @param charset the charset to use
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param stream An InputStream containing the string representation of the AAS instance
+     * @param charset the charset to use for deserialization
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return an AAS instance
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> T readReferable(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
-        return readReferable(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
-                outputClass);
-    }
-
-    /**
-     * Deserializes a given file into an instance of the given Referable using DEFAULT_CHARSET
-     *
-     * @param src a file containing string representation of a Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
-     * @throws java.io.FileNotFoundException if file is not found
-     */
-    public <T extends Referable> T readReferable(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
-        return readReferable(src, DEFAULT_CHARSET, outputClass);
-    }
-
-    /**
-     * Deserializes a given file into an instance of the given Referable
-     *
-     * @param src a file containing string representation of a Referable
-     * @param charset the charset to use
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
-     * @throws DeserializationException if deserialization fails
-     * @throws java.io.FileNotFoundException if file is not found
-     */
-    public <T extends Referable> T readReferable(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
-        return readReferable(new FileInputStream(src), charset, outputClass);
-    }
-
-    /**
-     * Deserializes a given string into an instance of a list of the given Referables
-     *
-     * @param referables a string representation of an array of Referables
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of a list of the referables
-     * @throws DeserializationException if deserialization of referable fails
-     */
-    public <T extends Referable> List<T> readReferables(String referables, Class<T> outputClass) throws DeserializationException {
+    public <T> T read(InputStream stream, Charset charset, Class<T> valueType) throws DeserializationException {
         try {
-            return mapper.readValue(referables, new TypeReference<List<T>>() {
-            });
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of Referable", ex);
+            return mapper.readValue(new InputStreamReader(stream, charset), valueType);
+        } catch (IOException ex) {
+            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
         }
     }
 
     /**
-     * Deserializes a given string into an instance of a list of the given Referables
+     * Deserializes a given input stream into a list of AAS instances using the default UTF-8 charset
      *
-     * @param root JSON node representation of an array of Referables
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of a list of the referables
-     * @throws DeserializationException if deserialization of referable fails
-     */
-    public <T extends Referable> List<T> readReferables(JsonNode root, Class<T> outputClass) throws DeserializationException {
-        try {
-            return mapper.treeToValue(root, mapper.getTypeFactory().constructCollectionLikeType(List.class, outputClass));
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of Referable", ex);
-        }
-    }
-
-    /**
-     * Deserializes a given input stream into an instance of a list of the given Referable using DEFAULT_CHARSET
-     *
-     * @param src a input stream representing a Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param stream An InputStream containing the string representation of the AAS instances list
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> List<T> readReferables(InputStream src, Class<T> outputClass) throws DeserializationException {
-        return readReferables(src, DEFAULT_CHARSET, outputClass);
+    public <T> List<T> readList(InputStream stream, Class<T> valueType) throws DeserializationException {
+        return readList(stream, StandardCharsets.UTF_8, valueType);
     }
 
     /**
-     * Deserializes a given input stream into an instance of a list of the given Referable
+     * Deserializes a given input stream into a list of AAS instances
      *
-     * @param src a input stream representing a Referable
-     * @param charset the charset to use
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param stream An InputStream containing the string representation of the AAS instances list
+     * @param charset the charset to use for deserialization
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
      */
-    public <T extends Referable> List<T> readReferables(InputStream src, Charset charset, Class<T> outputClass) throws DeserializationException {
-        return readReferables(new BufferedReader(
-                        new InputStreamReader(src, charset))
-                        .lines()
-                        .collect(Collectors.joining(System.lineSeparator())),
-                outputClass);
+    public <T> List<T> readList(InputStream stream, Charset charset, Class<T> valueType) throws DeserializationException {
+        try {
+            return mapper.readValue(new InputStreamReader(stream, charset),
+                    mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
+        } catch (Exception ex) {
+            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
+        }
     }
 
     /**
-     * Deserializes a given file into an instance of a list of the given Referable using DEFAULT_CHARSET
+     * Generic method to deserialize a given JSON node into instance of an AAS type
      *
-     * @param src a file containing string representation of a Referable
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param node the node to parse
+     * @param valueType the class type of the AAS instance. Not null.
+     * @param <T> the AAS type
+     * @return an AAS instance
+     *
      * @throws DeserializationException if deserialization fails
-     * @throws java.io.FileNotFoundException if file is not found
      */
-    public <T extends Referable> List<T> readReferables(File src, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
-        return readReferables(src, DEFAULT_CHARSET, outputClass);
+    public <T> T read(JsonNode node, Class<T> valueType) throws DeserializationException {
+        try {
+            return mapper.treeToValue(node, valueType);
+        } catch (JsonProcessingException ex) {
+            throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
+        }
     }
 
     /**
-     * Deserializes a given file into an instance of a list of the given Referable
+     * Deserializes a given JsonArray into a list of AAS instances
      *
-     * @param src a file containing string representation of a Referable
-     * @param charset the charset to use
-     * @param outputClass most specific class of the given Referable
-     * @param <T> type of the returned element
-     * @return an instance of the referable
+     * @param node a JsonArray representing the AAS instances list
+     * @param valueType the class type of the instance. Not null.
+     * @param <T> the AAS type
+     * @return a list of AAS instances
      * @throws DeserializationException if deserialization fails
-     * @throws java.io.FileNotFoundException if file is not found
      */
-    public <T extends Referable> List<T> readReferables(File src, Charset charset, Class<T> outputClass) throws DeserializationException, FileNotFoundException {
-        return readReferables(new FileInputStream(src), charset, outputClass);
-    }
-
-    public Reference readReference(String reference) throws DeserializationException {
+    public <T> List<T> readList(JsonNode node, Class<T> valueType) throws DeserializationException {
         try {
-            return mapper.treeToValue(new ObjectMapper().readTree(reference), Reference.class);
+            return mapper.treeToValue(node, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
         } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the Reference", ex);
-        }
-    }
-
-    public List<Reference> readReferences(String references) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(references)) ;
-            return mapper.readValue(parsed,new TypeReference<List<Reference>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of References", ex);
-        }
-    }
-
-
-    public SpecificAssetId readSpecificAssetId(String specificAssetId) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(specificAssetId), SpecificAssetId.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the SpecificAssetId", ex);
-        }
-    }
-
-    public List<SpecificAssetId> readSpecificAssetIds(String specificAssetIds) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(specificAssetIds)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SpecificAssetId>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of SpecificAssetIds", ex);
-        }
-    }
-
-    public SubmodelDescriptor readSubmodelDescriptor(String submodelDescriptor) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(submodelDescriptor), SubmodelDescriptor.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the SubmodelDescriptor", ex);
-        }
-    }
-
-    public List<SubmodelDescriptor> readSubmodelDescriptors(String submodelDescriptors) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(submodelDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<SubmodelDescriptor>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of SubmodelDescriptors", ex);
-        }
-    }
-
-    public AssetAdministrationShellDescriptor readAssetAdministrationShellDescriptor(String assetAdministrationShellDescriptor) throws DeserializationException {
-        try {
-            return mapper.treeToValue(new ObjectMapper().readTree(assetAdministrationShellDescriptor), AssetAdministrationShellDescriptor.class);
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing the AssetAdministrationShellDescriptor", ex);
-        }
-    }
-
-    public List<AssetAdministrationShellDescriptor> readAssetAdministrationShellDescriptors(String assetAdministrationShellDescriptors) throws DeserializationException {
-        try {
-            String parsed = mapper.writeValueAsString(new ObjectMapper().readTree(assetAdministrationShellDescriptors)) ;
-            return mapper.readValue(parsed,new TypeReference<List<AssetAdministrationShellDescriptor>>(){});
-        } catch (JsonProcessingException ex) {
-            throw new DeserializationException("error deserializing list of AssetAdministrationShellDescriptors", ex);
+            throw new DeserializationException("error deserializing list of " + valueType.getSimpleName(), ex);
         }
     }
 }

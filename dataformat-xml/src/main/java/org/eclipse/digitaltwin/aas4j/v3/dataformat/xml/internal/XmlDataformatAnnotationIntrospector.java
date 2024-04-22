@@ -15,8 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
 
-import java.util.Collection;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
 import com.fasterxml.jackson.databind.introspect.Annotated;
@@ -24,7 +22,9 @@ import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
+import java.util.Collection;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 
 /**
  * This class helps to dynamically decide how to de-/serialize classes and

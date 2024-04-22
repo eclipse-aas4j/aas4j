@@ -15,14 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Set;
-
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,8 +24,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class XmlValidationTest {
@@ -46,7 +45,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified.xml", "src/test/resources/test_demo_full_example.xml" })
+    @Parameters({ "src/test/resources/minimum.xml", "src/test/resources/Example_AAS_ServoDCMotor - Simplified.xml", "src/test/resources/test_demo_full_example.xml" })
     // import from admin-shell.io -> is actually V3
     // -> fix name, as soon as it is fixed externally
     public void validateValidXml(String file) throws IOException {
@@ -56,7 +55,7 @@ public class XmlValidationTest {
     }
 
     @Test
-	@Parameters({ "src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid.xml" })
+    @Parameters({ "src/test/resources/invalidXmlExample.xml", "src/test/resources/ServoDCMotor_invalid.xml" })
     public void validateInvalidXml(String file) throws IOException {
         Set<String> errors = validateXmlFile(file);
         logErrors(file, errors);
@@ -67,7 +66,7 @@ public class XmlValidationTest {
         if (errors.isEmpty()) {
             return;
         }
-        logger.info("Validate file: " + validatedFileName);
+        logger.info("Validate file: {}", validatedFileName);
         for (String error : errors) {
             logger.info(error);
         }

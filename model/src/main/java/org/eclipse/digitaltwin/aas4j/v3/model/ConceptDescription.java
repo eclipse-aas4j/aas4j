@@ -29,7 +29,7 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultConceptDescription.class)
 })
-public interface ConceptDescription extends HasDataSpecification, Identifiable {
+public interface ConceptDescription extends Identifiable, HasDataSpecification {
 
     /**
      * Reference to an external definition the concept is compatible to or was derived from.

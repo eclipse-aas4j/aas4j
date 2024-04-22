@@ -15,7 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationBuilder;
 
@@ -77,14 +84,14 @@ public class DefaultOperation implements Operation {
             this.outputVariables,
             this.inoutputVariables,
             this.embeddedDataSpecifications,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
-            this.extensions);
+            this.extensions,
+            this.semanticId,
+            this.supplementalSemanticIds,
+            this.qualifiers);
     }
 
     @Override
@@ -101,14 +108,14 @@ public class DefaultOperation implements Operation {
                 Objects.equals(this.outputVariables, other.outputVariables) &&
                 Objects.equals(this.inoutputVariables, other.inoutputVariables) &&
                 Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions);
+                Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.semanticId, other.semanticId) &&
+                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -150,36 +157,6 @@ public class DefaultOperation implements Operation {
     @Override
     public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
     }
 
     @Override
@@ -230,6 +207,36 @@ public class DefaultOperation implements Operation {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public Reference getSemanticId() {
+        return semanticId;
+    }
+
+    @Override
+    public void setSemanticId(Reference semanticId) {
+        this.semanticId = semanticId;
+    }
+
+    @Override
+    public List<Reference> getSupplementalSemanticIds() {
+        return supplementalSemanticIds;
+    }
+
+    @Override
+    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        this.supplementalSemanticIds = supplementalSemanticIds;
+    }
+
+    @Override
+    public List<Qualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    @Override
+    public void setQualifiers(List<Qualifier> qualifiers) {
+        this.qualifiers = qualifiers;
     }
 
     public String toString() {

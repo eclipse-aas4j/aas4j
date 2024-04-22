@@ -58,7 +58,9 @@ public class DefaultQualifier implements Qualifier {
     @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
     protected DataTypeDefXsd valueType;
 
-    public DefaultQualifier() {}
+    public DefaultQualifier() {
+        this.kind = QualifierKind.CONCEPT_QUALIFIER;
+    }
 
     @Override
     public int hashCode() {
