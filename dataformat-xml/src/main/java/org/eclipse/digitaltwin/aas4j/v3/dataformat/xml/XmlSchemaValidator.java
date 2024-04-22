@@ -15,7 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SchemaValidator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;

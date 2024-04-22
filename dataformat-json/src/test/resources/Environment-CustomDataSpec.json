@@ -1,0 +1,48 @@
+{
+  "submodels" : [ {
+    "modelType" : "Submodel",
+    "embeddedDataSpecifications" : [ {
+      "dataSpecification" : {
+        "keys" : [ {
+          "type" : "GlobalReference",
+          "value" : "https://admin-shell.io/aas/3/0/CustomDataSpecification"
+        } ],
+        "type" : "ExternalReference"
+      },
+      "dataSpecificationContent" : {
+        "modelType" : "DefaultDummyDataSpecification",
+        "name" : {
+          "language" : "en",
+          "text" : "myName"
+        },
+        "text" : "myText",
+        "pages" : 42
+      }
+    }, {
+      "dataSpecification" : {
+        "keys" : [ {
+          "type" : "GlobalReference",
+          "value" : "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+        } ],
+        "type" : "ExternalReference"
+      },
+      "dataSpecificationContent" : {
+        "modelType" : "DataSpecificationIec61360",
+        "dataType" : "BLOB",
+        "definition" : [ {
+          "language" : "en",
+          "text" : "myDefinition"
+        } ],
+        "preferredName" : [ ]
+      }
+    } ],
+    "kind" : "Instance",
+    "id" : "urn:test",
+    "submodelElements" : [ {
+      "modelType" : "File",
+      "contentType" : null,
+      "value" : "FileValue",
+      "idShort" : "myIdShort"
+    } ]
+  } ]
+}

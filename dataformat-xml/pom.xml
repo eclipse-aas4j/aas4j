@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.digitaltwin.aas4j</groupId>
-        <artifactId>dataformat-parent</artifactId>
+        <artifactId>aas4j-dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>dataformat-xml</artifactId>
+    <artifactId>aas4j-dataformat-xml</artifactId>
     <name>Asset Administration Shell XML-Serializer</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
+            <artifactId>aas4j-dataformat-core</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
+            <artifactId>aas4j-dataformat-core</artifactId>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
@@ -61,15 +61,19 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>model</artifactId>
+            <artifactId>aas4j-model</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

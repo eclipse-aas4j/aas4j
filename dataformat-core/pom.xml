@@ -5,16 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.digitaltwin.aas4j</groupId>
-        <artifactId>dataformat-parent</artifactId>
+        <artifactId>aas4j-dataformat-parent</artifactId>
         <version>${revision}</version>
     </parent>
-    <artifactId>dataformat-core</artifactId>
+    <artifactId>aas4j-dataformat-core</artifactId>
     <name>Asset Administration Shell Serializer Core</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>model</artifactId>
+            <artifactId>aas4j-model</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

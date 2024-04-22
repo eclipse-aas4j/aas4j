@@ -16,23 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util.ReflectionHelper;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
-import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -41,208 +24,146 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+
 /**
- * Class for serializing an instance of AssetAdministrationShellEnvironment or Referables to
- * JSON.
+ * Class for serializing of AAS instances.
  */
 public class JsonSerializer {
-
     protected JsonMapper mapper;
 
-    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-
     public JsonSerializer() {
-        buildMapper();
-    }
-
-    protected void buildMapper() {
-        mapper = JsonMapper.builder().enable(SerializationFeature.INDENT_OUTPUT)
-                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .addModule(buildEnumModule())
-                .addModule(buildCustomSerializerModule())
-                .annotationIntrospector(new ReflectionAnnotationIntrospector())
-                .build();
-        ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-    }
-
-    protected SimpleModule buildCustomSerializerModule() {
-        SimpleModule module = new SimpleModule();
-        return module;
-    }
-
-    protected SimpleModule buildEnumModule() {
-        SimpleModule module = new SimpleModule();
-        module.addSerializer(Enum.class, new EnumSerializer());
-        return module;
+        mapper = new JsonMapperFactory().create(new SimpleAbstractTypeResolverFactory().create());
     }
 
     /**
-     * Serializes a given instance of AssetAdministrationShellEnvironment to string
+     * Generic method to serialize a given AAS instance to a string
      *
-     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
-     * @return the string representation of the environment
+     * @param aasInstance the AAS instance to serialize
+     * @return the string representation
      * @throws SerializationException if serialization fails
      */
-    public String write(Environment aasEnvironment) throws SerializationException {
+    public String write(Object aasInstance) throws SerializationException {
         try {
-            return mapper.writeValueAsString(aasEnvironment);
+            return mapper.writeValueAsString(aasInstance);
         } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing AssetAdministrationShellEnvironment", ex);
+            throw new SerializationException(
+                String.format("error serializing %s", aasInstance.getClass().getSimpleName()), ex);
         }
     }
 
     /**
-     * Converts a given instance of AssetAdministrationShellEnvironment as JSON node.
-     *
-     * @param aasEnvironment the AssetAdministrationShellEnvironment to serialize
-     * @return the JSON node representation of the environment
-     */
-    public JsonNode toNode(Environment aasEnvironment) {
-        return mapper.valueToTree(aasEnvironment);
-    }
-
-    /**
-     * Serializes a given instance of Environment to an OutputStream using DEFAULT_CHARSET
-     *
-     * @param out the Outputstream to serialize to
-     * @param aasEnvironment the Environment to serialize
-     * @throws IOException if writing to the stream fails
+     * Generic method to serialize a collection.
+     * @param collection the collection to serialize. Not null.
+     * @return the string representation of the collection.
      * @throws SerializationException if serialization fails
      */
-    void write(OutputStream out, Environment aasEnvironment) throws IOException, SerializationException {
-        write(out, DEFAULT_CHARSET, aasEnvironment);
-    }
-
-    /**
-     * Serializes a given instance of Environment to an OutputStream using given charset
-     *
-     * @param out the Outputstream to serialize to
-     * @param charset the Charset to use for serialization
-     * @param aasEnvironment the Environment to serialize
-     * @throws IOException if writing to the stream fails
-     * @throws SerializationException if serialization fails
-     */
-    void write(OutputStream out, Charset charset, Environment aasEnvironment)
-            throws IOException, SerializationException {
-        try (OutputStreamWriter writer = new OutputStreamWriter(out, charset)) {
-            writer.write(write(aasEnvironment));
+    public String writeList(Collection<?> collection) throws SerializationException {
+        if (collection == null || collection.isEmpty()) {
+            return write(collection);
         }
-    }
 
-    // Note that the AAS also defines a file class
-    /**
-     * Serializes a given instance of Environment to a java.io.File using DEFAULT_CHARSET
-     *
-     * @param file the java.io.File to serialize to
-     * @param charset the Charset to use for serialization
-     * @param aasEnvironment the Environment to serialize
-     * @throws FileNotFoundException if the fail does not exist
-     * @throws IOException if writing to the file fails
-     * @throws SerializationException if serialization fails
-     */
-    void write(java.io.File file, Charset charset, Environment aasEnvironment)
-            throws FileNotFoundException, IOException, SerializationException {
-        try (OutputStream out = new FileOutputStream(file)) {
-            write(out, charset, aasEnvironment);
-        }
-    }
-
-    /**
-     * Serializes a given instance of Environment to a java.io.File using given charset
-     *
-     * @param file the java.io.File to serialize to
-     * @param aasEnvironment the Environment to serialize
-     * @throws FileNotFoundException if the fail does not exist
-     * @throws IOException if writing to the file fails
-     * @throws SerializationException if serialization fails
-     */
-    void write(java.io.File file, Environment aasEnvironment)
-            throws FileNotFoundException, IOException, SerializationException {
-        write(file, DEFAULT_CHARSET, aasEnvironment);
-    }
-
-    /**
-     * Serializes a given instance of a Referable to string
-     *
-     * @param referable the referable to serialize
-     * @return the string representation of the referable
-     * @throws SerializationException if serialization fails
-     */
-    public String write(Referable referable) throws SerializationException {
+        Class clazz = collection.iterator().next().getClass();
         try {
-            return mapper.writeValueAsString(referable);
+            return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+                    .writeValueAsString(collection);
         } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing Referable", ex);
+            throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
         }
     }
 
     /**
-     * Converts a given instance of a Referable to a JSON node.
+     * Generic method to convert a given AAS instance to a JSON node
      *
-     * @param referable the referable to serialize
-     * @return the JSON node representation of the referable
+     * @param aasInstance the AAS instance to serialize
+     * @return the JSON node representation
+     * @throws IllegalArgumentException
      */
-    public JsonNode toNode(Referable referable) {
-        return mapper.valueToTree(referable);
+    public JsonNode toNode(Object aasInstance) {
+        return mapper.valueToTree(aasInstance);
     }
 
     /**
+     * Generic method to convert a collection of AAS instances to a JSON array
      *
-     * @param referables the referables to serialize
-     * @return the string representation of the list of referables
+     * @param aasInstances the list of AAS instances to convert
+     * @return the JSON array representation
+     * @throws IllegalArgumentException
+     */
+    public JsonNode toArrayNode(Collection<?> aasInstances) {
+        if(aasInstances == null) {
+            return JsonNodeFactory.instance.nullNode();
+        }
+        ArrayNode result = JsonNodeFactory.instance.arrayNode();
+        for (Object obj : aasInstances) {
+            result.add(toNode(obj));
+        }
+        return result;
+    }
+
+    /**
+     * Generic method to serialize a given AAS instance to an output stream using given charset
+     *
+     * @param out the output stream to serialize to
+     * @param charset the charset to use for serialization
+     * @param aasInstance the AAS instance to serialize
      * @throws SerializationException if serialization fails
      */
-    public String write(Collection<? extends Referable> referables) throws SerializationException {
-        if (referables == null) {
-            return null;
-        } else if (referables.isEmpty()) {
-            return mapper.createArrayNode().toString();
-        }
-
+    public void write(OutputStream out, Charset charset, Object aasInstance) throws SerializationException {
         try {
-            return mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.iterator().next().getClass()))
-                    .writeValueAsString(referables);
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing list of Referables", ex);
+            mapper.writeValue(new OutputStreamWriter(out, charset), aasInstance);
+        } catch (IOException ex) {
+            throw new SerializationException("error serializing " + aasInstance.getClass().getSimpleName() , ex);
         }
     }
 
     /**
+     * Generic method to serialize a given AAS instance to an output stream using UTF-8 charset
      *
-     * @param referables the referables to serialize
-     * @return the string representation of the list of referables
+     * @param out the output stream to serialize to
+     * @param aasInstance the AAS instance to serialize
+     * @throws SerializationException if serialization fails
      */
-    public JsonNode toNode(Collection<? extends Referable> referables) {
-        if (referables == null) {
-            return null;
-        } else if (referables.isEmpty()) {
-            return mapper.createArrayNode();
-        }
-        return mapper.valueToTree(referables);
+    public void write(OutputStream out, Object aasInstance) throws SerializationException {
+        write(out, StandardCharsets.UTF_8, aasInstance);
     }
 
-    public String writeReferable(Referable referable) throws SerializationException {
-        try {
-            return mapper.writeValueAsString(mapper.valueToTree(referable));
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing Referable", ex);
+    /**
+     * Generic method to serialize a collection of AAS instances to an output stream using given charset
+     *
+     * @param out the output stream to serialize to
+     * @param charset the charset to use for serialization
+     * @param collection the collection of AAS instances to serialize
+     * @throws SerializationException if serialization fails
+     */
+    public void writeList(OutputStream out, Charset charset, Collection<?> collection) throws SerializationException {
+        if (collection == null || collection.isEmpty()) {
+            write(out, charset, collection);
+        } else {
+           Class clazz = collection.iterator().next().getClass();
+            try {
+                mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+                    .writeValue(new OutputStreamWriter(out, charset), collection);
+            } catch (IOException ex) {
+                throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
+            }
         }
     }
 
-    public String writeReferables(List<Referable> referables) throws SerializationException {
-        if(referables.isEmpty()){
-            return "[]";
-        }
-
-        try {
-            ObjectWriter objectWriter = mapper.writerFor(mapper.getTypeFactory().constructCollectionType(List.class, referables.get(0).getClass()));
-            String json = objectWriter.writeValueAsString(referables);
-
-            return mapper.writeValueAsString(this.mapper.readTree(json));
-
-        } catch (JsonProcessingException ex) {
-            throw new SerializationException("error serializing list of Referables", ex);
-        }
+    /**
+     * Generic method to serialize a collection of AAS instances to an output stream using UTF-8 charset
+     *
+     * @param out the output stream to serialize to
+     * @param collection the collection of AAS instances to serialize
+     * @throws SerializationException if serialization fails
+     */
+    public void writeList(OutputStream out, Collection<?> collection) throws SerializationException {
+        writeList(out, StandardCharsets.UTF_8, collection);
     }
 }

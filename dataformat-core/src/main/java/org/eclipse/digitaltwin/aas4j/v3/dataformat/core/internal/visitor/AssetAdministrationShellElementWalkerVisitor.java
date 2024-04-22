@@ -46,6 +46,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
 public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdministrationShellElementVisitor {
 
@@ -129,7 +130,7 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
             return;
         }
         visit(hasSemantics.getSemanticId());
-        hasSemantics.getSupplementalSemanticIds().forEach(x->visit(x));
+        hasSemantics.getSupplementalSemanticIds().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
     }
 
@@ -208,36 +209,36 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
     }
 
     @Override
-    public default void visit(LangStringNameType langString){
-        if (langString == null){
+    public default void visit(LangStringNameType langString) {
+        if (langString == null) {
             return;
         }
         AssetAdministrationShellElementVisitor.super.visit(langString);
-    };
+    }
 
     @Override
-    public default void visit(LangStringPreferredNameTypeIec61360 langString){
-        if (langString == null){
+    public default void visit(LangStringPreferredNameTypeIec61360 langString) {
+        if (langString == null) {
             return;
         }
         AssetAdministrationShellElementVisitor.super.visit(langString);
-    };
+    }
 
     @Override
-    public default void visit(LangStringDefinitionTypeIec61360 langString){
-        if (langString == null){
+    public default void visit(LangStringDefinitionTypeIec61360 langString) {
+        if (langString == null) {
             return;
         }
         AssetAdministrationShellElementVisitor.super.visit(langString);
-    };
+    }
 
     @Override
-    public default void visit(LangStringTextType langString){
-        if (langString == null){
+    public default void visit(LangStringTextType langString) {
+        if (langString == null) {
             return;
         }
         AssetAdministrationShellElementVisitor.super.visit(langString);
-    };
+    }
 
     @Override
     public default void visit(Reference reference) {
@@ -313,6 +314,15 @@ public interface AssetAdministrationShellElementWalkerVisitor extends AssetAdmin
         }
         submodelElementCollection.getValue().forEach(x -> visit(x));
         AssetAdministrationShellElementVisitor.super.visit(submodelElementCollection);
+    }
+
+    @Override
+    public default void visit(SubmodelElementList submodelElementList) {
+        if (submodelElementList == null) {
+            return;
+        }
+        submodelElementList.getValue().forEach(x -> visit(x));
+        AssetAdministrationShellElementVisitor.super.visit(submodelElementList);
     }
 
     @Override
