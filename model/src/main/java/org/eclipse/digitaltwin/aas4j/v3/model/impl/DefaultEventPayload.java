@@ -184,7 +184,7 @@ public class DefaultEventPayload implements EventPayload {
                 + "payload=%s,"
                 + ")",
             this.source, this.sourceSemanticId, this.observableReference, this.observableSemanticId, this.topic, this.subjectId,
-            this.timeStamp, this.payload);
+            this.timeStamp, Arrays.toString(this.payload));
     }
 
     /**

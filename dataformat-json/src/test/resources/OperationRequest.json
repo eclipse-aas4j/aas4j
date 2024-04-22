@@ -1,0 +1,11 @@
+{
+  "clientTimeoutDuration" : "PT3M",
+  "inoutputArguments" : [ {
+    "value" : {
+      "modelType" : "Property",
+      "value" : "42",
+      "valueType" : "xs:int",
+      "idShort" : "TheAnswerOfAllQuestions"
+    }
+  } ]
+}

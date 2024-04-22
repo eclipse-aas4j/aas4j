@@ -28,7 +28,7 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultAssetAdministrationShell.class)
 })
-public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
+public interface AssetAdministrationShell extends Identifiable, HasDataSpecification {
 
     /**
      * The reference to the AAS the AAS was derived from.

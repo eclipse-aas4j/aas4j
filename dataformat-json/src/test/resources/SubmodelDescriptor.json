@@ -1,0 +1,55 @@
+{
+  "endpoints" : [ {
+    "protocolInformation" : {
+      "href" : "defaultEndpointAddress",
+      "endpointProtocol" : "defaultEndpointProtocol",
+      "endpointProtocolVersion" : ["defaultEndpointProtocolVersion"],
+      "subprotocol" : "defaultSubprotocol",
+      "subprotocolBody" : "defaultSubprotocolBody",
+      "subprotocolBodyEncoding" : "defaultSubprotocolBodyEncoding",
+      "securityAttributes": [ {
+        "type": "NONE",
+        "key": "NONE",
+        "value": "NONE"
+      } ]
+    },
+    "interface" : "defaultInterface"
+  } ],
+  "administration" : {
+    "revision" : "1",
+    "version" : "1",
+    "embeddedDataSpecifications" : [ {
+      "dataSpecification" : {
+        "keys" : [ {
+          "type" : "GlobalReference",
+          "value" : "defaultEmbeddedDataSpecificationDataSpecificationValue"
+        } ],
+        "type" : "ExternalReference"
+      },
+      "dataSpecificationContent" : {
+        "modelType" : "DataSpecificationIec61360",
+        "preferredName" : [ {
+          "language": "en",
+          "text": "defaultPreferredName"
+        } ]
+      }
+    } ]
+  },
+  "description" : [ {
+    "language" : "en",
+    "text" : "defaultDescription"
+  } ],
+  "displayName" : [ {
+    "language" : "en",
+    "text" : "defaultDisplayName"
+  } ],
+  "idShort" : "defaultIdShort",
+  "id" : "identification",
+  "semanticId" : {
+    "keys" : [ {
+      "type" : "GlobalReference",
+      "value" : "eClassDefaultSemanticId"
+    } ],
+    "type" : "ExternalReference"
+  }
+}

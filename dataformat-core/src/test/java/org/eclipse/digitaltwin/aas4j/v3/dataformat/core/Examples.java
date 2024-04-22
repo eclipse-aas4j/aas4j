@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 jab.
+ * Copyright (c) 2023 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,15 +17,23 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
 public class Examples {
     
@@ -34,6 +42,7 @@ public class Examples {
                     .id("something_142922d6")
                     .extensions(new DefaultExtension.Builder()
                             .name("something_aae6caf4")
+                            .valueType(DataTypeDefXsd.STRING)
                             .build())
                     .assetInformation(new DefaultAssetInformation.Builder()
                             .assetKind(AssetKind.NOT_APPLICABLE)
@@ -77,4 +86,56 @@ public class Examples {
                             .build())
                     .build())
             .build();
+
+    public static final Environment ENVIRONMENT_WITH_DUMMYDATASPEC = new DefaultEnvironment.Builder()
+            .submodels(
+                    new DefaultSubmodel.Builder()
+                            .id("urn:test")
+                            .submodelElements(new DefaultFile.Builder()
+                                    .idShort("myIdShort").value("FileValue")
+                                    .build())
+                            .embeddedDataSpecifications(
+                                    new DefaultEmbeddedDataSpecification.Builder()
+                                            .dataSpecificationContent(
+                                                    new DefaultDummyDataSpecification.Builder()
+                                                            .name(new DefaultLangStringNameType.Builder()
+                                                                    .language("en").text("myName").build())
+                                                            .text("myText")
+                                                            .pages(42)
+                                                            .build())
+                                            .dataSpecification(
+                                                    new DefaultReference.Builder()
+                                                            .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                            .keys(
+                                                                    new DefaultKey.Builder()
+                                                                            .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                            .value("https://admin-shell.io/aas/3/0/CustomDataSpecification")
+                                                                            .build()
+                                                            )
+                                                            .build()
+                                            )
+                                            .build())
+                            .embeddedDataSpecifications(
+                                    new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
+                                                    new DefaultDataSpecificationIec61360.Builder()
+                                                            .dataType(DataTypeIec61360.BLOB)
+                                                            .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
+                                                                    .language("en").text("myDefinition")
+                                                                    .build())
+                                                            .build()
+                                            )
+                                            .dataSpecification(
+                                                    new DefaultReference.Builder()
+                                                            .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                                            .keys(
+                                                                    new DefaultKey.Builder()
+                                                                            .type(KeyTypes.GLOBAL_REFERENCE)
+                                                                            .value("https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360")
+                                                                            .build()
+                                                            )
+                                                            .build()
+                                            )
+                                            .build())
+                            .build()
+            ).build();
 }
