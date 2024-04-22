@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.valueonly;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
 import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
@@ -27,7 +26,9 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
-import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.serialization.EnumSerializer.serializeEnumName;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer.serializeEnumName;
+import static org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer.deserializeEnumName;
+
 /**
  * Entity is serialized as named JSON object with ${Entity/idShort} as the name of the containing JSON property. The
  * JSON object contains three JSON properties. The first is named “statements” ${Entity/statements} and contains an
@@ -102,7 +103,7 @@ class EntityMapper extends AbstractMapper<Entity> {
             throw new ValueOnlySerializationException("Cannot update the Entity at idShort path '" +
                 idShortPath + "', as its type is not set as string property '" + ENTITY_TYPE + "'.", idShortPath);
         }
-        element.setEntityType(EntityType.valueOf(EnumDeserializer.deserializeEnumName(entityTypeNode.textValue())));
+        element.setEntityType(EntityType.valueOf(deserializeEnumName(entityTypeNode.textValue())));
     }
 
     private void updateSpecificAssetIds(List<SpecificAssetId> specificAssetIds, ObjectNode objNode)
