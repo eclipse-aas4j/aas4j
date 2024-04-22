@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dataformat-core</artifactId>
+            <artifactId> dataformat-core</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
