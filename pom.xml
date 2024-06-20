@@ -50,7 +50,7 @@
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
         <plugin.flatten.version>1.6.0</plugin.flatten.version>
         <plugin.gpg.version>3.0.1</plugin.gpg.version>
-        <plugin.jar.version>3.4.0</plugin.jar.version>
+        <plugin.jar.version>3.4.2</plugin.jar.version>
         <plugin.javadoc.version>3.6.3</plugin.javadoc.version>
         <plugin.projectinfo.version>3.5.0</plugin.projectinfo.version>
         <plugin.source.version>3.3.1</plugin.source.version>
