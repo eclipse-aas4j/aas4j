@@ -15,27 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetIdentifierVisitor;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.HasSemantics;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
@@ -44,18 +37,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.reflect.TypeToken;
 
 /**
  * Provides utility functions related to AAS
  */
 public class AasUtils {
-
-    private static final Logger log = LoggerFactory.getLogger(AasUtils.class);
-
     private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION = Map.of(
             ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
             ReferenceTypes.MODEL_REFERENCE, "ModelRef");
@@ -123,6 +109,9 @@ public class AasUtils {
         try {
             Reference reference = referenceType.getConstructor().newInstance();
             reference.setType(ReferenceTypes.MODEL_REFERENCE);
+
+            setReferredSemanticIdIfHasSemantics(identifiable, reference);
+
             Key key = keyType.getConstructor().newInstance();
             key.setType(referableToKeyType(identifiable));
             key.setValue(identifiable.getId());
@@ -159,20 +148,6 @@ public class AasUtils {
     }
 
     /**
-     * Gets a Java interface representing the type provided by key.
-     *
-     * @param key The KeyElements type
-     * @return a Java interface representing the provided KeyElements type or null if no matching Class/interface could
-     * be found. It also returns abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
-     */
-    private static Class<?> keyTypeToClass(KeyTypes key) {
-        return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
-                .filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
-                .findAny()
-                .orElse(null);
-    }
-
-    /**
      * Creates a reference for an element given a potential parent using provided implementation types for reference and
      * key
      *
@@ -194,6 +169,7 @@ public class AasUtils {
         } else {
             Reference result = clone(parent, referenceType, keyType);
             if (result != null) {
+                setReferredSemanticIdIfHasSemantics(element, result);
                 try {
                     Key newKey = keyType.getConstructor().newInstance();
                     newKey.setType(AasUtils.referableToKeyType(element));
@@ -380,39 +356,9 @@ public class AasUtils {
         return type.cast(current);
     }
 
-    /**
-     * Gets a list of all properties defined for a class implementing at least one AAS interface.
-     *
-     * @param type A class implementing at least one AAS interface. If it is does not implement any AAS interface the
-     * result will be an empty list
-     * @return a list of all properties defined in any of AAS interface implemented by type. If type does not implement
-     * any AAS interface an empty list is returned.
-     */
-    private static List<PropertyDescriptor> getAasProperties(Class<?> type) {
-        Class<?> aasType = ReflectionHelper.getAasInterface(type);
-        if (aasType == null) {
-            aasType = ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream()
-                    .filter(x -> x.isAssignableFrom(type))
-                    .map(x -> TypeToken.of(x))
-                    .sorted(new MostSpecificTypeTokenComparator())
-                    .findFirst().get()
-                    .getRawType();
+    private static void setReferredSemanticIdIfHasSemantics(Object obj, Reference reference) {
+        if (obj instanceof HasSemantics) {
+            reference.setReferredSemanticId(((HasSemantics) obj).getSemanticId());
         }
-        Set<Class<?>> types = new HashSet<>();
-        if (aasType != null) {
-            types.add(aasType);
-            types.addAll(ReflectionHelper.getSuperTypes(aasType, true));
-        }
-        return types.stream()
-                .flatMap(x -> {
-                    try {
-                        return Stream.of(Introspector.getBeanInfo(x).getPropertyDescriptors());
-                    } catch (IntrospectionException ex) {
-                        log.warn("error finding properties of class '{}'", type, ex);
-                    }
-                    return Stream.empty();
-                })
-                .sorted(Comparator.comparing(x -> x.getName()))
-                .collect(Collectors.toList());
     }
 }
