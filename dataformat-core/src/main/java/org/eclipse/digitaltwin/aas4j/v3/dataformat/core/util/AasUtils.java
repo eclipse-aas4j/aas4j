@@ -110,7 +110,6 @@ public class AasUtils {
             Reference reference = referenceType.getConstructor().newInstance();
             reference.setType(ReferenceTypes.MODEL_REFERENCE);
 
-            setReferredSemanticIdIfHasSemantics(identifiable, reference);
 
             Key key = keyType.getConstructor().newInstance();
             key.setType(referableToKeyType(identifiable));
@@ -123,6 +122,23 @@ public class AasUtils {
     }
 
     /**
+     * Creates a reference for an Identifiable instance using provided implementation types for reference and key
+     *
+     * @param identifiable the identifiable to create the reference for
+     * @param referenceType implementation type of Reference interface
+     * @param keyType implementation type of Key interface
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * @return a reference representing the identifiable
+     */
+    public static Reference toReference(Identifiable identifiable, Class<? extends Reference> referenceType,
+            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(identifiable, referenceType, keyType);
+
+        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+    }
+
+
+    /**
      * Creates a reference for an Identifiable instance
      *
      * @param identifiable the identifiable to create the reference for
@@ -133,18 +149,16 @@ public class AasUtils {
     }
 
     /**
-     * Gets the KeyElements type matching the provided Referable
+     * Creates a reference for an Identifiable instance
      *
-     * @param referable The referable to convert to KeyElements type
-     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
-     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
+     * @param identifiable the identifiable to create the reference for
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * @return a reference representing the identifiable
      */
-    public static KeyTypes referableToKeyType(Referable referable) {
-        Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
-        if (aasInterface != null) {
-            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
-        }
-        return null;
+    public static Reference toReference(Identifiable identifiable, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(identifiable);
+
+        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
     }
 
     /**
@@ -169,7 +183,6 @@ public class AasUtils {
         } else {
             Reference result = clone(parent, referenceType, keyType);
             if (result != null) {
-                setReferredSemanticIdIfHasSemantics(element, result);
                 try {
                     Key newKey = keyType.getConstructor().newInstance();
                     newKey.setType(AasUtils.referableToKeyType(element));
@@ -181,6 +194,27 @@ public class AasUtils {
             }
             return result;
         }
+    }
+
+    /**
+     * Creates a reference for an element given a potential parent using provided implementation types for reference and
+     * key
+     *
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
+     * @param element the element to create a reference for
+     * @param referenceType implementation type of Reference interface
+     * @param keyType implementation type of Key interface
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     *
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
+     */
+    public static Reference toReference(Reference parent, Referable element, Class<? extends Reference> referenceType,
+            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(parent, element, referenceType, keyType);
+        return handleReferredSemanticId(element, setReferredSemanticIdIfHasSemantics, reference);
     }
 
     /**
@@ -199,6 +233,42 @@ public class AasUtils {
                 ReflectionHelper.getDefaultImplementation(Reference.class),
                 ReflectionHelper.getDefaultImplementation(Key.class));
     }
+
+    /**
+     * Creates a reference for an element given a potential parent
+     *
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
+     * @param element the element to create a reference for
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * 
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
+     */
+    public static Reference toReference(Reference parent, Referable element, boolean setReferredSemanticIdIfHasSemantics) {
+        return toReference(parent,
+                element,
+                ReflectionHelper.getDefaultImplementation(Reference.class),
+                ReflectionHelper.getDefaultImplementation(Key.class), 
+                setReferredSemanticIdIfHasSemantics);
+    }
+    
+    /**
+     * Gets the KeyElements type matching the provided Referable
+     *
+     * @param referable The referable to convert to KeyElements type
+     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
+     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
+     */
+    public static KeyTypes referableToKeyType(Referable referable) {
+        Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
+        if (aasInterface != null) {
+            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
+        }
+        return null;
+    }
+
 
     /**
      * Checks if two references are refering to the same element ignoring referredSemanticId.
@@ -356,9 +426,13 @@ public class AasUtils {
         return type.cast(current);
     }
 
-    private static void setReferredSemanticIdIfHasSemantics(Object obj, Reference reference) {
-        if (obj instanceof HasSemantics) {
-            reference.setReferredSemanticId(((HasSemantics) obj).getSemanticId());
+    private static Reference handleReferredSemanticId(Referable referable,
+            boolean setReferredSemanticIdIfHasSemantics, Reference reference) {
+        if (setReferredSemanticIdIfHasSemantics && referable instanceof HasSemantics) {
+            reference.setReferredSemanticId(((HasSemantics) referable).getSemanticId());
         }
+
+        return reference;
     }
+
 }

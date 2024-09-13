@@ -509,14 +509,21 @@ public class AasUtilsTest {
     }
 
     @Test
-    public void whenAsReference_IdentifiableWithSemanticId_success() {
+    public void whenAsReferenceWithReferredSemanticId_IdentifiableWithSemanticId_success() {
         Submodel submodel = AASFull.SUBMODEL_3;
-        Reference ref = AasUtils.toReference(submodel);
+        Reference ref = AasUtils.toReference(submodel, true);
         assertEquals(submodel.getSemanticId(), ref.getReferredSemanticId());
     }
     
     @Test
-    public void whenAsReference_PropertyWithSemanticId_success() {
+    public void whenAsReferenceWithoutReferredSemanticId_IdentifiableWithSemanticId_success() {
+        Submodel submodel = AASFull.SUBMODEL_3;
+        Reference ref = AasUtils.toReference(submodel, false);
+        assertEquals(null, ref.getReferredSemanticId());
+    }
+
+    @Test
+    public void whenAsReferenceWithReferredSemanticId_PropertyWithSemanticId_success() {
         Property prop = createPropertyWithSemanticId();
         Reference reference = new DefaultReference.Builder()
                     .type(ReferenceTypes.EXTERNAL_REFERENCE)
@@ -525,8 +532,22 @@ public class AasUtilsTest {
                             .value("bar")
                             .build())
                     .build();
-        Reference ref = AasUtils.toReference(reference, prop);
+        Reference ref = AasUtils.toReference(reference, prop, true);
         assertEquals(prop.getSemanticId(), ref.getReferredSemanticId());
+    }
+    
+    @Test
+    public void whenAsReferenceWithoutReferredSemanticId_PropertyWithSemanticId_success() {
+        Property prop = createPropertyWithSemanticId();
+        Reference reference = new DefaultReference.Builder()
+                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                    .keys(new DefaultKey.Builder()
+                            .type(KeyTypes.GLOBAL_REFERENCE)
+                            .value("bar")
+                            .build())
+                    .build();
+        Reference ref = AasUtils.toReference(reference, prop, false);
+        assertEquals(null, ref.getReferredSemanticId());
     }
 
     private Property createPropertyWithSemanticId() {
