@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -53,12 +54,12 @@ public class DefaultValueReferencePair implements ValueReferencePair {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof ValueReferencePair) == false) {
             return false;
         } else {
-            DefaultValueReferencePair other = (DefaultValueReferencePair) obj;
-            return Objects.equals(this.value, other.value) &&
-                Objects.equals(this.valueId, other.valueId);
+            ValueReferencePair other = (ValueReferencePair) obj;
+            return Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.valueId, other.getValueId());
         }
     }
 

@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -49,11 +50,11 @@ public class DefaultOperationVariable implements OperationVariable {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof OperationVariable) == false) {
             return false;
         } else {
-            DefaultOperationVariable other = (DefaultOperationVariable) obj;
-            return Objects.equals(this.value, other.value);
+            OperationVariable other = (OperationVariable) obj;
+            return Objects.equals(this.value, other.getValue());
         }
     }
 

@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
@@ -58,13 +59,13 @@ public class DefaultBaseOperationResult implements BaseOperationResult {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof BaseOperationResult) == false) {
             return false;
         } else {
-            DefaultBaseOperationResult other = (DefaultBaseOperationResult) obj;
-            return Objects.equals(this.executionState, other.executionState) &&
-                Objects.equals(this.success, other.success) &&
-                Objects.equals(this.messages, other.messages);
+            BaseOperationResult other = (BaseOperationResult) obj;
+            return Objects.equals(this.executionState, other.getExecutionState()) &&
+                Objects.equals(this.success, other.getSuccess()) &&
+                Objects.equals(this.messages, other.getMessages());
         }
     }
 

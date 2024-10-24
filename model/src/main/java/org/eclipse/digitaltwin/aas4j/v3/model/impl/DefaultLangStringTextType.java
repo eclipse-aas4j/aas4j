@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringTextTypeBuilder;
@@ -51,12 +52,12 @@ public class DefaultLangStringTextType implements LangStringTextType {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof LangStringTextType) == false) {
             return false;
         } else {
-            DefaultLangStringTextType other = (DefaultLangStringTextType) obj;
-            return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+            LangStringTextType other = (LangStringTextType) obj;
+            return Objects.equals(this.language, other.getLanguage()) &&
+                Objects.equals(this.text, other.getText());
         }
     }
 
