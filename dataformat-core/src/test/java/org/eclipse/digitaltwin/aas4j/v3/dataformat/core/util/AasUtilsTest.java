@@ -16,11 +16,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import junitparams.JUnitParamsRunner;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -39,10 +44,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import junitparams.JUnitParamsRunner;
 
 @RunWith(JUnitParamsRunner.class)
 public class AasUtilsTest {
@@ -504,5 +506,62 @@ public class AasUtilsTest {
         String expected = "[ExternalRef- [ModelRef](GlobalReference)foo -](GlobalReference)0173-1#01-ADS698#010";
         String actual = AasUtils.asString(reference);
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void whenAsReferenceWithReferredSemanticId_IdentifiableWithSemanticId_success() {
+        Submodel submodel = AASFull.SUBMODEL_3;
+        Reference ref = AasUtils.toReference(submodel, true);
+        assertEquals(submodel.getSemanticId(), ref.getReferredSemanticId());
+    }
+    
+    @Test
+    public void whenAsReferenceWithoutReferredSemanticId_IdentifiableWithSemanticId_success() {
+        Submodel submodel = AASFull.SUBMODEL_3;
+        Reference ref = AasUtils.toReference(submodel, false);
+        assertEquals(null, ref.getReferredSemanticId());
+    }
+
+    @Test
+    public void whenAsReferenceWithReferredSemanticId_PropertyWithSemanticId_success() {
+        Property prop = createPropertyWithSemanticId();
+        Reference reference = new DefaultReference.Builder()
+                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                    .keys(new DefaultKey.Builder()
+                            .type(KeyTypes.GLOBAL_REFERENCE)
+                            .value("bar")
+                            .build())
+                    .build();
+        Reference ref = AasUtils.toReference(reference, prop, true);
+        assertEquals(prop.getSemanticId(), ref.getReferredSemanticId());
+    }
+    
+    @Test
+    public void whenAsReferenceWithoutReferredSemanticId_PropertyWithSemanticId_success() {
+        Property prop = createPropertyWithSemanticId();
+        Reference reference = new DefaultReference.Builder()
+                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                    .keys(new DefaultKey.Builder()
+                            .type(KeyTypes.GLOBAL_REFERENCE)
+                            .value("bar")
+                            .build())
+                    .build();
+        Reference ref = AasUtils.toReference(reference, prop, false);
+        assertEquals(null, ref.getReferredSemanticId());
+    }
+
+    private Property createPropertyWithSemanticId() {
+        return new DefaultProperty.Builder()
+        .idShort("ExampleProperty1")
+        .semanticId(new DefaultReference.Builder()
+                .keys(new DefaultKey.Builder()
+                        .type(KeyTypes.GLOBAL_REFERENCE)
+                        .value("http://acplt.org/Properties/ExampleProperty")
+                        .build())
+                .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                .build())
+        .value("http://acplt.org/ValueId/ExampleValueId")
+        .valueType(DataTypeDefXsd.STRING)
+        .build();
     }
 }

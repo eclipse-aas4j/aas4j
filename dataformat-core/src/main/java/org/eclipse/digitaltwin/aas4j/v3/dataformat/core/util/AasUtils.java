@@ -15,27 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetIdentifierVisitor;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.MostSpecificTypeTokenComparator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.HasSemantics;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
@@ -44,18 +37,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.reflect.TypeToken;
 
 /**
  * Provides utility functions related to AAS
  */
 public class AasUtils {
-
-    private static final Logger log = LoggerFactory.getLogger(AasUtils.class);
-
     private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION = Map.of(
             ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
             ReferenceTypes.MODEL_REFERENCE, "ModelRef");
@@ -123,6 +109,8 @@ public class AasUtils {
         try {
             Reference reference = referenceType.getConstructor().newInstance();
             reference.setType(ReferenceTypes.MODEL_REFERENCE);
+
+
             Key key = keyType.getConstructor().newInstance();
             key.setType(referableToKeyType(identifiable));
             key.setValue(identifiable.getId());
@@ -132,6 +120,23 @@ public class AasUtils {
             throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
         }
     }
+
+    /**
+     * Creates a reference for an Identifiable instance using provided implementation types for reference and key
+     *
+     * @param identifiable the identifiable to create the reference for
+     * @param referenceType implementation type of Reference interface
+     * @param keyType implementation type of Key interface
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * @return a reference representing the identifiable
+     */
+    public static Reference toReference(Identifiable identifiable, Class<? extends Reference> referenceType,
+            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(identifiable, referenceType, keyType);
+
+        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+    }
+
 
     /**
      * Creates a reference for an Identifiable instance
@@ -144,32 +149,16 @@ public class AasUtils {
     }
 
     /**
-     * Gets the KeyElements type matching the provided Referable
+     * Creates a reference for an Identifiable instance
      *
-     * @param referable The referable to convert to KeyElements type
-     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
-     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
+     * @param identifiable the identifiable to create the reference for
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * @return a reference representing the identifiable
      */
-    public static KeyTypes referableToKeyType(Referable referable) {
-        Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
-        if (aasInterface != null) {
-            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
-        }
-        return null;
-    }
+    public static Reference toReference(Identifiable identifiable, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(identifiable);
 
-    /**
-     * Gets a Java interface representing the type provided by key.
-     *
-     * @param key The KeyElements type
-     * @return a Java interface representing the provided KeyElements type or null if no matching Class/interface could
-     * be found. It also returns abstract types like SUBMODEL_ELEMENT or DATA_ELEMENT
-     */
-    private static Class<?> keyTypeToClass(KeyTypes key) {
-        return Stream.concat(ReflectionHelper.INTERFACES.stream(), ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream())
-                .filter(x -> x.getSimpleName().equals(EnumSerializer.serializeEnumName(key.name())))
-                .findAny()
-                .orElse(null);
+        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
     }
 
     /**
@@ -208,6 +197,27 @@ public class AasUtils {
     }
 
     /**
+     * Creates a reference for an element given a potential parent using provided implementation types for reference and
+     * key
+     *
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
+     * @param element the element to create a reference for
+     * @param referenceType implementation type of Reference interface
+     * @param keyType implementation type of Key interface
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     *
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
+     */
+    public static Reference toReference(Reference parent, Referable element, Class<? extends Reference> referenceType,
+            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
+        Reference reference = toReference(parent, element, referenceType, keyType);
+        return handleReferredSemanticId(element, setReferredSemanticIdIfHasSemantics, reference);
+    }
+
+    /**
      * Creates a reference for an element given a potential parent
      *
      * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
@@ -223,6 +233,42 @@ public class AasUtils {
                 ReflectionHelper.getDefaultImplementation(Reference.class),
                 ReflectionHelper.getDefaultImplementation(Key.class));
     }
+
+    /**
+     * Creates a reference for an element given a potential parent
+     *
+     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
+     * result will always be null
+     * @param element the element to create a reference for
+     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
+     * 
+     * @return A reference representing the element or null if either element is null or parent is null and element not
+     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
+     * contain one key pointing directly to the element.
+     */
+    public static Reference toReference(Reference parent, Referable element, boolean setReferredSemanticIdIfHasSemantics) {
+        return toReference(parent,
+                element,
+                ReflectionHelper.getDefaultImplementation(Reference.class),
+                ReflectionHelper.getDefaultImplementation(Key.class), 
+                setReferredSemanticIdIfHasSemantics);
+    }
+    
+    /**
+     * Gets the KeyElements type matching the provided Referable
+     *
+     * @param referable The referable to convert to KeyElements type
+     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
+     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
+     */
+    public static KeyTypes referableToKeyType(Referable referable) {
+        Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
+        if (aasInterface != null) {
+            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
+        }
+        return null;
+    }
+
 
     /**
      * Checks if two references are refering to the same element ignoring referredSemanticId.
@@ -380,39 +426,13 @@ public class AasUtils {
         return type.cast(current);
     }
 
-    /**
-     * Gets a list of all properties defined for a class implementing at least one AAS interface.
-     *
-     * @param type A class implementing at least one AAS interface. If it is does not implement any AAS interface the
-     * result will be an empty list
-     * @return a list of all properties defined in any of AAS interface implemented by type. If type does not implement
-     * any AAS interface an empty list is returned.
-     */
-    private static List<PropertyDescriptor> getAasProperties(Class<?> type) {
-        Class<?> aasType = ReflectionHelper.getAasInterface(type);
-        if (aasType == null) {
-            aasType = ReflectionHelper.INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION.stream()
-                    .filter(x -> x.isAssignableFrom(type))
-                    .map(x -> TypeToken.of(x))
-                    .sorted(new MostSpecificTypeTokenComparator())
-                    .findFirst().get()
-                    .getRawType();
+    private static Reference handleReferredSemanticId(Referable referable,
+            boolean setReferredSemanticIdIfHasSemantics, Reference reference) {
+        if (setReferredSemanticIdIfHasSemantics && referable instanceof HasSemantics) {
+            reference.setReferredSemanticId(((HasSemantics) referable).getSemanticId());
         }
-        Set<Class<?>> types = new HashSet<>();
-        if (aasType != null) {
-            types.add(aasType);
-            types.addAll(ReflectionHelper.getSuperTypes(aasType, true));
-        }
-        return types.stream()
-                .flatMap(x -> {
-                    try {
-                        return Stream.of(Introspector.getBeanInfo(x).getPropertyDescriptors());
-                    } catch (IntrospectionException ex) {
-                        log.warn("error finding properties of class '{}'", type, ex);
-                    }
-                    return Stream.empty();
-                })
-                .sorted(Comparator.comparing(x -> x.getName()))
-                .collect(Collectors.toList());
+
+        return reference;
     }
+
 }
