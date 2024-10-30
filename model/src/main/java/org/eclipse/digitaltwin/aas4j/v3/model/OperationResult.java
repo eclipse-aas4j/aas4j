@@ -27,7 +27,7 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultOperationResult.class)
 })
-public interface OperationResult {
+public interface OperationResult extends BaseOperationResult {
 
     /**
      *
