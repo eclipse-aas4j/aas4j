@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -63,7 +64,7 @@ public class DefaultMessage implements Message {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Message) == false) {
             return false;
         } else {
             DefaultMessage other = (DefaultMessage) obj;

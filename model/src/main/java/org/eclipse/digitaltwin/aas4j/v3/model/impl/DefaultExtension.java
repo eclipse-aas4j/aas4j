@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -71,16 +72,16 @@ public class DefaultExtension implements Extension {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Extension) == false) {
             return false;
         } else {
-            DefaultExtension other = (DefaultExtension) obj;
-            return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.valueType, other.valueType) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.refersTo, other.refersTo) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+            Extension other = (Extension) obj;
+            return Objects.equals(this.name, other.getName()) &&
+                Objects.equals(this.valueType, other.getValueType()) &&
+                Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.refersTo, other.getRefersTo()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds());
         }
     }
 

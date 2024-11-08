@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
@@ -52,12 +53,12 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof LangStringShortNameTypeIec61360) == false) {
             return false;
         } else {
-            DefaultLangStringShortNameTypeIec61360 other = (DefaultLangStringShortNameTypeIec61360) obj;
-            return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+            LangStringShortNameTypeIec61360 other = (LangStringShortNameTypeIec61360) obj;
+            return Objects.equals(this.language, other.getLanguage()) &&
+                Objects.equals(this.text, other.getText());
         }
     }
 

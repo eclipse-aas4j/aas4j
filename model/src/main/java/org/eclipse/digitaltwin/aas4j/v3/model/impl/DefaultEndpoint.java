@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -51,12 +52,12 @@ public class DefaultEndpoint implements Endpoint {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Endpoint) == false) {
             return false;
         } else {
-            DefaultEndpoint other = (DefaultEndpoint) obj;
-            return Objects.equals(this._interface, other._interface) &&
-                Objects.equals(this.protocolInformation, other.protocolInformation);
+            Endpoint other = (Endpoint) obj;
+            return Objects.equals(this._interface, other.get_interface()) &&
+                Objects.equals(this.protocolInformation, other.getProtocolInformation());
         }
     }
 

@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -50,11 +51,11 @@ public class DefaultValueList implements ValueList {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof ValueList) == false) {
             return false;
         } else {
-            DefaultValueList other = (DefaultValueList) obj;
-            return Objects.equals(this.valueReferencePairs, other.valueReferencePairs);
+            ValueList other = (ValueList) obj;
+            return Objects.equals(this.valueReferencePairs, other.getValueReferencePairs());
         }
     }
 

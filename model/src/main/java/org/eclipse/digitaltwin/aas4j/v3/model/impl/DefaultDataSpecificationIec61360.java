@@ -15,14 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
 
@@ -102,22 +95,22 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof DataSpecificationIec61360) == false) {
             return false;
         } else {
-            DefaultDataSpecificationIec61360 other = (DefaultDataSpecificationIec61360) obj;
-            return Objects.equals(this.preferredName, other.preferredName) &&
-                Objects.equals(this.shortName, other.shortName) &&
-                Objects.equals(this.unit, other.unit) &&
-                Objects.equals(this.unitId, other.unitId) &&
-                Objects.equals(this.sourceOfDefinition, other.sourceOfDefinition) &&
-                Objects.equals(this.symbol, other.symbol) &&
-                Objects.equals(this.dataType, other.dataType) &&
-                Objects.equals(this.definition, other.definition) &&
-                Objects.equals(this.valueFormat, other.valueFormat) &&
-                Objects.equals(this.valueList, other.valueList) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.levelType, other.levelType);
+            DataSpecificationIec61360 other = (DataSpecificationIec61360) obj;
+            return Objects.equals(this.preferredName, other.getPreferredName()) &&
+                Objects.equals(this.shortName, other.getShortName()) &&
+                Objects.equals(this.unit, other.getUnit()) &&
+                Objects.equals(this.unitId, other.getUnitId()) &&
+                Objects.equals(this.sourceOfDefinition, other.getSourceOfDefinition()) &&
+                Objects.equals(this.symbol, other.getSymbol()) &&
+                Objects.equals(this.dataType, other.getDataType()) &&
+                Objects.equals(this.definition, other.getDefinition()) &&
+                Objects.equals(this.valueFormat, other.getValueFormat()) &&
+                Objects.equals(this.valueList, other.getValueList()) &&
+                Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.levelType, other.getLevelType());
         }
     }
 

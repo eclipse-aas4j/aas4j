@@ -15,14 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellBuilder;
 
@@ -96,21 +89,21 @@ public class DefaultAssetAdministrationShell implements AssetAdministrationShell
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof AssetAdministrationShell) == false) {
             return false;
         } else {
-            DefaultAssetAdministrationShell other = (DefaultAssetAdministrationShell) obj;
-            return Objects.equals(this.derivedFrom, other.derivedFrom) &&
-                Objects.equals(this.assetInformation, other.assetInformation) &&
-                Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+            AssetAdministrationShell other = (AssetAdministrationShell) obj;
+            return Objects.equals(this.derivedFrom, other.getDerivedFrom()) &&
+                Objects.equals(this.assetInformation, other.getAssetInformation()) &&
+                Objects.equals(this.submodels, other.getSubmodels()) &&
+                Objects.equals(this.administration, other.getAdministration()) &&
+                Objects.equals(this.id, other.getId()) &&
+                Objects.equals(this.category, other.getCategory()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.extensions, other.getExtensions()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications());
         }
     }
 

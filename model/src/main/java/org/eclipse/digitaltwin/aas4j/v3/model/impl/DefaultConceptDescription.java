@@ -15,13 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ConceptDescriptionBuilder;
 
@@ -88,19 +82,19 @@ public class DefaultConceptDescription implements ConceptDescription {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof ConceptDescription) == false) {
             return false;
         } else {
-            DefaultConceptDescription other = (DefaultConceptDescription) obj;
-            return Objects.equals(this.isCaseOf, other.isCaseOf) &&
-                Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+            ConceptDescription other = (ConceptDescription) obj;
+            return Objects.equals(this.isCaseOf, other.getIsCaseOf()) &&
+                Objects.equals(this.administration, other.getAdministration()) &&
+                Objects.equals(this.id, other.getId()) &&
+                Objects.equals(this.category, other.getCategory()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.extensions, other.getExtensions()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications());
         }
     }
 

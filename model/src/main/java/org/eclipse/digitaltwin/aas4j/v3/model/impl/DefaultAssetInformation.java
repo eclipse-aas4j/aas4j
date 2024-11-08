@@ -15,10 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
 
@@ -69,15 +66,15 @@ public class DefaultAssetInformation implements AssetInformation {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof AssetInformation) == false) {
             return false;
         } else {
-            DefaultAssetInformation other = (DefaultAssetInformation) obj;
-            return Objects.equals(this.assetKind, other.assetKind) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
-                Objects.equals(this.assetType, other.assetType) &&
-                Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
+            AssetInformation other = (AssetInformation) obj;
+            return Objects.equals(this.assetKind, other.getAssetKind()) &&
+                Objects.equals(this.globalAssetId, other.getGlobalAssetId()) &&
+                Objects.equals(this.specificAssetIds, other.getSpecificAssetIds()) &&
+                Objects.equals(this.assetType, other.getAssetKind()) &&
+                Objects.equals(this.defaultThumbnail, other.getDefaultThumbnail());
         }
     }
 

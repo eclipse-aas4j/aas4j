@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -66,15 +67,15 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof SpecificAssetId) == false) {
             return false;
         } else {
-            DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
-            return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+            SpecificAssetId other = (SpecificAssetId) obj;
+            return Objects.equals(this.name, other.getName()) &&
+                Objects.equals(this.value, other.getValue()) &&
+                Objects.equals(this.externalSubjectId, other.getExternalSubjectId()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds());
         }
     }
 

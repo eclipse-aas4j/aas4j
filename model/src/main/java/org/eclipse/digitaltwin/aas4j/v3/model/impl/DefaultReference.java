@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -59,13 +60,13 @@ public class DefaultReference implements Reference {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Reference) == false) {
             return false;
         } else {
-            DefaultReference other = (DefaultReference) obj;
-            return Objects.equals(this.type, other.type) &&
-                Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                Objects.equals(this.keys, other.keys);
+            Reference other = (Reference) obj;
+            return Objects.equals(this.type, other.getType()) &&
+                Objects.equals(this.referredSemanticId, other.getReferredSemanticId()) &&
+                Objects.equals(this.keys, other.getKeys());
         }
     }
 

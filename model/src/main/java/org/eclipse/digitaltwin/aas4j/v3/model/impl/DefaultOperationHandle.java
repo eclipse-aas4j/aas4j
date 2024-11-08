@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationHandleBuilder;
@@ -46,11 +47,11 @@ public class DefaultOperationHandle implements OperationHandle {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof OperationHandle) == false) {
             return false;
         } else {
-            DefaultOperationHandle other = (DefaultOperationHandle) obj;
-            return Objects.equals(this.handleId, other.handleId);
+            OperationHandle other = (OperationHandle) obj;
+            return Objects.equals(this.handleId, other.getHandleId());
         }
     }
 

@@ -15,15 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.BasicEventElementBuilder;
 
@@ -121,27 +113,27 @@ public class DefaultBasicEventElement implements BasicEventElement {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof BasicEventElement) == false) {
             return false;
         } else {
-            DefaultBasicEventElement other = (DefaultBasicEventElement) obj;
-            return Objects.equals(this.observed, other.observed) &&
-                Objects.equals(this.direction, other.direction) &&
-                Objects.equals(this.state, other.state) &&
-                Objects.equals(this.messageTopic, other.messageTopic) &&
-                Objects.equals(this.messageBroker, other.messageBroker) &&
-                Objects.equals(this.lastUpdate, other.lastUpdate) &&
-                Objects.equals(this.minInterval, other.minInterval) &&
-                Objects.equals(this.maxInterval, other.maxInterval) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+            BasicEventElement other = (BasicEventElement) obj;
+            return Objects.equals(this.observed, other.getObserved()) &&
+                Objects.equals(this.direction, other.getDirection()) &&
+                Objects.equals(this.state, other.getState()) &&
+                Objects.equals(this.messageTopic, other.getMessageTopic()) &&
+                Objects.equals(this.messageBroker, other.getMessageBroker()) &&
+                Objects.equals(this.lastUpdate, other.getLastUpdate()) &&
+                Objects.equals(this.minInterval, other.getMinInterval()) &&
+                Objects.equals(this.maxInterval, other.getMaxInterval()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications()) &&
+                Objects.equals(this.category, other.getCategory()) &&
+                Objects.equals(this.idShort, other.getIdShort()) &&
+                Objects.equals(this.displayName, other.getDisplayName()) &&
+                Objects.equals(this.description, other.getDescription()) &&
+                Objects.equals(this.extensions, other.getExtensions()) &&
+                Objects.equals(this.semanticId, other.getSemanticId()) &&
+                Objects.equals(this.supplementalSemanticIds, other.getSupplementalSemanticIds()) &&
+                Objects.equals(this.qualifiers, other.getQualifiers());
         }
     }
 

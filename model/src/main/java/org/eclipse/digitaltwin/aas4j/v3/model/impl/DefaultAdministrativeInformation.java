@@ -68,15 +68,15 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof AdministrativeInformation) == false) {
             return false;
         } else {
-            DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
-            return Objects.equals(this.version, other.version) &&
-                Objects.equals(this.revision, other.revision) &&
-                Objects.equals(this.creator, other.creator) &&
-                Objects.equals(this.templateId, other.templateId) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+            AdministrativeInformation other = (AdministrativeInformation) obj;
+            return Objects.equals(this.version, other.getVersion()) &&
+                Objects.equals(this.revision, other.getRevision()) &&
+                Objects.equals(this.creator, other.getCreator()) &&
+                Objects.equals(this.templateId, other.getTemplateId()) &&
+                Objects.equals(this.embeddedDataSpecifications, other.getEmbeddedDataSpecifications());
         }
     }
 

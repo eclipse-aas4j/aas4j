@@ -60,13 +60,13 @@ public class DefaultEnvironment implements Environment {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Environment) == false) {
             return false;
         } else {
-            DefaultEnvironment other = (DefaultEnvironment) obj;
-            return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
-                Objects.equals(this.submodels, other.submodels) &&
-                Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
+            Environment other = (Environment) obj;
+            return Objects.equals(this.assetAdministrationShells, other.getAssetAdministrationShells()) &&
+                Objects.equals(this.submodels, other.getSubmodels()) &&
+                Objects.equals(this.conceptDescriptions, other.getConceptDescriptions());
         }
     }
 

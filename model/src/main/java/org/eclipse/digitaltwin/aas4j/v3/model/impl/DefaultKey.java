@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
@@ -52,12 +53,12 @@ public class DefaultKey implements Key {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (this.getClass() != obj.getClass()) {
+        } else if ((obj instanceof Key) == false) {
             return false;
         } else {
-            DefaultKey other = (DefaultKey) obj;
-            return Objects.equals(this.type, other.type) &&
-                Objects.equals(this.value, other.value);
+            Key other = (Key) obj;
+            return Objects.equals(this.type, other.getType()) &&
+                Objects.equals(this.value, other.getValue());
         }
     }
 
