@@ -1,0 +1,62 @@
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+*               text=auto
+
+# Java sources
+*.java          text diff=java
+*.kt            text diff=kotlin
+*.groovy        text diff=java
+*.scala         text diff=java
+*.gradle        text diff=java
+*.gradle.kts    text diff=kotlin
+
+# These files are text and should be normalized (Convert crlf => lf)
+*.css           text diff=css
+*.scss          text diff=css
+*.sass          text
+*.df            text
+*.htm           text diff=html
+*.html          text diff=html
+*.js            text
+*.mjs           text
+*.cjs           text
+*.jsp           text
+*.jspf          text
+*.jspx          text
+*.properties    text
+*.tld           text
+*.tag           text
+*.tagx          text
+*.xml           text
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class         binary
+*.dll           binary
+*.ear           binary
+*.jar           binary
+*.so            binary
+*.war           binary
+*.jks           binary
+
+
+# Graphics
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.tif      binary
+*.tiff     binary
+*.ico      binary
+
+# Documents
+*.md       text diff=markdown
+
+# Serialisation
+*.json     text
+*.toml     text
+*.xml      text
+*.yaml     text
+*.yml      text
+
+
