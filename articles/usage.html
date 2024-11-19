@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Usage | java-serializer Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Usage | java-serializer Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/adminshellio-48x48.jpg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="usage">Usage</h1>
+
+<p>The library and its modules are released at Maven Central. Thus, you can use the respective serializers in your Java Maven project by adding the following dependency:</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.admin-shell.aas&lt;/groupId&gt;
+  &lt;artifactId&gt;dataformat-**serializer**&lt;/artifactId&gt;
+  &lt;version&gt;**version**&lt;/version&gt;
+&lt;dependency&gt;
+</code></pre>
+<p>For example, uses the following dependency declaration to embed the <code>JSON dataformat</code>:</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.admin-shell.aas&lt;/groupId&gt;
+  &lt;artifactId&gt;dataformat-json&lt;/artifactId&gt;
+  &lt;version&gt;1.1.1&lt;/version&gt;
+&lt;dependency&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Maven will automatically resolve the dependencies of the library and therefore also include the model implementation from the <a href="https://github.com/admin-shell-io/java-model">java-model</a> project.</p>
+</div>
+<h2 id="serialization">Serialization</h2>
+<p>The library supports serialization of an AAS environment to a <code>File</code>, <code>OutputStream</code> or <code>String</code>. See the following interface to get more details on what methods can be used to serialize an environment:</p>
+<p><a href="https://github.com/admin-shell-io/java-serializer/blob/main/dataformat-core/src/main/java/io/adminshell/aas/v3/dataformat/Serializer.java">https://github.com/admin-shell-io/java-serializer/blob/main/dataformat-core/src/main/java/io/adminshell/aas/v3/dataformat/Serializer.java</a></p>
+<p>Here is a small example on how to serialize a given environment to a JSON-<code>String</code>:</p>
+<pre><code class="lang-Java">AssetAdministrationShellEnvironment env = ...;
+String serializedEnvironment = new JsonSerializer().write(env);
+</code></pre>
+<h2 id="deserialization">Deserialization</h2>
+<p>Likewise, you can deserialize an AAS environment from a <code>File</code>, <code>InputStream</code> or <code>String</code>. See the following interface to get more details on what methods can be used to deserialize an environment:</p>
+<p><a href="https://github.com/admin-shell-io/java-serializer/blob/main/dataformat-core/src/main/java/io/adminshell/aas/v3/dataformat/Deserializer.java">https://github.com/admin-shell-io/java-serializer/blob/main/dataformat-core/src/main/java/io/adminshell/aas/v3/dataformat/Deserializer.java</a></p>
+<p>Here is a small example on how to deserialize a given JSON-<code>String</code> and draw some information out of the returned model:</p>
+<pre><code class="lang-Java">String serializedEnvironment = &quot;...&quot;;
+AssetAdministrationShellEnvironment env = new JsonDeserializer().read(serializedEnvironment);
+List&lt;AssetAdministrationShell&gt; aasList = env.getAssetAdministrationShells();
+aasList.forEach(aas -&gt; System.out.println(&quot;Environment contains AAS: &quot; + aas.getIdShort()));
+</code></pre>
+<h2 id="aasx">AASX</h2>
+<p>In order to be able to also embed files into a serialized environment, it is possible to create an .aasx-package. The AASX module makes use of the xml-dataformat to handle the <code>AASEnvironment</code>.</p>
+<pre><code class="lang-Java">byte[] fileContent = ...;
+AssetAdministrationShellEnvironment env = ...;
+InMemoryFile file = new InMemoryFile(fileContent, &quot;aasx/MyFile.pdf&quot;);
+List&lt;InMemoryFile&gt; fileList = new ArrayList&lt;&gt;()
+fileList.add(file);
+ByteArrayOutputStream out = new ByteArrayOutputStream();
+new AASXSerializer().write(env, fileList, out);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The given filepath is relative to the .aasx package root and has to correspondent to the relative path given in the <code>File</code>-<code>SubmodelElement</code> that points to this file.</p>
+</div>
+<h2 id="constraint-validation">Constraint Validation</h2>
+<p>According to the AAS specification in &quot;Details of The Asset Administration Shell&quot;, there are a number of constraints a valid model has to fulfill. The java-model implementation allows the creation of models that are not valid according to these constraints. The java-dataformat library contains a validation module to test them. The following snippet shows a submodel with an invalid idShort. Therefore, this snippet will throw a <code>ValidationException</code>.</p>
+<pre><code class="lang-Java">Referable invalidReferable = new DefaultSubmodel.Builder()
+    .identification(
+        new DefaultIdentifier.Builder().identifier(&quot;submodel&quot;).idType(IdentifierType.CUSTOM).build())
+            .idShort(&quot;_idShort&quot;)
+            .build();
+ShaclValidator.getInstance().validate(invalidReferable);
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/eclipse-aas4j/aas4j/blob/main/docs/articles/usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
