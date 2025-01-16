@@ -57,7 +57,7 @@ public class AASXSerializer {
 
     public static final String ORIGIN_RELTYPE = AASX_NAMESPACE + "/aasx-origin";
     public static final String ORIGIN_PATH = "/aasx/aasx-origin";
-    public static final String ORIGIN_CONTENT = "Intentionally empty.";
+    public static final String ORIGIN_CONTENT = "Intentionally empty";
 
     public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
     public static final String XML_PATH = "/aasx/xml/content.xml";
