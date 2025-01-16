@@ -163,6 +163,6 @@ public class AASXSerializerTest {
             throw new RuntimeException(e);
         }
         assertTrue(content.contains("Type=\"http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail\""));
-        assertTrue(content.contains("Target=\"master/verwaltungsschale-detail-part1.png\""));
+        assertTrue(content.contains("Target=\"/master/verwaltungsschale-detail-part1.png\""));
     }
 }
