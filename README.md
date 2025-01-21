@@ -49,7 +49,7 @@ or by integrating the respective modules as dependencies from [Maven Central](ht
 <dependency>
   <groupId>org.eclipse.digitaltwin.aas4j</groupId>
   <artifactId>aas4j-model</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
