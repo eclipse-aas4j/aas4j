@@ -23,10 +23,10 @@ public class DefaultExtensionRDFHandler implements RDFHandler<Extension> {
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.Extension);
         if (object.getName() != null) {
-            model.addLiteral(subject, AASNamespace.Extension.name, object.getName());
+            model.addLiteral(subject, AASNamespace.Extension.name, model.createTypedLiteral(object.getName()));
         }
         if (object.getValue() != null) {
-            model.addLiteral(subject, AASNamespace.Extension.value, object.getValue());
+            model.addLiteral(subject, AASNamespace.Extension.value, model.createTypedLiteral(object.getValue()));
         }
         if (object.getValueType() != null) {
             model.add(subject, AASNamespace.Extension.valueType,
