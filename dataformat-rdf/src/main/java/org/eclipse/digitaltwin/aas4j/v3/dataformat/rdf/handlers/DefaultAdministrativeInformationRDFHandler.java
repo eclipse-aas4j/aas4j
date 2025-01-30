@@ -21,17 +21,17 @@ public class DefaultAdministrativeInformationRDFHandler implements RDFHandler<Ad
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.AdministrativeInformation);
         if (object.getVersion() != null) {
-            model.addLiteral(subject, AASNamespace.AdministrativeInformation.version, object.getVersion());
+            model.addLiteral(subject, AASNamespace.AdministrativeInformation.version, model.createTypedLiteral(object.getVersion()));
         }
         if (object.getRevision() != null) {
-            model.addLiteral(subject, AASNamespace.AdministrativeInformation.revision, object.getRevision());
+            model.addLiteral(subject, AASNamespace.AdministrativeInformation.revision, model.createTypedLiteral(object.getRevision()));
         }
         if (object.getTemplateId() != null) {
-            model.addLiteral(subject, AASNamespace.AdministrativeInformation.templateId, object.getTemplateId());
+            model.addLiteral(subject, AASNamespace.AdministrativeInformation.templateId, model.createTypedLiteral(object.getTemplateId()));
         }
         if (object.getCreator() != null) {
             RDFSerializationResult res = new DefaultReferenceRDFHandler().toModel(object.getCreator());
-            model.addLiteral(subject, AASNamespace.AdministrativeInformation.creator, res.getResource());
+            model.add(subject, AASNamespace.AdministrativeInformation.creator, res.getResource());
             model.add(res.getModel());
         }
         //HasDataSpecification

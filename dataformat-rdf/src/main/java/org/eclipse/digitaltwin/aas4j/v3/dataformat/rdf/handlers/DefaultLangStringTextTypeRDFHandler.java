@@ -19,10 +19,10 @@ public class DefaultLangStringTextTypeRDFHandler implements RDFHandler<LangStrin
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.LangStringTextType);
         if (object.getLanguage() != null) {
-            model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
+            model.addLiteral(subject, AASNamespace.AbstractLangString.language, model.createTypedLiteral(object.getLanguage()));
         }
         if (object.getText() != null) {
-            model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+            model.addLiteral(subject, AASNamespace.AbstractLangString.text, model.createTypedLiteral(object.getText()));
         }
         return new DefaultRDFHandlerResult(model, subject);
     }

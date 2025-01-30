@@ -1,9 +1,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.dataspecificationiec61360;
 
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
@@ -19,10 +16,10 @@ public class DefaultLangStringShortNameTypeIec61360RDFHandler implements RDFHand
         Resource subject = model.createResource();
         model.add(subject, RDF.type, AASNamespace.Types.LangStringShortNameTypeIec61360);
         if (object.getLanguage() != null) {
-            model.addLiteral(subject, AASNamespace.AbstractLangString.language, object.getLanguage());
+            model.addLiteral(subject, AASNamespace.AbstractLangString.language, model.createTypedLiteral(object.getLanguage()));
         }
         if (object.getText() != null) {
-            model.addLiteral(subject, AASNamespace.AbstractLangString.text, object.getText());
+            model.addLiteral(subject, AASNamespace.AbstractLangString.text, model.createTypedLiteral(object.getText()));
         }
         return new DefaultRDFHandlerResult(model, subject);
     }
