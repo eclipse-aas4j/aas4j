@@ -7,7 +7,7 @@ import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.shacl.ShaclValidator;
 import org.apache.jena.shacl.ValidationReport;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SchemaValidator;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 
 import java.io.StringReader;
 import java.util.Set;

@@ -2,7 +2,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.jena.rdf.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.DeserializationException;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 

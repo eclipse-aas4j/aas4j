@@ -2,7 +2,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf;
 
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFLanguages;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.SerializationException;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultEnvironmentRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.rdf.handlers.DefaultReferableRDFHandler;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
