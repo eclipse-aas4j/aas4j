@@ -15,27 +15,25 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
+import java.io.IOException;
+
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-
-import java.io.IOException;
 
 public class OperationVariableSerializer extends JsonSerializer<OperationVariable> {
     @Override
     public void serialize(OperationVariable operationVariable, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeStartObject();
-        xgen.writeFieldName("operationVariable");
-        xgen.writeStartObject();
         xgen.writeFieldName("value");
         xgen.writeStartObject();
         xgen.writeFieldName(SubmodelElementManager.getXmlName(operationVariable.getValue().getClass()));
         xgen.writeObject(operationVariable.getValue());
-        xgen.writeEndObject();
         xgen.writeEndObject();
         xgen.writeEndObject();
 
