@@ -20,7 +20,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <plugin.flatten.version>1.6.0</plugin.flatten.version>
+        <plugin.flatten.version>1.7.0</plugin.flatten.version>
         <plugin.javadoc.version>3.11.2</plugin.javadoc.version>
         <plugin.projectinfo.version>3.8.0</plugin.projectinfo.version>
     </properties>
