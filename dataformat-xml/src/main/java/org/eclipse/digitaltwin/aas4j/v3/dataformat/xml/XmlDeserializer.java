@@ -28,8 +28,12 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.XmlDataformatAnnotationIntrospector;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationVariableDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 import java.io.BufferedReader;
@@ -48,8 +52,10 @@ public class XmlDeserializer {
     protected XmlMapper mapper;
     protected SimpleAbstractTypeResolver typeResolver;
 	@SuppressWarnings("rawtypes")
-	protected static Map<Class<?>, JsonDeserializer> customDeserializers = Map.of(
-            SubmodelElement.class, new SubmodelElementDeserializer());
+    protected static Map<Class<?>, JsonDeserializer> customDeserializers = Map.of(
+            SubmodelElement.class, new SubmodelElementDeserializer(),
+            Operation.class, new OperationDeserializer()
+    );
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
