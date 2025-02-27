@@ -17,13 +17,14 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import java.util.List;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationVariableDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public interface OperationMixin {
     @JsonDeserialize(using = OperationVariableDeserializer.class)
@@ -34,17 +35,4 @@ public interface OperationMixin {
 
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setOutputVariables(List<OperationVariable> outputVariables);
-
-	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inputVariables", useWrapping = true)
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
-	List<OperationVariable> getInputVariables();
-
-	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "outputVariables", useWrapping = true)
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
-	List<OperationVariable> getOutputVariables();
-
-	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "inoutputVariables", useWrapping = true)
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "operationVariable")
-	List<OperationVariable> getInoutputVariables();
-
 }

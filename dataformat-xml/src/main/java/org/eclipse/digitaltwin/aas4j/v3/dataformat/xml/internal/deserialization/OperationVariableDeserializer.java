@@ -35,34 +35,40 @@ import com.google.common.collect.Lists;
 
 
 public class OperationVariableDeserializer extends JsonDeserializer<List<OperationVariable>> {
-    private static Logger logger = LoggerFactory.getLogger(OperationVariableDeserializer.class);
 
     @Override
     public List<OperationVariable> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        try {
-            ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
+        JsonNode rootNode = parser.getCodec().readTree(parser);
+        List<OperationVariable> result = new ArrayList<>();
 
-            if (!node.has("operationVariable")) {
-                return new ArrayList<>();
+        if (rootNode.isArray()) {
+            for (JsonNode element : rootNode) {
+                if (element.has("operationVariable")) {
+                    deserializeOperationVariable(parser, element, result);
+                }
             }
-            JsonNode operationVariableNode = node.get("operationVariable");
-            if (operationVariableNode.isArray()) {
-                return createOperationVariablesFromArrayNode(parser, node);
-            } else {
-                OperationVariable operationVariable = DeserializationHelper.createInstanceFromNode(parser, operationVariableNode, OperationVariable.class);
-                return Lists.newArrayList(operationVariable);
-            }
-        } catch (ClassCastException e) {
-            logger.info("Found empty list item in Operation (e.g., '<outputVariables />') in XML. This is most likely an error.");
-            return new ArrayList<>();
         }
+        else if (rootNode.isObject()) {
+            if (!rootNode.has("operationVariable")) {
+                return result;
+            }
+            deserializeOperationVariable(parser, rootNode, result);
+        }
+
+        return result;
     }
 
-
-    private List<OperationVariable> createOperationVariablesFromArrayNode(JsonParser parser, ObjectNode node) throws IOException {
-        ArrayNode content = (ArrayNode) node.get("operationVariable");
-
-        return DeserializationHelper.createInstancesFromArrayNode(parser, content, OperationVariable.class);
+    private static void deserializeOperationVariable(JsonParser parser, JsonNode element, List<OperationVariable> result) throws IOException {
+        JsonNode opVarNode = element.get("operationVariable");
+        if (opVarNode.isArray()) {
+            for (JsonNode inner : opVarNode) {
+                OperationVariable opVar = DeserializationHelper.createInstanceFromNode(parser, inner, OperationVariable.class);
+                result.add(opVar);
+            }
+        } else {
+            OperationVariable opVar = DeserializationHelper.createInstanceFromNode(parser, opVarNode, OperationVariable.class);
+            result.add(opVar);
+        }
     }
 
 

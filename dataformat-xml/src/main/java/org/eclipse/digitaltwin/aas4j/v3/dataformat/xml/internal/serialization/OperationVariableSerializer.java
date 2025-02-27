@@ -30,10 +30,13 @@ public class OperationVariableSerializer extends JsonSerializer<OperationVariabl
     public void serialize(OperationVariable operationVariable, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         ToXmlGenerator xgen = (ToXmlGenerator) gen;
         xgen.writeStartObject();
+        xgen.writeFieldName("operationVariable");
+        xgen.writeStartObject();
         xgen.writeFieldName("value");
         xgen.writeStartObject();
         xgen.writeFieldName(SubmodelElementManager.getXmlName(operationVariable.getValue().getClass()));
         xgen.writeObject(operationVariable.getValue());
+        xgen.writeEndObject();
         xgen.writeEndObject();
         xgen.writeEndObject();
 
