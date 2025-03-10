@@ -626,6 +626,44 @@
                 </aas:property>
               </aas:value>
             </aas:operationVariable>
+            <aas:operationVariable>
+              <aas:value>
+                <aas:property>
+                  <aas:category>CONSTANT</aas:category>
+                  <aas:idShort>ExampleProperty2</aas:idShort>
+                  <aas:description>
+                    <aas:langStringTextType>
+                      <aas:language>en-us</aas:language>
+                      <aas:text>Example Property object</aas:text>
+                    </aas:langStringTextType>
+                    <aas:langStringTextType>
+                      <aas:language>de</aas:language>
+                      <aas:text>Beispiel Property Element</aas:text>
+                    </aas:langStringTextType>
+                  </aas:description>
+                  <aas:semanticId>
+                    <aas:type>ExternalReference</aas:type>
+                    <aas:keys>
+                      <aas:key>
+                        <aas:type>GlobalReference</aas:type>
+                        <aas:value>http://acplt.org/Properties/ExampleProperty</aas:value>
+                      </aas:key>
+                    </aas:keys>
+                  </aas:semanticId>
+                  <aas:valueType>xs:string</aas:valueType>
+                  <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
+                  <aas:valueId>
+                    <aas:type>ExternalReference</aas:type>
+                    <aas:keys>
+                      <aas:key>
+                        <aas:type>GlobalReference</aas:type>
+                        <aas:value>http://acplt.org/ValueId/ExampleValueId</aas:value>
+                      </aas:key>
+                    </aas:keys>
+                  </aas:valueId>
+                </aas:property>
+              </aas:value>
+            </aas:operationVariable>
           </aas:inputVariables>
           <aas:outputVariables>
             <aas:operationVariable>

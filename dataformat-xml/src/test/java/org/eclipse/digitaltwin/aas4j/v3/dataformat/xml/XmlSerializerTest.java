@@ -279,7 +279,6 @@ public class XmlSerializerTest {
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
         Set<String> errors = validateAgainstXsdSchema(actual);
-        logger.info(actual);
         logErrors(expectedFile.getName(), errors);
         assertTrue(errors.isEmpty());
         CompareMatcher xmlTestMatcher = CompareMatcher

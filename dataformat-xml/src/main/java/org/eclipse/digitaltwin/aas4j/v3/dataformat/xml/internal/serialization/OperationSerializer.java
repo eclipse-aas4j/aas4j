@@ -59,49 +59,19 @@ public class OperationSerializer extends JsonSerializer<Operation> {
             serializers.defaultSerializeValue(operation.getSemanticId(), gen);
         }
 
-        // inputVariables
         List<OperationVariable> inputVariables = operation.getInputVariables();
         if (inputVariables != null && !inputVariables.isEmpty()) {
-            if (inputVariables.size() == 1) {
-                gen.writeFieldName("inputVariables");
-                serializers.defaultSerializeValue(inputVariables.get(0), gen);
-            } else {
-                gen.writeArrayFieldStart("inputVariables");
-                for (OperationVariable var : inputVariables) {
-                    serializers.defaultSerializeValue(var, gen);
-                }
-                gen.writeEndArray();
-            }
+            serializeOperationVariable(gen, serializers, inputVariables, "inputVariables");
         }
 
-        // outputVariables
         List<OperationVariable> outputVariables = operation.getOutputVariables();
         if (outputVariables != null && !outputVariables.isEmpty()) {
-            if (outputVariables.size() == 1) {
-                gen.writeFieldName("outputVariables");
-                serializers.defaultSerializeValue(outputVariables.get(0), gen);
-            } else {
-                gen.writeArrayFieldStart("outputVariables");
-                for (OperationVariable var : outputVariables) {
-                    serializers.defaultSerializeValue(var, gen);
-                }
-                gen.writeEndArray();
-            }
+            serializeOperationVariable(gen, serializers, outputVariables, "outputVariables");
         }
 
-        // inoutputVariables
         List<OperationVariable> inoutputVariables = operation.getInoutputVariables();
         if (inoutputVariables != null && !inoutputVariables.isEmpty()) {
-            if (inoutputVariables.size() == 1) {
-                gen.writeFieldName("inoutputVariables");
-                serializers.defaultSerializeValue(inoutputVariables.get(0), gen);
-            } else {
-                gen.writeArrayFieldStart("inoutputVariables");
-                for (OperationVariable var : inoutputVariables) {
-                    serializers.defaultSerializeValue(var, gen);
-                }
-                gen.writeEndArray();
-            }
+            serializeOperationVariable(gen, serializers, inoutputVariables, "inoutputVariables");
         }
 
 
@@ -179,6 +149,17 @@ public class OperationSerializer extends JsonSerializer<Operation> {
             }
         }
 
+        gen.writeEndObject();
+    }
+
+    private static void serializeOperationVariable(JsonGenerator gen, SerializerProvider serializers, List<OperationVariable> inputVariables, String variableType) throws IOException {
+        gen.writeFieldName(variableType);
+        gen.writeStartObject();
+        gen.writeArrayFieldStart("operationVariable");
+        for (OperationVariable var : inputVariables) {
+            serializers.defaultSerializeValue(var, gen);
+        }
+        gen.writeEndArray();
         gen.writeEndObject();
     }
 }
