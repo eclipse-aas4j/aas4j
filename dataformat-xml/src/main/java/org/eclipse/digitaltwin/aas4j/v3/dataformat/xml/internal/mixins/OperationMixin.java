@@ -15,17 +15,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationVariableDeserializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-
 import java.util.List;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationVariableDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 public interface OperationMixin {
-
-    public List<OperationVariable> getInputVariables();
-
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setInputVariables(List<OperationVariable> inputVariables);
 
@@ -34,5 +35,4 @@ public interface OperationMixin {
 
     @JsonDeserialize(using = OperationVariableDeserializer.class)
     public void setOutputVariables(List<OperationVariable> outputVariables);
-
 }

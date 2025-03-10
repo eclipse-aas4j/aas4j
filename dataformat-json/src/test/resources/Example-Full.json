@@ -830,6 +830,42 @@
                   }
                 ]
               }
+            },{
+              "value": {
+                "modelType": "Property",
+                "semanticId": {
+                  "keys": [
+                    {
+                      "type": "GlobalReference",
+                      "value": "http://acplt.org/Properties/ExampleProperty"
+                    }
+                  ],
+                  "type": "ExternalReference"
+                },
+                "value": "http://acplt.org/ValueId/ExampleValueId",
+                "valueId": {
+                  "keys": [
+                    {
+                      "type": "GlobalReference",
+                      "value": "http://acplt.org/ValueId/ExampleValueId"
+                    }
+                  ],
+                  "type": "ExternalReference"
+                },
+                "valueType": "xs:string",
+                "category": "CONSTANT",
+                "idShort": "ExampleProperty2",
+                "description": [
+                  {
+                    "language": "en-us",
+                    "text": "Example Property object"
+                  },
+                  {
+                    "language": "de",
+                    "text": "Beispiel Property Element"
+                  }
+                ]
+              }
             }
           ],
           "outputVariables": [
