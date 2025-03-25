@@ -21,6 +21,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.UUID;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -189,16 +190,34 @@ public class AASXSerializer {
      * @param relType the relationship type
      */
     private void createParts(Collection<InMemoryFile> files, String filePath, OPCPackage rootPackage,
-          RelationshipSource xmlPart, String contentType, String relType) {
+                             RelationshipSource xmlPart, String contentType, String relType) {
+        boolean exists = false;
         try {
-            InMemoryFile content = findFileByPath(files, filePath);
-            logger.trace("Writing file '{}' to .aasx.", filePath);
-            createAASXPart(rootPackage, xmlPart, filePath, contentType, relType, content.getFileContent());
-        } catch (RuntimeException e) {
-            // Log that a file is missing and continue building the .aasx
-            logger.warn("Could not add File '{}'. It was not contained in given InMemoryFiles.", filePath, e);
+            PackagePart part = rootPackage.getPart(PackagingURIHelper.createPartName(filePath));
+            exists = Objects.nonNull(part);
+            if (exists && !Objects.equals(contentType, part.getContentType())) {
+                logger.info("File '{}' already exists with different content type (expected: {}, actual: {})",
+                        filePath,
+                        part.getContentType(),
+                        contentType);
+            }
+        }
+        catch (InvalidFormatException e) {
+            // ignore
+        }
+        if (!exists) {
+            try {
+                InMemoryFile content = findFileByPath(files, filePath);
+                logger.trace("Writing file '{}' to .aasx.", filePath);
+                createAASXPart(rootPackage, xmlPart, filePath, contentType, relType, content.getFileContent());
+            }
+            catch (RuntimeException e) {
+                // Log that a file is missing and continue building the .aasx
+                logger.warn("Could not add File '{}'. It was not contained in given InMemoryFiles.", filePath, e);
+            }
         }
     }
+
 
     /**
      * Saves the OPCPackage to the given OutputStream

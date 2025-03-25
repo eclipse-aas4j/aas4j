@@ -279,8 +279,9 @@ public class AASXDeserializer {
                 }
             }
         }.visit(environment);
-        return paths;
+        return paths.stream().distinct().toList();
     }
+
 
     private InMemoryFile readFile(OPCPackage aasxRoot, String filePath) throws InvalidFormatException, IOException {
         PackagePart part = aasxRoot.getPart(PackagingURIHelper.createPartName(AASXUtils.removeFilePartOfURI(filePath)));

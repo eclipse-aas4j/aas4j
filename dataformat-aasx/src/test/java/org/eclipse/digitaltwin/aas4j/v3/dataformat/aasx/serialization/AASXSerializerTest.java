@@ -28,6 +28,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -35,9 +37,24 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Rule;
+import org.junit.rules.TemporaryFolder;
+
 
 public class AASXSerializerTest {
 
@@ -46,7 +63,70 @@ public class AASXSerializerTest {
     private static final String JSON_PATH_URI = "file:///aasx/json/content.json";
     private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
 
-    private List<InMemoryFile> fileList = new ArrayList<>();
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+
+    private final List<InMemoryFile> fileList = new ArrayList<>();
+
+    @Test
+    public void testSharedExternalFiles() throws Exception {
+        String submodelId = "http://example.org/submodel/1";
+        String pathImage = "/image.png";
+        String contentTypeImage = "image/png";
+        byte[] contentImage = { 0, 1, 2, 3, 4 };
+        String pathPdf = "/document.pdf";
+        String contentTypePdf = "application/pdf";
+        byte[] contentPdf = { 5, 6, 7, 8, 9 };
+        Environment environment = new DefaultEnvironment.Builder()
+                .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
+                        .id("http://example.org/aas/1")
+                        .assetInformation(new DefaultAssetInformation.Builder()
+                                .defaultThumbnail(new DefaultResource.Builder()
+                                        .path(pathImage)
+                                        .contentType(contentTypeImage)
+                                        .build())
+                                .build())
+                        .submodels(new DefaultReference.Builder()
+                                .type(ReferenceTypes.MODEL_REFERENCE)
+                                .keys(new DefaultKey.Builder()
+                                        .type(KeyTypes.SUBMODEL)
+                                        .value(submodelId)
+                                        .build())
+                                .build())
+                        .build())
+                .submodels(new DefaultSubmodel.Builder()
+                        .id(submodelId)
+                        .submodelElements(new DefaultFile.Builder()
+                                .idShort("image1")
+                                .value(pathImage)
+                                .contentType(contentTypeImage)
+                                .build())
+                        .submodelElements(new DefaultFile.Builder()
+                                .idShort("pdf1")
+                                .value(pathPdf)
+                                .contentType(contentTypePdf)
+                                .build())
+                        .submodelElements(new DefaultFile.Builder()
+                                .idShort("pdf2")
+                                .value(pathPdf)
+                                .contentType(contentTypePdf)
+                                .build())
+                        .build())
+                .build();
+        java.io.File file = tempFolder.newFile("output.aasx");
+        List<InMemoryFile> files = List.of(
+                new InMemoryFile(contentImage, pathImage),
+                new InMemoryFile(contentPdf, pathPdf));
+        new AASXSerializer().write(
+                environment,
+                files,
+                new FileOutputStream(file),
+                MetamodelContentType.XML);
+        AASXDeserializer deserializer = new AASXDeserializer(new FileInputStream(file));
+        assertEquals(environment, deserializer.read());
+        assertEquals(files, deserializer.getRelatedFiles());
+    }
+
 
     @Test
     public void testBuildAASXFull() throws IOException, TransformerException, ParserConfigurationException, SerializationException {
