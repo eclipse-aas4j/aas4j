@@ -279,7 +279,7 @@ public class AASXDeserializer {
                 }
             }
         }.visit(environment);
-        return paths.stream().distinct().toList();
+        return paths.stream().distinct().collect(Collectors.toList());
     }
 
 
