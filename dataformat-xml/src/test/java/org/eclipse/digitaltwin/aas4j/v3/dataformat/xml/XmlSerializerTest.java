@@ -17,6 +17,18 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
@@ -30,13 +42,17 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
+import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
 import org.junit.Rule;
@@ -50,16 +66,6 @@ import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
 import org.xmlunit.matchers.CompareMatcher;
 import org.xmlunit.util.Predicate;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 
 public class XmlSerializerTest {
@@ -215,6 +221,49 @@ public class XmlSerializerTest {
         assertNotNull(copy);
 
         assertTrue(Examples.ENVIRONMENT_WITH_DUMMYDATASPEC.equals(copy));
+	}
+
+	@Test
+	public void testOperationWithMultipleInputVariables() throws Exception {
+		Environment expected = new DefaultEnvironment.Builder()
+				.assetAdministrationShells(
+						new DefaultAssetAdministrationShell.Builder().id("http://example.org/aas/1").idShort("aas1")
+								.submodels(new DefaultReference.Builder()
+										.keys(Arrays.asList(new DefaultKey.Builder().type(KeyTypes.SUBMODEL)
+												.value("http://example.org/submodel/1").build()))
+										.type(ReferenceTypes.MODEL_REFERENCE).build())
+								.build())
+				.submodels(
+						new DefaultSubmodel.Builder().id("http://example.org/submodel/1").idShort("submodel1")
+								.submodelElements(new DefaultOperation.Builder().idShort("operation1")
+										.inputVariables(new DefaultOperationVariable.Builder()
+												.value(new DefaultProperty.Builder().idShort("input1")
+														.valueType(DataTypeDefXsd.STRING).build())
+												.build())
+										.inputVariables(new DefaultOperationVariable.Builder()
+												.value(new DefaultProperty.Builder().idShort("input2")
+														.valueType(DataTypeDefXsd.STRING).build())
+												.build())
+										.outputVariables(new DefaultOperationVariable.Builder()
+												.value(new DefaultProperty.Builder().idShort("output1")
+														.valueType(DataTypeDefXsd.STRING).build())
+												.build())
+										.outputVariables(new DefaultOperationVariable.Builder()
+												.value(new DefaultProperty.Builder().idShort("output2")
+														.valueType(DataTypeDefXsd.STRING).build())
+												.build())
+										.build())
+								.build())
+				.build();
+
+//		new XmlSerializer().write(new FileOutputStream("test.xml"), expected);
+//		Environment actual = new XmlDeserializer().read(new FileInputStream("test.xml"));
+    java.io.File file = java.io.File.createTempFile("model", "xml");
+    new XmlSerializer().write(new FileOutputStream(file), expected);
+    Environment actual = new XmlDeserializer().read(file);
+    assertEquals(expected, actual);
+
+		assertEquals(expected, actual);
     }
 
     private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
@@ -230,7 +279,6 @@ public class XmlSerializerTest {
         throws SerializationException, SAXException {
         String actual = xmlSerializer.write(environment);
         Set<String> errors = validateAgainstXsdSchema(actual);
-        logger.info(actual);
         logErrors(expectedFile.getName(), errors);
         assertTrue(errors.isEmpty());
         CompareMatcher xmlTestMatcher = CompareMatcher
@@ -288,11 +336,14 @@ public class XmlSerializerTest {
     }
 
     private void logErrors(String validatedFileName, Set<String> errors) {
-        if (errors.isEmpty())
-            return;
+        if (errors.isEmpty()) {
+			return;
+		}
         logger.info("Validate file: {}", validatedFileName);
         for (String error : errors) {
             logger.info(error);
         }
     }
+    
+
 }
