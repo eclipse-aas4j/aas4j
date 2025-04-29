@@ -29,7 +29,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
     @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface Identifiable extends Referable {
-
     /**
      * Administrative information of an identifiable element.
      *

@@ -26,15 +26,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 public class CustomProperty implements Property {
 
-	 protected List<EmbeddedDataSpecification> embeddedDataSpecifications;
-
-	protected List<Reference> dataSpecifications;
+	protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
 	protected ModellingKind kind;
 
@@ -46,19 +45,19 @@ public class CustomProperty implements Property {
 
 	protected DataTypeDefXsd valueType;
 
-	protected List<Qualifier> qualifiers;
+	protected List<Qualifier> qualifiers = new ArrayList<>();
 
 	protected String category;
 
-	protected List<LangStringTextType> description;
+	protected List<LangStringTextType> description = new ArrayList<>();
 
-	protected List<LangStringNameType> displayName;
+	protected List<LangStringNameType> displayName = new ArrayList<>();
 
 	protected String idShort;
 
-	protected List<Extension> extensions;
+	protected List<Extension> extensions = new ArrayList<>();
 
-	protected List<Reference> supplementalSemanticIds;
+	protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
 	protected CustomProperty() {
 	}
