@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0"
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/1"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
+                 xsi:schemaLocation="https://admin-shell.io/aas/3/1 AAS.xsd">
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>ExampleMotor</aas:idShort>
@@ -183,15 +183,6 @@
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -225,6 +216,15 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -233,15 +233,6 @@
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -275,6 +266,15 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -288,15 +288,6 @@
       <aas:id>0173-1#02-BAA120#008</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -333,6 +324,15 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -342,15 +342,6 @@
       <aas:id>http://customer.com/cd/1/1/18EBD56F6B43D895</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -370,7 +361,7 @@
                 </aas:langStringShortNameTypeIec61360>
                 <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
-                  <aas:text>ActualRotationSpeed</aas:text>
+                  <aas:text>ActualRotSpeed</aas:text>
                 </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>1/min</aas:unit>
@@ -397,6 +388,15 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -405,15 +405,6 @@
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -443,6 +434,15 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
