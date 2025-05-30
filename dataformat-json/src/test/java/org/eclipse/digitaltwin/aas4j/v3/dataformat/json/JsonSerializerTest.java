@@ -265,6 +265,7 @@ public class JsonSerializerTest {
 
     private void validateAndCompare(String expected, String actual) {
         Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
+        Set<String> errorsExpected = new JsonSchemaValidator().validateSchema(expected);
         if(errors.size() > 0) {
             logger.error(String.join("\n", errors));
         }
