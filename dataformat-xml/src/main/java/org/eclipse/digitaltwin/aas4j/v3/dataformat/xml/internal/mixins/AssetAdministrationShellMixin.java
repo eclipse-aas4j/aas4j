@@ -23,7 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 import java.util.List;
 
-@JsonPropertyOrder({ "extension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels" })
+@JsonPropertyOrder({ "extension", "category", "idShort", "displayName", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels" })
 public interface AssetAdministrationShellMixin {
 
 

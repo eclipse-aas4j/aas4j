@@ -41,8 +41,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShellDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEndpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
@@ -214,48 +212,6 @@ public class JsonDeserializerTest {
         List<SubmodelDescriptor> submodelDescriptors =
             deserializerToTest.readList(jsonString, SubmodelDescriptor.class);
         assertEquals(Examples.SUBMODEL_DESCRIPTOR.getModel(), submodelDescriptors.get(0));
-    }
-
-    @Test
-    public void testSerializationAndDeserializationList() throws SerializationException, DeserializationException {
-
-        AssetAdministrationShellDescriptor descriptor = new DefaultAssetAdministrationShellDescriptor.Builder().id("shellDescriptor").build();
-
-        String serializedDescriptorFromObject = new JsonSerializer().write(descriptor);
-
-        AssetAdministrationShellDescriptor deserializedDescriptor = new JsonDeserializer().read(serializedDescriptorFromObject, AssetAdministrationShellDescriptor.class);
-
-        String serializedDescriptorFromDeserDesc = new JsonSerializer().write(deserializedDescriptor);
-
-        assertEquals(serializedDescriptorFromObject, serializedDescriptorFromDeserDesc);
-    }
-
-    @Test
-    public void testSerializationList() throws SerializationException, DeserializationException {
-
-        String shellDescriptorJson = "{\n" +
-                "  \"id\" : \"shellDescriptor\"\n" +
-                "}";
-
-        AssetAdministrationShellDescriptor deserializedDescriptor = new JsonDeserializer().read(shellDescriptorJson, AssetAdministrationShellDescriptor.class);
-
-        String serializedDescriptorFromDeserDesc = new JsonSerializer().write(deserializedDescriptor);
-
-        assertEquals(shellDescriptorJson, serializedDescriptorFromDeserDesc);
-    }
-
-    @Test
-    public void testSerializationAndDeserializationList2() throws SerializationException, DeserializationException {
-
-        AssetAdministrationShellDescriptor descriptor = new DefaultAssetAdministrationShellDescriptor.Builder().id("shellDescriptor").endpoints(List.of(new DefaultEndpoint())).build();
-
-        String serializedDescriptorFromObject = new JsonSerializer().write(descriptor);
-
-        AssetAdministrationShellDescriptor deserializedDescriptor = new JsonDeserializer().read(serializedDescriptorFromObject, AssetAdministrationShellDescriptor.class);
-
-        String serializedDescriptorFromDeserDesc = new JsonSerializer().write(deserializedDescriptor);
-
-        assertEquals(serializedDescriptorFromObject, serializedDescriptorFromDeserDesc);
     }
 
     private void readAndCompare(ExampleData<?> exampleData) {

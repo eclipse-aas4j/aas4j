@@ -2419,6 +2419,15 @@
       <aas:id>http://acplt.org/DataSpecifciations/Example/Identification</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -2502,15 +2511,6 @@
               </aas:levelType>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
       <aas:isCaseOf>

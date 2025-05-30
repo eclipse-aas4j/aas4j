@@ -26,7 +26,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.Em
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({"dataSpecificationContent", "dataSpecification"})
+@JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
 public interface EmbeddedDataSpecificationMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")

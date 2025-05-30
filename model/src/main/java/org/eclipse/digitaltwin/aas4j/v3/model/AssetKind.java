@@ -28,19 +28,25 @@ public enum AssetKind {
     /**
      * Instance asset
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
+    @IRI("https://admin-shell.io/aas/3/1/AssetKind/Instance")
     INSTANCE,
 
     /**
      * Neither a type asset nor an instance asset
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
+    @IRI("https://admin-shell.io/aas/3/1/AssetKind/NotApplicable")
     NOT_APPLICABLE,
 
     /**
      * Type asset
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
-    TYPE;
+    @IRI("https://admin-shell.io/aas/3/1/AssetKind/Type")
+    TYPE,
+
+    /**
+     * Role asset
+     */
+    @IRI("https://admin-shell.io/aas/3/1/AssetKind/Role")
+    ROLE;;
 
 }

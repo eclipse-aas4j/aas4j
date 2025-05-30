@@ -20,16 +20,14 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
-import org.junit.Assert;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 public class EnumSerializerTest {
 
@@ -87,6 +85,11 @@ public class EnumSerializerTest {
         assertSerialization(ModellingKind.TEMPLATE, "Template");
     }
 
+    @Test
+    public void whenSerializingEnum_usingDataTypeDefXsd_shouldReturnCamelCase() {
+        assertSerialization(DataTypeDefXsd.BASE64BINARY, "xs:base64Binary");
+    }
+
     private void assertSerialization(Enum value, String expected) {
         this.serializationOutput.setLength(0);
         try {
@@ -95,6 +98,6 @@ public class EnumSerializerTest {
             throw new RuntimeException(ex);
         }
         String actual = this.serializationOutput.toString();
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 }

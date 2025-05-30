@@ -20,7 +20,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({"hasSemantics", "name", "value", "externalSubjectId"})
+@JsonPropertyOrder({"semanticId", "supplementalSemanticIds", "name", "value", "externalSubjectId"})
 public interface SpecificAssetIdMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")

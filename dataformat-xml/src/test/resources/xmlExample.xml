@@ -183,6 +183,15 @@
       <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -216,6 +225,14 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
+      </aas:embeddedDataSpecifications>
+    </aas:conceptDescription>
+    <aas:conceptDescription>
+      <aas:idShort>DigitalFile</aas:idShort>
+      <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</aas:id>
+      <aas:embeddedDataSpecifications>
+        <aas:embeddedDataSpecification>
           <aas:dataSpecification>
             <aas:type>ExternalReference</aas:type>
             <aas:keys>
@@ -225,14 +242,6 @@
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
-        </aas:embeddedDataSpecification>
-      </aas:embeddedDataSpecifications>
-    </aas:conceptDescription>
-    <aas:conceptDescription>
-      <aas:idShort>DigitalFile</aas:idShort>
-      <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</aas:id>
-      <aas:embeddedDataSpecifications>
-        <aas:embeddedDataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -266,15 +275,6 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -288,6 +288,15 @@
       <aas:id>0173-1#02-BAA120#008</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -324,15 +333,6 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>
@@ -342,6 +342,15 @@
       <aas:id>http://customer.com/cd/1/1/18EBD56F6B43D895</aas:id>
       <aas:embeddedDataSpecifications>
         <aas:embeddedDataSpecification>
+          <aas:dataSpecification>
+            <aas:type>ExternalReference</aas:type>
+            <aas:keys>
+              <aas:key>
+                <aas:type>GlobalReference</aas:type>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
+              </aas:key>
+            </aas:keys>
+          </aas:dataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -388,6 +397,14 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
+        </aas:embeddedDataSpecification>
+      </aas:embeddedDataSpecifications>
+    </aas:conceptDescription>
+    <aas:conceptDescription>
+      <aas:idShort>Document</aas:idShort>
+      <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</aas:id>
+      <aas:embeddedDataSpecifications>
+        <aas:embeddedDataSpecification>
           <aas:dataSpecification>
             <aas:type>ExternalReference</aas:type>
             <aas:keys>
@@ -397,14 +414,6 @@
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
-        </aas:embeddedDataSpecification>
-      </aas:embeddedDataSpecifications>
-    </aas:conceptDescription>
-    <aas:conceptDescription>
-      <aas:idShort>Document</aas:idShort>
-      <aas:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</aas:id>
-      <aas:embeddedDataSpecifications>
-        <aas:embeddedDataSpecification>
           <aas:dataSpecificationContent>
             <aas:dataSpecificationIec61360>
               <aas:preferredName>
@@ -434,15 +443,6 @@
               </aas:definition>
             </aas:dataSpecificationIec61360>
           </aas:dataSpecificationContent>
-          <aas:dataSpecification>
-            <aas:type>ExternalReference</aas:type>
-            <aas:keys>
-              <aas:key>
-                <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
-              </aas:key>
-            </aas:keys>
-          </aas:dataSpecification>
         </aas:embeddedDataSpecification>
       </aas:embeddedDataSpecifications>
     </aas:conceptDescription>

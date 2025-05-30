@@ -25,7 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 
 import java.util.List;
 
-@JsonPropertyOrder({ "assetKind", "globalAssetId", "specificAssetIds", "defaultThumbnail"})
+@JsonPropertyOrder({ "assetKind", "globalAssetId", "specificAssetIds", "assetType", "defaultThumbnail"})
 public interface AssetInformationMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
     @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")

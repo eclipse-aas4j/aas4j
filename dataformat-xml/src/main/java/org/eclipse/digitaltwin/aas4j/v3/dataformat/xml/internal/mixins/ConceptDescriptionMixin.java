@@ -24,7 +24,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import java.util.List;
 
 
-@JsonPropertyOrder({"hasExtension", "category", "idShort", "displayName", "description", "checksum", "administration", "id", "embeddedDataSpecification", "isCaseOf"})
+@JsonPropertyOrder({"extensions", "category", "idShort", "displayName", "description", "checksum", "administration", "id", "embeddedDataSpecification", "isCaseOf"})
 public interface ConceptDescriptionMixin {
 
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
