@@ -6,78 +6,49 @@ name: Maven Publish Snapshot
 on:
   push:
     branches: 
-      - development
+      - main
+  # JUST FOR TESTING - REMOVE BEFORE MERGING TO MAIN
+  pull_request:
+    branches:
+      - "*"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 11
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Set up Java and Maven Central credentials
       uses: actions/setup-java@v4
       with:
-        java-version: '11'
-        distribution: 'adopt'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        java-version: '17'
+        distribution: 'temurin'
+        server-id: central
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
+        gpg-private-key: ${{ secrets.ORG_GPG_PRIVATE_KEY }}
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: |
+        mvn --batch-mode verify
 
-    - name: Delete old dataformat-parent package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-parent'
+    - name: Set env variables
+      run: |
+        echo "Exporting Variables"
+        export version=$(mvn -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec -q)
+        echo "VERSION=${version}" >> $GITHUB_ENV
 
-    - name: Delete old dataformat-core package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-core'
-    
-    - name: Delete old dataformat-aasx package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-aasx'
-        
-    - name: Delete old dataformat-xml package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-xml'
-        
-    - name: Delete old dataformat-aml package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-aml'
-        
-    - name: Delete old dataformat-rdf package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-rdf'
-
-    - name: Delete old dataformat-json package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.dataformat-json'
-        
-    - name: Delete old validator package
-      uses: actions/delete-package-versions@v5
-      continue-on-error: true
-      with:
-        package-name: 'io.admin-shell.aas.validator'
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+    - name: Deploy SNAPSHOTS
+      if:  ${{ endsWith(env.VERSION, '-SNAPSHOT') }}
+      run: mvn --batch-mode deploy -P release -DskipTests
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        MAVEN_USERNAME: ${{ secrets.ORG_OSSRH_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.ORG_OSSRH_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.ORG_GPG_PASSPHRASE }}
+        GPG_KEY_ID: ${{ ORG_GPG_KEY_ID }}
