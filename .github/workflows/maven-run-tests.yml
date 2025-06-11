@@ -5,7 +5,9 @@ name: Java CI with Maven
 
 on:
   pull_request:
-    branches: [ main, development, feature/**, bugfix/** ]
+    # JUST FOR TESTING - REMOVE BEFORE MERGING TO MAIN
+    #branches: [ main, development, feature/**, bugfix/** ]
+    branches: [ development ]
 
 jobs:
   build:
