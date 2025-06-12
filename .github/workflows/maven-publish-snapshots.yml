@@ -6,15 +6,7 @@ name: Maven Publish Snapshot
 on:
   push:
     branches: 
-      - main
-      # JUST FOR TESTING - REMOVE BEFORE MERGING TO MAIN
-      - feature/release-snapshot-new
-  pull_request:
-    branches:
       - "*"
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
   publish:
