@@ -28,9 +28,24 @@ jobs:
 
     - name: Check GPG Private Key Secret
       run: |
+        if [ -z "${{ secrets.GPG_PRIVATE_KEY }}" ]; then
+          echo "GPG_PRIVATE_KEY is not set."
+        else
+          echo "GPG_PRIVATE_KEY is set."
+        fi
+
+    - name: Check GPG Passphrase Secret
+      run: |
+        if [ -z "${{ secrets.GPG_PASSPHRASE }}" ]; then
+          echo "GPG_PASSPHRASE is not set."
+        else
+          echo "GPG_PASSPHRASE is set."
+        fi
+
+    - name: Check GPG Private Key Secret
+      run: |
         if [ -z "${{ secrets.ORG_GPG_PRIVATE_KEY }}" ]; then
           echo "ORG_GPG_PRIVATE_KEY is not set."
-          exit 1
         else
           echo "ORG_GPG_PRIVATE_KEY is set."
         fi
@@ -39,7 +54,6 @@ jobs:
       run: |
         if [ -z "${{ secrets.ORG_GPG_PASSPHRASE }}" ]; then
           echo "ORG_GPG_PASSPHRASE is not set."
-          exit 1
         else
           echo "ORG_GPG_PASSPHRASE is set."
         fi
