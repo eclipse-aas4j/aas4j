@@ -26,6 +26,24 @@ jobs:
         gpg-private-key: ${{ secrets.ORG_GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
+    - name: Check GPG Private Key Secret
+      run: |
+        if [ -z "${{ secrets.ORG_GPG_PRIVATE_KEY }}" ]; then
+          echo "ORG_GPG_PRIVATE_KEY is not set."
+          exit 1
+        else
+          echo "ORG_GPG_PRIVATE_KEY is set."
+        fi
+
+    - name: Check GPG Passphrase Secret
+      run: |
+        if [ -z "${{ secrets.ORG_GPG_PASSPHRASE }}" ]; then
+          echo "ORG_GPG_PASSPHRASE is not set."
+          exit 1
+        else
+          echo "ORG_GPG_PASSPHRASE is set."
+        fi
+
     - name: Build with Maven
       run: |
         mvn --batch-mode verify
