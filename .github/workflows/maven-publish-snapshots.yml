@@ -44,3 +44,5 @@ jobs:
         MAVEN_PASSWORD: ${{ secrets.ORG_OSSRH_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.ORG_GPG_PASSPHRASE }}
         GPG_KEY_ID: ${{ secrets.ORG_GPG_KEY_ID }}
+        GPG_PASSPHRASE: ${{ secrets.ORG_GPG_PASSPHRASE }}
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
