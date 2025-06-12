@@ -23,72 +23,8 @@ jobs:
         server-id: central
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
-        gpg-private-key: ${{ secrets.ORG_GPG_PRIVATE_KEY }}
+        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
         gpg-passphrase: MAVEN_GPG_PASSPHRASE
-
-    - name: Check GPG Private Key Secret
-      run: |
-        if [ -z "${{ secrets.GPG_PRIVATE_KEY }}" ]; then
-          echo "GPG_PRIVATE_KEY is not set."
-        else
-          echo "GPG_PRIVATE_KEY is set."
-        fi
-
-    - name: Check GPG Passphrase Secret
-      run: |
-        if [ -z "${{ secrets.GPG_PASSPHRASE }}" ]; then
-          echo "GPG_PASSPHRASE is not set."
-        else
-          echo "GPG_PASSPHRASE is set."
-        fi
-
-    - name: Check GPG Private Key Secret
-      run: |
-        if [ -z "${{ secrets.ORG_GPG_PRIVATE_KEY }}" ]; then
-          echo "ORG_GPG_PRIVATE_KEY is not set."
-        else
-          echo "ORG_GPG_PRIVATE_KEY is set."
-        fi
-
-    - name: Check GPG Passphrase Secret
-      run: |
-        if [ -z "${{ secrets.ORG_GPG_PASSPHRASE }}" ]; then
-          echo "ORG_GPG_PASSPHRASE is not set."
-        else
-          echo "ORG_GPG_PASSPHRASE is set."
-        fi
-
-    - name: Check OSSRH Username Secret
-      run: |
-        if [ -z "${{ secrets.ORG_OSSRH_USERNAME }}" ]; then
-          echo "ORG_OSSRH_USERNAME is not set."
-        else
-          echo "ORG_OSSRH_USERNAME is set."
-        fi
-
-    - name: Check OSSRH Password Secret
-      run: |
-        if [ -z "${{ secrets.ORG_OSSRH_PASSWORD }}" ]; then
-          echo "ORG_OSSRH_PASSWORD is not set."
-        else
-          echo "ORG_OSSRH_PASSWORD is set."
-        fi
-
-    - name: Check OSSRH Username Secret
-      run: |
-        if [ -z "${{ secrets.CENTRAL_SONATYPE_TOKEN_USERNAME }}" ]; then
-          echo "CENTRAL_SONATYPE_TOKEN_USERNAME is not set."
-        else
-          echo "CENTRAL_SONATYPE_TOKEN_USERNAME is set."
-        fi
-
-    - name: Check OSSRH Password Secret
-      run: |
-        if [ -z "${{ secrets.CENTRAL_SONATYPE_TOKEN_PASSWORD }}" ]; then
-          echo "CENTRAL_SONATYPE_TOKEN_PASSWORD is not set."
-        else
-          echo "CENTRAL_SONATYPE_TOKEN_PASSWORD is set."
-        fi
 
     - name: Build with Maven
       run: |
@@ -104,9 +40,6 @@ jobs:
       if:  ${{ endsWith(env.VERSION, '-SNAPSHOT') }}
       run: mvn --batch-mode deploy -P release -DskipTests
       env:
-        MAVEN_USERNAME: ${{ secrets.ORG_OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.ORG_OSSRH_PASSWORD }}
-        MAVEN_GPG_PASSPHRASE: ${{ secrets.ORG_GPG_PASSPHRASE }}
-        GPG_KEY_ID: ${{ secrets.ORG_GPG_KEY_ID }}
-        GPG_PASSPHRASE: ${{ secrets.ORG_GPG_PASSPHRASE }}
-        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        MAVEN_USERNAME: ${{ secrets.CENTRAL_SONATYPE_TOKEN_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.CENTRAL_SONATYPE_TOKEN_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
