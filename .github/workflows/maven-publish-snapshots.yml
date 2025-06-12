@@ -4,13 +4,8 @@
 name: Maven Publish Snapshot
 
 on:
-  push:
-    branches: 
-      - "*"
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - "*"
+    branches: [ main, development, feature/**, bugfix/** ]
 
 jobs:
   publish:
