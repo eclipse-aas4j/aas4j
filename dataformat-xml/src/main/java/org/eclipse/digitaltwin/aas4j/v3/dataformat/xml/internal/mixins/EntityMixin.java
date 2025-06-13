@@ -29,7 +29,7 @@ import java.util.List;
 
 public interface EntityMixin {
     @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "statements")
-	@JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = SubmodelElementsSerializer.class)
     @JsonDeserialize(using = SubmodelElementsDeserializer.class)
     public List<SubmodelElement> getStatements();

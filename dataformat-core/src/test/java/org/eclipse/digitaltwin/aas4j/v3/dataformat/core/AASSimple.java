@@ -55,7 +55,7 @@ public class AASSimple {
     private static final String WWW_VDI2770_COM_BLATT1_ENTWURF_OKT18_CD_DOCUMENT = "http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document";
     private static final String ACTUAL_ROTATIONSPEED_WITH_WHICH_THE_MOTOR_OR_FEEDINGUNIT_IS_OPERATED = "Actual rotationspeed with which the motor or feedingunit is operated";
     private static final String AKTUELLE_DREHZAHL_MITWELCHER_DER_MOTOR_ODER_DIE_SPEISEINHEIT_BETRIEBEN_WIRD = "Aktuelle Drehzahl, mitwelcher der Motor oder die Speiseinheit betrieben wird";
-    private static final String ACTUAL_ROTATION_SPEED = "ActualRotationSpeed";
+    private static final String ACTUAL_ROTATION_SPEED = "ActualRotSpeed";
     private static final String ACTUALROTATIONSPEED = "Actualrotationspeed";
     private static final String AKTUELLE_DREHZAHL = "AktuelleDrehzahl";
     private static final String _1_MIN = "1/min";
@@ -124,7 +124,7 @@ public class AASSimple {
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_CATEGORY = "VARIABLE";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
     private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
-    public static final String AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360";
+    public static final String AAS_3_1_DATA_SPECIFICATION_IEC_61360 = "https://admin-shell.io/aas/3/1/DataSpecificationIec61360";
 
     public AASSimple() {
     }
@@ -302,7 +302,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                        .value(AAS_3_1_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
@@ -328,7 +328,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                        .value(AAS_3_1_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
@@ -360,7 +360,7 @@ public class AASSimple {
                                 .dataSpecification(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                                .value(AAS_3_1_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
@@ -394,7 +394,7 @@ public class AASSimple {
                                 .dataSpecification(new DefaultReference.Builder()
                                         .keys(new DefaultKey.Builder()
                                                 .type(KeyTypes.GLOBAL_REFERENCE)
-                                                .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                                .value(AAS_3_1_DATA_SPECIFICATION_IEC_61360)
                                                 .build())
                                         .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                         .build())
@@ -429,7 +429,7 @@ public class AASSimple {
                         .dataSpecification(new DefaultReference.Builder()
                                 .keys(new DefaultKey.Builder()
                                         .type(KeyTypes.GLOBAL_REFERENCE)
-                                        .value(AAS_3_0_RC_02_DATA_SPECIFICATION_IEC_61360)
+                                        .value(AAS_3_1_DATA_SPECIFICATION_IEC_61360)
                                         .build())
                                 .type(ReferenceTypes.EXTERNAL_REFERENCE)
                                 .build())
