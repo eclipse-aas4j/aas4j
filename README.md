@@ -8,7 +8,7 @@
 Shell (AAS) such as metamodels, submodels, serialization and deserialization modules, validators, and transformation 
 libraries based on the AAS specifications. It also contains all classes and properties as defined by the document 
 'Specification of the Asset Administration Shell Part 1: Meta-Model' published on 
-[Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/wp-content/uploads/2023/04/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf).
+[Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2025/06/IDTA_01001-25-01_AAS-Specification_Part1_Metamodel.pdf).
 
 Note: AAS libraries for java previously available in [admin-shell-io](https://github.com/admin-shell-io).
 
@@ -34,6 +34,18 @@ Please refer to [AAS Model README](model/README.md) for more information.
 
 [Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) contains an AAS Java Dataformat Library. The AAS Java Dataformat Library is a collection of software modules to serialize and deserialze instances of the Asset Administration Shell from and to Java instances. De-/serialization works according to the dataformat schemas published in the document 'Details of the Asset Administration Shell', published on [Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
 
+## Cloning the repository
+This project uses git [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). After cloning, be sure to also initialize and update submodules.
+
+To clone the repository together with all submodules, run:
+
+git clone --recurse-submodules <aas4j_repository_url>
+
+If you have already cloned the repository without the --recurse-submodules option, initialize and fetch the submodules with:
+
+git submodule update --init --recursive
+
+Note: Submodules are required for the project to work properly. Make sure you don't skip these steps.
 
 ## Build and Use
 
