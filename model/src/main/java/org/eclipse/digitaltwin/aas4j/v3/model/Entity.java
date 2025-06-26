@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -34,18 +35,18 @@ public interface Entity extends SubmodelElement {
      * Describes statements applicable to the entity by a set of submodel elements, typically with a
      * qualified value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/statements
+     * More information under https://admin-shell.io/aas/3/1/Entity/statements
      *
      * @return Returns the List of SubmodelElements for the property statements.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
+    @IRI("https://admin-shell.io/aas/3/1/Entity/statements")
     List<SubmodelElement> getStatements();
 
     /**
      * Describes statements applicable to the entity by a set of submodel elements, typically with a
      * qualified value.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/statements
+     * More information under https://admin-shell.io/aas/3/1/Entity/statements
      *
      * @param statements desired value for the property statements.
      */
@@ -54,17 +55,17 @@ public interface Entity extends SubmodelElement {
     /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/entityType
+     * More information under https://admin-shell.io/aas/3/1/Entity/entityType
      *
      * @return Returns the EntityType for the property entityType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/entityType")
+    @IRI("https://admin-shell.io/aas/3/1/Entity/entityType")
     EntityType getEntityType();
 
     /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/entityType
+     * More information under https://admin-shell.io/aas/3/1/Entity/entityType
      *
      * @param entityType desired value for the property entityType.
      */
@@ -73,17 +74,17 @@ public interface Entity extends SubmodelElement {
     /**
      * Global identifier of the asset the entity is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetId
+     * More information under https://admin-shell.io/aas/3/1/Entity/globalAssetId
      *
      * @return Returns the String for the property globalAssetId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetId")
+    @IRI("https://admin-shell.io/aas/3/1/Entity/globalAssetId")
     String getGlobalAssetId();
 
     /**
      * Global identifier of the asset the entity is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/globalAssetId
+     * More information under https://admin-shell.io/aas/3/1/Entity/globalAssetId
      *
      * @param globalAssetId desired value for the property globalAssetId.
      */
@@ -93,18 +94,18 @@ public interface Entity extends SubmodelElement {
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
      * by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/1/Entity/specificAssetIds
      *
      * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Entity/specificAssetIds")
+    @IRI("https://admin-shell.io/aas/3/1/Entity/specificAssetIds")
     List<SpecificAssetId> getSpecificAssetIds();
 
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
      * by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/Entity/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/1/Entity/specificAssetIds
      *
      * @param specificAssetIds desired value for the property specificAssetIds.
      */

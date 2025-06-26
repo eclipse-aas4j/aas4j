@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -49,19 +48,19 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
     /**
      * This function allows setting a value for endpointProtocolVersion
      * 
-     * @param endpointProtocolVersions desired value to be set
+     * @param endpointProtocolVersion desired value to be set
      * @return Builder object with new value for endpointProtocolVersion
      */
-    public B endpointProtocolVersion(List<String> endpointProtocolVersions) {
-        getBuildingInstance().setEndpointProtocolVersion(endpointProtocolVersions);
+    public B endpointProtocolVersion(List<String> endpointProtocolVersion) {
+        getBuildingInstance().setEndpointProtocolVersion(endpointProtocolVersion);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List endpointProtocolVersion
+     * This function allows adding a value to the List endpointProtocolVersions
      * 
      * @param endpointProtocolVersion desired value to be added
-     * @return Builder object with new value for endpointProtocolVersion
+     * @return Builder object with new value for endpointProtocolVersions
      */
     public B endpointProtocolVersion(String endpointProtocolVersion) {
         getBuildingInstance().getEndpointProtocolVersion().add(endpointProtocolVersion);

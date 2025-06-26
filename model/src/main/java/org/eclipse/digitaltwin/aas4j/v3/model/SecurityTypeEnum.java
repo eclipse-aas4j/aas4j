@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,27 +15,34 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
-/**  
-*/
+/**
+ * Enumeration for Security Type.
+ */
 @IRI("aas:SecurityTypeEnum")
 public enum SecurityTypeEnum {
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/None")
+    /**
+     * Indicates that this security type enum value means no security is applied.
+     */
+    @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/None")
     NONE,
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/Rfc_Tlsa")
+    /**
+     * Indicates that this security type enum value refers to RFC TLSA-based security.
+     */
+    @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/Rfc_Tlsa")
     RFC_TLSA,
 
-    /** 
-    */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/W3c_Did")
+    /**
+     * Indicates that this security type enum value refers to W3C DID-based security.
+     */
+    @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/W3c_Did")
     W3C_DID;
 
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -31,16 +30,16 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/href
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/href
      *
      * @return Returns the String for the property href.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/href")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/href")
     String getHref();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/href
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/href
      *
      * @param href desired value for the property href.
      */
@@ -48,16 +47,16 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocol
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocol
      *
      * @return Returns the String for the property endpointProtocol.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocol")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocol")
     String getEndpointProtocol();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocol
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocol
      *
      * @param endpointProtocol desired value for the property endpointProtocol.
      */
@@ -65,33 +64,33 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocolVersion
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocolVersion
      *
-     * @return Returns the List of Strings for the property endpointProtocolVersion.
+     * @return Returns the List of Strings for the property endpointProtocolVersions.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocolVersion")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocolVersion")
     List<String> getEndpointProtocolVersion();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocolVersion
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocolVersion
      *
-     * @param endpointProtocolVersions desired value for the property endpointProtocolVersion.
+     * @param endpointProtocolVersion desired value for the property endpointProtocolVersion.
      */
-    void setEndpointProtocolVersion(List<String> endpointProtocolVersions);
+    void setEndpointProtocolVersion(List<String> endpointProtocolVersion);
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocol
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocol
      *
      * @return Returns the String for the property subprotocol.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocol")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocol")
     String getSubprotocol();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocol
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocol
      *
      * @param subprotocol desired value for the property subprotocol.
      */
@@ -99,16 +98,16 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBody
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBody
      *
      * @return Returns the String for the property subprotocolBody.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBody")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBody")
     String getSubprotocolBody();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBody
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBody
      *
      * @param subprotocolBody desired value for the property subprotocolBody.
      */
@@ -116,16 +115,16 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBodyEncoding
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBodyEncoding
      *
      * @return Returns the String for the property subprotocolBodyEncoding.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBodyEncoding")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBodyEncoding")
     String getSubprotocolBodyEncoding();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBodyEncoding
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBodyEncoding
      *
      * @param subprotocolBodyEncoding desired value for the property subprotocolBodyEncoding.
      */
@@ -133,16 +132,16 @@ public interface ProtocolInformation {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/securityAttributes
      *
-     * @return Returns the List of SecurityAttributeObjects for the property securityAttributes.
+     * @return Returns the List of SecurityAttributes for the property securityAttributes.
      */
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/securityAttributes")
     List<SecurityAttributeObject> getSecurityAttributes();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes
+     * More information under https://admin-shell.io/aas/3/1/ProtocolInformation/securityAttributes
      *
      * @param securityAttributes desired value for the property securityAttributes.
      */

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,7 +15,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**  
@@ -26,97 +28,97 @@ public enum ModelType {
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/AnnotatedRelationshipElement")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/AnnotatedRelationshipElement")
     ANNOTATED_RELATIONSHIP_ELEMENT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/AssetAdministrationShell")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/AssetAdministrationShell")
     ASSET_ADMINISTRATION_SHELL,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/BasicEventElement")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/BasicEventElement")
     BASIC_EVENT_ELEMENT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Blob")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Blob")
     BLOB,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Capability")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Capability")
     CAPABILITY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/ConceptDescription")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/ConceptDescription")
     CONCEPT_DESCRIPTION,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Entity")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Entity")
     ENTITY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/File")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/File")
     FILE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/MultiLanguageProperty")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/MultiLanguageProperty")
     MULTI_LANGUAGE_PROPERTY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Operation")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Operation")
     OPERATION,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Property")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Property")
     PROPERTY,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Qualifier")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Qualifier")
     QUALIFIER,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Range")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Range")
     RANGE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Reference")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Reference")
     REFERENCE,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/ReferenceElement")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/ReferenceElement")
     REFERENCE_ELEMENT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/RelationshipElement")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/RelationshipElement")
     RELATIONSHIP_ELEMENT,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Submodel")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/Submodel")
     SUBMODEL,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementCollection")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/SubmodelElementCollection")
     SUBMODEL_ELEMENT_COLLECTION,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementList")
+    @IRI("https://admin-shell.io/aas/3/1/ModelType/SubmodelElementList")
     SUBMODEL_ELEMENT_LIST;
 
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,15 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtensionBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -35,22 +33,22 @@ import java.util.Objects;
 @IRI("aas:Extension")
 public class DefaultExtension implements Extension {
 
-    @IRI("https://admin-shell.io/aas/3/0/Extension/name")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/name")
     protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
-    protected List<Reference> refersTo = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/1/Extension/refersTo")
+    protected List<Reference> refersTos = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Extension/value")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/Extension/valueType")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/valueType")
     protected DataTypeDefXsd valueType;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
     public DefaultExtension() {}
@@ -60,7 +58,7 @@ public class DefaultExtension implements Extension {
         return Objects.hash(this.name,
             this.valueType,
             this.value,
-            this.refersTo,
+            this.refersTos,
             this.semanticId,
             this.supplementalSemanticIds);
     }
@@ -78,10 +76,22 @@ public class DefaultExtension implements Extension {
             return Objects.equals(this.name, other.name) &&
                 Objects.equals(this.valueType, other.valueType) &&
                 Objects.equals(this.value, other.value) &&
-                Objects.equals(this.refersTo, other.refersTo) &&
+                Objects.equals(this.refersTos, other.refersTos) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "DefaultExtension{" +
+                "name='" + name + '\'' +
+                ", refersTos=" + refersTos +
+                ", value='" + value + '\'' +
+                ", valueType=" + valueType +
+                ", semanticId=" + semanticId +
+                ", supplementalSemanticIds=" + supplementalSemanticIds +
+                '}';
     }
 
     @Override
@@ -116,12 +126,12 @@ public class DefaultExtension implements Extension {
 
     @Override
     public List<Reference> getRefersTo() {
-        return refersTo;
+        return refersTos;
     }
 
     @Override
     public void setRefersTo(List<Reference> refersTos) {
-        this.refersTo = refersTos;
+        this.refersTos = refersTos;
     }
 
     @Override
@@ -142,16 +152,6 @@ public class DefaultExtension implements Extension {
     @Override
     public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
         this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultExtension (" + "name=%s,"
-                + "valueType=%s,"
-                + "value=%s,"
-                + "refersTo=%s,"
-                + ")",
-            this.name, this.valueType, this.value, this.refersTo);
     }
 
     /**

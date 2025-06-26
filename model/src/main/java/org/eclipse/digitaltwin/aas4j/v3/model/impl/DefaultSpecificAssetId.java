@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,14 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIdBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -34,19 +33,19 @@ import java.util.Objects;
 @IRI("aas:SpecificAssetId")
 public class DefaultSpecificAssetId implements SpecificAssetId {
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
+    @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/externalSubjectId")
     protected Reference externalSubjectId;
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
+    @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/name")
     protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
+    @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/value")
     protected String value;
 
     public DefaultSpecificAssetId() {}
@@ -128,13 +127,15 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
         this.supplementalSemanticIds = supplementalSemanticIds;
     }
 
+    @Override
     public String toString() {
-        return String.format(
-            "DefaultSpecificAssetId (" + "name=%s,"
-                + "value=%s,"
-                + "externalSubjectId=%s,"
-                + ")",
-            this.name, this.value, this.externalSubjectId);
+        return "DefaultSpecificAssetId{" +
+                "semanticId=" + semanticId +
+                ", supplementalSemanticIds=" + supplementalSemanticIds +
+                ", externalSubjectId=" + externalSubjectId +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 
     /**

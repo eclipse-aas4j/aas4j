@@ -1,9 +1,11 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -12,15 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult;
-import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
-import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.BaseOperationResultBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -31,13 +32,13 @@ import java.util.Objects;
 @IRI("aas:BaseOperationResult")
 public class DefaultBaseOperationResult implements BaseOperationResult {
 
-    @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/executionState")
+    @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/executionState")
     protected ExecutionState executionState;
 
-    @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/success")
+    @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/success")
     protected boolean success;
 
-    @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+    @IRI("https://admin-shell.io/aas/3/1/Result/messages")
     protected List<Message> messages = new ArrayList<>();
 
     public DefaultBaseOperationResult() {}
@@ -66,48 +67,42 @@ public class DefaultBaseOperationResult implements BaseOperationResult {
     }
 
     @Override
+    public String toString() {
+        return "DefaultBaseOperationResult{" +
+                "executionState=" + executionState +
+                ", success=" + success +
+                ", messages=" + messages +
+                '}';
+    }
+
+    @Override
     public ExecutionState getExecutionState() {
         return executionState;
     }
-
 
     @Override
     public void setExecutionState(ExecutionState executionState) {
         this.executionState = executionState;
     }
 
-
     @Override
     public boolean getSuccess() {
         return success;
     }
-
 
     @Override
     public void setSuccess(boolean success) {
         this.success = success;
     }
 
-
     @Override
     public List<Message> getMessages() {
         return messages;
     }
 
-
     @Override
     public void setMessages(List<Message> messages) {
         this.messages = messages;
-    }
-
-
-    public String toString() {
-        return String.format(
-                "DefaultBaseOperationResult (" + "executionState=%s,"
-                        + "messages=%s,"
-                        + "success=%s,"
-                        + ")",
-                this.executionState, this.messages, this.success);
     }
 
     /**
@@ -119,7 +114,6 @@ public class DefaultBaseOperationResult implements BaseOperationResult {
         protected Builder getSelf() {
             return this;
         }
-
 
         @Override
         protected DefaultBaseOperationResult newBuildingInstance() {

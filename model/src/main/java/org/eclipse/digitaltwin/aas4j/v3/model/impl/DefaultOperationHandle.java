@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationHandleBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -30,7 +30,7 @@ import java.util.Objects;
 @IRI("aas:OperationHandle")
 public class DefaultOperationHandle implements OperationHandle {
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationHandle/handleId")
+    @IRI("https://admin-shell.io/aas/3/1/OperationHandle/handleId")
     protected String handleId;
 
     public DefaultOperationHandle() {}
@@ -55,6 +55,13 @@ public class DefaultOperationHandle implements OperationHandle {
     }
 
     @Override
+    public String toString() {
+        return "DefaultOperationHandle{" +
+                "handleId='" + handleId + '\'' +
+                '}';
+    }
+
+    @Override
     public String getHandleId() {
         return handleId;
     }
@@ -62,13 +69,6 @@ public class DefaultOperationHandle implements OperationHandle {
     @Override
     public void setHandleId(String handleId) {
         this.handleId = handleId;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultOperationHandle (" + "handleId=%s,"
-                + ")",
-            this.handleId);
     }
 
     /**

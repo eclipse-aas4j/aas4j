@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,7 +15,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**  
@@ -26,32 +28,32 @@ public enum ExecutionState {
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Canceled")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Canceled")
     CANCELED,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Completed")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Completed")
     COMPLETED,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Failed")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Failed")
     FAILED,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Initiated")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Initiated")
     INITIATED,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Running")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Running")
     RUNNING,
 
     /** 
     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Timeout")
+    @IRI("https://admin-shell.io/aas/3/1/ExecutionState/Timeout")
     TIMEOUT;
 
 }

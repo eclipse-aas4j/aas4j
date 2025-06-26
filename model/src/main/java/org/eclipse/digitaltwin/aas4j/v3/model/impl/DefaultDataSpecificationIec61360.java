@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,67 +14,61 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360
  * 
- * Content of data specification template for concept descriptions for properties, values and value
+ * Content of data specification template for concept description for properties, values and value
  * lists conformant to IEC 61360.
  */
 
 @IRI("aas:DataSpecificationIec61360")
 public class DefaultDataSpecificationIec61360 implements DataSpecificationIec61360 {
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/dataType")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/dataType")
     protected DataTypeIec61360 dataType;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/definition")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/definition")
     protected List<LangStringDefinitionTypeIec61360> definition = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/levelType")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/levelType")
     protected LevelType levelType;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/preferredName")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/preferredName")
     protected List<LangStringPreferredNameTypeIec61360> preferredName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/shortName")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/shortName")
     protected List<LangStringShortNameTypeIec61360> shortName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/sourceOfDefinition")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/sourceOfDefinition")
     protected String sourceOfDefinition;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/symbol")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/symbol")
     protected String symbol;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/unit")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/unit")
     protected String unit;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/unitId")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/unitId")
     protected Reference unitId;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/value")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/value")
     protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/valueFormat")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/valueFormat")
     protected String valueFormat;
 
-    @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/valueList")
+    @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/valueList")
     protected ValueList valueList;
 
     public DefaultDataSpecificationIec61360() {}
@@ -122,13 +115,31 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
     }
 
     @Override
+    public String toString() {
+        return "DefaultDataSpecificationIec61360{" +
+                "dataType=" + dataType +
+                ", definition=" + definition +
+                ", levelType=" + levelType +
+                ", preferredName=" + preferredName +
+                ", shortName=" + shortName +
+                ", sourceOfDefinition='" + sourceOfDefinition + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", unit='" + unit + '\'' +
+                ", unitId=" + unitId +
+                ", value='" + value + '\'' +
+                ", valueFormat='" + valueFormat + '\'' +
+                ", valueList=" + valueList +
+                '}';
+    }
+
+    @Override
     public List<LangStringPreferredNameTypeIec61360> getPreferredName() {
         return preferredName;
     }
 
     @Override
-    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredNames) {
-        this.preferredName = preferredNames;
+    public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
+        this.preferredName = preferredName;
     }
 
     @Override
@@ -137,8 +148,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
     }
 
     @Override
-    public void setShortName(List<LangStringShortNameTypeIec61360> shortNames) {
-        this.shortName = shortNames;
+    public void setShortName(List<LangStringShortNameTypeIec61360> shortName) {
+        this.shortName = shortName;
     }
 
     @Override
@@ -197,8 +208,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
     }
 
     @Override
-    public void setDefinition(List<LangStringDefinitionTypeIec61360> definitions) {
-        this.definition = definitions;
+    public void setDefinition(List<LangStringDefinitionTypeIec61360> definition) {
+        this.definition = definition;
     }
 
     @Override
@@ -239,25 +250,6 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
     @Override
     public void setLevelType(LevelType levelType) {
         this.levelType = levelType;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultDataSpecificationIec61360 (" + "preferredName=%s,"
-                + "shortName=%s,"
-                + "unit=%s,"
-                + "unitId=%s,"
-                + "sourceOfDefinition=%s,"
-                + "symbol=%s,"
-                + "dataType=%s,"
-                + "definition=%s,"
-                + "valueFormat=%s,"
-                + "valueList=%s,"
-                + "value=%s,"
-                + "levelType=%s,"
-                + ")",
-            this.preferredName, this.shortName, this.unit, this.unitId, this.sourceOfDefinition, this.symbol, this.dataType,
-            this.definition, this.valueFormat, this.valueList, this.value, this.levelType);
     }
 
     /**

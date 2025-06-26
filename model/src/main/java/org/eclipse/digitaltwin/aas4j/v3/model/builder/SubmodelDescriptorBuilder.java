@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,15 +14,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 
 public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B extends SubmodelDescriptorBuilder<T, B>>
@@ -96,35 +90,35 @@ public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B 
     }
 
     /**
-     * This function allows setting a value for supplementalSemanticId
+     * This function allows setting a value for supplementalSemanticIds
      * 
      * @param supplementalSemanticIds desired value to be set
-     * @return Builder object with new value for supplementalSemanticId
+     * @return Builder object with new value for supplementalSemanticIds
      */
-    public B supplementalSemanticId(List<Reference> supplementalSemanticIds) {
-        getBuildingInstance().setSupplementalSemanticId(supplementalSemanticIds);
+    public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+        getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List supplementalSemanticId
+     * This function allows adding a value to the List supplementalSemanticIds
      * 
      * @param supplementalSemanticId desired value to be added
-     * @return Builder object with new value for supplementalSemanticId
+     * @return Builder object with new value for supplementalSemanticIds
      */
     public B supplementalSemanticId(Reference supplementalSemanticId) {
-        getBuildingInstance().getSupplementalSemanticId().add(supplementalSemanticId);
+        getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticId);
         return getSelf();
     }
 
     /**
      * This function allows setting a value for description
      * 
-     * @param descriptions desired value to be set
+     * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescription(descriptions);
+    public B description(List<LangStringTextType> description) {
+        getBuildingInstance().setDescription(description);
         return getSelf();
     }
 
@@ -142,11 +136,11 @@ public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B 
     /**
      * This function allows setting a value for displayName
      * 
-     * @param displayNames desired value to be set
+     * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayName(displayNames);
+    public B displayName(List<LangStringNameType> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
 

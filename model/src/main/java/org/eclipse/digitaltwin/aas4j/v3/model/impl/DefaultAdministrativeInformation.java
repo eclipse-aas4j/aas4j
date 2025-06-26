@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,15 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -36,22 +34,33 @@ import java.util.Objects;
 @IRI("aas:AdministrativeInformation")
 public class DefaultAdministrativeInformation implements AdministrativeInformation {
 
-    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/creator")
+    @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
     protected Reference creator;
 
-    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/revision")
+    @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
     protected String revision;
 
-    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId")
+    @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId")
     protected String templateId;
 
-    @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/version")
+    @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/version")
     protected String version;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
     public DefaultAdministrativeInformation() {}
+
+    @Override
+    public String toString() {
+        return "DefaultAdministrativeInformation{" +
+                "creator=" + creator +
+                ", revision='" + revision + '\'' +
+                ", templateId='" + templateId + '\'' +
+                ", version='" + version + '\'' +
+                ", embeddedDataSpecifications=" + embeddedDataSpecifications +
+                '}';
+    }
 
     @Override
     public int hashCode() {
@@ -128,16 +137,6 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @Override
     public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
         this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultAdministrativeInformation (" + "version=%s,"
-                + "revision=%s,"
-                + "creator=%s,"
-                + "templateId=%s,"
-                + ")",
-            this.version, this.revision, this.creator, this.templateId);
     }
 
     /**

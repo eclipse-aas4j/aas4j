@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,33 +14,35 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 public abstract class PackageDescriptionBuilder<T extends PackageDescription, B extends PackageDescriptionBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for items
+     * This function allows setting a value for aasIds
      * 
-     * @param items desired value to be set
-     * @return Builder object with new value for items
+     * @param aasIds desired value to be set
+     * @return Builder object with new value for aasIds
      */
-    public B items(List<String> items) {
-        getBuildingInstance().setItems(items);
+    public B aasIds(List<String> aasIds) {
+        getBuildingInstance().setAasIds(aasIds);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List items
+     * This function allows adding a value to the List aasIds
      * 
-     * @param items desired value to be added
-     * @return Builder object with new value for items
+     * @param aasIds desired value to be added
+     * @return Builder object with new value for aasIds
      */
-    public B items(String items) {
-        getBuildingInstance().getItems().add(items);
+    public B aasIds(String aasIds) {
+        getBuildingInstance().getAasIds().add(aasIds);
         return getSelf();
     }
 

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,7 +15,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -32,21 +34,21 @@ public enum AssetKind {
     INSTANCE,
 
     /**
-     * Neither a type asset nor an instance asset
+     * Neither a type asset nor an instance asset nor a role asset
      */
     @IRI("https://admin-shell.io/aas/3/1/AssetKind/NotApplicable")
     NOT_APPLICABLE,
 
     /**
-     * Type asset
-     */
-    @IRI("https://admin-shell.io/aas/3/1/AssetKind/Type")
-    TYPE,
-
-    /**
      * Role asset
      */
     @IRI("https://admin-shell.io/aas/3/1/AssetKind/Role")
-    ROLE;
+    ROLE,
+
+    /**
+     * Type asset
+     */
+    @IRI("https://admin-shell.io/aas/3/1/AssetKind/Type")
+    TYPE;
 
 }

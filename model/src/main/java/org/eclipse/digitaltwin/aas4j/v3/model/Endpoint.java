@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEndpoint;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -30,16 +31,16 @@ public interface Endpoint {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/1/Endpoint/_interface
      *
      * @return Returns the String for the property _interface.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
+    @IRI("https://admin-shell.io/aas/3/1/Endpoint/_interface")
     String get_interface();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+     * More information under https://admin-shell.io/aas/3/1/Endpoint/_interface
      *
      * @param _interface desired value for the property _interface.
      */
@@ -47,16 +48,16 @@ public interface Endpoint {
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/1/Endpoint/protocolInformation
      *
      * @return Returns the ProtocolInformation for the property protocolInformation.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
+    @IRI("https://admin-shell.io/aas/3/1/Endpoint/protocolInformation")
     ProtocolInformation getProtocolInformation();
 
     /**
      *
-     * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+     * More information under https://admin-shell.io/aas/3/1/Endpoint/protocolInformation
      *
      * @param protocolInformation desired value for the property protocolInformation.
      */

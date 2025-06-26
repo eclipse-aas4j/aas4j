@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -32,10 +31,10 @@ import java.util.Objects;
 @IRI("aas:LangStringPreferredNameTypeIec61360")
 public class DefaultLangStringPreferredNameTypeIec61360 implements LangStringPreferredNameTypeIec61360 {
 
-    @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+    @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
     protected String language;
 
-    @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+    @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
     protected String text;
 
     public DefaultLangStringPreferredNameTypeIec61360() {}
@@ -62,6 +61,14 @@ public class DefaultLangStringPreferredNameTypeIec61360 implements LangStringPre
     }
 
     @Override
+    public String toString() {
+        return "DefaultLangStringPreferredNameTypeIec61360{" +
+                "language='" + language + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
+    @Override
     public String getLanguage() {
         return language;
     }
@@ -79,14 +86,6 @@ public class DefaultLangStringPreferredNameTypeIec61360 implements LangStringPre
     @Override
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultLangStringPreferredNameTypeIec61360 ("
-                + ")"
-
-        );
     }
 
     /**

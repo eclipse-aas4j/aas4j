@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,29 +14,30 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
-import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.SecurityAttributeObjectBuilder;
-
 import java.util.Objects;
 
 
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+
+
 /**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttribute
  * 
+ * Represents security attributes in the Asset Administration Shell.
  */
 
-@IRI("aas:SecurityAttributeObject")
+@IRI("aas:SecurityAttribute")
 public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
+    @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/key")
     protected String key;
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
+    @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/type")
     protected SecurityTypeEnum type;
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
+    @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/value")
     protected String value;
 
     public DefaultSecurityAttributeObject() {}
@@ -45,6 +45,7 @@ public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
     @Override
     public int hashCode() {
         return Objects.hash(this.type,
+            this.type,
             this.key,
             this.value);
     }
@@ -95,19 +96,10 @@ public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
         this.value = value;
     }
 
-    public String toString() {
-        return String.format(
-            "DefaultSecurityAttributeObject (" + "type=%s,"
-                + "key=%s,"
-                + "value=%s,"
-                + ")",
-            this.type, this.key, this.value);
-    }
-
     /**
-     * This builder class can be used to construct a DefaultSecurityAttributeObject bean.
+     * This builder class can be used to construct a DefaultSecurityAttribute bean.
      */
-    public static class Builder extends SecurityAttributeObjectBuilder<DefaultSecurityAttributeObject, Builder> {
+    public static class Builder extends SecurityAttributeBuilder<DefaultSecurityAttributeObject, Builder> {
 
         @Override
         protected Builder getSelf() {

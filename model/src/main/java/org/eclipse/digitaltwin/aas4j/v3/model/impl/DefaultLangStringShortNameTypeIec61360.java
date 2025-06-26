@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -32,10 +32,10 @@ import java.util.Objects;
 @IRI("aas:LangStringShortNameTypeIec61360")
 public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNameTypeIec61360 {
 
-    @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+    @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
     protected String language;
 
-    @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+    @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
     protected String text;
 
     public DefaultLangStringShortNameTypeIec61360() {}
@@ -62,6 +62,14 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
     }
 
     @Override
+    public String toString() {
+        return "DefaultLangStringShortNameTypeIec61360{" +
+                "language='" + language + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
+    @Override
     public String getLanguage() {
         return language;
     }
@@ -79,14 +87,6 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
     @Override
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultLangStringShortNameTypeIec61360 ("
-                + ")"
-
-        );
     }
 
     /**

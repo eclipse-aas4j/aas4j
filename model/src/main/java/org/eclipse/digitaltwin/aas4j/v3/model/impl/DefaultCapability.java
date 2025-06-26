@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,19 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Capability;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.CapabilityBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -40,43 +34,43 @@ import java.util.Objects;
 @IRI("aas:Capability")
 public class DefaultCapability implements Capability {
 
-    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
     protected String idShort;
 
     public DefaultCapability() {}
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.embeddedDataSpecifications,
-            this.category,
+        return Objects.hash(this.category,
             this.idShort,
             this.displayName,
             this.description,
             this.extensions,
+            this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
             this.qualifiers);
@@ -92,12 +86,12 @@ public class DefaultCapability implements Capability {
             return false;
         } else {
             DefaultCapability other = (DefaultCapability) obj;
-            return Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.category, other.category) &&
+            return Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
                 Objects.equals(this.qualifiers, other.qualifiers);
@@ -105,13 +99,18 @@ public class DefaultCapability implements Capability {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
+    public String toString() {
+        return "DefaultCapability{" +
+                "embeddedDataSpecifications=" + embeddedDataSpecifications +
+                ", extensions=" + extensions +
+                ", semanticId=" + semanticId +
+                ", supplementalSemanticIds=" + supplementalSemanticIds +
+                ", qualifiers=" + qualifiers +
+                ", category='" + category + '\'' +
+                ", description=" + description +
+                ", displayName=" + displayName +
+                ", idShort='" + idShort + '\'' +
+                '}';
     }
 
     @Override
@@ -140,8 +139,8 @@ public class DefaultCapability implements Capability {
     }
 
     @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -150,8 +149,8 @@ public class DefaultCapability implements Capability {
     }
 
     @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
     }
 
     @Override
@@ -162,6 +161,16 @@ public class DefaultCapability implements Capability {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -192,14 +201,6 @@ public class DefaultCapability implements Capability {
     @Override
     public void setQualifiers(List<Qualifier> qualifiers) {
         this.qualifiers = qualifiers;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultCapability ("
-                + ")"
-
-        );
     }
 
     /**

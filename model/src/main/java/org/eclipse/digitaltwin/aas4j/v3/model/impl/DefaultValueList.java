@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,14 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ValueListBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -34,7 +33,7 @@ import java.util.Objects;
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-    @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
+    @IRI("https://admin-shell.io/aas/3/1/ValueList/valueReferencePairs")
     protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
     public DefaultValueList() {}
@@ -68,11 +67,11 @@ public class DefaultValueList implements ValueList {
         this.valueReferencePairs = valueReferencePairs;
     }
 
+    @Override
     public String toString() {
-        return String.format(
-            "DefaultValueList (" + "valueReferencePairs=%s,"
-                + ")",
-            this.valueReferencePairs);
+        return "DefaultValueList{" +
+                "valueReferencePairs=" + valueReferencePairs +
+                '}';
     }
 
     /**

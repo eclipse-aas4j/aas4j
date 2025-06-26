@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,12 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
-import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.KeyBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -32,10 +31,10 @@ import java.util.Objects;
 @IRI("aas:Key")
 public class DefaultKey implements Key {
 
-    @IRI("https://admin-shell.io/aas/3/0/Key/type")
+    @IRI("https://admin-shell.io/aas/3/1/Key/type")
     protected KeyTypes type;
 
-    @IRI("https://admin-shell.io/aas/3/0/Key/value")
+    @IRI("https://admin-shell.io/aas/3/1/Key/value")
     protected String value;
 
     public DefaultKey() {}

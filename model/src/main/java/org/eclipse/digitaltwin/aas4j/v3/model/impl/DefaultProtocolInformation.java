@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -33,25 +32,25 @@ import java.util.Objects;
 @IRI("aas:ProtocolInformation")
 public class DefaultProtocolInformation implements ProtocolInformation {
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocol")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocol")
     protected String endpointProtocol;
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/endpointProtocolVersion")
-    protected List<String> endpointProtocolVersion = new ArrayList<>();
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/endpointProtocolVersion")
+    protected List<String> endpointProtocolVersions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/href")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/href")
     protected String href;
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/securityAttributes")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/securityAttributes")
     protected List<SecurityAttributeObject> securityAttributes = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocol")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocol")
     protected String subprotocol;
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBody")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBody")
     protected String subprotocolBody;
 
-    @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBodyEncoding")
+    @IRI("https://admin-shell.io/aas/3/1/ProtocolInformation/subprotocolBodyEncoding")
     protected String subprotocolBodyEncoding;
 
     public DefaultProtocolInformation() {}
@@ -60,7 +59,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     public int hashCode() {
         return Objects.hash(this.href,
             this.endpointProtocol,
-            this.endpointProtocolVersion,
+            this.endpointProtocolVersions,
             this.subprotocol,
             this.subprotocolBody,
             this.subprotocolBodyEncoding,
@@ -79,7 +78,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
             DefaultProtocolInformation other = (DefaultProtocolInformation) obj;
             return Objects.equals(this.href, other.href) &&
                 Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
-                Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
+                Objects.equals(this.endpointProtocolVersions, other.endpointProtocolVersions) &&
                 Objects.equals(this.subprotocol, other.subprotocol) &&
                 Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
                 Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding) &&
@@ -109,12 +108,12 @@ public class DefaultProtocolInformation implements ProtocolInformation {
 
     @Override
     public List<String> getEndpointProtocolVersion() {
-        return endpointProtocolVersion;
+        return endpointProtocolVersions;
     }
 
     @Override
-    public void setEndpointProtocolVersion(List<String> endpointProtocolVersions) {
-        this.endpointProtocolVersion = endpointProtocolVersions;
+    public void setEndpointProtocolVersion(List<String> endpointProtocolVersion) {
+        this.endpointProtocolVersions = endpointProtocolVersion;
     }
 
     @Override
@@ -155,20 +154,6 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     @Override
     public void setSecurityAttributes(List<SecurityAttributeObject> securityAttributes) {
         this.securityAttributes = securityAttributes;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultProtocolInformation (" + "href=%s,"
-                + "endpointProtocol=%s,"
-                + "endpointProtocolVersion=%s,"
-                + "subprotocol=%s,"
-                + "subprotocolBody=%s,"
-                + "subprotocolBodyEncoding=%s,"
-                + "securityAttributes=%s,"
-                + ")",
-            this.href, this.endpointProtocol, this.endpointProtocolVersion, this.subprotocol, this.subprotocolBody,
-            this.subprotocolBodyEncoding, this.securityAttributes);
     }
 
     /**

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,18 +14,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
-
 import java.util.List;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 
 public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, B extends SubmodelElementListBuilder<T, B>>
@@ -77,46 +68,24 @@ public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, 
     }
 
     /**
-     * This function allows setting a value for value
+     * This function allows setting a value for values
      * 
-     * @param values desired value to be set
-     * @return Builder object with new value for value
+     * @param value desired value to be set
+     * @return Builder object with new value for values
      */
-    public B value(List<SubmodelElement> values) {
-        getBuildingInstance().setValue(values);
+    public B value(List<SubmodelElement> value) {
+        getBuildingInstance().setValue(value);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List value
+     * This function allows adding a value to the List values
      * 
      * @param value desired value to be added
-     * @return Builder object with new value for value
+     * @return Builder object with new value for values
      */
     public B value(SubmodelElement value) {
         getBuildingInstance().getValue().add(value);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 
@@ -145,11 +114,11 @@ public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, 
     /**
      * This function allows setting a value for displayName
      * 
-     * @param displayNames desired value to be set
+     * @param displayName desired value to be set
      * @return Builder object with new value for displayName
      */
-    public B displayName(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayName(displayNames);
+    public B displayName(List<LangStringNameType> displayName) {
+        getBuildingInstance().setDisplayName(displayName);
         return getSelf();
     }
 
@@ -167,11 +136,11 @@ public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, 
     /**
      * This function allows setting a value for description
      * 
-     * @param descriptions desired value to be set
+     * @param description desired value to be set
      * @return Builder object with new value for description
      */
-    public B description(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescription(descriptions);
+    public B description(List<LangStringTextType> description) {
+        getBuildingInstance().setDescription(description);
         return getSelf();
     }
 
@@ -205,6 +174,28 @@ public abstract class SubmodelElementListBuilder<T extends SubmodelElementList, 
      */
     public B extensions(Extension extensions) {
         getBuildingInstance().getExtensions().add(extensions);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be set
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List embeddedDataSpecifications
+     * 
+     * @param embeddedDataSpecifications desired value to be added
+     * @return Builder object with new value for embeddedDataSpecifications
+     */
+    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
         return getSelf();
     }
 

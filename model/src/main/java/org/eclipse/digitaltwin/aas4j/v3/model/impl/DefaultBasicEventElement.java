@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,21 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.BasicEventElementBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -41,55 +33,55 @@ import java.util.Objects;
 @IRI("aas:BasicEventElement")
 public class DefaultBasicEventElement implements BasicEventElement {
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/direction")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/direction")
     protected Direction direction;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/lastUpdate")
     protected String lastUpdate;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/maxInterval")
     protected String maxInterval;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/messageBroker")
     protected Reference messageBroker;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/messageTopic")
     protected String messageTopic;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/minInterval")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/minInterval")
     protected String minInterval;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/observed")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/observed")
     protected Reference observed;
 
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/state")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/state")
     protected StateOfEvent state;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+    @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+    @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
     protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+    @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+    @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
     protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/category")
     protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+    @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
     protected String idShort;
 
     public DefaultBasicEventElement() {}
@@ -104,12 +96,12 @@ public class DefaultBasicEventElement implements BasicEventElement {
             this.lastUpdate,
             this.minInterval,
             this.maxInterval,
-            this.embeddedDataSpecifications,
             this.category,
             this.idShort,
             this.displayName,
             this.description,
             this.extensions,
+            this.embeddedDataSpecifications,
             this.semanticId,
             this.supplementalSemanticIds,
             this.qualifiers);
@@ -133,16 +125,39 @@ public class DefaultBasicEventElement implements BasicEventElement {
                 Objects.equals(this.lastUpdate, other.lastUpdate) &&
                 Objects.equals(this.minInterval, other.minInterval) &&
                 Objects.equals(this.maxInterval, other.maxInterval) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.category, other.category) &&
                 Objects.equals(this.idShort, other.idShort) &&
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.description, other.description) &&
                 Objects.equals(this.extensions, other.extensions) &&
+                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
                 Objects.equals(this.semanticId, other.semanticId) &&
                 Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
                 Objects.equals(this.qualifiers, other.qualifiers);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "DefaultBasicEventElement{" +
+                "direction=" + direction +
+                ", lastUpdate='" + lastUpdate + '\'' +
+                ", maxInterval='" + maxInterval + '\'' +
+                ", messageBroker=" + messageBroker +
+                ", messageTopic='" + messageTopic + '\'' +
+                ", minInterval='" + minInterval + '\'' +
+                ", observed=" + observed +
+                ", state=" + state +
+                ", embeddedDataSpecifications=" + embeddedDataSpecifications +
+                ", extensions=" + extensions +
+                ", semanticId=" + semanticId +
+                ", supplementalSemanticIds=" + supplementalSemanticIds +
+                ", qualifiers=" + qualifiers +
+                ", category='" + category + '\'' +
+                ", description=" + description +
+                ", displayName=" + displayName +
+                ", idShort='" + idShort + '\'' +
+                '}';
     }
 
     @Override
@@ -226,16 +241,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
     public String getCategory() {
         return category;
     }
@@ -261,8 +266,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -271,8 +276,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
     }
 
     @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
     }
 
     @Override
@@ -283,6 +288,16 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
+    }
+
+    @Override
+    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+        return embeddedDataSpecifications;
+    }
+
+    @Override
+    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+        this.embeddedDataSpecifications = embeddedDataSpecifications;
     }
 
     @Override
@@ -313,21 +328,6 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @Override
     public void setQualifiers(List<Qualifier> qualifiers) {
         this.qualifiers = qualifiers;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultBasicEventElement (" + "observed=%s,"
-                + "direction=%s,"
-                + "state=%s,"
-                + "messageTopic=%s,"
-                + "messageBroker=%s,"
-                + "lastUpdate=%s,"
-                + "minInterval=%s,"
-                + "maxInterval=%s,"
-                + ")",
-            this.observed, this.direction, this.state, this.messageTopic, this.messageBroker, this.lastUpdate, this.minInterval,
-            this.maxInterval);
     }
 
     /**

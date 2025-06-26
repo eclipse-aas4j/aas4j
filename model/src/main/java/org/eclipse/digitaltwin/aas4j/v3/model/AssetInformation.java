@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -34,17 +35,17 @@ public interface AssetInformation {
     /**
      * Denotes whether the Asset is of kind 'Type' or 'Instance'.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetKind
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/assetKind
      *
      * @return Returns the AssetKind for the property assetKind.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetKind")
+    @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetKind")
     AssetKind getAssetKind();
 
     /**
      * Denotes whether the Asset is of kind 'Type' or 'Instance'.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetKind
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/assetKind
      *
      * @param assetKind desired value for the property assetKind.
      */
@@ -53,17 +54,17 @@ public interface AssetInformation {
     /**
      * Global identifier of the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/globalAssetId
      *
      * @return Returns the String for the property globalAssetId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId")
+    @IRI("https://admin-shell.io/aas/3/1/AssetInformation/globalAssetId")
     String getGlobalAssetId();
 
     /**
      * Global identifier of the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/globalAssetId
      *
      * @param globalAssetId desired value for the property globalAssetId.
      */
@@ -73,18 +74,18 @@ public interface AssetInformation {
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/specificAssetIds
      *
      * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
+    @IRI("https://admin-shell.io/aas/3/1/AssetInformation/specificAssetIds")
     List<SpecificAssetId> getSpecificAssetIds();
 
     /**
      * Additional domain-specific, typically proprietary identifier for the asset like e.g., serial
      * number etc.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/specificAssetIds
      *
      * @param specificAssetIds desired value for the property specificAssetIds.
      */
@@ -94,18 +95,18 @@ public interface AssetInformation {
      * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
      * under consideration as identified by 'globalAssetId'.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/assetType
      *
      * @return Returns the String for the property assetType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetType")
+    @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetType")
     String getAssetType();
 
     /**
      * In case 'assetKind' is applicable the 'assetType' is the asset ID of the type asset of the asset
      * under consideration as identified by 'globalAssetId'.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/assetType
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/assetType
      *
      * @param assetType desired value for the property assetType.
      */
@@ -114,17 +115,17 @@ public interface AssetInformation {
     /**
      * Thumbnail of the asset represented by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/defaultThumbnail
      *
      * @return Returns the Resource for the property defaultThumbnail.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail")
+    @IRI("https://admin-shell.io/aas/3/1/AssetInformation/defaultThumbnail")
     Resource getDefaultThumbnail();
 
     /**
      * Thumbnail of the asset represented by the Asset Administration Shell.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail
+     * More information under https://admin-shell.io/aas/3/1/AssetInformation/defaultThumbnail
      *
      * @param defaultThumbnail desired value for the property defaultThumbnail.
      */

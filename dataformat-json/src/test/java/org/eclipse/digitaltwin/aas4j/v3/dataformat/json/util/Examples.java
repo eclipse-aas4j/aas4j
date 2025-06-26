@@ -189,7 +189,7 @@ public class Examples {
                                     .idShort("TheAnswerOfAllQuestions")
                                     .build())
                             .build())
-                    .clientTimeoutDuration(DatatypeFactory.newInstance().newDurationDayTime("PT3M"))  // three minutes
+                    .clientTimeoutDuration(String.valueOf(DatatypeFactory.newInstance().newDurationDayTime("PT3M")))  // three minutes
                     .build();
         } catch (DatatypeConfigurationException e) {
             throw new RuntimeException(e);

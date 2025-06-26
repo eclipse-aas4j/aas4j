@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,21 +14,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellDescriptorBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -41,40 +33,40 @@ import java.util.Objects;
 @IRI("aas:AssetAdministrationShellDescriptor")
 public class DefaultAssetAdministrationShellDescriptor implements AssetAdministrationShellDescriptor {
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/administration")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/administration")
     protected AdministrativeInformation administration;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/assetKind")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetKind")
     protected AssetKind assetKind;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/assetType")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetType")
     protected String assetType;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/endpoints")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/endpoints")
     protected List<Endpoint> endpoints = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/globalAssetId")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/globalAssetId")
     protected String globalAssetId;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/id")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/id")
     protected String id;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/idShort")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/idShort")
     protected String idShort;
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/specificAssetIds")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/specificAssetIds")
     protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShellDescriptor/submodelDescriptors")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/submodelDescriptors")
     protected List<SubmodelDescriptor> submodelDescriptors = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Descriptor/description")
+    @IRI("https://admin-shell.io/aas/3/1/Descriptor/description")
     protected List<LangStringTextType> description = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Descriptor/displayName")
+    @IRI("https://admin-shell.io/aas/3/1/Descriptor/displayName")
     protected List<LangStringNameType> displayName = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Descriptor/extensions")
+    @IRI("https://admin-shell.io/aas/3/1/Descriptor/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
     public DefaultAssetAdministrationShellDescriptor() {}
@@ -118,6 +110,24 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
                 Objects.equals(this.displayName, other.displayName) &&
                 Objects.equals(this.extensions, other.extensions);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "DefaultAssetAdministrationShellDescriptor{" +
+                "administration=" + administration +
+                ", assetKind=" + assetKind +
+                ", assetType='" + assetType + '\'' +
+                ", endpoints=" + endpoints +
+                ", globalAssetId='" + globalAssetId + '\'' +
+                ", id='" + id + '\'' +
+                ", idShort='" + idShort + '\'' +
+                ", specificAssetIds=" + specificAssetIds +
+                ", submodelDescriptors=" + submodelDescriptors +
+                ", description=" + description +
+                ", displayName=" + displayName +
+                ", extensions=" + extensions +
+                '}';
     }
 
     @Override
@@ -216,8 +226,8 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     }
 
     @Override
-    public void setDescription(List<LangStringTextType> descriptions) {
-        this.description = descriptions;
+    public void setDescription(List<LangStringTextType> description) {
+        this.description = description;
     }
 
     @Override
@@ -226,8 +236,8 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     }
 
     @Override
-    public void setDisplayName(List<LangStringNameType> displayNames) {
-        this.displayName = displayNames;
+    public void setDisplayName(List<LangStringNameType> displayName) {
+        this.displayName = displayName;
     }
 
     @Override
@@ -238,22 +248,6 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     @Override
     public void setExtensions(List<Extension> extensions) {
         this.extensions = extensions;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultAssetAdministrationShellDescriptor (" + "administration=%s,"
-                + "assetKind=%s,"
-                + "assetType=%s,"
-                + "endpoints=%s,"
-                + "globalAssetId=%s,"
-                + "idShort=%s,"
-                + "id=%s,"
-                + "specificAssetIds=%s,"
-                + "submodelDescriptors=%s,"
-                + ")",
-            this.administration, this.assetKind, this.assetType, this.endpoints, this.globalAssetId, this.idShort, this.id,
-            this.specificAssetIds, this.submodelDescriptors);
     }
 
     /**

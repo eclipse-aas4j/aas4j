@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,12 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationVariableBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -33,7 +32,7 @@ import java.util.Objects;
 @IRI("aas:OperationVariable")
 public class DefaultOperationVariable implements OperationVariable {
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
+    @IRI("https://admin-shell.io/aas/3/1/OperationVariable/value")
     protected SubmodelElement value;
 
     public DefaultOperationVariable() {}
@@ -58,6 +57,13 @@ public class DefaultOperationVariable implements OperationVariable {
     }
 
     @Override
+    public String toString() {
+        return "DefaultOperationVariable{" +
+                "value=" + value +
+                '}';
+    }
+
+    @Override
     public SubmodelElement getValue() {
         return value;
     }
@@ -65,13 +71,6 @@ public class DefaultOperationVariable implements OperationVariable {
     @Override
     public void setValue(SubmodelElement value) {
         this.value = value;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultOperationVariable (" + "value=%s,"
-                + ")",
-            this.value);
     }
 
     /**

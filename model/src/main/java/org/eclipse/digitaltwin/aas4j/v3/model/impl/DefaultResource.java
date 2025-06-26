@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -32,10 +32,10 @@ import java.util.Objects;
 @IRI("aas:Resource")
 public class DefaultResource implements Resource {
 
-    @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
+    @IRI("https://admin-shell.io/aas/3/1/Resource/contentType")
     protected String contentType;
 
-    @IRI("https://admin-shell.io/aas/3/0/Resource/path")
+    @IRI("https://admin-shell.io/aas/3/1/Resource/path")
     protected String path;
 
     public DefaultResource() {}
@@ -81,12 +81,12 @@ public class DefaultResource implements Resource {
         this.contentType = contentType;
     }
 
+    @Override
     public String toString() {
-        return String.format(
-            "DefaultResource (" + "path=%s,"
-                + "contentType=%s,"
-                + ")",
-            this.path, this.contentType);
+        return "DefaultResource{" +
+                "contentType='" + contentType + '\'' +
+                ", path='" + path + '\'' +
+                '}';
     }
 
     /**

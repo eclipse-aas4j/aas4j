@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -33,17 +34,17 @@ public interface Resource {
     /**
      * Path and name of the resource (with file extension).
      *
-     * More information under https://admin-shell.io/aas/3/0/Resource/path
+     * More information under https://admin-shell.io/aas/3/1/Resource/path
      *
      * @return Returns the String for the property path.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Resource/path")
+    @IRI("https://admin-shell.io/aas/3/1/Resource/path")
     String getPath();
 
     /**
      * Path and name of the resource (with file extension).
      *
-     * More information under https://admin-shell.io/aas/3/0/Resource/path
+     * More information under https://admin-shell.io/aas/3/1/Resource/path
      *
      * @param path desired value for the property path.
      */
@@ -52,17 +53,17 @@ public interface Resource {
     /**
      * Content type of the content of the file.
      *
-     * More information under https://admin-shell.io/aas/3/0/Resource/contentType
+     * More information under https://admin-shell.io/aas/3/1/Resource/contentType
      *
      * @return Returns the String for the property contentType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
+    @IRI("https://admin-shell.io/aas/3/1/Resource/contentType")
     String getContentType();
 
     /**
      * Content type of the content of the file.
      *
-     * More information under https://admin-shell.io/aas/3/0/Resource/contentType
+     * More information under https://admin-shell.io/aas/3/1/Resource/contentType
      *
      * @param contentType desired value for the property contentType.
      */

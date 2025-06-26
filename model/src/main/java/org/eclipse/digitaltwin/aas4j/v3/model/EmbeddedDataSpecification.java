@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -32,17 +33,17 @@ public interface EmbeddedDataSpecification {
     /**
      * Reference to the data specification
      *
-     * More information under https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
+     * More information under https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification
      *
      * @return Returns the Reference for the property dataSpecification.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification")
+    @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification")
     Reference getDataSpecification();
 
     /**
      * Reference to the data specification
      *
-     * More information under https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
+     * More information under https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification
      *
      * @param dataSpecification desired value for the property dataSpecification.
      */
@@ -52,18 +53,18 @@ public interface EmbeddedDataSpecification {
      * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
+    @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent")
     DataSpecificationContent getDataSpecificationContent();
 
     /**
      * Actual content of the data specification
      *
      * More information under
-     * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
+     * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent
      *
      * @param dataSpecificationContent desired value for the property dataSpecificationContent.
      */

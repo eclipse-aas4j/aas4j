@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,7 +15,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -29,14 +31,14 @@ public enum EntityType {
      * For co-managed entities there is no separate AAS. Co-managed entities need to be part of a
      * self-managed entity.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EntityType/CoManagedEntity")
+    @IRI("https://admin-shell.io/aas/3/1/EntityType/CoManagedEntity")
     CO_MANAGED_ENTITY,
 
     /**
      * Self-Managed Entities have their own AAS but can be part of the bill of material of a composite
      * self-managed entity.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EntityType/SelfManagedEntity")
+    @IRI("https://admin-shell.io/aas/3/1/EntityType/SelfManagedEntity")
     SELF_MANAGED_ENTITY;
 
 }

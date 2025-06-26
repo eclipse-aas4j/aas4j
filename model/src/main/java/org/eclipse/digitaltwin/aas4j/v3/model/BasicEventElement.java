@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBasicEventElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -33,18 +34,18 @@ public interface BasicEventElement extends EventElement {
      * Reference to the 'Referable', which defines the scope of the event. Can be
      * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/observed
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/observed
      *
      * @return Returns the Reference for the property observed.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/observed")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/observed")
     Reference getObserved();
 
     /**
      * Reference to the 'Referable', which defines the scope of the event. Can be
      * 'AssetAdministrationShell', 'Submodel', or 'SubmodelElement'.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/observed
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/observed
      *
      * @param observed desired value for the property observed.
      */
@@ -53,17 +54,17 @@ public interface BasicEventElement extends EventElement {
     /**
      * Direction of event.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/direction
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/direction
      *
      * @return Returns the Direction for the property direction.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/direction")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/direction")
     Direction getDirection();
 
     /**
      * Direction of event.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/direction
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/direction
      *
      * @param direction desired value for the property direction.
      */
@@ -72,17 +73,17 @@ public interface BasicEventElement extends EventElement {
     /**
      * State of event.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/state
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/state
      *
      * @return Returns the StateOfEvent for the property state.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/state")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/state")
     StateOfEvent getState();
 
     /**
      * State of event.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/state
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/state
      *
      * @param state desired value for the property state.
      */
@@ -92,18 +93,18 @@ public interface BasicEventElement extends EventElement {
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/messageTopic
      *
      * @return Returns the String for the property messageTopic.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/messageTopic")
     String getMessageTopic();
 
     /**
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/messageTopic
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/messageTopic
      *
      * @param messageTopic desired value for the property messageTopic.
      */
@@ -114,11 +115,11 @@ public interface BasicEventElement extends EventElement {
      * Refers to a 'Submodel', 'SubmodelElementList', 'SubmodelElementCollection' or 'Entity', which
      * contains 'DataElement''s describing the proprietary specification for the message broker.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/messageBroker
      *
      * @return Returns the Reference for the property messageBroker.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/messageBroker")
     Reference getMessageBroker();
 
     /**
@@ -126,7 +127,7 @@ public interface BasicEventElement extends EventElement {
      * Refers to a 'Submodel', 'SubmodelElementList', 'SubmodelElementCollection' or 'Entity', which
      * contains 'DataElement''s describing the proprietary specification for the message broker.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/messageBroker
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/messageBroker
      *
      * @param messageBroker desired value for the property messageBroker.
      */
@@ -135,17 +136,17 @@ public interface BasicEventElement extends EventElement {
     /**
      * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/lastUpdate
      *
      * @return Returns the String for the property lastUpdate.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/lastUpdate")
     String getLastUpdate();
 
     /**
      * Timestamp in UTC, when the last event was received (input direction) or sent (output direction).
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/lastUpdate
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/lastUpdate
      *
      * @param lastUpdate desired value for the property lastUpdate.
      */
@@ -155,18 +156,18 @@ public interface BasicEventElement extends EventElement {
      * For input direction, reports on the maximum frequency, the software entity behind the respective
      * Referable can handle input events.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/minInterval
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/minInterval
      *
      * @return Returns the String for the property minInterval.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/minInterval")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/minInterval")
     String getMinInterval();
 
     /**
      * For input direction, reports on the maximum frequency, the software entity behind the respective
      * Referable can handle input events.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/minInterval
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/minInterval
      *
      * @param minInterval desired value for the property minInterval.
      */
@@ -175,17 +176,17 @@ public interface BasicEventElement extends EventElement {
     /**
      * For input direction: not applicable.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/maxInterval
      *
      * @return Returns the String for the property maxInterval.
      */
-    @IRI("https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval")
+    @IRI("https://admin-shell.io/aas/3/1/BasicEventElement/maxInterval")
     String getMaxInterval();
 
     /**
      * For input direction: not applicable.
      *
-     * More information under https://admin-shell.io/aas/3/0/BasicEventElement/maxInterval
+     * More information under https://admin-shell.io/aas/3/1/BasicEventElement/maxInterval
      *
      * @param maxInterval desired value for the property maxInterval.
      */

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRange;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -32,17 +33,17 @@ public interface Range extends DataElement {
     /**
      * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/valueType
+     * More information under https://admin-shell.io/aas/3/1/Range/valueType
      *
      * @return Returns the DataTypeDefXsd for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Range/valueType")
+    @IRI("https://admin-shell.io/aas/3/1/Range/valueType")
     DataTypeDefXsd getValueType();
 
     /**
      * Data type of the min und max
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/valueType
+     * More information under https://admin-shell.io/aas/3/1/Range/valueType
      *
      * @param valueType desired value for the property valueType.
      */
@@ -51,17 +52,17 @@ public interface Range extends DataElement {
     /**
      * The minimum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/min
+     * More information under https://admin-shell.io/aas/3/1/Range/min
      *
      * @return Returns the String for the property min.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Range/min")
+    @IRI("https://admin-shell.io/aas/3/1/Range/min")
     String getMin();
 
     /**
      * The minimum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/min
+     * More information under https://admin-shell.io/aas/3/1/Range/min
      *
      * @param min desired value for the property min.
      */
@@ -70,17 +71,17 @@ public interface Range extends DataElement {
     /**
      * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/max
+     * More information under https://admin-shell.io/aas/3/1/Range/max
      *
      * @return Returns the String for the property max.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Range/max")
+    @IRI("https://admin-shell.io/aas/3/1/Range/max")
     String getMax();
 
     /**
      * The maximum value of the range.
      *
-     * More information under https://admin-shell.io/aas/3/0/Range/max
+     * More information under https://admin-shell.io/aas/3/1/Range/max
      *
      * @param max desired value for the property max.
      */

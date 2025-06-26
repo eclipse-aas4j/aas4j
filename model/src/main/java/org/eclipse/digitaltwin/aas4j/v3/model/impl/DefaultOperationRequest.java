@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -20,7 +19,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
 
-import javax.xml.datatype.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -34,13 +32,13 @@ import java.util.Objects;
 @IRI("aas:OperationRequest")
 public class DefaultOperationRequest implements OperationRequest {
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
-    protected Duration clientTimeoutDuration;
+    @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
+    protected String clientTimeoutDuration;
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
+    @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments")
     protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
+    @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inputArguments")
     protected List<OperationVariable> inputArguments = new ArrayList<>();
 
     public DefaultOperationRequest() {}
@@ -89,22 +87,13 @@ public class DefaultOperationRequest implements OperationRequest {
     }
 
     @Override
-    public Duration getClientTimeoutDuration() {
+    public String getClientTimeoutDuration() {
         return clientTimeoutDuration;
     }
 
     @Override
-    public void setClientTimeoutDuration(Duration clientTimeoutDuration) {
+    public void setClientTimeoutDuration(String clientTimeoutDuration) {
         this.clientTimeoutDuration = clientTimeoutDuration;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultOperationRequest (" + "inoutputArguments=%s,"
-                + "inputArguments=%s,"
-                + "clientTimeoutDuration=%s,"
-                + ")",
-            this.inoutputArguments, this.inputArguments, this.clientTimeoutDuration);
     }
 
     /**

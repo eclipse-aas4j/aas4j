@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -28,22 +29,22 @@ import java.util.List;
 @KnownSubtypes({
     @KnownSubtypes.Type(value = DefaultAssetAdministrationShell.class)
 })
-public interface AssetAdministrationShell extends Identifiable, HasDataSpecification {
+public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
 
     /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom
      *
      * @return Returns the Reference for the property derivedFrom.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom")
     Reference getDerivedFrom();
 
     /**
      * The reference to the AAS the AAS was derived from.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom
      *
      * @param derivedFrom desired value for the property derivedFrom.
      */
@@ -52,17 +53,17 @@ public interface AssetAdministrationShell extends Identifiable, HasDataSpecifica
     /**
      * Meta-information about the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation
      *
      * @return Returns the AssetInformation for the property assetInformation.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation")
     AssetInformation getAssetInformation();
 
     /**
      * Meta-information about the asset the AAS is representing.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation
      *
      * @param assetInformation desired value for the property assetInformation.
      */
@@ -71,17 +72,17 @@ public interface AssetAdministrationShell extends Identifiable, HasDataSpecifica
     /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels
      *
      * @return Returns the List of References for the property submodels.
      */
-    @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels")
+    @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels")
     List<Reference> getSubmodels();
 
     /**
      * References to submodels of the AAS.
      *
-     * More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
+     * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels
      *
      * @param submodels desired value for the property submodels.
      */

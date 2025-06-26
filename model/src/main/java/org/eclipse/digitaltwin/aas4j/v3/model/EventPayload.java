@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEventPayload;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -33,18 +34,18 @@ public interface EventPayload {
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
      * 'Submodel', 'SubmodelElement''s.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/source
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/source
      *
      * @return Returns the Reference for the property source.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/source")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/source")
     Reference getSource();
 
     /**
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
      * 'Submodel', 'SubmodelElement''s.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/source
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/source
      *
      * @param source desired value for the property source.
      */
@@ -53,17 +54,17 @@ public interface EventPayload {
     /**
      * 'semanticId' of the source event element, if available
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/sourceSemanticId
      *
      * @return Returns the Reference for the property sourceSemanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/sourceSemanticId")
     Reference getSourceSemanticId();
 
     /**
      * 'semanticId' of the source event element, if available
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/sourceSemanticId
      *
      * @param sourceSemanticId desired value for the property sourceSemanticId.
      */
@@ -72,17 +73,17 @@ public interface EventPayload {
     /**
      * Reference to the referable, which defines the scope of the event.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/observableReference
      *
      * @return Returns the Reference for the property observableReference.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableReference")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableReference")
     Reference getObservableReference();
 
     /**
      * Reference to the referable, which defines the scope of the event.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableReference
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/observableReference
      *
      * @param observableReference desired value for the property observableReference.
      */
@@ -91,17 +92,17 @@ public interface EventPayload {
     /**
      * 'semanticId' of the referable which defines the scope of the event, if available.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/observableSemanticId
      *
      * @return Returns the Reference for the property observableSemanticId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableSemanticId")
     Reference getObservableSemanticId();
 
     /**
      * 'semanticId' of the referable which defines the scope of the event, if available.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/observableSemanticId
      *
      * @param observableSemanticId desired value for the property observableSemanticId.
      */
@@ -111,18 +112,18 @@ public interface EventPayload {
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/topic
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/topic
      *
      * @return Returns the String for the property topic.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/topic")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/topic")
     String getTopic();
 
     /**
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/topic
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/topic
      *
      * @param topic desired value for the property topic.
      */
@@ -131,17 +132,17 @@ public interface EventPayload {
     /**
      * Subject, who/which initiated the creation.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/subjectId
      *
      * @return Returns the Reference for the property subjectId.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/subjectId")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/subjectId")
     Reference getSubjectId();
 
     /**
      * Subject, who/which initiated the creation.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/subjectId
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/subjectId
      *
      * @param subjectId desired value for the property subjectId.
      */
@@ -150,17 +151,17 @@ public interface EventPayload {
     /**
      * Timestamp in UTC, when this event was triggered.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/timeStamp
      *
      * @return Returns the String for the property timeStamp.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/timeStamp")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/timeStamp")
     String getTimeStamp();
 
     /**
      * Timestamp in UTC, when this event was triggered.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/timeStamp
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/timeStamp
      *
      * @param timeStamp desired value for the property timeStamp.
      */
@@ -169,17 +170,17 @@ public interface EventPayload {
     /**
      * Event specific payload.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/payload
      *
      * @return Returns the byte[] for the property payload.
      */
-    @IRI("https://admin-shell.io/aas/3/0/EventPayload/payload")
+    @IRI("https://admin-shell.io/aas/3/1/EventPayload/payload")
     byte[] getPayload();
 
     /**
      * Event specific payload.
      *
-     * More information under https://admin-shell.io/aas/3/0/EventPayload/payload
+     * More information under https://admin-shell.io/aas/3/1/EventPayload/payload
      *
      * @param payload desired value for the property payload.
      */

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,9 +15,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRelationshipElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -34,17 +35,17 @@ public interface RelationshipElement extends SubmodelElement {
     /**
      * Reference to the first element in the relationship taking the role of the subject.
      *
-     * More information under https://admin-shell.io/aas/3/0/RelationshipElement/first
+     * More information under https://admin-shell.io/aas/3/1/RelationshipElement/first
      *
      * @return Returns the Reference for the property first.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/first")
+    @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/first")
     Reference getFirst();
 
     /**
      * Reference to the first element in the relationship taking the role of the subject.
      *
-     * More information under https://admin-shell.io/aas/3/0/RelationshipElement/first
+     * More information under https://admin-shell.io/aas/3/1/RelationshipElement/first
      *
      * @param first desired value for the property first.
      */
@@ -53,17 +54,17 @@ public interface RelationshipElement extends SubmodelElement {
     /**
      * Reference to the second element in the relationship taking the role of the object.
      *
-     * More information under https://admin-shell.io/aas/3/0/RelationshipElement/second
+     * More information under https://admin-shell.io/aas/3/1/RelationshipElement/second
      *
      * @return Returns the Reference for the property second.
      */
-    @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/second")
+    @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/second")
     Reference getSecond();
 
     /**
      * Reference to the second element in the relationship taking the role of the object.
      *
-     * More information under https://admin-shell.io/aas/3/0/RelationshipElement/second
+     * More information under https://admin-shell.io/aas/3/1/RelationshipElement/second
      *
      * @param second desired value for the property second.
      */

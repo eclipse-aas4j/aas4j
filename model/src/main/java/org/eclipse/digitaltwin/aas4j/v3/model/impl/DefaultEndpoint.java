@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,12 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.EndpointBuilder;
-
 import java.util.Objects;
+
+
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 
 /**
@@ -31,10 +30,10 @@ import java.util.Objects;
 @IRI("aas:Endpoint")
 public class DefaultEndpoint implements Endpoint {
 
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
+    @IRI("https://admin-shell.io/aas/3/1/Endpoint/_interface")
     protected String _interface;
 
-    @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
+    @IRI("https://admin-shell.io/aas/3/1/Endpoint/protocolInformation")
     protected ProtocolInformation protocolInformation;
 
     public DefaultEndpoint() {}
@@ -61,6 +60,14 @@ public class DefaultEndpoint implements Endpoint {
     }
 
     @Override
+    public String toString() {
+        return "DefaultEndpoint{" +
+                "_interface='" + _interface + '\'' +
+                ", protocolInformation=" + protocolInformation +
+                '}';
+    }
+
+    @Override
     public String get_interface() {
         return _interface;
     }
@@ -78,14 +85,6 @@ public class DefaultEndpoint implements Endpoint {
     @Override
     public void setProtocolInformation(ProtocolInformation protocolInformation) {
         this.protocolInformation = protocolInformation;
-    }
-
-    public String toString() {
-        return String.format(
-            "DefaultEndpoint (" + "_interface=%s,"
-                + "protocolInformation=%s,"
-                + ")",
-            this._interface, this.protocolInformation);
     }
 
     /**

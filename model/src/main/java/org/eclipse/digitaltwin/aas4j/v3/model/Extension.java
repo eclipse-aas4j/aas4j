@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,11 +14,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
@@ -33,17 +33,17 @@ public interface Extension extends HasSemantics {
     /**
      * Name of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/name
+     * More information under https://admin-shell.io/aas/3/1/Extension/name
      *
      * @return Returns the String for the property name.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Extension/name")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/name")
     String getName();
 
     /**
      * Name of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/name
+     * More information under https://admin-shell.io/aas/3/1/Extension/name
      *
      * @param name desired value for the property name.
      */
@@ -52,17 +52,17 @@ public interface Extension extends HasSemantics {
     /**
      * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/1/Extension/valueType
      *
      * @return Returns the DataTypeDefXsd for the property valueType.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Extension/valueType")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/valueType")
     DataTypeDefXsd getValueType();
 
     /**
      * Type of the value of the extension.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/valueType
+     * More information under https://admin-shell.io/aas/3/1/Extension/valueType
      *
      * @param valueType desired value for the property valueType.
      */
@@ -71,17 +71,17 @@ public interface Extension extends HasSemantics {
     /**
      * Value of the extension
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/value
+     * More information under https://admin-shell.io/aas/3/1/Extension/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Extension/value")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/value")
     String getValue();
 
     /**
      * Value of the extension
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/value
+     * More information under https://admin-shell.io/aas/3/1/Extension/value
      *
      * @param value desired value for the property value.
      */
@@ -90,20 +90,20 @@ public interface Extension extends HasSemantics {
     /**
      * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/1/Extension/refersTo
      *
-     * @return Returns the List of References for the property refersTo.
+     * @return Returns the List of References for the property refersTos.
      */
-    @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
+    @IRI("https://admin-shell.io/aas/3/1/Extension/refersTo")
     List<Reference> getRefersTo();
 
     /**
      * Reference to an element the extension refers to.
      *
-     * More information under https://admin-shell.io/aas/3/0/Extension/refersTo
+     * More information under https://admin-shell.io/aas/3/1/Extension/refersTo
      *
-     * @param refersTos desired value for the property refersTo.
+     * @param refersTo desired value for the property refersTos.
      */
-    void setRefersTo(List<Reference> refersTos);
+    void setRefersTo(List<Reference> refersTo);
 
 }
