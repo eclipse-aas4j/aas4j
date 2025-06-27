@@ -20,19 +20,20 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsNameTypeDeserializer extends AbstractLangStringsDeserializer<LangStringNameType> {
+public class LangStringsNameTypeDeserializer
+    extends AbstractLangStringsDeserializer<LangStringNameType> {
 
+  public LangStringsNameTypeDeserializer() {
+    super("langStringNameType");
+  }
 
-	public LangStringsNameTypeDeserializer() {
-		super("langStringNameType");
-	}
-
-	@Override
-	protected LangStringNameType createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringNameType.Builder().language(content.getLanguage()).text(content.getText()).build();
-	}
+  @Override
+  protected LangStringNameType createLangStringInstance(LangStringContent content) {
+    return new DefaultLangStringNameType.Builder()
+        .language(content.getLanguage())
+        .text(content.getText())
+        .build();
+  }
 }

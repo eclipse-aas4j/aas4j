@@ -19,7 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.SubmodelElementsSerializer;
@@ -28,35 +28,45 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import java.util.List;
-
 public interface SubmodelElementListMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonSerialize(using = SubmodelElementsSerializer.class)
-    @JsonDeserialize(using = SubmodelElementsDeserializer.class)
-    public List<SubmodelElement> getValue();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  @JsonSerialize(using = SubmodelElementsSerializer.class)
+  @JsonDeserialize(using = SubmodelElementsDeserializer.class)
+  public List<SubmodelElement> getValue();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "orderRelevant")
-    public boolean getOrderRelevant();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "orderRelevant")
+  public boolean getOrderRelevant();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "orderRelevant")
-    public void setOrderRelevant(boolean orderRelevant);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "orderRelevant")
+  public void setOrderRelevant(boolean orderRelevant);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticIdListElement")
-    public Reference getSemanticIdListElement();
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "semanticIdListElement")
+  public Reference getSemanticIdListElement();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticIdListElement")
-    public void setSemanticIdListElement(Reference semanticIdListElement);
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "semanticIdListElement")
+  public void setSemanticIdListElement(Reference semanticIdListElement);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typeValueListElement")
-	public AasSubmodelElements getTypeValueListElement();
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "typeValueListElement")
+  public AasSubmodelElements getTypeValueListElement();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typeValueListElement")
-	public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "typeValueListElement")
+  public void setTypeValueListElement(AasSubmodelElements typeValueListElement);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueTypeListElement")
-	public DataTypeDefXsd getValueTypeListElement();
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "valueTypeListElement")
+  public DataTypeDefXsd getValueTypeListElement();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueTypeListElement")
-	public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "valueTypeListElement")
+  public void setValueTypeListElement(DataTypeDefXsd valueTypeListElement);
 }

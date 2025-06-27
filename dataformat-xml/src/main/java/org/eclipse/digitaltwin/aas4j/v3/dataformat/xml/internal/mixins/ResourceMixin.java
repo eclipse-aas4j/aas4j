@@ -24,9 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 @JsonPropertyOrder({"path", "contentType"})
 public interface ResourceMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "path")
-    public String getPath();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "path")
+  public String getPath();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "contentType")
-	public DataTypeDefXsd getContentType();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "contentType")
+  public DataTypeDefXsd getContentType();
 }

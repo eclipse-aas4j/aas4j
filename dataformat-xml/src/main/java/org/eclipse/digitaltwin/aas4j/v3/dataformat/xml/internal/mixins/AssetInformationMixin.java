@@ -19,29 +19,38 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 
-import java.util.List;
-
-@JsonPropertyOrder({ "assetKind", "globalAssetId", "specificAssetIds", "assetType", "defaultThumbnail"})
+@JsonPropertyOrder({
+  "assetKind",
+  "globalAssetId",
+  "specificAssetIds",
+  "assetType",
+  "defaultThumbnail"
+})
 public interface AssetInformationMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-	public List<SpecificAssetId> getSpecificAssetIds();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "specificAssetIds")
+  public List<SpecificAssetId> getSpecificAssetIds();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetIds")
-	public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "specificAssetId")
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "specificAssetIds")
+  public void setSpecificAssetIds(List<SpecificAssetId> specificAssetIds);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
-	public String getGlobalAssetId();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "globalAssetId")
+  public String getGlobalAssetId();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "defaultThumbnail")
-    public File getDefaultThumbnail();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "defaultThumbnail")
+  public File getDefaultThumbnail();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "defaultThumbnail")
-    public void setDefaultThumbnail(File defaultThumbnail);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "defaultThumbnail")
+  public void setDefaultThumbnail(File defaultThumbnail);
 }

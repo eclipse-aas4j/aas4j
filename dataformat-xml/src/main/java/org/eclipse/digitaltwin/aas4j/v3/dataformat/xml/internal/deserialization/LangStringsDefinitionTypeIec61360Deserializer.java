@@ -20,19 +20,20 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringDefinitionTypeIec61360;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsDefinitionTypeIec61360Deserializer extends AbstractLangStringsDeserializer<LangStringDefinitionTypeIec61360> {
+public class LangStringsDefinitionTypeIec61360Deserializer
+    extends AbstractLangStringsDeserializer<LangStringDefinitionTypeIec61360> {
 
+  public LangStringsDefinitionTypeIec61360Deserializer() {
+    super("langStringDefinitionTypeIec61360");
+  }
 
-	public LangStringsDefinitionTypeIec61360Deserializer() {
-		super("langStringDefinitionTypeIec61360");
-	}
-
-	@Override
-	protected LangStringDefinitionTypeIec61360 createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringDefinitionTypeIec61360.Builder().language(content.getLanguage()).text(content.getText()).build();
-	}
+  @Override
+  protected LangStringDefinitionTypeIec61360 createLangStringInstance(LangStringContent content) {
+    return new DefaultLangStringDefinitionTypeIec61360.Builder()
+        .language(content.getLanguage())
+        .text(content.getText())
+        .build();
+  }
 }

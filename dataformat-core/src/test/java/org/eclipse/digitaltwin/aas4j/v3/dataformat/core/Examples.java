@@ -36,106 +36,123 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
 public class Examples {
-    
-    public static final Environment EXTENSION_MINIMAL = new DefaultEnvironment.Builder()
-            .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
-                    .id("something_142922d6")
-                    .extensions(new DefaultExtension.Builder()
-                            .name("something_aae6caf4")
-                            .valueType(DataTypeDefXsd.STRING)
-                            .build())
-                    .assetInformation(new DefaultAssetInformation.Builder()
-                            .assetKind(AssetKind.NOT_APPLICABLE)
-                            .globalAssetId("something_eea66fa1")
-                            .build())
-                    .build())
-            .build();
-    
-    public static final Environment EXTENSION_MAXIMAL = new DefaultEnvironment.Builder()
-            .assetAdministrationShells(new DefaultAssetAdministrationShell.Builder()
-                    .id("something_142922d6")
-                    .extensions(new DefaultExtension.Builder()
-                            .name("something_aae6caf4")
-                            .value("10233")
-                            .valueType(DataTypeDefXsd.UNSIGNED_SHORT)
-                            .refersTo(new DefaultReference.Builder()
-                                    .keys(new DefaultKey.Builder()
-                                            .type(KeyTypes.SUBMODEL)
-                                            .value("urn:another-example01:f7faa581")
-                                            .build())
-                                    .type(ReferenceTypes.MODEL_REFERENCE)
-                                    .build())
-                            .semanticId(new DefaultReference.Builder()
-                                    .keys(new DefaultKey.Builder()
-                                            .type(KeyTypes.GLOBAL_REFERENCE)
-                                            .value("urn:another-company07:4d1bd2cb")
-                                            .build())
-                                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                    .build())
-                            .supplementalSemanticIds(new DefaultReference.Builder()
-                                    .keys(new DefaultKey.Builder()
-                                            .type(KeyTypes.GLOBAL_REFERENCE)
-                                            .value("urn:an-example13:be48ff29")
-                                            .build())
-                                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                    .build())
-                            .build())
-                    .assetInformation(new DefaultAssetInformation.Builder()
-                            .assetKind(AssetKind.NOT_APPLICABLE)
-                            .globalAssetId("something_eea66fa1")
-                            .build())
-                    .build())
-            .build();
 
-    public static final Environment ENVIRONMENT_WITH_DUMMYDATASPEC = new DefaultEnvironment.Builder()
-            .submodels(
-                    new DefaultSubmodel.Builder()
-                            .id("urn:test")
-                            .submodelElements(new DefaultFile.Builder()
-                                    .idShort("myIdShort").value("FileValue")
-                                    .build())
-                            .embeddedDataSpecifications(
-                                    new DefaultEmbeddedDataSpecification.Builder()
-                                            .dataSpecificationContent(
-                                                    new DefaultDummyDataSpecification.Builder()
-                                                            .name(new DefaultLangStringNameType.Builder()
-                                                                    .language("en").text("myName").build())
-                                                            .text("myText")
-                                                            .pages(42)
-                                                            .build())
-                                            .dataSpecification(
-                                                    new DefaultReference.Builder()
-                                                            .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                            .keys(
-                                                                    new DefaultKey.Builder()
-                                                                            .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                            .value("https://admin-shell.io/aas/3/0/CustomDataSpecification")
-                                                                            .build()
-                                                            )
-                                                            .build()
-                                            )
-                                            .build())
-                            .embeddedDataSpecifications(
-                                    new DefaultEmbeddedDataSpecification.Builder().dataSpecificationContent(
-                                                    new DefaultDataSpecificationIec61360.Builder()
-                                                            .dataType(DataTypeIec61360.BLOB)
-                                                            .definition(new DefaultLangStringDefinitionTypeIec61360.Builder()
-                                                                    .language("en").text("myDefinition")
-                                                                    .build())
-                                                            .build()
-                                            )
-                                            .dataSpecification(
-                                                    new DefaultReference.Builder()
-                                                            .type(ReferenceTypes.EXTERNAL_REFERENCE)
-                                                            .keys(
-                                                                    new DefaultKey.Builder()
-                                                                            .type(KeyTypes.GLOBAL_REFERENCE)
-                                                                            .value("https://admin-shell.io/aas/3/1/DataSpecificationIec61360")
-                                                                            .build()
-                                                            )
-                                                            .build()
-                                            )
-                                            .build())
-                            .build()
-            ).build();
+  public static final Environment EXTENSION_MINIMAL =
+      new DefaultEnvironment.Builder()
+          .assetAdministrationShells(
+              new DefaultAssetAdministrationShell.Builder()
+                  .id("something_142922d6")
+                  .extensions(
+                      new DefaultExtension.Builder()
+                          .name("something_aae6caf4")
+                          .valueType(DataTypeDefXsd.STRING)
+                          .build())
+                  .assetInformation(
+                      new DefaultAssetInformation.Builder()
+                          .assetKind(AssetKind.NOT_APPLICABLE)
+                          .globalAssetId("something_eea66fa1")
+                          .build())
+                  .build())
+          .build();
+
+  public static final Environment EXTENSION_MAXIMAL =
+      new DefaultEnvironment.Builder()
+          .assetAdministrationShells(
+              new DefaultAssetAdministrationShell.Builder()
+                  .id("something_142922d6")
+                  .extensions(
+                      new DefaultExtension.Builder()
+                          .name("something_aae6caf4")
+                          .value("10233")
+                          .valueType(DataTypeDefXsd.UNSIGNED_SHORT)
+                          .refersTo(
+                              new DefaultReference.Builder()
+                                  .keys(
+                                      new DefaultKey.Builder()
+                                          .type(KeyTypes.SUBMODEL)
+                                          .value("urn:another-example01:f7faa581")
+                                          .build())
+                                  .type(ReferenceTypes.MODEL_REFERENCE)
+                                  .build())
+                          .semanticId(
+                              new DefaultReference.Builder()
+                                  .keys(
+                                      new DefaultKey.Builder()
+                                          .type(KeyTypes.GLOBAL_REFERENCE)
+                                          .value("urn:another-company07:4d1bd2cb")
+                                          .build())
+                                  .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                  .build())
+                          .supplementalSemanticIds(
+                              new DefaultReference.Builder()
+                                  .keys(
+                                      new DefaultKey.Builder()
+                                          .type(KeyTypes.GLOBAL_REFERENCE)
+                                          .value("urn:an-example13:be48ff29")
+                                          .build())
+                                  .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                  .build())
+                          .build())
+                  .assetInformation(
+                      new DefaultAssetInformation.Builder()
+                          .assetKind(AssetKind.NOT_APPLICABLE)
+                          .globalAssetId("something_eea66fa1")
+                          .build())
+                  .build())
+          .build();
+
+  public static final Environment ENVIRONMENT_WITH_DUMMYDATASPEC =
+      new DefaultEnvironment.Builder()
+          .submodels(
+              new DefaultSubmodel.Builder()
+                  .id("urn:test")
+                  .submodelElements(
+                      new DefaultFile.Builder().idShort("myIdShort").value("FileValue").build())
+                  .embeddedDataSpecifications(
+                      new DefaultEmbeddedDataSpecification.Builder()
+                          .dataSpecificationContent(
+                              new DefaultDummyDataSpecification.Builder()
+                                  .name(
+                                      new DefaultLangStringNameType.Builder()
+                                          .language("en")
+                                          .text("myName")
+                                          .build())
+                                  .text("myText")
+                                  .pages(42)
+                                  .build())
+                          .dataSpecification(
+                              new DefaultReference.Builder()
+                                  .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                  .keys(
+                                      new DefaultKey.Builder()
+                                          .type(KeyTypes.GLOBAL_REFERENCE)
+                                          .value(
+                                              "https://admin-shell.io/aas/3/0/CustomDataSpecification")
+                                          .build())
+                                  .build())
+                          .build())
+                  .embeddedDataSpecifications(
+                      new DefaultEmbeddedDataSpecification.Builder()
+                          .dataSpecificationContent(
+                              new DefaultDataSpecificationIec61360.Builder()
+                                  .dataType(DataTypeIec61360.BLOB)
+                                  .definition(
+                                      new DefaultLangStringDefinitionTypeIec61360.Builder()
+                                          .language("en")
+                                          .text("myDefinition")
+                                          .build())
+                                  .build())
+                          .dataSpecification(
+                              new DefaultReference.Builder()
+                                  .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                  .keys(
+                                      new DefaultKey.Builder()
+                                          .type(KeyTypes.GLOBAL_REFERENCE)
+                                          .value(
+                                              "https://admin-shell.io/aas/3/1/DataSpecificationIec61360")
+                                          .build())
+                                  .build())
+                          .build())
+                  .build())
+          .build();
 }

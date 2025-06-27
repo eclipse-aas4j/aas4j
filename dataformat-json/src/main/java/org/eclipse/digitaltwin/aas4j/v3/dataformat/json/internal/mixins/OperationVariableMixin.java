@@ -15,11 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 public interface OperationVariableMixin {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    SubmodelElement getValue();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  SubmodelElement getValue();
 }

@@ -19,18 +19,32 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.SubmodelElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import java.util.List;
-
-@JsonPropertyOrder({ "extensions", "category", "idShort", "displayName", "description", "checksum", "administration", "id",   "kind",   "semanticId", "supplementalSemanticIds",  "qualifier",  "dataSpecifications", "embeddedDataSpecifications",   "submodelElements"})
+@JsonPropertyOrder({
+  "extensions",
+  "category",
+  "idShort",
+  "displayName",
+  "description",
+  "checksum",
+  "administration",
+  "id",
+  "kind",
+  "semanticId",
+  "supplementalSemanticIds",
+  "qualifier",
+  "dataSpecifications",
+  "embeddedDataSpecifications",
+  "submodelElements"
+})
 public interface SubmodelMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelElements")
-    @JsonSerialize(using = SubmodelElementsSerializer.class)
-    @JsonDeserialize(using = SubmodelElementsDeserializer.class)
-    public List<SubmodelElement> getSubmodelElements();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodelElements")
+  @JsonSerialize(using = SubmodelElementsSerializer.class)
+  @JsonDeserialize(using = SubmodelElementsDeserializer.class)
+  public List<SubmodelElement> getSubmodelElements();
 }

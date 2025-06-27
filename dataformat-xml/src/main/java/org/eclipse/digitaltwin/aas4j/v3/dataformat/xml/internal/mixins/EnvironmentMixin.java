@@ -17,26 +17,32 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
-import java.util.List;
-
-@JsonPropertyOrder({"assetAdministrationShells", "submodels", "conceptDescriptions", "dataSpecifications"})
+@JsonPropertyOrder({
+  "assetAdministrationShells",
+  "submodels",
+  "conceptDescriptions",
+  "dataSpecifications"
+})
 public interface EnvironmentMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "assetAdministrationShells")
-    public List<AssetAdministrationShell> getAssetAdministrationShells();
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "assetAdministrationShells")
+  public List<AssetAdministrationShell> getAssetAdministrationShells();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
-    public List<Submodel> getSubmodels();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
+  public List<Submodel> getSubmodels();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "conceptDescriptions")
-    public List<ConceptDescription> getConceptDescriptions();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "conceptDescriptions")
+  public List<ConceptDescription> getConceptDescriptions();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
-    public List<EmbeddedDataSpecification> getDataSpecifications();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecifications")
+  public List<EmbeddedDataSpecification> getDataSpecifications();
 }

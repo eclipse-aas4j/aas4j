@@ -15,6 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
@@ -22,47 +24,41 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Identifiable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * Collects all Identifiable elements within an
- * AssetAdministrationShellEnvironment
- */
+/** Collects all Identifiable elements within an AssetAdministrationShellEnvironment */
 public class IdentifiableCollector {
 
-    private Environment env;
+  private Environment env;
 
-    public IdentifiableCollector(Environment env) {
-        this.env = env;
+  public IdentifiableCollector(Environment env) {
+    this.env = env;
+  }
+
+  public Set<Identifiable> collect() {
+    Visitor visitor = new Visitor();
+    visitor.visit(env);
+    return visitor.identifiables;
+  }
+
+  private class Visitor implements AssetAdministrationShellElementWalkerVisitor {
+
+    Set<Identifiable> identifiables = new HashSet<>();
+
+    @Override
+    public void visit(AssetAdministrationShell value) {
+      identifiables.add(value);
+      AssetAdministrationShellElementWalkerVisitor.super.visit(value);
     }
 
-    public Set<Identifiable> collect() {
-        Visitor visitor = new Visitor();
-        visitor.visit(env);
-        return visitor.identifiables;
+    @Override
+    public void visit(Submodel value) {
+      identifiables.add(value);
+      AssetAdministrationShellElementWalkerVisitor.super.visit(value);
     }
 
-    private class Visitor implements AssetAdministrationShellElementWalkerVisitor {
-
-        Set<Identifiable> identifiables = new HashSet<>();
-
-        @Override
-        public void visit(AssetAdministrationShell value) {
-            identifiables.add(value);
-            AssetAdministrationShellElementWalkerVisitor.super.visit(value);
-        }
-
-        @Override
-        public void visit(Submodel value) {
-            identifiables.add(value);
-            AssetAdministrationShellElementWalkerVisitor.super.visit(value);
-        }
-
-        @Override
-        public void visit(ConceptDescription value) {
-            identifiables.add(value);
-            AssetAdministrationShellElementWalkerVisitor.super.visit(value);
-        }
+    @Override
+    public void visit(ConceptDescription value) {
+      identifiables.add(value);
+      AssetAdministrationShellElementWalkerVisitor.super.visit(value);
     }
+  }
 }

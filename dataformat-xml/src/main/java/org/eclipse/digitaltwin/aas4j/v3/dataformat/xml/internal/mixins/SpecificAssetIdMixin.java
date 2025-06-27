@@ -23,12 +23,12 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonPropertyOrder({"semanticId", "supplementalSemanticIds", "name", "value", "externalSubjectId"})
 public interface SpecificAssetIdMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
-    public String getName();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "name")
+  public String getName();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  public String getValue();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
-	public Reference getExternalSubjectId();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "externalSubjectId")
+  public Reference getExternalSubjectId();
 }

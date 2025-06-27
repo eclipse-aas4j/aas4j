@@ -26,9 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
@@ -53,90 +51,126 @@ import org.xml.sax.SAXException;
 
 public class AASXDeserializerTest {
 
-    @Rule
-    public TemporaryFolder tempFolder = new TemporaryFolder();
+  @Rule public TemporaryFolder tempFolder = new TemporaryFolder();
 
-    @Test
-    public void roundTrip() throws SerializationException, IOException, InvalidFormatException, DeserializationException, ParserConfigurationException, SAXException {
-        List<InMemoryFile> fileList = new ArrayList<>();
-        byte[] operationManualContent = { 0, 1, 2, 3, 4 };
-        byte[] thumbnail = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
-        InMemoryFile inMemoryFileThumbnail = new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
-        fileList.add(inMemoryFile);
-        fileList.add(inMemoryFileThumbnail);
+  @Test
+  public void roundTrip()
+      throws SerializationException,
+          IOException,
+          InvalidFormatException,
+          DeserializationException,
+          ParserConfigurationException,
+          SAXException {
+    List<InMemoryFile> fileList = new ArrayList<>();
+    byte[] operationManualContent = {0, 1, 2, 3, 4};
+    byte[] thumbnail = {0, 1, 2, 3, 4};
+    InMemoryFile inMemoryFile =
+        new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf");
+    InMemoryFile inMemoryFileThumbnail =
+        new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png");
+    fileList.add(inMemoryFile);
+    fileList.add(inMemoryFileThumbnail);
 
-        // check round trip with XML content
-        java.io.File file = tempFolder.newFile("output-xml.aasx");
-        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
+    // check round trip with XML content
+    java.io.File file = tempFolder.newFile("output-xml.aasx");
+    new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file));
 
-        InputStream in = new FileInputStream(file);
-        AASXDeserializer deserializer = new AASXDeserializer(in);
+    InputStream in = new FileInputStream(file);
+    AASXDeserializer deserializer = new AASXDeserializer(in);
 
-        assertEquals(AASSimple.createEnvironment(), deserializer.read());
-        assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
+    assertEquals(AASSimple.createEnvironment(), deserializer.read());
+    assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
 
-        // check round trip with JSON content
-        file = tempFolder.newFile("output-json.aasx");
-        new AASXSerializer().write(AASSimple.createEnvironment(), fileList, new FileOutputStream(file), MetamodelContentType.JSON);
+    // check round trip with JSON content
+    file = tempFolder.newFile("output-json.aasx");
+    new AASXSerializer()
+        .write(
+            AASSimple.createEnvironment(),
+            fileList,
+            new FileOutputStream(file),
+            MetamodelContentType.JSON);
 
-        in = new FileInputStream(file);
-        deserializer = new AASXDeserializer(in);
+    in = new FileInputStream(file);
+    deserializer = new AASXDeserializer(in);
 
-        assertEquals(AASSimple.createEnvironment(), deserializer.read());
-        assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
-    }
-    @Test
-    public void relatedFilesAreOnlyResolvedIfWithinAASX() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
-        Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(createFileSubmodelElements()).build();
-        Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
-        
-        byte[] image = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(image, "file:///aasx/internalFile.jpg");
+    assertEquals(AASSimple.createEnvironment(), deserializer.read());
+    assertTrue(CollectionUtils.isEqualCollection(fileList, deserializer.getRelatedFiles()));
+  }
 
-        java.io.File file = tempFolder.newFile("output.aasx");
-        new AASXSerializer().write(env, Collections.singleton(inMemoryFile), new FileOutputStream(file));
+  @Test
+  public void relatedFilesAreOnlyResolvedIfWithinAASX()
+      throws IOException, SerializationException, InvalidFormatException, DeserializationException {
+    Submodel fileSm =
+        new DefaultSubmodel.Builder()
+            .id("doesNotMatter")
+            .submodelElements(createFileSubmodelElements())
+            .build();
+    Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
 
-        InputStream in = new FileInputStream(file);
-        AASXDeserializer deserializer = new AASXDeserializer(in);
+    byte[] image = {0, 1, 2, 3, 4};
+    InMemoryFile inMemoryFile = new InMemoryFile(image, "file:///aasx/internalFile.jpg");
 
-        assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
-    }
+    java.io.File file = tempFolder.newFile("output.aasx");
+    new AASXSerializer()
+        .write(env, Collections.singleton(inMemoryFile), new FileOutputStream(file));
 
-    @Test
-    public void emptyFiles() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
-        File emptyFile = new DefaultFile.Builder().idShort("emptyFile").contentType(null).value(null).build();
-        Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(emptyFile).build();
-        Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
+    InputStream in = new FileInputStream(file);
+    AASXDeserializer deserializer = new AASXDeserializer(in);
 
-        java.io.File file = tempFolder.newFile("output.aasx");
-        new AASXSerializer().write(env, null, new FileOutputStream(file));
+    assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
+  }
 
-        InputStream in = new FileInputStream(file);
-        AASXDeserializer deserializer = new AASXDeserializer(in);
-        assertTrue(deserializer.getRelatedFiles().isEmpty());
-    }
+  @Test
+  public void emptyFiles()
+      throws IOException, SerializationException, InvalidFormatException, DeserializationException {
+    File emptyFile =
+        new DefaultFile.Builder().idShort("emptyFile").contentType(null).value(null).build();
+    Submodel fileSm =
+        new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(emptyFile).build();
+    Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
 
-    @Test
-    public void filesInElementList() throws IOException, SerializationException, InvalidFormatException, DeserializationException {
-        DefaultSubmodelElementList elementList = new DefaultSubmodelElementList.Builder().value(createFileSubmodelElements()).build();
-        Submodel fileSm = new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(elementList).build();
-        Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
+    java.io.File file = tempFolder.newFile("output.aasx");
+    new AASXSerializer().write(env, null, new FileOutputStream(file));
 
-        byte[] image = { 0, 1, 2, 3, 4 };
-        InMemoryFile inMemoryFile = new InMemoryFile(image, "file:///aasx/internalFile.jpg");
+    InputStream in = new FileInputStream(file);
+    AASXDeserializer deserializer = new AASXDeserializer(in);
+    assertTrue(deserializer.getRelatedFiles().isEmpty());
+  }
 
-        java.io.File file = tempFolder.newFile("output.aasx");
-        new AASXSerializer().write(env, Collections.singleton(inMemoryFile), new FileOutputStream(file));
+  @Test
+  public void filesInElementList()
+      throws IOException, SerializationException, InvalidFormatException, DeserializationException {
+    DefaultSubmodelElementList elementList =
+        new DefaultSubmodelElementList.Builder().value(createFileSubmodelElements()).build();
+    Submodel fileSm =
+        new DefaultSubmodel.Builder().id("doesNotMatter").submodelElements(elementList).build();
+    Environment env = new DefaultEnvironment.Builder().submodels(fileSm).build();
 
-        InputStream in = new FileInputStream(file);
-        AASXDeserializer deserializer = new AASXDeserializer(in);
-        assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
-    }
+    byte[] image = {0, 1, 2, 3, 4};
+    InMemoryFile inMemoryFile = new InMemoryFile(image, "file:///aasx/internalFile.jpg");
 
-    private static List<SubmodelElement> createFileSubmodelElements() {
-        File internalFile = new DefaultFile.Builder().idShort("internalFile").contentType("image/jpeg").value("file:///aasx/internalFile.jpg").build();
-        File externalFile = new DefaultFile.Builder().idShort("externalFile").contentType("image/jpeg").value("http://doesNotMatter.com/image").build();
-        return Arrays.asList(internalFile, externalFile);
-    }
+    java.io.File file = tempFolder.newFile("output.aasx");
+    new AASXSerializer()
+        .write(env, Collections.singleton(inMemoryFile), new FileOutputStream(file));
+
+    InputStream in = new FileInputStream(file);
+    AASXDeserializer deserializer = new AASXDeserializer(in);
+    assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
+  }
+
+  private static List<SubmodelElement> createFileSubmodelElements() {
+    File internalFile =
+        new DefaultFile.Builder()
+            .idShort("internalFile")
+            .contentType("image/jpeg")
+            .value("file:///aasx/internalFile.jpg")
+            .build();
+    File externalFile =
+        new DefaultFile.Builder()
+            .idShort("externalFile")
+            .contentType("image/jpeg")
+            .value("http://doesNotMatter.com/image")
+            .build();
+    return Arrays.asList(internalFile, externalFile);
+  }
 }

@@ -19,37 +19,39 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.KeysDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 
-import java.util.List;
-
 @JsonPropertyOrder({"type", "referredSemanticId", "key"})
 public interface ReferenceMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
-    public List<Key> getKeys();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
+  public List<Key> getKeys();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
-    @JsonDeserialize(using = KeysDeserializer.class)
-    void setKeys(List<Key> keys);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "key")
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "keys")
+  @JsonDeserialize(using = KeysDeserializer.class)
+  void setKeys(List<Key> keys);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    public ReferenceTypes getType();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+  public ReferenceTypes getType();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    void setType(ReferenceTypes types);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+  void setType(ReferenceTypes types);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
-    public Reference getReferredSemanticId();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "referredSemanticId")
+  public Reference getReferredSemanticId();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
-    void setReferredSemanticId(Reference referredSemanticId);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "referredSemanticId")
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "referredSemanticId")
+  void setReferredSemanticId(Reference referredSemanticId);
 }

@@ -81,6 +81,7 @@
         <xmlunit.version>2.10.0</xmlunit.version>
         <mockito.version>5.17.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
+        <spotless.version>2.44.5</spotless.version>
     </properties>
     <build>
         <plugins>
@@ -191,6 +192,22 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless.version}</version>
+                <configuration>
+                    <java>
+                        <googleJavaFormat/>
+                        <importOrder>
+                            <order>java,javax,org,com</order>
+                        </importOrder>
+                        <removeUnusedImports/>
+                        <importOrder/>
+                        <formatAnnotations/>
+                    </java>
+                </configuration>
             </plugin>
         </plugins>
     </build>

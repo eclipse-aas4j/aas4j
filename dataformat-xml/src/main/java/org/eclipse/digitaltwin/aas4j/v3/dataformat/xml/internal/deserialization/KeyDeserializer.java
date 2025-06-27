@@ -17,26 +17,23 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
+import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 
-import java.io.IOException;
-
 public class KeyDeserializer implements CustomJsonNodeDeserializer<Key> {
 
+  @Override
+  public Key readValue(JsonNode node, JsonParser parser) throws IOException {
+    JsonNode typeNode = node.get("type");
+    JsonNode valueNode = node.get("value");
+    KeyTypes type = createKeyTypesFromNode(parser, typeNode);
+    String value = valueNode.asText();
+    return new DefaultKey.Builder().type(type).value(value).build();
+  }
 
-    @Override
-    public Key readValue(JsonNode node, JsonParser parser) throws IOException {
-        JsonNode typeNode = node.get("type");
-        JsonNode valueNode = node.get("value");
-        KeyTypes type = createKeyTypesFromNode(parser, typeNode);
-        String value = valueNode.asText();
-        return new DefaultKey.Builder().type(type).value(value).build();
-    }
-
-    private KeyTypes createKeyTypesFromNode(JsonParser parser, JsonNode typeNode) throws IOException {
-        return DeserializationHelper.createInstanceFromNode(parser, typeNode, KeyTypes.class);
-    }
-
+  private KeyTypes createKeyTypesFromNode(JsonParser parser, JsonNode typeNode) throws IOException {
+    return DeserializationHelper.createInstanceFromNode(parser, typeNode, KeyTypes.class);
+  }
 }

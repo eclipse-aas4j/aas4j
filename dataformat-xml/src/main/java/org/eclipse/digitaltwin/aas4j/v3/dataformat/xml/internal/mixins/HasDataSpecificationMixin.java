@@ -17,21 +17,25 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 
-import java.util.List;
-
-
 public interface HasDataSpecificationMixin {
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "embeddedDataSpecifications")
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "embeddedDataSpecification")
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecifications")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "embeddedDataSpecification")
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications);
-
-
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "embeddedDataSpecifications")
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "embeddedDataSpecification")
+  public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> dataSpecifications);
 }

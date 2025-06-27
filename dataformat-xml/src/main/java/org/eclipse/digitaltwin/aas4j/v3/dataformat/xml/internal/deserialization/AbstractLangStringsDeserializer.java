@@ -21,43 +21,43 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-
+import java.io.IOException;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.util.LangStringContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 
-import java.io.IOException;
-import java.util.List;
-
 /**
- * 
  * @author schnicke
- *
  * @param <T>
  */
-public abstract class AbstractLangStringsDeserializer<T extends AbstractLangString> extends JsonDeserializer<List<T>> implements CustomJsonNodeDeserializer<T> {
+public abstract class AbstractLangStringsDeserializer<T extends AbstractLangString>
+    extends JsonDeserializer<List<T>> implements CustomJsonNodeDeserializer<T> {
 
-	private static LangStringContentDeserializer contentDeserializer = new LangStringContentDeserializer();
+  private static LangStringContentDeserializer contentDeserializer =
+      new LangStringContentDeserializer();
 
-	private NoEntryWrapperListDeserializer<T> deserializer;
+  private NoEntryWrapperListDeserializer<T> deserializer;
 
-	public AbstractLangStringsDeserializer(String elementName) {
-		deserializer = new NoEntryWrapperListDeserializer<>(elementName, this);
-	}
+  public AbstractLangStringsDeserializer(String elementName) {
+    deserializer = new NoEntryWrapperListDeserializer<>(elementName, this);
+  }
 
-	@Override
-	public List<T> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-		return deserializer.deserialize(parser, ctxt);
-	}
+  @Override
+  public List<T> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    return deserializer.deserialize(parser, ctxt);
+  }
 
-	@Override
-	public T readValue(JsonNode node, JsonParser parser) throws IOException {
-		LangStringContent content = deserializeContent(node, parser);
-		return createLangStringInstance(content);
-	}
+  @Override
+  public T readValue(JsonNode node, JsonParser parser) throws IOException {
+    LangStringContent content = deserializeContent(node, parser);
+    return createLangStringInstance(content);
+  }
 
-	protected abstract T createLangStringInstance(LangStringContent content);
+  protected abstract T createLangStringInstance(LangStringContent content);
 
-	private LangStringContent deserializeContent(JsonNode node, JsonParser parser) throws IOException {
-		return contentDeserializer.readValue(node, parser);
-	}
+  private LangStringContent deserializeContent(JsonNode node, JsonParser parser)
+      throws IOException {
+    return contentDeserializer.readValue(node, parser);
+  }
 }

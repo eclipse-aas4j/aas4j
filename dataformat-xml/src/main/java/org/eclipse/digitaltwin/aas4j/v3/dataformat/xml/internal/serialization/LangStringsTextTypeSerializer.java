@@ -18,15 +18,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsTextTypeSerializer extends AbstractLangStringsSerializer<LangStringTextType> {
+public class LangStringsTextTypeSerializer
+    extends AbstractLangStringsSerializer<LangStringTextType> {
 
-	public LangStringsTextTypeSerializer() {
-		super(new AbstractLangStringSerializer<>("langStringTextType"));
-	}
-
-
+  public LangStringsTextTypeSerializer() {
+    super(new AbstractLangStringSerializer<>("langStringTextType"));
+  }
 }

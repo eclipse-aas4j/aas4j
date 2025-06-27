@@ -20,18 +20,20 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringShortNameTypeIec61360;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsShortNameTypeIec61360Deserializer extends AbstractLangStringsDeserializer<LangStringShortNameTypeIec61360> {
+public class LangStringsShortNameTypeIec61360Deserializer
+    extends AbstractLangStringsDeserializer<LangStringShortNameTypeIec61360> {
 
-    public LangStringsShortNameTypeIec61360Deserializer() {
-		super("langStringShortNameTypeIec61360");
-    }
+  public LangStringsShortNameTypeIec61360Deserializer() {
+    super("langStringShortNameTypeIec61360");
+  }
 
-	@Override
-	protected LangStringShortNameTypeIec61360 createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringShortNameTypeIec61360.Builder().language(content.getLanguage()).text(content.getText()).build();
-	}
+  @Override
+  protected LangStringShortNameTypeIec61360 createLangStringInstance(LangStringContent content) {
+    return new DefaultLangStringShortNameTypeIec61360.Builder()
+        .language(content.getLanguage())
+        .text(content.getText())
+        .build();
+  }
 }

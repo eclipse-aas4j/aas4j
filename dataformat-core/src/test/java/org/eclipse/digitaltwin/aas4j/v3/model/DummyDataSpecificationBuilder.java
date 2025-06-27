@@ -18,25 +18,27 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtendableBuilder;
 
 /**
- * This interface is needed to test the serialization/deserialization of a custom data specification content.
+ * This interface is needed to test the serialization/deserialization of a custom data specification
+ * content.
  *
- * See: https://github.com/eclipse-aas4j/aas4j/issues/196
+ * <p>See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
-public abstract class DummyDataSpecificationBuilder<T extends DummyDataSpecification,
-        B extends DummyDataSpecificationBuilder<T, B>> extends ExtendableBuilder<T, B> {
+public abstract class DummyDataSpecificationBuilder<
+        T extends DummyDataSpecification, B extends DummyDataSpecificationBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-    public B name(LangStringNameType name) {
-        getBuildingInstance().setName(name);
-        return getSelf();
-    }
+  public B name(LangStringNameType name) {
+    getBuildingInstance().setName(name);
+    return getSelf();
+  }
 
-    public B text(String text) {
-        getBuildingInstance().setText(text);
-        return getSelf();
-    }
+  public B text(String text) {
+    getBuildingInstance().setText(text);
+    return getSelf();
+  }
 
-    public B pages(int pages) {
-        getBuildingInstance().setPages(pages);
-        return getSelf();
-    }
+  public B pages(int pages) {
+    getBuildingInstance().setPages(pages);
+    return getSelf();
+  }
 }

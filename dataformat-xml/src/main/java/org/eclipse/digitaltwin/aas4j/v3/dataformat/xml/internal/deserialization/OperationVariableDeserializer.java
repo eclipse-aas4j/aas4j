@@ -16,60 +16,53 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.common.collect.Lists;
-
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
 public class OperationVariableDeserializer extends JsonDeserializer<List<OperationVariable>> {
 
-    @Override
-    public List<OperationVariable> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        JsonNode rootNode = parser.getCodec().readTree(parser);
-        List<OperationVariable> result = new ArrayList<>();
+  @Override
+  public List<OperationVariable> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    JsonNode rootNode = parser.getCodec().readTree(parser);
+    List<OperationVariable> result = new ArrayList<>();
 
-        if (rootNode.isArray()) {
-            for (JsonNode element : rootNode) {
-                if (element.has("operationVariable")) {
-                    deserializeOperationVariable(parser, element, result);
-                }
-            }
+    if (rootNode.isArray()) {
+      for (JsonNode element : rootNode) {
+        if (element.has("operationVariable")) {
+          deserializeOperationVariable(parser, element, result);
         }
-        else if (rootNode.isObject()) {
-            if (!rootNode.has("operationVariable")) {
-                return result;
-            }
-            deserializeOperationVariable(parser, rootNode, result);
-        }
-
+      }
+    } else if (rootNode.isObject()) {
+      if (!rootNode.has("operationVariable")) {
         return result;
+      }
+      deserializeOperationVariable(parser, rootNode, result);
     }
 
-    private static void deserializeOperationVariable(JsonParser parser, JsonNode element, List<OperationVariable> result) throws IOException {
-        JsonNode opVarNode = element.get("operationVariable");
-        if (opVarNode.isArray()) {
-            for (JsonNode inner : opVarNode) {
-                OperationVariable opVar = DeserializationHelper.createInstanceFromNode(parser, inner, OperationVariable.class);
-                result.add(opVar);
-            }
-        } else {
-            OperationVariable opVar = DeserializationHelper.createInstanceFromNode(parser, opVarNode, OperationVariable.class);
-            result.add(opVar);
-        }
+    return result;
+  }
+
+  private static void deserializeOperationVariable(
+      JsonParser parser, JsonNode element, List<OperationVariable> result) throws IOException {
+    JsonNode opVarNode = element.get("operationVariable");
+    if (opVarNode.isArray()) {
+      for (JsonNode inner : opVarNode) {
+        OperationVariable opVar =
+            DeserializationHelper.createInstanceFromNode(parser, inner, OperationVariable.class);
+        result.add(opVar);
+      }
+    } else {
+      OperationVariable opVar =
+          DeserializationHelper.createInstanceFromNode(parser, opVarNode, OperationVariable.class);
+      result.add(opVar);
     }
-
-
+  }
 }

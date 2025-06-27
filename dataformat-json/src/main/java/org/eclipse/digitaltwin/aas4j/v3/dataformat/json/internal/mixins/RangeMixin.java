@@ -18,6 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface RangeMixin {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    String getValueType();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  String getValueType();
 }

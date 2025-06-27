@@ -24,23 +24,28 @@ import org.eclipse.digitaltwin.aas4j.v3.model.QualifierKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({
-        "semanticId", "supplementalSemanticIds", // --> HasSemantics
-        "kind", "type", "valueType", "value", "valueId"
+  "semanticId",
+  "supplementalSemanticIds", // --> HasSemantics
+  "kind",
+  "type",
+  "valueType",
+  "value",
+  "valueId"
 })
 public interface QualifierMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "kind")
-    void setKind(QualifierKind kind);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "kind")
+  void setKind(QualifierKind kind);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    void setType(String type);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+  void setType(String type);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueType")
-	void setType(DataTypeDefXsd valueType);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueType")
+  void setType(DataTypeDefXsd valueType);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    void setValue(String value);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  void setValue(String value);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-    void setValueId(Reference valueId);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
+  void setValueId(Reference valueId);
 }
