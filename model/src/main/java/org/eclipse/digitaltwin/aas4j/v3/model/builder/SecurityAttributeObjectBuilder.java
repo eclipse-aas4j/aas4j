@@ -14,34 +14,45 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 
 
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
-public abstract class NumberValueBuilder<T extends NumberValue, B extends NumberValueBuilder<T, B>> extends ExtendableBuilder<T, B> {
+public abstract class SecurityAttributeBuilder<T extends SecurityAttribute, B extends SecurityAttributeBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
     /**
-     * This function allows setting a value for values
+     * This function allows setting a value for type
      * 
-     * @param value desired value to be set
-     * @return Builder object with new value for values
+     * @param type desired value to be set
+     * @return Builder object with new value for type
      */
-    public B value(List<java.math.BigDecimal> value) {
-        getBuildingInstance().setValues(value);
+    public B type(SecurityTypeEnum type) {
+        getBuildingInstance().setType(type);
         return getSelf();
     }
 
     /**
-     * This function allows adding a value to the List values
+     * This function allows setting a value for key
      * 
-     * @param value desired value to be added
-     * @return Builder object with new value for values
+     * @param key desired value to be set
+     * @return Builder object with new value for key
      */
-    public B value(java.math.BigDecimal value) {
-        getBuildingInstance().getValues().add(value);
+    public B key(String key) {
+        getBuildingInstance().setKey(key);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for value
+     * 
+     * @param value desired value to be set
+     * @return Builder object with new value for value
+     */
+    public B value(String value) {
+        getBuildingInstance().setValue(value);
         return getSelf();
     }
 }
