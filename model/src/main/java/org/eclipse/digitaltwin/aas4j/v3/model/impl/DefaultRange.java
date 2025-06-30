@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2023, SAP SE or an SAP affiliate company
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -33,6 +34,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.RangeBuilder;
  *
  * <p>A range data element is a data element that defines a range with min and max.
  */
+
 @IRI("aas:Range")
 public class DefaultRange implements Range {
 

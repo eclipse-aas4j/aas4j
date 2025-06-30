@@ -21,8 +21,9 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.google.common.base.CaseFormat;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+
+import java.io.IOException;
 
 /**
  * Custom Serializer for class DataSpecification. Adds type information in form of a reference. Uses

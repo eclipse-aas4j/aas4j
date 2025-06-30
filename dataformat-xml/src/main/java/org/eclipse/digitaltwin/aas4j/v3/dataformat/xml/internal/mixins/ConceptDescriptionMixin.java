@@ -18,9 +18,10 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 @JsonPropertyOrder({
   "extensions",
