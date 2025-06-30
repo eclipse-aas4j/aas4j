@@ -34,7 +34,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.RangeBuilder;
  *
  * <p>A range data element is a data element that defines a range with min and max.
  */
-
 @IRI("aas:Range")
 public class DefaultRange implements Range {
 

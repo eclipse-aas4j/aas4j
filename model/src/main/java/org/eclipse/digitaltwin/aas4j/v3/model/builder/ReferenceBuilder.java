@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
-
-import java.util.List;
 
 public abstract class ReferenceBuilder<T extends Reference, B extends ReferenceBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
