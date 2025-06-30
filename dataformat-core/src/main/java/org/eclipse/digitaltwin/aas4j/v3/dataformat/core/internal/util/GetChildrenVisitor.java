@@ -28,55 +28,56 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
 public class GetChildrenVisitor implements AssetAdministrationShellElementVisitor {
 
-    private final List<Referable> children = new ArrayList<>();
-    private Environment environment;
-    
-    public GetChildrenVisitor() {
-    }
+  private final List<Referable> children = new ArrayList<>();
+  private Environment environment;
 
-    public void reset() {
-        children.clear();
-    }
+  public GetChildrenVisitor() {}
 
-    public GetChildrenVisitor(Environment environment) {
-        this.environment = environment;
-    }
+  public void reset() {
+    children.clear();
+  }
 
-    public List<Referable> getChildren() {
-        return children;
-    }
+  public GetChildrenVisitor(Environment environment) {
+    this.environment = environment;
+  }
 
-    @Override
-    public void visit(Environment environment) {
-        children.addAll(environment.getAssetAdministrationShells());
-        children.addAll(environment.getConceptDescriptions());
-        children.addAll(environment.getSubmodels());
-    }
+  public List<Referable> getChildren() {
+    return children;
+  }
 
-    @Override
-    public void visit(AssetAdministrationShell assetAdministrationShell) {
-        List<String> submodelIds = assetAdministrationShell.getSubmodels().stream()
-                .map(x -> x.getKeys().get(x.getKeys().size() - 1).getValue())
-                .collect(Collectors.toList());
-        if (environment != null) {
-            children.addAll(environment.getSubmodels().stream()
-                    .filter(x -> submodelIds.contains(x.getId()))
-                    .collect(Collectors.toList()));
-        }
-    }
+  @Override
+  public void visit(Environment environment) {
+    children.addAll(environment.getAssetAdministrationShells());
+    children.addAll(environment.getConceptDescriptions());
+    children.addAll(environment.getSubmodels());
+  }
 
-    @Override
-    public void visit(Submodel submodel) {
-        children.addAll(submodel.getSubmodelElements());
+  @Override
+  public void visit(AssetAdministrationShell assetAdministrationShell) {
+    List<String> submodelIds =
+        assetAdministrationShell.getSubmodels().stream()
+            .map(x -> x.getKeys().get(x.getKeys().size() - 1).getValue())
+            .collect(Collectors.toList());
+    if (environment != null) {
+      children.addAll(
+          environment.getSubmodels().stream()
+              .filter(x -> submodelIds.contains(x.getId()))
+              .collect(Collectors.toList()));
     }
+  }
 
-    @Override
-    public void visit(SubmodelElementCollection submodelElementCollection) {
-        children.addAll(submodelElementCollection.getValue());
-    }
+  @Override
+  public void visit(Submodel submodel) {
+    children.addAll(submodel.getSubmodelElements());
+  }
 
-    @Override
-    public void visit(SubmodelElementList submodelElementList) {
-        children.addAll(submodelElementList.getValue());
-    }
+  @Override
+  public void visit(SubmodelElementCollection submodelElementCollection) {
+    children.addAll(submodelElementCollection.getValue());
+  }
+
+  @Override
+  public void visit(SubmodelElementList submodelElementList) {
+    children.addAll(submodelElementList.getValue());
+  }
 }

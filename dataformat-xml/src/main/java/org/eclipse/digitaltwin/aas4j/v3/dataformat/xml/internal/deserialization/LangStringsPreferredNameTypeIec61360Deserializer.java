@@ -20,18 +20,20 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec6136
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsPreferredNameTypeIec61360Deserializer extends AbstractLangStringsDeserializer<LangStringPreferredNameTypeIec61360> {
-	public LangStringsPreferredNameTypeIec61360Deserializer() {
-		super("langStringPreferredNameTypeIec61360");
-	}
+public class LangStringsPreferredNameTypeIec61360Deserializer
+    extends AbstractLangStringsDeserializer<LangStringPreferredNameTypeIec61360> {
+  public LangStringsPreferredNameTypeIec61360Deserializer() {
+    super("langStringPreferredNameTypeIec61360");
+  }
 
-	@Override
-	protected LangStringPreferredNameTypeIec61360 createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringPreferredNameTypeIec61360.Builder().language(content.getLanguage()).text(content.getText()).build();
-
-	}
+  @Override
+  protected LangStringPreferredNameTypeIec61360 createLangStringInstance(
+      LangStringContent content) {
+    return new DefaultLangStringPreferredNameTypeIec61360.Builder()
+        .language(content.getLanguage())
+        .text(content.getText())
+        .build();
+  }
 }

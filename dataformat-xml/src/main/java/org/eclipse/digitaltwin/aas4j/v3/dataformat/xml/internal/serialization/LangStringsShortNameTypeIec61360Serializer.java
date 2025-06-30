@@ -18,15 +18,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsShortNameTypeIec61360Serializer extends AbstractLangStringsSerializer<LangStringShortNameTypeIec61360> {
+public class LangStringsShortNameTypeIec61360Serializer
+    extends AbstractLangStringsSerializer<LangStringShortNameTypeIec61360> {
 
-	public LangStringsShortNameTypeIec61360Serializer() {
-		super(new AbstractLangStringSerializer<>("langStringShortNameTypeIec61360"));
-	}
-
-
+  public LangStringsShortNameTypeIec61360Serializer() {
+    super(new AbstractLangStringSerializer<>("langStringShortNameTypeIec61360"));
+  }
 }

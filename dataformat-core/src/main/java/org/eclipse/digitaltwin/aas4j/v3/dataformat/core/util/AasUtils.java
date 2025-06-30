@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.GetChildrenVisitor;
@@ -38,401 +37,461 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 
-/**
- * Provides utility functions related to AAS
- */
+/** Provides utility functions related to AAS */
 public class AasUtils {
-    private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION = Map.of(
-            ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
-            ReferenceTypes.MODEL_REFERENCE, "ModelRef");
+  private static final Map<ReferenceTypes, String> REFERENCE_TYPE_REPRESENTATION =
+      Map.of(
+          ReferenceTypes.EXTERNAL_REFERENCE, "ExternalRef",
+          ReferenceTypes.MODEL_REFERENCE, "ModelRef");
 
-    private AasUtils() {
+  private AasUtils() {}
+
+  /**
+   * Formats a Reference as string
+   *
+   * @param reference Reference to serialize
+   * @return string representation of the reference for serialization, null if reference is null
+   */
+  public static String asString(Reference reference) {
+    return asString(reference, true, true);
+  }
+
+  /**
+   * Serializes a {@link Reference} to string.
+   *
+   * @param reference the reference to serialize
+   * @param includeReferenceType if reference type information should be included
+   * @param includeReferredSemanticId if referred semanticId should be included
+   * @return the serialized reference or null if reference is null, reference.keys is null or
+   *     reference does not contain any keys
+   */
+  public static String asString(
+      Reference reference, boolean includeReferenceType, boolean includeReferredSemanticId) {
+    if (Objects.isNull(reference)
+        || Objects.isNull(reference.getKeys())
+        || reference.getKeys().isEmpty()) {
+      return null;
     }
-
-    /**
-     * Formats a Reference as string
-     *
-     * @param reference Reference to serialize
-     * @return string representation of the reference for serialization, null if reference is null
-     */
-    public static String asString(Reference reference) {
-        return asString(reference, true, true);
+    String result = "";
+    if (includeReferenceType) {
+      String referredSemanticId =
+          includeReferredSemanticId
+              ? asString(reference.getReferredSemanticId(), includeReferenceType, false)
+              : "";
+      result =
+          String.format(
+              "[%s%s]",
+              asString(reference.getType()),
+              (Objects.nonNull(referredSemanticId) && !referredSemanticId.isBlank())
+                  ? String.format("- %s -", referredSemanticId)
+                  : "");
     }
+    result +=
+        reference.getKeys().stream()
+            .map(
+                x ->
+                    String.format(
+                        "(%s)%s",
+                        EnumSerializer.serializeEnumName(x.getType().name()), x.getValue()))
+            .collect(Collectors.joining(", "));
+    return result;
+  }
 
-    /**
-     * Serializes a {@link Reference} to string.
-     *
-     * @param reference the reference to serialize
-     * @param includeReferenceType if reference type information should be included
-     * @param includeReferredSemanticId if referred semanticId should be included
-     * @return the serialized reference or null if reference is null, reference.keys is null or reference does not
-     * contain any keys
-     */
-    public static String asString(Reference reference, boolean includeReferenceType, boolean includeReferredSemanticId) {
-        if (Objects.isNull(reference) || Objects.isNull(reference.getKeys()) || reference.getKeys().isEmpty()) {
-            return null;
-        }
-        String result = "";
-        if (includeReferenceType) {
-            String referredSemanticId = includeReferredSemanticId
-                    ? asString(reference.getReferredSemanticId(), includeReferenceType, false)
-                    : "";
-            result = String.format("[%s%s]",
-                    asString(reference.getType()),
-                    (Objects.nonNull(referredSemanticId) && !referredSemanticId.isBlank()) ? String.format("- %s -", referredSemanticId)
-                    : "");
-        }
-        result += reference.getKeys().stream()
-                .map(x -> String.format("(%s)%s",
-                EnumSerializer.serializeEnumName(x.getType().name()),
-                x.getValue()))
-                .collect(Collectors.joining(", "));
-        return result;
+  private static String asString(ReferenceTypes referenceType) {
+    if (!REFERENCE_TYPE_REPRESENTATION.containsKey(referenceType)) {
+      throw new IllegalArgumentException(
+          String.format("Unsupported reference type '%s'", referenceType));
     }
+    return REFERENCE_TYPE_REPRESENTATION.get(referenceType);
+  }
 
-    private static String asString(ReferenceTypes referenceType) {
-        if (!REFERENCE_TYPE_REPRESENTATION.containsKey(referenceType)) {
-            throw new IllegalArgumentException(String.format("Unsupported reference type '%s'", referenceType));
-        }
-        return REFERENCE_TYPE_REPRESENTATION.get(referenceType);
+  /**
+   * Creates a reference for an Identifiable instance using provided implementation types for
+   * reference and key
+   *
+   * @param identifiable the identifiable to create the reference for
+   * @param referenceType implementation type of Reference interface
+   * @param keyType implementation type of Key interface
+   * @return a reference representing the identifiable
+   */
+  public static Reference toReference(
+      Identifiable identifiable,
+      Class<? extends Reference> referenceType,
+      Class<? extends Key> keyType) {
+    try {
+      Reference reference = referenceType.getConstructor().newInstance();
+      reference.setType(ReferenceTypes.MODEL_REFERENCE);
+
+      Key key = keyType.getConstructor().newInstance();
+      key.setType(referableToKeyType(identifiable));
+      key.setValue(identifiable.getId());
+      reference.setKeys(List.of(key));
+      return reference;
+    } catch (NoSuchMethodException
+        | SecurityException
+        | InstantiationException
+        | IllegalAccessException
+        | IllegalArgumentException
+        | InvocationTargetException ex) {
+      throw new IllegalArgumentException(
+          "error parsing reference - could not instantiate reference type", ex);
     }
+  }
 
-    /**
-     * Creates a reference for an Identifiable instance using provided implementation types for reference and key
-     *
-     * @param identifiable the identifiable to create the reference for
-     * @param referenceType implementation type of Reference interface
-     * @param keyType implementation type of Key interface
-     * @return a reference representing the identifiable
-     */
-    public static Reference toReference(Identifiable identifiable, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
+  /**
+   * Creates a reference for an Identifiable instance using provided implementation types for
+   * reference and key
+   *
+   * @param identifiable the identifiable to create the reference for
+   * @param referenceType implementation type of Reference interface
+   * @param keyType implementation type of Key interface
+   * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the
+   *     identifiable is of HasSemantics
+   * @return a reference representing the identifiable
+   */
+  public static Reference toReference(
+      Identifiable identifiable,
+      Class<? extends Reference> referenceType,
+      Class<? extends Key> keyType,
+      boolean setReferredSemanticIdIfHasSemantics) {
+    Reference reference = toReference(identifiable, referenceType, keyType);
+
+    return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+  }
+
+  /**
+   * Creates a reference for an Identifiable instance
+   *
+   * @param identifiable the identifiable to create the reference for
+   * @return a reference representing the identifiable
+   */
+  public static Reference toReference(Identifiable identifiable) {
+    return toReference(
+        identifiable,
+        ReflectionHelper.getDefaultImplementation(Reference.class),
+        ReflectionHelper.getDefaultImplementation(Key.class));
+  }
+
+  /**
+   * Creates a reference for an Identifiable instance
+   *
+   * @param identifiable the identifiable to create the reference for
+   * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the
+   *     identifiable is of HasSemantics
+   * @return a reference representing the identifiable
+   */
+  public static Reference toReference(
+      Identifiable identifiable, boolean setReferredSemanticIdIfHasSemantics) {
+    Reference reference = toReference(identifiable);
+
+    return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+  }
+
+  /**
+   * Creates a reference for an element given a potential parent using provided implementation types
+   * for reference and key
+   *
+   * @param parent Reference to the parent. Can only be null when element is instance of
+   *     Identifiable, otherwise result will always be null
+   * @param element the element to create a reference for
+   * @param referenceType implementation type of Reference interface
+   * @param keyType implementation type of Key interface
+   * @return A reference representing the element or null if either element is null or parent is
+   *     null and element not an instance of Identifiable. In case element is an instance of
+   *     Identifiable, the returned reference will only contain one key pointing directly to the
+   *     element.
+   */
+  public static Reference toReference(
+      Reference parent,
+      Referable element,
+      Class<? extends Reference> referenceType,
+      Class<? extends Key> keyType) {
+    if (element == null) {
+      return null;
+    } else if (Identifiable.class.isAssignableFrom(element.getClass())) {
+      return toReference((Identifiable) element, referenceType, keyType);
+    } else {
+      Reference result = clone(parent, referenceType, keyType);
+      if (result != null) {
         try {
-            Reference reference = referenceType.getConstructor().newInstance();
-            reference.setType(ReferenceTypes.MODEL_REFERENCE);
-
-
-            Key key = keyType.getConstructor().newInstance();
-            key.setType(referableToKeyType(identifiable));
-            key.setValue(identifiable.getId());
-            reference.setKeys(List.of(key));
-            return reference;
-        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
+          Key newKey = keyType.getConstructor().newInstance();
+          newKey.setType(AasUtils.referableToKeyType(element));
+          newKey.setValue(element.getIdShort());
+          result.getKeys().add(newKey);
+        } catch (NoSuchMethodException
+            | SecurityException
+            | InstantiationException
+            | IllegalAccessException
+            | IllegalArgumentException
+            | InvocationTargetException ex) {
+          throw new IllegalArgumentException(
+              "error parsing reference - could not instantiate reference type", ex);
         }
+      }
+      return result;
     }
+  }
 
-    /**
-     * Creates a reference for an Identifiable instance using provided implementation types for reference and key
-     *
-     * @param identifiable the identifiable to create the reference for
-     * @param referenceType implementation type of Reference interface
-     * @param keyType implementation type of Key interface
-     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
-     * @return a reference representing the identifiable
-     */
-    public static Reference toReference(Identifiable identifiable, Class<? extends Reference> referenceType,
-            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
-        Reference reference = toReference(identifiable, referenceType, keyType);
+  /**
+   * Creates a reference for an element given a potential parent using provided implementation types
+   * for reference and key
+   *
+   * @param parent Reference to the parent. Can only be null when element is instance of
+   *     Identifiable, otherwise result will always be null
+   * @param element the element to create a reference for
+   * @param referenceType implementation type of Reference interface
+   * @param keyType implementation type of Key interface
+   * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the
+   *     identifiable is of HasSemantics
+   * @return A reference representing the element or null if either element is null or parent is
+   *     null and element not an instance of Identifiable. In case element is an instance of
+   *     Identifiable, the returned reference will only contain one key pointing directly to the
+   *     element.
+   */
+  public static Reference toReference(
+      Reference parent,
+      Referable element,
+      Class<? extends Reference> referenceType,
+      Class<? extends Key> keyType,
+      boolean setReferredSemanticIdIfHasSemantics) {
+    Reference reference = toReference(parent, element, referenceType, keyType);
+    return handleReferredSemanticId(element, setReferredSemanticIdIfHasSemantics, reference);
+  }
 
-        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+  /**
+   * Creates a reference for an element given a potential parent
+   *
+   * @param parent Reference to the parent. Can only be null when element is instance of
+   *     Identifiable, otherwise result will always be null
+   * @param element the element to create a reference for
+   * @return A reference representing the element or null if either element is null or parent is
+   *     null and element not an instance of Identifiable. In case element is an instance of
+   *     Identifiable, the returned reference will only contain one key pointing directly to the
+   *     element.
+   */
+  public static Reference toReference(Reference parent, Referable element) {
+    return toReference(
+        parent,
+        element,
+        ReflectionHelper.getDefaultImplementation(Reference.class),
+        ReflectionHelper.getDefaultImplementation(Key.class));
+  }
+
+  /**
+   * Creates a reference for an element given a potential parent
+   *
+   * @param parent Reference to the parent. Can only be null when element is instance of
+   *     Identifiable, otherwise result will always be null
+   * @param element the element to create a reference for
+   * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the
+   *     identifiable is of HasSemantics
+   * @return A reference representing the element or null if either element is null or parent is
+   *     null and element not an instance of Identifiable. In case element is an instance of
+   *     Identifiable, the returned reference will only contain one key pointing directly to the
+   *     element.
+   */
+  public static Reference toReference(
+      Reference parent, Referable element, boolean setReferredSemanticIdIfHasSemantics) {
+    return toReference(
+        parent,
+        element,
+        ReflectionHelper.getDefaultImplementation(Reference.class),
+        ReflectionHelper.getDefaultImplementation(Key.class),
+        setReferredSemanticIdIfHasSemantics);
+  }
+
+  /**
+   * Gets the KeyElements type matching the provided Referable
+   *
+   * @param referable The referable to convert to KeyElements type
+   * @return the most specific KeyElements type representing the Referable, i.e. abstract types like
+   *     SUBMODEL_ELEMENT or DATA_ELEMENT are never returned; null if there is no corresponding
+   *     KeyElements type
+   */
+  public static KeyTypes referableToKeyType(Referable referable) {
+    Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
+    if (aasInterface != null) {
+      return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
     }
+    return null;
+  }
 
+  /**
+   * Checks if two references are refering to the same element ignoring referredSemanticId.
+   *
+   * @param ref1 reference 1
+   * @param ref2 reference 2
+   * @return returns true if both references are refering to the same element, otherwise false
+   */
+  public static boolean sameAs(Reference ref1, Reference ref2) {
+    return sameAs(ref1, ref2, false);
+  }
 
-    /**
-     * Creates a reference for an Identifiable instance
-     *
-     * @param identifiable the identifiable to create the reference for
-     * @return a reference representing the identifiable
-     */
-    public static Reference toReference(Identifiable identifiable) {
-        return toReference(identifiable, ReflectionHelper.getDefaultImplementation(Reference.class), ReflectionHelper.getDefaultImplementation(Key.class));
+  /**
+   * Checks if two references are referring to the same element.
+   *
+   * @param ref1 reference 1
+   * @param ref2 reference 2
+   * @param compareReferredSemanticId true if referredSemanticId should be compared, false otherwise
+   * @return returns true if both references are referring to the same element, otherwise false
+   */
+  public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
+    boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
+    boolean ref2Empty = ref2 == null || ref2.getKeys() == null || ref2.getKeys().isEmpty();
+    if (ref1Empty != ref2Empty) {
+      return false;
     }
-
-    /**
-     * Creates a reference for an Identifiable instance
-     *
-     * @param identifiable the identifiable to create the reference for
-     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
-     * @return a reference representing the identifiable
-     */
-    public static Reference toReference(Identifiable identifiable, boolean setReferredSemanticIdIfHasSemantics) {
-        Reference reference = toReference(identifiable);
-
-        return handleReferredSemanticId(identifiable, setReferredSemanticIdIfHasSemantics, reference);
+    if (ref1.getType() != ref2.getType()) {
+      return false;
     }
-
-    /**
-     * Creates a reference for an element given a potential parent using provided implementation types for reference and
-     * key
-     *
-     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
-     * result will always be null
-     * @param element the element to create a reference for
-     * @param referenceType implementation type of Reference interface
-     * @param keyType implementation type of Key interface
-     *
-     * @return A reference representing the element or null if either element is null or parent is null and element not
-     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
-     * contain one key pointing directly to the element.
-     */
-    public static Reference toReference(Reference parent, Referable element, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
-        if (element == null) {
-            return null;
-        } else if (Identifiable.class.isAssignableFrom(element.getClass())) {
-            return toReference((Identifiable) element, referenceType, keyType);
-        } else {
-            Reference result = clone(parent, referenceType, keyType);
-            if (result != null) {
-                try {
-                    Key newKey = keyType.getConstructor().newInstance();
-                    newKey.setType(AasUtils.referableToKeyType(element));
-                    newKey.setValue(element.getIdShort());
-                    result.getKeys().add(newKey);
-                } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                    throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
-                }
-            }
-            return result;
-        }
+    if (compareReferredSemanticId
+        && !sameAs(ref1.getReferredSemanticId(), ref2.getReferredSemanticId())) {
+      return false;
     }
-
-    /**
-     * Creates a reference for an element given a potential parent using provided implementation types for reference and
-     * key
-     *
-     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
-     * result will always be null
-     * @param element the element to create a reference for
-     * @param referenceType implementation type of Reference interface
-     * @param keyType implementation type of Key interface
-     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
-     *
-     * @return A reference representing the element or null if either element is null or parent is null and element not
-     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
-     * contain one key pointing directly to the element.
-     */
-    public static Reference toReference(Reference parent, Referable element, Class<? extends Reference> referenceType,
-            Class<? extends Key> keyType, boolean setReferredSemanticIdIfHasSemantics) {
-        Reference reference = toReference(parent, element, referenceType, keyType);
-        return handleReferredSemanticId(element, setReferredSemanticIdIfHasSemantics, reference);
+    if (ref1Empty && ref2Empty) {
+      return true;
     }
-
-    /**
-     * Creates a reference for an element given a potential parent
-     *
-     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
-     * result will always be null
-     * @param element the element to create a reference for
-     * @return A reference representing the element or null if either element is null or parent is null and element not
-     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
-     * contain one key pointing directly to the element.
-     */
-    public static Reference toReference(Reference parent, Referable element) {
-        return toReference(parent,
-                element,
-                ReflectionHelper.getDefaultImplementation(Reference.class),
-                ReflectionHelper.getDefaultImplementation(Key.class));
+    if (ref1.getKeys().size() != ref2.getKeys().size()) {
+      return false;
     }
-
-    /**
-     * Creates a reference for an element given a potential parent
-     *
-     * @param parent Reference to the parent. Can only be null when element is instance of Identifiable, otherwise
-     * result will always be null
-     * @param element the element to create a reference for
-     * @param setReferredSemanticIdIfHasSemantics if the referredSemanticId should be set if the identifiable is of HasSemantics
-     * 
-     * @return A reference representing the element or null if either element is null or parent is null and element not
-     * an instance of Identifiable. In case element is an instance of Identifiable, the returned reference will only
-     * contain one key pointing directly to the element.
-     */
-    public static Reference toReference(Reference parent, Referable element, boolean setReferredSemanticIdIfHasSemantics) {
-        return toReference(parent,
-                element,
-                ReflectionHelper.getDefaultImplementation(Reference.class),
-                ReflectionHelper.getDefaultImplementation(Key.class), 
-                setReferredSemanticIdIfHasSemantics);
-    }
-    
-    /**
-     * Gets the KeyElements type matching the provided Referable
-     *
-     * @param referable The referable to convert to KeyElements type
-     * @return the most specific KeyElements type representing the Referable, i.e. abstract types like SUBMODEL_ELEMENT
-     * or DATA_ELEMENT are never returned; null if there is no corresponding KeyElements type
-     */
-    public static KeyTypes referableToKeyType(Referable referable) {
-        Class<?> aasInterface = ReflectionHelper.getAasInterface(referable.getClass());
-        if (aasInterface != null) {
-            return KeyTypes.valueOf(EnumDeserializer.deserializeEnumName(aasInterface.getSimpleName()));
-        }
-        return null;
-    }
-
-
-    /**
-     * Checks if two references are refering to the same element ignoring referredSemanticId.
-     *
-     * @param ref1 reference 1
-     * @param ref2 reference 2
-     * @return returns true if both references are refering to the same element, otherwise false
-     */
-    public static boolean sameAs(Reference ref1, Reference ref2) {
-        return sameAs(ref1, ref2, false);
-    }
-
-    /**
-     * Checks if two references are referring to the same element.
-     *
-     * @param ref1 reference 1
-     * @param ref2 reference 2
-     * @param compareReferredSemanticId true if referredSemanticId should be compared, false otherwise
-     * @return returns true if both references are referring to the same element, otherwise false
-     */
-    public static boolean sameAs(Reference ref1, Reference ref2, boolean compareReferredSemanticId) {
-        boolean ref1Empty = ref1 == null || ref1.getKeys() == null || ref1.getKeys().isEmpty();
-        boolean ref2Empty = ref2 == null || ref2.getKeys() == null || ref2.getKeys().isEmpty();
-        if (ref1Empty != ref2Empty) {
-            return false;
-        }
-        if (ref1.getType() != ref2.getType()) {
-            return false;
-        }
-        if (compareReferredSemanticId && !sameAs(ref1.getReferredSemanticId(), ref2.getReferredSemanticId())) {
-            return false;
-        }
-        if (ref1Empty && ref2Empty) {
-            return true;
-        }
-        if (ref1.getKeys().size() != ref2.getKeys().size()) {
-            return false;
-        }
-        for (int i = 0; i < ref1.getKeys().size(); i++) {
-            Key key1 = ref1.getKeys().get(ref1.getKeys().size() - (i + 1));
-            Key key2 = ref2.getKeys().get(ref2.getKeys().size() - (i + 1));
-            if (Objects.isNull(key1) != Objects.isNull(key2)) {
-                return false;
-            }
-            if (Objects.isNull(key1)) {
-                return true;
-            }
-            if (!Objects.equals(key1.getValue(), key2.getValue())) {
-                return false;
-            }
-        }
+    for (int i = 0; i < ref1.getKeys().size(); i++) {
+      Key key1 = ref1.getKeys().get(ref1.getKeys().size() - (i + 1));
+      Key key2 = ref2.getKeys().get(ref2.getKeys().size() - (i + 1));
+      if (Objects.isNull(key1) != Objects.isNull(key2)) {
+        return false;
+      }
+      if (Objects.isNull(key1)) {
         return true;
+      }
+      if (!Objects.equals(key1.getValue(), key2.getValue())) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Creates a deep-copy clone of a reference using provided implementation types for reference and
+   * key
+   *
+   * @param reference the reference to clone
+   * @param referenceType implementation type of Reference interface
+   * @param keyType implementation type of Key interface
+   * @return the cloned reference
+   */
+  private static Reference clone(
+      Reference reference, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
+    if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
+      return null;
+    }
+    try {
+      Reference result = referenceType.getConstructor().newInstance();
+      List<Key> newKeys = new ArrayList<>();
+      result.setType(reference.getType());
+      for (Key key : reference.getKeys()) {
+        Key newKey = keyType.getConstructor().newInstance();
+        newKey.setType(key.getType());
+        newKey.setValue(key.getValue());
+        newKeys.add(newKey);
+      }
+      result.setKeys(newKeys);
+      return result;
+    } catch (NoSuchMethodException
+        | SecurityException
+        | InstantiationException
+        | IllegalAccessException
+        | IllegalArgumentException
+        | InvocationTargetException ex) {
+      throw new IllegalArgumentException(
+          "error parsing reference - could not instantiate reference type", ex);
+    }
+  }
+
+  /**
+   * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted
+   * object if available, null otherwise
+   *
+   * @param reference The reference to resolve
+   * @param env The AssetAdministrationShellEnvironment to resolve the reference against
+   * @return returns an instance of T if the reference could successfully be resolved, otherwise
+   *     null
+   * @throws IllegalArgumentException if something goes wrong while resolving
+   */
+  public static Referable resolve(Reference reference, Environment env) {
+    return resolve(reference, env, Referable.class);
+  }
+
+  /**
+   * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted
+   * object if available, null otherwise
+   *
+   * @param <T> sub-type of Referable of the targeted type. If unknown use Referable.class
+   * @param reference The reference to resolve
+   * @param env The AssetAdministrationShellEnvironment to resolve the reference against
+   * @param type desired return type, use Referable.class is unknwon/not needed
+   * @return returns an instance of T if the reference could successfully be resolved, otherwise
+   *     null
+   * @throws IllegalArgumentException if something goes wrong while resolving
+   */
+  @SuppressWarnings("unchecked")
+  public static <T extends Referable> T resolve(
+      Reference reference, Environment env, Class<T> type) {
+    if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
+      return null;
+    }
+    GetChildrenVisitor findChildrenVisitor = new GetChildrenVisitor(env);
+    findChildrenVisitor.visit(env);
+    Referable current = null;
+    for (int i = 0; i < reference.getKeys().size(); i++) {
+      Key key = reference.getKeys().get(i);
+      try {
+        int index = Integer.parseInt(key.getValue());
+        if (Objects.isNull(current)
+            || !SubmodelElementList.class.isAssignableFrom(current.getClass())) {
+          throw new IllegalArgumentException(
+              "reference uses index notation on an element that is not a SubmodelElementList");
+        }
+        List<SubmodelElement> list = ((SubmodelElementList) current).getValue();
+        if (list.size() <= index) {
+          throw new IllegalArgumentException(
+              String.format(
+                  "index notation out of bounds (list size: %s, requested index: %s)",
+                  list.size(), index));
+        }
+        current = list.get(index);
+      } catch (NumberFormatException e) {
+        current =
+            findChildrenVisitor.getChildren().stream()
+                .filter(x -> Objects.equals(key.getValue(), GetIdentifierVisitor.getIdentifier(x)))
+                .findFirst()
+                .orElseThrow(
+                    () ->
+                        new IllegalArgumentException(
+                            String.format(
+                                "unable to resolve reference '%s' as element '%s' does not exist",
+                                asString(reference), key.getValue())));
+      }
+      findChildrenVisitor.reset();
+      findChildrenVisitor.visit(current);
+    }
+    if (current == null) {
+      return null;
+    }
+    if (!type.isAssignableFrom(current.getClass())) {
+      throw new IllegalArgumentException(
+          String.format(
+              "reference '%s' could not be resolved as target type is not assignable from actual type (target: %s, actual: %s)",
+              asString(reference), type.getName(), current.getClass().getName()));
+    }
+    return type.cast(current);
+  }
+
+  private static Reference handleReferredSemanticId(
+      Referable referable, boolean setReferredSemanticIdIfHasSemantics, Reference reference) {
+    if (setReferredSemanticIdIfHasSemantics && referable instanceof HasSemantics) {
+      reference.setReferredSemanticId(((HasSemantics) referable).getSemanticId());
     }
 
-    /**
-     * Creates a deep-copy clone of a reference using provided implementation types for reference and key
-     *
-     * @param reference the reference to clone
-     * @param referenceType implementation type of Reference interface
-     * @param keyType implementation type of Key interface
-     *
-     * @return the cloned reference
-     */
-    private static Reference clone(Reference reference, Class<? extends Reference> referenceType, Class<? extends Key> keyType) {
-        if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
-            return null;
-        }
-        try {
-            Reference result = referenceType.getConstructor().newInstance();
-            List<Key> newKeys = new ArrayList<>();
-            result.setType(reference.getType());
-            for (Key key : reference.getKeys()) {
-                Key newKey = keyType.getConstructor().newInstance();
-                newKey.setType(key.getType());
-                newKey.setValue(key.getValue());
-                newKeys.add(newKey);
-            }
-            result.setKeys(newKeys);
-            return result;
-        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            throw new IllegalArgumentException("error parsing reference - could not instantiate reference type", ex);
-        }
-    }
-
-    /**
-     * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted object if available,
-     * null otherwise
-     *
-     *
-     * @param reference The reference to resolve
-     * @param env The AssetAdministrationShellEnvironment to resolve the reference against
-     * @return returns an instance of T if the reference could successfully be resolved, otherwise null
-     * @throws IllegalArgumentException if something goes wrong while resolving
-     */
-    public static Referable resolve(Reference reference, Environment env) {
-        return resolve(reference, env, Referable.class);
-    }
-
-    /**
-     * Resolves a Reference within an AssetAdministrationShellEnvironment and returns the targeted object if available,
-     * null otherwise
-     *
-     * @param <T> sub-type of Referable of the targeted type. If unknown use Referable.class
-     * @param reference The reference to resolve
-     * @param env The AssetAdministrationShellEnvironment to resolve the reference against
-     * @param type desired return type, use Referable.class is unknwon/not needed
-     * @return returns an instance of T if the reference could successfully be resolved, otherwise null
-     * @throws IllegalArgumentException if something goes wrong while resolving
-     */
-    @SuppressWarnings("unchecked")
-    public static <T extends Referable> T resolve(Reference reference, Environment env, Class<T> type) {
-        if (reference == null || reference.getKeys() == null || reference.getKeys().isEmpty()) {
-            return null;
-        }
-        GetChildrenVisitor findChildrenVisitor = new GetChildrenVisitor(env);
-        findChildrenVisitor.visit(env);
-        Referable current = null;
-        for (int i = 0; i < reference.getKeys().size(); i++) {
-            Key key = reference.getKeys().get(i);
-            try {
-                int index = Integer.parseInt(key.getValue());
-                if (Objects.isNull(current) || !SubmodelElementList.class.isAssignableFrom(current.getClass())) {
-                    throw new IllegalArgumentException("reference uses index notation on an element that is not a SubmodelElementList");
-                }
-                List<SubmodelElement> list = ((SubmodelElementList) current).getValue();
-                if (list.size() <= index) {
-                    throw new IllegalArgumentException(String.format(
-                            "index notation out of bounds (list size: %s, requested index: %s)",
-                            list.size(),
-                            index));
-                }
-                current = list.get(index);
-            } catch (NumberFormatException e) {
-                current = findChildrenVisitor.getChildren().stream()
-                        .filter(x -> Objects.equals(key.getValue(), GetIdentifierVisitor.getIdentifier(x)))
-                        .findFirst()
-                        .orElseThrow(() -> new IllegalArgumentException(String.format(
-                        "unable to resolve reference '%s' as element '%s' does not exist",
-                        asString(reference),
-                        key.getValue())));
-            }
-            findChildrenVisitor.reset();
-            findChildrenVisitor.visit(current);
-        }
-        if (current == null) {
-            return null;
-        }
-        if (!type.isAssignableFrom(current.getClass())) {
-            throw new IllegalArgumentException(String.format(
-                    "reference '%s' could not be resolved as target type is not assignable from actual type (target: %s, actual: %s)",
-                    asString(reference),
-                    type.getName(),
-                    current.getClass().getName()));
-        }
-        return type.cast(current);
-    }
-
-    private static Reference handleReferredSemanticId(Referable referable,
-            boolean setReferredSemanticIdIfHasSemantics, Reference reference) {
-        if (setReferredSemanticIdIfHasSemantics && referable instanceof HasSemantics) {
-            reference.setReferredSemanticId(((HasSemantics) referable).getSemanticId());
-        }
-
-        return reference;
-    }
-
+    return reference;
+  }
 }

@@ -20,11 +20,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceC
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 /**
- * 
  * @author schnicke
- *
  */
 public interface PropertyMixin {
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	void setValueId(Reference valueId);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
+  void setValueId(Reference valueId);
 }

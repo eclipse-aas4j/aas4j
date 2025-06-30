@@ -15,13 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -30,49 +23,59 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Custom deserializer for lists without individual list entry wrappers for parametrized classes.
- * 
+ *
  * @param <T> deserialized class within the list
  */
 public class NoEntryWrapperListDeserializer<T> extends JsonDeserializer<List<T>> {
-    protected final String elementName;
-    private CustomJsonNodeDeserializer<T> nodeDeserializer;
-    private static Logger logger = LoggerFactory.getLogger(NoEntryWrapperListDeserializer.class);
+  protected final String elementName;
+  private CustomJsonNodeDeserializer<T> nodeDeserializer;
+  private static Logger logger = LoggerFactory.getLogger(NoEntryWrapperListDeserializer.class);
 
-    public NoEntryWrapperListDeserializer(String elementName, CustomJsonNodeDeserializer<T> nodeDeserializer) {
-        this.elementName = elementName;
-        this.nodeDeserializer = nodeDeserializer;
-    }
+  public NoEntryWrapperListDeserializer(
+      String elementName, CustomJsonNodeDeserializer<T> nodeDeserializer) {
+    this.elementName = elementName;
+    this.nodeDeserializer = nodeDeserializer;
+  }
 
-    @Override
-    public List<T> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        try {
-            ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
-            JsonNode langStringNode = node.get(elementName);
-            if (langStringNode.isObject()) {
-                return createEntriesFromObjectNode(langStringNode, parser);
-            } else {
-                return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
-            }
-        } catch (ClassCastException e) {
-            logger.info("Found empty list item (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
-            return new ArrayList<T>();
-        }
+  @Override
+  public List<T> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    try {
+      ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
+      JsonNode langStringNode = node.get(elementName);
+      if (langStringNode.isObject()) {
+        return createEntriesFromObjectNode(langStringNode, parser);
+      } else {
+        return createEntriesFromArrayNode((ArrayNode) langStringNode, parser);
+      }
+    } catch (ClassCastException e) {
+      logger.info(
+          "Found empty list item (e.g., '<preferredName />' of dataSpecificationIec61360) in XML. This is most likely an error.");
+      return new ArrayList<T>();
     }
+  }
 
-    private List<T> createEntriesFromArrayNode(ArrayNode langStringsNode, JsonParser parser) throws IOException {
-        List<T> entries = new ArrayList<>();
-        for (int i = 0; i < langStringsNode.size(); i++) {
-            JsonNode nextNode = langStringsNode.get(i);
-            entries.add(nodeDeserializer.readValue(nextNode, parser));
-        }
-        return entries;
+  private List<T> createEntriesFromArrayNode(ArrayNode langStringsNode, JsonParser parser)
+      throws IOException {
+    List<T> entries = new ArrayList<>();
+    for (int i = 0; i < langStringsNode.size(); i++) {
+      JsonNode nextNode = langStringsNode.get(i);
+      entries.add(nodeDeserializer.readValue(nextNode, parser));
     }
+    return entries;
+  }
 
-    private List<T> createEntriesFromObjectNode(JsonNode langStringNode, JsonParser parser) throws IOException {
-        T entry = nodeDeserializer.readValue(langStringNode, parser);
-        return Lists.newArrayList(entry);
-    }
+  private List<T> createEntriesFromObjectNode(JsonNode langStringNode, JsonParser parser)
+      throws IOException {
+    T entry = nodeDeserializer.readValue(langStringNode, parser);
+    return Lists.newArrayList(entry);
+  }
 }

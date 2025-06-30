@@ -23,15 +23,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 @JsonPropertyOrder({"type", "value"})
 public interface KeyMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  public String getValue();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    void setValue(String value);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  void setValue(String value);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    public KeyTypes getType();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+  public KeyTypes getType();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
-    void setType(KeyTypes type);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "type")
+  void setType(KeyTypes type);
 }

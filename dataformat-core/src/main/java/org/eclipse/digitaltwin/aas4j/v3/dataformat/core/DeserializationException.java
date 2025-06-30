@@ -18,12 +18,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 @SuppressWarnings("serial")
 public class DeserializationException extends Exception {
 
-    public DeserializationException(String msg) {
-        super(msg);
-    }
+  public DeserializationException(String msg) {
+    super(msg);
+  }
 
-    public DeserializationException(String msg, Throwable err) {
-        super(msg, err);
-    }
-
+  public DeserializationException(String msg, Throwable err) {
+    super(msg, err);
+  }
 }

@@ -16,22 +16,21 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-
 /**
- * Factory for creating a {@link SimpleAbstractTypeResolver} configured with the
- * Default Implementations of AAS4J
- * 
- * @author schnicke
+ * Factory for creating a {@link SimpleAbstractTypeResolver} configured with the Default
+ * Implementations of AAS4J
  *
+ * @author schnicke
  */
 public class SimpleAbstractTypeResolverFactory {
-    @SuppressWarnings("unchecked")
-    public SimpleAbstractTypeResolver create() {
-        SimpleAbstractTypeResolver typeResolver = new SimpleAbstractTypeResolver();
-        ReflectionHelper.DEFAULT_IMPLEMENTATIONS.stream().forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
-        return typeResolver;
-    }
+  @SuppressWarnings("unchecked")
+  public SimpleAbstractTypeResolver create() {
+    SimpleAbstractTypeResolver typeResolver = new SimpleAbstractTypeResolver();
+    ReflectionHelper.DEFAULT_IMPLEMENTATIONS.stream()
+        .forEach(x -> typeResolver.addMapping(x.getInterfaceType(), x.getImplementationType()));
+    return typeResolver;
+  }
 }

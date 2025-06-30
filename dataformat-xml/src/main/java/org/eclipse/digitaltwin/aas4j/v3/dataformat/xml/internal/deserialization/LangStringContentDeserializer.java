@@ -17,16 +17,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import java.io.IOException;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.util.LangStringContent;
 
-public class LangStringContentDeserializer implements CustomJsonNodeDeserializer<LangStringContent> {
-    @Override
-	public LangStringContent readValue(JsonNode node, JsonParser parser) throws IOException {
-        String lang = node.get("language").asText();
-        String text = node.get("text").asText();
-		return new LangStringContent(lang, text);
-    }
+public class LangStringContentDeserializer
+    implements CustomJsonNodeDeserializer<LangStringContent> {
+  @Override
+  public LangStringContent readValue(JsonNode node, JsonParser parser) throws IOException {
+    String lang = node.get("language").asText();
+    String text = node.get("text").asText();
+    return new LangStringContent(lang, text);
+  }
 }

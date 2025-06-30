@@ -18,21 +18,31 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import java.util.List;
-
-@JsonPropertyOrder({ "extension", "category", "idShort", "displayNames", "description", "checksum", "administration", "id", "dataSpecifications", "embeddedDataSpecifications", "derivedFrom", "assetInformation", "submodels" })
+@JsonPropertyOrder({
+  "extension",
+  "category",
+  "idShort",
+  "displayNames",
+  "description",
+  "checksum",
+  "administration",
+  "id",
+  "dataSpecifications",
+  "embeddedDataSpecifications",
+  "derivedFrom",
+  "assetInformation",
+  "submodels"
+})
 public interface AssetAdministrationShellMixin {
 
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
+  public String getID();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-    public String getID();
-
-
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
-    public List<Reference> getSubmodels();
-
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+  public List<Reference> getSubmodels();
 }

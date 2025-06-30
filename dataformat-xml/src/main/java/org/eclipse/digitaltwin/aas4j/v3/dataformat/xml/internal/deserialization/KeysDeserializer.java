@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 
 public class KeysDeserializer extends NoEntryWrapperListDeserializer<Key> {
-    public KeysDeserializer() {
-        super("key", new KeyDeserializer());
-    }
+  public KeysDeserializer() {
+    super("key", new KeyDeserializer());
+  }
 }

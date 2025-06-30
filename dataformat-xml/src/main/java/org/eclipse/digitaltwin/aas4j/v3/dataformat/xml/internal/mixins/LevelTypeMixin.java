@@ -20,31 +20,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 
-
 @JsonPropertyOrder({"min", "nom", "typ", "max"})
 public interface LevelTypeMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "min")
-    public boolean getMin();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "min")
+  public boolean getMin();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "min")
-    void setMin(boolean min);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "min")
+  void setMin(boolean min);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "nom")
-    public boolean getNom();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "nom")
+  public boolean getNom();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "nom")
-    void setNom(boolean nom);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "nom")
+  void setNom(boolean nom);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typ")
-    public boolean getTyp();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typ")
+  public boolean getTyp();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typ")
-    void setTyp(boolean typ);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "typ")
+  void setTyp(boolean typ);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "max")
-    public boolean getMax();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "max")
+  public boolean getMax();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "max")
-    void setMax(boolean max);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "max")
+  void setMax(boolean max);
 }

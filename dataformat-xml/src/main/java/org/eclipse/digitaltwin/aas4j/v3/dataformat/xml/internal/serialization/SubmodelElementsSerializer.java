@@ -19,34 +19,32 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-
+import java.io.IOException;
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import java.io.IOException;
-import java.util.List;
-
 public class SubmodelElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
 
-    private SubmodelElementSerializer ser = new SubmodelElementSerializer();
+  private SubmodelElementSerializer ser = new SubmodelElementSerializer();
 
-    @Override
-    public void serialize(List<SubmodelElement> value, JsonGenerator gen, SerializerProvider serializers)
-            throws IOException {
+  @Override
+  public void serialize(
+      List<SubmodelElement> value, JsonGenerator gen, SerializerProvider serializers)
+      throws IOException {
 
-
-        ToXmlGenerator xgen = (ToXmlGenerator) gen;
-        xgen.writeStartObject();
-        for (SubmodelElement element : value) {
-            List<Runnable> resetRunnables = ReflectionHelper.setEmptyListsToNull(element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
-                                                                                            // <statements />, which is not allowed according to the schema
-            xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
-            ser.serialize(element, xgen, serializers);
-            resetRunnables.stream().forEach(r -> r.run());
-        }
-        xgen.writeEndObject();
+    ToXmlGenerator xgen = (ToXmlGenerator) gen;
+    xgen.writeStartObject();
+    for (SubmodelElement element : value) {
+      List<Runnable> resetRunnables =
+          ReflectionHelper.setEmptyListsToNull(
+              element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
+      // <statements />, which is not allowed according to the schema
+      xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
+      ser.serialize(element, xgen, serializers);
+      resetRunnables.stream().forEach(r -> r.run());
     }
-
-
+    xgen.writeEndObject();
+  }
 }

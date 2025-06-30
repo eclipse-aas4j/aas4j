@@ -18,20 +18,18 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.QualifierDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 
-import java.util.List;
-
 public interface QualifiableMixin {
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
-    @JsonDeserialize(using = QualifierDeserializer.class)
-    public List<Qualifier> getQualifiers();
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
+  @JsonDeserialize(using = QualifierDeserializer.class)
+  public List<Qualifier> getQualifiers();
 
-    @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
-    void setQualifiers(List<Qualifier> qualifiers);
+  @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifiers")
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "qualifier")
+  void setQualifiers(List<Qualifier> qualifiers);
 }

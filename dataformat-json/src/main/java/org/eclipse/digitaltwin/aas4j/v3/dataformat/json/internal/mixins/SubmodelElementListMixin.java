@@ -19,6 +19,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface SubmodelElementListMixin {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    boolean getOrderRelevant();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  boolean getOrderRelevant();
 }

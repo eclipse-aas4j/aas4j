@@ -24,34 +24,28 @@ import org.junit.Test;
 
 public class TestAASXUtils {
 
-	@Test
-	public void isFilePath() {
-		// Cf. RFC8089
-		String[] filePaths = {
-				"file://a", "file:a", "./b/c", "../b/c/d", "/a" 
-		};
-		
-		String[] notFilePaths = {
-				"http://admin-shell.io/example", "ftp://admin-shell.io/example"
-		};
+  @Test
+  public void isFilePath() {
+    // Cf. RFC8089
+    String[] filePaths = {"file://a", "file:a", "./b/c", "../b/c/d", "/a"};
 
-		for (String filePath : filePaths) {
-			assertTrue(AASXUtils.isFilePath(filePath));
-		}
+    String[] notFilePaths = {"http://admin-shell.io/example", "ftp://admin-shell.io/example"};
 
-		for (String filePath : notFilePaths) {
-			assertFalse(AASXUtils.isFilePath(filePath));
-		}
-	}
+    for (String filePath : filePaths) {
+      assertTrue(AASXUtils.isFilePath(filePath));
+    }
 
-	@Test
-	public void removeFilePartOfURI() {
-		String[] filePaths = {
-				"file:///a", "file:/a", "/a"
-		};
+    for (String filePath : notFilePaths) {
+      assertFalse(AASXUtils.isFilePath(filePath));
+    }
+  }
 
-		for (String filePath : filePaths) {
-			assertEquals("/a", AASXUtils.removeFilePartOfURI(filePath));
-		}
-	}
+  @Test
+  public void removeFilePartOfURI() {
+    String[] filePaths = {"file:///a", "file:/a", "/a"};
+
+    for (String filePath : filePaths) {
+      assertEquals("/a", AASXUtils.removeFilePartOfURI(filePath));
+    }
+  }
 }

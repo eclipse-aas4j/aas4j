@@ -18,15 +18,12 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
 /**
- * 
  * @author schnicke
- *
  */
-public class LangStringsPreferredNameTypeIec61360Serializer extends AbstractLangStringsSerializer<LangStringPreferredNameTypeIec61360> {
+public class LangStringsPreferredNameTypeIec61360Serializer
+    extends AbstractLangStringsSerializer<LangStringPreferredNameTypeIec61360> {
 
-	public LangStringsPreferredNameTypeIec61360Serializer() {
-		super(new AbstractLangStringSerializer<>("langStringPreferredNameTypeIec61360"));
-	}
-
-
+  public LangStringsPreferredNameTypeIec61360Serializer() {
+    super(new AbstractLangStringSerializer<>("langStringPreferredNameTypeIec61360"));
+  }
 }
