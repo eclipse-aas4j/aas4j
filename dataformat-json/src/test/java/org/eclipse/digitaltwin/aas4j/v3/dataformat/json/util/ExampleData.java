@@ -17,48 +17,49 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class ExampleData<T> {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+  private static final ObjectMapper mapper = new ObjectMapper();
 
-    private final T model;
-    private final String file;
+  private final T model;
+  private final String file;
 
-    public ExampleData(T model, String file) {
-        this.model = model;
-        this.file = file;
+  public ExampleData(T model, String file) {
+    this.model = model;
+    this.file = file;
+  }
+
+  public static <T> ExampleData<T> of(T model, String file) {
+    return new ExampleData<>(model, file);
+  }
+
+  public T getModel() {
+    return model;
+  }
+
+  public String getFile() {
+    return file;
+  }
+
+  public String fileContent() throws IOException {
+    return new String(
+        getClass().getClassLoader().getResourceAsStream(file).readAllBytes(),
+        StandardCharsets.UTF_8);
+  }
+
+  public InputStream fileContentStream() {
+    return getClass().getClassLoader().getResourceAsStream(file);
+  }
+
+  public JsonNode getJsonNode() {
+    try {
+      return mapper.readTree(fileContent());
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
-
-    public static <T> ExampleData<T> of(T model, String file) {
-        return new ExampleData<>(model, file);
-    }
-
-    public T getModel() {
-        return model;
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public String fileContent() throws IOException {
-        return new String(getClass().getClassLoader().getResourceAsStream(file).readAllBytes(), StandardCharsets.UTF_8);
-    }
-
-    public InputStream fileContentStream() {
-        return getClass().getClassLoader().getResourceAsStream(file);
-    }
-
-    public JsonNode getJsonNode() {
-        try {
-            return mapper.readTree(fileContent());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+  }
 }

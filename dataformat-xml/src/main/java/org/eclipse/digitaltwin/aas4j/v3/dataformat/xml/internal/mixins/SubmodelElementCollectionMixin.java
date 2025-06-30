@@ -18,17 +18,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.SubmodelElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
-import java.util.List;
-
 public interface SubmodelElementCollectionMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    @JsonSerialize(using = SubmodelElementsSerializer.class)
-    @JsonDeserialize(using = SubmodelElementsDeserializer.class)
-    public List<SubmodelElement> getValue();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  @JsonSerialize(using = SubmodelElementsSerializer.class)
+  @JsonDeserialize(using = SubmodelElementsDeserializer.class)
+  public List<SubmodelElement> getValue();
 }

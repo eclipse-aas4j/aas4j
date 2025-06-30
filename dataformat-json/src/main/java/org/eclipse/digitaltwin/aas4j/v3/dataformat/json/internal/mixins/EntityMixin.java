@@ -15,12 +15,11 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 
 public interface EntityMixin {
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    EntityType getEntityType();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  EntityType getEntityType();
 }

@@ -24,6 +24,7 @@ local.properties
 .loadpath
 .recommenders
 *.iml
+**/*.DS_Store
 
 .classpath
 .project

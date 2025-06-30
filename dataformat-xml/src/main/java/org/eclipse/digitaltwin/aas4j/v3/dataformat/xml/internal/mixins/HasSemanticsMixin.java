@@ -19,23 +19,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.ReferencesDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import java.util.List;
-
-
 @JsonPropertyOrder("semanticId, supplementalSemanticIds")
 public interface HasSemanticsMixin {
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticId")
-	void setSemanticId(Reference semanticId);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "semanticId")
+  void setSemanticId(Reference semanticId);
 
-	@JsonDeserialize(using = ReferencesDeserializer.class)
-	void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);
+  @JsonDeserialize(using = ReferencesDeserializer.class)
+  void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);
 
-	@JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "supplementalSemanticIds")
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
-	List<Reference> getSupplementalSemanticIds();
+  @JacksonXmlElementWrapper(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "supplementalSemanticIds")
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
+  List<Reference> getSupplementalSemanticIds();
 }

@@ -25,81 +25,88 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 public class SubmodelElementsDeserializer extends JsonDeserializer<List<SubmodelElement>> {
 
-    private SubmodelElementDeserializer deserializer = new SubmodelElementDeserializer();
+  private SubmodelElementDeserializer deserializer = new SubmodelElementDeserializer();
 
-    public SubmodelElementsDeserializer(SubmodelElementDeserializer deserializer) {
-        this.deserializer = deserializer;
+  public SubmodelElementsDeserializer(SubmodelElementDeserializer deserializer) {
+    this.deserializer = deserializer;
+  }
+
+  public SubmodelElementsDeserializer() {}
+
+  @Override
+  public List<SubmodelElement> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
+    if (treeNode instanceof TextNode) {
+      return new ArrayList<>();
+    } else {
+      return createSubmodelElements(parser, ctxt, treeNode);
     }
+  }
 
-    public SubmodelElementsDeserializer() {
+  private List<SubmodelElement> createSubmodelElements(
+      JsonParser parser, DeserializationContext ctxt, TreeNode treeNode)
+      throws IOException, JsonProcessingException {
+    if (treeNode.isArray()) {
+      return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
+    } else {
+      return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
     }
+  }
 
-    @Override
-    public List<SubmodelElement> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
-        if (treeNode instanceof TextNode) {
-            return new ArrayList<>();
-        } else {
-            return createSubmodelElements(parser, ctxt, treeNode);
-        }
-    }
+  private List<SubmodelElement> getSubmodelElementsFromObjectNode(
+      JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement)
+      throws IOException, JsonProcessingException {
 
-    private List<SubmodelElement> createSubmodelElements(JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws IOException, JsonProcessingException {
-        if (treeNode.isArray()) {
-            return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
-        } else {
-            return getSubmodelElementsFromObjectNode(parser, ctxt, (JsonNode) treeNode);
-        }
-    }
+    Iterator<String> iter = nodeSubmodelElement.fieldNames();
+    List<SubmodelElement> submodelElements = new ArrayList<SubmodelElement>();
 
-    private List<SubmodelElement> getSubmodelElementsFromObjectNode(JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement) throws IOException, JsonProcessingException {
-
-        Iterator<String> iter = nodeSubmodelElement.fieldNames();
-        List<SubmodelElement> submodelElements = new ArrayList<SubmodelElement>();
-
-        while(iter.hasNext()) {
-            String submodelElementName = iter.next();
-            final ObjectMapper mapper = new ObjectMapper();
-            final ObjectNode node = mapper.createObjectNode();
-            node.set(submodelElementName, nodeSubmodelElement.get(submodelElementName));
-            if (nodeSubmodelElement.get(submodelElementName).isArray()) {
-                ArrayNode arrayNode = (ArrayNode) nodeSubmodelElement.get(submodelElementName);
-                for (int i = 0; i < arrayNode.size(); i++) {
-                    final ObjectNode nodeElement = mapper.createObjectNode();
-                    nodeElement.set(submodelElementName, arrayNode.get(i));
-                    submodelElements.add(getSubmodelElementFromJsonNode(parser, ctxt, nodeElement));
-                }
-            } else {
-                SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, node);
-                submodelElements.add(elem);
-            }
-        }
-
-        return submodelElements;
-    }
-
-    private List<SubmodelElement> getSubmodelElementsFromArrayNode(JsonParser parser, DeserializationContext ctxt, ArrayNode arrayNode) throws IOException, JsonProcessingException {
-        List<SubmodelElement> elements = new ArrayList<>();
+    while (iter.hasNext()) {
+      String submodelElementName = iter.next();
+      final ObjectMapper mapper = new ObjectMapper();
+      final ObjectNode node = mapper.createObjectNode();
+      node.set(submodelElementName, nodeSubmodelElement.get(submodelElementName));
+      if (nodeSubmodelElement.get(submodelElementName).isArray()) {
+        ArrayNode arrayNode = (ArrayNode) nodeSubmodelElement.get(submodelElementName);
         for (int i = 0; i < arrayNode.size(); i++) {
-            JsonNode jsonNode = arrayNode.get(i);
-            SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, jsonNode);
-            elements.add(elem);
+          final ObjectNode nodeElement = mapper.createObjectNode();
+          nodeElement.set(submodelElementName, arrayNode.get(i));
+          submodelElements.add(getSubmodelElementFromJsonNode(parser, ctxt, nodeElement));
         }
-        return elements;
+      } else {
+        SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, node);
+        submodelElements.add(elem);
+      }
     }
 
-    private SubmodelElement getSubmodelElementFromJsonNode(JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement) throws IOException, JsonProcessingException {
-        JsonParser parserReference = parser.getCodec().getFactory().getCodec().treeAsTokens(nodeSubmodelElement);
-        return deserializer.deserialize(parserReference, ctxt);
-    }
+    return submodelElements;
+  }
 
+  private List<SubmodelElement> getSubmodelElementsFromArrayNode(
+      JsonParser parser, DeserializationContext ctxt, ArrayNode arrayNode)
+      throws IOException, JsonProcessingException {
+    List<SubmodelElement> elements = new ArrayList<>();
+    for (int i = 0; i < arrayNode.size(); i++) {
+      JsonNode jsonNode = arrayNode.get(i);
+      SubmodelElement elem = getSubmodelElementFromJsonNode(parser, ctxt, jsonNode);
+      elements.add(elem);
+    }
+    return elements;
+  }
+
+  private SubmodelElement getSubmodelElementFromJsonNode(
+      JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement)
+      throws IOException, JsonProcessingException {
+    JsonParser parserReference =
+        parser.getCodec().getFactory().getCodec().treeAsTokens(nodeSubmodelElement);
+    return deserializer.deserialize(parserReference, ctxt);
+  }
 }

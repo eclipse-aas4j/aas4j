@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.EmbeddedDataSpecificationsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.EmbeddedDataSpecificationSerializer;
@@ -29,18 +28,21 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 @JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
 public interface EmbeddedDataSpecificationMixin {
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
-    public Reference getDataSpecification();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
+  public Reference getDataSpecification();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
-    public void setDataSpecification(Reference dataSpecification);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecification")
+  public void setDataSpecification(Reference dataSpecification);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
-    @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
-	public DataSpecificationContent getDataSpecificationContent();
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "dataSpecificationContent")
+  @JsonSerialize(using = EmbeddedDataSpecificationSerializer.class)
+  public DataSpecificationContent getDataSpecificationContent();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "dataSpecificationContent")
-    @JsonDeserialize(using = EmbeddedDataSpecificationsDeserializer.class)
-	public void setDataSpecificationContent(DataSpecificationContent dataSpecificationIEC61360);
-
+  @JacksonXmlProperty(
+      namespace = AasXmlNamespaceContext.AAS_URI,
+      localName = "dataSpecificationContent")
+  @JsonDeserialize(using = EmbeddedDataSpecificationsDeserializer.class)
+  public void setDataSpecificationContent(DataSpecificationContent dataSpecificationIEC61360);
 }

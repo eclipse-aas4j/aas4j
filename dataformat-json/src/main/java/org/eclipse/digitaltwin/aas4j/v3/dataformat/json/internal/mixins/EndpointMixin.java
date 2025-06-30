@@ -19,9 +19,9 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public interface EndpointMixin {
-    @JsonProperty("interface")
-    String get_interface();
+  @JsonProperty("interface")
+  String get_interface();
 
-    @JsonProperty("interface")
-    void set_interface(String _interface);
+  @JsonProperty("interface")
+  void set_interface(String _interface);
 }

@@ -15,6 +15,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBasicEventElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
@@ -37,48 +40,48 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public class SubmodelElementManager {
 
-    public static Map<Class<?>, String> CLASS_TO_NAME = new HashMap<>();
-    public static Map<String, Class<?>> NAME_TO_CLASS = new HashMap<>();
+  public static Map<Class<?>, String> CLASS_TO_NAME = new HashMap<>();
+  public static Map<String, Class<?>> NAME_TO_CLASS = new HashMap<>();
 
-    static {
-        CLASS_TO_NAME.put(DefaultAnnotatedRelationshipElement.class, "annotatedRelationshipElement");
-        CLASS_TO_NAME.put(DefaultRelationshipElement.class, "relationshipElement");
-        CLASS_TO_NAME.put(DefaultReferenceElement.class, "referenceElement");
-        CLASS_TO_NAME.put(DefaultProperty.class, "property");
-        CLASS_TO_NAME.put(DefaultFile.class, "file");
-        CLASS_TO_NAME.put(DefaultBlob.class, "blob");
-        CLASS_TO_NAME.put(DefaultRange.class, "range");
-        CLASS_TO_NAME.put(DefaultMultiLanguageProperty.class, "multiLanguageProperty");
-        CLASS_TO_NAME.put(DefaultCapability.class, "capability");
-        CLASS_TO_NAME.put(DefaultEntity.class, "entity");
-        CLASS_TO_NAME.put(DefaultBasicEventElement.class, "basicEventElement");
-        CLASS_TO_NAME.put(DefaultEventPayload.class, "eventPayload");
-        CLASS_TO_NAME.put(DefaultOperation.class, "operation");
-        CLASS_TO_NAME.put(DefaultOperationVariable.class, "operationVariable");
-		CLASS_TO_NAME.put(DefaultLangStringTextType.class, "langStringTextType");
-		CLASS_TO_NAME.put(DefaultLangStringNameType.class, "langStringNameType");
-		CLASS_TO_NAME.put(DefaultLangStringDefinitionTypeIec61360.class, "langStringDefinitionTypeIec61360");
-		CLASS_TO_NAME.put(DefaultLangStringPreferredNameTypeIec61360.class, "langStringPreferredNameTypeIec61360");
-		CLASS_TO_NAME.put(DefaultLangStringShortNameTypeIec61360.class, "langStringShortNameTypeIec61360");
-        CLASS_TO_NAME.put(DefaultSubmodelElementCollection.class, "submodelElementCollection");
-        CLASS_TO_NAME.put(DefaultSubmodelElementList.class, "submodelElementList");
-        NAME_TO_CLASS = CLASS_TO_NAME.entrySet().stream().collect(Collectors.toMap(x -> x.getValue(), x -> x.getKey()));
-    }
+  static {
+    CLASS_TO_NAME.put(DefaultAnnotatedRelationshipElement.class, "annotatedRelationshipElement");
+    CLASS_TO_NAME.put(DefaultRelationshipElement.class, "relationshipElement");
+    CLASS_TO_NAME.put(DefaultReferenceElement.class, "referenceElement");
+    CLASS_TO_NAME.put(DefaultProperty.class, "property");
+    CLASS_TO_NAME.put(DefaultFile.class, "file");
+    CLASS_TO_NAME.put(DefaultBlob.class, "blob");
+    CLASS_TO_NAME.put(DefaultRange.class, "range");
+    CLASS_TO_NAME.put(DefaultMultiLanguageProperty.class, "multiLanguageProperty");
+    CLASS_TO_NAME.put(DefaultCapability.class, "capability");
+    CLASS_TO_NAME.put(DefaultEntity.class, "entity");
+    CLASS_TO_NAME.put(DefaultBasicEventElement.class, "basicEventElement");
+    CLASS_TO_NAME.put(DefaultEventPayload.class, "eventPayload");
+    CLASS_TO_NAME.put(DefaultOperation.class, "operation");
+    CLASS_TO_NAME.put(DefaultOperationVariable.class, "operationVariable");
+    CLASS_TO_NAME.put(DefaultLangStringTextType.class, "langStringTextType");
+    CLASS_TO_NAME.put(DefaultLangStringNameType.class, "langStringNameType");
+    CLASS_TO_NAME.put(
+        DefaultLangStringDefinitionTypeIec61360.class, "langStringDefinitionTypeIec61360");
+    CLASS_TO_NAME.put(
+        DefaultLangStringPreferredNameTypeIec61360.class, "langStringPreferredNameTypeIec61360");
+    CLASS_TO_NAME.put(
+        DefaultLangStringShortNameTypeIec61360.class, "langStringShortNameTypeIec61360");
+    CLASS_TO_NAME.put(DefaultSubmodelElementCollection.class, "submodelElementCollection");
+    CLASS_TO_NAME.put(DefaultSubmodelElementList.class, "submodelElementList");
+    NAME_TO_CLASS =
+        CLASS_TO_NAME.entrySet().stream()
+            .collect(Collectors.toMap(x -> x.getValue(), x -> x.getKey()));
+  }
 
-    public static String getXmlName(Class<?> type) {
-        return CLASS_TO_NAME.get(type);
-    }
+  public static String getXmlName(Class<?> type) {
+    return CLASS_TO_NAME.get(type);
+  }
 
-    public static Class<?> getClassByXmlName(String xmlName) {
-        return NAME_TO_CLASS.get(xmlName);
-    }
+  public static Class<?> getClassByXmlName(String xmlName) {
+    return NAME_TO_CLASS.get(xmlName);
+  }
 
-    private SubmodelElementManager() {
-    }
+  private SubmodelElementManager() {}
 }

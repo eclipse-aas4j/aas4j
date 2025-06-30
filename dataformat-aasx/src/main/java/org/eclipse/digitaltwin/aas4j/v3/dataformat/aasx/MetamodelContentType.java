@@ -13,12 +13,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
-/**
- * Supported ContentType's for serializing and deserializing Metamodels.
- */
+/** Supported ContentType's for serializing and deserializing Metamodels. */
 public enum MetamodelContentType {
-
-    JSON,
-    XML
-
+  JSON,
+  XML
 }

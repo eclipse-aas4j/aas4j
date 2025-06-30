@@ -12,110 +12,101 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
-import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
+public abstract class OperationResultBuilder<
+        T extends OperationResult, B extends OperationResultBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class OperationResultBuilder<T extends OperationResult, B extends OperationResultBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for executionState
+   *
+   * @param executionState desired value to be set
+   * @return Builder object with new value for executionState
+   */
+  public B executionState(ExecutionState executionState) {
+    getBuildingInstance().setExecutionState(executionState);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for executionState
-     *
-     * @param executionState desired value to be set
-     * @return Builder object with new value for executionState
-     */
-    public B executionState(ExecutionState executionState) {
-        getBuildingInstance().setExecutionState(executionState);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for inoutputArguments
+   *
+   * @param inoutputArguments desired value to be set
+   * @return Builder object with new value for inoutputArguments
+   */
+  public B inoutputArguments(List<OperationVariable> inoutputArguments) {
+    getBuildingInstance().setInoutputArguments(inoutputArguments);
+    return getSelf();
+  }
 
+  /**
+   * This function allows adding a value to the List inoutputArguments
+   *
+   * @param inoutputArguments desired value to be added
+   * @return Builder object with new value for inoutputArguments
+   */
+  public B inoutputArguments(OperationVariable inoutputArguments) {
+    getBuildingInstance().getInoutputArguments().add(inoutputArguments);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for inoutputArguments
-     *
-     * @param inoutputArguments desired value to be set
-     * @return Builder object with new value for inoutputArguments
-     */
-    public B inoutputArguments(List<OperationVariable> inoutputArguments) {
-        getBuildingInstance().setInoutputArguments(inoutputArguments);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for messages
+   *
+   * @param messages desired value to be set
+   * @return Builder object with new value for messages
+   */
+  public B messages(List<Message> messages) {
+    getBuildingInstance().setMessages(messages);
+    return getSelf();
+  }
 
+  /**
+   * This function allows adding a value to the List messages
+   *
+   * @param messages desired value to be added
+   * @return Builder object with new value for messages
+   */
+  public B messages(Message messages) {
+    getBuildingInstance().getMessages().add(messages);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List inoutputArguments
-     *
-     * @param inoutputArguments desired value to be added
-     * @return Builder object with new value for inoutputArguments
-     */
-    public B inoutputArguments(OperationVariable inoutputArguments) {
-        getBuildingInstance().getInoutputArguments().add(inoutputArguments);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for outputArguments
+   *
+   * @param outputArguments desired value to be set
+   * @return Builder object with new value for outputArguments
+   */
+  public B outputArguments(List<OperationVariable> outputArguments) {
+    getBuildingInstance().setOutputArguments(outputArguments);
+    return getSelf();
+  }
 
+  /**
+   * This function allows adding a value to the List outputArguments
+   *
+   * @param outputArguments desired value to be added
+   * @return Builder object with new value for outputArguments
+   */
+  public B outputArguments(OperationVariable outputArguments) {
+    getBuildingInstance().getOutputArguments().add(outputArguments);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for messages
-     *
-     * @param messages desired value to be set
-     * @return Builder object with new value for messages
-     */
-    public B messages(List<Message> messages) {
-        getBuildingInstance().setMessages(messages);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows adding a value to the List messages
-     *
-     * @param messages desired value to be added
-     * @return Builder object with new value for messages
-     */
-    public B messages(Message messages) {
-        getBuildingInstance().getMessages().add(messages);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows setting a value for outputArguments
-     *
-     * @param outputArguments desired value to be set
-     * @return Builder object with new value for outputArguments
-     */
-    public B outputArguments(List<OperationVariable> outputArguments) {
-        getBuildingInstance().setOutputArguments(outputArguments);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows adding a value to the List outputArguments
-     *
-     * @param outputArguments desired value to be added
-     * @return Builder object with new value for outputArguments
-     */
-    public B outputArguments(OperationVariable outputArguments) {
-        getBuildingInstance().getOutputArguments().add(outputArguments);
-        return getSelf();
-    }
-
-
-    /**
-     * This function allows setting a value for success
-     *
-     * @param success desired value to be set
-     * @return Builder object with new value for success
-     */
-    public B success(boolean success) {
-        getBuildingInstance().setSuccess(success);
-        return getSelf();
-    }
-
+  /**
+   * This function allows setting a value for success
+   *
+   * @param success desired value to be set
+   * @return Builder object with new value for success
+   */
+  public B success(boolean success) {
+    getBuildingInstance().setSuccess(success);
+    return getSelf();
+  }
 }

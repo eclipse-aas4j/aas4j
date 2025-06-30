@@ -15,6 +15,4 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-public interface TypedProperty extends Property {
-    
-}
+public interface TypedProperty extends Property {}

@@ -17,29 +17,30 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.internal;
 
 public class AASXUtils {
 
-
-    /**
-     * Removes the file: or file:// suffix of an URI
-     *
-     * @param uri
-     *            URI to remove the file suffix from
-     * @return the URI without the file suffix
-     */
-    public static String removeFilePartOfURI(String uri) {
-        if (uri == null) {
-            return null;
-        }
-
-        if (uri.startsWith("file://")) {
-            return uri.replaceFirst("file://", "");
-        } else if (uri.startsWith("file:")) {
-            return uri.replaceFirst("file:", "");
-        }
-
-        return uri;
+  /**
+   * Removes the file: or file:// suffix of an URI
+   *
+   * @param uri URI to remove the file suffix from
+   * @return the URI without the file suffix
+   */
+  public static String removeFilePartOfURI(String uri) {
+    if (uri == null) {
+      return null;
     }
-    
-    public static boolean isFilePath(String uri) {
-        return uri.startsWith("/") || uri.startsWith("file:") || uri.startsWith("./") || uri.startsWith("../");
+
+    if (uri.startsWith("file://")) {
+      return uri.replaceFirst("file://", "");
+    } else if (uri.startsWith("file:")) {
+      return uri.replaceFirst("file:", "");
     }
+
+    return uri;
+  }
+
+  public static boolean isFilePath(String uri) {
+    return uri.startsWith("/")
+        || uri.startsWith("file:")
+        || uri.startsWith("./")
+        || uri.startsWith("../");
+  }
 }

@@ -15,14 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 public interface RelationshipElementMixin {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    Reference getFirst();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  Reference getFirst();
 
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    Reference getSecond();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  Reference getSecond();
 }

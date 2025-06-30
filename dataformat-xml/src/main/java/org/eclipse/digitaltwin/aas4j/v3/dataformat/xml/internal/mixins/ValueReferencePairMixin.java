@@ -20,11 +20,11 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
-@JsonPropertyOrder({ "value", "valueID" })
+@JsonPropertyOrder({"value", "valueID"})
 public interface ValueReferencePairMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
-	public Reference getValueID();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "valueId")
+  public Reference getValueID();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
-    public String getValue();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")
+  public String getValue();
 }

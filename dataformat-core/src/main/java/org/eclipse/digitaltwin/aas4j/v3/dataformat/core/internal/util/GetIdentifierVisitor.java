@@ -21,31 +21,31 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
 
 public class GetIdentifierVisitor implements AssetAdministrationShellElementVisitor {
 
-    private String identifier;
+  private String identifier;
 
-    public static String getIdentifier(Referable referable) {
-        GetIdentifierVisitor visitor = new GetIdentifierVisitor();
-        visitor.visit(referable);
-        return visitor.getIdentifier();
-    }
+  public static String getIdentifier(Referable referable) {
+    GetIdentifierVisitor visitor = new GetIdentifierVisitor();
+    visitor.visit(referable);
+    return visitor.getIdentifier();
+  }
 
-    public String getIdentifier() {
-        return identifier;
-    }
+  public String getIdentifier() {
+    return identifier;
+  }
 
-    @Override
-    public void visit(Referable referable) {
-        if (referable != null) {
-            identifier = referable.getIdShort();
-        }
-        AssetAdministrationShellElementVisitor.super.visit(referable);
+  @Override
+  public void visit(Referable referable) {
+    if (referable != null) {
+      identifier = referable.getIdShort();
     }
+    AssetAdministrationShellElementVisitor.super.visit(referable);
+  }
 
-    @Override
-    public void visit(Identifiable identifiable) {
-        if (identifiable != null) {
-            identifier = identifiable.getId();
-        }
-        AssetAdministrationShellElementVisitor.super.visit(identifiable);
+  @Override
+  public void visit(Identifiable identifiable) {
+    if (identifiable != null) {
+      identifier = identifiable.getId();
     }
+    AssetAdministrationShellElementVisitor.super.visit(identifiable);
+  }
 }

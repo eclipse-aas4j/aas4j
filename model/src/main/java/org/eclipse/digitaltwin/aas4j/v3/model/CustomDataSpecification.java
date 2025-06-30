@@ -16,9 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 /**
- * This interface is needed to test the serialization/deserialization of a custom data specification content.
- * See: https://github.com/eclipse-aas4j/aas4j/issues/196
+ * This interface is needed to test the serialization/deserialization of a custom data specification
+ * content. See: https://github.com/eclipse-aas4j/aas4j/issues/196
  */
-public interface CustomDataSpecification extends DataSpecificationContent {
-
-}
+public interface CustomDataSpecification extends DataSpecificationContent {}

@@ -15,6 +15,4 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-public class CustomSubProperty extends CustomProperty {
-    
-}
+public class CustomSubProperty extends CustomProperty {}

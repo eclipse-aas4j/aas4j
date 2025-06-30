@@ -19,57 +19,54 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-
 import java.io.IOException;
 
 /**
- * Deserializes enum values converting element names from UpperCamelCase to
- * SCREAMING_SNAKE_CASE
+ * Deserializes enum values converting element names from UpperCamelCase to SCREAMING_SNAKE_CASE
  *
  * @param <T> Type of enum to deserialize
  */
 public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
 
-    protected final Class<T> type;
+  protected final Class<T> type;
 
-    public EnumDeserializer(Class<T> type) {
-        this.type = type;
+  public EnumDeserializer(Class<T> type) {
+    this.type = type;
+  }
+
+  @Override
+  public T deserialize(JsonParser parser, DeserializationContext context)
+      throws IOException, JsonProcessingException {
+
+    String value = parser.getText();
+
+    if (value.startsWith("xs:")) {
+      value = value.substring(3);
+      value = value.substring(0, 1).toUpperCase() + value.substring(1);
     }
 
-    @Override
-    public T deserialize(JsonParser parser, DeserializationContext context) throws IOException, JsonProcessingException {
+    return Enum.valueOf(type, deserializeEnumName(value));
+  }
 
-        String value = parser.getText();
-
-        if (value.startsWith("xs:")) {
-            value = value.substring(3);
-            value = value.substring(0, 1).toUpperCase() + value.substring(1);
-        }
-
-		return Enum.valueOf(type, deserializeEnumName(value));
+  /**
+   * Translates an enum value from CamelCase to SCREAMING_SNAKE_CASE
+   *
+   * @param input input name in CamelCase
+   * @return name in SCREAMING_SNAKE_CASE
+   */
+  public static String deserializeEnumName(String input) {
+    String result = "";
+    if (input == null || input.isEmpty()) {
+      return result;
     }
-
-	/**
-	 * Translates an enum value from CamelCase to SCREAMING_SNAKE_CASE
-	 *
-	 * @param input
-	 *            input name in CamelCase
-	 * @return name in SCREAMING_SNAKE_CASE
-	 */
-	public static String deserializeEnumName(String input) {
-		String result = "";
-		if (input == null || input.isEmpty()) {
-			return result;
-		}
-		result += Character.toUpperCase(input.charAt(0));
-		for (int i = 1; i < input.length(); i++) {
-			char currentChar = input.charAt(i), previousChar = input.charAt(i - 1);
-			if (Character.isUpperCase(currentChar) && Character.isLowerCase(previousChar)) {
-				result += "_";
-			}
-			result += Character.toUpperCase(currentChar);
-		}
-		return result;
-	}
-
+    result += Character.toUpperCase(input.charAt(0));
+    for (int i = 1; i < input.length(); i++) {
+      char currentChar = input.charAt(i), previousChar = input.charAt(i - 1);
+      if (Character.isUpperCase(currentChar) && Character.isLowerCase(previousChar)) {
+        result += "_";
+      }
+      result += Character.toUpperCase(currentChar);
+    }
+    return result;
+  }
 }

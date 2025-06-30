@@ -17,21 +17,51 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-
 @JsonPropertyOrder({
-        "hasExtensions", "category", "idShort", "displayName", "description", "checksum", // --> Referable
-        "kind", // --> HasKind
-		"semanticId", "supplementalSemanticIds", "reference", // --> HasSemantics
-        "qualifier",  // --> Qualifiable
-        "dataSpecifications", "embeddedDataSpecifications", // --> HasDataSpecifications
-		"orderRelevant", "semanticIdListElement", "typeValueListElement", "valueTypeListElement", // --> SME-List
-        "valueType", "value", "valueId" // --> Property
-        , "statements", "entityType", "globalAssetId", "specificAssetId" // --> Entity
-        , "first", "second", "annotations" // --> (Annotated)RelationsShipElement
-        , "inputVariables", "outputVariables", "inoutputVariables" // --> Operation
-        , "observed","direction","state","messageTopic","messageBroker","lastUpdate","minInterval","maxInterval" // --> BasicEventElement
-        , "min", "max" // Range
+  "hasExtensions",
+  "category",
+  "idShort",
+  "displayName",
+  "description",
+  "checksum", // --> Referable
+  "kind", // --> HasKind
+  "semanticId",
+  "supplementalSemanticIds",
+  "reference", // --> HasSemantics
+  "qualifier", // --> Qualifiable
+  "dataSpecifications",
+  "embeddedDataSpecifications", // --> HasDataSpecifications
+  "orderRelevant",
+  "semanticIdListElement",
+  "typeValueListElement",
+  "valueTypeListElement", // --> SME-List
+  "valueType",
+  "value",
+  "valueId" // --> Property
+  ,
+  "statements",
+  "entityType",
+  "globalAssetId",
+  "specificAssetId" // --> Entity
+  ,
+  "first",
+  "second",
+  "annotations" // --> (Annotated)RelationsShipElement
+  ,
+  "inputVariables",
+  "outputVariables",
+  "inoutputVariables" // --> Operation
+  ,
+  "observed",
+  "direction",
+  "state",
+  "messageTopic",
+  "messageBroker",
+  "lastUpdate",
+  "minInterval",
+  "maxInterval" // --> BasicEventElement
+  ,
+  "min",
+  "max" // Range
 })
-public interface SubmodelElementMixin {
-
-}
+public interface SubmodelElementMixin {}

@@ -16,25 +16,22 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.util;
 
 /**
- * 
  * @author schnicke
- *
  */
 public class LangStringContent {
-	private String language;
-	private String text;
+  private String language;
+  private String text;
 
-	public LangStringContent(String language, String text) {
-		this.language = language;
-		this.text = text;
-	}
+  public LangStringContent(String language, String text) {
+    this.language = language;
+    this.text = text;
+  }
 
-	public String getLanguage() {
-		return language;
-	}
+  public String getLanguage() {
+    return language;
+  }
 
-	public String getText() {
-		return text;
-	}
-
+  public String getText() {
+    return text;
+  }
 }

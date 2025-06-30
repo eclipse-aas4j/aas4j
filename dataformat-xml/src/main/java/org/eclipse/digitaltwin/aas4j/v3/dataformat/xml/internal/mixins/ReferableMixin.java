@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.LangStringsNameTypeDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.LangStringsTextTypeDeserializer;
@@ -28,26 +28,30 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.La
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 
-import java.util.List;
-
-
-@JsonPropertyOrder({"hasExtensions", "category", "idShort", "displayName", "description", "checksum"})
+@JsonPropertyOrder({
+  "hasExtensions",
+  "category",
+  "idShort",
+  "displayName",
+  "description",
+  "checksum"
+})
 public interface ReferableMixin {
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-	@JsonSerialize(using = LangStringsTextTypeSerializer.class)
-    List<LangStringTextType> getDescription();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
+  @JsonSerialize(using = LangStringsTextTypeSerializer.class)
+  List<LangStringTextType> getDescription();
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
-    @JsonDeserialize(using = LangStringsTextTypeDeserializer.class)
-    void setDescription(List<LangStringTextType> descriptions);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "description")
+  @JsonDeserialize(using = LangStringsTextTypeDeserializer.class)
+  void setDescription(List<LangStringTextType> descriptions);
 
-    @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
-	@JsonDeserialize(using = LangStringsNameTypeDeserializer.class)
-    List<LangStringNameType> getDisplayName();
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
+  @JsonDeserialize(using = LangStringsNameTypeDeserializer.class)
+  List<LangStringNameType> getDisplayName();
 
-	@JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
-	@JsonSerialize(using = LangStringsNameTypeSerializer.class)
-	void setDisplayName(List<LangStringNameType> displayNames);
+  @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "displayName")
+  @JsonSerialize(using = LangStringsNameTypeSerializer.class)
+  void setDisplayName(List<LangStringNameType> displayNames);
 
-    String getIdShort();
+  String getIdShort();
 }

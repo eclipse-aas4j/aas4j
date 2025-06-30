@@ -17,6 +17,4 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
-public class CustomSubmodel extends DefaultSubmodel {
-
-}
+public class CustomSubmodel extends DefaultSubmodel {}

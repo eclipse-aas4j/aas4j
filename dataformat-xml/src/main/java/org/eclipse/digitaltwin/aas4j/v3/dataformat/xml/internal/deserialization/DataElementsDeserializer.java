@@ -23,52 +23,53 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
 public class DataElementsDeserializer extends JsonDeserializer<List<DataElement>> {
 
-    SubmodelElementDeserializer deserializer = new SubmodelElementDeserializer();
+  SubmodelElementDeserializer deserializer = new SubmodelElementDeserializer();
 
-    public DataElementsDeserializer(SubmodelElementDeserializer deserializer) {
-        this.deserializer = deserializer;
+  public DataElementsDeserializer(SubmodelElementDeserializer deserializer) {
+    this.deserializer = deserializer;
+  }
+
+  public DataElementsDeserializer() {}
+
+  @Override
+  public List<DataElement> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
+    if (treeNode instanceof TextNode) {
+      return new ArrayList<>();
     }
 
-    public DataElementsDeserializer() {
+    ObjectNode node = (ObjectNode) treeNode;
+
+    Iterator<String> iter = node.fieldNames();
+    List<DataElement> dataElements = new ArrayList<DataElement>();
+    final ObjectMapper mapper = new ObjectMapper();
+    while (iter.hasNext()) {
+      String fieldName = iter.next();
+      ObjectNode dataElementNode = (ObjectNode) node.get(fieldName);
+      final ObjectNode nodeElement = mapper.createObjectNode();
+      nodeElement.set(fieldName, dataElementNode);
+      DataElement elem = createDataElementFromNode(parser, ctxt, nodeElement);
+      dataElements.add(elem);
     }
 
-    @Override
-    public List<DataElement> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
-        if (treeNode instanceof TextNode) {
-            return new ArrayList<>();
-        }
+    return dataElements;
+  }
 
-        ObjectNode node = (ObjectNode) treeNode;
-
-        Iterator<String> iter = node.fieldNames();
-        List<DataElement> dataElements = new ArrayList<DataElement>();
-        final ObjectMapper mapper = new ObjectMapper();
-        while (iter.hasNext()) {
-            String fieldName = iter.next();
-            ObjectNode dataElementNode = (ObjectNode) node.get(fieldName);
-            final ObjectNode nodeElement = mapper.createObjectNode();
-            nodeElement.set(fieldName, dataElementNode);
-            DataElement elem = createDataElementFromNode(parser, ctxt, nodeElement);
-            dataElements.add(elem);
-        }
-
-
-        return dataElements;
-    }
-
-    private DataElement createDataElementFromNode(JsonParser parser, DeserializationContext ctxt, ObjectNode dataElementNode) throws IOException, JsonProcessingException {
-        return (DataElement) DeserializationHelper.createInstanceFromNode(parser, dataElementNode, SubmodelElement.class);
-    }
-
+  private DataElement createDataElementFromNode(
+      JsonParser parser, DeserializationContext ctxt, ObjectNode dataElementNode)
+      throws IOException, JsonProcessingException {
+    return (DataElement)
+        DeserializationHelper.createInstanceFromNode(
+            parser, dataElementNode, SubmodelElement.class);
+  }
 }

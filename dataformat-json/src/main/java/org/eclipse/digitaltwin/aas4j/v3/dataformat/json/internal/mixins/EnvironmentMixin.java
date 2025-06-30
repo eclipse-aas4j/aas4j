@@ -15,22 +15,20 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 import java.util.Set;
-
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 public interface EnvironmentMixin {
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    Set<AssetAdministrationShell> getAssetAdministrationShells();
+  @JsonInclude(JsonInclude.Include.NON_EMPTY)
+  Set<AssetAdministrationShell> getAssetAdministrationShells();
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    List<Submodel> getSubmodels();
+  @JsonInclude(JsonInclude.Include.NON_EMPTY)
+  List<Submodel> getSubmodels();
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    List<ConceptDescription> getConceptDescriptions();
+  @JsonInclude(JsonInclude.Include.NON_EMPTY)
+  List<ConceptDescription> getConceptDescriptions();
 }

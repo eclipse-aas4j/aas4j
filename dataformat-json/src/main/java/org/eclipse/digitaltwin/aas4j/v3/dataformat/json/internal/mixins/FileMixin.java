@@ -18,6 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public interface FileMixin {
-    @JsonInclude(JsonInclude.Include.ALWAYS)
-    String getContentType();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  String getContentType();
 }

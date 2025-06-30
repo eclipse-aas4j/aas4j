@@ -41,14 +41,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -57,37 +49,44 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
 
-    private static Logger logger = LoggerFactory.getLogger(QualifierDeserializer.class);
+  private static Logger logger = LoggerFactory.getLogger(QualifierDeserializer.class);
 
-    @Override
-    public List<Qualifier> deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        try {
-            ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
+  @Override
+  public List<Qualifier> deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    try {
+      ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
 
-            if (!node.has("qualifier")) {
-                return new ArrayList<>();
-            }
-            JsonNode qualifierNode = node.get("qualifier");
-            if (qualifierNode.isArray()) {
-                return createConstraintsFromArrayNode(parser, node);
-            } else {
-                Qualifier qualifier = DeserializationHelper.createInstanceFromNode(parser, qualifierNode,
-                        Qualifier.class);
-                return Lists.newArrayList(qualifier);
-            }
-        } catch (ClassCastException e) {
-            logger.info("Found empty list item of qualifiers ('<qualifiers />') in XML. This is most likely an error.");
-            return new ArrayList<Qualifier>();
-        }
-
+      if (!node.has("qualifier")) {
+        return new ArrayList<>();
+      }
+      JsonNode qualifierNode = node.get("qualifier");
+      if (qualifierNode.isArray()) {
+        return createConstraintsFromArrayNode(parser, node);
+      } else {
+        Qualifier qualifier =
+            DeserializationHelper.createInstanceFromNode(parser, qualifierNode, Qualifier.class);
+        return Lists.newArrayList(qualifier);
+      }
+    } catch (ClassCastException e) {
+      logger.info(
+          "Found empty list item of qualifiers ('<qualifiers />') in XML. This is most likely an error.");
+      return new ArrayList<Qualifier>();
     }
+  }
 
-    private List<Qualifier> createConstraintsFromArrayNode(JsonParser parser, ObjectNode node) throws IOException {
-        ArrayNode content = (ArrayNode) node.get("qualifier");
-        return DeserializationHelper.createInstancesFromArrayNode(parser, content, Qualifier.class);
-    }
-
+  private List<Qualifier> createConstraintsFromArrayNode(JsonParser parser, ObjectNode node)
+      throws IOException {
+    ArrayNode content = (ArrayNode) node.get("qualifier");
+    return DeserializationHelper.createInstancesFromArrayNode(parser, content, Qualifier.class);
+  }
 }

@@ -14,54 +14,53 @@
  * limitations under the License.
  */
 
-/**
- * 
- */
+/** */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 
-import javax.xml.namespace.QName;
-import java.io.IOException;
-import java.lang.reflect.Field;
-
 public class AbstractLangStringSerializer<T extends AbstractLangString> extends JsonSerializer<T> {
 
-	private String name;
+  private String name;
 
-	public AbstractLangStringSerializer(String name) {
-		this.name = name;
-	}
+  public AbstractLangStringSerializer(String name) {
+    this.name = name;
+  }
 
-	@Override
-	public void serialize(T langString, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-		ToXmlGenerator xgen = (ToXmlGenerator) gen;
-		try {
-			Field nextName = xgen.getClass().getDeclaredField("_nextName");
-			nextName.setAccessible(true);
-			xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, name));
+  @Override
+  public void serialize(T langString, JsonGenerator gen, SerializerProvider serializers)
+      throws IOException {
+    ToXmlGenerator xgen = (ToXmlGenerator) gen;
+    try {
+      Field nextName = xgen.getClass().getDeclaredField("_nextName");
+      nextName.setAccessible(true);
+      xgen.setNextName(new QName(AasXmlNamespaceContext.AAS_URI, name));
 
-			serializeLangStringContent(xgen, langString);
+      serializeLangStringContent(xgen, langString);
 
-		} catch (NoSuchFieldException e) {
-			// serialize it without changing the namespaces
-			serializeLangStringContent(xgen, langString);
-		}
-	}
+    } catch (NoSuchFieldException e) {
+      // serialize it without changing the namespaces
+      serializeLangStringContent(xgen, langString);
+    }
+  }
 
-	protected void serializeLangStringContent(ToXmlGenerator xgen, AbstractLangString langString) throws IOException {
-		xgen.writeStartObject();
-		xgen.writeFieldName("language");
-		xgen.writeString(langString.getLanguage());
+  protected void serializeLangStringContent(ToXmlGenerator xgen, AbstractLangString langString)
+      throws IOException {
+    xgen.writeStartObject();
+    xgen.writeFieldName("language");
+    xgen.writeString(langString.getLanguage());
 
-		xgen.writeFieldName("text");
-		xgen.writeString(langString.getText());
+    xgen.writeFieldName("text");
+    xgen.writeString(langString.getText());
 
-		xgen.writeEndObject();
-	}
+    xgen.writeEndObject();
+  }
 }

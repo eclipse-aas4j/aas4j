@@ -19,15 +19,18 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.util.LangStringC
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringTextType;
 
-public class LangStringsTextTypeDeserializer extends AbstractLangStringsDeserializer<LangStringTextType> {
+public class LangStringsTextTypeDeserializer
+    extends AbstractLangStringsDeserializer<LangStringTextType> {
 
+  public LangStringsTextTypeDeserializer() {
+    super("langStringTextType");
+  }
 
-	public LangStringsTextTypeDeserializer() {
-		super("langStringTextType");
-	}
-
-	@Override
-	protected LangStringTextType createLangStringInstance(LangStringContent content) {
-		return new DefaultLangStringTextType.Builder().language(content.getLanguage()).text(content.getText()).build();
-	}
+  @Override
+  protected LangStringTextType createLangStringInstance(LangStringContent content) {
+    return new DefaultLangStringTextType.Builder()
+        .language(content.getLanguage())
+        .text(content.getText())
+        .build();
+  }
 }
