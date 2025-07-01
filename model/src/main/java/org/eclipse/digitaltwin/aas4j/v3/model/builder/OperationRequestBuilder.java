@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
+import javax.xml.datatype.Duration;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
-
-import javax.xml.datatype.Duration;
-import java.util.List;
 
 public abstract class OperationRequestBuilder<
         T extends OperationRequest, B extends OperationRequestBuilder<T, B>>

@@ -15,15 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.xml.datatype.Duration;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
-
-import javax.xml.datatype.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest */
 @IRI("aas:OperationRequest")
