@@ -15,10 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationRequest;
+
+import javax.xml.datatype.Duration;
+import java.util.List;
 
 /** */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperationRequest.class)})
@@ -60,12 +62,12 @@ public interface OperationRequest {
    * @return Returns the String for the property clientTimeoutDuration.
    */
   @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
-  String getClientTimeoutDuration();
+  Duration getClientTimeoutDuration();
 
   /**
    * More information under https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration
    *
    * @param clientTimeoutDuration desired value for the property clientTimeoutDuration.
    */
-  void setClientTimeoutDuration(String clientTimeoutDuration);
+  void setClientTimeoutDuration(Duration clientTimeoutDuration);
 }

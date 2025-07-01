@@ -16,9 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
 
-import java.util.List;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
@@ -66,6 +63,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSecurityAttributeObjec
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import java.util.List;
 
 public class Examples {
 
@@ -214,8 +215,7 @@ public class Examples {
                           .build())
                   .build())
           .clientTimeoutDuration(
-              String.valueOf(
-                  DatatypeFactory.newInstance().newDurationDayTime("PT3M"))) // three minutes
+              DatatypeFactory.newInstance().newDurationDayTime("PT3M")) // three minutes
           .build();
     } catch (DatatypeConfigurationException e) {
       throw new RuntimeException(e);
