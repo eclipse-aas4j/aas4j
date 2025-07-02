@@ -1,7 +1,7 @@
 # Eclipse AAS4J
 
-> :newspaper: The _`Eclipse AAS4J 1.0.4`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
-> following artifacts implementing the _AAS Specs – Part 1 V3.0 (final)_: `aas4j-dataformat-core`, `aas4j-dataformat-aasx`, 
+> :newspaper: The _`Eclipse AAS4J 2.0.0`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
+> following artifacts implementing the _AAS Specs – [Part 1 V3.1](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2025/06/IDTA_01001-25-01_AAS-Specification_Part1_Metamodel.pdf)_: `aas4j-dataformat-core`, `aas4j-dataformat-aasx`, 
 > `aas4j-dataformat-xml`, `aas4j-dataformat-json`, `aas4j-dataformat-parent`, and `aas4j-model`.
 
 [Eclipse AAS4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration 
@@ -35,7 +35,7 @@ Please refer to [AAS Model README](model/README.md) for more information.
 [Eclipse AA4J](https://projects.eclipse.org/projects/dt.aas4j) contains an AAS Java Dataformat Library. The AAS Java Dataformat Library is a collection of software modules to serialize and deserialze instances of the Asset Administration Shell from and to Java instances. De-/serialization works according to the dataformat schemas published in the document 'Details of the Asset Administration Shell', published on [Industrial Digital Twin Association (IDTA)](https://industrialdigitaltwin.org/en/).
 
 ## Cloning the repository
-This project uses git [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). After cloning, be sure to also initialize and update submodules.
+This project uses git [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to utilize extensive examples from [aas-specs-metamodel](https://github.com/admin-shell-io/aas-specs-metamodel) for schema validation. After cloning, be sure to also initialize and update submodules.
 
 To clone the repository together with all submodules, run:
 
@@ -45,7 +45,7 @@ If you have already cloned the repository without the --recurse-submodules optio
 
 git submodule update --init --recursive
 
-Note: Submodules are required for the project to work properly. Make sure you don't skip these steps.
+Note: Submodules are required for the validation tests inside dataformat-json/xml to work properly. Make sure you don't skip these steps.
 
 ## Build and Use
 
@@ -61,7 +61,7 @@ or by integrating the respective modules as dependencies from [Maven Central](ht
 <dependency>
   <groupId>org.eclipse.digitaltwin.aas4j</groupId>
   <artifactId>aas4j-model</artifactId>
-  <version>1.0.4</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
@@ -87,7 +87,7 @@ Additionally, the sources that are used for generating the static documentation 
 
 Current status of the project is *incubating*. 
 
-If you find any issue, please, file it at https://github.com/eclipse-aas4j/aas4j/issues. **Note** that some issues might affect the AAS specifications that are not addressed here but at the corrsponding workstreams (AAS in Details) for the Industrial Digital Twin Association (IDTA).
+If you find any issue, please, file it at https://github.com/eclipse-aas4j/aas4j/issues. **Note** that some issues might affect the AAS specifications that are not addressed here but at the corresponding workstreams (AAS in Details) for the Industrial Digital Twin Association (IDTA).
 
 You can contact us via our mailing list (aas4j-dev@eclipse.org).
 

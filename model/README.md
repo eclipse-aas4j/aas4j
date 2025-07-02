@@ -26,10 +26,10 @@ or by integrating the library as a dependency:
 
 The project contains several packages.
 
-- `io.adminshell.aas.v3.model` Java interfaces & enums representing the AAS model
-- `io.adminshell.aas.v3.model.annotations` Annotations used on the model
-- `io.adminshell.aas.v3.model.builder` Abstract builder classes for the interfaces
-- `io.adminshell.aas.v3.model.impl` Default implementations of the AAS classes. Can be replaced with custom implementations if needed.
+- `org.eclipse.digitaltwin.aas4j.v3.model` Java interfaces & enums representing the AAS model
+- `org.eclipse.digitaltwin.aas4j.v3.model.annotations` Annotations used on the model
+- `org.eclipse.digitaltwin.aas4j.v3.model.builder` Abstract builder classes for the interfaces
+- `org.eclipse.digitaltwin.aas4j.v3.model.impl` Default implementations of the AAS classes. Can be replaced with custom implementations if needed.
 
 
 # Contributors
