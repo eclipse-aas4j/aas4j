@@ -29,17 +29,17 @@ public interface Qualifier extends HasSemantics {
   /**
    * The qualifier kind describes the kind of the qualifier that is applied to the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/kind
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/kind
    *
    * @return Returns the QualifierKind for the property kind.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/kind")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/kind")
   QualifierKind getKind();
 
   /**
    * The qualifier kind describes the kind of the qualifier that is applied to the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/kind
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/kind
    *
    * @param kind desired value for the property kind.
    */
@@ -48,17 +48,17 @@ public interface Qualifier extends HasSemantics {
   /**
    * The qualifier type describes the type of the qualifier that is applied to the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/type
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/type
    *
    * @return Returns the String for the property type.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/type")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/type")
   String getType();
 
   /**
    * The qualifier type describes the type of the qualifier that is applied to the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/type
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/type
    *
    * @param type desired value for the property type.
    */
@@ -67,17 +67,17 @@ public interface Qualifier extends HasSemantics {
   /**
    * Data type of the qualifier value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/valueType
    *
    * @return Returns the DataTypeDefXsd for the property valueType.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueType")
   DataTypeDefXsd getValueType();
 
   /**
    * Data type of the qualifier value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/valueType
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/valueType
    *
    * @param valueType desired value for the property valueType.
    */
@@ -86,17 +86,17 @@ public interface Qualifier extends HasSemantics {
   /**
    * The qualifier value is the value of the qualifier.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/value")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/value")
   String getValue();
 
   /**
    * The qualifier value is the value of the qualifier.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/value
    *
    * @param value desired value for the property value.
    */
@@ -105,17 +105,17 @@ public interface Qualifier extends HasSemantics {
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/valueId
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/valueId
    *
    * @return Returns the Reference for the property valueId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueId")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueId")
   Reference getValueId();
 
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifier/valueId
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifier/valueId
    *
    * @param valueId desired value for the property valueId.
    */

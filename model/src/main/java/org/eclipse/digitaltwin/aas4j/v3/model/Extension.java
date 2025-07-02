@@ -27,17 +27,17 @@ public interface Extension extends HasSemantics {
   /**
    * Name of the extension.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/name
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/name
    *
    * @return Returns the String for the property name.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Extension/name")
+  @IRI("https://admin-shell.io/aas/3/1/Extension/name")
   String getName();
 
   /**
    * Name of the extension.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/name
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/name
    *
    * @param name desired value for the property name.
    */
@@ -46,17 +46,17 @@ public interface Extension extends HasSemantics {
   /**
    * Type of the value of the extension.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/valueType
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/valueType
    *
    * @return Returns the DataTypeDefXsd for the property valueType.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Extension/valueType")
+  @IRI("https://admin-shell.io/aas/3/1/Extension/valueType")
   DataTypeDefXsd getValueType();
 
   /**
    * Type of the value of the extension.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/valueType
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/valueType
    *
    * @param valueType desired value for the property valueType.
    */
@@ -65,17 +65,17 @@ public interface Extension extends HasSemantics {
   /**
    * Value of the extension
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Extension/value")
+  @IRI("https://admin-shell.io/aas/3/1/Extension/value")
   String getValue();
 
   /**
    * Value of the extension
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/value
    *
    * @param value desired value for the property value.
    */
@@ -84,19 +84,19 @@ public interface Extension extends HasSemantics {
   /**
    * Reference to an element the extension refers to.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/refersTo
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/refersTo
    *
-   * @return Returns the List of References for the property refersTo.
+   * @return Returns the List of References for the property refersTos.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Extension/refersTo")
+  @IRI("https://admin-shell.io/aas/3/1/Extension/refersTo")
   List<Reference> getRefersTo();
 
   /**
    * Reference to an element the extension refers to.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Extension/refersTo
+   * <p>More information under https://admin-shell.io/aas/3/1/Extension/refersTo
    *
-   * @param refersTos desired value for the property refersTo.
+   * @param refersTo desired value for the property refersTos.
    */
-  void setRefersTo(List<Reference> refersTos);
+  void setRefersTo(List<Reference> refersTo);
 }

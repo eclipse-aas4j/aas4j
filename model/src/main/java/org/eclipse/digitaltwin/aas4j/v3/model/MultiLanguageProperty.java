@@ -27,36 +27,36 @@ public interface MultiLanguageProperty extends DataElement {
   /**
    * The value of the property instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
+   * <p>More information under https://admin-shell.io/aas/3/1/MultiLanguageProperty/value
    *
-   * @return Returns the List of LangStringTextTypes for the property value.
+   * @return Returns the List of LangStringTextTypes for the property values.
    */
-  @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/value")
+  @IRI("https://admin-shell.io/aas/3/1/MultiLanguageProperty/value")
   List<LangStringTextType> getValue();
 
   /**
    * The value of the property instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/value
+   * <p>More information under https://admin-shell.io/aas/3/1/MultiLanguageProperty/value
    *
-   * @param values desired value for the property value.
+   * @param value desired value for the property values.
    */
-  void setValue(List<LangStringTextType> values);
+  void setValue(List<LangStringTextType> value);
 
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
+   * <p>More information under https://admin-shell.io/aas/3/1/MultiLanguageProperty/valueId
    *
    * @return Returns the Reference for the property valueId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId")
+  @IRI("https://admin-shell.io/aas/3/1/MultiLanguageProperty/valueId")
   Reference getValueId();
 
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/MultiLanguageProperty/valueId
+   * <p>More information under https://admin-shell.io/aas/3/1/MultiLanguageProperty/valueId
    *
    * @param valueId desired value for the property valueId.
    */

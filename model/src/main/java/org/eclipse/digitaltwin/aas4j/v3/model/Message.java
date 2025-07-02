@@ -24,75 +24,75 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultMessage;
 public interface Message {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/code
+   * More information under https://admin-shell.io/aas/3/1/Message/code
    *
    * @return Returns the String for the property code.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Message/code")
+  @IRI("https://admin-shell.io/aas/3/1/Message/code")
   String getCode();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/code
+   * More information under https://admin-shell.io/aas/3/1/Message/code
    *
    * @param code desired value for the property code.
    */
   void setCode(String code);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/correlationId
+   * More information under https://admin-shell.io/aas/3/1/Message/correlationId
    *
    * @return Returns the String for the property correlationId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Message/correlationId")
+  @IRI("https://admin-shell.io/aas/3/1/Message/correlationId")
   String getCorrelationId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/correlationId
+   * More information under https://admin-shell.io/aas/3/1/Message/correlationId
    *
    * @param correlationId desired value for the property correlationId.
    */
   void setCorrelationId(String correlationId);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/messageType
+   * More information under https://admin-shell.io/aas/3/1/Message/messageType
    *
-   * @return Returns the MessageTypeEnum for the property messageType.
+   * @return Returns the MessageType for the property messageType.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Message/messageType")
-  MessageTypeEnum getMessageType();
+  @IRI("https://admin-shell.io/aas/3/1/Message/messageType")
+  MessageType getMessageType();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/messageType
+   * More information under https://admin-shell.io/aas/3/1/Message/messageType
    *
    * @param messageType desired value for the property messageType.
    */
-  void setMessageType(MessageTypeEnum messageType);
+  void setMessageType(MessageType messageType);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/text
+   * More information under https://admin-shell.io/aas/3/1/Message/text
    *
    * @return Returns the String for the property text.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Message/text")
+  @IRI("https://admin-shell.io/aas/3/1/Message/text")
   String getText();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/text
+   * More information under https://admin-shell.io/aas/3/1/Message/text
    *
    * @param text desired value for the property text.
    */
   void setText(String text);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/timestamp
+   * More information under https://admin-shell.io/aas/3/1/Message/timestamp
    *
    * @return Returns the String for the property timestamp.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Message/timestamp")
+  @IRI("https://admin-shell.io/aas/3/1/Message/timestamp")
   String getTimestamp();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Message/timestamp
+   * More information under https://admin-shell.io/aas/3/1/Message/timestamp
    *
    * @param timestamp desired value for the property timestamp.
    */

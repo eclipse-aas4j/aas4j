@@ -22,14 +22,18 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum AssetKind {
 
   /** Instance asset */
-  @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
+  @IRI("https://admin-shell.io/aas/3/1/AssetKind/Instance")
   INSTANCE,
 
-  /** Neither a type asset nor an instance asset */
-  @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
+  /** Neither a type asset nor an instance asset nor a role asset */
+  @IRI("https://admin-shell.io/aas/3/1/AssetKind/NotApplicable")
   NOT_APPLICABLE,
 
+  /** Role asset */
+  @IRI("https://admin-shell.io/aas/3/1/AssetKind/Role")
+  ROLE,
+
   /** Type asset */
-  @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
+  @IRI("https://admin-shell.io/aas/3/1/AssetKind/Type")
   TYPE;
 }

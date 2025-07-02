@@ -1,0 +1,3 @@
+[submodule "external/admin-shell-io/examples"]
+	path = external/admin-shell-io/examples
+	url = https://github.com/admin-shell-io/aas-specs-metamodel.git

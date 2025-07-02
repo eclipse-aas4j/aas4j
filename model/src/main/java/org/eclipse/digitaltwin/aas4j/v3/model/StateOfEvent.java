@@ -22,10 +22,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum StateOfEvent {
 
   /** Event is off. */
-  @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/Off")
+  @IRI("https://admin-shell.io/aas/3/1/StateOfEvent/Off")
   OFF,
 
   /** Event is on */
-  @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/On")
+  @IRI("https://admin-shell.io/aas/3/1/StateOfEvent/On")
   ON;
 }

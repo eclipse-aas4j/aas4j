@@ -21,7 +21,7 @@ import java.util.Map;
 public class AasXmlNamespaceContext {
 
   public static final String AAS_PREFERRED_PREFIX = "aas";
-  public static final String AAS_URI = "https://admin-shell.io/aas/3/0";
+  public static final String AAS_URI = "https://admin-shell.io/aas/3/1";
 
   public static final String XSI_PREFERRED_PREFIX = "xsi";
   public static final String XSI_URI = "http://www.w3.org/2001/XMLSchema-instance";

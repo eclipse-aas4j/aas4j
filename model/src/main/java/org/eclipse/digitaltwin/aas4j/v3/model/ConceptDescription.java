@@ -25,24 +25,24 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
  * a concept description.
  */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultConceptDescription.class)})
-public interface ConceptDescription extends Identifiable, HasDataSpecification {
+public interface ConceptDescription extends HasDataSpecification, Identifiable {
 
   /**
    * Reference to an external definition the concept is compatible to or was derived from.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
+   * <p>More information under https://admin-shell.io/aas/3/1/ConceptDescription/isCaseOf
    *
-   * @return Returns the List of References for the property isCaseOf.
+   * @return Returns the List of References for the property isCaseOfs.
    */
-  @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
+  @IRI("https://admin-shell.io/aas/3/1/ConceptDescription/isCaseOf")
   List<Reference> getIsCaseOf();
 
   /**
    * Reference to an external definition the concept is compatible to or was derived from.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
+   * <p>More information under https://admin-shell.io/aas/3/1/ConceptDescription/isCaseOf
    *
-   * @param isCaseOfs desired value for the property isCaseOf.
+   * @param isCaseOf desired value for the property isCaseOfs.
    */
-  void setIsCaseOf(List<Reference> isCaseOfs);
+  void setIsCaseOf(List<Reference> isCaseOf);
 }

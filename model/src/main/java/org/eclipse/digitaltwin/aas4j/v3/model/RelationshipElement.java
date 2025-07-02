@@ -32,17 +32,17 @@ public interface RelationshipElement extends SubmodelElement {
   /**
    * Reference to the first element in the relationship taking the role of the subject.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/RelationshipElement/first
+   * <p>More information under https://admin-shell.io/aas/3/1/RelationshipElement/first
    *
    * @return Returns the Reference for the property first.
    */
-  @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/first")
+  @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/first")
   Reference getFirst();
 
   /**
    * Reference to the first element in the relationship taking the role of the subject.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/RelationshipElement/first
+   * <p>More information under https://admin-shell.io/aas/3/1/RelationshipElement/first
    *
    * @param first desired value for the property first.
    */
@@ -51,17 +51,17 @@ public interface RelationshipElement extends SubmodelElement {
   /**
    * Reference to the second element in the relationship taking the role of the object.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/RelationshipElement/second
+   * <p>More information under https://admin-shell.io/aas/3/1/RelationshipElement/second
    *
    * @return Returns the Reference for the property second.
    */
-  @IRI("https://admin-shell.io/aas/3/0/RelationshipElement/second")
+  @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/second")
   Reference getSecond();
 
   /**
    * Reference to the second element in the relationship taking the role of the object.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/RelationshipElement/second
+   * <p>More information under https://admin-shell.io/aas/3/1/RelationshipElement/second
    *
    * @param second desired value for the property second.
    */

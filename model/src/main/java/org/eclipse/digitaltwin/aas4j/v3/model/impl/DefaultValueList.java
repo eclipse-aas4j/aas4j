@@ -31,7 +31,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ValueListBuilder;
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-  @IRI("https://admin-shell.io/aas/3/0/ValueList/valueReferencePairs")
+  @IRI("https://admin-shell.io/aas/3/1/ValueList/valueReferencePairs")
   protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
   public DefaultValueList() {}
@@ -65,9 +65,9 @@ public class DefaultValueList implements ValueList {
     this.valueReferencePairs = valueReferencePairs;
   }
 
+  @Override
   public String toString() {
-    return String.format(
-        "DefaultValueList (" + "valueReferencePairs=%s," + ")", this.valueReferencePairs);
+    return "DefaultValueList{" + "valueReferencePairs=" + valueReferencePairs + '}';
   }
 
   /** This builder class can be used to construct a DefaultValueList bean. */

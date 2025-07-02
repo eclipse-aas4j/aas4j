@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<aas:environment xmlns:aas="https://admin-shell.io/aas/3/0"
+<aas:environment xmlns:aas="https://admin-shell.io/aas/3/1"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
+                 xsi:schemaLocation="https://admin-shell.io/aas/3/1 AAS.xsd">
   <aas:assetAdministrationShells>
     <aas:assetAdministrationShell>
       <aas:idShort>ExampleMotor</aas:idShort>
@@ -188,7 +188,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -238,7 +238,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -293,7 +293,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -347,7 +347,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>
@@ -370,7 +370,7 @@
                 </aas:langStringShortNameTypeIec61360>
                 <aas:langStringShortNameTypeIec61360>
                   <aas:language>EN</aas:language>
-                  <aas:text>ActualRotationSpeed</aas:text>
+                  <aas:text>ActualRotSpeed</aas:text>
                 </aas:langStringShortNameTypeIec61360>
               </aas:shortName>
               <aas:unit>1/min</aas:unit>
@@ -410,7 +410,7 @@
             <aas:keys>
               <aas:key>
                 <aas:type>GlobalReference</aas:type>
-                <aas:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</aas:value>
+                <aas:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</aas:value>
               </aas:key>
             </aas:keys>
           </aas:dataSpecification>

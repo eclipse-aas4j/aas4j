@@ -29,17 +29,17 @@ public interface LevelType {
   /**
    * Minimum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/min
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/min
    *
    * @return Returns the boolean for the property min.
    */
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/min")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/min")
   boolean getMin();
 
   /**
    * Minimum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/min
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/min
    *
    * @param min desired value for the property min.
    */
@@ -48,17 +48,17 @@ public interface LevelType {
   /**
    * Nominal value (value as designated)
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/nom
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/nom
    *
    * @return Returns the boolean for the property nom.
    */
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/nom")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/nom")
   boolean getNom();
 
   /**
    * Nominal value (value as designated)
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/nom
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/nom
    *
    * @param nom desired value for the property nom.
    */
@@ -67,17 +67,17 @@ public interface LevelType {
   /**
    * Value as typically present
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/typ
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/typ
    *
    * @return Returns the boolean for the property typ.
    */
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/typ")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/typ")
   boolean getTyp();
 
   /**
    * Value as typically present
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/typ
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/typ
    *
    * @param typ desired value for the property typ.
    */
@@ -86,17 +86,17 @@ public interface LevelType {
   /**
    * Maximum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/max
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/max
    *
    * @return Returns the boolean for the property max.
    */
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/max")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/max")
   boolean getMax();
 
   /**
    * Maximum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/LevelType/max
+   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/max
    *
    * @param max desired value for the property max.
    */

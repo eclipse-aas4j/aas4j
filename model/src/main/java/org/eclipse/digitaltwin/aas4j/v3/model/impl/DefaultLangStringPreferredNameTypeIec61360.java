@@ -30,10 +30,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringPreferredNameTyp
 public class DefaultLangStringPreferredNameTypeIec61360
     implements LangStringPreferredNameTypeIec61360 {
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
   protected String language;
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
   protected String text;
 
   public DefaultLangStringPreferredNameTypeIec61360() {}
@@ -59,6 +59,18 @@ public class DefaultLangStringPreferredNameTypeIec61360
   }
 
   @Override
+  public String toString() {
+    return "DefaultLangStringPreferredNameTypeIec61360{"
+        + "language='"
+        + language
+        + '\''
+        + ", text='"
+        + text
+        + '\''
+        + '}';
+  }
+
+  @Override
   public String getLanguage() {
     return language;
   }
@@ -76,10 +88,6 @@ public class DefaultLangStringPreferredNameTypeIec61360
   @Override
   public void setText(String text) {
     this.text = text;
-  }
-
-  public String toString() {
-    return String.format("DefaultLangStringPreferredNameTypeIec61360 (" + ")");
   }
 
   /**

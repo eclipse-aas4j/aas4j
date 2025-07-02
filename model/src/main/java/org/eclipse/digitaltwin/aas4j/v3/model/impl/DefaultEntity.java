@@ -39,43 +39,43 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EntityBuilder;
 @IRI("aas:Entity")
 public class DefaultEntity implements Entity {
 
-  @IRI("https://admin-shell.io/aas/3/0/Entity/entityType")
+  @IRI("https://admin-shell.io/aas/3/1/Entity/entityType")
   protected EntityType entityType;
 
-  @IRI("https://admin-shell.io/aas/3/0/Entity/globalAssetId")
+  @IRI("https://admin-shell.io/aas/3/1/Entity/globalAssetId")
   protected String globalAssetId;
 
-  @IRI("https://admin-shell.io/aas/3/0/Entity/specificAssetIds")
+  @IRI("https://admin-shell.io/aas/3/1/Entity/specificAssetIds")
   protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Entity/statements")
+  @IRI("https://admin-shell.io/aas/3/1/Entity/statements")
   protected List<SubmodelElement> statements = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
   protected String idShort;
 
   public DefaultEntity() {}
@@ -87,12 +87,12 @@ public class DefaultEntity implements Entity {
         this.entityType,
         this.globalAssetId,
         this.specificAssetIds,
-        this.embeddedDataSpecifications,
         this.category,
         this.idShort,
         this.displayName,
         this.description,
         this.extensions,
+        this.embeddedDataSpecifications,
         this.semanticId,
         this.supplementalSemanticIds,
         this.qualifiers);
@@ -112,16 +112,51 @@ public class DefaultEntity implements Entity {
           && Objects.equals(this.entityType, other.entityType)
           && Objects.equals(this.globalAssetId, other.globalAssetId)
           && Objects.equals(this.specificAssetIds, other.specificAssetIds)
-          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
           && Objects.equals(this.displayName, other.displayName)
           && Objects.equals(this.description, other.description)
           && Objects.equals(this.extensions, other.extensions)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
           && Objects.equals(this.qualifiers, other.qualifiers);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultEntity{"
+        + "entityType="
+        + entityType
+        + ", globalAssetId='"
+        + globalAssetId
+        + '\''
+        + ", specificAssetIds="
+        + specificAssetIds
+        + ", statements="
+        + statements
+        + ", embeddedDataSpecifications="
+        + embeddedDataSpecifications
+        + ", extensions="
+        + extensions
+        + ", semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", qualifiers="
+        + qualifiers
+        + ", category='"
+        + category
+        + '\''
+        + ", description="
+        + description
+        + ", displayName="
+        + displayName
+        + ", idShort='"
+        + idShort
+        + '\''
+        + '}';
   }
 
   @Override
@@ -165,17 +200,6 @@ public class DefaultEntity implements Entity {
   }
 
   @Override
-  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-    return embeddedDataSpecifications;
-  }
-
-  @Override
-  public void setEmbeddedDataSpecifications(
-      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-    this.embeddedDataSpecifications = embeddedDataSpecifications;
-  }
-
-  @Override
   public String getCategory() {
     return category;
   }
@@ -201,8 +225,8 @@ public class DefaultEntity implements Entity {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -211,8 +235,8 @@ public class DefaultEntity implements Entity {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override
@@ -223,6 +247,17 @@ public class DefaultEntity implements Entity {
   @Override
   public void setExtensions(List<Extension> extensions) {
     this.extensions = extensions;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
   }
 
   @Override
@@ -253,17 +288,6 @@ public class DefaultEntity implements Entity {
   @Override
   public void setQualifiers(List<Qualifier> qualifiers) {
     this.qualifiers = qualifiers;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultEntity ("
-            + "statements=%s,"
-            + "entityType=%s,"
-            + "globalAssetId=%s,"
-            + "specificAssetIds=%s,"
-            + ")",
-        this.statements, this.entityType, this.globalAssetId, this.specificAssetIds);
   }
 
   /** This builder class can be used to construct a DefaultEntity bean. */

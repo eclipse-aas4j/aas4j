@@ -198,7 +198,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -246,7 +246,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -299,7 +299,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -352,7 +352,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -414,7 +414,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIEC61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"

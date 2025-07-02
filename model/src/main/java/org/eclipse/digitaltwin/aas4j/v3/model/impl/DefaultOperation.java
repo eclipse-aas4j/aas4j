@@ -37,40 +37,40 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationBuilder;
 @IRI("aas:Operation")
 public class DefaultOperation implements Operation {
 
-  @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/inoutputVariables")
   protected List<OperationVariable> inoutputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/inputVariables")
   protected List<OperationVariable> inputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/outputVariables")
   protected List<OperationVariable> outputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
   protected String idShort;
 
   public DefaultOperation() {}
@@ -81,12 +81,12 @@ public class DefaultOperation implements Operation {
         this.inputVariables,
         this.outputVariables,
         this.inoutputVariables,
-        this.embeddedDataSpecifications,
         this.category,
         this.idShort,
         this.displayName,
         this.description,
         this.extensions,
+        this.embeddedDataSpecifications,
         this.semanticId,
         this.supplementalSemanticIds,
         this.qualifiers);
@@ -105,16 +105,48 @@ public class DefaultOperation implements Operation {
       return Objects.equals(this.inputVariables, other.inputVariables)
           && Objects.equals(this.outputVariables, other.outputVariables)
           && Objects.equals(this.inoutputVariables, other.inoutputVariables)
-          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
           && Objects.equals(this.displayName, other.displayName)
           && Objects.equals(this.description, other.description)
           && Objects.equals(this.extensions, other.extensions)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
           && Objects.equals(this.qualifiers, other.qualifiers);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultOperation{"
+        + "embeddedDataSpecifications="
+        + embeddedDataSpecifications
+        + ", extensions="
+        + extensions
+        + ", semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", inoutputVariables="
+        + inoutputVariables
+        + ", inputVariables="
+        + inputVariables
+        + ", outputVariables="
+        + outputVariables
+        + ", qualifiers="
+        + qualifiers
+        + ", category='"
+        + category
+        + '\''
+        + ", description="
+        + description
+        + ", displayName="
+        + displayName
+        + ", idShort='"
+        + idShort
+        + '\''
+        + '}';
   }
 
   @Override
@@ -148,17 +180,6 @@ public class DefaultOperation implements Operation {
   }
 
   @Override
-  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-    return embeddedDataSpecifications;
-  }
-
-  @Override
-  public void setEmbeddedDataSpecifications(
-      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-    this.embeddedDataSpecifications = embeddedDataSpecifications;
-  }
-
-  @Override
   public String getCategory() {
     return category;
   }
@@ -184,8 +205,8 @@ public class DefaultOperation implements Operation {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -194,8 +215,8 @@ public class DefaultOperation implements Operation {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override
@@ -206,6 +227,17 @@ public class DefaultOperation implements Operation {
   @Override
   public void setExtensions(List<Extension> extensions) {
     this.extensions = extensions;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
   }
 
   @Override
@@ -236,16 +268,6 @@ public class DefaultOperation implements Operation {
   @Override
   public void setQualifiers(List<Qualifier> qualifiers) {
     this.qualifiers = qualifiers;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultOperation ("
-            + "inputVariables=%s,"
-            + "outputVariables=%s,"
-            + "inoutputVariables=%s,"
-            + ")",
-        this.inputVariables, this.outputVariables, this.inoutputVariables);
   }
 
   /** This builder class can be used to construct a DefaultOperation bean. */

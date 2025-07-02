@@ -25,13 +25,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.BaseOperationResultBuilder
 @IRI("aas:BaseOperationResult")
 public class DefaultBaseOperationResult implements BaseOperationResult {
 
-  @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/executionState")
+  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/executionState")
   protected ExecutionState executionState;
 
-  @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/success")
+  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/success")
   protected boolean success;
 
-  @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+  @IRI("https://admin-shell.io/aas/3/1/Result/messages")
   protected List<Message> messages = new ArrayList<>();
 
   public DefaultBaseOperationResult() {}
@@ -55,6 +55,18 @@ public class DefaultBaseOperationResult implements BaseOperationResult {
           && Objects.equals(this.success, other.success)
           && Objects.equals(this.messages, other.messages);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultBaseOperationResult{"
+        + "executionState="
+        + executionState
+        + ", success="
+        + success
+        + ", messages="
+        + messages
+        + '}';
   }
 
   @Override
@@ -85,16 +97,6 @@ public class DefaultBaseOperationResult implements BaseOperationResult {
   @Override
   public void setMessages(List<Message> messages) {
     this.messages = messages;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultBaseOperationResult ("
-            + "executionState=%s,"
-            + "messages=%s,"
-            + "success=%s,"
-            + ")",
-        this.executionState, this.messages, this.success);
   }
 
   /** This builder class can be used to construct a DefaultBaseOperationResult bean. */

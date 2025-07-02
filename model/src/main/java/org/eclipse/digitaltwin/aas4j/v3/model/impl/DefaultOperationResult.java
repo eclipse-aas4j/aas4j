@@ -29,31 +29,31 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationResultBuilder;
 @IRI("aas:OperationResult")
 public class DefaultOperationResult implements OperationResult {
 
-  @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/executionState")
+  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/executionState")
   protected ExecutionState executionState;
 
-  @IRI("https://admin-shell.io/aas/3/0/BaseOperationResult/success")
+  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/success")
   protected boolean success;
 
-  @IRI("https://admin-shell.io/aas/3/0/Result/messages")
-  protected List<Message> messages = new ArrayList<>();
-
-  @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationResult/inoutputArguments")
   protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationResult/outputArguments")
   protected List<OperationVariable> outputArguments = new ArrayList<>();
+
+  @IRI("https://admin-shell.io/aas/3/1/Result/messages")
+  protected List<Message> messages = new ArrayList<>();
 
   public DefaultOperationResult() {}
 
   @Override
   public int hashCode() {
     return Objects.hash(
+        this.inoutputArguments,
+        this.outputArguments,
         this.executionState,
         this.success,
-        this.messages,
-        this.inoutputArguments,
-        this.outputArguments);
+        this.messages);
   }
 
   @Override
@@ -72,6 +72,22 @@ public class DefaultOperationResult implements OperationResult {
           && Objects.equals(this.success, other.success)
           && Objects.equals(this.messages, other.messages);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultOperationResult{"
+        + "executionState="
+        + executionState
+        + ", success="
+        + success
+        + ", inoutputArguments="
+        + inoutputArguments
+        + ", outputArguments="
+        + outputArguments
+        + ", messages="
+        + messages
+        + '}';
   }
 
   @Override
@@ -122,22 +138,6 @@ public class DefaultOperationResult implements OperationResult {
   @Override
   public void setMessages(List<Message> messages) {
     this.messages = messages;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultOperationResult ("
-            + "executionState=%s,"
-            + "inoutputArguments=%s,"
-            + "messages=%s,"
-            + "outputArguments=%s,"
-            + "success=%s,"
-            + ")",
-        this.executionState,
-        this.inoutputArguments,
-        this.messages,
-        this.outputArguments,
-        this.success);
   }
 
   /** This builder class can be used to construct a DefaultOperationResult bean. */

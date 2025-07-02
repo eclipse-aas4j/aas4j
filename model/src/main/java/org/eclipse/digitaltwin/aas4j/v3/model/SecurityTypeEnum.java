@@ -17,19 +17,19 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-/** */
+/** Enumeration for Security Type. */
 @IRI("aas:SecurityTypeEnum")
 public enum SecurityTypeEnum {
 
-  /** */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/None")
+  /** Indicates that this security type enum value means no security is applied. */
+  @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/None")
   NONE,
 
-  /** */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/Rfc_Tlsa")
+  /** Indicates that this security type enum value refers to RFC TLSA-based security. */
+  @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/Rfc_Tlsa")
   RFC_TLSA,
 
-  /** */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/W3c_Did")
+  /** Indicates that this security type enum value refers to W3C DID-based security. */
+  @IRI("https://admin-shell.io/aas/3/1/SecurityTypeEnum/W3c_Did")
   W3C_DID;
 }

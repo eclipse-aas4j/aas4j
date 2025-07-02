@@ -26,45 +26,45 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationRequest;
 public interface OperationRequest {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments
    *
    * @return Returns the List of OperationVariables for the property inoutputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments")
   List<OperationVariable> getInoutputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments
    *
    * @param inoutputArguments desired value for the property inoutputArguments.
    */
   void setInoutputArguments(List<OperationVariable> inoutputArguments);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inputArguments
    *
    * @return Returns the List of OperationVariables for the property inputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inputArguments")
   List<OperationVariable> getInputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inputArguments
    *
    * @param inputArguments desired value for the property inputArguments.
    */
   void setInputArguments(List<OperationVariable> inputArguments);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration
    *
    * @return Returns the String for the property clientTimeoutDuration.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
   Duration getClientTimeoutDuration();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
+   * More information under https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration
    *
    * @param clientTimeoutDuration desired value for the property clientTimeoutDuration.
    */

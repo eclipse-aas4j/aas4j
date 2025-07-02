@@ -25,30 +25,30 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationResult;
 public interface OperationResult extends BaseOperationResult {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationResult/inoutputArguments
    *
    * @return Returns the List of OperationVariables for the property inoutputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationResult/inoutputArguments")
   List<OperationVariable> getInoutputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationResult/inoutputArguments
    *
    * @param inoutputArguments desired value for the property inoutputArguments.
    */
   void setInoutputArguments(List<OperationVariable> inoutputArguments);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationResult/outputArguments
    *
    * @return Returns the List of OperationVariables for the property outputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationResult/outputArguments")
   List<OperationVariable> getOutputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
+   * More information under https://admin-shell.io/aas/3/1/OperationResult/outputArguments
    *
    * @param outputArguments desired value for the property outputArguments.
    */

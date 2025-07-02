@@ -30,10 +30,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ValueReferencePairBuilder;
 @IRI("aas:ValueReferencePair")
 public class DefaultValueReferencePair implements ValueReferencePair {
 
-  @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/value")
+  @IRI("https://admin-shell.io/aas/3/1/ValueReferencePair/value")
   protected String value;
 
-  @IRI("https://admin-shell.io/aas/3/0/ValueReferencePair/valueId")
+  @IRI("https://admin-shell.io/aas/3/1/ValueReferencePair/valueId")
   protected Reference valueId;
 
   public DefaultValueReferencePair() {}
@@ -77,10 +77,9 @@ public class DefaultValueReferencePair implements ValueReferencePair {
     this.valueId = valueId;
   }
 
+  @Override
   public String toString() {
-    return String.format(
-        "DefaultValueReferencePair (" + "value=%s," + "valueId=%s," + ")",
-        this.value, this.valueId);
+    return "DefaultValueReferencePair{" + "value='" + value + '\'' + ", valueId=" + valueId + '}';
   }
 
   /** This builder class can be used to construct a DefaultValueReferencePair bean. */

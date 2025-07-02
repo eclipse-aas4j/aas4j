@@ -23,22 +23,22 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 /** A submodel defines a specific aspect of the asset represented by the AAS. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultSubmodel.class)})
 public interface Submodel
-    extends Identifiable, HasDataSpecification, HasSemantics, Qualifiable, HasKind {
+    extends HasDataSpecification, HasSemantics, Qualifiable, HasKind, Identifiable {
 
   /**
    * A submodel consists of zero or more submodel elements.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
+   * <p>More information under https://admin-shell.io/aas/3/1/Submodel/submodelElements
    *
    * @return Returns the List of SubmodelElements for the property submodelElements.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Submodel/submodelElements")
+  @IRI("https://admin-shell.io/aas/3/1/Submodel/submodelElements")
   List<SubmodelElement> getSubmodelElements();
 
   /**
    * A submodel consists of zero or more submodel elements.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
+   * <p>More information under https://admin-shell.io/aas/3/1/Submodel/submodelElements
    *
    * @param submodelElements desired value for the property submodelElements.
    */
