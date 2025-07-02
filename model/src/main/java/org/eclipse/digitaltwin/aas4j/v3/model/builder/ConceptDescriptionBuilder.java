@@ -34,7 +34,7 @@ public abstract class ConceptDescriptionBuilder<
    * @param isCaseOfs desired value to be set
    * @return Builder object with new value for isCaseOfs
    */
-  public B isCaseOfs(List<Reference> isCaseOfs) {
+  public B isCaseOf(List<Reference> isCaseOfs) {
     getBuildingInstance().setIsCaseOf(isCaseOfs);
     return getSelf();
   }
