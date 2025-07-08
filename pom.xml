@@ -78,7 +78,7 @@
         <shacl.version>1.3.2</shacl.version>
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
-        <xmlunit.version>2.10.0</xmlunit.version>
+        <xmlunit.version>2.10.3</xmlunit.version>
         <mockito.version>5.17.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
         <spotless.version>2.45.0</spotless.version>
