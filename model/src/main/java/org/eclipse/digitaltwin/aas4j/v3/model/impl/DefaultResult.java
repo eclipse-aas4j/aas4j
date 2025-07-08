@@ -27,7 +27,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResultBuilder;
 @IRI("aas:Result")
 public class DefaultResult implements Result {
 
-  @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+  @IRI("https://admin-shell.io/aas/3/1/Result/messages")
   protected List<Message> messages = new ArrayList<>();
 
   public DefaultResult() {}
@@ -61,8 +61,9 @@ public class DefaultResult implements Result {
     this.messages = messages;
   }
 
+  @Override
   public String toString() {
-    return String.format("DefaultResult (" + "messages=%s," + ")", this.messages);
+    return "DefaultResult{" + "messages=" + messages + '}';
   }
 
   /** This builder class can be used to construct a DefaultResult bean. */

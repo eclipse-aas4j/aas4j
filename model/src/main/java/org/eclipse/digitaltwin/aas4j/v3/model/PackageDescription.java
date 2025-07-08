@@ -25,30 +25,30 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultPackageDescription;
 public interface PackageDescription {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/PackageDescription/items
+   * More information under https://admin-shell.io/aas/3/1/PackageDescription/aasIds
    *
-   * @return Returns the List of Strings for the property items.
+   * @return Returns the List of Strings for the property aasIds.
    */
-  @IRI("https://admin-shell.io/aas/3/0/PackageDescription/items")
-  List<String> getItems();
+  @IRI("https://admin-shell.io/aas/3/1/PackageDescription/aasIds")
+  List<String> getAasIds();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/PackageDescription/items
+   * More information under https://admin-shell.io/aas/3/1/PackageDescription/aasIds
    *
-   * @param items desired value for the property items.
+   * @param aasIds desired value for the property aasIds.
    */
-  void setItems(List<String> items);
+  void setAasIds(List<String> aasIds);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/PackageDescription/packageId
+   * More information under https://admin-shell.io/aas/3/1/PackageDescription/packageId
    *
    * @return Returns the String for the property packageId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/PackageDescription/packageId")
+  @IRI("https://admin-shell.io/aas/3/1/PackageDescription/packageId")
   String getPackageId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/PackageDescription/packageId
+   * More information under https://admin-shell.io/aas/3/1/PackageDescription/packageId
    *
    * @param packageId desired value for the property packageId.
    */

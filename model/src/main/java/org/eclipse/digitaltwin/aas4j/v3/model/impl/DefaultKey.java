@@ -29,10 +29,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.KeyBuilder;
 @IRI("aas:Key")
 public class DefaultKey implements Key {
 
-  @IRI("https://admin-shell.io/aas/3/0/Key/type")
+  @IRI("https://admin-shell.io/aas/3/1/Key/type")
   protected KeyTypes type;
 
-  @IRI("https://admin-shell.io/aas/3/0/Key/value")
+  @IRI("https://admin-shell.io/aas/3/1/Key/value")
   protected String value;
 
   public DefaultKey() {}

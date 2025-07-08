@@ -27,18 +27,18 @@ public interface Environment {
   /**
    * Asset administration shell
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/assetAdministrationShells
    *
    * @return Returns the List of AssetAdministrationShells for the property
    *     assetAdministrationShells.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/assetAdministrationShells")
   List<AssetAdministrationShell> getAssetAdministrationShells();
 
   /**
    * Asset administration shell
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/assetAdministrationShells
    *
    * @param assetAdministrationShells desired value for the property assetAdministrationShells.
    */
@@ -47,17 +47,17 @@ public interface Environment {
   /**
    * Submodel
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/submodels
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/submodels
    *
    * @return Returns the List of Submodels for the property submodels.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/submodels")
   List<Submodel> getSubmodels();
 
   /**
    * Submodel
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/submodels
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/submodels
    *
    * @param submodels desired value for the property submodels.
    */
@@ -66,17 +66,17 @@ public interface Environment {
   /**
    * Concept description
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/conceptDescriptions
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/conceptDescriptions
    *
    * @return Returns the List of ConceptDescriptions for the property conceptDescriptions.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/conceptDescriptions")
   List<ConceptDescription> getConceptDescriptions();
 
   /**
    * Concept description
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Environment/conceptDescriptions
+   * <p>More information under https://admin-shell.io/aas/3/1/Environment/conceptDescriptions
    *
    * @param conceptDescriptions desired value for the property conceptDescriptions.
    */

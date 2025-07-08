@@ -39,51 +39,49 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelElementListBuilder
 @IRI("aas:SubmodelElementList")
 public class DefaultSubmodelElementList implements SubmodelElementList {
 
-  @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
   protected String idShort;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant")
   protected boolean orderRelevant;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement")
   protected Reference semanticIdListElement;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement")
   protected AasSubmodelElements typeValueListElement;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/value")
   protected List<SubmodelElement> value = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement")
   protected DataTypeDefXsd valueTypeListElement;
 
-  public DefaultSubmodelElementList() {
-    this.orderRelevant = Boolean.TRUE;
-  }
+  public DefaultSubmodelElementList() {}
 
   @Override
   public int hashCode() {
@@ -93,15 +91,15 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
         this.typeValueListElement,
         this.valueTypeListElement,
         this.value,
-        this.embeddedDataSpecifications,
-        this.semanticId,
-        this.supplementalSemanticIds,
-        this.qualifiers,
         this.category,
         this.idShort,
         this.displayName,
         this.description,
-        this.extensions);
+        this.extensions,
+        this.embeddedDataSpecifications,
+        this.semanticId,
+        this.supplementalSemanticIds,
+        this.qualifiers);
   }
 
   @Override
@@ -119,15 +117,15 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
           && Objects.equals(this.typeValueListElement, other.typeValueListElement)
           && Objects.equals(this.valueTypeListElement, other.valueTypeListElement)
           && Objects.equals(this.value, other.value)
-          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
-          && Objects.equals(this.semanticId, other.semanticId)
-          && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
-          && Objects.equals(this.qualifiers, other.qualifiers)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
           && Objects.equals(this.displayName, other.displayName)
           && Objects.equals(this.description, other.description)
-          && Objects.equals(this.extensions, other.extensions);
+          && Objects.equals(this.extensions, other.extensions)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+          && Objects.equals(this.semanticId, other.semanticId)
+          && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
+          && Objects.equals(this.qualifiers, other.qualifiers);
     }
   }
 
@@ -177,8 +175,58 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
   }
 
   @Override
-  public void setValue(List<SubmodelElement> values) {
-    this.value = values;
+  public void setValue(List<SubmodelElement> value) {
+    this.value = value;
+  }
+
+  @Override
+  public String getCategory() {
+    return category;
+  }
+
+  @Override
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  @Override
+  public String getIdShort() {
+    return idShort;
+  }
+
+  @Override
+  public void setIdShort(String idShort) {
+    this.idShort = idShort;
+  }
+
+  @Override
+  public List<LangStringNameType> getDisplayName() {
+    return displayName;
+  }
+
+  @Override
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
+  }
+
+  @Override
+  public List<LangStringTextType> getDescription() {
+    return description;
+  }
+
+  @Override
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
+  }
+
+  @Override
+  public List<Extension> getExtensions() {
+    return extensions;
+  }
+
+  @Override
+  public void setExtensions(List<Extension> extensions) {
+    this.extensions = extensions;
   }
 
   @Override
@@ -223,69 +271,39 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
   }
 
   @Override
-  public String getCategory() {
-    return category;
-  }
-
-  @Override
-  public void setCategory(String category) {
-    this.category = category;
-  }
-
-  @Override
-  public String getIdShort() {
-    return idShort;
-  }
-
-  @Override
-  public void setIdShort(String idShort) {
-    this.idShort = idShort;
-  }
-
-  @Override
-  public List<LangStringNameType> getDisplayName() {
-    return displayName;
-  }
-
-  @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
-  }
-
-  @Override
-  public List<LangStringTextType> getDescription() {
-    return description;
-  }
-
-  @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
-  }
-
-  @Override
-  public List<Extension> getExtensions() {
-    return extensions;
-  }
-
-  @Override
-  public void setExtensions(List<Extension> extensions) {
-    this.extensions = extensions;
-  }
-
   public String toString() {
-    return String.format(
-        "DefaultSubmodelElementList ("
-            + "orderRelevant=%s,"
-            + "semanticIdListElement=%s,"
-            + "typeValueListElement=%s,"
-            + "valueTypeListElement=%s,"
-            + "value=%s,"
-            + ")",
-        this.orderRelevant,
-        this.semanticIdListElement,
-        this.typeValueListElement,
-        this.valueTypeListElement,
-        this.value);
+    return "DefaultSubmodelElementList{"
+        + "embeddedDataSpecifications="
+        + embeddedDataSpecifications
+        + ", extensions="
+        + extensions
+        + ", semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", qualifiers="
+        + qualifiers
+        + ", category='"
+        + category
+        + '\''
+        + ", description="
+        + description
+        + ", displayName="
+        + displayName
+        + ", idShort='"
+        + idShort
+        + '\''
+        + ", orderRelevant="
+        + orderRelevant
+        + ", semanticIdListElement="
+        + semanticIdListElement
+        + ", typeValueListElement="
+        + typeValueListElement
+        + ", value="
+        + value
+        + ", valueTypeListElement="
+        + valueTypeListElement
+        + '}';
   }
 
   /** This builder class can be used to construct a DefaultSubmodelElementList bean. */

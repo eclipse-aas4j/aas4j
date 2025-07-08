@@ -25,13 +25,13 @@ public enum ModellingKind {
    * Concrete, clearly identifiable element instance. Its creation and validation may be guided by a
    * corresponding element template.
    */
-  @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Instance")
+  @IRI("https://admin-shell.io/aas/3/1/ModellingKind/Instance")
   INSTANCE,
 
   /**
    * Specification of the common features of a structured element in sufficient detail that such a
    * instance can be instantiated using it
    */
-  @IRI("https://admin-shell.io/aas/3/0/ModellingKind/Template")
+  @IRI("https://admin-shell.io/aas/3/1/ModellingKind/Template")
   TEMPLATE;
 }

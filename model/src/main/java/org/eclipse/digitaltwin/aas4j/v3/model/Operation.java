@@ -27,17 +27,17 @@ public interface Operation extends SubmodelElement {
   /**
    * Input parameter of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/inputVariables
    *
    * @return Returns the List of OperationVariables for the property inputVariables.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/inputVariables")
   List<OperationVariable> getInputVariables();
 
   /**
    * Input parameter of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/inputVariables
    *
    * @param inputVariables desired value for the property inputVariables.
    */
@@ -46,17 +46,17 @@ public interface Operation extends SubmodelElement {
   /**
    * Output parameter of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/outputVariables
    *
    * @return Returns the List of OperationVariables for the property outputVariables.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/outputVariables")
   List<OperationVariable> getOutputVariables();
 
   /**
    * Output parameter of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/outputVariables
    *
    * @param outputVariables desired value for the property outputVariables.
    */
@@ -65,17 +65,17 @@ public interface Operation extends SubmodelElement {
   /**
    * Parameter that is input and output of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/inoutputVariables
    *
    * @return Returns the List of OperationVariables for the property inoutputVariables.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
+  @IRI("https://admin-shell.io/aas/3/1/Operation/inoutputVariables")
   List<OperationVariable> getInoutputVariables();
 
   /**
    * Parameter that is input and output of the operation.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+   * <p>More information under https://admin-shell.io/aas/3/1/Operation/inoutputVariables
    *
    * @param inoutputVariables desired value for the property inoutputVariables.
    */

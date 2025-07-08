@@ -22,10 +22,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum Direction {
 
   /** Input direction. */
-  @IRI("https://admin-shell.io/aas/3/0/Direction/Input")
+  @IRI("https://admin-shell.io/aas/3/1/Direction/Input")
   INPUT,
 
   /** Output direction */
-  @IRI("https://admin-shell.io/aas/3/0/Direction/Output")
+  @IRI("https://admin-shell.io/aas/3/1/Direction/Output")
   OUTPUT;
 }

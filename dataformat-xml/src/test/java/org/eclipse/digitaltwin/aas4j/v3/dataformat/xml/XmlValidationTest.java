@@ -17,13 +17,21 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeFalse;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import junitparams.naming.TestCaseName;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +45,27 @@ public class XmlValidationTest {
   private static Logger logger = LoggerFactory.getLogger(XmlValidationTest.class);
 
   private static XmlSchemaValidator validator;
+  private static final String TEST_FILES_DIR = "target/test-classes/examples";
+
+  // List of tests that are known to have issues with EmbeddedDataSpecificationsDeserializer ->
+  // GitHub issue https://github.com/eclipse-aas4j/aas4j/issues/389 and
+  // https://github.com/eclipse-aas4j/aas4j/issues/390
+  private static final List<String> IGNORED_TESTS =
+      List.of(
+          "annotatedRelationshipElement",
+          "basicEventElement",
+          "blob",
+          "capability",
+          "entity",
+          "file",
+          "multiLanguageProperty",
+          "operation",
+          "property",
+          "range",
+          "referenceElement",
+          "relationshipElement",
+          "submodelElementCollection",
+          "submodelElementList");
 
   @BeforeClass
   public static void prepareValidator() throws SAXException {
@@ -68,6 +97,32 @@ public class XmlValidationTest {
     assertEquals(1, errors.size());
   }
 
+  @Test
+  @Parameters(method = "fileProvider")
+  @TestCaseName("{0}")
+  public void validateExampleXml(String filePath)
+      throws DeserializationException, SerializationException, IOException {
+
+    // Skip tests that are known to have issues with EmbeddedDataSpecificationsDeserializer ->
+    // GitHub issue https://github.com/eclipse-aas4j/aas4j/issues/389 and
+    // https://github.com/eclipse-aas4j/aas4j/issues/390
+    boolean shouldSkip = IGNORED_TESTS.stream().anyMatch(filePath::contains);
+
+    assumeFalse(
+        "Skipping the tests because of EmbeddedDataSpecificationsDeserializer issue:" + filePath,
+        shouldSkip);
+
+    String initialXml = new String(Files.readAllBytes(Paths.get(filePath)));
+
+    Environment environment = new XmlDeserializer().read(initialXml);
+    String serializedEnv = new XmlSerializer().write(environment);
+
+    Set<String> serializedEnvValidationError = validateSerializedXmlFile(serializedEnv);
+    logErrors(filePath, serializedEnvValidationError);
+
+    assertTrue(serializedEnvValidationError.isEmpty());
+  }
+
   private void logErrors(String validatedFileName, Set<String> errors) {
     if (errors.isEmpty()) {
       return;
@@ -81,5 +136,26 @@ public class XmlValidationTest {
   private Set<String> validateXmlFile(String file) throws IOException {
     String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
     return validator.validateSchema(serializedEnvironment);
+  }
+
+  private Set<String> validateSerializedXmlFile(String serializedXml) {
+    return validator.validateSchema(serializedXml);
+  }
+
+  // This method supplies the file paths of aas-spec-metamodel XML examples files from the test
+  // directory to the above test.
+  private static Object[] fileProvider() {
+    try (Stream<Path> paths = Files.walk(Paths.get(TEST_FILES_DIR))) {
+      return paths
+          .filter(Files::isRegularFile)
+          .filter(p -> p.toString().endsWith(".xml"))
+          .map(Path::toAbsolutePath)
+          .map(Path::toString)
+          .toArray();
+    } catch (IOException e) {
+      // Handle the exception as appropriate for your test setup
+      e.printStackTrace();
+      return new String[0];
+    }
   }
 }

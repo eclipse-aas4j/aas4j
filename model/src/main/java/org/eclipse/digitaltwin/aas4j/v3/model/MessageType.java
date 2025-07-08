@@ -18,22 +18,26 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
 /** */
-@IRI("aas:MessageTypeEnum")
-public enum MessageTypeEnum {
+@IRI("aas:MessageType")
+public enum MessageType {
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/MessageType/Error")
+  @IRI("https://admin-shell.io/aas/3/1/MessageType/Error")
   ERROR,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/MessageType/Exception")
+  @IRI("https://admin-shell.io/aas/3/1/MessageType/Exception")
   EXCEPTION,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/MessageType/Info")
+  @IRI("https://admin-shell.io/aas/3/1/MessageType/Info")
   INFO,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/MessageType/Warning")
+  @IRI("https://admin-shell.io/aas/3/1/MessageType/Undefined")
+  UNDEFINED,
+
+  /** */
+  @IRI("https://admin-shell.io/aas/3/1/MessageType/Warning")
   WARNING;
 }

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<test:environment xmlns:test="https://admin-shell.io/aas/3/0"
+<test:environment xmlns:test="https://admin-shell.io/aas/3/1"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd">
+                  xsi:schemaLocation="https://admin-shell.io/aas/3/1 AAS.xsd">
   <test:assetAdministrationShells>
     <test:assetAdministrationShell>
       <test:idShort>ExampleMotor</test:idShort>
@@ -182,15 +182,6 @@
       <test:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
-          <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
-            <test:keys>
-              <test:key>
-                <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</test:value>
-              </test:key>
-            </test:keys>
-          </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
@@ -224,6 +215,15 @@
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
+          <test:dataSpecification>
+            <test:type>ExternalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
@@ -232,15 +232,6 @@
       <test:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
-          <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
-            <test:keys>
-              <test:key>
-                <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</test:value>
-              </test:key>
-            </test:keys>
-          </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
@@ -274,6 +265,15 @@
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
+          <test:dataSpecification>
+            <test:type>ExternalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
@@ -287,15 +287,6 @@
       <test:id>0173-1#02-BAA120#008</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
-          <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
-            <test:keys>
-              <test:key>
-                <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</test:value>
-              </test:key>
-            </test:keys>
-          </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
@@ -332,6 +323,15 @@
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
+          <test:dataSpecification>
+            <test:type>ExternalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
@@ -341,15 +341,6 @@
       <test:id>http://customer.com/cd/1/1/18EBD56F6B43D895</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
-          <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
-            <test:keys>
-              <test:key>
-                <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</test:value>
-              </test:key>
-            </test:keys>
-          </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
@@ -369,7 +360,7 @@
                 </test:langStringShortNameTypeIec61360>
                 <test:langStringShortNameTypeIec61360>
                   <test:language>EN</test:language>
-                  <test:text>ActualRotationSpeed</test:text>
+                  <test:text>ActualRotSpeed</test:text>
                 </test:langStringShortNameTypeIec61360>
               </test:shortName>
               <test:unit>1/min</test:unit>
@@ -396,6 +387,15 @@
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
+          <test:dataSpecification>
+            <test:type>ExternalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>
@@ -404,15 +404,6 @@
       <test:id>http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document</test:id>
       <test:embeddedDataSpecifications>
         <test:embeddedDataSpecification>
-          <test:dataSpecification>
-            <test:type>ExternalReference</test:type>
-            <test:keys>
-              <test:key>
-                <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360</test:value>
-              </test:key>
-            </test:keys>
-          </test:dataSpecification>
           <test:dataSpecificationContent>
             <test:dataSpecificationIec61360>
               <test:preferredName>
@@ -442,6 +433,15 @@
               </test:definition>
             </test:dataSpecificationIec61360>
           </test:dataSpecificationContent>
+          <test:dataSpecification>
+            <test:type>ExternalReference</test:type>
+            <test:keys>
+              <test:key>
+                <test:type>GlobalReference</test:type>
+                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+              </test:key>
+            </test:keys>
+          </test:dataSpecification>
         </test:embeddedDataSpecification>
       </test:embeddedDataSpecifications>
     </test:conceptDescription>

@@ -114,7 +114,8 @@ public class XMLDeserializerTest {
   @Test
   public void deserializeAASFull() throws FileNotFoundException, DeserializationException {
     Environment env = new XmlDeserializer().read(XmlSerializerTest.AASFULL_FILE);
-    Assert.assertEquals(AASFull.createEnvironment(), env);
+    Environment expectedEnv = AASFull.createEnvironment();
+    Assert.assertEquals(expectedEnv, env);
   }
 
   @Test

@@ -16,7 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 
 public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
@@ -49,7 +49,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
    * @param messageType desired value to be set
    * @return Builder object with new value for messageType
    */
-  public B messageType(MessageTypeEnum messageType) {
+  public B messageType(MessageType messageType) {
     getBuildingInstance().setMessageType(messageType);
     return getSelf();
   }

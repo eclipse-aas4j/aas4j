@@ -29,10 +29,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
 @IRI("aas:Resource")
 public class DefaultResource implements Resource {
 
-  @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
+  @IRI("https://admin-shell.io/aas/3/1/Resource/contentType")
   protected String contentType;
 
-  @IRI("https://admin-shell.io/aas/3/0/Resource/path")
+  @IRI("https://admin-shell.io/aas/3/1/Resource/path")
   protected String path;
 
   public DefaultResource() {}
@@ -77,9 +77,16 @@ public class DefaultResource implements Resource {
     this.contentType = contentType;
   }
 
+  @Override
   public String toString() {
-    return String.format(
-        "DefaultResource (" + "path=%s," + "contentType=%s," + ")", this.path, this.contentType);
+    return "DefaultResource{"
+        + "contentType='"
+        + contentType
+        + '\''
+        + ", path='"
+        + path
+        + '\''
+        + '}';
   }
 
   /** This builder class can be used to construct a DefaultResource bean. */

@@ -26,17 +26,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * Version of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/version
    *
    * @return Returns the String for the property version.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/version")
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/version")
   String getVersion();
 
   /**
    * Version of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/version
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/version
    *
    * @param version desired value for the property version.
    */
@@ -45,17 +45,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * Revision of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/revision
    *
    * @return Returns the String for the property revision.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/revision")
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
   String getRevision();
 
   /**
    * Revision of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/revision
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/revision
    *
    * @param revision desired value for the property revision.
    */
@@ -64,17 +64,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * The subject ID of the subject responsible for making the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/creator
    *
    * @return Returns the Reference for the property creator.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/creator")
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
   Reference getCreator();
 
   /**
    * The subject ID of the subject responsible for making the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/creator
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/creator
    *
    * @param creator desired value for the property creator.
    */
@@ -83,17 +83,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * Identifier of the template that guided the creation of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId
    *
    * @return Returns the String for the property templateId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId")
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId")
   String getTemplateId();
 
   /**
    * Identifier of the template that guided the creation of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AdministrativeInformation/templateId
+   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId
    *
    * @param templateId desired value for the property templateId.
    */

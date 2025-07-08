@@ -29,10 +29,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringDefinitionTypeIe
 @IRI("aas:LangStringDefinitionTypeIec61360")
 public class DefaultLangStringDefinitionTypeIec61360 implements LangStringDefinitionTypeIec61360 {
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
   protected String language;
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
   protected String text;
 
   public DefaultLangStringDefinitionTypeIec61360() {}
@@ -76,8 +76,16 @@ public class DefaultLangStringDefinitionTypeIec61360 implements LangStringDefini
     this.text = text;
   }
 
+  @Override
   public String toString() {
-    return String.format("DefaultLangStringDefinitionTypeIec61360 (" + ")");
+    return "DefaultLangStringDefinitionTypeIec61360{"
+        + "language='"
+        + language
+        + '\''
+        + ", text='"
+        + text
+        + '\''
+        + '}';
   }
 
   /** This builder class can be used to construct a DefaultLangStringDefinitionTypeIec61360 bean. */

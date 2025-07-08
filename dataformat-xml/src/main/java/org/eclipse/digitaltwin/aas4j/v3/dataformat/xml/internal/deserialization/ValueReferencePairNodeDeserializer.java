@@ -26,11 +26,17 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueReferencePair;
 
 public class ValueReferencePairNodeDeserializer
     implements CustomJsonNodeDeserializer<ValueReferencePair> {
+
+  public static final String VALUE_ID = "valueId";
+
   @Override
   public ValueReferencePair readValue(JsonNode node, JsonParser parser) throws IOException {
     String value = node.get("value").asText();
+
+    if (!node.has(VALUE_ID)) return new DefaultValueReferencePair.Builder().value(value).build();
+
     Reference valueId =
-        DeserializationHelper.createInstanceFromNode(parser, node.get("valueId"), Reference.class);
+        DeserializationHelper.createInstanceFromNode(parser, node.get(VALUE_ID), Reference.class);
     return new DefaultValueReferencePair.Builder().value(value).valueId(valueId).build();
   }
 }

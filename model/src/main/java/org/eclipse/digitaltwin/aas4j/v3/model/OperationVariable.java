@@ -29,17 +29,17 @@ public interface OperationVariable {
   /**
    * Describes an argument or result of an operation via a submodel element
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/OperationVariable/value
+   * <p>More information under https://admin-shell.io/aas/3/1/OperationVariable/value
    *
    * @return Returns the SubmodelElement for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
+  @IRI("https://admin-shell.io/aas/3/1/OperationVariable/value")
   SubmodelElement getValue();
 
   /**
    * Describes an argument or result of an operation via a submodel element
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/OperationVariable/value
+   * <p>More information under https://admin-shell.io/aas/3/1/OperationVariable/value
    *
    * @param value desired value for the property value.
    */
