@@ -57,7 +57,7 @@
         <plugin.jacoco.version>0.8.13</plugin.jacoco.version>
         <classgraph.version>4.8.179</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
-        <commons-io.version>2.19.0</commons-io.version>
+        <commons-io.version>2.20.0</commons-io.version>
         <commons-compress.version>1.27.1</commons-compress.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
         <guava.version>33.4.8-jre</guava.version>
