@@ -45,7 +45,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <plugin.central-publishing-maven-plugin.version>0.7.0</plugin.central-publishing-maven-plugin.version>
+        <plugin.central-publishing-maven-plugin.version>0.8.0</plugin.central-publishing-maven-plugin.version>
         <plugin.compiler.version>3.14.0</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
         <plugin.flatten.version>1.7.1</plugin.flatten.version>
