@@ -59,7 +59,7 @@
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.20.0</commons-io.version>
         <commons-compress.version>1.27.1</commons-compress.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <guava.version>33.4.8-jre</guava.version>
         <guice.version>5.0.1</guice.version>
         <hamcrest.version>3.0</hamcrest.version>
