@@ -51,7 +51,7 @@
         <plugin.flatten.version>1.7.2</plugin.flatten.version>
         <plugin.gpg.version>3.2.8</plugin.gpg.version>
         <plugin.jar.version>3.4.2</plugin.jar.version>
-        <plugin.javadoc.version>3.11.2</plugin.javadoc.version>
+        <plugin.javadoc.version>3.11.3</plugin.javadoc.version>
         <plugin.projectinfo.version>3.9.0</plugin.projectinfo.version>
         <plugin.source.version>3.3.1</plugin.source.version>
         <plugin.jacoco.version>0.8.13</plugin.jacoco.version>
