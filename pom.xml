@@ -45,31 +45,31 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+        <plugin.central-publishing-maven-plugin.version>0.8.0</plugin.central-publishing-maven-plugin.version>
         <plugin.compiler.version>3.14.0</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
-        <plugin.flatten.version>1.7.0</plugin.flatten.version>
-        <plugin.gpg.version>3.0.1</plugin.gpg.version>
+        <plugin.flatten.version>1.7.2</plugin.flatten.version>
+        <plugin.gpg.version>3.2.8</plugin.gpg.version>
         <plugin.jar.version>3.4.2</plugin.jar.version>
-        <plugin.javadoc.version>3.11.2</plugin.javadoc.version>
+        <plugin.javadoc.version>3.11.3</plugin.javadoc.version>
         <plugin.projectinfo.version>3.9.0</plugin.projectinfo.version>
         <plugin.source.version>3.3.1</plugin.source.version>
         <plugin.jacoco.version>0.8.13</plugin.jacoco.version>
-        <classgraph.version>4.8.179</classgraph.version>
+        <classgraph.version>4.8.181</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
-        <commons-io.version>2.19.0</commons-io.version>
-        <commons-compress.version>1.27.1</commons-compress.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-io.version>2.20.0</commons-io.version>
+        <commons-compress.version>1.28.0</commons-compress.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <guava.version>33.4.8-jre</guava.version>
         <guice.version>5.0.1</guice.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <jackson.version>2.19.0</jackson.version>
+        <jackson.version>2.19.2</jackson.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <jaxb.version>2.3.1</jaxb.version>
         <jaxb-rich-contract.version>2.1.0</jaxb-rich-contract.version>
         <jena.version>4.1.0</jena.version>
         <jsonassert.version>1.5.3</jsonassert.version>
-        <json-schema-validator.version>1.5.6</json-schema-validator.version>
+        <json-schema-validator.version>1.5.8</json-schema-validator.version>
         <junit.version>4.13.2</junit.version>
         <junit-params.version>1.1.1</junit-params.version>
         <moxy.version>2.7.8</moxy.version>
@@ -78,10 +78,10 @@
         <shacl.version>1.3.2</shacl.version>
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
-        <xmlunit.version>2.10.0</xmlunit.version>
-        <mockito.version>5.17.0</mockito.version>
+        <xmlunit.version>2.10.3</xmlunit.version>
+        <mockito.version>5.19.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
-        <spotless.version>2.44.5</spotless.version>
+        <spotless.version>2.46.1</spotless.version>
     </properties>
     <build>
         <plugins>
@@ -224,14 +224,14 @@
     <!-- This profile is for the continuous integration pipeline for deploying to the central repository, which requires artifacts to be signed -->
     <profiles>
         <profile>
-            <id>MavenCentral</id>
+            <id>release</id>
             <build>
                 <plugins>
                     <!-- Signing the artifacts -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.7</version>
+                        <version>${plugin.gpg.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -239,42 +239,25 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                                <configuration>
-                                    <gpgArguments>
-                                        <arg>--pinentry-mode</arg>
-                                        <arg>loopback</arg>
-                                    </gpgArguments>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
                     
                     <!-- Upload to Maven Central -->
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.7.0</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${plugin.central-publishing-maven-plugin.version}</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                            <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
-
-            <!-- Central Repository deployment configuration -->
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
         </profile>
     </profiles>
 
@@ -425,14 +408,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
-        </repository>
-    </distributionManagement>
 
     <licenses>
         <license>

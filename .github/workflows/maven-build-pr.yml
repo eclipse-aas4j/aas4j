@@ -1,0 +1,35 @@
+name: Java CI with Maven
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout source
+      uses: actions/checkout@v5
+      with:
+        submodules: true # Ensures submodules are checked out
+        fetch-depth: 0   # Fetches the full history to avoid issues with submodules
+
+    - name: Update git submodules
+      run: git submodule update --init --recursive
+
+    - name: Set up Java and Maven Central credentials
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Run Spotless Check
+      run: mvn spotless:check
+
+    - name: Build with Maven
+      run: |
+        mvn --batch-mode verify
