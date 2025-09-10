@@ -28,13 +28,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
 @IRI("aas:OperationRequest")
 public class DefaultOperationRequest implements OperationRequest {
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
   protected Duration clientTimeoutDuration;
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments")
   protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
+  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inputArguments")
   protected List<OperationVariable> inputArguments = new ArrayList<>();
 
   public DefaultOperationRequest() {}
@@ -88,16 +88,6 @@ public class DefaultOperationRequest implements OperationRequest {
   @Override
   public void setClientTimeoutDuration(Duration clientTimeoutDuration) {
     this.clientTimeoutDuration = clientTimeoutDuration;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultOperationRequest ("
-            + "inoutputArguments=%s,"
-            + "inputArguments=%s,"
-            + "clientTimeoutDuration=%s,"
-            + ")",
-        this.inoutputArguments, this.inputArguments, this.clientTimeoutDuration);
   }
 
   /** This builder class can be used to construct a DefaultOperationRequest bean. */

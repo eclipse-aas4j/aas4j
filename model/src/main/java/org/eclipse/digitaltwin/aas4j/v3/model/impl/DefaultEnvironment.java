@@ -33,13 +33,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EnvironmentBuilder;
 @IRI("aas:Environment")
 public class DefaultEnvironment implements Environment {
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/assetAdministrationShells")
   protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/conceptDescriptions")
   protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
+  @IRI("https://admin-shell.io/aas/3/1/Environment/submodels")
   protected List<Submodel> submodels = new ArrayList<>();
 
   public DefaultEnvironment() {}

@@ -84,7 +84,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -135,7 +135,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -186,7 +186,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -247,7 +247,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"
@@ -295,7 +295,7 @@
                             },
                             {
                                 "language": "EN",
-                                "text": "ActualRotationSpeed"
+                                "text": "ActualRotSpeed"
                             }
                         ]
                     }
@@ -313,7 +313,7 @@
                         "keys": [
                             {
                                 "type": "GlobalReference",
-                                "value": "https://admin-shell.io/aas/3/0/RC02/DataSpecificationIec61360"
+                                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
                             }
                         ],
                         "type": "ExternalReference"

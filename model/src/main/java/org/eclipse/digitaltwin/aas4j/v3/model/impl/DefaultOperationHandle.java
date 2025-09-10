@@ -24,7 +24,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationHandleBuilder;
 @IRI("aas:OperationHandle")
 public class DefaultOperationHandle implements OperationHandle {
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationHandle/handleId")
+  @IRI("https://admin-shell.io/aas/3/1/OperationHandle/handleId")
   protected String handleId;
 
   public DefaultOperationHandle() {}
@@ -49,6 +49,11 @@ public class DefaultOperationHandle implements OperationHandle {
   }
 
   @Override
+  public String toString() {
+    return "DefaultOperationHandle{" + "handleId='" + handleId + '\'' + '}';
+  }
+
+  @Override
   public String getHandleId() {
     return handleId;
   }
@@ -56,10 +61,6 @@ public class DefaultOperationHandle implements OperationHandle {
   @Override
   public void setHandleId(String handleId) {
     this.handleId = handleId;
-  }
-
-  public String toString() {
-    return String.format("DefaultOperationHandle (" + "handleId=%s," + ")", this.handleId);
   }
 
   /** This builder class can be used to construct a DefaultOperationHandle bean. */

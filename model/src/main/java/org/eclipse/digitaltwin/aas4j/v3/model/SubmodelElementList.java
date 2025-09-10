@@ -28,18 +28,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
    * representing a set or a bag.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant
+   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant
    *
    * @return Returns the boolean for the property orderRelevant.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant")
   boolean getOrderRelevant();
 
   /**
    * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
    * representing a set or a bag.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementList/orderRelevant
+   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant
    *
    * @param orderRelevant desired value for the property orderRelevant.
    */
@@ -49,18 +49,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * Semantic ID the submodel elements contained in the list match to.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement
    *
    * @return Returns the Reference for the property semanticIdListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement")
   Reference getSemanticIdListElement();
 
   /**
    * Semantic ID the submodel elements contained in the list match to.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/semanticIdListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement
    *
    * @param semanticIdListElement desired value for the property semanticIdListElement.
    */
@@ -70,18 +70,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * The submodel element type of the submodel elements contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement
    *
    * @return Returns the AasSubmodelElements for the property typeValueListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement")
   AasSubmodelElements getTypeValueListElement();
 
   /**
    * The submodel element type of the submodel elements contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/typeValueListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement
    *
    * @param typeValueListElement desired value for the property typeValueListElement.
    */
@@ -91,18 +91,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * The value type of the submodel element contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement
    *
    * @return Returns the DataTypeDefXsd for the property valueTypeListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement")
   DataTypeDefXsd getValueTypeListElement();
 
   /**
    * The value type of the submodel element contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/SubmodelElementList/valueTypeListElement
+   * https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement
    *
    * @param valueTypeListElement desired value for the property valueTypeListElement.
    */
@@ -111,19 +111,19 @@ public interface SubmodelElementList extends SubmodelElement {
   /**
    * Submodel element contained in the list.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
+   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/value
    *
-   * @return Returns the List of SubmodelElements for the property value.
+   * @return Returns the List of SubmodelElements for the property values.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementList/value")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/value")
   List<SubmodelElement> getValue();
 
   /**
    * Submodel element contained in the list.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementList/value
+   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/value
    *
-   * @param values desired value for the property value.
+   * @param value desired value for the property values.
    */
-  void setValue(List<SubmodelElement> values);
+  void setValue(List<SubmodelElement> value);
 }

@@ -37,11 +37,11 @@
         <module>dataformat-xml</module>
     </modules>
     <properties>
-        <revision.major>1</revision.major>
-        <revision.minor>1</revision.minor>
+        <revision.major>2</revision.major>
+        <revision.minor>0</revision.minor>
         <revision.patch>0</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
-        <model.version>1.1.0-SNAPSHOT</model.version>
+        <model.version>2.0.0-SNAPSHOT</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

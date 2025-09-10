@@ -29,16 +29,16 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
 @IRI("aas:LevelType")
 public class DefaultLevelType implements LevelType {
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/max")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/max")
   protected boolean max;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/min")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/min")
   protected boolean min;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/nom")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/nom")
   protected boolean nom;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/typ")
+  @IRI("https://admin-shell.io/aas/3/1/LevelType/typ")
   protected boolean typ;
 
   public DefaultLevelType() {}
@@ -63,6 +63,20 @@ public class DefaultLevelType implements LevelType {
           && Objects.equals(this.typ, other.typ)
           && Objects.equals(this.max, other.max);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultLevelType{"
+        + "max="
+        + max
+        + ", min="
+        + min
+        + ", nom="
+        + nom
+        + ", typ="
+        + typ
+        + '}';
   }
 
   @Override
@@ -103,12 +117,6 @@ public class DefaultLevelType implements LevelType {
   @Override
   public void setMax(boolean max) {
     this.max = max;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultLevelType (" + "min=%s," + "nom=%s," + "typ=%s," + "max=%s," + ")",
-        this.min, this.nom, this.typ, this.max);
   }
 
   /** This builder class can be used to construct a DefaultLevelType bean. */

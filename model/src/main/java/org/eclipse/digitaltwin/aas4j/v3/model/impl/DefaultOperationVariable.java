@@ -30,7 +30,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationVariableBuilder;
 @IRI("aas:OperationVariable")
 public class DefaultOperationVariable implements OperationVariable {
 
-  @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
+  @IRI("https://admin-shell.io/aas/3/1/OperationVariable/value")
   protected SubmodelElement value;
 
   public DefaultOperationVariable() {}
@@ -55,6 +55,11 @@ public class DefaultOperationVariable implements OperationVariable {
   }
 
   @Override
+  public String toString() {
+    return "DefaultOperationVariable{" + "value=" + value + '}';
+  }
+
+  @Override
   public SubmodelElement getValue() {
     return value;
   }
@@ -62,10 +67,6 @@ public class DefaultOperationVariable implements OperationVariable {
   @Override
   public void setValue(SubmodelElement value) {
     this.value = value;
-  }
-
-  public String toString() {
-    return String.format("DefaultOperationVariable (" + "value=%s," + ")", this.value);
   }
 
   /** This builder class can be used to construct a DefaultOperationVariable bean. */

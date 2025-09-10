@@ -30,28 +30,28 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EventPayloadBuilder;
 @IRI("aas:EventPayload")
 public class DefaultEventPayload implements EventPayload {
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableReference")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableReference")
   protected Reference observableReference;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/observableSemanticId")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableSemanticId")
   protected Reference observableSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/payload")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/payload")
   protected byte[] payload;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/source")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/source")
   protected Reference source;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/sourceSemanticId")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/sourceSemanticId")
   protected Reference sourceSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/subjectId")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/subjectId")
   protected Reference subjectId;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/timeStamp")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/timeStamp")
   protected String timeStamp;
 
-  @IRI("https://admin-shell.io/aas/3/0/EventPayload/topic")
+  @IRI("https://admin-shell.io/aas/3/1/EventPayload/topic")
   protected String topic;
 
   public DefaultEventPayload() {}
@@ -88,6 +88,30 @@ public class DefaultEventPayload implements EventPayload {
           && Objects.equals(this.timeStamp, other.timeStamp)
           && Arrays.equals(this.payload, other.payload);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultEventPayload{"
+        + "observableReference="
+        + observableReference
+        + ", observableSemanticId="
+        + observableSemanticId
+        + ", payload="
+        + Arrays.toString(payload)
+        + ", source="
+        + source
+        + ", sourceSemanticId="
+        + sourceSemanticId
+        + ", subjectId="
+        + subjectId
+        + ", timeStamp='"
+        + timeStamp
+        + '\''
+        + ", topic='"
+        + topic
+        + '\''
+        + '}';
   }
 
   @Override
@@ -168,28 +192,6 @@ public class DefaultEventPayload implements EventPayload {
   @Override
   public void setPayload(byte[] payload) {
     this.payload = payload;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultEventPayload ("
-            + "source=%s,"
-            + "sourceSemanticId=%s,"
-            + "observableReference=%s,"
-            + "observableSemanticId=%s,"
-            + "topic=%s,"
-            + "subjectId=%s,"
-            + "timeStamp=%s,"
-            + "payload=%s,"
-            + ")",
-        this.source,
-        this.sourceSemanticId,
-        this.observableReference,
-        this.observableSemanticId,
-        this.topic,
-        this.subjectId,
-        this.timeStamp,
-        Arrays.toString(this.payload));
   }
 
   /** This builder class can be used to construct a DefaultEventPayload bean. */

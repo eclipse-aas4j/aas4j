@@ -19,50 +19,62 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSecurityAttributeObject;
 
-/** */
+/** Represents security attributes in the Asset Administration Shell. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultSecurityAttributeObject.class)})
 public interface SecurityAttributeObject {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
+   * The type of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/type
    *
    * @return Returns the SecurityTypeEnum for the property type.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/type")
   SecurityTypeEnum getType();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
+   * The type of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/type
    *
    * @param type desired value for the property type.
    */
   void setType(SecurityTypeEnum type);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
+   * The key of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/key
    *
    * @return Returns the String for the property key.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/key")
   String getKey();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
+   * The key of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/key
    *
    * @param key desired value for the property key.
    */
   void setKey(String key);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
+   * The value of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/value")
   String getValue();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
+   * The value of the security attribute.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/1/SecurityAttribute/value
    *
    * @param value desired value for the property value.
    */

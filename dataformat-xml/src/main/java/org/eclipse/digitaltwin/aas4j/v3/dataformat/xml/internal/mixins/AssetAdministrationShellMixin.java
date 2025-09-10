@@ -26,7 +26,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
   "extension",
   "category",
   "idShort",
-  "displayNames",
+  "displayName",
   "description",
   "checksum",
   "administration",

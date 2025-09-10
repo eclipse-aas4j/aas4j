@@ -30,18 +30,18 @@ public interface Referable extends HasExtensions {
    * The category is a value that gives further meta information w.r.t. to the class of the element.
    * It affects the expected existence of attributes and the applicability of constraints.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/category
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/category
    *
    * @return Returns the String for the property category.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
   String getCategory();
 
   /**
    * The category is a value that gives further meta information w.r.t. to the class of the element.
    * It affects the expected existence of attributes and the applicability of constraints.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/category
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/category
    *
    * @param category desired value for the property category.
    */
@@ -51,18 +51,18 @@ public interface Referable extends HasExtensions {
    * In case of identifiables this attribute is a short name of the element. In case of referable
    * this ID is an identifying string of the element within its name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/idShort
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/idShort
    *
    * @return Returns the String for the property idShort.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
   String getIdShort();
 
   /**
    * In case of identifiables this attribute is a short name of the element. In case of referable
    * this ID is an identifying string of the element within its name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/idShort
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/idShort
    *
    * @param idShort desired value for the property idShort.
    */
@@ -71,38 +71,38 @@ public interface Referable extends HasExtensions {
   /**
    * Display name. Can be provided in several languages.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/displayName
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/displayName
    *
    * @return Returns the List of LangStringNameTypes for the property displayName.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
   List<LangStringNameType> getDisplayName();
 
   /**
    * Display name. Can be provided in several languages.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/displayName
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/displayName
    *
-   * @param displayNames desired value for the property displayName.
+   * @param displayName desired value for the property displayName.
    */
-  void setDisplayName(List<LangStringNameType> displayNames);
+  void setDisplayName(List<LangStringNameType> displayName);
 
   /**
    * Description or comments on the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/description
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/description
    *
    * @return Returns the List of LangStringTextTypes for the property description.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
   List<LangStringTextType> getDescription();
 
   /**
    * Description or comments on the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Referable/description
+   * <p>More information under https://admin-shell.io/aas/3/1/Referable/description
    *
-   * @param descriptions desired value for the property description.
+   * @param description desired value for the property description.
    */
-  void setDescription(List<LangStringTextType> descriptions);
+  void setDescription(List<LangStringTextType> description);
 }

@@ -31,19 +31,19 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.SpecificAssetIdBuilder;
 @IRI("aas:SpecificAssetId")
 public class DefaultSpecificAssetId implements SpecificAssetId {
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/externalSubjectId")
+  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/externalSubjectId")
   protected Reference externalSubjectId;
 
-  @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/name")
+  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/name")
   protected String name;
 
-  @IRI("https://admin-shell.io/aas/3/0/SpecificAssetId/value")
+  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/value")
   protected String value;
 
   public DefaultSpecificAssetId() {}
@@ -126,10 +126,22 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     this.supplementalSemanticIds = supplementalSemanticIds;
   }
 
+  @Override
   public String toString() {
-    return String.format(
-        "DefaultSpecificAssetId (" + "name=%s," + "value=%s," + "externalSubjectId=%s," + ")",
-        this.name, this.value, this.externalSubjectId);
+    return "DefaultSpecificAssetId{"
+        + "semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", externalSubjectId="
+        + externalSubjectId
+        + ", name='"
+        + name
+        + '\''
+        + ", value='"
+        + value
+        + '\''
+        + '}';
   }
 
   /** This builder class can be used to construct a DefaultSpecificAssetId bean. */

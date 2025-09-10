@@ -29,17 +29,17 @@ public interface Resource {
   /**
    * Path and name of the resource (with file extension).
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Resource/path
+   * <p>More information under https://admin-shell.io/aas/3/1/Resource/path
    *
    * @return Returns the String for the property path.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Resource/path")
+  @IRI("https://admin-shell.io/aas/3/1/Resource/path")
   String getPath();
 
   /**
    * Path and name of the resource (with file extension).
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Resource/path
+   * <p>More information under https://admin-shell.io/aas/3/1/Resource/path
    *
    * @param path desired value for the property path.
    */
@@ -48,17 +48,17 @@ public interface Resource {
   /**
    * Content type of the content of the file.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Resource/contentType
+   * <p>More information under https://admin-shell.io/aas/3/1/Resource/contentType
    *
    * @return Returns the String for the property contentType.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Resource/contentType")
+  @IRI("https://admin-shell.io/aas/3/1/Resource/contentType")
   String getContentType();
 
   /**
    * Content type of the content of the file.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Resource/contentType
+   * <p>More information under https://admin-shell.io/aas/3/1/Resource/contentType
    *
    * @param contentType desired value for the property contentType.
    */

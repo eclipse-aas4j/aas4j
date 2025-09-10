@@ -31,17 +31,17 @@ public interface AbstractLangString {
   /**
    * Language tag conforming to BCP 47
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AbstractLangString/language
+   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/language
    *
    * @return Returns the String for the property language.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
   String getLanguage();
 
   /**
    * Language tag conforming to BCP 47
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AbstractLangString/language
+   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/language
    *
    * @param language desired value for the property language.
    */
@@ -50,17 +50,17 @@ public interface AbstractLangString {
   /**
    * Text in the 'language'
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AbstractLangString/text
+   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/text
    *
    * @return Returns the String for the property text.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
   String getText();
 
   /**
    * Text in the 'language'
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AbstractLangString/text
+   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/text
    *
    * @param text desired value for the property text.
    */

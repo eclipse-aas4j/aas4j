@@ -22,22 +22,22 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShe
 
 /** An asset administration shell. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultAssetAdministrationShell.class)})
-public interface AssetAdministrationShell extends Identifiable, HasDataSpecification {
+public interface AssetAdministrationShell extends HasDataSpecification, Identifiable {
 
   /**
    * The reference to the AAS the AAS was derived from.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
+   * <p>More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom
    *
    * @return Returns the Reference for the property derivedFrom.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom")
+  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom")
   Reference getDerivedFrom();
 
   /**
    * The reference to the AAS the AAS was derived from.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/derivedFrom
+   * <p>More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/derivedFrom
    *
    * @param derivedFrom desired value for the property derivedFrom.
    */
@@ -47,18 +47,18 @@ public interface AssetAdministrationShell extends Identifiable, HasDataSpecifica
    * Meta-information about the asset the AAS is representing.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+   * https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation
    *
    * @return Returns the AssetInformation for the property assetInformation.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation")
+  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation")
   AssetInformation getAssetInformation();
 
   /**
    * Meta-information about the asset the AAS is representing.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/AssetAdministrationShell/assetInformation
+   * https://admin-shell.io/aas/3/1/AssetAdministrationShell/assetInformation
    *
    * @param assetInformation desired value for the property assetInformation.
    */
@@ -67,17 +67,17 @@ public interface AssetAdministrationShell extends Identifiable, HasDataSpecifica
   /**
    * References to submodels of the AAS.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
+   * <p>More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels
    *
    * @return Returns the List of References for the property submodels.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels")
+  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels")
   List<Reference> getSubmodels();
 
   /**
    * References to submodels of the AAS.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/AssetAdministrationShell/submodels
+   * <p>More information under https://admin-shell.io/aas/3/1/AssetAdministrationShell/submodels
    *
    * @param submodels desired value for the property submodels.
    */

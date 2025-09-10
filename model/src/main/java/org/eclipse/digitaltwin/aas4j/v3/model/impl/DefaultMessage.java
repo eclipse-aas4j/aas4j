@@ -17,7 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.MessageBuilder;
 
@@ -25,19 +25,19 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.MessageBuilder;
 @IRI("aas:Message")
 public class DefaultMessage implements Message {
 
-  @IRI("https://admin-shell.io/aas/3/0/Message/code")
+  @IRI("https://admin-shell.io/aas/3/1/Message/code")
   protected String code;
 
-  @IRI("https://admin-shell.io/aas/3/0/Message/correlationId")
+  @IRI("https://admin-shell.io/aas/3/1/Message/correlationId")
   protected String correlationId;
 
-  @IRI("https://admin-shell.io/aas/3/0/Message/messageType")
-  protected MessageTypeEnum messageType;
+  @IRI("https://admin-shell.io/aas/3/1/Message/messageType")
+  protected MessageType messageType;
 
-  @IRI("https://admin-shell.io/aas/3/0/Message/text")
+  @IRI("https://admin-shell.io/aas/3/1/Message/text")
   protected String text;
 
-  @IRI("https://admin-shell.io/aas/3/0/Message/timestamp")
+  @IRI("https://admin-shell.io/aas/3/1/Message/timestamp")
   protected String timestamp;
 
   public DefaultMessage() {}
@@ -66,6 +66,26 @@ public class DefaultMessage implements Message {
   }
 
   @Override
+  public String toString() {
+    return "DefaultMessage{"
+        + "code='"
+        + code
+        + '\''
+        + ", correlationId='"
+        + correlationId
+        + '\''
+        + ", messageType="
+        + messageType
+        + ", text='"
+        + text
+        + '\''
+        + ", timestamp='"
+        + timestamp
+        + '\''
+        + '}';
+  }
+
+  @Override
   public String getCode() {
     return code;
   }
@@ -86,12 +106,12 @@ public class DefaultMessage implements Message {
   }
 
   @Override
-  public MessageTypeEnum getMessageType() {
+  public MessageType getMessageType() {
     return messageType;
   }
 
   @Override
-  public void setMessageType(MessageTypeEnum messageType) {
+  public void setMessageType(MessageType messageType) {
     this.messageType = messageType;
   }
 
@@ -113,18 +133,6 @@ public class DefaultMessage implements Message {
   @Override
   public void setTimestamp(String timestamp) {
     this.timestamp = timestamp;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultMessage ("
-            + "code=%s,"
-            + "correlationId=%s,"
-            + "messageType=%s,"
-            + "text=%s,"
-            + "timestamp=%s,"
-            + ")",
-        this.code, this.correlationId, this.messageType, this.text, this.timestamp);
   }
 
   /** This builder class can be used to construct a DefaultMessage bean. */

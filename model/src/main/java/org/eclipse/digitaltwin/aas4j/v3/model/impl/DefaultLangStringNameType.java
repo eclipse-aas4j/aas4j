@@ -28,10 +28,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringNameTypeBuilder;
 @IRI("aas:LangStringNameType")
 public class DefaultLangStringNameType implements LangStringNameType {
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
   protected String language;
 
-  @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
   protected String text;
 
   public DefaultLangStringNameType() {}
@@ -56,6 +56,18 @@ public class DefaultLangStringNameType implements LangStringNameType {
   }
 
   @Override
+  public String toString() {
+    return "DefaultLangStringNameType{"
+        + "language='"
+        + language
+        + '\''
+        + ", text='"
+        + text
+        + '\''
+        + '}';
+  }
+
+  @Override
   public String getLanguage() {
     return language;
   }
@@ -73,10 +85,6 @@ public class DefaultLangStringNameType implements LangStringNameType {
   @Override
   public void setText(String text) {
     this.text = text;
-  }
-
-  public String toString() {
-    return String.format("DefaultLangStringNameType (" + ")");
   }
 
   /** This builder class can be used to construct a DefaultLangStringNameType bean. */

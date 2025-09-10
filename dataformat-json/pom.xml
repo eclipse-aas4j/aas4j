@@ -12,6 +12,33 @@
     <artifactId>aas4j-dataformat-json</artifactId>
     <name>Asset Administration Shell JSON-Serializer</name>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-json-examples</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.testOutputDirectory}/examples</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.parent.basedir}/external/admin-shell-io/examples/schemas/json/examples/generated</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

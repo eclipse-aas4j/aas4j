@@ -24,15 +24,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationHandle;
 public interface OperationHandle {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationHandle/handleId
+   * More information under https://admin-shell.io/aas/3/1/OperationHandle/handleId
    *
    * @return Returns the String for the property handleId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/OperationHandle/handleId")
+  @IRI("https://admin-shell.io/aas/3/1/OperationHandle/handleId")
   String getHandleId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/OperationHandle/handleId
+   * More information under https://admin-shell.io/aas/3/1/OperationHandle/handleId
    *
    * @param handleId desired value for the property handleId.
    */

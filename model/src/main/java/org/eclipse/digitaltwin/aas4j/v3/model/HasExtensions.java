@@ -26,17 +26,17 @@ public interface HasExtensions {
   /**
    * An extension of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
+   * <p>More information under https://admin-shell.io/aas/3/1/HasExtensions/extensions
    *
    * @return Returns the List of Extensions for the property extensions.
    */
-  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
   List<Extension> getExtensions();
 
   /**
    * An extension of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
+   * <p>More information under https://admin-shell.io/aas/3/1/HasExtensions/extensions
    *
    * @param extensions desired value for the property extensions.
    */

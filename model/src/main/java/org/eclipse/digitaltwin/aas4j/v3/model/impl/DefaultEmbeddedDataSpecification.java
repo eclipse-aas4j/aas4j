@@ -31,10 +31,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EmbeddedDataSpecificationB
 @IRI("aas:EmbeddedDataSpecification")
 public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecification {
 
-  @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification")
+  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification")
   protected Reference dataSpecification;
 
-  @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
+  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent")
   protected DataSpecificationContent dataSpecificationContent;
 
   public DefaultEmbeddedDataSpecification() {}
@@ -60,6 +60,16 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
   }
 
   @Override
+  public String toString() {
+    return "DefaultEmbeddedDataSpecification{"
+        + "dataSpecification="
+        + dataSpecification
+        + ", dataSpecificationContent="
+        + dataSpecificationContent
+        + '}';
+  }
+
+  @Override
   public Reference getDataSpecification() {
     return dataSpecification;
   }
@@ -77,15 +87,6 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
   @Override
   public void setDataSpecificationContent(DataSpecificationContent dataSpecificationContent) {
     this.dataSpecificationContent = dataSpecificationContent;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultEmbeddedDataSpecification ("
-            + "dataSpecification=%s,"
-            + "dataSpecificationContent=%s,"
-            + ")",
-        this.dataSpecification, this.dataSpecificationContent);
   }
 
   /** This builder class can be used to construct a DefaultEmbeddedDataSpecification bean. */

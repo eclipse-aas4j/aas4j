@@ -34,25 +34,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.QualifierBuilder;
 @IRI("aas:Qualifier")
 public class DefaultQualifier implements Qualifier {
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/kind")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/kind")
   protected QualifierKind kind;
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/type")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/type")
   protected String type;
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/value")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/value")
   protected String value;
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueId")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueId")
   protected Reference valueId;
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifier/valueType")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueType")
   protected DataTypeDefXsd valueType;
 
   public DefaultQualifier() {
@@ -89,6 +89,28 @@ public class DefaultQualifier implements Qualifier {
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultQualifier{"
+        + "semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", kind="
+        + kind
+        + ", type='"
+        + type
+        + '\''
+        + ", value='"
+        + value
+        + '\''
+        + ", valueId="
+        + valueId
+        + ", valueType="
+        + valueType
+        + '}';
   }
 
   @Override
@@ -159,18 +181,6 @@ public class DefaultQualifier implements Qualifier {
   @Override
   public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
     this.supplementalSemanticIds = supplementalSemanticIds;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultQualifier ("
-            + "kind=%s,"
-            + "type=%s,"
-            + "valueType=%s,"
-            + "value=%s,"
-            + "valueId=%s,"
-            + ")",
-        this.kind, this.type, this.valueType, this.value, this.valueId);
   }
 
   /** This builder class can be used to construct a DefaultQualifier bean. */

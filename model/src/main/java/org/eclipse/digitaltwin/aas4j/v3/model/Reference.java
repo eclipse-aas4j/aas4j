@@ -27,17 +27,17 @@ public interface Reference {
   /**
    * Type of the reference.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/type
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/type
    *
    * @return Returns the ReferenceTypes for the property type.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Reference/type")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/type")
   ReferenceTypes getType();
 
   /**
    * Type of the reference.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/type
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/type
    *
    * @param type desired value for the property type.
    */
@@ -46,17 +46,17 @@ public interface Reference {
   /**
    * 'semanticId' of the referenced model element ('type' = 'ModelReference').
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/referredSemanticId
    *
    * @return Returns the Reference for the property referredSemanticId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/referredSemanticId")
   Reference getReferredSemanticId();
 
   /**
    * 'semanticId' of the referenced model element ('type' = 'ModelReference').
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/referredSemanticId
    *
    * @param referredSemanticId desired value for the property referredSemanticId.
    */
@@ -65,17 +65,17 @@ public interface Reference {
   /**
    * Unique references in their name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/keys
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/keys
    *
    * @return Returns the List of Keys for the property keys.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/keys")
   List<Key> getKeys();
 
   /**
    * Unique references in their name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Reference/keys
+   * <p>More information under https://admin-shell.io/aas/3/1/Reference/keys
    *
    * @param keys desired value for the property keys.
    */

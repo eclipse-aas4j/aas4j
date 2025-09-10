@@ -23,7 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceC
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({
-  "hasExtension",
+  "extensions",
   "category",
   "idShort",
   "displayName",

@@ -22,98 +22,98 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum KeyTypes {
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/AnnotatedRelationshipElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/AnnotatedRelationshipElement")
   ANNOTATED_RELATIONSHIP_ELEMENT,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/AssetAdministrationShell")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/AssetAdministrationShell")
   ASSET_ADMINISTRATION_SHELL,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/BasicEventElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/BasicEventElement")
   BASIC_EVENT_ELEMENT,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Blob")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Blob")
   BLOB,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Capability")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Capability")
   CAPABILITY,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/ConceptDescription")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/ConceptDescription")
   CONCEPT_DESCRIPTION,
 
   /** Data element. */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/DataElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/DataElement")
   DATA_ELEMENT,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Entity")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Entity")
   ENTITY,
 
   /** Event. */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/EventElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/EventElement")
   EVENT_ELEMENT,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/File")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/File")
   FILE,
 
   /** Bookmark or a similar local identifier of a subordinate part of a primary resource */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/FragmentReference")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/FragmentReference")
   FRAGMENT_REFERENCE,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/GlobalReference")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/GlobalReference")
   GLOBAL_REFERENCE,
 
   /** Identifiable. */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Identifiable")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Identifiable")
   IDENTIFIABLE,
 
   /** Property with a value that can be provided in multiple languages */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/MultiLanguageProperty")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/MultiLanguageProperty")
   MULTI_LANGUAGE_PROPERTY,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Operation")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Operation")
   OPERATION,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Property")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Property")
   PROPERTY,
 
   /** Range with min and max */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Range")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Range")
   RANGE,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Referable")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Referable")
   REFERABLE,
 
   /** Reference */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/ReferenceElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/ReferenceElement")
   REFERENCE_ELEMENT,
 
   /** Relationship */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/RelationshipElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/RelationshipElement")
   RELATIONSHIP_ELEMENT,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/Submodel")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/Submodel")
   SUBMODEL,
 
   /** Submodel Element */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/SubmodelElement")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/SubmodelElement")
   SUBMODEL_ELEMENT,
 
   /** Struct of Submodel Elements */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/SubmodelElementCollection")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/SubmodelElementCollection")
   SUBMODEL_ELEMENT_COLLECTION,
 
   /** List of Submodel Elements */
-  @IRI("https://admin-shell.io/aas/3/0/KeyTypes/SubmodelElementList")
+  @IRI("https://admin-shell.io/aas/3/1/KeyTypes/SubmodelElementList")
   SUBMODEL_ELEMENT_LIST;
 }

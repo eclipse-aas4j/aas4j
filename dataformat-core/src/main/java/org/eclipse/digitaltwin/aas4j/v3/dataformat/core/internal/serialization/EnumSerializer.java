@@ -47,9 +47,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
         handleTimeRelatedValue(gen, value);
       } else {
         // pattern: 'xs:' + camelCase
-        String enum_string = serializeEnumName(value.name());
-        gen.writeString(
-            "xs:" + enum_string.substring(0, 1).toLowerCase() + enum_string.substring(1));
+        String enumString = serializeEnumName(value.name());
+        gen.writeString("xs:" + enumString.substring(0, 1).toLowerCase() + enumString.substring(1));
       }
     } else if (value instanceof DataTypeIec61360) {
       gen.writeString(value.name().toUpperCase());
@@ -65,15 +64,15 @@ public class EnumSerializer extends JsonSerializer<Enum> {
   }
 
   private void handleTimeRelatedValue(JsonGenerator gen, Enum<?> value) throws IOException {
-    String enum_string = serializeEnumName(value.name());
+    String enumString = serializeEnumName(value.name());
     String adaptedEnumString =
-        "xs:g" + enum_string.substring(1, 2).toUpperCase() + enum_string.substring(2);
+        "xs:g" + enumString.substring(1, 2).toUpperCase() + enumString.substring(2);
     gen.writeString(adaptedEnumString);
   }
 
   private boolean isTimeRelatedValue(Enum<?> value) {
-    String enum_string = serializeEnumName(value.name());
-    return enum_string.startsWith("G");
+    String enumString = serializeEnumName(value.name());
+    return enumString.startsWith("G");
   }
 
   /**
@@ -83,17 +82,26 @@ public class EnumSerializer extends JsonSerializer<Enum> {
    * @return name in CamelCase
    */
   public static String serializeEnumName(String input) {
-    String result = "";
+    StringBuilder result = new StringBuilder();
     boolean capitalize = true;
     for (int i = 0; i < input.length(); i++) {
       char currentChar = input.charAt(i);
       if ('_' == currentChar) {
         capitalize = true;
       } else {
-        result += capitalize ? currentChar : Character.toLowerCase(currentChar);
+        // Capitalize if (a) flagged by underscore, or (b) previous char was a digit and now it's a
+        // letter.
+        if (capitalize
+            || (i > 0
+                && Character.isDigit(input.charAt(i - 1))
+                && Character.isLetter(currentChar))) {
+          result.append(Character.toUpperCase(currentChar));
+        } else {
+          result.append(Character.toLowerCase(currentChar));
+        }
         capitalize = false;
       }
     }
-    return result;
+    return result.toString();
   }
 }

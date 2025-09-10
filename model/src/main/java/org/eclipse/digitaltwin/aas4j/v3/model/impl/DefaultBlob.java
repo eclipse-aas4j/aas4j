@@ -38,37 +38,37 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.BlobBuilder;
 @IRI("aas:Blob")
 public class DefaultBlob implements Blob {
 
-  @IRI("https://admin-shell.io/aas/3/0/Blob/contentType")
+  @IRI("https://admin-shell.io/aas/3/1/Blob/contentType")
   protected String contentType;
 
-  @IRI("https://admin-shell.io/aas/3/0/Blob/value")
+  @IRI("https://admin-shell.io/aas/3/1/Blob/value")
   protected byte[] value;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
   protected String idShort;
 
   public DefaultBlob() {}
@@ -78,12 +78,12 @@ public class DefaultBlob implements Blob {
     return Objects.hash(
         Arrays.hashCode(this.value),
         this.contentType,
-        this.embeddedDataSpecifications,
         this.category,
         this.idShort,
         this.displayName,
         this.description,
         this.extensions,
+        this.embeddedDataSpecifications,
         this.semanticId,
         this.supplementalSemanticIds,
         this.qualifiers);
@@ -101,16 +101,47 @@ public class DefaultBlob implements Blob {
       DefaultBlob other = (DefaultBlob) obj;
       return Arrays.equals(this.value, other.value)
           && Objects.equals(this.contentType, other.contentType)
-          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
           && Objects.equals(this.displayName, other.displayName)
           && Objects.equals(this.description, other.description)
           && Objects.equals(this.extensions, other.extensions)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
           && Objects.equals(this.qualifiers, other.qualifiers);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultBlob{"
+        + "contentType='"
+        + contentType
+        + '\''
+        + ", value="
+        + Arrays.toString(value)
+        + ", embeddedDataSpecifications="
+        + embeddedDataSpecifications
+        + ", extensions="
+        + extensions
+        + ", semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + ", qualifiers="
+        + qualifiers
+        + ", category='"
+        + category
+        + '\''
+        + ", description="
+        + description
+        + ", displayName="
+        + displayName
+        + ", idShort='"
+        + idShort
+        + '\''
+        + '}';
   }
 
   @Override
@@ -131,17 +162,6 @@ public class DefaultBlob implements Blob {
   @Override
   public void setContentType(String contentType) {
     this.contentType = contentType;
-  }
-
-  @Override
-  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-    return embeddedDataSpecifications;
-  }
-
-  @Override
-  public void setEmbeddedDataSpecifications(
-      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-    this.embeddedDataSpecifications = embeddedDataSpecifications;
   }
 
   @Override
@@ -170,8 +190,8 @@ public class DefaultBlob implements Blob {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -180,8 +200,8 @@ public class DefaultBlob implements Blob {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override
@@ -192,6 +212,17 @@ public class DefaultBlob implements Blob {
   @Override
   public void setExtensions(List<Extension> extensions) {
     this.extensions = extensions;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
   }
 
   @Override
@@ -222,12 +253,6 @@ public class DefaultBlob implements Blob {
   @Override
   public void setQualifiers(List<Qualifier> qualifiers) {
     this.qualifiers = qualifiers;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultBlob (" + "value=%s," + "contentType=%s," + ")",
-        Arrays.toString(this.value), this.contentType);
   }
 
   /** This builder class can be used to construct a DefaultBlob bean. */

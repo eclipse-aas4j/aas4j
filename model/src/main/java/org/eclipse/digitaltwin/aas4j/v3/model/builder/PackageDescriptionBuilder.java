@@ -23,24 +23,24 @@ public abstract class PackageDescriptionBuilder<
     extends ExtendableBuilder<T, B> {
 
   /**
-   * This function allows setting a value for items
+   * This function allows setting a value for aasIds
    *
-   * @param items desired value to be set
-   * @return Builder object with new value for items
+   * @param aasIds desired value to be set
+   * @return Builder object with new value for aasIds
    */
-  public B items(List<String> items) {
-    getBuildingInstance().setItems(items);
+  public B aasIds(List<String> aasIds) {
+    getBuildingInstance().setAasIds(aasIds);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List items
+   * This function allows adding a value to the List aasIds
    *
-   * @param items desired value to be added
-   * @return Builder object with new value for items
+   * @param aasIds desired value to be added
+   * @return Builder object with new value for aasIds
    */
-  public B items(String items) {
-    getBuildingInstance().getItems().add(items);
+  public B aasIds(String aasIds) {
+    getBuildingInstance().getAasIds().add(aasIds);
     return getSelf();
   }
 

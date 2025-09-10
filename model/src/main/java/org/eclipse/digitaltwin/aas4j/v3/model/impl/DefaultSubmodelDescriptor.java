@@ -32,32 +32,32 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelDescriptorBuilder;
 @IRI("aas:SubmodelDescriptor")
 public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
 
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/description")
+  @IRI("https://admin-shell.io/aas/3/1/Descriptor/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/displayName")
+  @IRI("https://admin-shell.io/aas/3/1/Descriptor/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/extensions")
+  @IRI("https://admin-shell.io/aas/3/1/Descriptor/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/administration")
   protected AdministrativeInformation administration;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/endpoints")
   protected List<Endpoint> endpoints = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/id")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/id")
   protected String id;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/idShort")
   protected String idShort;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId")
-  protected List<Reference> supplementalSemanticId = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/supplementalSemanticId")
+  protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
   public DefaultSubmodelDescriptor() {}
 
@@ -69,7 +69,7 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
         this.idShort,
         this.id,
         this.semanticId,
-        this.supplementalSemanticId,
+        this.supplementalSemanticIds,
         this.description,
         this.displayName,
         this.extensions);
@@ -90,7 +90,7 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
           && Objects.equals(this.idShort, other.idShort)
           && Objects.equals(this.id, other.id)
           && Objects.equals(this.semanticId, other.semanticId)
-          && Objects.equals(this.supplementalSemanticId, other.supplementalSemanticId)
+          && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
           && Objects.equals(this.description, other.description)
           && Objects.equals(this.displayName, other.displayName)
           && Objects.equals(this.extensions, other.extensions);
@@ -148,13 +148,13 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public List<Reference> getSupplementalSemanticId() {
-    return supplementalSemanticId;
+  public List<Reference> getSupplementalSemanticIds() {
+    return supplementalSemanticIds;
   }
 
   @Override
-  public void setSupplementalSemanticId(List<Reference> supplementalSemanticIds) {
-    this.supplementalSemanticId = supplementalSemanticIds;
+  public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+    this.supplementalSemanticIds = supplementalSemanticIds;
   }
 
   @Override
@@ -163,8 +163,8 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override
@@ -173,8 +173,8 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -187,22 +187,30 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     this.extensions = extensions;
   }
 
+  @Override
   public String toString() {
-    return String.format(
-        "DefaultSubmodelDescriptor ("
-            + "administration=%s,"
-            + "endpoints=%s,"
-            + "idShort=%s,"
-            + "id=%s,"
-            + "semanticId=%s,"
-            + "supplementalSemanticId=%s,"
-            + ")",
-        this.administration,
-        this.endpoints,
-        this.idShort,
-        this.id,
-        this.semanticId,
-        this.supplementalSemanticId);
+    return "DefaultSubmodelDescriptor{"
+        + "description="
+        + description
+        + ", displayName="
+        + displayName
+        + ", extensions="
+        + extensions
+        + ", administration="
+        + administration
+        + ", endpoints="
+        + endpoints
+        + ", id='"
+        + id
+        + '\''
+        + ", idShort='"
+        + idShort
+        + '\''
+        + ", semanticId="
+        + semanticId
+        + ", supplementalSemanticIds="
+        + supplementalSemanticIds
+        + '}';
   }
 
   /** This builder class can be used to construct a DefaultSubmodelDescriptor bean. */

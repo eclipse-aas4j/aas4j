@@ -22,25 +22,27 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SecurityAttributeObjectBuilder;
 
 /**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttribute
+ *
+ * <p>Represents security attributes in the Asset Administration Shell.
  */
-@IRI("aas:SecurityAttributeObject")
+@IRI("aas:SecurityAttribute")
 public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
 
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/key")
   protected String key;
 
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/type")
   protected SecurityTypeEnum type;
 
-  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
+  @IRI("https://admin-shell.io/aas/3/1/SecurityAttribute/value")
   protected String value;
 
   public DefaultSecurityAttributeObject() {}
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.type, this.key, this.value);
+    return Objects.hash(this.type, this.type, this.key, this.value);
   }
 
   @Override
@@ -89,13 +91,7 @@ public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
     this.value = value;
   }
 
-  public String toString() {
-    return String.format(
-        "DefaultSecurityAttributeObject (" + "type=%s," + "key=%s," + "value=%s," + ")",
-        this.type, this.key, this.value);
-  }
-
-  /** This builder class can be used to construct a DefaultSecurityAttributeObject bean. */
+  /** This builder class can be used to construct a DefaultSecurityAttribute bean. */
   public static class Builder
       extends SecurityAttributeObjectBuilder<DefaultSecurityAttributeObject, Builder> {
 

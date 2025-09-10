@@ -23,19 +23,19 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 public interface HasKind {
 
   /**
-   * Kind of the element: either type or instance.
+   * Kind of the element: either template or instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/HasKind/kind
+   * <p>More information under https://admin-shell.io/aas/3/1/HasKind/kind
    *
    * @return Returns the ModellingKind for the property kind.
    */
-  @IRI("https://admin-shell.io/aas/3/0/HasKind/kind")
+  @IRI("https://admin-shell.io/aas/3/1/HasKind/kind")
   ModellingKind getKind();
 
   /**
-   * Kind of the element: either type or instance.
+   * Kind of the element: either template or instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/HasKind/kind
+   * <p>More information under https://admin-shell.io/aas/3/1/HasKind/kind
    *
    * @param kind desired value for the property kind.
    */

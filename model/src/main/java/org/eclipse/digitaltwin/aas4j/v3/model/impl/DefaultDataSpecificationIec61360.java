@@ -33,46 +33,46 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360B
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360
  *
- * <p>Content of data specification template for concept descriptions for properties, values and
+ * <p>Content of data specification template for concept description for properties, values and
  * value lists conformant to IEC 61360.
  */
 @IRI("aas:DataSpecificationIec61360")
 public class DefaultDataSpecificationIec61360 implements DataSpecificationIec61360 {
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/dataType")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/dataType")
   protected DataTypeIec61360 dataType;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/definition")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/definition")
   protected List<LangStringDefinitionTypeIec61360> definition = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/levelType")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/levelType")
   protected LevelType levelType;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/preferredName")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/preferredName")
   protected List<LangStringPreferredNameTypeIec61360> preferredName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/shortName")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/shortName")
   protected List<LangStringShortNameTypeIec61360> shortName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/sourceOfDefinition")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/sourceOfDefinition")
   protected String sourceOfDefinition;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/symbol")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/symbol")
   protected String symbol;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/unit")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/unit")
   protected String unit;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/unitId")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/unitId")
   protected Reference unitId;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/value")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/value")
   protected String value;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/valueFormat")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/valueFormat")
   protected String valueFormat;
 
-  @IRI("https://admin-shell.io/aas/3/0/DataSpecificationIec61360/valueList")
+  @IRI("https://admin-shell.io/aas/3/1/DataSpecificationIec61360/valueList")
   protected ValueList valueList;
 
   public DefaultDataSpecificationIec61360() {}
@@ -120,13 +120,48 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
+  public String toString() {
+    return "DefaultDataSpecificationIec61360{"
+        + "dataType="
+        + dataType
+        + ", definition="
+        + definition
+        + ", levelType="
+        + levelType
+        + ", preferredName="
+        + preferredName
+        + ", shortName="
+        + shortName
+        + ", sourceOfDefinition='"
+        + sourceOfDefinition
+        + '\''
+        + ", symbol='"
+        + symbol
+        + '\''
+        + ", unit='"
+        + unit
+        + '\''
+        + ", unitId="
+        + unitId
+        + ", value='"
+        + value
+        + '\''
+        + ", valueFormat='"
+        + valueFormat
+        + '\''
+        + ", valueList="
+        + valueList
+        + '}';
+  }
+
+  @Override
   public List<LangStringPreferredNameTypeIec61360> getPreferredName() {
     return preferredName;
   }
 
   @Override
-  public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredNames) {
-    this.preferredName = preferredNames;
+  public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
+    this.preferredName = preferredName;
   }
 
   @Override
@@ -135,8 +170,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
-  public void setShortName(List<LangStringShortNameTypeIec61360> shortNames) {
-    this.shortName = shortNames;
+  public void setShortName(List<LangStringShortNameTypeIec61360> shortName) {
+    this.shortName = shortName;
   }
 
   @Override
@@ -195,8 +230,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
-  public void setDefinition(List<LangStringDefinitionTypeIec61360> definitions) {
-    this.definition = definitions;
+  public void setDefinition(List<LangStringDefinitionTypeIec61360> definition) {
+    this.definition = definition;
   }
 
   @Override
@@ -237,36 +272,6 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   @Override
   public void setLevelType(LevelType levelType) {
     this.levelType = levelType;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultDataSpecificationIec61360 ("
-            + "preferredName=%s,"
-            + "shortName=%s,"
-            + "unit=%s,"
-            + "unitId=%s,"
-            + "sourceOfDefinition=%s,"
-            + "symbol=%s,"
-            + "dataType=%s,"
-            + "definition=%s,"
-            + "valueFormat=%s,"
-            + "valueList=%s,"
-            + "value=%s,"
-            + "levelType=%s,"
-            + ")",
-        this.preferredName,
-        this.shortName,
-        this.unit,
-        this.unitId,
-        this.sourceOfDefinition,
-        this.symbol,
-        this.dataType,
-        this.definition,
-        this.valueFormat,
-        this.valueList,
-        this.value,
-        this.levelType);
   }
 
   /** This builder class can be used to construct a DefaultDataSpecificationIec61360 bean. */

@@ -34,19 +34,19 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
 @IRI("aas:AssetInformation")
 public class DefaultAssetInformation implements AssetInformation {
 
-  @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetKind")
+  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetKind")
   protected AssetKind assetKind;
 
-  @IRI("https://admin-shell.io/aas/3/0/AssetInformation/assetType")
+  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetType")
   protected String assetType;
 
-  @IRI("https://admin-shell.io/aas/3/0/AssetInformation/defaultThumbnail")
+  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/defaultThumbnail")
   protected Resource defaultThumbnail;
 
-  @IRI("https://admin-shell.io/aas/3/0/AssetInformation/globalAssetId")
+  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/globalAssetId")
   protected String globalAssetId;
 
-  @IRI("https://admin-shell.io/aas/3/0/AssetInformation/specificAssetIds")
+  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/specificAssetIds")
   protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
   public DefaultAssetInformation() {}
@@ -77,6 +77,24 @@ public class DefaultAssetInformation implements AssetInformation {
           && Objects.equals(this.assetType, other.assetType)
           && Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultAssetInformation{"
+        + "assetKind="
+        + assetKind
+        + ", assetType='"
+        + assetType
+        + '\''
+        + ", defaultThumbnail="
+        + defaultThumbnail
+        + ", globalAssetId='"
+        + globalAssetId
+        + '\''
+        + ", specificAssetIds="
+        + specificAssetIds
+        + '}';
   }
 
   @Override
@@ -127,22 +145,6 @@ public class DefaultAssetInformation implements AssetInformation {
   @Override
   public void setDefaultThumbnail(Resource defaultThumbnail) {
     this.defaultThumbnail = defaultThumbnail;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultAssetInformation ("
-            + "assetKind=%s,"
-            + "globalAssetId=%s,"
-            + "specificAssetIds=%s,"
-            + "assetType=%s,"
-            + "defaultThumbnail=%s,"
-            + ")",
-        this.assetKind,
-        this.globalAssetId,
-        this.specificAssetIds,
-        this.assetType,
-        this.defaultThumbnail);
   }
 
   /** This builder class can be used to construct a DefaultAssetInformation bean. */

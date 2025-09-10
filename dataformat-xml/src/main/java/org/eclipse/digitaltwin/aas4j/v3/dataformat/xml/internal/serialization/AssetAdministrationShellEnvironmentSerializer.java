@@ -37,7 +37,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
 
   private static final String[] SCHEMA_LOCATION = {
-    "xsi:schemaLocation", "https://admin-shell.io/aas/3/0 AAS.xsd"
+    "xsi:schemaLocation", "https://admin-shell.io/aas/3/1 AAS.xsd"
   };
 
   private static final QName AASENV_TAGNAME =

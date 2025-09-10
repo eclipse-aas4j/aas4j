@@ -24,30 +24,30 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEndpoint;
 public interface Endpoint {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+   * More information under https://admin-shell.io/aas/3/1/Endpoint/_interface
    *
    * @return Returns the String for the property _interface.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
+  @IRI("https://admin-shell.io/aas/3/1/Endpoint/_interface")
   String get_interface();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Endpoint/_interface
+   * More information under https://admin-shell.io/aas/3/1/Endpoint/_interface
    *
    * @param _interface desired value for the property _interface.
    */
   void set_interface(String _interface);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+   * More information under https://admin-shell.io/aas/3/1/Endpoint/protocolInformation
    *
    * @return Returns the ProtocolInformation for the property protocolInformation.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
+  @IRI("https://admin-shell.io/aas/3/1/Endpoint/protocolInformation")
   ProtocolInformation getProtocolInformation();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Endpoint/protocolInformation
+   * More information under https://admin-shell.io/aas/3/1/Endpoint/protocolInformation
    *
    * @param protocolInformation desired value for the property protocolInformation.
    */

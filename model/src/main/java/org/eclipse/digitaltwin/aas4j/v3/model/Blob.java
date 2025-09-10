@@ -29,17 +29,17 @@ public interface Blob extends DataElement {
   /**
    * The value of the 'Blob' instance of a blob data element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Blob/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Blob/value
    *
    * @return Returns the byte[] for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Blob/value")
+  @IRI("https://admin-shell.io/aas/3/1/Blob/value")
   byte[] getValue();
 
   /**
    * The value of the 'Blob' instance of a blob data element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Blob/value
+   * <p>More information under https://admin-shell.io/aas/3/1/Blob/value
    *
    * @param value desired value for the property value.
    */
@@ -48,17 +48,17 @@ public interface Blob extends DataElement {
   /**
    * Content type of the content of the 'Blob'.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Blob/contentType
+   * <p>More information under https://admin-shell.io/aas/3/1/Blob/contentType
    *
    * @return Returns the String for the property contentType.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Blob/contentType")
+  @IRI("https://admin-shell.io/aas/3/1/Blob/contentType")
   String getContentType();
 
   /**
    * Content type of the content of the 'Blob'.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Blob/contentType
+   * <p>More information under https://admin-shell.io/aas/3/1/Blob/contentType
    *
    * @param contentType desired value for the property contentType.
    */

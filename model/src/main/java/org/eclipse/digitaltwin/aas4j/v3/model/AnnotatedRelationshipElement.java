@@ -32,11 +32,11 @@ public interface AnnotatedRelationshipElement extends RelationshipElement {
    * elements
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
+   * https://admin-shell.io/aas/3/1/AnnotatedRelationshipElement/annotations
    *
    * @return Returns the List of DataElements for the property annotations.
    */
-  @IRI("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations")
+  @IRI("https://admin-shell.io/aas/3/1/AnnotatedRelationshipElement/annotations")
   List<DataElement> getAnnotations();
 
   /**
@@ -44,7 +44,7 @@ public interface AnnotatedRelationshipElement extends RelationshipElement {
    * elements
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
+   * https://admin-shell.io/aas/3/1/AnnotatedRelationshipElement/annotations
    *
    * @param annotations desired value for the property annotations.
    */

@@ -25,10 +25,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EndpointBuilder;
 @IRI("aas:Endpoint")
 public class DefaultEndpoint implements Endpoint {
 
-  @IRI("https://admin-shell.io/aas/3/0/Endpoint/_interface")
+  @IRI("https://admin-shell.io/aas/3/1/Endpoint/_interface")
   protected String _interface;
 
-  @IRI("https://admin-shell.io/aas/3/0/Endpoint/protocolInformation")
+  @IRI("https://admin-shell.io/aas/3/1/Endpoint/protocolInformation")
   protected ProtocolInformation protocolInformation;
 
   public DefaultEndpoint() {}
@@ -54,6 +54,17 @@ public class DefaultEndpoint implements Endpoint {
   }
 
   @Override
+  public String toString() {
+    return "DefaultEndpoint{"
+        + "_interface='"
+        + _interface
+        + '\''
+        + ", protocolInformation="
+        + protocolInformation
+        + '}';
+  }
+
+  @Override
   public String get_interface() {
     return _interface;
   }
@@ -71,12 +82,6 @@ public class DefaultEndpoint implements Endpoint {
   @Override
   public void setProtocolInformation(ProtocolInformation protocolInformation) {
     this.protocolInformation = protocolInformation;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultEndpoint (" + "_interface=%s," + "protocolInformation=%s," + ")",
-        this._interface, this.protocolInformation);
   }
 
   /** This builder class can be used to construct a DefaultEndpoint bean. */

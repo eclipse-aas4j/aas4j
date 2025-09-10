@@ -25,92 +25,92 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelDescriptor;
 public interface SubmodelDescriptor extends Descriptor {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/administration
    *
    * @return Returns the AdministrativeInformation for the property administration.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/administration")
   AdministrativeInformation getAdministration();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/administration
    *
    * @param administration desired value for the property administration.
    */
   void setAdministration(AdministrativeInformation administration);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/endpoints
    *
    * @return Returns the List of Endpoints for the property endpoints.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/endpoints")
   List<Endpoint> getEndpoints();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/endpoints
    *
    * @param endpoints desired value for the property endpoints.
    */
   void setEndpoints(List<Endpoint> endpoints);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/idShort
    *
    * @return Returns the String for the property idShort.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/idShort")
   String getIdShort();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/idShort
    *
    * @param idShort desired value for the property idShort.
    */
   void setIdShort(String idShort);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/id
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/id
    *
    * @return Returns the String for the property id.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/id")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/id")
   String getId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/id
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/id
    *
    * @param id desired value for the property id.
    */
   void setId(String id);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/semanticId
    *
    * @return Returns the Reference for the property semanticId.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId")
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/semanticId")
   Reference getSemanticId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/semanticId
    *
    * @param semanticId desired value for the property semanticId.
    */
   void setSemanticId(Reference semanticId);
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/supplementalSemanticId
    *
-   * @return Returns the List of References for the property supplementalSemanticId.
+   * @return Returns the List of References for the property supplementalSemanticIds.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId")
-  List<Reference> getSupplementalSemanticId();
+  @IRI("https://admin-shell.io/aas/3/1/SubmodelDescriptor/supplementalSemanticId")
+  List<Reference> getSupplementalSemanticIds();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId
+   * More information under https://admin-shell.io/aas/3/1/SubmodelDescriptor/supplementalSemanticId
    *
-   * @param supplementalSemanticIds desired value for the property supplementalSemanticId.
+   * @param supplementalSemanticIds desired value for the property supplementalSemanticIds.
    */
-  void setSupplementalSemanticId(List<Reference> supplementalSemanticIds);
+  void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds);
 }

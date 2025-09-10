@@ -32,13 +32,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
 @IRI("aas:Reference")
 public class DefaultReference implements Reference {
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/keys")
   protected List<Key> keys = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/referredSemanticId")
   protected Reference referredSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/type")
+  @IRI("https://admin-shell.io/aas/3/1/Reference/type")
   protected ReferenceTypes type;
 
   public DefaultReference() {}
@@ -62,6 +62,18 @@ public class DefaultReference implements Reference {
           && Objects.equals(this.referredSemanticId, other.referredSemanticId)
           && Objects.equals(this.keys, other.keys);
     }
+  }
+
+  @Override
+  public String toString() {
+    return "DefaultReference{"
+        + "keys="
+        + keys
+        + ", referredSemanticId="
+        + referredSemanticId
+        + ", type="
+        + type
+        + '}';
   }
 
   @Override
@@ -92,12 +104,6 @@ public class DefaultReference implements Reference {
   @Override
   public void setKeys(List<Key> keys) {
     this.keys = keys;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultReference (" + "type=%s," + "referredSemanticId=%s," + "keys=%s," + ")",
-        this.type, this.referredSemanticId, this.keys);
   }
 
   /** This builder class can be used to construct a DefaultReference bean. */

@@ -28,15 +28,15 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResult;
 public interface Result {
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Result/messages
+   * More information under https://admin-shell.io/aas/3/1/Result/messages
    *
    * @return Returns the List of Messages for the property messages.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+  @IRI("https://admin-shell.io/aas/3/1/Result/messages")
   List<Message> getMessages();
 
   /**
-   * More information under https://admin-shell.io/aas/3/0/Result/messages
+   * More information under https://admin-shell.io/aas/3/1/Result/messages
    *
    * @param messages desired value for the property messages.
    */

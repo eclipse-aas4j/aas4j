@@ -21,25 +21,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
 /** The value of a qualifiable element may be further qualified by one or more qualifiers. */
 @KnownSubtypes({
-  @KnownSubtypes.Type(value = SubmodelElement.class),
-  @KnownSubtypes.Type(value = Submodel.class)
+  @KnownSubtypes.Type(value = Submodel.class),
+  @KnownSubtypes.Type(value = SubmodelElement.class)
 })
 public interface Qualifiable {
 
   /**
    * Additional qualification of a qualifiable element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifiable/qualifiers
    *
    * @return Returns the List of Qualifiers for the property qualifiers.
    */
-  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
   List<Qualifier> getQualifiers();
 
   /**
    * Additional qualification of a qualifiable element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
+   * <p>More information under https://admin-shell.io/aas/3/1/Qualifiable/qualifiers
    *
    * @param qualifiers desired value for the property qualifiers.
    */

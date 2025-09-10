@@ -27,18 +27,18 @@ public interface EmbeddedDataSpecification {
    * Reference to the data specification
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
+   * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification
    *
    * @return Returns the Reference for the property dataSpecification.
    */
-  @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification")
+  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification")
   Reference getDataSpecification();
 
   /**
    * Reference to the data specification
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecification
+   * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification
    *
    * @param dataSpecification desired value for the property dataSpecification.
    */
@@ -48,18 +48,18 @@ public interface EmbeddedDataSpecification {
    * Actual content of the data specification
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
+   * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent
    *
    * @return Returns the DataSpecificationContent for the property dataSpecificationContent.
    */
-  @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
+  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent")
   DataSpecificationContent getDataSpecificationContent();
 
   /**
    * Actual content of the data specification
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent
+   * https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent
    *
    * @param dataSpecificationContent desired value for the property dataSpecificationContent.
    */
