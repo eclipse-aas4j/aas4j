@@ -1,0 +1,11 @@
+{
+  "entity1": {
+    "statements": [
+      {
+        "maxRotationSpeed": 5000
+      }
+    ],
+    "globalAssetId": "Global Asset Id",
+    "entityType": "SelfManagedEntity"
+  }
+}
