@@ -38,10 +38,10 @@
     </modules>
     <properties>
         <revision.major>2</revision.major>
-        <revision.minor>0</revision.minor>
+        <revision.minor>1</revision.minor>
         <revision.patch>0</revision.patch>
-        <revision>${revision.major}.${revision.minor}.${revision.patch}</revision>
-        <model.version>2.0.0</model.version>
+        <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
+        <model.version>2.1.0-SNAPSHOT</model.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
