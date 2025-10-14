@@ -48,7 +48,7 @@
         <plugin.central-publishing-maven-plugin.version>0.8.0</plugin.central-publishing-maven-plugin.version>
         <plugin.compiler.version>3.14.0</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
-        <plugin.flatten.version>1.7.2</plugin.flatten.version>
+        <plugin.flatten.version>1.7.3</plugin.flatten.version>
         <plugin.gpg.version>3.2.8</plugin.gpg.version>
         <plugin.jar.version>3.4.2</plugin.jar.version>
         <plugin.javadoc.version>3.11.3</plugin.javadoc.version>
