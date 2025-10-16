@@ -82,7 +82,7 @@
         <xmlunit.version>2.10.4</xmlunit.version>
         <mockito.version>5.19.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
-        <spotless.version>2.46.1</spotless.version>
+        <spotless.version>3.0.0</spotless.version>
     </properties>
     <build>
         <plugins>
