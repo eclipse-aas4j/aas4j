@@ -83,6 +83,34 @@ reintroduced in the future.
 
 Additionally, the sources that are used for generating the static documentation using [DocFX](https://dotnet.github.io/docfx/) in the `gh-pages` branch are located in the `docs` folder.
 
+## Handling Large AASX Files and Zip Bomb Protection
+
+The `dataformat-aasx` module relies on Apache POI's ZIP handling to process AASX packages (Open Packaging Convention format). Apache POI includes a safeguard against so‑called "zip bombs" by checking the compression inflate ratio. For legitimate, very large AASX files that embed sizable binary assets (e.g. multi‑MB PDFs), the default protection may trigger an exception similar to:
+
+```
+Caused by: java.io.IOException: Zip bomb detected! The file would exceed the max. ratio of compressed file size to the size of the expanded data.
+```
+
+If you are certain that the AASX file is trusted and the exception is only due to large, highly compressed attachments, you can relax the protection before invoking the AASX deserializer:
+
+```java
+import org.apache.poi.openxml4j.util.ZipSecureFile;
+
+// Set to 0.0 to disable the inflate ratio check; prefer a small positive value when possible.
+ZipSecureFile.setMinInflateRatio(0.0);
+
+// Proceed with AASX deserialization
+// AASXDeserializer deserializer = ...
+```
+
+Recommendations when adjusting the inflate ratio threshold:
+- Only lower this value for trusted inputs. Setting `0.0` disables the ratio check and increases risk if processing untrusted files.
+- Consider using a small positive threshold (e.g. `0.001`) instead of zero to keep some protection while allowing large embedded documents.
+- Complement this with other safeguards in your application: file size limits, antivirus / malware scanning, and sandboxing if processing third‑party data.
+- The library does not change this setting itself; it is the responsibility of the consuming application to decide and document the chosen risk posture (e.g. via configuration such as Spring `application.properties`).
+
+We intentionally do not override Apache POI's defaults inside AAS4J so that applications retain explicit control over security trade‑offs.
+
 ## Support
 
 Current status of the project is *incubating*. 
