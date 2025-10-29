@@ -16,7 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -41,7 +40,6 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.As
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.OperationSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.OperationVariableSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
@@ -78,9 +76,6 @@ public class XmlSerializer {
             .configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true)
             .build();
     ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-
-    // force LangStringTextType's order: language → text
-    mapper.addMixIn(LangStringTextType.class, LangStringTextTypeXmlOrderMixIn.class);
   }
 
   protected SimpleModule buildCustomSerializerModule() {
@@ -179,7 +174,4 @@ public class XmlSerializer {
       throws FileNotFoundException, IOException, SerializationException {
     write(file, DEFAULT_CHARSET, aasEnvironment);
   }
-
-  @JsonPropertyOrder({"language", "text"})
-  private abstract static class LangStringTextTypeXmlOrderMixIn {}
 }
