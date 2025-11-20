@@ -1,6 +1,6 @@
 # Eclipse AAS4J
 
-> :newspaper: The _`Eclipse AAS4J 2.0.0`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
+> :newspaper: The _`Eclipse AAS4J 2.0.1`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
 > following artifacts implementing the _AAS Specs – [Part 1 V3.1](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2025/06/IDTA_01001-25-01_AAS-Specification_Part1_Metamodel.pdf)_: `aas4j-dataformat-core`, `aas4j-dataformat-aasx`, 
 > `aas4j-dataformat-xml`, `aas4j-dataformat-json`, `aas4j-dataformat-parent`, and `aas4j-model`.
 
