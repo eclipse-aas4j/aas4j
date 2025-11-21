@@ -14,7 +14,7 @@ jobs:
 
 
     - name: Checkout source
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         submodules: true # Ensures submodules are checked out
         fetch-depth: 0   # Fetches the full history to avoid issues with submodules
