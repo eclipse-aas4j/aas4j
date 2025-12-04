@@ -18,15 +18,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.networknt.schema.JsonSchema;
-import com.networknt.schema.JsonSchemaFactory;
-import com.networknt.schema.SpecVersionDetector;
-import com.networknt.schema.ValidationMessage;
+import com.networknt.schema.Error;
+import com.networknt.schema.Schema;
+import com.networknt.schema.SchemaRegistry;
+import com.networknt.schema.SpecificationVersion;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 
@@ -48,11 +48,11 @@ public class JsonSchemaValidator implements SchemaValidator {
    * @return Set of messages to display validation results
    */
   @Override
-  public Set<String> validateSchema(String serialized) {
+  public List<String> validateSchema(String serialized) {
     try {
       return validateSchema(serialized, loadDefaultSchema());
     } catch (IOException | URISyntaxException e) {
-      return Set.of(e.getMessage());
+      return List.of(e.getMessage());
     }
   }
 
@@ -64,17 +64,17 @@ public class JsonSchemaValidator implements SchemaValidator {
    *     aas-schema
    * @return Set of messages to display validation results
    */
-  public Set<String> validateSchema(String serialized, String serializedSchema) {
+  public List<String> validateSchema(String serialized, String serializedSchema) {
     try {
       JsonNode schemaRootNode = mapper.readTree(serializedSchema);
-      JsonSchemaFactory factory =
-          JsonSchemaFactory.getInstance(SpecVersionDetector.detect(schemaRootNode));
-      JsonSchema schema = factory.getSchema(schemaRootNode);
+      SchemaRegistry schemaRegistry =
+          SchemaRegistry.withDefaultDialect(SpecificationVersion.DRAFT_2019_09);
+      Schema schema = schemaRegistry.getSchema(schemaRootNode);
       JsonNode node = mapper.readTree(serialized);
-      Set<ValidationMessage> validationMessages = schema.validate(node);
+      List<Error> validationMessages = schema.validate(node);
       return generalizeValidationMessagesAsStringSet(validationMessages);
     } catch (JsonProcessingException e) {
-      return Set.of(e.getMessage());
+      return List.of(e.getMessage());
     }
   }
 
@@ -84,7 +84,7 @@ public class JsonSchemaValidator implements SchemaValidator {
         .collect(Collectors.joining("\n"));
   }
 
-  private Set<String> generalizeValidationMessagesAsStringSet(Set<ValidationMessage> messages) {
-    return messages.stream().map(ValidationMessage::getMessage).collect(Collectors.toSet());
+  private List<String> generalizeValidationMessagesAsStringSet(List<Error> messages) {
+    return messages.stream().map(Error::getMessage).collect(Collectors.toList());
   }
 }

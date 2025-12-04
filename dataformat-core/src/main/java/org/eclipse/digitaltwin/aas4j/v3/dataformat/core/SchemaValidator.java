@@ -15,7 +15,7 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import java.util.Set;
+import java.util.List;
 
 /** Validator that can validate a serialized AASEnvironment according to a specific schema. */
 public interface SchemaValidator {
@@ -27,5 +27,5 @@ public interface SchemaValidator {
    * @param serializedAASEnvironment A string-serialized AASEnvironment.
    * @return Set of validation errors. If validation succeeds, the Set is empty.
    */
-  public Set<String> validateSchema(String serializedAASEnvironment);
+  List<String> validateSchema(String serializedAASEnvironment);
 }

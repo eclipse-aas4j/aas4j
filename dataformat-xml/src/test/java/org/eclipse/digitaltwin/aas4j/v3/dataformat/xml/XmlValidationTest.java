@@ -24,7 +24,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -81,7 +80,7 @@ public class XmlValidationTest {
   // import from admin-shell.io -> is actually V3
   // -> fix name, as soon as it is fixed externally
   public void validateValidXml(String file) throws IOException {
-    Set<String> errors = validateXmlFile(file);
+    List<String> errors = validateXmlFile(file);
     logErrors(file, errors);
     assertTrue(errors.isEmpty());
   }
@@ -92,7 +91,7 @@ public class XmlValidationTest {
     "src/test/resources/ServoDCMotor_invalid.xml"
   })
   public void validateInvalidXml(String file) throws IOException {
-    Set<String> errors = validateXmlFile(file);
+    List<String> errors = validateXmlFile(file);
     logErrors(file, errors);
     assertEquals(1, errors.size());
   }
@@ -117,13 +116,13 @@ public class XmlValidationTest {
     Environment environment = new XmlDeserializer().read(initialXml);
     String serializedEnv = new XmlSerializer().write(environment);
 
-    Set<String> serializedEnvValidationError = validateSerializedXmlFile(serializedEnv);
+    List<String> serializedEnvValidationError = validateSerializedXmlFile(serializedEnv);
     logErrors(filePath, serializedEnvValidationError);
 
     assertTrue(serializedEnvValidationError.isEmpty());
   }
 
-  private void logErrors(String validatedFileName, Set<String> errors) {
+  private void logErrors(String validatedFileName, List<String> errors) {
     if (errors.isEmpty()) {
       return;
     }
@@ -133,12 +132,12 @@ public class XmlValidationTest {
     }
   }
 
-  private Set<String> validateXmlFile(String file) throws IOException {
+  private List<String> validateXmlFile(String file) throws IOException {
     String serializedEnvironment = new String(Files.readAllBytes(Paths.get(file)));
     return validator.validateSchema(serializedEnvironment);
   }
 
-  private Set<String> validateSerializedXmlFile(String serializedXml) {
+  private List<String> validateSerializedXmlFile(String serializedXml) {
     return validator.validateSchema(serializedXml);
   }
 

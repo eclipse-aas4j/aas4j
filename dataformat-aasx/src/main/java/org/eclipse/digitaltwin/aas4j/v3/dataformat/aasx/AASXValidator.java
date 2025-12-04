@@ -17,7 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Set;
+import java.util.List;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSchemaValidator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;
@@ -43,9 +43,9 @@ public class AASXValidator {
    * @throws IOException failure during filehandling
    * @throws InvalidFormatException specified URI is invalid
    */
-  public Set<String> validateSchema() throws IOException, InvalidFormatException {
+  public List<String> validateSchema() throws IOException, InvalidFormatException {
     String file = deserializer.getResourceString();
-    Set<String> errorMessages = null;
+    List<String> errorMessages = null;
     if (MetamodelContentType.XML.equals(deserializer.getContentType())) {
       errorMessages = xmlValidator.validateSchema(file);
     } else if (MetamodelContentType.JSON.equals(deserializer.getContentType())) {

@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
@@ -66,7 +65,7 @@ public class ValidationTest {
 
     InputStream in = new FileInputStream(file);
     AASXValidator v = new AASXValidator(in);
-    Set<String> validationResult = v.validateSchema();
+    List<String> validationResult = v.validateSchema();
     System.out.println(validationResult);
     assertEquals(validationResult.size(), 0);
   }

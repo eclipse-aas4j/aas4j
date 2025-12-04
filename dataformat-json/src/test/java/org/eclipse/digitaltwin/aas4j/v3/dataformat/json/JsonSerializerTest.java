@@ -29,7 +29,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
@@ -260,7 +259,7 @@ public class JsonSerializerTest {
   }
 
   private void validateAndCompare(String expected, String actual) {
-    Set<String> errors = new JsonSchemaValidator().validateSchema(actual);
+    List<String> errors = new JsonSchemaValidator().validateSchema(actual);
     if (errors.size() > 0) {
       logger.error(String.join("\n", errors));
     }
