@@ -42,7 +42,7 @@ public class JsonValidationTest {
   private static final String TEST_FILES_DIR = "target/test-classes/examples";
 
   @BeforeClass
-  public static void prepareValidator() throws IOException {
+  public static void prepareValidator() {
     validator = new JsonSchemaValidator();
   }
 

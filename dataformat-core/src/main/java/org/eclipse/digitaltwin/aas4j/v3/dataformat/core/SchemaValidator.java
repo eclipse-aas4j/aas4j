@@ -27,5 +27,5 @@ public interface SchemaValidator {
    * @param serializedAASEnvironment A string-serialized AASEnvironment.
    * @return Set of validation errors. If validation succeeds, the Set is empty.
    */
-  public Set<String> validateSchema(String serializedAASEnvironment);
+  Set<String> validateSchema(String serializedAASEnvironment);
 }

@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Set;
 import javax.xml.XMLConstants;
@@ -42,9 +43,7 @@ public class XmlSchemaValidator implements SchemaValidator {
   public Set<String> validateSchema(String serializedAASEnvironment) {
     Set<String> errorMessages = new HashSet<>();
     try {
-      schema
-          .newValidator()
-          .validate(new StreamSource(new java.io.StringReader(serializedAASEnvironment)));
+      schema.newValidator().validate(new StreamSource(new StringReader(serializedAASEnvironment)));
     } catch (SAXException | IOException se) {
       errorMessages.add(se.getMessage());
       return errorMessages;

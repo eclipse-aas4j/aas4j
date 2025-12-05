@@ -25,6 +25,7 @@ local.properties
 .recommenders
 *.iml
 **/*.DS_Store
+**/*.nondex
 
 .classpath
 .project

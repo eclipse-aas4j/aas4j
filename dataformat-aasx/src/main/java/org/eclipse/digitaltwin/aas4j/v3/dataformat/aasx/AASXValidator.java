@@ -17,6 +17,8 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSchemaValidator;
@@ -45,12 +47,14 @@ public class AASXValidator {
    */
   public Set<String> validateSchema() throws IOException, InvalidFormatException {
     String file = deserializer.getResourceString();
-    Set<String> errorMessages = null;
+    Set<String> errorMessages = Collections.emptySet();
+
     if (MetamodelContentType.XML.equals(deserializer.getContentType())) {
-      errorMessages = xmlValidator.validateSchema(file);
+      errorMessages = new HashSet<>(xmlValidator.validateSchema(file));
     } else if (MetamodelContentType.JSON.equals(deserializer.getContentType())) {
-      errorMessages = jsonValidator.validateSchema(file);
+      errorMessages = new HashSet<>(jsonValidator.validateSchema(file));
     }
+
     return errorMessages;
   }
 }
