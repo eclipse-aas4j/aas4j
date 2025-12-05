@@ -26,7 +26,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 
@@ -48,11 +49,11 @@ public class JsonSchemaValidator implements SchemaValidator {
    * @return Set of messages to display validation results
    */
   @Override
-  public List<String> validateSchema(String serialized) {
+  public Set<String> validateSchema(String serialized) {
     try {
-      return validateSchema(serialized, loadDefaultSchema());
+      return new HashSet<>(validateSchema(serialized, loadDefaultSchema()));
     } catch (IOException | URISyntaxException e) {
-      return List.of(e.getMessage());
+      return Set.of(e.getMessage());
     }
   }
 
@@ -64,17 +65,17 @@ public class JsonSchemaValidator implements SchemaValidator {
    *     aas-schema
    * @return Set of messages to display validation results
    */
-  public List<String> validateSchema(String serialized, String serializedSchema) {
+  public Set<String> validateSchema(String serialized, String serializedSchema) {
     try {
       JsonNode schemaRootNode = mapper.readTree(serializedSchema);
       SchemaRegistry schemaRegistry =
           SchemaRegistry.withDefaultDialect(SpecificationVersion.DRAFT_2019_09);
       Schema schema = schemaRegistry.getSchema(schemaRootNode);
       JsonNode node = mapper.readTree(serialized);
-      List<Error> validationMessages = schema.validate(node);
+      Set<Error> validationMessages = new HashSet<>(schema.validate(node));
       return generalizeValidationMessagesAsStringSet(validationMessages);
     } catch (JsonProcessingException e) {
-      return List.of(e.getMessage());
+      return Set.of(e.getMessage());
     }
   }
 
@@ -84,7 +85,7 @@ public class JsonSchemaValidator implements SchemaValidator {
         .collect(Collectors.joining("\n"));
   }
 
-  private List<String> generalizeValidationMessagesAsStringSet(List<Error> messages) {
-    return messages.stream().map(Error::getMessage).collect(Collectors.toList());
+  private Set<String> generalizeValidationMessagesAsStringSet(Set<Error> messages) {
+    return messages.stream().map(Error::getMessage).collect(Collectors.toSet());
   }
 }

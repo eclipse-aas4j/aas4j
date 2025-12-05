@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -42,7 +42,7 @@ public class JsonValidationTest {
   private static final String TEST_FILES_DIR = "target/test-classes/examples";
 
   @BeforeClass
-  public static void prepareValidator() throws IOException {
+  public static void prepareValidator() {
     validator = new JsonSchemaValidator();
   }
 
@@ -86,12 +86,12 @@ public class JsonValidationTest {
   public void validateJsonExamples(String filePath)
       throws DeserializationException, SerializationException, IOException {
     String initialJson = new String(Files.readAllBytes(Paths.get(filePath)));
-    List<String> initialFileValidationError = validateSerializedJson(initialJson);
+    Set<String> initialFileValidationError = validateSerializedJson(initialJson);
 
     Environment environment = new JsonDeserializer().read(initialJson, Environment.class);
     String serializedEnv = new JsonSerializer().write(environment);
 
-    List<String> serializedEnvValidationError = validateSerializedJson(serializedEnv);
+    Set<String> serializedEnvValidationError = validateSerializedJson(serializedEnv);
 
     assumeFalse(
         "Skipping this test because there are same validation errors for the initial file: "
@@ -109,16 +109,16 @@ public class JsonValidationTest {
     assertFalse(validate(file).isEmpty());
   }
 
-  private List<String> validate(String file) throws IOException {
+  private Set<String> validate(String file) throws IOException {
     String json = new String(Files.readAllBytes(Paths.get(file)));
-    List<String> result = validator.validateSchema(json);
+    Set<String> result = validator.validateSchema(json);
     System.out.println("Validating: " + file);
     result.forEach(System.out::println);
     return result;
   }
 
-  private List<String> validateSerializedJson(String serializedEnv) {
-    List<String> result = validator.validateSchema(serializedEnv);
+  private Set<String> validateSerializedJson(String serializedEnv) {
+    Set<String> result = validator.validateSchema(serializedEnv);
     result.forEach(System.out::println);
     return result;
   }

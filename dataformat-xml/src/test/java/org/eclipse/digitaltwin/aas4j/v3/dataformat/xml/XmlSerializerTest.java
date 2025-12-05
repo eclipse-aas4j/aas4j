@@ -16,14 +16,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
@@ -140,7 +141,7 @@ public class XmlSerializerTest {
   public void validateConceptDescriptionAgainstXsdSchema()
       throws SerializationException, SAXException {
     ConceptDescription object = AASSimple.createConceptDescriptionMaxRotationSpeed();
-    List<String> errors =
+    Set<String> errors =
         validateAgainstXsdSchema(
             new XmlSerializer()
                 .write(new DefaultEnvironment.Builder().conceptDescriptions(object).build()));
@@ -170,7 +171,7 @@ public class XmlSerializerTest {
             .build();
     String xml =
         new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
-    List<String> errors = validateAgainstXsdSchema(xml);
+    Set<String> errors = validateAgainstXsdSchema(xml);
     assertTrue(errors.isEmpty());
   }
 
@@ -187,7 +188,7 @@ public class XmlSerializerTest {
             .build();
     String xml =
         new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
-    List<String> errors = validateAgainstXsdSchema(xml);
+    Set<String> errors = validateAgainstXsdSchema(xml);
     assertTrue(errors.isEmpty());
   }
 
@@ -197,7 +198,7 @@ public class XmlSerializerTest {
     Submodel object = AASSimple.createSubmodelDocumentation();
     String xml =
         new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
-    List<String> errors = validateAgainstXsdSchema(xml);
+    Set<String> errors = validateAgainstXsdSchema(xml);
     assertTrue(errors.isEmpty());
   }
 
@@ -207,7 +208,7 @@ public class XmlSerializerTest {
     String xml =
         new XmlSerializer()
             .write(new DefaultEnvironment.Builder().conceptDescriptions(object).build());
-    List<String> errors = validateAgainstXsdSchema(xml);
+    Set<String> errors = validateAgainstXsdSchema(xml);
     assertTrue(errors.isEmpty());
   }
 
@@ -323,7 +324,7 @@ public class XmlSerializerTest {
     assertEquals(expected, actual);
   }
 
-  private List<String> validateAgainstXsdSchema(String xml) throws SAXException {
+  private Set<String> validateAgainstXsdSchema(String xml) throws SAXException {
     return new XmlSchemaValidator().validateSchema(xml);
   }
 
@@ -336,7 +337,7 @@ public class XmlSerializerTest {
       File expectedFile, Environment environment, XmlSerializer xmlSerializer)
       throws SerializationException, SAXException {
     String actual = xmlSerializer.write(environment);
-    List<String> errors = validateAgainstXsdSchema(actual);
+    Set<String> errors = validateAgainstXsdSchema(actual);
     logErrors(expectedFile.getName(), errors);
     assertTrue(errors.isEmpty());
     CompareMatcher xmlTestMatcher =
@@ -394,7 +395,7 @@ public class XmlSerializerTest {
     return true;
   }
 
-  private void logErrors(String validatedFileName, List<String> errors) {
+  private void logErrors(String validatedFileName, Set<String> errors) {
     if (errors.isEmpty()) {
       return;
     }
