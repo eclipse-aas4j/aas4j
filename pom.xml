@@ -80,7 +80,7 @@
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
         <xmlunit.version>2.11.0</xmlunit.version>
-        <mockito.version>5.20.0</mockito.version>
+        <mockito.version>5.21.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
         <spotless.version>3.1.0</spotless.version>
     </properties>
