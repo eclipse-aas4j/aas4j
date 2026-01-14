@@ -22,7 +22,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.Examples;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
+import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
@@ -162,5 +164,58 @@ public class XMLDeserializerTest {
   public void deserializeWithEmptyKeys() throws FileNotFoundException, DeserializationException {
     java.io.File file = new java.io.File("src/test/resources/empty_entries.xml");
     new XmlDeserializer().read(file);
+  }
+
+  @Test
+  public void deserializeEmbeddedDataSpecificationsInSubmodelElement() throws Exception {
+    String xml =
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+            + "<aas:environment xmlns:aas=\"https://admin-shell.io/aas/3/1\"\n"
+            + "                 xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
+            + "                 xsi:schemaLocation=\"https://admin-shell.io/aas/3/1 AAS.xsd\">\n"
+            + "  <aas:submodels>\n"
+            + "    <aas:submodel>\n"
+            + "      <aas:idShort>sm1</aas:idShort>\n"
+            + "      <aas:id>urn:example:submodel:1</aas:id>\n"
+            + "      <aas:kind>Instance</aas:kind>\n"
+            + "      <aas:submodelElements>\n"
+            + "        <aas:file>\n"
+            + "          <aas:idShort>file1</aas:idShort>\n"
+            + "          <aas:embeddedDataSpecifications>\n"
+            + "            <aas:embeddedDataSpecification>\n"
+            + "              <aas:dataSpecification>\n"
+            + "                <aas:type>ExternalReference</aas:type>\n"
+            + "                <aas:keys>\n"
+            + "                  <aas:key>\n"
+            + "                    <aas:type>GlobalReference</aas:type>\n"
+            + "                    <aas:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</aas:value>\n"
+            + "                  </aas:key>\n"
+            + "                </aas:keys>\n"
+            + "              </aas:dataSpecification>\n"
+            + "              <aas:dataSpecificationContent>\n"
+            + "                <aas:dataSpecificationIec61360>\n"
+            + "                  <aas:preferredName>\n"
+            + "                    <aas:langStringPreferredNameTypeIec61360>\n"
+            + "                      <aas:language>en</aas:language>\n"
+            + "                      <aas:text>Test Spec</aas:text>\n"
+            + "                    </aas:langStringPreferredNameTypeIec61360>\n"
+            + "                  </aas:preferredName>\n"
+            + "                </aas:dataSpecificationIec61360>\n"
+            + "              </aas:dataSpecificationContent>\n"
+            + "            </aas:embeddedDataSpecification>\n"
+            + "          </aas:embeddedDataSpecifications>\n"
+            + "          <aas:value>file:///test.txt</aas:value>\n"
+            + "        </aas:file>\n"
+            + "      </aas:submodelElements>\n"
+            + "    </aas:submodel>\n"
+            + "  </aas:submodels>\n"
+            + "</aas:environment>\n";
+
+    Environment env = new XmlDeserializer().read(xml);
+    File file = (File) env.getSubmodels().get(0).getSubmodelElements().get(0);
+    List<EmbeddedDataSpecification> specs = file.getEmbeddedDataSpecifications();
+    Assert.assertNotNull(specs);
+    Assert.assertFalse(specs.isEmpty());
+    Assert.assertNotNull(specs.get(0).getDataSpecificationContent());
   }
 }
