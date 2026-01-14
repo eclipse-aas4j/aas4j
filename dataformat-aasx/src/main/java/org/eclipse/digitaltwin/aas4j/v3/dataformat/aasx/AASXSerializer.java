@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -63,6 +64,8 @@ public class AASXSerializer {
   public static final String AASSPEC_RELTYPE = AASX_NAMESPACE + "/aas-spec";
   public static final String XML_PATH = "/aasx/xml/content.xml";
   public static final String JSON_PATH = "/aasx/json/content.json";
+  public static final String XML_SCHEMA_PATH = "/aasx/xml/AAS.xsd";
+  private static final String XML_SCHEMA_RESOURCE = "/AAS.xsd";
 
   public static final String AASSUPPL_RELTYPE = AASX_NAMESPACE + "/aas-suppl";
 
@@ -174,6 +177,7 @@ public class AASXSerializer {
                 MIME_XML,
                 AASSPEC_RELTYPE,
                 xml.getBytes(DEFAULT_CHARSET));
+        addXmlSchemaPart(rootPackage, packagePart);
         break;
       default:
         throw new IllegalArgumentException("Unsupported content type: " + contentType);
@@ -198,6 +202,23 @@ public class AASXSerializer {
     storeFilesInAASX(environment, files, rootPackage, packagePart);
 
     saveAASX(os, rootPackage);
+  }
+
+  private void addXmlSchemaPart(OPCPackage rootPackage, PackagePart xmlPart) {
+    try (InputStream stream = AASXSerializer.class.getResourceAsStream(XML_SCHEMA_RESOURCE)) {
+      if (stream == null) {
+        logger.warn("Could not locate AAS.xsd on the classpath for AASX packaging.");
+        return;
+      }
+      PackagePartName schemaPartName = PackagingURIHelper.createPartName(XML_SCHEMA_PATH);
+      if (rootPackage.containPart(schemaPartName)) {
+        return;
+      }
+      byte[] content = stream.readAllBytes();
+      createAASXPart(rootPackage, xmlPart, XML_SCHEMA_PATH, MIME_XML, AASSUPPL_RELTYPE, content);
+    } catch (IOException | InvalidFormatException e) {
+      logger.warn("Could not add AAS.xsd to AASX package.", e);
+    }
   }
 
   /**

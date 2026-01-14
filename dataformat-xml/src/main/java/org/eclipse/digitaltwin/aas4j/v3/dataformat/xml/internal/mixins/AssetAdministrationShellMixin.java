@@ -23,7 +23,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceC
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 @JsonPropertyOrder({
-  "extension",
+  "extensions",
   "category",
   "idShort",
   "displayName",
@@ -31,7 +31,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
   "checksum",
   "administration",
   "id",
-  "dataSpecifications",
   "embeddedDataSpecifications",
   "derivedFrom",
   "assetInformation",
@@ -40,7 +39,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 public interface AssetAdministrationShellMixin {
 
   @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "id")
-  public String getID();
+  public String getId();
 
   @JacksonXmlElementWrapper(namespace = AasXmlNamespaceContext.AAS_URI, localName = "submodels")
   @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "reference")
