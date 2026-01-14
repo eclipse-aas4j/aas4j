@@ -69,7 +69,7 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
             "kind",
             "semanticId",
             "qualifiers",
-            "embeddedDataSpecification",
+            "embeddedDataSpecifications",
             "dataSpecifications",
             "isCaseOf",
             "security",

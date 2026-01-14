@@ -47,6 +47,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShe
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
@@ -145,6 +146,38 @@ public class XmlSerializerTest {
         validateAgainstXsdSchema(
             new XmlSerializer()
                 .write(new DefaultEnvironment.Builder().conceptDescriptions(object).build()));
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
+  public void validateAssetAdministrationShellOrderAgainstXsdSchema()
+      throws SerializationException, SAXException {
+    Environment env =
+        new DefaultEnvironment.Builder()
+            .assetAdministrationShells(
+                new DefaultAssetAdministrationShell.Builder()
+                    .id("http://example.org/aas/1")
+                    .idShort("aas1")
+                    .displayName(
+                        new DefaultLangStringNameType.Builder()
+                            .text("Example AAS")
+                            .language("en")
+                            .build())
+                    .assetInformation(
+                        new DefaultAssetInformation.Builder().assetKind(AssetKind.INSTANCE).build())
+                    .submodels(
+                        new DefaultReference.Builder()
+                            .type(ReferenceTypes.MODEL_REFERENCE)
+                            .keys(
+                                new DefaultKey.Builder()
+                                    .type(KeyTypes.SUBMODEL)
+                                    .value("http://example.org/submodel/1")
+                                    .build())
+                            .build())
+                    .build())
+            .build();
+    String xml = new XmlSerializer().write(env);
+    Set<String> errors = validateAgainstXsdSchema(xml);
     assertTrue(errors.isEmpty());
   }
 
