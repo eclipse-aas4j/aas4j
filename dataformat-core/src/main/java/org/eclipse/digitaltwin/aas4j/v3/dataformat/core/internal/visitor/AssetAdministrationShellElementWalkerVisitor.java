@@ -295,7 +295,8 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (assetAdministrationShellEnvironment == null) {
       return;
     }
-    forEachIfPresent(assetAdministrationShellEnvironment.getAssetAdministrationShells(), x -> visit(x));
+    forEachIfPresent(
+        assetAdministrationShellEnvironment.getAssetAdministrationShells(), x -> visit(x));
     forEachIfPresent(assetAdministrationShellEnvironment.getConceptDescriptions(), x -> visit(x));
     forEachIfPresent(assetAdministrationShellEnvironment.getSubmodels(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(assetAdministrationShellEnvironment);
