@@ -76,7 +76,19 @@ public class SubmodelElementManager {
   }
 
   public static String getXmlName(Class<?> type) {
-    return CLASS_TO_NAME.get(type);
+    String name = CLASS_TO_NAME.get(type);
+    if (name != null) {
+      return name;
+    }
+    Class<?> current = type.getSuperclass();
+    while (current != null) {
+      name = CLASS_TO_NAME.get(current);
+      if (name != null) {
+        return name;
+      }
+      current = current.getSuperclass();
+    }
+    return null;
   }
 
   public static Class<?> getClassByXmlName(String xmlName) {
