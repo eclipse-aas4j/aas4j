@@ -20,6 +20,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import java.io.IOException;
+import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 
@@ -29,6 +31,8 @@ public class OperationVariableSerializer extends JsonSerializer<OperationVariabl
       OperationVariable operationVariable, JsonGenerator gen, SerializerProvider serializers)
       throws IOException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
+    List<Runnable> resetRunnables =
+        ReflectionHelper.setEmptyListsToNull(operationVariable.getValue());
     xgen.writeStartObject();
     xgen.writeFieldName("value");
     xgen.writeStartObject();
@@ -36,5 +40,6 @@ public class OperationVariableSerializer extends JsonSerializer<OperationVariabl
     xgen.writeObject(operationVariable.getValue());
     xgen.writeEndObject();
     xgen.writeEndObject();
+    resetRunnables.stream().forEach(r -> r.run());
   }
 }

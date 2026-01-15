@@ -215,7 +215,7 @@
             "keys": [
               {
                 "type": "GlobalReference",
-                "value": "https://admin-shell.io/aas/3/1/DataSpecificationIec61360"
+                "value": "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3"
               }
             ],
             "type": "ExternalReference"
