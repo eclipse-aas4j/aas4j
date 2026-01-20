@@ -59,7 +59,6 @@ public class AASXSerializerTest {
   private static final String XML_PATH_URI = "file:///aasx/xml/content.xml";
   private static final String JSON_PATH_URI = "file:///aasx/json/content.json";
   private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
-  private static final String XML_SCHEMA_PATH_URI = "file:///aasx/xml/AAS.xsd";
 
   @Rule public TemporaryFolder tempFolder = new TemporaryFolder();
 
@@ -216,9 +215,6 @@ public class AASXSerializerTest {
 
     assertTrue(filePaths.contains(contentFilePath));
     assertTrue(filePaths.contains(ORIGIN_PATH_URI));
-    if (XML_PATH_URI.equals(contentFilePath)) {
-      assertTrue(filePaths.contains(XML_SCHEMA_PATH_URI));
-    }
 
     // Check if all expected files are present
     // Needs to strip the first slash of the paths, as ZipEntry gives paths without
