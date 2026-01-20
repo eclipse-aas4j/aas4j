@@ -18,7 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-  "hasExtensions",
+  "extensions",
   "category",
   "idShort",
   "displayName",
@@ -27,9 +27,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "kind", // --> HasKind
   "semanticId",
   "supplementalSemanticIds",
-  "reference", // --> HasSemantics
-  "qualifier", // --> Qualifiable
-  "dataSpecifications",
+  "qualifiers", // --> Qualifiable
   "embeddedDataSpecifications", // --> HasDataSpecifications
   "orderRelevant",
   "semanticIdListElement",
