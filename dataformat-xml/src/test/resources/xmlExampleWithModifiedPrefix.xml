@@ -220,7 +220,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+                <test:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -270,7 +270,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+                <test:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -328,7 +328,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+                <test:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -392,7 +392,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+                <test:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>
@@ -438,7 +438,7 @@
             <test:keys>
               <test:key>
                 <test:type>GlobalReference</test:type>
-                <test:value>https://admin-shell.io/aas/3/1/DataSpecificationIec61360</test:value>
+                <test:value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3</test:value>
               </test:key>
             </test:keys>
           </test:dataSpecification>

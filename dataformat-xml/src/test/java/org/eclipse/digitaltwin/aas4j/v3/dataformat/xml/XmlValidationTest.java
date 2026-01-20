@@ -17,13 +17,11 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeFalse;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 import junitparams.JUnitParamsRunner;
@@ -46,26 +44,6 @@ public class XmlValidationTest {
 
   private static XmlSchemaValidator validator;
   private static final String TEST_FILES_DIR = "target/test-classes/examples";
-
-  // List of tests that are known to have issues with EmbeddedDataSpecificationsDeserializer ->
-  // GitHub issue https://github.com/eclipse-aas4j/aas4j/issues/389 and
-  // https://github.com/eclipse-aas4j/aas4j/issues/390
-  private static final List<String> IGNORED_TESTS =
-      List.of(
-          "annotatedRelationshipElement",
-          "basicEventElement",
-          "blob",
-          "capability",
-          "entity",
-          "file",
-          "multiLanguageProperty",
-          "operation",
-          "property",
-          "range",
-          "referenceElement",
-          "relationshipElement",
-          "submodelElementCollection",
-          "submodelElementList");
 
   @BeforeClass
   public static void prepareValidator() throws SAXException {
@@ -102,15 +80,6 @@ public class XmlValidationTest {
   @TestCaseName("{0}")
   public void validateExampleXml(String filePath)
       throws DeserializationException, SerializationException, IOException {
-
-    // Skip tests that are known to have issues with EmbeddedDataSpecificationsDeserializer ->
-    // GitHub issue https://github.com/eclipse-aas4j/aas4j/issues/389 and
-    // https://github.com/eclipse-aas4j/aas4j/issues/390
-    boolean shouldSkip = IGNORED_TESTS.stream().anyMatch(filePath::contains);
-
-    assumeFalse(
-        "Skipping the tests because of EmbeddedDataSpecificationsDeserializer issue:" + filePath,
-        shouldSkip);
 
     String initialXml = new String(Files.readAllBytes(Paths.get(filePath)));
 

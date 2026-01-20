@@ -17,10 +17,17 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.ObjectCodec;
+import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.introspect.AnnotatedMember;
+import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
@@ -34,9 +41,10 @@ public class SubmodelElementDeserializer extends JsonDeserializer<SubmodelElemen
     ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
     String elemName = findSubmodelElementName(parser, node);
     JsonNode nodeContent = node.get(elemName);
+    Class<?> clazz = SubmodelElementManager.getClassByXmlName(elemName);
+    JsonNode normalizedNode = unwrapWrappedLists(parser, nodeContent, clazz);
     return (SubmodelElement)
-        DeserializationHelper.createInstanceFromNode(
-            parser, nodeContent, SubmodelElementManager.getClassByXmlName(elemName));
+        DeserializationHelper.createInstanceFromNode(parser, normalizedNode, clazz);
   }
 
   private String findSubmodelElementName(JsonParser parser, ObjectNode node)
@@ -47,5 +55,53 @@ public class SubmodelElementDeserializer extends JsonDeserializer<SubmodelElemen
       }
     }
     throw new JsonMappingException(parser, "Unknown element " + node);
+  }
+
+  private JsonNode unwrapWrappedLists(JsonParser parser, JsonNode node, Class<?> clazz) {
+    if (!(node instanceof ObjectNode)) {
+      return node;
+    }
+    ObjectCodec codec = parser.getCodec();
+    if (!(codec instanceof ObjectMapper)) {
+      return node;
+    }
+    ObjectMapper mapper = (ObjectMapper) codec;
+    BeanDescription desc =
+        mapper.getDeserializationConfig().introspect(mapper.constructType(clazz));
+    ObjectNode objectNode = (ObjectNode) node;
+    for (BeanPropertyDefinition prop : desc.findProperties()) {
+      if (hasCustomDeserializer(prop)) {
+        continue;
+      }
+      PropertyName wrapperName = prop.getWrapperName();
+      if (wrapperName == null || wrapperName.isEmpty()) {
+        continue;
+      }
+      String wrapperLocalName = wrapperName.getSimpleName();
+      String propertyName = prop.getName();
+      if (wrapperLocalName == null || wrapperLocalName.isEmpty()) {
+        continue;
+      }
+      JsonNode wrapperNode = objectNode.get(wrapperLocalName);
+      if (wrapperNode == null || wrapperNode.isNull()) {
+        continue;
+      }
+      if (wrapperNode.isObject()) {
+        JsonNode inner = wrapperNode.get(propertyName);
+        if (inner != null) {
+          objectNode.set(wrapperLocalName, inner);
+        }
+      }
+    }
+    return objectNode;
+  }
+
+  private boolean hasCustomDeserializer(BeanPropertyDefinition prop) {
+    AnnotatedMember accessor = prop.getAccessor();
+    if (accessor != null && accessor.getAnnotation(JsonDeserialize.class) != null) {
+      return true;
+    }
+    AnnotatedMember mutator = prop.getMutator();
+    return mutator != null && mutator.getAnnotation(JsonDeserialize.class) != null;
   }
 }

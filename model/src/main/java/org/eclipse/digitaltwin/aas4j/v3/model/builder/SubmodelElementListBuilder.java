@@ -93,7 +93,9 @@ public abstract class SubmodelElementListBuilder<
    * @return Builder object with new value for values
    */
   public B value(SubmodelElement value) {
-    getBuildingInstance().getValue().add(value);
+    List<SubmodelElement> values = getBuildingInstance().getValue();
+    values.add(value);
+    getBuildingInstance().setValue(values);
     return getSelf();
   }
 
