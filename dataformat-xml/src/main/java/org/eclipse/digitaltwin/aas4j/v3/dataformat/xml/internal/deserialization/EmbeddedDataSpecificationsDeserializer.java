@@ -27,9 +27,14 @@ import java.util.Map;
 import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmbeddedDataSpecificationsDeserializer
     extends JsonDeserializer<DataSpecificationContent> {
+
+  private static final Logger logger =
+      LoggerFactory.getLogger(EmbeddedDataSpecificationsDeserializer.class);
 
   @Override
   public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt)
@@ -88,7 +93,13 @@ public class EmbeddedDataSpecificationsDeserializer
           return (DataSpecificationContent)
               DeserializationHelper.createInstanceFromNode(parser, fieldValue, clazz);
         } catch (Exception e) {
-          // do nothing and try next in list
+          if (logger.isDebugEnabled()) {
+            logger.debug(
+                "Failed to deserialize field '{}' as {}: {}",
+                fieldName,
+                clazz.getSimpleName(),
+                e.getMessage());
+          }
         }
       }
     }
@@ -102,7 +113,10 @@ public class EmbeddedDataSpecificationsDeserializer
         return (DataSpecificationContent)
             DeserializationHelper.createInstanceFromNode(parser, node, clazz);
       } catch (Exception e) {
-        // do nothing and try next in list
+        if (logger.isDebugEnabled()) {
+          logger.debug(
+              "Failed to deserialize node as {}: {}", clazz.getSimpleName(), e.getMessage());
+        }
       }
     }
     return null;
