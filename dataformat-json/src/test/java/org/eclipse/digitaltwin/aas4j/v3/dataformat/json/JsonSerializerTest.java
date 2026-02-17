@@ -28,13 +28,21 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Referable;
+import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -180,6 +188,27 @@ public class JsonSerializerTest {
   @Test
   public void testWriteSubmodelElementListEmpty() {
     writeAndCompare(Examples.SUBMODEL_ELEMENT_LIST_EMPTY);
+  }
+
+  @Test
+  public void testWriteListWithHeterogeneousSet() throws SerializationException, JSONException {
+    Set<SubmodelElement> elements = new LinkedHashSet<>();
+    elements.add(
+        new DefaultEntity.Builder()
+            .idShort("entity1")
+            .entityType(EntityType.SELF_MANAGED_ENTITY)
+            .build());
+    elements.add(
+        new DefaultProperty.Builder().idShort("prop1").valueType(DataTypeDefXsd.STRING).build());
+
+    String json = serializerToTest.writeList(elements);
+    JSONArray array = new JSONArray(json);
+    Set<String> modelTypes = new HashSet<>();
+    for (int i = 0; i < array.length(); i++) {
+      modelTypes.add(array.getJSONObject(i).getString("modelType"));
+    }
+    assertTrue(modelTypes.contains("Entity"));
+    assertTrue(modelTypes.contains("Property"));
   }
 
   @Test

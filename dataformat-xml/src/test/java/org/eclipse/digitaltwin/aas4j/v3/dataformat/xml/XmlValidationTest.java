@@ -20,6 +20,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeFalse;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -95,6 +96,18 @@ public class XmlValidationTest {
     Set<String> errors = validateXmlFile(file);
     logErrors(file, errors);
     assertEquals(1, errors.size());
+  }
+
+  @Test
+  public void validateXmlWithUtf8Bom() throws IOException {
+    String xml =
+        "\uFEFF"
+            + new String(
+                Files.readAllBytes(Paths.get("src/test/resources/minimum.xml")),
+                StandardCharsets.UTF_8);
+    Set<String> errors = validator.validateSchema(xml);
+    logErrors("src/test/resources/minimum.xml (UTF-8 BOM)", errors);
+    assertTrue(errors.isEmpty());
   }
 
   @Test

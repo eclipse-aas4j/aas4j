@@ -16,6 +16,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor;
 
+import java.util.Collection;
+import java.util.function.Consumer;
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
@@ -56,7 +58,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (annotatedRelationshipElement == null) {
       return;
     }
-    annotatedRelationshipElement.getAnnotations().forEach(x -> visit(x));
+    forEachIfPresent(annotatedRelationshipElement.getAnnotations(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(annotatedRelationshipElement);
   }
 
@@ -67,7 +69,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     }
     visit(assetAdministrationShell.getDerivedFrom());
     visit(assetAdministrationShell.getAssetInformation());
-    assetAdministrationShell.getSubmodels().forEach(x -> visit(x));
+    forEachIfPresent(assetAdministrationShell.getSubmodels(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(assetAdministrationShell);
   }
 
@@ -76,7 +78,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (assetInformation == null) {
       return;
     }
-    assetInformation.getSpecificAssetIds().forEach(x -> visit(x));
+    forEachIfPresent(assetInformation.getSpecificAssetIds(), x -> visit(x));
     visit(assetInformation.getDefaultThumbnail());
     AssetAdministrationShellElementVisitor.super.visit(assetInformation);
   }
@@ -103,7 +105,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (conceptDescription == null) {
       return;
     }
-    conceptDescription.getIsCaseOf().forEach(x -> visit(x));
+    forEachIfPresent(conceptDescription.getIsCaseOf(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(conceptDescription);
   }
 
@@ -121,7 +123,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (hasExtensions == null) {
       return;
     }
-    hasExtensions.getExtensions().forEach(x -> visit(x));
+    forEachIfPresent(hasExtensions.getExtensions(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(hasExtensions);
   }
 
@@ -131,7 +133,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
       return;
     }
     visit(hasSemantics.getSemanticId());
-    hasSemantics.getSupplementalSemanticIds().forEach(x -> visit(x));
+    forEachIfPresent(hasSemantics.getSupplementalSemanticIds(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(hasSemantics);
   }
 
@@ -158,7 +160,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (multiLanguageProperty == null) {
       return;
     }
-    multiLanguageProperty.getValue().forEach(x -> visit(x));
+    forEachIfPresent(multiLanguageProperty.getValue(), x -> visit(x));
     visit(multiLanguageProperty.getValueId());
     AssetAdministrationShellElementVisitor.super.visit(multiLanguageProperty);
   }
@@ -186,7 +188,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (qualifiable == null) {
       return;
     }
-    qualifiable.getQualifiers().forEach(x -> visit(x));
+    forEachIfPresent(qualifiable.getQualifiers(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(qualifiable);
   }
 
@@ -204,8 +206,8 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (referable == null) {
       return;
     }
-    referable.getDescription().forEach(x -> visit(x));
-    referable.getDisplayName().forEach(x -> visit(x));
+    forEachIfPresent(referable.getDescription(), x -> visit(x));
+    forEachIfPresent(referable.getDisplayName(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(referable);
   }
 
@@ -246,7 +248,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (reference == null) {
       return;
     }
-    reference.getKeys().forEach(x -> visit(x));
+    forEachIfPresent(reference.getKeys(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(reference);
   }
 
@@ -274,8 +276,8 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (entity == null) {
       return;
     }
-    entity.getSpecificAssetIds().forEach(x -> visit(x));
-    entity.getStatements().forEach(x -> visit(x));
+    forEachIfPresent(entity.getSpecificAssetIds(), x -> visit(x));
+    forEachIfPresent(entity.getStatements(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(entity);
   }
 
@@ -284,7 +286,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (extension == null) {
       return;
     }
-    extension.getRefersTo().forEach(x -> visit(x));
+    forEachIfPresent(extension.getRefersTo(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(extension);
   }
 
@@ -293,9 +295,10 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (assetAdministrationShellEnvironment == null) {
       return;
     }
-    assetAdministrationShellEnvironment.getAssetAdministrationShells().forEach(x -> visit(x));
-    assetAdministrationShellEnvironment.getConceptDescriptions().forEach(x -> visit(x));
-    assetAdministrationShellEnvironment.getSubmodels().forEach(x -> visit(x));
+    forEachIfPresent(
+        assetAdministrationShellEnvironment.getAssetAdministrationShells(), x -> visit(x));
+    forEachIfPresent(assetAdministrationShellEnvironment.getConceptDescriptions(), x -> visit(x));
+    forEachIfPresent(assetAdministrationShellEnvironment.getSubmodels(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(assetAdministrationShellEnvironment);
   }
 
@@ -304,7 +307,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (submodel == null) {
       return;
     }
-    submodel.getSubmodelElements().forEach(x -> visit(x));
+    forEachIfPresent(submodel.getSubmodelElements(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(submodel);
   }
 
@@ -313,7 +316,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (submodelElementCollection == null) {
       return;
     }
-    submodelElementCollection.getValue().forEach(x -> visit(x));
+    forEachIfPresent(submodelElementCollection.getValue(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(submodelElementCollection);
   }
 
@@ -322,7 +325,7 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (submodelElementList == null) {
       return;
     }
-    submodelElementList.getValue().forEach(x -> visit(x));
+    forEachIfPresent(submodelElementList.getValue(), x -> visit(x));
     AssetAdministrationShellElementVisitor.super.visit(submodelElementList);
   }
 
@@ -331,9 +334,16 @@ public interface AssetAdministrationShellElementWalkerVisitor
     if (operation == null) {
       return;
     }
-    operation.getInputVariables().forEach(x -> visit(x.getValue()));
-    operation.getInoutputVariables().forEach(x -> visit(x.getValue()));
-    operation.getOutputVariables().forEach(x -> visit(x.getValue()));
+    forEachIfPresent(operation.getInputVariables(), x -> visit(x.getValue()));
+    forEachIfPresent(operation.getInoutputVariables(), x -> visit(x.getValue()));
+    forEachIfPresent(operation.getOutputVariables(), x -> visit(x.getValue()));
     AssetAdministrationShellElementVisitor.super.visit(operation);
+  }
+
+  private static <T> void forEachIfPresent(Collection<T> values, Consumer<T> consumer) {
+    if (values == null) {
+      return;
+    }
+    values.forEach(consumer);
   }
 }

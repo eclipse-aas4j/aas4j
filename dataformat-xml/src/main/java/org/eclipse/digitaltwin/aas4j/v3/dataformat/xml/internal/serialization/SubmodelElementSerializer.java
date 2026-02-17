@@ -37,9 +37,9 @@ public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
       nextName.setAccessible(true);
       QName next = (QName) nextName.get(xgen);
 
-      String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
+      String name = SubmodelElementManager.getXmlName(value.getClass());
 
-      if (next.getLocalPart().equals(name)) {
+      if (name != null && next.getLocalPart().equals(name)) {
         xgen.writeObject(value); // only write the plain object without a deduplicate wrapping field
         return;
       }
@@ -48,7 +48,10 @@ public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
     }
 
     xgen.writeStartObject();
-    String name = SubmodelElementManager.CLASS_TO_NAME.get(value.getClass());
+    String name = SubmodelElementManager.getXmlName(value.getClass());
+    if (name == null) {
+      throw new IOException("Unknown submodel element type: " + value.getClass().getName());
+    }
     xgen.writeFieldName(name);
     xgen.writeObject(value);
     xgen.writeEndObject();

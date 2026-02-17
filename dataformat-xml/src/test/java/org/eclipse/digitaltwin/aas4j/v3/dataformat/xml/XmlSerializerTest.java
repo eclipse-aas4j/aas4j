@@ -39,12 +39,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
@@ -165,6 +167,32 @@ public class XmlSerializerTest {
                                     .idShort("inputProperty")
                                     .value("1")
                                     .valueType(DataTypeDefXsd.INT)
+                                    .build())
+                            .build())
+                    .build())
+            .build();
+    String xml =
+        new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
+    Set<String> errors = validateAgainstXsdSchema(xml);
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
+  public void validateOperationEntityWithoutStatementsAgainstXsdSchema()
+      throws SerializationException, SAXException {
+    Submodel object =
+        new DefaultSubmodel.Builder()
+            .id("testSubmodel")
+            .idShort("testSubmodel")
+            .submodelElements(
+                new DefaultOperation.Builder()
+                    .idShort("operationToTest")
+                    .inputVariables(
+                        new DefaultOperationVariable.Builder()
+                            .value(
+                                new DefaultEntity.Builder()
+                                    .idShort("entityInput")
+                                    .entityType(EntityType.SELF_MANAGED_ENTITY)
                                     .build())
                             .build())
                     .build())

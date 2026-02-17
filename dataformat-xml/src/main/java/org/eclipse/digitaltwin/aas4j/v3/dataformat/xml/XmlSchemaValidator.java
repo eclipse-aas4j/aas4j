@@ -42,12 +42,23 @@ public class XmlSchemaValidator implements SchemaValidator {
   @Override
   public Set<String> validateSchema(String serializedAASEnvironment) {
     Set<String> errorMessages = new HashSet<>();
+    String normalized = stripBom(serializedAASEnvironment);
     try {
-      schema.newValidator().validate(new StreamSource(new StringReader(serializedAASEnvironment)));
+      schema.newValidator().validate(new StreamSource(new StringReader(normalized)));
     } catch (SAXException | IOException se) {
       errorMessages.add(se.getMessage());
       return errorMessages;
     }
     return errorMessages;
+  }
+
+  private static String stripBom(String value) {
+    if (value == null || value.isEmpty()) {
+      return value;
+    }
+    if (value.charAt(0) == '\uFEFF') {
+      return value.substring(1);
+    }
+    return value;
   }
 }

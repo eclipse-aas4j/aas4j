@@ -25,6 +25,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
@@ -162,5 +163,30 @@ public class XMLDeserializerTest {
   public void deserializeWithEmptyKeys() throws FileNotFoundException, DeserializationException {
     java.io.File file = new java.io.File("src/test/resources/empty_entries.xml");
     new XmlDeserializer().read(file);
+  }
+
+  @Test
+  public void deserializeWithSelfClosingSemanticId() throws DeserializationException {
+    String xml =
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+            + "<aas:environment xmlns:aas=\"https://admin-shell.io/aas/3/1\">\n"
+            + "  <aas:submodels>\n"
+            + "    <aas:submodel>\n"
+            + "      <aas:id>http://example.org/submodel/1</aas:id>\n"
+            + "      <aas:idShort>sm1</aas:idShort>\n"
+            + "      <aas:submodelElements>\n"
+            + "        <aas:property>\n"
+            + "          <aas:idShort>prop1</aas:idShort>\n"
+            + "          <aas:valueType>xs:string</aas:valueType>\n"
+            + "          <aas:semanticId/>\n"
+            + "        </aas:property>\n"
+            + "      </aas:submodelElements>\n"
+            + "    </aas:submodel>\n"
+            + "  </aas:submodels>\n"
+            + "</aas:environment>\n";
+    Environment env = new XmlDeserializer().read(xml);
+    SubmodelElement element = env.getSubmodels().get(0).getSubmodelElements().get(0);
+    Assert.assertTrue(element instanceof Property);
+    Assert.assertNull(((Property) element).getSemanticId());
   }
 }

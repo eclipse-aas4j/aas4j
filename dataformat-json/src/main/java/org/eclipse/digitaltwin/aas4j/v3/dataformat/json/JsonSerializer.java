@@ -29,6 +29,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 
 /** Class for serializing of AAS instances. */
 public class JsonSerializer {
@@ -66,13 +67,26 @@ public class JsonSerializer {
       return write(collection);
     }
 
-    Class clazz = collection.iterator().next().getClass();
+    Class<?> elementType = getFirstNonNullClass(collection);
     try {
+      if (elementType == null) {
+        return mapper.writeValueAsString(collection);
+      }
+      if (!isHomogeneous(collection, elementType)) {
+        Class<?> modelTypeBase = getCommonModelTypeBase(collection);
+        if (modelTypeBase == null) {
+          return mapper.writeValueAsString(collection);
+        }
+        elementType = modelTypeBase;
+      }
+      Class<? extends Collection> collectionType =
+          collection instanceof List ? List.class : Collection.class;
       return mapper
-          .writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+          .writerFor(mapper.getTypeFactory().constructCollectionType(collectionType, elementType))
           .writeValueAsString(collection);
     } catch (JsonProcessingException ex) {
-      throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
+      String typeName = elementType == null ? "unknown" : elementType.getSimpleName();
+      throw new SerializationException("error serializing list of " + typeName, ex);
     }
   }
 
@@ -148,15 +162,65 @@ public class JsonSerializer {
     if (collection == null || collection.isEmpty()) {
       write(out, charset, collection);
     } else {
-      Class clazz = collection.iterator().next().getClass();
       try {
+        Class<?> elementType = getFirstNonNullClass(collection);
+        if (elementType == null) {
+          mapper.writeValue(new OutputStreamWriter(out, charset), collection);
+          return;
+        }
+        if (!isHomogeneous(collection, elementType)) {
+          Class<?> modelTypeBase = getCommonModelTypeBase(collection);
+          if (modelTypeBase == null) {
+            mapper.writeValue(new OutputStreamWriter(out, charset), collection);
+            return;
+          }
+          elementType = modelTypeBase;
+        }
+        Class<? extends Collection> collectionType =
+            collection instanceof List ? List.class : Collection.class;
         mapper
-            .writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
+            .writerFor(mapper.getTypeFactory().constructCollectionType(collectionType, elementType))
             .writeValue(new OutputStreamWriter(out, charset), collection);
       } catch (IOException ex) {
-        throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
+        Class<?> elementType = getFirstNonNullClass(collection);
+        String typeName = elementType == null ? "unknown" : elementType.getSimpleName();
+        throw new SerializationException("error serializing list of " + typeName, ex);
       }
     }
+  }
+
+  private static Class<?> getFirstNonNullClass(Collection<?> collection) {
+    for (Object element : collection) {
+      if (element != null) {
+        return element.getClass();
+      }
+    }
+    return null;
+  }
+
+  private static boolean isHomogeneous(Collection<?> collection, Class<?> elementType) {
+    for (Object element : collection) {
+      if (element != null && !elementType.equals(element.getClass())) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static Class<?> getCommonModelTypeBase(Collection<?> collection) {
+    for (Class<?> candidate : ReflectionHelper.MODEL_TYPE_SUPERCLASSES) {
+      boolean matchesAll = true;
+      for (Object element : collection) {
+        if (element != null && !candidate.isInstance(element)) {
+          matchesAll = false;
+          break;
+        }
+      }
+      if (matchesAll) {
+        return candidate;
+      }
+    }
+    return null;
   }
 
   /**
