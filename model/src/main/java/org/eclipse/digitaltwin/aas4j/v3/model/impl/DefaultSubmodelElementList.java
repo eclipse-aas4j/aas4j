@@ -19,29 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
-import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
-import org.eclipse.digitaltwin.aas4j.v3.model.Capability;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Entity;
-import org.eclipse.digitaltwin.aas4j.v3.model.EventElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.File;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
-import org.eclipse.digitaltwin.aas4j.v3.model.Property;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Range;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.RelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementList;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelElementListBuilder;
@@ -172,7 +157,6 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
   @Override
   public void setTypeValueListElement(AasSubmodelElements typeValueListElement) {
     this.typeValueListElement = typeValueListElement;
-    validateValueTypes();
   }
 
   @Override
@@ -193,7 +177,6 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
   @Override
   public void setValue(List<SubmodelElement> value) {
     this.value = value;
-    validateValueTypes();
   }
 
   @Override
@@ -287,65 +270,7 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     this.qualifiers = qualifiers;
   }
 
-  private void validateValueTypes() {
-    if (typeValueListElement == null || value == null || value.isEmpty()) {
-      return;
-    }
-    Class<?> expectedType = resolveExpectedType(typeValueListElement);
-    for (SubmodelElement element : value) {
-      if (element == null) {
-        continue;
-      }
-      if (!expectedType.isInstance(element)) {
-        throw new IllegalArgumentException(
-            "SubmodelElementList/value elements must match typeValueListElement. Expected "
-                + typeValueListElement
-                + " but found "
-                + element.getClass().getSimpleName());
-      }
-    }
-  }
-
-  private Class<?> resolveExpectedType(AasSubmodelElements typeValue) {
-    switch (typeValue) {
-      case ANNOTATED_RELATIONSHIP_ELEMENT:
-        return AnnotatedRelationshipElement.class;
-      case BASIC_EVENT_ELEMENT:
-        return BasicEventElement.class;
-      case BLOB:
-        return Blob.class;
-      case CAPABILITY:
-        return Capability.class;
-      case DATA_ELEMENT:
-        return DataElement.class;
-      case ENTITY:
-        return Entity.class;
-      case EVENT_ELEMENT:
-        return EventElement.class;
-      case FILE:
-        return File.class;
-      case MULTI_LANGUAGE_PROPERTY:
-        return MultiLanguageProperty.class;
-      case OPERATION:
-        return Operation.class;
-      case PROPERTY:
-        return Property.class;
-      case RANGE:
-        return Range.class;
-      case REFERENCE_ELEMENT:
-        return ReferenceElement.class;
-      case RELATIONSHIP_ELEMENT:
-        return RelationshipElement.class;
-      case SUBMODEL_ELEMENT_COLLECTION:
-        return SubmodelElementCollection.class;
-      case SUBMODEL_ELEMENT_LIST:
-        return SubmodelElementList.class;
-      case SUBMODEL_ELEMENT:
-        return SubmodelElement.class;
-      default:
-        return SubmodelElement.class;
-    }
-  }
+  
 
   @Override
   public String toString() {
