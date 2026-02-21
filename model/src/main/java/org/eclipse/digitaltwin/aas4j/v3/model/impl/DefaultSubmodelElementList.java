@@ -270,8 +270,6 @@ public class DefaultSubmodelElementList implements SubmodelElementList {
     this.qualifiers = qualifiers;
   }
 
-  
-
   @Override
   public String toString() {
     return "DefaultSubmodelElementList{"
