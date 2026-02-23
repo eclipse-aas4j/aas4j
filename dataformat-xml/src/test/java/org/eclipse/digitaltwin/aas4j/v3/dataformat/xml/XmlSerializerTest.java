@@ -38,18 +38,27 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.DefaultDummyDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.EntityType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringPreferredNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultQualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.hamcrest.MatcherAssert;
@@ -149,6 +158,38 @@ public class XmlSerializerTest {
   }
 
   @Test
+  public void validateAssetAdministrationShellOrderAgainstXsdSchema()
+      throws SerializationException, SAXException {
+    Environment env =
+        new DefaultEnvironment.Builder()
+            .assetAdministrationShells(
+                new DefaultAssetAdministrationShell.Builder()
+                    .id("http://example.org/aas/1")
+                    .idShort("aas1")
+                    .displayName(
+                        new DefaultLangStringNameType.Builder()
+                            .text("Example AAS")
+                            .language("en")
+                            .build())
+                    .assetInformation(
+                        new DefaultAssetInformation.Builder().assetKind(AssetKind.INSTANCE).build())
+                    .submodels(
+                        new DefaultReference.Builder()
+                            .type(ReferenceTypes.MODEL_REFERENCE)
+                            .keys(
+                                new DefaultKey.Builder()
+                                    .type(KeyTypes.SUBMODEL)
+                                    .value("http://example.org/submodel/1")
+                                    .build())
+                            .build())
+                    .build())
+            .build();
+    String xml = new XmlSerializer().write(env);
+    Set<String> errors = validateAgainstXsdSchema(xml);
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
   public void validateMinimalOperationAgainstXsdSchema()
       throws SerializationException, SAXException {
     Submodel object =
@@ -166,6 +207,93 @@ public class XmlSerializerTest {
                                     .value("1")
                                     .valueType(DataTypeDefXsd.INT)
                                     .build())
+                            .build())
+                    .build())
+            .build();
+    String xml =
+        new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
+    Set<String> errors = validateAgainstXsdSchema(xml);
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
+  public void validateOperationEntityWithoutStatementsAgainstXsdSchema()
+      throws SerializationException, SAXException {
+    Submodel object =
+        new DefaultSubmodel.Builder()
+            .id("testSubmodel")
+            .idShort("testSubmodel")
+            .submodelElements(
+                new DefaultOperation.Builder()
+                    .idShort("operationToTest")
+                    .inputVariables(
+                        new DefaultOperationVariable.Builder()
+                            .value(
+                                new DefaultEntity.Builder()
+                                    .idShort("entityInput")
+                                    .entityType(EntityType.SELF_MANAGED_ENTITY)
+                                    .build())
+                            .build())
+                    .build())
+            .build();
+    String xml =
+        new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(object).build());
+    Set<String> errors = validateAgainstXsdSchema(xml);
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
+  public void validateOperationWithMetadataAgainstXsdSchema()
+      throws SerializationException, SAXException {
+    Submodel object =
+        new DefaultSubmodel.Builder()
+            .id("testSubmodel")
+            .idShort("testSubmodel")
+            .submodelElements(
+                new DefaultOperation.Builder()
+                    .idShort("operationToTest")
+                    .embeddedDataSpecifications(
+                        new DefaultEmbeddedDataSpecification.Builder()
+                            .dataSpecification(
+                                new DefaultReference.Builder()
+                                    .type(ReferenceTypes.EXTERNAL_REFERENCE)
+                                    .keys(
+                                        new DefaultKey.Builder()
+                                            .type(KeyTypes.GLOBAL_REFERENCE)
+                                            .value(
+                                                "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3")
+                                            .build())
+                                    .build())
+                            .dataSpecificationContent(
+                                new DefaultDataSpecificationIec61360.Builder()
+                                    .preferredName(
+                                        new DefaultLangStringPreferredNameTypeIec61360.Builder()
+                                            .text("Example Spec")
+                                            .language("en")
+                                            .build())
+                                    .dataType(DataTypeIec61360.STRING)
+                                    .build())
+                            .build())
+                    .extensions(new DefaultExtension.Builder().name("ext1").build())
+                    .extensions(new DefaultExtension.Builder().name("ext2").build())
+                    .supplementalSemanticIds(
+                        new DefaultReference.Builder()
+                            .type(ReferenceTypes.MODEL_REFERENCE)
+                            .keys(
+                                new DefaultKey.Builder()
+                                    .type(KeyTypes.SUBMODEL)
+                                    .value("testSubmodel")
+                                    .build())
+                            .build())
+                    .qualifiers(
+                        new DefaultQualifier.Builder()
+                            .type("qualifier_type")
+                            .valueType(DataTypeDefXsd.STRING)
+                            .build())
+                    .displayName(
+                        new DefaultLangStringNameType.Builder()
+                            .text("Operation")
+                            .language("en")
                             .build())
                     .build())
             .build();
