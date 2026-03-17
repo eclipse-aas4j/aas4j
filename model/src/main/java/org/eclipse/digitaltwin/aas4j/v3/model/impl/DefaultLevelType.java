@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -23,7 +24,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.LevelType
- * 
+ * <p>
  * Value represented by up to four variants of a numeric value in a specific role: MIN, NOM, TYP and
  * MAX. True means that the value is available, false means the value is not available.
  */
@@ -43,24 +44,25 @@ public class DefaultLevelType implements LevelType {
     @IRI("https://admin-shell.io/aas/3/2/LevelType/typ")
     protected boolean typ;
 
-    public DefaultLevelType() {}
+    public DefaultLevelType() {
+    }
 
     @Override
     public String toString() {
         return "DefaultLevelType{"
-            + "min='" + min + "',"
-            + "nom='" + nom + "',"
-            + "typ='" + typ + "',"
-            + "max='" + max + "',"
-            + "}";
+                + "min='" + min + "',"
+                + "nom='" + nom + "',"
+                + "typ='" + typ + "',"
+                + "max='" + max + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.min,
-            this.nom,
-            this.typ,
-            this.max);
+                this.nom,
+                this.typ,
+                this.max);
     }
 
     @Override
@@ -74,9 +76,9 @@ public class DefaultLevelType implements LevelType {
         } else {
             DefaultLevelType other = (DefaultLevelType) obj;
             return Objects.equals(this.min, other.min) &&
-                Objects.equals(this.nom, other.nom) &&
-                Objects.equals(this.typ, other.typ) &&
-                Objects.equals(this.max, other.max);
+                    Objects.equals(this.nom, other.nom) &&
+                    Objects.equals(this.typ, other.typ) &&
+                    Objects.equals(this.max, other.max);
         }
     }
 

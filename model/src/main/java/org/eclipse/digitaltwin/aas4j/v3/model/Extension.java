@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,13 +26,13 @@ import java.util.List;
  * Single extension of an element.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultExtension.class)
+        @KnownSubtypes.Type(value = DefaultExtension.class)
 })
 public interface Extension extends HasSemantics {
 
     /**
      * Name of the extension.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/name
      *
      * @return Returns the String for the property name.
@@ -41,7 +42,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Name of the extension.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/name
      *
      * @param name desired value for the property name.
@@ -50,7 +51,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Type of the value of the extension.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/valueType
      *
      * @return Returns the DataTypeDefXsd for the property valueType.
@@ -60,7 +61,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Type of the value of the extension.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/valueType
      *
      * @param valueType desired value for the property valueType.
@@ -69,7 +70,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Value of the extension
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/value
      *
      * @return Returns the String for the property value.
@@ -79,7 +80,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Value of the extension
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/value
      *
      * @param value desired value for the property value.
@@ -88,7 +89,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Reference to an element the extension refers to.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/refersTo
      *
      * @return Returns the List of References for the property refersTos.
@@ -98,7 +99,7 @@ public interface Extension extends HasSemantics {
 
     /**
      * Reference to an element the extension refers to.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Extension/refersTo
      *
      * @param refersTos desired value for the property refersTos.

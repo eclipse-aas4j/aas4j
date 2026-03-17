@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,14 +26,14 @@ import java.util.List;
  * An entity is a submodel element that is used to model entities.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEntity.class)
+        @KnownSubtypes.Type(value = DefaultEntity.class)
 })
 public interface Entity extends SubmodelElement {
 
     /**
      * Describes statements applicable to the entity by a set of submodel elements, typically with a
      * qualified value.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/statements
      *
      * @return Returns the List of SubmodelElements for the property statements.
@@ -43,7 +44,7 @@ public interface Entity extends SubmodelElement {
     /**
      * Describes statements applicable to the entity by a set of submodel elements, typically with a
      * qualified value.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/statements
      *
      * @param statements desired value for the property statements.
@@ -52,7 +53,7 @@ public interface Entity extends SubmodelElement {
 
     /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/entityType
      *
      * @return Returns the EntityType for the property entityType.
@@ -62,7 +63,7 @@ public interface Entity extends SubmodelElement {
 
     /**
      * Describes whether the entity is a co-managed entity or a self-managed entity.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/entityType
      *
      * @param entityType desired value for the property entityType.
@@ -71,7 +72,7 @@ public interface Entity extends SubmodelElement {
 
     /**
      * Global identifier of the asset the entity is representing.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/globalAssetId
      *
      * @return Returns the String for the property globalAssetId.
@@ -81,7 +82,7 @@ public interface Entity extends SubmodelElement {
 
     /**
      * Global identifier of the asset the entity is representing.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/globalAssetId
      *
      * @param globalAssetId desired value for the property globalAssetId.
@@ -91,7 +92,7 @@ public interface Entity extends SubmodelElement {
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
      * by the Asset Administration Shell.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/specificAssetIds
      *
      * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
@@ -102,7 +103,7 @@ public interface Entity extends SubmodelElement {
     /**
      * Reference to a specific asset ID representing a supplementary identifier of the asset represented
      * by the Asset Administration Shell.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Entity/specificAssetIds
      *
      * @param specificAssetIds desired value for the property specificAssetIds.

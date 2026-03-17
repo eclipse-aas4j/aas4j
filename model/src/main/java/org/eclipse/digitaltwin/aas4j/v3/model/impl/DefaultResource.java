@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -23,7 +24,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Resource
- * 
+ * <p>
  * Resource represents an address to a file (a locator). The value is an URI that can represent an
  * absolute or relative path
  */
@@ -37,20 +38,21 @@ public class DefaultResource implements Resource {
     @IRI("https://admin-shell.io/aas/3/2/Resource/path")
     protected String path;
 
-    public DefaultResource() {}
+    public DefaultResource() {
+    }
 
     @Override
     public String toString() {
         return "DefaultResource{"
-            + "path='" + path + "',"
-            + "contentType='" + contentType + "',"
-            + "}";
+                + "path='" + path + "',"
+                + "contentType='" + contentType + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.path,
-            this.contentType);
+                this.contentType);
     }
 
     @Override
@@ -64,7 +66,7 @@ public class DefaultResource implements Resource {
         } else {
             DefaultResource other = (DefaultResource) obj;
             return Objects.equals(this.path, other.path) &&
-                Objects.equals(this.contentType, other.contentType);
+                    Objects.equals(this.contentType, other.contentType);
         }
     }
 

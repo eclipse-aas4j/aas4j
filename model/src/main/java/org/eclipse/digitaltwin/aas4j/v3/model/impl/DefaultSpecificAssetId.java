@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId
- * 
+ * <p>
  * A specific asset ID describes a generic supplementary identifying attribute of the asset.
  */
 
@@ -48,26 +49,27 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
     @IRI("https://admin-shell.io/aas/3/2/SpecificAssetId/value")
     protected String value;
 
-    public DefaultSpecificAssetId() {}
+    public DefaultSpecificAssetId() {
+    }
 
     @Override
     public String toString() {
         return "DefaultSpecificAssetId{"
-            + "name='" + name + "',"
-            + "value='" + value + "',"
-            + "externalSubjectId='" + externalSubjectId + "',"
-            + "semanticId='" + semanticId + "',"
-            + "supplementalSemanticIds='" + supplementalSemanticIds + "',"
-            + "}";
+                + "name='" + name + "',"
+                + "value='" + value + "',"
+                + "externalSubjectId='" + externalSubjectId + "',"
+                + "semanticId='" + semanticId + "',"
+                + "supplementalSemanticIds='" + supplementalSemanticIds + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.name,
-            this.value,
-            this.externalSubjectId,
-            this.semanticId,
-            this.supplementalSemanticIds);
+                this.value,
+                this.externalSubjectId,
+                this.semanticId,
+                this.supplementalSemanticIds);
     }
 
     @Override
@@ -81,10 +83,10 @@ public class DefaultSpecificAssetId implements SpecificAssetId {
         } else {
             DefaultSpecificAssetId other = (DefaultSpecificAssetId) obj;
             return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+                    Objects.equals(this.value, other.value) &&
+                    Objects.equals(this.externalSubjectId, other.externalSubjectId) &&
+                    Objects.equals(this.semanticId, other.semanticId) &&
+                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
     }
 

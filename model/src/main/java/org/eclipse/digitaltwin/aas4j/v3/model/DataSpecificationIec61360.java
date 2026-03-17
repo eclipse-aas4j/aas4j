@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -26,13 +27,13 @@ import java.util.List;
  * lists conformant to IEC 61360.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultDataSpecificationIec61360.class)
+        @KnownSubtypes.Type(value = DefaultDataSpecificationIec61360.class)
 })
 public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Preferred name
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/preferredName
      *
      * @return Returns the List of LangStringPreferredNameTypeIec61360s for the property preferredNames.
@@ -42,7 +43,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Preferred name
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/preferredName
      *
      * @param preferredNames desired value for the property preferredNames.
@@ -51,7 +52,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Short name
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/shortName
      *
      * @return Returns the List of LangStringShortNameTypeIec61360s for the property shortNames.
@@ -61,7 +62,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Short name
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/shortName
      *
      * @param shortNames desired value for the property shortNames.
@@ -70,7 +71,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Unit
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unit
      *
      * @return Returns the String for the property unit.
@@ -80,7 +81,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Unit
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unit
      *
      * @param unit desired value for the property unit.
@@ -89,7 +90,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Unique unit id
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unitId
      *
      * @return Returns the Reference for the property unitId.
@@ -99,7 +100,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Unique unit id
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/unitId
      *
      * @param unitId desired value for the property unitId.
@@ -108,7 +109,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Source of definition
-     *
+     * <p>
      * More information under
      * https://admin-shell.io/aas/3/2/DataSpecificationIec61360/sourceOfDefinition
      *
@@ -119,7 +120,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Source of definition
-     *
+     * <p>
      * More information under
      * https://admin-shell.io/aas/3/2/DataSpecificationIec61360/sourceOfDefinition
      *
@@ -129,7 +130,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Symbol
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/symbol
      *
      * @return Returns the String for the property symbol.
@@ -139,7 +140,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Symbol
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/symbol
      *
      * @param symbol desired value for the property symbol.
@@ -148,7 +149,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Data Type
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/dataType
      *
      * @return Returns the DataTypeIec61360 for the property dataType.
@@ -158,7 +159,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Data Type
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/dataType
      *
      * @param dataType desired value for the property dataType.
@@ -167,7 +168,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Definition in different languages
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/definition
      *
      * @return Returns the List of LangStringDefinitionTypeIec61360s for the property definitions.
@@ -177,7 +178,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Definition in different languages
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/definition
      *
      * @param definitions desired value for the property definitions.
@@ -186,7 +187,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Value Format
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueFormat
      *
      * @return Returns the String for the property valueFormat.
@@ -196,7 +197,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Value Format
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueFormat
      *
      * @param valueFormat desired value for the property valueFormat.
@@ -205,7 +206,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * List of allowed values
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueList
      *
      * @return Returns the ValueList for the property valueList.
@@ -215,7 +216,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * List of allowed values
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/valueList
      *
      * @param valueList desired value for the property valueList.
@@ -224,7 +225,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Value
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/value
      *
      * @return Returns the String for the property value.
@@ -234,7 +235,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Value
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/value
      *
      * @param value desired value for the property value.
@@ -243,7 +244,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Set of levels.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/levelType
      *
      * @return Returns the LevelType for the property levelType.
@@ -253,7 +254,7 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
 
     /**
      * Set of levels.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/levelType
      *
      * @param levelType desired value for the property levelType.

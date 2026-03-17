@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ValueList
- * 
+ * <p>
  * A set of value reference pairs.
  */
 
@@ -36,13 +37,14 @@ public class DefaultValueList implements ValueList {
     @IRI("https://admin-shell.io/aas/3/2/ValueList/valueReferencePairs")
     protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
-    public DefaultValueList() {}
+    public DefaultValueList() {
+    }
 
     @Override
     public String toString() {
         return "DefaultValueList{"
-            + "valueReferencePairs='" + valueReferencePairs + "',"
-            + "}";
+                + "valueReferencePairs='" + valueReferencePairs + "',"
+                + "}";
     }
 
     @Override

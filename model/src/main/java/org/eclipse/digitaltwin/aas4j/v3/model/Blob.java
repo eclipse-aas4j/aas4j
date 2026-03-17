@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,13 +26,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;
  * value attribute.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultBlob.class)
+        @KnownSubtypes.Type(value = DefaultBlob.class)
 })
 public interface Blob extends DataElement {
 
     /**
      * The value of the 'Blob' instance of a blob data element.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Blob/value
      *
      * @return Returns the byte[] for the property value.
@@ -41,7 +42,7 @@ public interface Blob extends DataElement {
 
     /**
      * The value of the 'Blob' instance of a blob data element.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Blob/value
      *
      * @param value desired value for the property value.
@@ -50,7 +51,7 @@ public interface Blob extends DataElement {
 
     /**
      * Content type of the content of the 'Blob'.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Blob/contentType
      *
      * @return Returns the String for the property contentType.
@@ -60,7 +61,7 @@ public interface Blob extends DataElement {
 
     /**
      * Content type of the content of the 'Blob'.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/Blob/contentType
      *
      * @param contentType desired value for the property contentType.

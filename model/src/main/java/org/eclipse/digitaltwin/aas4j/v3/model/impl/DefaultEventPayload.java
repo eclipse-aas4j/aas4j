@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,7 +26,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.EventPayload
- * 
+ * <p>
  * Defines the necessary information of an event instance sent out or received.
  */
 
@@ -56,32 +57,33 @@ public class DefaultEventPayload implements EventPayload {
     @IRI("https://admin-shell.io/aas/3/2/EventPayload/topic")
     protected String topic;
 
-    public DefaultEventPayload() {}
+    public DefaultEventPayload() {
+    }
 
     @Override
     public String toString() {
         return "DefaultEventPayload{"
-            + "source='" + source + "',"
-            + "sourceSemanticId='" + sourceSemanticId + "',"
-            + "observableReference='" + observableReference + "',"
-            + "observableSemanticId='" + observableSemanticId + "',"
-            + "topic='" + topic + "',"
-            + "subjectId='" + subjectId + "',"
-            + "timeStamp='" + timeStamp + "',"
-            + "payload='" + payload + "',"
-            + "}";
+                + "source='" + source + "',"
+                + "sourceSemanticId='" + sourceSemanticId + "',"
+                + "observableReference='" + observableReference + "',"
+                + "observableSemanticId='" + observableSemanticId + "',"
+                + "topic='" + topic + "',"
+                + "subjectId='" + subjectId + "',"
+                + "timeStamp='" + timeStamp + "',"
+                + "payload='" + payload + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.source,
-            this.sourceSemanticId,
-            this.observableReference,
-            this.observableSemanticId,
-            this.topic,
-            this.subjectId,
-            this.timeStamp,
-            Arrays.hashCode(this.payload));
+                this.sourceSemanticId,
+                this.observableReference,
+                this.observableSemanticId,
+                this.topic,
+                this.subjectId,
+                this.timeStamp,
+                Arrays.hashCode(this.payload));
     }
 
     @Override
@@ -95,13 +97,13 @@ public class DefaultEventPayload implements EventPayload {
         } else {
             DefaultEventPayload other = (DefaultEventPayload) obj;
             return Objects.equals(this.source, other.source) &&
-                Objects.equals(this.sourceSemanticId, other.sourceSemanticId) &&
-                Objects.equals(this.observableReference, other.observableReference) &&
-                Objects.equals(this.observableSemanticId, other.observableSemanticId) &&
-                Objects.equals(this.topic, other.topic) &&
-                Objects.equals(this.subjectId, other.subjectId) &&
-                Objects.equals(this.timeStamp, other.timeStamp) &&
-                Arrays.equals(this.payload, other.payload);
+                    Objects.equals(this.sourceSemanticId, other.sourceSemanticId) &&
+                    Objects.equals(this.observableReference, other.observableReference) &&
+                    Objects.equals(this.observableSemanticId, other.observableSemanticId) &&
+                    Objects.equals(this.topic, other.topic) &&
+                    Objects.equals(this.subjectId, other.subjectId) &&
+                    Objects.equals(this.timeStamp, other.timeStamp) &&
+                    Arrays.equals(this.payload, other.payload);
         }
     }
 

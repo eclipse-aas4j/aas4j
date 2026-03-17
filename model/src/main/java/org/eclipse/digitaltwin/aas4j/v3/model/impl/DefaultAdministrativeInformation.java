@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -29,7 +30,7 @@ import java.util.Objects;
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation
- * 
+ * <p>
  * Administrative meta-information for an element like version information.
  */
 
@@ -57,30 +58,31 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
     protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    public DefaultAdministrativeInformation() {}
+    public DefaultAdministrativeInformation() {
+    }
 
     @Override
     public String toString() {
         return "DefaultAdministrativeInformation{"
-            + "createdAt='" + createdAt + "',"
-            + "version='" + version + "',"
-            + "revision='" + revision + "',"
-            + "creator='" + creator + "',"
-            + "templateId='" + templateId + "',"
-            + "updatedAt='" + updatedAt + "',"
-            + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
-            + "}";
+                + "createdAt='" + createdAt + "',"
+                + "version='" + version + "',"
+                + "revision='" + revision + "',"
+                + "creator='" + creator + "',"
+                + "templateId='" + templateId + "',"
+                + "updatedAt='" + updatedAt + "',"
+                + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.createdAt,
-            this.version,
-            this.revision,
-            this.creator,
-            this.templateId,
-            this.updatedAt,
-            this.embeddedDataSpecifications);
+                this.version,
+                this.revision,
+                this.creator,
+                this.templateId,
+                this.updatedAt,
+                this.embeddedDataSpecifications);
     }
 
     @Override
@@ -94,12 +96,12 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
         } else {
             DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
             return Objects.equals(this.createdAt, other.createdAt) &&
-                Objects.equals(this.version, other.version) &&
-                Objects.equals(this.revision, other.revision) &&
-                Objects.equals(this.creator, other.creator) &&
-                Objects.equals(this.templateId, other.templateId) &&
-                Objects.equals(this.updatedAt, other.updatedAt) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+                    Objects.equals(this.version, other.version) &&
+                    Objects.equals(this.revision, other.revision) &&
+                    Objects.equals(this.creator, other.creator) &&
+                    Objects.equals(this.templateId, other.templateId) &&
+                    Objects.equals(this.updatedAt, other.updatedAt) &&
+                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
         }
     }
 

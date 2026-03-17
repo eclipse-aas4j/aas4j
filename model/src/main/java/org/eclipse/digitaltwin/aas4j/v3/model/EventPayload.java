@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -24,14 +25,14 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEventPayload;
  * Defines the necessary information of an event instance sent out or received.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultEventPayload.class)
+        @KnownSubtypes.Type(value = DefaultEventPayload.class)
 })
 public interface EventPayload {
 
     /**
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
      * 'Submodel', 'SubmodelElement''s.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/source
      *
      * @return Returns the Reference for the property source.
@@ -42,7 +43,7 @@ public interface EventPayload {
     /**
      * Reference to the source event element, including identification of 'AssetAdministrationShell',
      * 'Submodel', 'SubmodelElement''s.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/source
      *
      * @param source desired value for the property source.
@@ -51,7 +52,7 @@ public interface EventPayload {
 
     /**
      * 'semanticId' of the source event element, if available
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/sourceSemanticId
      *
      * @return Returns the Reference for the property sourceSemanticId.
@@ -61,7 +62,7 @@ public interface EventPayload {
 
     /**
      * 'semanticId' of the source event element, if available
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/sourceSemanticId
      *
      * @param sourceSemanticId desired value for the property sourceSemanticId.
@@ -70,7 +71,7 @@ public interface EventPayload {
 
     /**
      * Reference to the referable, which defines the scope of the event.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/observableReference
      *
      * @return Returns the Reference for the property observableReference.
@@ -80,7 +81,7 @@ public interface EventPayload {
 
     /**
      * Reference to the referable, which defines the scope of the event.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/observableReference
      *
      * @param observableReference desired value for the property observableReference.
@@ -89,7 +90,7 @@ public interface EventPayload {
 
     /**
      * 'semanticId' of the referable which defines the scope of the event, if available.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/observableSemanticId
      *
      * @return Returns the Reference for the property observableSemanticId.
@@ -99,7 +100,7 @@ public interface EventPayload {
 
     /**
      * 'semanticId' of the referable which defines the scope of the event, if available.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/observableSemanticId
      *
      * @param observableSemanticId desired value for the property observableSemanticId.
@@ -109,7 +110,7 @@ public interface EventPayload {
     /**
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/topic
      *
      * @return Returns the String for the property topic.
@@ -120,7 +121,7 @@ public interface EventPayload {
     /**
      * Information for the outer message infrastructure for scheduling the event to the respective
      * communication channel.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/topic
      *
      * @param topic desired value for the property topic.
@@ -129,7 +130,7 @@ public interface EventPayload {
 
     /**
      * Subject, who/which initiated the creation.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/subjectId
      *
      * @return Returns the Reference for the property subjectId.
@@ -139,7 +140,7 @@ public interface EventPayload {
 
     /**
      * Subject, who/which initiated the creation.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/subjectId
      *
      * @param subjectId desired value for the property subjectId.
@@ -148,7 +149,7 @@ public interface EventPayload {
 
     /**
      * Timestamp in UTC, when this event was triggered.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/timeStamp
      *
      * @return Returns the String for the property timeStamp.
@@ -158,7 +159,7 @@ public interface EventPayload {
 
     /**
      * Timestamp in UTC, when this event was triggered.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/timeStamp
      *
      * @param timeStamp desired value for the property timeStamp.
@@ -167,7 +168,7 @@ public interface EventPayload {
 
     /**
      * Event specific payload.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/payload
      *
      * @return Returns the byte[] for the property payload.
@@ -177,7 +178,7 @@ public interface EventPayload {
 
     /**
      * Event specific payload.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/2/EventPayload/payload
      *
      * @param payload desired value for the property payload.

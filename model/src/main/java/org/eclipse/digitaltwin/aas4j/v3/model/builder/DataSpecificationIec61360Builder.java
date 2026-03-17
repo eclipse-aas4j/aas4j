@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -27,11 +28,11 @@ import java.util.List;
 
 
 public abstract class DataSpecificationIec61360Builder<T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
-    extends ExtendableBuilder<T, B> {
+        extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for preferredNames
-     * 
+     *
      * @param preferredNames desired value to be set
      * @return Builder object with new value for preferredNames
      */
@@ -42,7 +43,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows adding a value to the List preferredNames
-     * 
+     *
      * @param preferredName desired value to be added
      * @return Builder object with new value for preferredNames
      */
@@ -53,7 +54,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for shortNames
-     * 
+     *
      * @param shortNames desired value to be set
      * @return Builder object with new value for shortNames
      */
@@ -64,7 +65,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows adding a value to the List shortNames
-     * 
+     *
      * @param shortName desired value to be added
      * @return Builder object with new value for shortNames
      */
@@ -75,7 +76,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for unit
-     * 
+     *
      * @param unit desired value to be set
      * @return Builder object with new value for unit
      */
@@ -86,7 +87,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for unitId
-     * 
+     *
      * @param unitId desired value to be set
      * @return Builder object with new value for unitId
      */
@@ -97,7 +98,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for sourceOfDefinition
-     * 
+     *
      * @param sourceOfDefinition desired value to be set
      * @return Builder object with new value for sourceOfDefinition
      */
@@ -108,7 +109,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for symbol
-     * 
+     *
      * @param symbol desired value to be set
      * @return Builder object with new value for symbol
      */
@@ -119,7 +120,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for dataType
-     * 
+     *
      * @param dataType desired value to be set
      * @return Builder object with new value for dataType
      */
@@ -130,7 +131,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for definitions
-     * 
+     *
      * @param definitions desired value to be set
      * @return Builder object with new value for definitions
      */
@@ -141,7 +142,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows adding a value to the List definitions
-     * 
+     *
      * @param definition desired value to be added
      * @return Builder object with new value for definitions
      */
@@ -152,7 +153,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for valueFormat
-     * 
+     *
      * @param valueFormat desired value to be set
      * @return Builder object with new value for valueFormat
      */
@@ -163,7 +164,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for valueList
-     * 
+     *
      * @param valueList desired value to be set
      * @return Builder object with new value for valueList
      */
@@ -174,7 +175,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for value
-     * 
+     *
      * @param value desired value to be set
      * @return Builder object with new value for value
      */
@@ -185,7 +186,7 @@ public abstract class DataSpecificationIec61360Builder<T extends DataSpecificati
 
     /**
      * This function allows setting a value for levelType
-     * 
+     *
      * @param levelType desired value to be set
      * @return Builder object with new value for levelType
      */

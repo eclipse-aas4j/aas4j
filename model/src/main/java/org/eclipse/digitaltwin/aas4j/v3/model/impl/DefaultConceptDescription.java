@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * 
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -31,7 +32,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription
- * 
+ * <p>
  * The semantics of a property or other elements that may have a semantic description is defined by
  * a concept description.
  */
@@ -66,34 +67,35 @@ public class DefaultConceptDescription implements ConceptDescription {
     @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
     protected String idShort;
 
-    public DefaultConceptDescription() {}
+    public DefaultConceptDescription() {
+    }
 
     @Override
     public String toString() {
         return "DefaultConceptDescription{"
-            + "isCaseOfs='" + isCaseOfs + "',"
-            + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
-            + "administration='" + administration + "',"
-            + "id='" + id + "',"
-            + "category='" + category + "',"
-            + "idShort='" + idShort + "',"
-            + "displayNames='" + displayNames + "',"
-            + "descriptions='" + descriptions + "',"
-            + "extensions='" + extensions + "',"
-            + "}";
+                + "isCaseOfs='" + isCaseOfs + "',"
+                + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
+                + "administration='" + administration + "',"
+                + "id='" + id + "',"
+                + "category='" + category + "',"
+                + "idShort='" + idShort + "',"
+                + "displayNames='" + displayNames + "',"
+                + "descriptions='" + descriptions + "',"
+                + "extensions='" + extensions + "',"
+                + "}";
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.isCaseOfs,
-            this.embeddedDataSpecifications,
-            this.administration,
-            this.id,
-            this.category,
-            this.idShort,
-            this.displayNames,
-            this.descriptions,
-            this.extensions);
+                this.embeddedDataSpecifications,
+                this.administration,
+                this.id,
+                this.category,
+                this.idShort,
+                this.displayNames,
+                this.descriptions,
+                this.extensions);
     }
 
     @Override
@@ -107,14 +109,14 @@ public class DefaultConceptDescription implements ConceptDescription {
         } else {
             DefaultConceptDescription other = (DefaultConceptDescription) obj;
             return Objects.equals(this.isCaseOfs, other.isCaseOfs) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayNames, other.displayNames) &&
-                Objects.equals(this.descriptions, other.descriptions) &&
-                Objects.equals(this.extensions, other.extensions);
+                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
+                    Objects.equals(this.administration, other.administration) &&
+                    Objects.equals(this.id, other.id) &&
+                    Objects.equals(this.category, other.category) &&
+                    Objects.equals(this.idShort, other.idShort) &&
+                    Objects.equals(this.displayNames, other.displayNames) &&
+                    Objects.equals(this.descriptions, other.descriptions) &&
+                    Objects.equals(this.extensions, other.extensions);
         }
     }
 
