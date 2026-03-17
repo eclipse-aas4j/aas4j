@@ -15,6 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
@@ -22,108 +25,111 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetAdministrationShellEnvironmentBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellEnvironment
- * <p>
- * Container for the sets of different identifiables.
+ *
+ * <p>Container for the sets of different identifiables.
  */
-
 @IRI("aas:AssetAdministrationShellEnvironment")
-public class DefaultAssetAdministrationShellEnvironment implements AssetAdministrationShellEnvironment {
+public class DefaultAssetAdministrationShellEnvironment
+    implements AssetAdministrationShellEnvironment {
 
-    @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/assetAdministrationShells")
-    protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
+  @IRI(
+      "https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/assetAdministrationShells")
+  protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/conceptDescriptions")
-    protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/conceptDescriptions")
+  protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/submodels")
-    protected List<Submodel> submodels = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/submodels")
+  protected List<Submodel> submodels = new ArrayList<>();
 
-    public DefaultAssetAdministrationShellEnvironment() {
+  public DefaultAssetAdministrationShellEnvironment() {}
+
+  @Override
+  public String toString() {
+    return "DefaultAssetAdministrationShellEnvironment{"
+        + "assetAdministrationShells='"
+        + assetAdministrationShells
+        + "',"
+        + "conceptDescriptions='"
+        + conceptDescriptions
+        + "',"
+        + "submodels='"
+        + submodels
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.assetAdministrationShells, this.conceptDescriptions, this.submodels);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultAssetAdministrationShellEnvironment other =
+          (DefaultAssetAdministrationShellEnvironment) obj;
+      return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells)
+          && Objects.equals(this.conceptDescriptions, other.conceptDescriptions)
+          && Objects.equals(this.submodels, other.submodels);
+    }
+  }
+
+  @Override
+  public List<AssetAdministrationShell> getAssetAdministrationShells() {
+    return assetAdministrationShells;
+  }
+
+  @Override
+  public void setAssetAdministrationShells(
+      List<AssetAdministrationShell> assetAdministrationShells) {
+    this.assetAdministrationShells = assetAdministrationShells;
+  }
+
+  @Override
+  public List<ConceptDescription> getConceptDescriptions() {
+    return conceptDescriptions;
+  }
+
+  @Override
+  public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
+    this.conceptDescriptions = conceptDescriptions;
+  }
+
+  @Override
+  public List<Submodel> getSubmodels() {
+    return submodels;
+  }
+
+  @Override
+  public void setSubmodels(List<Submodel> submodels) {
+    this.submodels = submodels;
+  }
+
+  /**
+   * This builder class can be used to construct a DefaultAssetAdministrationShellEnvironment bean.
+   */
+  public static class Builder
+      extends AssetAdministrationShellEnvironmentBuilder<
+          DefaultAssetAdministrationShellEnvironment, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultAssetAdministrationShellEnvironment{"
-                + "assetAdministrationShells='" + assetAdministrationShells + "',"
-                + "conceptDescriptions='" + conceptDescriptions + "',"
-                + "submodels='" + submodels + "',"
-                + "}";
+    protected DefaultAssetAdministrationShellEnvironment newBuildingInstance() {
+      return new DefaultAssetAdministrationShellEnvironment();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.assetAdministrationShells,
-                this.conceptDescriptions,
-                this.submodels);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultAssetAdministrationShellEnvironment other = (DefaultAssetAdministrationShellEnvironment) obj;
-            return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
-                    Objects.equals(this.conceptDescriptions, other.conceptDescriptions) &&
-                    Objects.equals(this.submodels, other.submodels);
-        }
-    }
-
-    @Override
-    public List<AssetAdministrationShell> getAssetAdministrationShells() {
-        return assetAdministrationShells;
-    }
-
-    @Override
-    public void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells) {
-        this.assetAdministrationShells = assetAdministrationShells;
-    }
-
-    @Override
-    public List<ConceptDescription> getConceptDescriptions() {
-        return conceptDescriptions;
-    }
-
-    @Override
-    public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
-        this.conceptDescriptions = conceptDescriptions;
-    }
-
-    @Override
-    public List<Submodel> getSubmodels() {
-        return submodels;
-    }
-
-    @Override
-    public void setSubmodels(List<Submodel> submodels) {
-        this.submodels = submodels;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultAssetAdministrationShellEnvironment bean.
-     */
-    public static class Builder extends AssetAdministrationShellEnvironmentBuilder<DefaultAssetAdministrationShellEnvironment, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultAssetAdministrationShellEnvironment newBuildingInstance() {
-            return new DefaultAssetAdministrationShellEnvironment();
-        }
-    }
+  }
 }

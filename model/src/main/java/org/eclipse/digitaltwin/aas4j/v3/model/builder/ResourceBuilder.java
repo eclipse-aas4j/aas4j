@@ -15,31 +15,30 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
 
+public abstract class ResourceBuilder<T extends Resource, B extends ResourceBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class ResourceBuilder<T extends Resource, B extends ResourceBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for path
+   *
+   * @param path desired value to be set
+   * @return Builder object with new value for path
+   */
+  public B path(String path) {
+    getBuildingInstance().setPath(path);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for path
-     *
-     * @param path desired value to be set
-     * @return Builder object with new value for path
-     */
-    public B path(String path) {
-        getBuildingInstance().setPath(path);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for contentType
-     *
-     * @param contentType desired value to be set
-     * @return Builder object with new value for contentType
-     */
-    public B contentType(String contentType) {
-        getBuildingInstance().setContentType(contentType);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for contentType
+   *
+   * @param contentType desired value to be set
+   * @return Builder object with new value for contentType
+   */
+  public B contentType(String contentType) {
+    getBuildingInstance().setContentType(contentType);
+    return getSelf();
+  }
 }

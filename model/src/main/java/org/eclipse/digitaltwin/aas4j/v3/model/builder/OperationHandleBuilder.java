@@ -15,32 +15,31 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle;
 
+public abstract class OperationHandleBuilder<
+        T extends OperationHandle, B extends OperationHandleBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class OperationHandleBuilder<T extends OperationHandle, B extends OperationHandleBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for handleId
+   *
+   * @param handleId desired value to be set
+   * @return Builder object with new value for handleId
+   */
+  public B handleId(String handleId) {
+    getBuildingInstance().setHandleId(handleId);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for handleId
-     *
-     * @param handleId desired value to be set
-     * @return Builder object with new value for handleId
-     */
-    public B handleId(String handleId) {
-        getBuildingInstance().setHandleId(handleId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for requestId
-     *
-     * @param requestId desired value to be set
-     * @return Builder object with new value for requestId
-     */
-    public B requestId(String requestId) {
-        getBuildingInstance().setRequestId(requestId);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for requestId
+   *
+   * @param requestId desired value to be set
+   * @return Builder object with new value for requestId
+   */
+  public B requestId(String requestId) {
+    getBuildingInstance().setRequestId(requestId);
+    return getSelf();
+  }
 }

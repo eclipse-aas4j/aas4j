@@ -15,32 +15,31 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 
+public abstract class KeyBuilder<T extends Key, B extends KeyBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class KeyBuilder<T extends Key, B extends KeyBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for type
+   *
+   * @param type desired value to be set
+   * @return Builder object with new value for type
+   */
+  public B type(KeyTypes type) {
+    getBuildingInstance().setType(type);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for type
-     *
-     * @param type desired value to be set
-     * @return Builder object with new value for type
-     */
-    public B type(KeyTypes type) {
-        getBuildingInstance().setType(type);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for value
-     *
-     * @param value desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B value(String value) {
-        getBuildingInstance().setValue(value);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for value
+   *
+   * @param value desired value to be set
+   * @return Builder object with new value for value
+   */
+  public B value(String value) {
+    getBuildingInstance().setValue(value);
+    return getSelf();
+  }
 }

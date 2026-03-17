@@ -15,179 +15,190 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationBuilder;
 
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation
- * <p>
- * Administrative meta-information for an element like version information.
+ *
+ * <p>Administrative meta-information for an element like version information.
  */
-
 @IRI("aas:AdministrativeInformation")
 public class DefaultAdministrativeInformation implements AdministrativeInformation {
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
-    protected XMLGregorianCalendar createdAt;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
+  protected XMLGregorianCalendar createdAt;
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
-    protected Reference creator;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
+  protected Reference creator;
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/revision")
-    protected String revision;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/revision")
+  protected String revision;
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId")
-    protected String templateId;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId")
+  protected String templateId;
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
-    protected XMLGregorianCalendar updatedAt;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
+  protected XMLGregorianCalendar updatedAt;
 
-    @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
-    protected String version;
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
+  protected String version;
 
-    @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
+  protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    public DefaultAdministrativeInformation() {
+  public DefaultAdministrativeInformation() {}
+
+  @Override
+  public String toString() {
+    return "DefaultAdministrativeInformation{"
+        + "createdAt='"
+        + createdAt
+        + "',"
+        + "version='"
+        + version
+        + "',"
+        + "revision='"
+        + revision
+        + "',"
+        + "creator='"
+        + creator
+        + "',"
+        + "templateId='"
+        + templateId
+        + "',"
+        + "updatedAt='"
+        + updatedAt
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        this.createdAt,
+        this.version,
+        this.revision,
+        this.creator,
+        this.templateId,
+        this.updatedAt,
+        this.embeddedDataSpecifications);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
+      return Objects.equals(this.createdAt, other.createdAt)
+          && Objects.equals(this.version, other.version)
+          && Objects.equals(this.revision, other.revision)
+          && Objects.equals(this.creator, other.creator)
+          && Objects.equals(this.templateId, other.templateId)
+          && Objects.equals(this.updatedAt, other.updatedAt)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
+    }
+  }
+
+  @Override
+  public XMLGregorianCalendar getCreatedAt() {
+    return createdAt;
+  }
+
+  @Override
+  public void setCreatedAt(XMLGregorianCalendar createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Override
+  public String getVersion() {
+    return version;
+  }
+
+  @Override
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  @Override
+  public String getRevision() {
+    return revision;
+  }
+
+  @Override
+  public void setRevision(String revision) {
+    this.revision = revision;
+  }
+
+  @Override
+  public Reference getCreator() {
+    return creator;
+  }
+
+  @Override
+  public void setCreator(Reference creator) {
+    this.creator = creator;
+  }
+
+  @Override
+  public String getTemplateId() {
+    return templateId;
+  }
+
+  @Override
+  public void setTemplateId(String templateId) {
+    this.templateId = templateId;
+  }
+
+  @Override
+  public XMLGregorianCalendar getUpdatedAt() {
+    return updatedAt;
+  }
+
+  @Override
+  public void setUpdatedAt(XMLGregorianCalendar updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
+  }
+
+  /** This builder class can be used to construct a DefaultAdministrativeInformation bean. */
+  public static class Builder
+      extends AdministrativeInformationBuilder<DefaultAdministrativeInformation, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultAdministrativeInformation{"
-                + "createdAt='" + createdAt + "',"
-                + "version='" + version + "',"
-                + "revision='" + revision + "',"
-                + "creator='" + creator + "',"
-                + "templateId='" + templateId + "',"
-                + "updatedAt='" + updatedAt + "',"
-                + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
-                + "}";
+    protected DefaultAdministrativeInformation newBuildingInstance() {
+      return new DefaultAdministrativeInformation();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.createdAt,
-                this.version,
-                this.revision,
-                this.creator,
-                this.templateId,
-                this.updatedAt,
-                this.embeddedDataSpecifications);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
-            return Objects.equals(this.createdAt, other.createdAt) &&
-                    Objects.equals(this.version, other.version) &&
-                    Objects.equals(this.revision, other.revision) &&
-                    Objects.equals(this.creator, other.creator) &&
-                    Objects.equals(this.templateId, other.templateId) &&
-                    Objects.equals(this.updatedAt, other.updatedAt) &&
-                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
-        }
-    }
-
-    @Override
-    public XMLGregorianCalendar getCreatedAt() {
-        return createdAt;
-    }
-
-    @Override
-    public void setCreatedAt(XMLGregorianCalendar createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @Override
-    public String getVersion() {
-        return version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    @Override
-    public String getRevision() {
-        return revision;
-    }
-
-    @Override
-    public void setRevision(String revision) {
-        this.revision = revision;
-    }
-
-    @Override
-    public Reference getCreator() {
-        return creator;
-    }
-
-    @Override
-    public void setCreator(Reference creator) {
-        this.creator = creator;
-    }
-
-    @Override
-    public String getTemplateId() {
-        return templateId;
-    }
-
-    @Override
-    public void setTemplateId(String templateId) {
-        this.templateId = templateId;
-    }
-
-    @Override
-    public XMLGregorianCalendar getUpdatedAt() {
-        return updatedAt;
-    }
-
-    @Override
-    public void setUpdatedAt(XMLGregorianCalendar updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultAdministrativeInformation bean.
-     */
-    public static class Builder extends AdministrativeInformationBuilder<DefaultAdministrativeInformation, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultAdministrativeInformation newBuildingInstance() {
-            return new DefaultAdministrativeInformation();
-        }
-    }
+  }
 }

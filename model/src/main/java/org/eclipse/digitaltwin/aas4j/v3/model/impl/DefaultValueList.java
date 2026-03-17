@@ -15,80 +15,72 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ValueListBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ValueList
- * <p>
- * A set of value reference pairs.
+ *
+ * <p>A set of value reference pairs.
  */
-
 @IRI("aas:ValueList")
 public class DefaultValueList implements ValueList {
 
-    @IRI("https://admin-shell.io/aas/3/2/ValueList/valueReferencePairs")
-    protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/ValueList/valueReferencePairs")
+  protected List<ValueReferencePair> valueReferencePairs = new ArrayList<>();
 
-    public DefaultValueList() {
+  public DefaultValueList() {}
+
+  @Override
+  public String toString() {
+    return "DefaultValueList{" + "valueReferencePairs='" + valueReferencePairs + "'," + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.valueReferencePairs);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultValueList other = (DefaultValueList) obj;
+      return Objects.equals(this.valueReferencePairs, other.valueReferencePairs);
+    }
+  }
+
+  @Override
+  public List<ValueReferencePair> getValueReferencePairs() {
+    return valueReferencePairs;
+  }
+
+  @Override
+  public void setValueReferencePairs(List<ValueReferencePair> valueReferencePairs) {
+    this.valueReferencePairs = valueReferencePairs;
+  }
+
+  /** This builder class can be used to construct a DefaultValueList bean. */
+  public static class Builder extends ValueListBuilder<DefaultValueList, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultValueList{"
-                + "valueReferencePairs='" + valueReferencePairs + "',"
-                + "}";
+    protected DefaultValueList newBuildingInstance() {
+      return new DefaultValueList();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.valueReferencePairs);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultValueList other = (DefaultValueList) obj;
-            return Objects.equals(this.valueReferencePairs, other.valueReferencePairs);
-        }
-    }
-
-    @Override
-    public List<ValueReferencePair> getValueReferencePairs() {
-        return valueReferencePairs;
-    }
-
-    @Override
-    public void setValueReferencePairs(List<ValueReferencePair> valueReferencePairs) {
-        this.valueReferencePairs = valueReferencePairs;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultValueList bean.
-     */
-    public static class Builder extends ValueListBuilder<DefaultValueList, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultValueList newBuildingInstance() {
-            return new DefaultValueList();
-        }
-    }
+  }
 }

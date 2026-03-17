@@ -15,33 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 
-import java.util.List;
+public abstract class DescriptorBuilder<T extends Descriptor, B extends DescriptorBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for endpoints
+   *
+   * @param endpoints desired value to be set
+   * @return Builder object with new value for endpoints
+   */
+  public B endpoints(List<Endpoint> endpoints) {
+    getBuildingInstance().setEndpoints(endpoints);
+    return getSelf();
+  }
 
-public abstract class DescriptorBuilder<T extends Descriptor, B extends DescriptorBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for endpoints
-     *
-     * @param endpoints desired value to be set
-     * @return Builder object with new value for endpoints
-     */
-    public B endpoints(List<Endpoint> endpoints) {
-        getBuildingInstance().setEndpoints(endpoints);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List endpoints
-     *
-     * @param endpoints desired value to be added
-     * @return Builder object with new value for endpoints
-     */
-    public B endpoints(Endpoint endpoints) {
-        getBuildingInstance().getEndpoints().add(endpoints);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List endpoints
+   *
+   * @param endpoints desired value to be added
+   * @return Builder object with new value for endpoints
+   */
+  public B endpoints(Endpoint endpoints) {
+    getBuildingInstance().getEndpoints().add(endpoints);
+    return getSelf();
+  }
 }

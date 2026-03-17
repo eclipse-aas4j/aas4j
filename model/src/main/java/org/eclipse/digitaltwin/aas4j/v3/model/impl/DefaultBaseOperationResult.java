@@ -15,93 +15,88 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.BaseOperationResultBuilder;
 
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult */
 @IRI("aas:BaseOperationResult")
 public class DefaultBaseOperationResult implements BaseOperationResult {
 
-    @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/executionState")
-    protected ExecutionState executionState;
+  @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/executionState")
+  protected ExecutionState executionState;
 
-    @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/success")
-    protected boolean success;
+  @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/success")
+  protected boolean success;
 
-    public DefaultBaseOperationResult() {
+  public DefaultBaseOperationResult() {}
+
+  @Override
+  public String toString() {
+    return "DefaultBaseOperationResult{"
+        + "executionState='"
+        + executionState
+        + "',"
+        + "success='"
+        + success
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.executionState, this.success);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultBaseOperationResult other = (DefaultBaseOperationResult) obj;
+      return Objects.equals(this.executionState, other.executionState)
+          && Objects.equals(this.success, other.success);
+    }
+  }
+
+  @Override
+  public ExecutionState getExecutionState() {
+    return executionState;
+  }
+
+  @Override
+  public void setExecutionState(ExecutionState executionState) {
+    this.executionState = executionState;
+  }
+
+  @Override
+  public boolean getSuccess() {
+    return success;
+  }
+
+  @Override
+  public void setSuccess(boolean success) {
+    this.success = success;
+  }
+
+  /** This builder class can be used to construct a DefaultBaseOperationResult bean. */
+  public static class Builder
+      extends BaseOperationResultBuilder<DefaultBaseOperationResult, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultBaseOperationResult{"
-                + "executionState='" + executionState + "',"
-                + "success='" + success + "',"
-                + "}";
+    protected DefaultBaseOperationResult newBuildingInstance() {
+      return new DefaultBaseOperationResult();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.executionState,
-                this.success);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultBaseOperationResult other = (DefaultBaseOperationResult) obj;
-            return Objects.equals(this.executionState, other.executionState) &&
-                    Objects.equals(this.success, other.success);
-        }
-    }
-
-    @Override
-    public ExecutionState getExecutionState() {
-        return executionState;
-    }
-
-    @Override
-    public void setExecutionState(ExecutionState executionState) {
-        this.executionState = executionState;
-    }
-
-    @Override
-    public boolean getSuccess() {
-        return success;
-    }
-
-    @Override
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultBaseOperationResult bean.
-     */
-    public static class Builder extends BaseOperationResultBuilder<DefaultBaseOperationResult, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultBaseOperationResult newBuildingInstance() {
-            return new DefaultBaseOperationResult();
-        }
-    }
+  }
 }

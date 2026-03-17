@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
@@ -22,97 +23,95 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 
-import java.util.List;
+public abstract class SubmodelDescriptorBuilder<
+        T extends SubmodelDescriptor, B extends SubmodelDescriptorBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for administration
+   *
+   * @param administration desired value to be set
+   * @return Builder object with new value for administration
+   */
+  public B administration(AdministrativeInformation administration) {
+    getBuildingInstance().setAdministration(administration);
+    return getSelf();
+  }
 
-public abstract class SubmodelDescriptorBuilder<T extends SubmodelDescriptor, B extends SubmodelDescriptorBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for description
+   *
+   * @param description desired value to be set
+   * @return Builder object with new value for description
+   */
+  public B description(LangStringTextType description) {
+    getBuildingInstance().setDescription(description);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for administration
-     *
-     * @param administration desired value to be set
-     * @return Builder object with new value for administration
-     */
-    public B administration(AdministrativeInformation administration) {
-        getBuildingInstance().setAdministration(administration);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for displayName
+   *
+   * @param displayName desired value to be set
+   * @return Builder object with new value for displayName
+   */
+  public B displayName(LangStringNameType displayName) {
+    getBuildingInstance().setDisplayName(displayName);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for description
-     *
-     * @param description desired value to be set
-     * @return Builder object with new value for description
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().setDescription(description);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for idShort
+   *
+   * @param idShort desired value to be set
+   * @return Builder object with new value for idShort
+   */
+  public B idShort(String idShort) {
+    getBuildingInstance().setIdShort(idShort);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for displayName
-     *
-     * @param displayName desired value to be set
-     * @return Builder object with new value for displayName
-     */
-    public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().setDisplayName(displayName);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for identification
+   *
+   * @param identification desired value to be set
+   * @return Builder object with new value for identification
+   */
+  public B identification(String identification) {
+    getBuildingInstance().setIdentification(identification);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for idShort
-     *
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
-     */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for semanticId
+   *
+   * @param semanticId desired value to be set
+   * @return Builder object with new value for semanticId
+   */
+  public B semanticId(Reference semanticId) {
+    getBuildingInstance().setSemanticId(semanticId);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for identification
-     *
-     * @param identification desired value to be set
-     * @return Builder object with new value for identification
-     */
-    public B identification(String identification) {
-        getBuildingInstance().setIdentification(identification);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for endpoints
+   *
+   * @param endpoints desired value to be set
+   * @return Builder object with new value for endpoints
+   */
+  public B endpoints(List<Endpoint> endpoints) {
+    getBuildingInstance().setEndpoints(endpoints);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for semanticId
-     *
-     * @param semanticId desired value to be set
-     * @return Builder object with new value for semanticId
-     */
-    public B semanticId(Reference semanticId) {
-        getBuildingInstance().setSemanticId(semanticId);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for endpoints
-     *
-     * @param endpoints desired value to be set
-     * @return Builder object with new value for endpoints
-     */
-    public B endpoints(List<Endpoint> endpoints) {
-        getBuildingInstance().setEndpoints(endpoints);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List endpoints
-     *
-     * @param endpoints desired value to be added
-     * @return Builder object with new value for endpoints
-     */
-    public B endpoints(Endpoint endpoints) {
-        getBuildingInstance().getEndpoints().add(endpoints);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List endpoints
+   *
+   * @param endpoints desired value to be added
+   * @return Builder object with new value for endpoints
+   */
+  public B endpoints(Endpoint endpoints) {
+    getBuildingInstance().getEndpoints().add(endpoints);
+    return getSelf();
+  }
 }

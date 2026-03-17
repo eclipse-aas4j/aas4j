@@ -15,44 +15,43 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
+public abstract class SecurityAttributeObjectBuilder<
+        T extends SecurityAttributeObject, B extends SecurityAttributeObjectBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class SecurityAttributeObjectBuilder<T extends SecurityAttributeObject, B extends SecurityAttributeObjectBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for key
+   *
+   * @param key desired value to be set
+   * @return Builder object with new value for key
+   */
+  public B key(String key) {
+    getBuildingInstance().setKey(key);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for key
-     *
-     * @param key desired value to be set
-     * @return Builder object with new value for key
-     */
-    public B key(String key) {
-        getBuildingInstance().setKey(key);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for value
+   *
+   * @param value desired value to be set
+   * @return Builder object with new value for value
+   */
+  public B value(String value) {
+    getBuildingInstance().setValue(value);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for value
-     *
-     * @param value desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B value(String value) {
-        getBuildingInstance().setValue(value);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for type
-     *
-     * @param type desired value to be set
-     * @return Builder object with new value for type
-     */
-    public B type(SecurityTypeEnum type) {
-        getBuildingInstance().setType(type);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for type
+   *
+   * @param type desired value to be set
+   * @return Builder object with new value for type
+   */
+  public B type(SecurityTypeEnum type) {
+    getBuildingInstance().setType(type);
+    return getSelf();
+  }
 }

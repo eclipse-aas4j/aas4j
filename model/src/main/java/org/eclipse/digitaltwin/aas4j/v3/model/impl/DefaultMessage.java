@@ -15,125 +15,121 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.MessageBuilder;
 
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Message
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Message */
 @IRI("aas:Message")
 public class DefaultMessage implements Message {
 
-    @IRI("https://admin-shell.io/aas/3/2/Message/code")
-    protected String code;
+  @IRI("https://admin-shell.io/aas/3/2/Message/code")
+  protected String code;
 
-    @IRI("https://admin-shell.io/aas/3/2/Message/messageType")
-    protected MessageType messageType;
+  @IRI("https://admin-shell.io/aas/3/2/Message/messageType")
+  protected MessageType messageType;
 
-    @IRI("https://admin-shell.io/aas/3/2/Message/text")
-    protected String text;
+  @IRI("https://admin-shell.io/aas/3/2/Message/text")
+  protected String text;
 
-    @IRI("https://admin-shell.io/aas/3/2/Message/timestamp")
-    protected String timestamp;
+  @IRI("https://admin-shell.io/aas/3/2/Message/timestamp")
+  protected String timestamp;
 
-    public DefaultMessage() {
+  public DefaultMessage() {}
+
+  @Override
+  public String toString() {
+    return "DefaultMessage{"
+        + "code='"
+        + code
+        + "',"
+        + "messageType='"
+        + messageType
+        + "',"
+        + "text='"
+        + text
+        + "',"
+        + "timestamp='"
+        + timestamp
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.code, this.messageType, this.text, this.timestamp);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultMessage other = (DefaultMessage) obj;
+      return Objects.equals(this.code, other.code)
+          && Objects.equals(this.messageType, other.messageType)
+          && Objects.equals(this.text, other.text)
+          && Objects.equals(this.timestamp, other.timestamp);
+    }
+  }
+
+  @Override
+  public String getCode() {
+    return code;
+  }
+
+  @Override
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  @Override
+  public MessageType getMessageType() {
+    return messageType;
+  }
+
+  @Override
+  public void setMessageType(MessageType messageType) {
+    this.messageType = messageType;
+  }
+
+  @Override
+  public String getText() {
+    return text;
+  }
+
+  @Override
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  @Override
+  public String getTimestamp() {
+    return timestamp;
+  }
+
+  @Override
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
+  }
+
+  /** This builder class can be used to construct a DefaultMessage bean. */
+  public static class Builder extends MessageBuilder<DefaultMessage, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultMessage{"
-                + "code='" + code + "',"
-                + "messageType='" + messageType + "',"
-                + "text='" + text + "',"
-                + "timestamp='" + timestamp + "',"
-                + "}";
+    protected DefaultMessage newBuildingInstance() {
+      return new DefaultMessage();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.code,
-                this.messageType,
-                this.text,
-                this.timestamp);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultMessage other = (DefaultMessage) obj;
-            return Objects.equals(this.code, other.code) &&
-                    Objects.equals(this.messageType, other.messageType) &&
-                    Objects.equals(this.text, other.text) &&
-                    Objects.equals(this.timestamp, other.timestamp);
-        }
-    }
-
-    @Override
-    public String getCode() {
-        return code;
-    }
-
-    @Override
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Override
-    public MessageType getMessageType() {
-        return messageType;
-    }
-
-    @Override
-    public void setMessageType(MessageType messageType) {
-        this.messageType = messageType;
-    }
-
-    @Override
-    public String getText() {
-        return text;
-    }
-
-    @Override
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    @Override
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultMessage bean.
-     */
-    public static class Builder extends MessageBuilder<DefaultMessage, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultMessage newBuildingInstance() {
-            return new DefaultMessage();
-        }
-    }
+  }
 }

@@ -15,126 +15,125 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
 
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.LevelType
- * <p>
- * Value represented by up to four variants of a numeric value in a specific role: MIN, NOM, TYP and
- * MAX. True means that the value is available, false means the value is not available.
+ *
+ * <p>Value represented by up to four variants of a numeric value in a specific role: MIN, NOM, TYP
+ * and MAX. True means that the value is available, false means the value is not available.
  */
-
 @IRI("aas:LevelType")
 public class DefaultLevelType implements LevelType {
 
-    @IRI("https://admin-shell.io/aas/3/2/LevelType/max")
-    protected boolean max;
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/max")
+  protected boolean max;
 
-    @IRI("https://admin-shell.io/aas/3/2/LevelType/min")
-    protected boolean min;
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/min")
+  protected boolean min;
 
-    @IRI("https://admin-shell.io/aas/3/2/LevelType/nom")
-    protected boolean nom;
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/nom")
+  protected boolean nom;
 
-    @IRI("https://admin-shell.io/aas/3/2/LevelType/typ")
-    protected boolean typ;
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/typ")
+  protected boolean typ;
 
-    public DefaultLevelType() {
+  public DefaultLevelType() {}
+
+  @Override
+  public String toString() {
+    return "DefaultLevelType{"
+        + "min='"
+        + min
+        + "',"
+        + "nom='"
+        + nom
+        + "',"
+        + "typ='"
+        + typ
+        + "',"
+        + "max='"
+        + max
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.min, this.nom, this.typ, this.max);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultLevelType other = (DefaultLevelType) obj;
+      return Objects.equals(this.min, other.min)
+          && Objects.equals(this.nom, other.nom)
+          && Objects.equals(this.typ, other.typ)
+          && Objects.equals(this.max, other.max);
+    }
+  }
+
+  @Override
+  public boolean getMin() {
+    return min;
+  }
+
+  @Override
+  public void setMin(boolean min) {
+    this.min = min;
+  }
+
+  @Override
+  public boolean getNom() {
+    return nom;
+  }
+
+  @Override
+  public void setNom(boolean nom) {
+    this.nom = nom;
+  }
+
+  @Override
+  public boolean getTyp() {
+    return typ;
+  }
+
+  @Override
+  public void setTyp(boolean typ) {
+    this.typ = typ;
+  }
+
+  @Override
+  public boolean getMax() {
+    return max;
+  }
+
+  @Override
+  public void setMax(boolean max) {
+    this.max = max;
+  }
+
+  /** This builder class can be used to construct a DefaultLevelType bean. */
+  public static class Builder extends LevelTypeBuilder<DefaultLevelType, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultLevelType{"
-                + "min='" + min + "',"
-                + "nom='" + nom + "',"
-                + "typ='" + typ + "',"
-                + "max='" + max + "',"
-                + "}";
+    protected DefaultLevelType newBuildingInstance() {
+      return new DefaultLevelType();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.min,
-                this.nom,
-                this.typ,
-                this.max);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultLevelType other = (DefaultLevelType) obj;
-            return Objects.equals(this.min, other.min) &&
-                    Objects.equals(this.nom, other.nom) &&
-                    Objects.equals(this.typ, other.typ) &&
-                    Objects.equals(this.max, other.max);
-        }
-    }
-
-    @Override
-    public boolean getMin() {
-        return min;
-    }
-
-    @Override
-    public void setMin(boolean min) {
-        this.min = min;
-    }
-
-    @Override
-    public boolean getNom() {
-        return nom;
-    }
-
-    @Override
-    public void setNom(boolean nom) {
-        this.nom = nom;
-    }
-
-    @Override
-    public boolean getTyp() {
-        return typ;
-    }
-
-    @Override
-    public void setTyp(boolean typ) {
-        this.typ = typ;
-    }
-
-    @Override
-    public boolean getMax() {
-        return max;
-    }
-
-    @Override
-    public void setMax(boolean max) {
-        this.max = max;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultLevelType bean.
-     */
-    public static class Builder extends LevelTypeBuilder<DefaultLevelType, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultLevelType newBuildingInstance() {
-            return new DefaultLevelType();
-        }
-    }
+  }
 }

@@ -15,79 +15,78 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 
-import java.util.List;
+public abstract class EnvironmentBuilder<T extends Environment, B extends EnvironmentBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for assetAdministrationShells
+   *
+   * @param assetAdministrationShells desired value to be set
+   * @return Builder object with new value for assetAdministrationShells
+   */
+  public B assetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells) {
+    getBuildingInstance().setAssetAdministrationShells(assetAdministrationShells);
+    return getSelf();
+  }
 
-public abstract class EnvironmentBuilder<T extends Environment, B extends EnvironmentBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows adding a value to the List assetAdministrationShells
+   *
+   * @param assetAdministrationShells desired value to be added
+   * @return Builder object with new value for assetAdministrationShells
+   */
+  public B assetAdministrationShells(AssetAdministrationShell assetAdministrationShells) {
+    getBuildingInstance().getAssetAdministrationShells().add(assetAdministrationShells);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for assetAdministrationShells
-     *
-     * @param assetAdministrationShells desired value to be set
-     * @return Builder object with new value for assetAdministrationShells
-     */
-    public B assetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells) {
-        getBuildingInstance().setAssetAdministrationShells(assetAdministrationShells);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for submodels
+   *
+   * @param submodels desired value to be set
+   * @return Builder object with new value for submodels
+   */
+  public B submodels(List<Submodel> submodels) {
+    getBuildingInstance().setSubmodels(submodels);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List assetAdministrationShells
-     *
-     * @param assetAdministrationShells desired value to be added
-     * @return Builder object with new value for assetAdministrationShells
-     */
-    public B assetAdministrationShells(AssetAdministrationShell assetAdministrationShells) {
-        getBuildingInstance().getAssetAdministrationShells().add(assetAdministrationShells);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List submodels
+   *
+   * @param submodels desired value to be added
+   * @return Builder object with new value for submodels
+   */
+  public B submodels(Submodel submodels) {
+    getBuildingInstance().getSubmodels().add(submodels);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for submodels
-     *
-     * @param submodels desired value to be set
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(List<Submodel> submodels) {
-        getBuildingInstance().setSubmodels(submodels);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for conceptDescriptions
+   *
+   * @param conceptDescriptions desired value to be set
+   * @return Builder object with new value for conceptDescriptions
+   */
+  public B conceptDescriptions(List<ConceptDescription> conceptDescriptions) {
+    getBuildingInstance().setConceptDescriptions(conceptDescriptions);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List submodels
-     *
-     * @param submodels desired value to be added
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(Submodel submodels) {
-        getBuildingInstance().getSubmodels().add(submodels);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for conceptDescriptions
-     *
-     * @param conceptDescriptions desired value to be set
-     * @return Builder object with new value for conceptDescriptions
-     */
-    public B conceptDescriptions(List<ConceptDescription> conceptDescriptions) {
-        getBuildingInstance().setConceptDescriptions(conceptDescriptions);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List conceptDescriptions
-     *
-     * @param conceptDescriptions desired value to be added
-     * @return Builder object with new value for conceptDescriptions
-     */
-    public B conceptDescriptions(ConceptDescription conceptDescriptions) {
-        getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List conceptDescriptions
+   *
+   * @param conceptDescriptions desired value to be added
+   * @return Builder object with new value for conceptDescriptions
+   */
+  public B conceptDescriptions(ConceptDescription conceptDescriptions) {
+    getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
+    return getSelf();
+  }
 }

@@ -15,44 +15,43 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
 
-import java.util.List;
+public abstract class PackageDescriptionBuilder<
+        T extends PackageDescription, B extends PackageDescriptionBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for items
+   *
+   * @param items desired value to be set
+   * @return Builder object with new value for items
+   */
+  public B items(List<String> items) {
+    getBuildingInstance().setItems(items);
+    return getSelf();
+  }
 
-public abstract class PackageDescriptionBuilder<T extends PackageDescription, B extends PackageDescriptionBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows adding a value to the List items
+   *
+   * @param items desired value to be added
+   * @return Builder object with new value for items
+   */
+  public B items(String items) {
+    getBuildingInstance().getItems().add(items);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for items
-     *
-     * @param items desired value to be set
-     * @return Builder object with new value for items
-     */
-    public B items(List<String> items) {
-        getBuildingInstance().setItems(items);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List items
-     *
-     * @param items desired value to be added
-     * @return Builder object with new value for items
-     */
-    public B items(String items) {
-        getBuildingInstance().getItems().add(items);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for packageId
-     *
-     * @param packageId desired value to be set
-     * @return Builder object with new value for packageId
-     */
-    public B packageId(String packageId) {
-        getBuildingInstance().setPackageId(packageId);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for packageId
+   *
+   * @param packageId desired value to be set
+   * @return Builder object with new value for packageId
+   */
+  public B packageId(String packageId) {
+    getBuildingInstance().setPackageId(packageId);
+    return getSelf();
+  }
 }

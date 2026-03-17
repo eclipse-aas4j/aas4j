@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -16,188 +16,186 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-
-
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
-
-public abstract class AssetAdministrationShellBuilder<T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
+public abstract class AssetAdministrationShellBuilder<
+        T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
 
-    /**
-     * This function allows setting a value for derivedFrom
-     * 
-     * @param derivedFrom desired value to be set
-     * @return Builder object with new value for derivedFrom
-     */
-    public B derivedFrom(Reference derivedFrom) {
-        getBuildingInstance().setDerivedFrom(derivedFrom);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for derivedFrom
+   *
+   * @param derivedFrom desired value to be set
+   * @return Builder object with new value for derivedFrom
+   */
+  public B derivedFrom(Reference derivedFrom) {
+    getBuildingInstance().setDerivedFrom(derivedFrom);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for assetInformation
-     * 
-     * @param assetInformation desired value to be set
-     * @return Builder object with new value for assetInformation
-     */
-    public B assetInformation(AssetInformation assetInformation) {
-        getBuildingInstance().setAssetInformation(assetInformation);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for assetInformation
+   *
+   * @param assetInformation desired value to be set
+   * @return Builder object with new value for assetInformation
+   */
+  public B assetInformation(AssetInformation assetInformation) {
+    getBuildingInstance().setAssetInformation(assetInformation);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for submodels
-     * 
-     * @param submodels desired value to be set
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(List<Reference> submodels) {
-        getBuildingInstance().setSubmodels(submodels);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for submodels
+   *
+   * @param submodels desired value to be set
+   * @return Builder object with new value for submodels
+   */
+  public B submodels(List<Reference> submodels) {
+    getBuildingInstance().setSubmodels(submodels);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List submodels
-     * 
-     * @param submodels desired value to be added
-     * @return Builder object with new value for submodels
-     */
-    public B submodels(Reference submodels) {
-        getBuildingInstance().getSubmodels().add(submodels);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List submodels
+   *
+   * @param submodels desired value to be added
+   * @return Builder object with new value for submodels
+   */
+  public B submodels(Reference submodels) {
+    getBuildingInstance().getSubmodels().add(submodels);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be set
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for embeddedDataSpecifications
+   *
+   * @param embeddedDataSpecifications desired value to be set
+   * @return Builder object with new value for embeddedDataSpecifications
+   */
+  public B embeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    getBuildingInstance().setEmbeddedDataSpecifications(embeddedDataSpecifications);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List embeddedDataSpecifications
-     * 
-     * @param embeddedDataSpecifications desired value to be added
-     * @return Builder object with new value for embeddedDataSpecifications
-     */
-    public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-        getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List embeddedDataSpecifications
+   *
+   * @param embeddedDataSpecifications desired value to be added
+   * @return Builder object with new value for embeddedDataSpecifications
+   */
+  public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
+    getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for administration
-     * 
-     * @param administration desired value to be set
-     * @return Builder object with new value for administration
-     */
-    public B administration(AdministrativeInformation administration) {
-        getBuildingInstance().setAdministration(administration);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for administration
+   *
+   * @param administration desired value to be set
+   * @return Builder object with new value for administration
+   */
+  public B administration(AdministrativeInformation administration) {
+    getBuildingInstance().setAdministration(administration);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for id
-     * 
-     * @param id desired value to be set
-     * @return Builder object with new value for id
-     */
-    public B id(String id) {
-        getBuildingInstance().setId(id);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for id
+   *
+   * @param id desired value to be set
+   * @return Builder object with new value for id
+   */
+  public B id(String id) {
+    getBuildingInstance().setId(id);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for category
-     * 
-     * @param category desired value to be set
-     * @return Builder object with new value for category
-     */
-    public B category(String category) {
-        getBuildingInstance().setCategory(category);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for category
+   *
+   * @param category desired value to be set
+   * @return Builder object with new value for category
+   */
+  public B category(String category) {
+    getBuildingInstance().setCategory(category);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for idShort
-     * 
-     * @param idShort desired value to be set
-     * @return Builder object with new value for idShort
-     */
-    public B idShort(String idShort) {
-        getBuildingInstance().setIdShort(idShort);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for idShort
+   *
+   * @param idShort desired value to be set
+   * @return Builder object with new value for idShort
+   */
+  public B idShort(String idShort) {
+    getBuildingInstance().setIdShort(idShort);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for displayNames
-     * 
-     * @param displayNames desired value to be set
-     * @return Builder object with new value for displayNames
-     */
-    public B displayNames(List<LangStringNameType> displayNames) {
-        getBuildingInstance().setDisplayNames(displayNames);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for displayNames
+   *
+   * @param displayNames desired value to be set
+   * @return Builder object with new value for displayNames
+   */
+  public B displayNames(List<LangStringNameType> displayNames) {
+    getBuildingInstance().setDisplayNames(displayNames);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List displayNames
-     * 
-     * @param displayName desired value to be added
-     * @return Builder object with new value for displayNames
-     */
-    public B displayName(LangStringNameType displayName) {
-        getBuildingInstance().getDisplayNames().add(displayName);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List displayNames
+   *
+   * @param displayName desired value to be added
+   * @return Builder object with new value for displayNames
+   */
+  public B displayName(LangStringNameType displayName) {
+    getBuildingInstance().getDisplayNames().add(displayName);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for descriptions
-     * 
-     * @param descriptions desired value to be set
-     * @return Builder object with new value for descriptions
-     */
-    public B descriptions(List<LangStringTextType> descriptions) {
-        getBuildingInstance().setDescriptions(descriptions);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for descriptions
+   *
+   * @param descriptions desired value to be set
+   * @return Builder object with new value for descriptions
+   */
+  public B descriptions(List<LangStringTextType> descriptions) {
+    getBuildingInstance().setDescriptions(descriptions);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List descriptions
-     * 
-     * @param description desired value to be added
-     * @return Builder object with new value for descriptions
-     */
-    public B description(LangStringTextType description) {
-        getBuildingInstance().getDescriptions().add(description);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List descriptions
+   *
+   * @param description desired value to be added
+   * @return Builder object with new value for descriptions
+   */
+  public B description(LangStringTextType description) {
+    getBuildingInstance().getDescriptions().add(description);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for extensions
-     * 
-     * @param extensions desired value to be set
-     * @return Builder object with new value for extensions
-     */
-    public B extensions(List<Extension> extensions) {
-        getBuildingInstance().setExtensions(extensions);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for extensions
+   *
+   * @param extensions desired value to be set
+   * @return Builder object with new value for extensions
+   */
+  public B extensions(List<Extension> extensions) {
+    getBuildingInstance().setExtensions(extensions);
+    return getSelf();
+  }
 
-    /**
-     * This function allows adding a value to the List extensions
-     * 
-     * @param extensions desired value to be added
-     * @return Builder object with new value for extensions
-     */
-    public B extensions(Extension extensions) {
-        getBuildingInstance().getExtensions().add(extensions);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List extensions
+   *
+   * @param extensions desired value to be added
+   * @return Builder object with new value for extensions
+   */
+  public B extensions(Extension extensions) {
+    getBuildingInstance().getExtensions().add(extensions);
+    return getSelf();
+  }
 }

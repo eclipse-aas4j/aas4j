@@ -15,79 +15,68 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Descriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.DescriptorBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Descriptor
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Descriptor */
 @IRI("aas:Descriptor")
 public class DefaultDescriptor implements Descriptor {
 
-    @IRI("https://admin-shell.io/aas/3/2/Descriptor/endpoints")
-    protected List<Endpoint> endpoints = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Descriptor/endpoints")
+  protected List<Endpoint> endpoints = new ArrayList<>();
 
-    public DefaultDescriptor() {
+  public DefaultDescriptor() {}
+
+  @Override
+  public String toString() {
+    return "DefaultDescriptor{" + "endpoints='" + endpoints + "'," + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.endpoints);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultDescriptor other = (DefaultDescriptor) obj;
+      return Objects.equals(this.endpoints, other.endpoints);
+    }
+  }
+
+  @Override
+  public List<Endpoint> getEndpoints() {
+    return endpoints;
+  }
+
+  @Override
+  public void setEndpoints(List<Endpoint> endpoints) {
+    this.endpoints = endpoints;
+  }
+
+  /** This builder class can be used to construct a DefaultDescriptor bean. */
+  public static class Builder extends DescriptorBuilder<DefaultDescriptor, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultDescriptor{"
-                + "endpoints='" + endpoints + "',"
-                + "}";
+    protected DefaultDescriptor newBuildingInstance() {
+      return new DefaultDescriptor();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.endpoints);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultDescriptor other = (DefaultDescriptor) obj;
-            return Objects.equals(this.endpoints, other.endpoints);
-        }
-    }
-
-    @Override
-    public List<Endpoint> getEndpoints() {
-        return endpoints;
-    }
-
-    @Override
-    public void setEndpoints(List<Endpoint> endpoints) {
-        this.endpoints = endpoints;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultDescriptor bean.
-     */
-    public static class Builder extends DescriptorBuilder<DefaultDescriptor, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultDescriptor newBuildingInstance() {
-            return new DefaultDescriptor();
-        }
-    }
+  }
 }

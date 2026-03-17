@@ -15,6 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
@@ -25,204 +28,216 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ConceptDescriptionBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription
- * <p>
- * The semantics of a property or other elements that may have a semantic description is defined by
- * a concept description.
+ *
+ * <p>The semantics of a property or other elements that may have a semantic description is defined
+ * by a concept description.
  */
-
 @IRI("aas:ConceptDescription")
 public class DefaultConceptDescription implements ConceptDescription {
 
-    @IRI("https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf")
-    protected List<Reference> isCaseOfs = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf")
+  protected List<Reference> isCaseOfs = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
+  protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
-    protected List<Extension> extensions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
+  protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Identifiable/administration")
-    protected AdministrativeInformation administration;
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/administration")
+  protected AdministrativeInformation administration;
 
-    @IRI("https://admin-shell.io/aas/3/2/Identifiable/id")
-    protected String id;
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/id")
+  protected String id;
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/category")
-    protected String category;
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
+  protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/description")
-    protected List<LangStringTextType> descriptions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
+  protected List<LangStringTextType> descriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
-    protected List<LangStringNameType> displayNames = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
+  protected List<LangStringNameType> displayNames = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
-    protected String idShort;
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
+  protected String idShort;
 
-    public DefaultConceptDescription() {
+  public DefaultConceptDescription() {}
+
+  @Override
+  public String toString() {
+    return "DefaultConceptDescription{"
+        + "isCaseOfs='"
+        + isCaseOfs
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "administration='"
+        + administration
+        + "',"
+        + "id='"
+        + id
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayNames='"
+        + displayNames
+        + "',"
+        + "descriptions='"
+        + descriptions
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        this.isCaseOfs,
+        this.embeddedDataSpecifications,
+        this.administration,
+        this.id,
+        this.category,
+        this.idShort,
+        this.displayNames,
+        this.descriptions,
+        this.extensions);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultConceptDescription other = (DefaultConceptDescription) obj;
+      return Objects.equals(this.isCaseOfs, other.isCaseOfs)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+          && Objects.equals(this.administration, other.administration)
+          && Objects.equals(this.id, other.id)
+          && Objects.equals(this.category, other.category)
+          && Objects.equals(this.idShort, other.idShort)
+          && Objects.equals(this.displayNames, other.displayNames)
+          && Objects.equals(this.descriptions, other.descriptions)
+          && Objects.equals(this.extensions, other.extensions);
+    }
+  }
+
+  @Override
+  public List<Reference> getIsCaseOfs() {
+    return isCaseOfs;
+  }
+
+  @Override
+  public void setIsCaseOfs(List<Reference> isCaseOfs) {
+    this.isCaseOfs = isCaseOfs;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
+  }
+
+  @Override
+  public AdministrativeInformation getAdministration() {
+    return administration;
+  }
+
+  @Override
+  public void setAdministration(AdministrativeInformation administration) {
+    this.administration = administration;
+  }
+
+  @Override
+  public String getId() {
+    return id;
+  }
+
+  @Override
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  @Override
+  public String getCategory() {
+    return category;
+  }
+
+  @Override
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  @Override
+  public String getIdShort() {
+    return idShort;
+  }
+
+  @Override
+  public void setIdShort(String idShort) {
+    this.idShort = idShort;
+  }
+
+  @Override
+  public List<LangStringNameType> getDisplayNames() {
+    return displayNames;
+  }
+
+  @Override
+  public void setDisplayNames(List<LangStringNameType> displayNames) {
+    this.displayNames = displayNames;
+  }
+
+  @Override
+  public List<LangStringTextType> getDescriptions() {
+    return descriptions;
+  }
+
+  @Override
+  public void setDescriptions(List<LangStringTextType> descriptions) {
+    this.descriptions = descriptions;
+  }
+
+  @Override
+  public List<Extension> getExtensions() {
+    return extensions;
+  }
+
+  @Override
+  public void setExtensions(List<Extension> extensions) {
+    this.extensions = extensions;
+  }
+
+  /** This builder class can be used to construct a DefaultConceptDescription bean. */
+  public static class Builder
+      extends ConceptDescriptionBuilder<DefaultConceptDescription, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultConceptDescription{"
-                + "isCaseOfs='" + isCaseOfs + "',"
-                + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
-                + "administration='" + administration + "',"
-                + "id='" + id + "',"
-                + "category='" + category + "',"
-                + "idShort='" + idShort + "',"
-                + "displayNames='" + displayNames + "',"
-                + "descriptions='" + descriptions + "',"
-                + "extensions='" + extensions + "',"
-                + "}";
+    protected DefaultConceptDescription newBuildingInstance() {
+      return new DefaultConceptDescription();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.isCaseOfs,
-                this.embeddedDataSpecifications,
-                this.administration,
-                this.id,
-                this.category,
-                this.idShort,
-                this.displayNames,
-                this.descriptions,
-                this.extensions);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultConceptDescription other = (DefaultConceptDescription) obj;
-            return Objects.equals(this.isCaseOfs, other.isCaseOfs) &&
-                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                    Objects.equals(this.administration, other.administration) &&
-                    Objects.equals(this.id, other.id) &&
-                    Objects.equals(this.category, other.category) &&
-                    Objects.equals(this.idShort, other.idShort) &&
-                    Objects.equals(this.displayNames, other.displayNames) &&
-                    Objects.equals(this.descriptions, other.descriptions) &&
-                    Objects.equals(this.extensions, other.extensions);
-        }
-    }
-
-    @Override
-    public List<Reference> getIsCaseOfs() {
-        return isCaseOfs;
-    }
-
-    @Override
-    public void setIsCaseOfs(List<Reference> isCaseOfs) {
-        this.isCaseOfs = isCaseOfs;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
-    public AdministrativeInformation getAdministration() {
-        return administration;
-    }
-
-    @Override
-    public void setAdministration(AdministrativeInformation administration) {
-        this.administration = administration;
-    }
-
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getCategory() {
-        return category;
-    }
-
-    @Override
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    @Override
-    public String getIdShort() {
-        return idShort;
-    }
-
-    @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayNames() {
-        return displayNames;
-    }
-
-    @Override
-    public void setDisplayNames(List<LangStringNameType> displayNames) {
-        this.displayNames = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescriptions() {
-        return descriptions;
-    }
-
-    @Override
-    public void setDescriptions(List<LangStringTextType> descriptions) {
-        this.descriptions = descriptions;
-    }
-
-    @Override
-    public List<Extension> getExtensions() {
-        return extensions;
-    }
-
-    @Override
-    public void setExtensions(List<Extension> extensions) {
-        this.extensions = extensions;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultConceptDescription bean.
-     */
-    public static class Builder extends ConceptDescriptionBuilder<DefaultConceptDescription, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultConceptDescription newBuildingInstance() {
-            return new DefaultConceptDescription();
-        }
-    }
+  }
 }

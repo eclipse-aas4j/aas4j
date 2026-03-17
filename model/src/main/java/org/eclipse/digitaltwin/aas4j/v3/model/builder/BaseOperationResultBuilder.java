@@ -15,33 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.BaseOperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 
+public abstract class BaseOperationResultBuilder<
+        T extends BaseOperationResult, B extends BaseOperationResultBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class BaseOperationResultBuilder<T extends BaseOperationResult, B extends BaseOperationResultBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for executionState
+   *
+   * @param executionState desired value to be set
+   * @return Builder object with new value for executionState
+   */
+  public B executionState(ExecutionState executionState) {
+    getBuildingInstance().setExecutionState(executionState);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for executionState
-     *
-     * @param executionState desired value to be set
-     * @return Builder object with new value for executionState
-     */
-    public B executionState(ExecutionState executionState) {
-        getBuildingInstance().setExecutionState(executionState);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for success
-     *
-     * @param success desired value to be set
-     * @return Builder object with new value for success
-     */
-    public B success(boolean success) {
-        getBuildingInstance().setSuccess(success);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for success
+   *
+   * @param success desired value to be set
+   * @return Builder object with new value for success
+   */
+  public B success(boolean success) {
+    getBuildingInstance().setSuccess(success);
+    return getSelf();
+  }
 }

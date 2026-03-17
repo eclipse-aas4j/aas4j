@@ -15,6 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
@@ -25,237 +29,251 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.BlobBuilder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Blob
- * <p>
- * A 'Blob' is a data element that represents a file that is contained with its source code in the
- * value attribute.
+ *
+ * <p>A 'Blob' is a data element that represents a file that is contained with its source code in
+ * the value attribute.
  */
-
 @IRI("aas:Blob")
 public class DefaultBlob implements Blob {
 
-    @IRI("https://admin-shell.io/aas/3/2/Blob/contentType")
-    protected String contentType;
+  @IRI("https://admin-shell.io/aas/3/2/Blob/contentType")
+  protected String contentType;
 
-    @IRI("https://admin-shell.io/aas/3/2/Blob/value")
-    protected byte[] value;
+  @IRI("https://admin-shell.io/aas/3/2/Blob/value")
+  protected byte[] value;
 
-    @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
-    protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
+  protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
-    protected List<Extension> extensions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
+  protected List<Extension> extensions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
-    protected Reference semanticId;
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
+  protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
-    protected List<Reference> supplementalSemanticIds = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
+  protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Qualifiable/qualifiers")
-    protected List<Qualifier> qualifiers = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Qualifiable/qualifiers")
+  protected List<Qualifier> qualifiers = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/category")
-    protected String category;
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
+  protected String category;
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/description")
-    protected List<LangStringTextType> descriptions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
+  protected List<LangStringTextType> descriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
-    protected List<LangStringNameType> displayNames = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
+  protected List<LangStringNameType> displayNames = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
-    protected String idShort;
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
+  protected String idShort;
 
-    public DefaultBlob() {
+  public DefaultBlob() {}
+
+  @Override
+  public String toString() {
+    return "DefaultBlob{"
+        + "value='"
+        + value
+        + "',"
+        + "contentType='"
+        + contentType
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayNames='"
+        + displayNames
+        + "',"
+        + "descriptions='"
+        + descriptions
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "qualifiers='"
+        + qualifiers
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        Arrays.hashCode(this.value),
+        this.contentType,
+        this.category,
+        this.idShort,
+        this.displayNames,
+        this.descriptions,
+        this.extensions,
+        this.embeddedDataSpecifications,
+        this.semanticId,
+        this.supplementalSemanticIds,
+        this.qualifiers);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultBlob other = (DefaultBlob) obj;
+      return Arrays.equals(this.value, other.value)
+          && Objects.equals(this.contentType, other.contentType)
+          && Objects.equals(this.category, other.category)
+          && Objects.equals(this.idShort, other.idShort)
+          && Objects.equals(this.displayNames, other.displayNames)
+          && Objects.equals(this.descriptions, other.descriptions)
+          && Objects.equals(this.extensions, other.extensions)
+          && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
+          && Objects.equals(this.semanticId, other.semanticId)
+          && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
+          && Objects.equals(this.qualifiers, other.qualifiers);
+    }
+  }
+
+  @Override
+  public byte[] getValue() {
+    return value;
+  }
+
+  @Override
+  public void setValue(byte[] value) {
+    this.value = value;
+  }
+
+  @Override
+  public String getContentType() {
+    return contentType;
+  }
+
+  @Override
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
+  }
+
+  @Override
+  public String getCategory() {
+    return category;
+  }
+
+  @Override
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  @Override
+  public String getIdShort() {
+    return idShort;
+  }
+
+  @Override
+  public void setIdShort(String idShort) {
+    this.idShort = idShort;
+  }
+
+  @Override
+  public List<LangStringNameType> getDisplayNames() {
+    return displayNames;
+  }
+
+  @Override
+  public void setDisplayNames(List<LangStringNameType> displayNames) {
+    this.displayNames = displayNames;
+  }
+
+  @Override
+  public List<LangStringTextType> getDescriptions() {
+    return descriptions;
+  }
+
+  @Override
+  public void setDescriptions(List<LangStringTextType> descriptions) {
+    this.descriptions = descriptions;
+  }
+
+  @Override
+  public List<Extension> getExtensions() {
+    return extensions;
+  }
+
+  @Override
+  public void setExtensions(List<Extension> extensions) {
+    this.extensions = extensions;
+  }
+
+  @Override
+  public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
+    return embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecifications(
+      List<EmbeddedDataSpecification> embeddedDataSpecifications) {
+    this.embeddedDataSpecifications = embeddedDataSpecifications;
+  }
+
+  @Override
+  public Reference getSemanticId() {
+    return semanticId;
+  }
+
+  @Override
+  public void setSemanticId(Reference semanticId) {
+    this.semanticId = semanticId;
+  }
+
+  @Override
+  public List<Reference> getSupplementalSemanticIds() {
+    return supplementalSemanticIds;
+  }
+
+  @Override
+  public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+    this.supplementalSemanticIds = supplementalSemanticIds;
+  }
+
+  @Override
+  public List<Qualifier> getQualifiers() {
+    return qualifiers;
+  }
+
+  @Override
+  public void setQualifiers(List<Qualifier> qualifiers) {
+    this.qualifiers = qualifiers;
+  }
+
+  /** This builder class can be used to construct a DefaultBlob bean. */
+  public static class Builder extends BlobBuilder<DefaultBlob, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultBlob{"
-                + "value='" + value + "',"
-                + "contentType='" + contentType + "',"
-                + "category='" + category + "',"
-                + "idShort='" + idShort + "',"
-                + "displayNames='" + displayNames + "',"
-                + "descriptions='" + descriptions + "',"
-                + "extensions='" + extensions + "',"
-                + "embeddedDataSpecifications='" + embeddedDataSpecifications + "',"
-                + "semanticId='" + semanticId + "',"
-                + "supplementalSemanticIds='" + supplementalSemanticIds + "',"
-                + "qualifiers='" + qualifiers + "',"
-                + "}";
+    protected DefaultBlob newBuildingInstance() {
+      return new DefaultBlob();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Arrays.hashCode(this.value),
-                this.contentType,
-                this.category,
-                this.idShort,
-                this.displayNames,
-                this.descriptions,
-                this.extensions,
-                this.embeddedDataSpecifications,
-                this.semanticId,
-                this.supplementalSemanticIds,
-                this.qualifiers);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultBlob other = (DefaultBlob) obj;
-            return Arrays.equals(this.value, other.value) &&
-                    Objects.equals(this.contentType, other.contentType) &&
-                    Objects.equals(this.category, other.category) &&
-                    Objects.equals(this.idShort, other.idShort) &&
-                    Objects.equals(this.displayNames, other.displayNames) &&
-                    Objects.equals(this.descriptions, other.descriptions) &&
-                    Objects.equals(this.extensions, other.extensions) &&
-                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                    Objects.equals(this.semanticId, other.semanticId) &&
-                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                    Objects.equals(this.qualifiers, other.qualifiers);
-        }
-    }
-
-    @Override
-    public byte[] getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(byte[] value) {
-        this.value = value;
-    }
-
-    @Override
-    public String getContentType() {
-        return contentType;
-    }
-
-    @Override
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    @Override
-    public String getCategory() {
-        return category;
-    }
-
-    @Override
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    @Override
-    public String getIdShort() {
-        return idShort;
-    }
-
-    @Override
-    public void setIdShort(String idShort) {
-        this.idShort = idShort;
-    }
-
-    @Override
-    public List<LangStringNameType> getDisplayNames() {
-        return displayNames;
-    }
-
-    @Override
-    public void setDisplayNames(List<LangStringNameType> displayNames) {
-        this.displayNames = displayNames;
-    }
-
-    @Override
-    public List<LangStringTextType> getDescriptions() {
-        return descriptions;
-    }
-
-    @Override
-    public void setDescriptions(List<LangStringTextType> descriptions) {
-        this.descriptions = descriptions;
-    }
-
-    @Override
-    public List<Extension> getExtensions() {
-        return extensions;
-    }
-
-    @Override
-    public void setExtensions(List<Extension> extensions) {
-        this.extensions = extensions;
-    }
-
-    @Override
-    public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
-        return embeddedDataSpecifications;
-    }
-
-    @Override
-    public void setEmbeddedDataSpecifications(List<EmbeddedDataSpecification> embeddedDataSpecifications) {
-        this.embeddedDataSpecifications = embeddedDataSpecifications;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    @Override
-    public List<Qualifier> getQualifiers() {
-        return qualifiers;
-    }
-
-    @Override
-    public void setQualifiers(List<Qualifier> qualifiers) {
-        this.qualifiers = qualifiers;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultBlob bean.
-     */
-    public static class Builder extends BlobBuilder<DefaultBlob, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultBlob newBuildingInstance() {
-            return new DefaultBlob();
-        }
-    }
+  }
 }

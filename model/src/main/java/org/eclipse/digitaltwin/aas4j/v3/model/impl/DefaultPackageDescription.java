@@ -15,94 +15,89 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.PackageDescriptionBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription */
 @IRI("aas:PackageDescription")
 public class DefaultPackageDescription implements PackageDescription {
 
-    @IRI("https://admin-shell.io/aas/3/2/PackageDescription/items")
-    protected List<String> items = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/items")
+  protected List<String> items = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/PackageDescription/packageId")
-    protected String packageId;
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/packageId")
+  protected String packageId;
 
-    public DefaultPackageDescription() {
+  public DefaultPackageDescription() {}
+
+  @Override
+  public String toString() {
+    return "DefaultPackageDescription{"
+        + "items='"
+        + items
+        + "',"
+        + "packageId='"
+        + packageId
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.items, this.packageId);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultPackageDescription other = (DefaultPackageDescription) obj;
+      return Objects.equals(this.items, other.items)
+          && Objects.equals(this.packageId, other.packageId);
+    }
+  }
+
+  @Override
+  public List<String> getItems() {
+    return items;
+  }
+
+  @Override
+  public void setItems(List<String> items) {
+    this.items = items;
+  }
+
+  @Override
+  public String getPackageId() {
+    return packageId;
+  }
+
+  @Override
+  public void setPackageId(String packageId) {
+    this.packageId = packageId;
+  }
+
+  /** This builder class can be used to construct a DefaultPackageDescription bean. */
+  public static class Builder
+      extends PackageDescriptionBuilder<DefaultPackageDescription, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultPackageDescription{"
-                + "items='" + items + "',"
-                + "packageId='" + packageId + "',"
-                + "}";
+    protected DefaultPackageDescription newBuildingInstance() {
+      return new DefaultPackageDescription();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.items,
-                this.packageId);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultPackageDescription other = (DefaultPackageDescription) obj;
-            return Objects.equals(this.items, other.items) &&
-                    Objects.equals(this.packageId, other.packageId);
-        }
-    }
-
-    @Override
-    public List<String> getItems() {
-        return items;
-    }
-
-    @Override
-    public void setItems(List<String> items) {
-        this.items = items;
-    }
-
-    @Override
-    public String getPackageId() {
-        return packageId;
-    }
-
-    @Override
-    public void setPackageId(String packageId) {
-        this.packageId = packageId;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultPackageDescription bean.
-     */
-    public static class Builder extends PackageDescriptionBuilder<DefaultPackageDescription, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultPackageDescription newBuildingInstance() {
-            return new DefaultPackageDescription();
-        }
-    }
+  }
 }

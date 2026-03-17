@@ -15,161 +15,168 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtensionBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Extension
- * <p>
- * Single extension of an element.
+ *
+ * <p>Single extension of an element.
  */
-
 @IRI("aas:Extension")
 public class DefaultExtension implements Extension {
 
-    @IRI("https://admin-shell.io/aas/3/2/Extension/name")
-    protected String name;
+  @IRI("https://admin-shell.io/aas/3/2/Extension/name")
+  protected String name;
 
-    @IRI("https://admin-shell.io/aas/3/2/Extension/refersTo")
-    protected List<Reference> refersTos = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Extension/refersTo")
+  protected List<Reference> refersTos = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Extension/value")
-    protected String value;
+  @IRI("https://admin-shell.io/aas/3/2/Extension/value")
+  protected String value;
 
-    @IRI("https://admin-shell.io/aas/3/2/Extension/valueType")
-    protected DataTypeDefXsd valueType;
+  @IRI("https://admin-shell.io/aas/3/2/Extension/valueType")
+  protected DataTypeDefXsd valueType;
 
-    @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
-    protected Reference semanticId;
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
+  protected Reference semanticId;
 
-    @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
-    protected List<Reference> supplementalSemanticIds = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
+  protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    public DefaultExtension() {
+  public DefaultExtension() {}
+
+  @Override
+  public String toString() {
+    return "DefaultExtension{"
+        + "name='"
+        + name
+        + "',"
+        + "valueType='"
+        + valueType
+        + "',"
+        + "value='"
+        + value
+        + "',"
+        + "refersTos='"
+        + refersTos
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        this.name,
+        this.valueType,
+        this.value,
+        this.refersTos,
+        this.semanticId,
+        this.supplementalSemanticIds);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultExtension other = (DefaultExtension) obj;
+      return Objects.equals(this.name, other.name)
+          && Objects.equals(this.valueType, other.valueType)
+          && Objects.equals(this.value, other.value)
+          && Objects.equals(this.refersTos, other.refersTos)
+          && Objects.equals(this.semanticId, other.semanticId)
+          && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+    }
+  }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public DataTypeDefXsd getValueType() {
+    return valueType;
+  }
+
+  @Override
+  public void setValueType(DataTypeDefXsd valueType) {
+    this.valueType = valueType;
+  }
+
+  @Override
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  @Override
+  public List<Reference> getRefersTos() {
+    return refersTos;
+  }
+
+  @Override
+  public void setRefersTos(List<Reference> refersTos) {
+    this.refersTos = refersTos;
+  }
+
+  @Override
+  public Reference getSemanticId() {
+    return semanticId;
+  }
+
+  @Override
+  public void setSemanticId(Reference semanticId) {
+    this.semanticId = semanticId;
+  }
+
+  @Override
+  public List<Reference> getSupplementalSemanticIds() {
+    return supplementalSemanticIds;
+  }
+
+  @Override
+  public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
+    this.supplementalSemanticIds = supplementalSemanticIds;
+  }
+
+  /** This builder class can be used to construct a DefaultExtension bean. */
+  public static class Builder extends ExtensionBuilder<DefaultExtension, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultExtension{"
-                + "name='" + name + "',"
-                + "valueType='" + valueType + "',"
-                + "value='" + value + "',"
-                + "refersTos='" + refersTos + "',"
-                + "semanticId='" + semanticId + "',"
-                + "supplementalSemanticIds='" + supplementalSemanticIds + "',"
-                + "}";
+    protected DefaultExtension newBuildingInstance() {
+      return new DefaultExtension();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.name,
-                this.valueType,
-                this.value,
-                this.refersTos,
-                this.semanticId,
-                this.supplementalSemanticIds);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultExtension other = (DefaultExtension) obj;
-            return Objects.equals(this.name, other.name) &&
-                    Objects.equals(this.valueType, other.valueType) &&
-                    Objects.equals(this.value, other.value) &&
-                    Objects.equals(this.refersTos, other.refersTos) &&
-                    Objects.equals(this.semanticId, other.semanticId) &&
-                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
-        }
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public DataTypeDefXsd getValueType() {
-        return valueType;
-    }
-
-    @Override
-    public void setValueType(DataTypeDefXsd valueType) {
-        this.valueType = valueType;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public List<Reference> getRefersTos() {
-        return refersTos;
-    }
-
-    @Override
-    public void setRefersTos(List<Reference> refersTos) {
-        this.refersTos = refersTos;
-    }
-
-    @Override
-    public Reference getSemanticId() {
-        return semanticId;
-    }
-
-    @Override
-    public void setSemanticId(Reference semanticId) {
-        this.semanticId = semanticId;
-    }
-
-    @Override
-    public List<Reference> getSupplementalSemanticIds() {
-        return supplementalSemanticIds;
-    }
-
-    @Override
-    public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-        this.supplementalSemanticIds = supplementalSemanticIds;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultExtension bean.
-     */
-    public static class Builder extends ExtensionBuilder<DefaultExtension, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultExtension newBuildingInstance() {
-            return new DefaultExtension();
-        }
-    }
+  }
 }

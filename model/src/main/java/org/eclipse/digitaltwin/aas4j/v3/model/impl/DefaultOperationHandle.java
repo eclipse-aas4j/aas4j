@@ -15,92 +15,86 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationHandleBuilder;
 
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationHandle */
 @IRI("aas:OperationHandle")
 public class DefaultOperationHandle implements OperationHandle {
 
-    @IRI("https://admin-shell.io/aas/3/2/OperationHandle/handleId")
-    protected String handleId;
+  @IRI("https://admin-shell.io/aas/3/2/OperationHandle/handleId")
+  protected String handleId;
 
-    @IRI("https://admin-shell.io/aas/3/2/OperationHandle/requestId")
-    protected String requestId;
+  @IRI("https://admin-shell.io/aas/3/2/OperationHandle/requestId")
+  protected String requestId;
 
-    public DefaultOperationHandle() {
+  public DefaultOperationHandle() {}
+
+  @Override
+  public String toString() {
+    return "DefaultOperationHandle{"
+        + "handleId='"
+        + handleId
+        + "',"
+        + "requestId='"
+        + requestId
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.handleId, this.requestId);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultOperationHandle other = (DefaultOperationHandle) obj;
+      return Objects.equals(this.handleId, other.handleId)
+          && Objects.equals(this.requestId, other.requestId);
+    }
+  }
+
+  @Override
+  public String getHandleId() {
+    return handleId;
+  }
+
+  @Override
+  public void setHandleId(String handleId) {
+    this.handleId = handleId;
+  }
+
+  @Override
+  public String getRequestId() {
+    return requestId;
+  }
+
+  @Override
+  public void setRequestId(String requestId) {
+    this.requestId = requestId;
+  }
+
+  /** This builder class can be used to construct a DefaultOperationHandle bean. */
+  public static class Builder extends OperationHandleBuilder<DefaultOperationHandle, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultOperationHandle{"
-                + "handleId='" + handleId + "',"
-                + "requestId='" + requestId + "',"
-                + "}";
+    protected DefaultOperationHandle newBuildingInstance() {
+      return new DefaultOperationHandle();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.handleId,
-                this.requestId);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultOperationHandle other = (DefaultOperationHandle) obj;
-            return Objects.equals(this.handleId, other.handleId) &&
-                    Objects.equals(this.requestId, other.requestId);
-        }
-    }
-
-    @Override
-    public String getHandleId() {
-        return handleId;
-    }
-
-    @Override
-    public void setHandleId(String handleId) {
-        this.handleId = handleId;
-    }
-
-    @Override
-    public String getRequestId() {
-        return requestId;
-    }
-
-    @Override
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultOperationHandle bean.
-     */
-    public static class Builder extends OperationHandleBuilder<DefaultOperationHandle, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultOperationHandle newBuildingInstance() {
-            return new DefaultOperationHandle();
-        }
-    }
+  }
 }

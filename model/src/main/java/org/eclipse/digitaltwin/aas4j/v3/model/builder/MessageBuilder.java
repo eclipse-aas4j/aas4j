@@ -15,54 +15,53 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 
+public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for code
+   *
+   * @param code desired value to be set
+   * @return Builder object with new value for code
+   */
+  public B code(String code) {
+    getBuildingInstance().setCode(code);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for code
-     *
-     * @param code desired value to be set
-     * @return Builder object with new value for code
-     */
-    public B code(String code) {
-        getBuildingInstance().setCode(code);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for messageType
+   *
+   * @param messageType desired value to be set
+   * @return Builder object with new value for messageType
+   */
+  public B messageType(MessageType messageType) {
+    getBuildingInstance().setMessageType(messageType);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for messageType
-     *
-     * @param messageType desired value to be set
-     * @return Builder object with new value for messageType
-     */
-    public B messageType(MessageType messageType) {
-        getBuildingInstance().setMessageType(messageType);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for text
+   *
+   * @param text desired value to be set
+   * @return Builder object with new value for text
+   */
+  public B text(String text) {
+    getBuildingInstance().setText(text);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for text
-     *
-     * @param text desired value to be set
-     * @return Builder object with new value for text
-     */
-    public B text(String text) {
-        getBuildingInstance().setText(text);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for timestamp
-     *
-     * @param timestamp desired value to be set
-     * @return Builder object with new value for timestamp
-     */
-    public B timestamp(String timestamp) {
-        getBuildingInstance().setTimestamp(timestamp);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for timestamp
+   *
+   * @param timestamp desired value to be set
+   * @return Builder object with new value for timestamp
+   */
+  public B timestamp(String timestamp) {
+    getBuildingInstance().setTimestamp(timestamp);
+    return getSelf();
+  }
 }

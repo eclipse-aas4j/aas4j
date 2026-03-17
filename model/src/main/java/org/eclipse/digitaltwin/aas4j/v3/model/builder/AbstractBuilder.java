@@ -17,21 +17,20 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 public abstract class AbstractBuilder<T> implements Builder<T> {
 
-    private final T buildingInstance;
+  private final T buildingInstance;
 
-    protected AbstractBuilder() {
-        buildingInstance = newBuildingInstance();
-    }
+  protected AbstractBuilder() {
+    buildingInstance = newBuildingInstance();
+  }
 
-    protected abstract T newBuildingInstance();
+  protected abstract T newBuildingInstance();
 
-    protected T getBuildingInstance() {
-        return buildingInstance;
-    }
+  protected T getBuildingInstance() {
+    return buildingInstance;
+  }
 
-    @Override
-    public T build() {
-        return buildingInstance;
-    }
-
+  @Override
+  public T build() {
+    return buildingInstance;
+  }
 }

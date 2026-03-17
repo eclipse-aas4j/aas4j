@@ -15,93 +15,87 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EndpointBuilder;
 
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Endpoint
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Endpoint */
 @IRI("aas:Endpoint")
 public class DefaultEndpoint implements Endpoint {
 
-    @IRI("https://admin-shell.io/aas/3/2/Endpoint/_interface")
-    protected String _interface;
+  @IRI("https://admin-shell.io/aas/3/2/Endpoint/_interface")
+  protected String _interface;
 
-    @IRI("https://admin-shell.io/aas/3/2/Endpoint/protocolInformation")
-    protected ProtocolInformation protocolInformation;
+  @IRI("https://admin-shell.io/aas/3/2/Endpoint/protocolInformation")
+  protected ProtocolInformation protocolInformation;
 
-    public DefaultEndpoint() {
+  public DefaultEndpoint() {}
+
+  @Override
+  public String toString() {
+    return "DefaultEndpoint{"
+        + "_interface='"
+        + _interface
+        + "',"
+        + "protocolInformation='"
+        + protocolInformation
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this._interface, this.protocolInformation);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultEndpoint other = (DefaultEndpoint) obj;
+      return Objects.equals(this._interface, other._interface)
+          && Objects.equals(this.protocolInformation, other.protocolInformation);
+    }
+  }
+
+  @Override
+  public String get_interface() {
+    return _interface;
+  }
+
+  @Override
+  public void set_interface(String _interface) {
+    this._interface = _interface;
+  }
+
+  @Override
+  public ProtocolInformation getProtocolInformation() {
+    return protocolInformation;
+  }
+
+  @Override
+  public void setProtocolInformation(ProtocolInformation protocolInformation) {
+    this.protocolInformation = protocolInformation;
+  }
+
+  /** This builder class can be used to construct a DefaultEndpoint bean. */
+  public static class Builder extends EndpointBuilder<DefaultEndpoint, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultEndpoint{"
-                + "_interface='" + _interface + "',"
-                + "protocolInformation='" + protocolInformation + "',"
-                + "}";
+    protected DefaultEndpoint newBuildingInstance() {
+      return new DefaultEndpoint();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this._interface,
-                this.protocolInformation);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultEndpoint other = (DefaultEndpoint) obj;
-            return Objects.equals(this._interface, other._interface) &&
-                    Objects.equals(this.protocolInformation, other.protocolInformation);
-        }
-    }
-
-    @Override
-    public String get_interface() {
-        return _interface;
-    }
-
-    @Override
-    public void set_interface(String _interface) {
-        this._interface = _interface;
-    }
-
-    @Override
-    public ProtocolInformation getProtocolInformation() {
-        return protocolInformation;
-    }
-
-    @Override
-    public void setProtocolInformation(ProtocolInformation protocolInformation) {
-        this.protocolInformation = protocolInformation;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultEndpoint bean.
-     */
-    public static class Builder extends EndpointBuilder<DefaultEndpoint, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultEndpoint newBuildingInstance() {
-            return new DefaultEndpoint();
-        }
-    }
+  }
 }

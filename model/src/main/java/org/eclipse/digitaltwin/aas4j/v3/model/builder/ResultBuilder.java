@@ -15,44 +15,43 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.Result;
 
-import java.util.List;
+public abstract class ResultBuilder<T extends Result, B extends ResultBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for messages
+   *
+   * @param messages desired value to be set
+   * @return Builder object with new value for messages
+   */
+  public B messages(List<Message> messages) {
+    getBuildingInstance().setMessages(messages);
+    return getSelf();
+  }
 
-public abstract class ResultBuilder<T extends Result, B extends ResultBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows adding a value to the List messages
+   *
+   * @param messages desired value to be added
+   * @return Builder object with new value for messages
+   */
+  public B messages(Message messages) {
+    getBuildingInstance().getMessages().add(messages);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for messages
-     *
-     * @param messages desired value to be set
-     * @return Builder object with new value for messages
-     */
-    public B messages(List<Message> messages) {
-        getBuildingInstance().setMessages(messages);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List messages
-     *
-     * @param messages desired value to be added
-     * @return Builder object with new value for messages
-     */
-    public B messages(Message messages) {
-        getBuildingInstance().getMessages().add(messages);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for success
-     *
-     * @param success desired value to be set
-     * @return Builder object with new value for success
-     */
-    public B success(boolean success) {
-        getBuildingInstance().setSuccess(success);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for success
+   *
+   * @param success desired value to be set
+   * @return Builder object with new value for success
+   */
+  public B success(boolean success) {
+    getBuildingInstance().setSuccess(success);
+    return getSelf();
+  }
 }

@@ -15,93 +15,90 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringTextTypeBuilder;
 
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType
- * <p>
- * String with length 1023 maximum and minimum 1 characters and with language tags
+ *
+ * <p>String with length 1023 maximum and minimum 1 characters and with language tags
  */
-
 @IRI("aas:LangStringTextType")
 public class DefaultLangStringTextType implements LangStringTextType {
 
-    @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/language")
-    protected String language;
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/language")
+  protected String language;
 
-    @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/text")
-    protected String text;
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/text")
+  protected String text;
 
-    public DefaultLangStringTextType() {
+  public DefaultLangStringTextType() {}
+
+  @Override
+  public String toString() {
+    return "DefaultLangStringTextType{"
+        + "language='"
+        + language
+        + "',"
+        + "text='"
+        + text
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.language, this.text);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultLangStringTextType other = (DefaultLangStringTextType) obj;
+      return Objects.equals(this.language, other.language) && Objects.equals(this.text, other.text);
+    }
+  }
+
+  @Override
+  public String getLanguage() {
+    return language;
+  }
+
+  @Override
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+
+  @Override
+  public String getText() {
+    return text;
+  }
+
+  @Override
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  /** This builder class can be used to construct a DefaultLangStringTextType bean. */
+  public static class Builder
+      extends LangStringTextTypeBuilder<DefaultLangStringTextType, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultLangStringTextType{"
-                + "language='" + language + "',"
-                + "text='" + text + "',"
-                + "}";
+    protected DefaultLangStringTextType newBuildingInstance() {
+      return new DefaultLangStringTextType();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.language,
-                this.text);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultLangStringTextType other = (DefaultLangStringTextType) obj;
-            return Objects.equals(this.language, other.language) &&
-                    Objects.equals(this.text, other.text);
-        }
-    }
-
-    @Override
-    public String getLanguage() {
-        return language;
-    }
-
-    @Override
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    @Override
-    public String getText() {
-        return text;
-    }
-
-    @Override
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultLangStringTextType bean.
-     */
-    public static class Builder extends LangStringTextTypeBuilder<DefaultLangStringTextType, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultLangStringTextType newBuildingInstance() {
-            return new DefaultLangStringTextType();
-        }
-    }
+  }
 }

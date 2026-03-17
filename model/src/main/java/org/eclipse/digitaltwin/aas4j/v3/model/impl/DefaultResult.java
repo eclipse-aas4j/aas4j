@@ -15,95 +15,82 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.Result;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResultBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Result
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Result */
 @IRI("aas:Result")
 public class DefaultResult implements Result {
 
-    @IRI("https://admin-shell.io/aas/3/2/Result/messages")
-    protected List<Message> messages = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Result/messages")
+  protected List<Message> messages = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Result/success")
-    protected boolean success;
+  @IRI("https://admin-shell.io/aas/3/2/Result/success")
+  protected boolean success;
 
-    public DefaultResult() {
+  public DefaultResult() {}
+
+  @Override
+  public String toString() {
+    return "DefaultResult{" + "messages='" + messages + "'," + "success='" + success + "'," + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.messages, this.success);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultResult other = (DefaultResult) obj;
+      return Objects.equals(this.messages, other.messages)
+          && Objects.equals(this.success, other.success);
+    }
+  }
+
+  @Override
+  public List<Message> getMessages() {
+    return messages;
+  }
+
+  @Override
+  public void setMessages(List<Message> messages) {
+    this.messages = messages;
+  }
+
+  @Override
+  public boolean getSuccess() {
+    return success;
+  }
+
+  @Override
+  public void setSuccess(boolean success) {
+    this.success = success;
+  }
+
+  /** This builder class can be used to construct a DefaultResult bean. */
+  public static class Builder extends ResultBuilder<DefaultResult, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultResult{"
-                + "messages='" + messages + "',"
-                + "success='" + success + "',"
-                + "}";
+    protected DefaultResult newBuildingInstance() {
+      return new DefaultResult();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.messages,
-                this.success);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultResult other = (DefaultResult) obj;
-            return Objects.equals(this.messages, other.messages) &&
-                    Objects.equals(this.success, other.success);
-        }
-    }
-
-    @Override
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    @Override
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
-
-    @Override
-    public boolean getSuccess() {
-        return success;
-    }
-
-    @Override
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultResult bean.
-     */
-    public static class Builder extends ResultBuilder<DefaultResult, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultResult newBuildingInstance() {
-            return new DefaultResult();
-        }
-    }
+  }
 }

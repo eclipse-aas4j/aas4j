@@ -15,113 +15,111 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
- * <p>
- * Reference to either a model element of the same or another AAS or to an external entity.
+ *
+ * <p>Reference to either a model element of the same or another AAS or to an external entity.
  */
-
 @IRI("aas:Reference")
 public class DefaultReference implements Reference {
 
-    @IRI("https://admin-shell.io/aas/3/2/Reference/keys")
-    protected List<Key> keys = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Reference/keys")
+  protected List<Key> keys = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/2/Reference/referredSemanticId")
-    protected Reference referredSemanticId;
+  @IRI("https://admin-shell.io/aas/3/2/Reference/referredSemanticId")
+  protected Reference referredSemanticId;
 
-    @IRI("https://admin-shell.io/aas/3/2/Reference/type")
-    protected ReferenceTypes type;
+  @IRI("https://admin-shell.io/aas/3/2/Reference/type")
+  protected ReferenceTypes type;
 
-    public DefaultReference() {
+  public DefaultReference() {}
+
+  @Override
+  public String toString() {
+    return "DefaultReference{"
+        + "type='"
+        + type
+        + "',"
+        + "referredSemanticId='"
+        + referredSemanticId
+        + "',"
+        + "keys='"
+        + keys
+        + "',"
+        + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.type, this.referredSemanticId, this.keys);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultReference other = (DefaultReference) obj;
+      return Objects.equals(this.type, other.type)
+          && Objects.equals(this.referredSemanticId, other.referredSemanticId)
+          && Objects.equals(this.keys, other.keys);
+    }
+  }
+
+  @Override
+  public ReferenceTypes getType() {
+    return type;
+  }
+
+  @Override
+  public void setType(ReferenceTypes type) {
+    this.type = type;
+  }
+
+  @Override
+  public Reference getReferredSemanticId() {
+    return referredSemanticId;
+  }
+
+  @Override
+  public void setReferredSemanticId(Reference referredSemanticId) {
+    this.referredSemanticId = referredSemanticId;
+  }
+
+  @Override
+  public List<Key> getKeys() {
+    return keys;
+  }
+
+  @Override
+  public void setKeys(List<Key> keys) {
+    this.keys = keys;
+  }
+
+  /** This builder class can be used to construct a DefaultReference bean. */
+  public static class Builder extends ReferenceBuilder<DefaultReference, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultReference{"
-                + "type='" + type + "',"
-                + "referredSemanticId='" + referredSemanticId + "',"
-                + "keys='" + keys + "',"
-                + "}";
+    protected DefaultReference newBuildingInstance() {
+      return new DefaultReference();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.type,
-                this.referredSemanticId,
-                this.keys);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultReference other = (DefaultReference) obj;
-            return Objects.equals(this.type, other.type) &&
-                    Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                    Objects.equals(this.keys, other.keys);
-        }
-    }
-
-    @Override
-    public ReferenceTypes getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(ReferenceTypes type) {
-        this.type = type;
-    }
-
-    @Override
-    public Reference getReferredSemanticId() {
-        return referredSemanticId;
-    }
-
-    @Override
-    public void setReferredSemanticId(Reference referredSemanticId) {
-        this.referredSemanticId = referredSemanticId;
-    }
-
-    @Override
-    public List<Key> getKeys() {
-        return keys;
-    }
-
-    @Override
-    public void setKeys(List<Key> keys) {
-        this.keys = keys;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultReference bean.
-     */
-    public static class Builder extends ReferenceBuilder<DefaultReference, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultReference newBuildingInstance() {
-            return new DefaultReference();
-        }
-    }
+  }
 }
