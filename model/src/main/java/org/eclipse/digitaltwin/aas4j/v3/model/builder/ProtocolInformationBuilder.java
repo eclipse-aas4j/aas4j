@@ -15,8 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
+
+import java.util.List;
 
 
 public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, B extends ProtocolInformationBuilder<T, B>>
@@ -52,6 +54,28 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
      */
     public B endpointProtocolVersion(String endpointProtocolVersion) {
         getBuildingInstance().setEndpointProtocolVersion(endpointProtocolVersion);
+        return getSelf();
+    }
+
+    /**
+     * This function allows setting a value for securityAttributes
+     *
+     * @param securityAttributes desired value to be set
+     * @return Builder object with new value for securityAttributes
+     */
+    public B securityAttributes(List<SecurityAttributeObject> securityAttributes) {
+        getBuildingInstance().setSecurityAttributes(securityAttributes);
+        return getSelf();
+    }
+
+    /**
+     * This function allows adding a value to the List securityAttributes
+     *
+     * @param securityAttributes desired value to be added
+     * @return Builder object with new value for securityAttributes
+     */
+    public B securityAttributes(SecurityAttributeObject securityAttributes) {
+        getBuildingInstance().getSecurityAttributes().add(securityAttributes);
         return getSelf();
     }
 

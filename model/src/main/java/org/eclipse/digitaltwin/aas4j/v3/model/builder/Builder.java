@@ -17,6 +17,6 @@ package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 public interface Builder<T> {
 
-    T build();
+    public T build();
 
 }

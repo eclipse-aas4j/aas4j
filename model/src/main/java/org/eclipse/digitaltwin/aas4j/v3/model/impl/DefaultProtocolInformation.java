@@ -16,9 +16,12 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ProtocolInformationBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -39,6 +42,9 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     @IRI("https://admin-shell.io/aas/3/2/ProtocolInformation/endpointProtocolVersion")
     protected String endpointProtocolVersion;
 
+    @IRI("https://admin-shell.io/aas/3/2/ProtocolInformation/securityAttributes")
+    protected List<SecurityAttributeObject> securityAttributes = new ArrayList<>();
+
     @IRI("https://admin-shell.io/aas/3/2/ProtocolInformation/subprotocol")
     protected String subprotocol;
 
@@ -57,6 +63,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
                 + "endpointAddress='" + endpointAddress + "',"
                 + "endpointProtocol='" + endpointProtocol + "',"
                 + "endpointProtocolVersion='" + endpointProtocolVersion + "',"
+                + "securityAttributes='" + securityAttributes + "',"
                 + "subprotocol='" + subprotocol + "',"
                 + "subprotocolBody='" + subprotocolBody + "',"
                 + "subprotocolBodyEncoding='" + subprotocolBodyEncoding + "',"
@@ -68,6 +75,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
         return Objects.hash(this.endpointAddress,
                 this.endpointProtocol,
                 this.endpointProtocolVersion,
+                this.securityAttributes,
                 this.subprotocol,
                 this.subprotocolBody,
                 this.subprotocolBodyEncoding);
@@ -86,6 +94,7 @@ public class DefaultProtocolInformation implements ProtocolInformation {
             return Objects.equals(this.endpointAddress, other.endpointAddress) &&
                     Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
                     Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
+                    Objects.equals(this.securityAttributes, other.securityAttributes) &&
                     Objects.equals(this.subprotocol, other.subprotocol) &&
                     Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
                     Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding);
@@ -120,6 +129,16 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     @Override
     public void setEndpointProtocolVersion(String endpointProtocolVersion) {
         this.endpointProtocolVersion = endpointProtocolVersion;
+    }
+
+    @Override
+    public List<SecurityAttributeObject> getSecurityAttributes() {
+        return securityAttributes;
+    }
+
+    @Override
+    public void setSecurityAttributes(List<SecurityAttributeObject> securityAttributes) {
+        this.securityAttributes = securityAttributes;
     }
 
     @Override

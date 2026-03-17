@@ -17,27 +17,16 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
 
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
- * State of an event
- */
-@IRI("aas:StateOfEvent")
-public enum StateOfEvent {
-
-    /**
-     * Event is off.
-     */
-    @IRI("https://admin-shell.io/aas/3/2/StateOfEvent/Off")
-    OFF,
-
-    /**
-     * Event is on
-     */
-    @IRI("https://admin-shell.io/aas/3/2/StateOfEvent/On")
-    ON;
+*/
+@KnownSubtypes({
+    @KnownSubtypes.Type(value = DefaultSecurityTypeEnum.class)
+})
+public interface SecurityTypeEnum {
 
 }

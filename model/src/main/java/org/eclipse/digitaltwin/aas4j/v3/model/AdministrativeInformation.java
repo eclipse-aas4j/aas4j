@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -16,24 +16,25 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
-
-import javax.xml.datatype.XMLGregorianCalendar;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
  * Administrative meta-information for an element like version information.
  */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultAdministrativeInformation.class)
+    @KnownSubtypes.Type(value = DefaultAdministrativeInformation.class)
 })
 public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The date and time when the element was created.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt
      *
      * @return Returns the XMLGregorianCalendar for the property createdAt.
@@ -43,7 +44,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The date and time when the element was created.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt
      *
      * @param createdAt desired value for the property createdAt.
@@ -52,7 +53,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Version of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/version
      *
      * @return Returns the String for the property version.
@@ -62,7 +63,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Version of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/version
      *
      * @param version desired value for the property version.
@@ -71,7 +72,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Revision of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/revision
      *
      * @return Returns the String for the property revision.
@@ -81,7 +82,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Revision of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/revision
      *
      * @param revision desired value for the property revision.
@@ -90,7 +91,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The subject ID of the subject responsible for making the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/creator
      *
      * @return Returns the Reference for the property creator.
@@ -100,7 +101,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The subject ID of the subject responsible for making the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/creator
      *
      * @param creator desired value for the property creator.
@@ -109,7 +110,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Identifier of the template that guided the creation of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId
      *
      * @return Returns the String for the property templateId.
@@ -119,7 +120,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * Identifier of the template that guided the creation of the element.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId
      *
      * @param templateId desired value for the property templateId.
@@ -128,7 +129,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The date and time when the element was last updated.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt
      *
      * @return Returns the XMLGregorianCalendar for the property updatedAt.
@@ -138,7 +139,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
 
     /**
      * The date and time when the element was last updated.
-     * <p>
+     *
      * More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt
      *
      * @param updatedAt desired value for the property updatedAt.

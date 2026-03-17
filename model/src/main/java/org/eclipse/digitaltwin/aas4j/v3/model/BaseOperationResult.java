@@ -24,49 +24,44 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
- * A key is a reference to an element by its ID.
- */
+*/
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultKey.class)
+    @KnownSubtypes.Type(value = DefaultBaseOperationResult.class)
 })
-public interface Key {
+public interface BaseOperationResult {
 
     /**
-     * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/type
+     * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/executionState
      *
-     * @return Returns the KeyTypes for the property type.
+     * @return Returns the ExecutionState for the property executionState.
      */
-    @IRI("https://admin-shell.io/aas/3/2/Key/type")
-    KeyTypes getType();
+    @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/executionState")
+    ExecutionState getExecutionState();
 
     /**
-     * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/type
+     * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/executionState
      *
-     * @param type desired value for the property type.
+     * @param executionState desired value for the property executionState.
      */
-    void setType(KeyTypes type);
+    void setExecutionState(ExecutionState executionState);
 
     /**
-     * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/value
+     * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/success
      *
-     * @return Returns the String for the property value.
+     * @return Returns the boolean for the property success.
      */
-    @IRI("https://admin-shell.io/aas/3/2/Key/value")
-    String getValue();
+    @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/success")
+    boolean getSuccess();
 
     /**
-     * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/value
+     * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/success
      *
-     * @param value desired value for the property value.
+     * @param success desired value for the property success.
      */
-    void setValue(String value);
+    void setSuccess(boolean success);
 
 }

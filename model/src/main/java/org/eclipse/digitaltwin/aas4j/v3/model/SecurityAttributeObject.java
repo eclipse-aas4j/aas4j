@@ -24,49 +24,61 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
- * A key is a reference to an element by its ID.
- */
+*/
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultKey.class)
+    @KnownSubtypes.Type(value = DefaultSecurityAttributeObject.class)
 })
-public interface Key {
+public interface SecurityAttributeObject {
 
     /**
-     * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/type
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/key
      *
-     * @return Returns the KeyTypes for the property type.
+     * @return Returns the String for the property key.
      */
-    @IRI("https://admin-shell.io/aas/3/2/Key/type")
-    KeyTypes getType();
+    @IRI("https://admin-shell.io/aas/3/2/SecurityAttributeObject/key")
+    String getKey();
 
     /**
-     * Denotes which kind of entity is referenced.
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/type
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/key
      *
-     * @param type desired value for the property type.
+     * @param key desired value for the property key.
      */
-    void setType(KeyTypes type);
+    void setKey(String key);
 
     /**
-     * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/value
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/value
      *
      * @return Returns the String for the property value.
      */
-    @IRI("https://admin-shell.io/aas/3/2/Key/value")
+    @IRI("https://admin-shell.io/aas/3/2/SecurityAttributeObject/value")
     String getValue();
 
     /**
-     * The key value, for example an IRDI or an URI
      *
-     * More information under https://admin-shell.io/aas/3/2/Key/value
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/value
      *
      * @param value desired value for the property value.
      */
     void setValue(String value);
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/type
+     *
+     * @return Returns the SecurityTypeEnum for the property type.
+     */
+    @IRI("https://admin-shell.io/aas/3/2/SecurityAttributeObject/type")
+    SecurityTypeEnum getType();
+
+    /**
+     *
+     * More information under https://admin-shell.io/aas/3/2/SecurityAttributeObject/type
+     *
+     * @param type desired value for the property type.
+     */
+    void setType(SecurityTypeEnum type);
 
 }

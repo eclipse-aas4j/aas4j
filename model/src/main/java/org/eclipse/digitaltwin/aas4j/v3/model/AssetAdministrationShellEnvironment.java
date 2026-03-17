@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -15,24 +15,26 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
+
+
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShellEnvironment;
-
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 
 /**
  * Container for the sets of different identifiables.
  */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultAssetAdministrationShellEnvironment.class)
+    @KnownSubtypes.Type(value = DefaultAssetAdministrationShellEnvironment.class)
 })
 public interface AssetAdministrationShellEnvironment {
 
     /**
      * Asset administration shell
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/assetAdministrationShells
      *
@@ -43,7 +45,7 @@ public interface AssetAdministrationShellEnvironment {
 
     /**
      * Asset administration shell
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/assetAdministrationShells
      *
@@ -53,7 +55,7 @@ public interface AssetAdministrationShellEnvironment {
 
     /**
      * Concept description
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/conceptDescriptions
      *
@@ -64,7 +66,7 @@ public interface AssetAdministrationShellEnvironment {
 
     /**
      * Concept description
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/conceptDescriptions
      *
@@ -74,7 +76,7 @@ public interface AssetAdministrationShellEnvironment {
 
     /**
      * Submodel
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/submodels
      *
@@ -85,7 +87,7 @@ public interface AssetAdministrationShellEnvironment {
 
     /**
      * Submodel
-     * <p>
+     *
      * More information under
      * https://admin-shell.io/aas/3/2/AssetAdministrationShellEnvironment/submodels
      *
