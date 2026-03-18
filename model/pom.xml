@@ -17,6 +17,13 @@
     <description>This project includes a Java representation of the classes defined in the Asset Administration Shell ontology.</description>
     <name>Asset Administration Shell Java Model</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
