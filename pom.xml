@@ -45,8 +45,8 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <plugin.central-publishing-maven-plugin.version>0.9.0</plugin.central-publishing-maven-plugin.version>
-        <plugin.compiler.version>3.14.1</plugin.compiler.version>
+        <plugin.central-publishing-maven-plugin.version>0.10.0</plugin.central-publishing-maven-plugin.version>
+        <plugin.compiler.version>3.15.0</plugin.compiler.version>
         <plugin.cxf.version>3.3.1</plugin.cxf.version>
         <plugin.flatten.version>1.7.3</plugin.flatten.version>
         <plugin.gpg.version>3.2.8</plugin.gpg.version>
@@ -63,8 +63,8 @@
         <guava.version>33.5.0-jre</guava.version>
         <guice.version>5.0.1</guice.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <jackson.version>2.20.1</jackson.version>
-        <jackson-annotations.version>2.20</jackson-annotations.version>
+        <jackson.version>2.21.1</jackson.version>
+        <jackson-annotations.version>2.21</jackson-annotations.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <jaxb.version>2.3.1</jaxb.version>
         <jaxb-rich-contract.version>2.1.0</jaxb-rich-contract.version>
@@ -80,9 +80,9 @@
         <woodstox-core-asl.version>4.4.1</woodstox-core-asl.version>
         <xerces.version>2.12.1</xerces.version>
         <xmlunit.version>2.11.0</xmlunit.version>
-        <mockito.version>5.20.0</mockito.version>
+        <mockito.version>5.23.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
-        <spotless.version>3.1.0</spotless.version>
+        <spotless.version>3.3.0</spotless.version>
     </properties>
     <build>
         <plugins>
@@ -192,7 +192,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.9.0</version>
+                <version>3.10.0</version>
             </plugin>
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>

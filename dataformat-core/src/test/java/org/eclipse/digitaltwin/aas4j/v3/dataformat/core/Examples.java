@@ -149,7 +149,7 @@ public class Examples {
                                       new DefaultKey.Builder()
                                           .type(KeyTypes.GLOBAL_REFERENCE)
                                           .value(
-                                              "https://admin-shell.io/aas/3/1/DataSpecificationIec61360")
+                                              "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3")
                                           .build())
                                   .build())
                           .build())

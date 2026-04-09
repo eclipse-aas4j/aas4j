@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
@@ -34,108 +35,122 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
   public Operation deserialize(JsonParser parser, DeserializationContext deserializationContext)
       throws IOException, JacksonException {
     ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
-    JsonNode embeddedDataSpecificationNode = node.get("embeddedDataSpecification");
-    JsonNode extensions = node.get("extensions");
-    JsonNode semanticId = node.get("semanticId");
-    JsonNode supplementalSemanticIds = node.get("supplementalSemanticIds");
-    JsonNode inoutputVariables = node.get("inoutputVariables");
-    JsonNode inputVariables = node.get("inputVariables");
-    JsonNode outputVariables = node.get("outputVariables");
-    JsonNode qualifiers = node.get("qualifiers");
-    JsonNode category = node.get("category");
-    JsonNode description = node.get("description");
-    JsonNode displayName = node.get("displayName");
-    JsonNode idShort = node.get("idShort");
+    JsonNode embeddedDataSpecificationsNode = node.get("embeddedDataSpecifications");
+    JsonNode extensionsNode = node.get("extensions");
+    JsonNode semanticIdNode = node.get("semanticId");
+    JsonNode supplementalSemanticIdsNode = node.get("supplementalSemanticIds");
+    JsonNode inoutputVariablesNode = node.get("inoutputVariables");
+    JsonNode inputVariablesNode = node.get("inputVariables");
+    JsonNode outputVariablesNode = node.get("outputVariables");
+    JsonNode qualifiersNode = node.get("qualifiers");
+    JsonNode categoryNode = node.get("category");
+    JsonNode descriptionNode = node.get("description");
+    JsonNode displayNameNode = node.get("displayName");
+    JsonNode idShortNode = node.get("idShort");
     DefaultOperation.Builder builder = new DefaultOperation.Builder();
-    if (embeddedDataSpecificationNode.isArray()) {
-      builder.embeddedDataSpecifications(
-          createEmbeddedDataSpecificationFromNodeArray(
-              parser, (ArrayNode) embeddedDataSpecificationNode));
-    } else {
-      builder.embeddedDataSpecifications(
-          DeserializationHelper.createInstanceFromNode(
-              parser, embeddedDataSpecificationNode, EmbeddedDataSpecification.class));
+    List<EmbeddedDataSpecification> embeddedDataSpecifications =
+        readWrappedList(
+            parser,
+            embeddedDataSpecificationsNode,
+            "embeddedDataSpecification",
+            EmbeddedDataSpecification.class);
+    if (embeddedDataSpecifications != null) {
+      builder.embeddedDataSpecifications(embeddedDataSpecifications);
     }
-    if (extensions.isArray()) {
-      builder.extensions(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) extensions, Extension.class));
-    } else {
-      builder.extensions(
-          DeserializationHelper.createInstanceFromNode(parser, extensions, Extension.class));
+
+    List<Extension> extensions =
+        readWrappedList(parser, extensionsNode, "extension", Extension.class);
+    if (extensions != null) {
+      builder.extensions(extensions);
     }
-    if (supplementalSemanticIds.isArray()) {
-      builder.supplementalSemanticIds(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) supplementalSemanticIds, Reference.class));
-    } else {
-      builder.supplementalSemanticIds(
-          DeserializationHelper.createInstanceFromNode(
-              parser, supplementalSemanticIds, Reference.class));
+
+    List<Reference> supplementalSemanticIds =
+        readWrappedList(parser, supplementalSemanticIdsNode, "reference", Reference.class);
+    if (supplementalSemanticIds != null) {
+      builder.supplementalSemanticIds(supplementalSemanticIds);
     }
-    if (inoutputVariables.isArray()) {
-      builder.inoutputVariables(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) inoutputVariables, OperationVariable.class));
-    } else {
-      builder.inoutputVariables(
-          DeserializationHelper.createInstanceFromNode(
-              parser, inoutputVariables, OperationVariable.class));
+
+    List<OperationVariable> inoutputVariables =
+        readWrappedList(
+            parser, inoutputVariablesNode, "operationVariable", OperationVariable.class);
+    if (inoutputVariables != null) {
+      builder.inoutputVariables(inoutputVariables);
     }
-    if (inputVariables.isArray()) {
-      builder.inputVariables(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) inputVariables, OperationVariable.class));
-    } else {
-      builder.inputVariables(
-          DeserializationHelper.createInstanceFromNode(
-              parser, inputVariables, OperationVariable.class));
+
+    List<OperationVariable> inputVariables =
+        readWrappedList(parser, inputVariablesNode, "operationVariable", OperationVariable.class);
+    if (inputVariables != null) {
+      builder.inputVariables(inputVariables);
     }
-    if (outputVariables.isArray()) {
-      builder.outputVariables(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) outputVariables, OperationVariable.class));
-    } else {
-      builder.outputVariables(
-          DeserializationHelper.createInstanceFromNode(
-              parser, outputVariables, OperationVariable.class));
+
+    List<OperationVariable> outputVariables =
+        readWrappedList(parser, outputVariablesNode, "operationVariable", OperationVariable.class);
+    if (outputVariables != null) {
+      builder.outputVariables(outputVariables);
     }
-    if (qualifiers.isArray()) {
-      builder.qualifiers(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) qualifiers, Qualifier.class));
-    } else {
-      builder.qualifiers(
-          DeserializationHelper.createInstanceFromNode(parser, qualifiers, Qualifier.class));
+
+    List<Qualifier> qualifiers =
+        readWrappedList(parser, qualifiersNode, "qualifier", Qualifier.class);
+    if (qualifiers != null) {
+      builder.qualifiers(qualifiers);
     }
-    builder.category(category.asText());
-    if (description.isArray()) {
-      builder.description(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) description, LangStringTextType.class));
-    } else {
-      builder.description(
-          DeserializationHelper.createInstanceFromNode(
-              parser, description, LangStringTextType.class));
+
+    if (categoryNode != null) {
+      builder.category(categoryNode.asText());
     }
-    if (displayName.isArray()) {
-      builder.displayName(
-          DeserializationHelper.createInstancesFromArrayNode(
-              parser, (ArrayNode) displayName, LangStringNameType.class));
-    } else {
-      builder.displayName(
-          DeserializationHelper.createInstanceFromNode(
-              parser, displayName, LangStringNameType.class));
+
+    List<LangStringTextType> description =
+        readWrappedList(parser, descriptionNode, "langStringTextType", LangStringTextType.class);
+    if (description != null) {
+      builder.description(description);
     }
-    builder.idShort(idShort.asText());
-    builder.semanticId(
-        DeserializationHelper.createInstanceFromNode(parser, semanticId, Reference.class));
+
+    List<LangStringNameType> displayName =
+        readWrappedList(parser, displayNameNode, "langStringNameType", LangStringNameType.class);
+    if (displayName != null) {
+      builder.displayName(displayName);
+    }
+
+    if (idShortNode != null) {
+      builder.idShort(idShortNode.asText());
+    }
+
+    if (semanticIdNode != null && !semanticIdNode.isNull()) {
+      builder.semanticId(
+          DeserializationHelper.createInstanceFromNode(parser, semanticIdNode, Reference.class));
+    }
     return builder.build();
   }
 
-  private List<EmbeddedDataSpecification> createEmbeddedDataSpecificationFromNodeArray(
-      JsonParser parser, ArrayNode content) throws IOException {
-    return DeserializationHelper.createInstancesFromArrayNode(
-        parser, content, EmbeddedDataSpecification.class);
+  private static <T> List<T> readWrappedList(
+      JsonParser parser, JsonNode wrapperNode, String itemName, Class<T> clazz) throws IOException {
+    if (wrapperNode == null || wrapperNode.isNull()) {
+      return null;
+    }
+    JsonNode itemsNode = unwrapListNode(wrapperNode, itemName);
+    if (itemsNode == null || itemsNode.isNull()) {
+      return null;
+    }
+    if (itemsNode.isArray()) {
+      return DeserializationHelper.createInstancesFromArrayNode(
+          parser, (ArrayNode) itemsNode, clazz);
+    }
+    List<T> values = new ArrayList<>();
+    values.add(DeserializationHelper.createInstanceFromNode(parser, itemsNode, clazz));
+    return values;
+  }
+
+  private static JsonNode unwrapListNode(JsonNode wrapperNode, String itemName) {
+    if (wrapperNode == null || wrapperNode.isNull()) {
+      return null;
+    }
+    if (wrapperNode.isArray()) {
+      return wrapperNode;
+    }
+    if (wrapperNode.isObject()) {
+      JsonNode itemNode = wrapperNode.get(itemName);
+      return itemNode != null ? itemNode : wrapperNode;
+    }
+    return null;
   }
 }

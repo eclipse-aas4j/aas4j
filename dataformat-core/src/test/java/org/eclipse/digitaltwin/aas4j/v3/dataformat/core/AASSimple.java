@@ -150,7 +150,7 @@ public class AASSimple {
   private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUE = "4370";
   private static final String SUBMODEL_OPERATIONAL_DATA_PROPERTY_VALUETYPE = "integer";
   public static final String AAS_3_1_DATA_SPECIFICATION_IEC_61360 =
-      "https://admin-shell.io/aas/3/1/DataSpecificationIec61360";
+      "https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3";
 
   public AASSimple() {}
 
