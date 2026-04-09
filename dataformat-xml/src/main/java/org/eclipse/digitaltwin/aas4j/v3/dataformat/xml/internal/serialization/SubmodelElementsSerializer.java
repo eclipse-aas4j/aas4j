@@ -35,8 +35,27 @@ public class SubmodelElementsSerializer extends JsonSerializer<List<SubmodelElem
       throws IOException {
 
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
+    // If list is null or contains no non-null elements, omit the wrapper entirely to
+    // avoid generating an empty <value/> element, which is not valid per the XSD.
+    if (value == null) {
+      return;
+    }
+    boolean hasNonNull = false;
+    for (SubmodelElement e : value) {
+      if (e != null) {
+        hasNonNull = true;
+        break;
+      }
+    }
+    if (!hasNonNull) {
+      return;
+    }
     xgen.writeStartObject();
     for (SubmodelElement element : value) {
+      if (element == null) {
+        // Skip null entries to avoid NPE during serialization and schema-invalid empty tags
+        continue;
+      }
       List<Runnable> resetRunnables =
           ReflectionHelper.setEmptyListsToNull(
               element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
