@@ -47,9 +47,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEntity;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultExtension;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
@@ -314,11 +314,6 @@ public class XmlSerializerTest {
                     .valueType(DataTypeDefXsd.GYEAR)
                     .build())
             .build();
-    String xml =
-        new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
-    Set<String> errors = validateAgainstXsdSchema(xml);
-    assertTrue(errors.isEmpty());
-  }
     String xml =
         new XmlSerializer().write(new DefaultEnvironment.Builder().submodels(submodel).build());
     Set<String> errors = validateAgainstXsdSchema(xml);

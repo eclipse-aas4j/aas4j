@@ -167,7 +167,6 @@ public class XMLDeserializerTest {
     new XmlDeserializer().read(file);
   }
 
-
   @Test
   public void deserializeWithSelfClosingSemanticId() throws DeserializationException {
     String xml =
