@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,9 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
+
+import java.util.List;
 
 /** Element that can be extended by using data specification templates. */
 @KnownSubtypes({
@@ -25,6 +26,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
   @KnownSubtypes.Type(value = AssetAdministrationShell.class),
   @KnownSubtypes.Type(value = ConceptDescription.class),
   @KnownSubtypes.Type(value = Submodel.class),
+  @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
   @KnownSubtypes.Type(value = SubmodelElement.class)
 })
 public interface HasDataSpecification {
@@ -33,19 +35,19 @@ public interface HasDataSpecification {
    * Embedded data specification.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications
+   * https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications
    *
    * @return Returns the List of EmbeddedDataSpecifications for the property
    *     embeddedDataSpecifications.
    */
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   List<EmbeddedDataSpecification> getEmbeddedDataSpecifications();
 
   /**
    * Embedded data specification.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications
+   * https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications
    *
    * @param embeddedDataSpecifications desired value for the property embeddedDataSpecifications.
    */

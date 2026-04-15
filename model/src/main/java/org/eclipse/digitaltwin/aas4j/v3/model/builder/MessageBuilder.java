@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,17 +29,6 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
    */
   public B code(String code) {
     getBuildingInstance().setCode(code);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for correlationId
-   *
-   * @param correlationId desired value to be set
-   * @return Builder object with new value for correlationId
-   */
-  public B correlationId(String correlationId) {
-    getBuildingInstance().setCorrelationId(correlationId);
     return getSelf();
   }
 

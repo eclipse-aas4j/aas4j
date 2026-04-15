@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -22,10 +22,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum Direction {
 
   /** Input direction. */
-  @IRI("https://admin-shell.io/aas/3/1/Direction/Input")
+  @IRI("https://admin-shell.io/aas/3/2/Direction/Input")
   INPUT,
 
   /** Output direction */
-  @IRI("https://admin-shell.io/aas/3/1/Direction/Output")
+  @IRI("https://admin-shell.io/aas/3/2/Direction/Output")
   OUTPUT;
 }

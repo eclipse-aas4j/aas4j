@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -14,15 +15,60 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
-import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Result;
+
+import java.util.List;
 
 public abstract class OperationResultBuilder<
         T extends OperationResult, B extends OperationResultBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
+
+  /**
+   * This function allows setting a value for executionResults
+   *
+   * @param executionResults desired value to be set
+   * @return Builder object with new value for executionResults
+   */
+  public B executionResults(List<Result> executionResults) {
+    getBuildingInstance().setExecutionResults(executionResults);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List executionResults
+   *
+   * @param executionResult desired value to be added
+   * @return Builder object with new value for executionResults
+   */
+  public B executionResult(Result executionResult) {
+    getBuildingInstance().getExecutionResults().add(executionResult);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for executionStates
+   *
+   * @param executionStates desired value to be set
+   * @return Builder object with new value for executionStates
+   */
+  public B executionStates(List<ExecutionState> executionStates) {
+    getBuildingInstance().setExecutionStates(executionStates);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List executionStates
+   *
+   * @param executionState desired value to be added
+   * @return Builder object with new value for executionStates
+   */
+  public B executionState(ExecutionState executionState) {
+    getBuildingInstance().getExecutionStates().add(executionState);
+    return getSelf();
+  }
 
   /**
    * This function allows setting a value for inoutputArguments
@@ -69,46 +115,24 @@ public abstract class OperationResultBuilder<
   }
 
   /**
-   * This function allows setting a value for executionState
+   * This function allows setting a value for requestIds
    *
-   * @param executionState desired value to be set
-   * @return Builder object with new value for executionState
+   * @param requestIds desired value to be set
+   * @return Builder object with new value for requestIds
    */
-  public B executionState(ExecutionState executionState) {
-    getBuildingInstance().setExecutionState(executionState);
+  public B requestIds(List<String> requestIds) {
+    getBuildingInstance().setRequestIds(requestIds);
     return getSelf();
   }
 
   /**
-   * This function allows setting a value for success
+   * This function allows adding a value to the List requestIds
    *
-   * @param success desired value to be set
-   * @return Builder object with new value for success
+   * @param requestId desired value to be added
+   * @return Builder object with new value for requestIds
    */
-  public B success(boolean success) {
-    getBuildingInstance().setSuccess(success);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for messages
-   *
-   * @param messages desired value to be set
-   * @return Builder object with new value for messages
-   */
-  public B messages(List<Message> messages) {
-    getBuildingInstance().setMessages(messages);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List messages
-   *
-   * @param messages desired value to be added
-   * @return Builder object with new value for messages
-   */
-  public B messages(Message messages) {
-    getBuildingInstance().getMessages().add(messages);
+  public B requestId(String requestId) {
+    getBuildingInstance().getRequestIds().add(requestId);
     return getSelf();
   }
 }

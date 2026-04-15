@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,15 +15,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation
@@ -34,22 +35,43 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AssetInformationBuilder;
 @IRI("aas:AssetInformation")
 public class DefaultAssetInformation implements AssetInformation {
 
-  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetKind")
+  @IRI("https://admin-shell.io/aas/3/2/AssetInformation/assetKind")
   protected AssetKind assetKind;
 
-  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/assetType")
+  @IRI("https://admin-shell.io/aas/3/2/AssetInformation/assetType")
   protected String assetType;
 
-  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/defaultThumbnail")
+  @IRI("https://admin-shell.io/aas/3/2/AssetInformation/defaultThumbnail")
   protected Resource defaultThumbnail;
 
-  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/globalAssetId")
+  @IRI("https://admin-shell.io/aas/3/2/AssetInformation/globalAssetId")
   protected String globalAssetId;
 
-  @IRI("https://admin-shell.io/aas/3/1/AssetInformation/specificAssetIds")
+  @IRI("https://admin-shell.io/aas/3/2/AssetInformation/specificAssetIds")
   protected List<SpecificAssetId> specificAssetIds = new ArrayList<>();
 
   public DefaultAssetInformation() {}
+
+  @Override
+  public String toString() {
+    return "DefaultAssetInformation{"
+        + "assetKind='"
+        + assetKind
+        + "',"
+        + "globalAssetId='"
+        + globalAssetId
+        + "',"
+        + "specificAssetIds='"
+        + specificAssetIds
+        + "',"
+        + "assetType='"
+        + assetType
+        + "',"
+        + "defaultThumbnail='"
+        + defaultThumbnail
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -77,24 +99,6 @@ public class DefaultAssetInformation implements AssetInformation {
           && Objects.equals(this.assetType, other.assetType)
           && Objects.equals(this.defaultThumbnail, other.defaultThumbnail);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultAssetInformation{"
-        + "assetKind="
-        + assetKind
-        + ", assetType='"
-        + assetType
-        + '\''
-        + ", defaultThumbnail="
-        + defaultThumbnail
-        + ", globalAssetId='"
-        + globalAssetId
-        + '\''
-        + ", specificAssetIds="
-        + specificAssetIds
-        + '}';
   }
 
   @Override

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -31,17 +31,17 @@ public interface AbstractLangString {
   /**
    * Language tag conforming to BCP 47
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/language
+   * <p>More information under https://admin-shell.io/aas/3/2/AbstractLangString/language
    *
    * @return Returns the String for the property language.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/language")
   String getLanguage();
 
   /**
    * Language tag conforming to BCP 47
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/language
+   * <p>More information under https://admin-shell.io/aas/3/2/AbstractLangString/language
    *
    * @param language desired value for the property language.
    */
@@ -50,17 +50,17 @@ public interface AbstractLangString {
   /**
    * Text in the 'language'
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/text
+   * <p>More information under https://admin-shell.io/aas/3/2/AbstractLangString/text
    *
    * @return Returns the String for the property text.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/text")
   String getText();
 
   /**
    * Text in the 'language'
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AbstractLangString/text
+   * <p>More information under https://admin-shell.io/aas/3/2/AbstractLangString/text
    *
    * @param text desired value for the property text.
    */

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,17 +29,17 @@ public interface LevelType {
   /**
    * Minimum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/min
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/min
    *
    * @return Returns the boolean for the property min.
    */
-  @IRI("https://admin-shell.io/aas/3/1/LevelType/min")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/min")
   boolean getMin();
 
   /**
    * Minimum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/min
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/min
    *
    * @param min desired value for the property min.
    */
@@ -48,17 +48,17 @@ public interface LevelType {
   /**
    * Nominal value (value as designated)
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/nom
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/nom
    *
    * @return Returns the boolean for the property nom.
    */
-  @IRI("https://admin-shell.io/aas/3/1/LevelType/nom")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/nom")
   boolean getNom();
 
   /**
    * Nominal value (value as designated)
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/nom
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/nom
    *
    * @param nom desired value for the property nom.
    */
@@ -67,17 +67,17 @@ public interface LevelType {
   /**
    * Value as typically present
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/typ
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/typ
    *
    * @return Returns the boolean for the property typ.
    */
-  @IRI("https://admin-shell.io/aas/3/1/LevelType/typ")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/typ")
   boolean getTyp();
 
   /**
    * Value as typically present
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/typ
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/typ
    *
    * @param typ desired value for the property typ.
    */
@@ -86,17 +86,17 @@ public interface LevelType {
   /**
    * Maximum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/max
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/max
    *
    * @return Returns the boolean for the property max.
    */
-  @IRI("https://admin-shell.io/aas/3/1/LevelType/max")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/max")
   boolean getMax();
 
   /**
    * Maximum of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/LevelType/max
+   * <p>More information under https://admin-shell.io/aas/3/2/LevelType/max
    *
    * @param max desired value for the property max.
    */

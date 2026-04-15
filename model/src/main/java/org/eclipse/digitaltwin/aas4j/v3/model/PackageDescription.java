@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,40 +15,41 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultPackageDescription;
+
+import java.util.List;
 
 /** */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultPackageDescription.class)})
 public interface PackageDescription {
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/PackageDescription/aasIds
+   * More information under https://admin-shell.io/aas/3/2/PackageDescription/items
    *
-   * @return Returns the List of Strings for the property aasIds.
+   * @return Returns the List of Strings for the property items.
    */
-  @IRI("https://admin-shell.io/aas/3/1/PackageDescription/aasIds")
-  List<String> getAasIds();
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/items")
+  List<String> getItems();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/PackageDescription/aasIds
+   * More information under https://admin-shell.io/aas/3/2/PackageDescription/items
    *
-   * @param aasIds desired value for the property aasIds.
+   * @param items desired value for the property items.
    */
-  void setAasIds(List<String> aasIds);
+  void setItems(List<String> items);
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/PackageDescription/packageId
+   * More information under https://admin-shell.io/aas/3/2/PackageDescription/packageId
    *
    * @return Returns the String for the property packageId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/PackageDescription/packageId")
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/packageId")
   String getPackageId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/PackageDescription/packageId
+   * More information under https://admin-shell.io/aas/3/2/PackageDescription/packageId
    *
    * @param packageId desired value for the property packageId.
    */

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -20,37 +20,34 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBaseOperationResult;
 
 /** */
-@KnownSubtypes({
-  @KnownSubtypes.Type(value = DefaultBaseOperationResult.class),
-  @KnownSubtypes.Type(value = OperationResult.class)
-})
-public interface BaseOperationResult extends Result {
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultBaseOperationResult.class)})
+public interface BaseOperationResult {
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/BaseOperationResult/executionState
+   * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/executionState
    *
    * @return Returns the ExecutionState for the property executionState.
    */
-  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/executionState")
+  @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/executionState")
   ExecutionState getExecutionState();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/BaseOperationResult/executionState
+   * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/executionState
    *
    * @param executionState desired value for the property executionState.
    */
   void setExecutionState(ExecutionState executionState);
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/BaseOperationResult/success
+   * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/success
    *
    * @return Returns the boolean for the property success.
    */
-  @IRI("https://admin-shell.io/aas/3/1/BaseOperationResult/success")
+  @IRI("https://admin-shell.io/aas/3/2/BaseOperationResult/success")
   boolean getSuccess();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/BaseOperationResult/success
+   * More information under https://admin-shell.io/aas/3/2/BaseOperationResult/success
    *
    * @param success desired value for the property success.
    */

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,12 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EmbeddedDataSpecificationBuilder;
+
+import java.util.Objects;
 
 /**
  * Default implementation of package
@@ -31,13 +32,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EmbeddedDataSpecificationB
 @IRI("aas:EmbeddedDataSpecification")
 public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecification {
 
-  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecification")
+  @IRI("https://admin-shell.io/aas/3/2/EmbeddedDataSpecification/dataSpecification")
   protected Reference dataSpecification;
 
-  @IRI("https://admin-shell.io/aas/3/1/EmbeddedDataSpecification/dataSpecificationContent")
+  @IRI("https://admin-shell.io/aas/3/2/EmbeddedDataSpecification/dataSpecificationContent")
   protected DataSpecificationContent dataSpecificationContent;
 
   public DefaultEmbeddedDataSpecification() {}
+
+  @Override
+  public String toString() {
+    return "DefaultEmbeddedDataSpecification{"
+        + "dataSpecification='"
+        + dataSpecification
+        + "',"
+        + "dataSpecificationContent='"
+        + dataSpecificationContent
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -57,16 +70,6 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
       return Objects.equals(this.dataSpecification, other.dataSpecification)
           && Objects.equals(this.dataSpecificationContent, other.dataSpecificationContent);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultEmbeddedDataSpecification{"
-        + "dataSpecification="
-        + dataSpecification
-        + ", dataSpecificationContent="
-        + dataSpecificationContent
-        + '}';
   }
 
   @Override

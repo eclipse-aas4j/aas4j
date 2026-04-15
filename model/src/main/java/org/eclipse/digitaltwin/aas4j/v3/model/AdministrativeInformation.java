@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -19,24 +19,45 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAdministrativeInformation;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 /** Administrative meta-information for an element like version information. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultAdministrativeInformation.class)})
 public interface AdministrativeInformation extends HasDataSpecification {
 
   /**
+   * The date and time when the element was created.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt
+   *
+   * @return Returns the XMLGregorianCalendar for the property createdAt.
+   */
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
+  XMLGregorianCalendar getCreatedAt();
+
+  /**
+   * The date and time when the element was created.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt
+   *
+   * @param createdAt desired value for the property createdAt.
+   */
+  void setCreatedAt(XMLGregorianCalendar createdAt);
+
+  /**
    * Version of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/version
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/version
    *
    * @return Returns the String for the property version.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/version")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
   String getVersion();
 
   /**
    * Version of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/version
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/version
    *
    * @param version desired value for the property version.
    */
@@ -45,17 +66,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * Revision of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/revision
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/revision
    *
    * @return Returns the String for the property revision.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/revision")
   String getRevision();
 
   /**
    * Revision of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/revision
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/revision
    *
    * @param revision desired value for the property revision.
    */
@@ -64,17 +85,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * The subject ID of the subject responsible for making the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/creator
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/creator
    *
    * @return Returns the Reference for the property creator.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
   Reference getCreator();
 
   /**
    * The subject ID of the subject responsible for making the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/creator
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/creator
    *
    * @param creator desired value for the property creator.
    */
@@ -83,19 +104,38 @@ public interface AdministrativeInformation extends HasDataSpecification {
   /**
    * Identifier of the template that guided the creation of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId
    *
    * @return Returns the String for the property templateId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId")
   String getTemplateId();
 
   /**
    * Identifier of the template that guided the creation of the element.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId
    *
    * @param templateId desired value for the property templateId.
    */
   void setTemplateId(String templateId);
+
+  /**
+   * The date and time when the element was last updated.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt
+   *
+   * @return Returns the XMLGregorianCalendar for the property updatedAt.
+   */
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
+  XMLGregorianCalendar getUpdatedAt();
+
+  /**
+   * The date and time when the element was last updated.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt
+   *
+   * @param updatedAt desired value for the property updatedAt.
+   */
+  void setUpdatedAt(XMLGregorianCalendar updatedAt);
 }

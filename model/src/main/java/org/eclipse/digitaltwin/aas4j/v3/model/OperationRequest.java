@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,58 +15,73 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
-import javax.xml.datatype.Duration;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationRequest;
+
+import java.math.BigInteger;
 
 /** */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperationRequest.class)})
 public interface OperationRequest {
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/inoutputArguments
    *
-   * @return Returns the List of OperationVariables for the property inoutputArguments.
+   * @return Returns the OperationVariable for the property inoutputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments")
-  List<OperationVariable> getInoutputArguments();
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/inoutputArguments")
+  OperationVariable getInoutputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/inoutputArguments
    *
    * @param inoutputArguments desired value for the property inoutputArguments.
    */
-  void setInoutputArguments(List<OperationVariable> inoutputArguments);
+  void setInoutputArguments(OperationVariable inoutputArguments);
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inputArguments
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/inputArguments
    *
-   * @return Returns the List of OperationVariables for the property inputArguments.
+   * @return Returns the OperationVariable for the property inputArguments.
    */
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inputArguments")
-  List<OperationVariable> getInputArguments();
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/inputArguments")
+  OperationVariable getInputArguments();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/inputArguments
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/inputArguments
    *
    * @param inputArguments desired value for the property inputArguments.
    */
-  void setInputArguments(List<OperationVariable> inputArguments);
+  void setInputArguments(OperationVariable inputArguments);
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/requestId
    *
-   * @return Returns the String for the property clientTimeoutDuration.
+   * @return Returns the String for the property requestId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
-  Duration getClientTimeoutDuration();
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/requestId")
+  String getRequestId();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/requestId
    *
-   * @param clientTimeoutDuration desired value for the property clientTimeoutDuration.
+   * @param requestId desired value for the property requestId.
    */
-  void setClientTimeoutDuration(Duration clientTimeoutDuration);
+  void setRequestId(String requestId);
+
+  /**
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/timeout
+   *
+   * @return Returns the BigInteger for the property timeout.
+   */
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/timeout")
+  BigInteger getTimeout();
+
+  /**
+   * More information under https://admin-shell.io/aas/3/2/OperationRequest/timeout
+   *
+   * @param timeout desired value for the property timeout.
+   */
+  void setTimeout(BigInteger timeout);
 }

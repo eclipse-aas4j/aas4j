@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,23 +15,36 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EndpointBuilder;
 
+import java.util.Objects;
+
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Endpoint */
 @IRI("aas:Endpoint")
 public class DefaultEndpoint implements Endpoint {
 
-  @IRI("https://admin-shell.io/aas/3/1/Endpoint/_interface")
+  @IRI("https://admin-shell.io/aas/3/2/Endpoint/_interface")
   protected String _interface;
 
-  @IRI("https://admin-shell.io/aas/3/1/Endpoint/protocolInformation")
+  @IRI("https://admin-shell.io/aas/3/2/Endpoint/protocolInformation")
   protected ProtocolInformation protocolInformation;
 
   public DefaultEndpoint() {}
+
+  @Override
+  public String toString() {
+    return "DefaultEndpoint{"
+        + "_interface='"
+        + _interface
+        + "',"
+        + "protocolInformation='"
+        + protocolInformation
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -51,17 +64,6 @@ public class DefaultEndpoint implements Endpoint {
       return Objects.equals(this._interface, other._interface)
           && Objects.equals(this.protocolInformation, other.protocolInformation);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultEndpoint{"
-        + "_interface='"
-        + _interface
-        + '\''
-        + ", protocolInformation="
-        + protocolInformation
-        + '}';
   }
 
   @Override

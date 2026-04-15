@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
@@ -63,7 +64,7 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
    * @return Builder object with new value for refersTos
    */
   public B refersTos(List<Reference> refersTos) {
-    getBuildingInstance().setRefersTo(refersTos);
+    getBuildingInstance().setRefersTos(refersTos);
     return getSelf();
   }
 
@@ -74,7 +75,7 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
    * @return Builder object with new value for refersTos
    */
   public B refersTo(Reference refersTo) {
-    getBuildingInstance().getRefersTo().add(refersTo);
+    getBuildingInstance().getRefersTos().add(refersTo);
     return getSelf();
   }
 
