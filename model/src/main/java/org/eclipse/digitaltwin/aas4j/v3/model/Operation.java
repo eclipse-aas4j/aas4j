@@ -15,11 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+
+import java.util.List;
 
 /** An operation is a submodel element with input and output variables. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperation.class)})

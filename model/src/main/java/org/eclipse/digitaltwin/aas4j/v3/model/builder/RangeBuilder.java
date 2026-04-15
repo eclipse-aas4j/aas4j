@@ -15,7 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
@@ -24,6 +23,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Range;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 public abstract class RangeBuilder<T extends Range, B extends RangeBuilder<T, B>>
     extends ExtendableBuilder<T, B> {

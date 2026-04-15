@@ -15,10 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import javax.xml.datatype.XMLGregorianCalendar;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import java.util.List;
 
 public abstract class AdministrativeInformationBuilder<
         T extends AdministrativeInformation, B extends AdministrativeInformationBuilder<T, B>>

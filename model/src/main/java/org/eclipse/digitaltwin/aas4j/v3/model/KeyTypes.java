@@ -16,8 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 /** Enumeration of different key value types within a key. */
 @IRI("aas:KeyTypes")

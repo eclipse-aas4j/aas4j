@@ -15,9 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
+
+import java.util.List;
 
 public abstract class ValueListBuilder<T extends ValueList, B extends ValueListBuilder<T, B>>
     extends ExtendableBuilder<T, B> {

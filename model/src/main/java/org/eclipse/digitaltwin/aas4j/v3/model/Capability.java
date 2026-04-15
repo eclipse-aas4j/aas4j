@@ -16,8 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultCapability;
 
 /**
  * A capability is the implementation-independent description of the potential of an asset to

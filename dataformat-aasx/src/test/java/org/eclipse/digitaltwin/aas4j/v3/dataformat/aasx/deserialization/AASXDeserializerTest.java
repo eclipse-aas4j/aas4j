@@ -54,6 +54,18 @@ public class AASXDeserializerTest {
   @Rule public TemporaryFolder tempFolder = new TemporaryFolder();
 
   @Test
+  public void ehTest() throws IOException, InvalidFormatException, DeserializationException {
+    java.io.File file =
+        new java.io.File(
+            "/Users/I562354/Documents/2_git/aas4j/dataformat-aasx/src/test/resources/aas_X901240120D_sba.aasx");
+
+    InputStream in = new FileInputStream(file);
+    AASXDeserializer deserializer = new AASXDeserializer(in);
+
+    Environment environment = deserializer.read();
+  }
+
+  @Test
   public void roundTrip()
       throws SerializationException,
           IOException,

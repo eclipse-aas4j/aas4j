@@ -15,9 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
+import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellEnvironment;
+import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
+import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 public abstract class AssetAdministrationShellEnvironmentBuilder<
         T extends AssetAdministrationShellEnvironment,

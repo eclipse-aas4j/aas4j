@@ -16,8 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
 
 /** A submodel element is an element suitable for the description and differentiation of assets. */
 @KnownSubtypes({

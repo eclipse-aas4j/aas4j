@@ -17,8 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
 
 /**
  * The value of an operation variable is a submodel element that is used as input and/or output

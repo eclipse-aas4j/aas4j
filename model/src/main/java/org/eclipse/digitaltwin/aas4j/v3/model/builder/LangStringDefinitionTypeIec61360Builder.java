@@ -15,8 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
-import org.eclipse.digitaltwin.aas4j.v3.model.impl.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 
 public abstract class LangStringDefinitionTypeIec61360Builder<
         T extends LangStringDefinitionTypeIec61360,

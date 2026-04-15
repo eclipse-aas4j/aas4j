@@ -15,12 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.math.BigInteger;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
+
+import java.math.BigInteger;
+import java.util.Objects;
 
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest */
 @IRI("aas:OperationRequest")
