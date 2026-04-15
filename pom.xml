@@ -63,7 +63,7 @@
         <guava.version>33.5.0-jre</guava.version>
         <guice.version>5.0.1</guice.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <jackson.version>2.21.1</jackson.version>
+        <jackson.version>2.21.2</jackson.version>
         <jackson-annotations.version>2.21</jackson-annotations.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <jaxb.version>2.3.1</jaxb.version>
@@ -82,7 +82,7 @@
         <xmlunit.version>2.11.0</xmlunit.version>
         <mockito.version>5.23.0</mockito.version>
         <vaadin.version>0.0.20131108.vaadin1</vaadin.version>
-        <spotless.version>3.3.0</spotless.version>
+        <spotless.version>3.4.0</spotless.version>
     </properties>
     <build>
         <plugins>

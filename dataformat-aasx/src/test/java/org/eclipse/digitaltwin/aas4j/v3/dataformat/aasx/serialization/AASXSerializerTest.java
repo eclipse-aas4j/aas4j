@@ -38,6 +38,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.MetamodelContentType;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -46,6 +47,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultEnvironment;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResource;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
@@ -191,6 +193,32 @@ public class AASXSerializerTest {
         List.of(AASXSerializerTest::assertRootJson, AASXSerializerTest::assertThumbnailReference));
   }
 
+  @Test
+  public void testDerivedSubmodelElementSerialization()
+      throws IOException,
+          TransformerException,
+          ParserConfigurationException,
+          SerializationException {
+    DerivedProperty property = new DerivedProperty();
+    property.setIdShort("derivedProperty");
+    property.setValue("1");
+    property.setValueType(DataTypeDefXsd.STRING);
+
+    Environment environment =
+        new DefaultEnvironment.Builder()
+            .submodels(
+                new DefaultSubmodel.Builder()
+                    .id("http://example.org/submodel/derived")
+                    .idShort("derivedSubmodel")
+                    .submodelElements(property)
+                    .build())
+            .build();
+
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    new AASXSerializer().write(environment, List.of(), out, MetamodelContentType.XML);
+    validateAASX(out, XML_PATH_URI, List.of(AASXSerializerTest::assertRootXml));
+  }
+
   private void validateAASX(
       ByteArrayOutputStream byteStream,
       String contentFilePath,
@@ -269,4 +297,6 @@ public class AASXSerializerTest {
             "Type=\"http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail\""));
     assertTrue(content.contains("Target=\"/master/verwaltungsschale-detail-part1.png\""));
   }
+
+  private static class DerivedProperty extends DefaultProperty {}
 }
