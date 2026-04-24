@@ -1,7 +1,7 @@
 # Eclipse AAS4J
 
-> :newspaper: The _`Eclipse AAS4J 2.0.1`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
-> following artifacts implementing the _AAS Specs – [Part 1 V3.1](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2025/06/IDTA_01001-25-01_AAS-Specification_Part1_Metamodel.pdf)_: `aas4j-dataformat-core`, `aas4j-dataformat-aasx`, 
+> :newspaper: The _`Eclipse AAS4J 3.0.0`_ release is available on [Maven Central Repository](https://oss.sonatype.org/#nexus-search;quick~org.eclipse.digitaltwin.aas4j) and includes the 
+> following artifacts implementing the _AAS Specs – [Part 1 V3.2](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2026/06/IDTA_01001-26-01_AAS-Specification_Part1_Metamodel.pdf)_: `aas4j-dataformat-core`, `aas4j-dataformat-aasx`, 
 > `aas4j-dataformat-xml`, `aas4j-dataformat-json`, `aas4j-dataformat-parent`, and `aas4j-model`.
 
 [Eclipse AAS4J](https://projects.eclipse.org/projects/dt.aas4j) implements the specification of the Asset Administration 
@@ -134,9 +134,9 @@ An updated list of the committers can be found here: https://projects.eclipse.or
 This project was initiated by SAP and Fraunhofer to provide a foundation for the AAS development and to foster its dissemination.
 
 ## License
-Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
 
-Copyright 2023 SAP SE or an SAP affiliate company and Eclipse AAS4J contributors. 
+Copyright 2026 SAP SE or an SAP affiliate company and Eclipse AAS4J contributors. 
 
 The serializers contained in this repository provide the functionalities to serialize and deserialize instances of the Asset Administration Shell (AAS) data model from and to the AAS Java Model library. It is licensed under the Apache License
 2.0 (see [LICENSE](https://github.com/eclipse-aas4j/aas4j/blob/main/LICENSE)).

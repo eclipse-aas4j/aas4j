@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetAdministrationShellDescriptor;
+
+import java.util.List;
 
 /** */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultAssetAdministrationShellDescriptor.class)})
@@ -26,16 +27,16 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/administration
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/administration
    *
    * @return Returns the AdministrativeInformation for the property administration.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/administration")
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/administration")
   AdministrativeInformation getAdministration();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/administration
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/administration
    *
    * @param administration desired value for the property administration.
    */
@@ -43,116 +44,101 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetKind
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/description
    *
-   * @return Returns the AssetKind for the property assetKind.
+   * @return Returns the LangStringTextType for the property description.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetKind")
-  AssetKind getAssetKind();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/description")
+  LangStringTextType getDescription();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetKind
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/description
    *
-   * @param assetKind desired value for the property assetKind.
+   * @param description desired value for the property description.
    */
-  void setAssetKind(AssetKind assetKind);
+  void setDescription(LangStringTextType description);
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetType
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/displayName
    *
-   * @return Returns the String for the property assetType.
+   * @return Returns the LangStringNameType for the property displayName.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetType")
-  String getAssetType();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/displayName")
+  LangStringNameType getDisplayName();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/assetType
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/displayName
    *
-   * @param assetType desired value for the property assetType.
+   * @param displayName desired value for the property displayName.
    */
-  void setAssetType(String assetType);
+  void setDisplayName(LangStringNameType displayName);
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/endpoints
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/globalAssetId
    *
-   * @return Returns the List of Endpoints for the property endpoints.
+   * @return Returns the Reference for the property globalAssetId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/endpoints")
-  List<Endpoint> getEndpoints();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/globalAssetId")
+  Reference getGlobalAssetId();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/endpoints
-   *
-   * @param endpoints desired value for the property endpoints.
-   */
-  void setEndpoints(List<Endpoint> endpoints);
-
-  /**
-   * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/globalAssetId
-   *
-   * @return Returns the String for the property globalAssetId.
-   */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/globalAssetId")
-  String getGlobalAssetId();
-
-  /**
-   * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/globalAssetId
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/globalAssetId
    *
    * @param globalAssetId desired value for the property globalAssetId.
    */
-  void setGlobalAssetId(String globalAssetId);
+  void setGlobalAssetId(Reference globalAssetId);
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/idShort
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/idShort
    *
    * @return Returns the String for the property idShort.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/idShort")
   String getIdShort();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/idShort
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/idShort
    *
    * @param idShort desired value for the property idShort.
    */
   void setIdShort(String idShort);
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/id
+   * More information under
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/identification
    *
-   * @return Returns the String for the property id.
+   * @return Returns the String for the property identification.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/id")
-  String getId();
-
-  /**
-   * More information under https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/id
-   *
-   * @param id desired value for the property id.
-   */
-  void setId(String id);
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/identification")
+  String getIdentification();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/specificAssetIds
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/identification
+   *
+   * @param identification desired value for the property identification.
+   */
+  void setIdentification(String identification);
+
+  /**
+   * More information under
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/specificAssetIds
    *
    * @return Returns the List of SpecificAssetIds for the property specificAssetIds.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/specificAssetIds")
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/specificAssetIds")
   List<SpecificAssetId> getSpecificAssetIds();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/specificAssetIds
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/specificAssetIds
    *
    * @param specificAssetIds desired value for the property specificAssetIds.
    */
@@ -160,18 +146,18 @@ public interface AssetAdministrationShellDescriptor extends Descriptor {
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/submodelDescriptors
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/submodelDescriptors
    *
-   * @return Returns the List of SubmodelDescriptors for the property submodelDescriptors.
+   * @return Returns the SubmodelDescriptor for the property submodelDescriptors.
    */
-  @IRI("https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/submodelDescriptors")
-  List<SubmodelDescriptor> getSubmodelDescriptors();
+  @IRI("https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/submodelDescriptors")
+  SubmodelDescriptor getSubmodelDescriptors();
 
   /**
    * More information under
-   * https://admin-shell.io/aas/3/1/AssetAdministrationShellDescriptor/submodelDescriptors
+   * https://admin-shell.io/aas/3/2/AssetAdministrationShellDescriptor/submodelDescriptors
    *
    * @param submodelDescriptors desired value for the property submodelDescriptors.
    */
-  void setSubmodelDescriptors(List<SubmodelDescriptor> submodelDescriptors);
+  void setSubmodelDescriptors(SubmodelDescriptor submodelDescriptors);
 }

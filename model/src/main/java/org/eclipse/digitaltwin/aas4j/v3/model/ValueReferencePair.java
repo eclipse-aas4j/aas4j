@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,17 +29,17 @@ public interface ValueReferencePair {
   /**
    * The value of the referenced concept definition of the value in 'valueId'.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/ValueReferencePair/value
+   * <p>More information under https://admin-shell.io/aas/3/2/ValueReferencePair/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/1/ValueReferencePair/value")
+  @IRI("https://admin-shell.io/aas/3/2/ValueReferencePair/value")
   String getValue();
 
   /**
    * The value of the referenced concept definition of the value in 'valueId'.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/ValueReferencePair/value
+   * <p>More information under https://admin-shell.io/aas/3/2/ValueReferencePair/value
    *
    * @param value desired value for the property value.
    */
@@ -48,17 +48,17 @@ public interface ValueReferencePair {
   /**
    * Global unique id of the value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/ValueReferencePair/valueId
+   * <p>More information under https://admin-shell.io/aas/3/2/ValueReferencePair/valueId
    *
    * @return Returns the Reference for the property valueId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/ValueReferencePair/valueId")
+  @IRI("https://admin-shell.io/aas/3/2/ValueReferencePair/valueId")
   Reference getValueId();
 
   /**
    * Global unique id of the value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/ValueReferencePair/valueId
+   * <p>More information under https://admin-shell.io/aas/3/2/ValueReferencePair/valueId
    *
    * @param valueId desired value for the property valueId.
    */

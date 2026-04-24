@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
@@ -24,6 +23,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 public abstract class AnnotatedRelationshipElementBuilder<
         T extends AnnotatedRelationshipElement, B extends AnnotatedRelationshipElementBuilder<T, B>>
@@ -96,46 +97,46 @@ public abstract class AnnotatedRelationshipElementBuilder<
   }
 
   /**
-   * This function allows setting a value for displayName
+   * This function allows setting a value for displayNames
    *
-   * @param displayName desired value to be set
-   * @return Builder object with new value for displayName
+   * @param displayNames desired value to be set
+   * @return Builder object with new value for displayNames
    */
-  public B displayName(List<LangStringNameType> displayName) {
-    getBuildingInstance().setDisplayName(displayName);
+  public B displayNames(List<LangStringNameType> displayNames) {
+    getBuildingInstance().setDisplayNames(displayNames);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List displayName
+   * This function allows adding a value to the List displayNames
    *
    * @param displayName desired value to be added
-   * @return Builder object with new value for displayName
+   * @return Builder object with new value for displayNames
    */
   public B displayName(LangStringNameType displayName) {
-    getBuildingInstance().getDisplayName().add(displayName);
+    getBuildingInstance().getDisplayNames().add(displayName);
     return getSelf();
   }
 
   /**
-   * This function allows setting a value for description
+   * This function allows setting a value for descriptions
    *
-   * @param description desired value to be set
-   * @return Builder object with new value for description
+   * @param descriptions desired value to be set
+   * @return Builder object with new value for descriptions
    */
-  public B description(List<LangStringTextType> description) {
-    getBuildingInstance().setDescription(description);
+  public B descriptions(List<LangStringTextType> descriptions) {
+    getBuildingInstance().setDescriptions(descriptions);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List description
+   * This function allows adding a value to the List descriptions
    *
    * @param description desired value to be added
-   * @return Builder object with new value for description
+   * @return Builder object with new value for descriptions
    */
   public B description(LangStringTextType description) {
-    getBuildingInstance().getDescription().add(description);
+    getBuildingInstance().getDescriptions().add(description);
     return getSelf();
   }
 

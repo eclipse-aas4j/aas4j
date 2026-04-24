@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,14 +15,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationBuilder;
+
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package
@@ -33,19 +35,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationB
 @IRI("aas:AdministrativeInformation")
 public class DefaultAdministrativeInformation implements AdministrativeInformation {
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
+  protected XMLGregorianCalendar createdAt;
+
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
   protected Reference creator;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/revision")
   protected String revision;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId")
   protected String templateId;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/version")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
+  protected XMLGregorianCalendar updatedAt;
+
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
   protected String version;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
   public DefaultAdministrativeInformation() {}
@@ -53,29 +61,39 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   @Override
   public String toString() {
     return "DefaultAdministrativeInformation{"
-        + "creator="
-        + creator
-        + ", revision='"
-        + revision
-        + '\''
-        + ", templateId='"
-        + templateId
-        + '\''
-        + ", version='"
+        + "createdAt='"
+        + createdAt
+        + "',"
+        + "version='"
         + version
-        + '\''
-        + ", embeddedDataSpecifications="
+        + "',"
+        + "revision='"
+        + revision
+        + "',"
+        + "creator='"
+        + creator
+        + "',"
+        + "templateId='"
+        + templateId
+        + "',"
+        + "updatedAt='"
+        + updatedAt
+        + "',"
+        + "embeddedDataSpecifications='"
         + embeddedDataSpecifications
-        + '}';
+        + "',"
+        + "}";
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(
+        this.createdAt,
         this.version,
         this.revision,
         this.creator,
         this.templateId,
+        this.updatedAt,
         this.embeddedDataSpecifications);
   }
 
@@ -89,12 +107,24 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
       return false;
     } else {
       DefaultAdministrativeInformation other = (DefaultAdministrativeInformation) obj;
-      return Objects.equals(this.version, other.version)
+      return Objects.equals(this.createdAt, other.createdAt)
+          && Objects.equals(this.version, other.version)
           && Objects.equals(this.revision, other.revision)
           && Objects.equals(this.creator, other.creator)
           && Objects.equals(this.templateId, other.templateId)
+          && Objects.equals(this.updatedAt, other.updatedAt)
           && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
     }
+  }
+
+  @Override
+  public XMLGregorianCalendar getCreatedAt() {
+    return createdAt;
+  }
+
+  @Override
+  public void setCreatedAt(XMLGregorianCalendar createdAt) {
+    this.createdAt = createdAt;
   }
 
   @Override
@@ -135,6 +165,16 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   @Override
   public void setTemplateId(String templateId) {
     this.templateId = templateId;
+  }
+
+  @Override
+  public XMLGregorianCalendar getUpdatedAt() {
+    return updatedAt;
+  }
+
+  @Override
+  public void setUpdatedAt(XMLGregorianCalendar updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
   @Override

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.Resource;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
+
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Resource
@@ -29,13 +30,18 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ResourceBuilder;
 @IRI("aas:Resource")
 public class DefaultResource implements Resource {
 
-  @IRI("https://admin-shell.io/aas/3/1/Resource/contentType")
+  @IRI("https://admin-shell.io/aas/3/2/Resource/contentType")
   protected String contentType;
 
-  @IRI("https://admin-shell.io/aas/3/1/Resource/path")
+  @IRI("https://admin-shell.io/aas/3/2/Resource/path")
   protected String path;
 
   public DefaultResource() {}
+
+  @Override
+  public String toString() {
+    return "DefaultResource{" + "path='" + path + "'," + "contentType='" + contentType + "'," + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -75,18 +81,6 @@ public class DefaultResource implements Resource {
   @Override
   public void setContentType(String contentType) {
     this.contentType = contentType;
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultResource{"
-        + "contentType='"
-        + contentType
-        + '\''
-        + ", path='"
-        + path
-        + '\''
-        + '}';
   }
 
   /** This builder class can be used to construct a DefaultResource bean. */

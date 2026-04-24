@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDescriptor;
+
+import java.util.List;
 
 /** */
 @KnownSubtypes({
@@ -29,47 +30,17 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultDescriptor;
 public interface Descriptor {
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/description
+   * More information under https://admin-shell.io/aas/3/2/Descriptor/endpoints
    *
-   * @return Returns the List of LangStringTextTypes for the property description.
+   * @return Returns the List of Endpoints for the property endpoints.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Descriptor/description")
-  List<LangStringTextType> getDescription();
+  @IRI("https://admin-shell.io/aas/3/2/Descriptor/endpoints")
+  List<Endpoint> getEndpoints();
 
   /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/description
+   * More information under https://admin-shell.io/aas/3/2/Descriptor/endpoints
    *
-   * @param description desired value for the property description.
+   * @param endpoints desired value for the property endpoints.
    */
-  void setDescription(List<LangStringTextType> description);
-
-  /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/displayName
-   *
-   * @return Returns the List of LangStringNameTypes for the property displayName.
-   */
-  @IRI("https://admin-shell.io/aas/3/1/Descriptor/displayName")
-  List<LangStringNameType> getDisplayName();
-
-  /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/displayName
-   *
-   * @param displayName desired value for the property displayName.
-   */
-  void setDisplayName(List<LangStringNameType> displayName);
-
-  /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/extensions
-   *
-   * @return Returns the List of Extensions for the property extensions.
-   */
-  @IRI("https://admin-shell.io/aas/3/1/Descriptor/extensions")
-  List<Extension> getExtensions();
-
-  /**
-   * More information under https://admin-shell.io/aas/3/1/Descriptor/extensions
-   *
-   * @param extensions desired value for the property extensions.
-   */
-  void setExtensions(List<Extension> extensions);
+  void setEndpoints(List<Endpoint> endpoints);
 }

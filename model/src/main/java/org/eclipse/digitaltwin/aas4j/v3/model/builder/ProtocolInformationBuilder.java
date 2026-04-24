@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,22 +15,23 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
+
+import java.util.List;
 
 public abstract class ProtocolInformationBuilder<
         T extends ProtocolInformation, B extends ProtocolInformationBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
 
   /**
-   * This function allows setting a value for href
+   * This function allows setting a value for endpointAddress
    *
-   * @param href desired value to be set
-   * @return Builder object with new value for href
+   * @param endpointAddress desired value to be set
+   * @return Builder object with new value for endpointAddress
    */
-  public B href(String href) {
-    getBuildingInstance().setHref(href);
+  public B endpointAddress(String endpointAddress) {
+    getBuildingInstance().setEndpointAddress(endpointAddress);
     return getSelf();
   }
 
@@ -51,19 +52,30 @@ public abstract class ProtocolInformationBuilder<
    * @param endpointProtocolVersion desired value to be set
    * @return Builder object with new value for endpointProtocolVersion
    */
-  public B endpointProtocolVersion(List<String> endpointProtocolVersion) {
+  public B endpointProtocolVersion(String endpointProtocolVersion) {
     getBuildingInstance().setEndpointProtocolVersion(endpointProtocolVersion);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List endpointProtocolVersions
+   * This function allows setting a value for securityAttributes
    *
-   * @param endpointProtocolVersion desired value to be added
-   * @return Builder object with new value for endpointProtocolVersions
+   * @param securityAttributes desired value to be set
+   * @return Builder object with new value for securityAttributes
    */
-  public B endpointProtocolVersion(String endpointProtocolVersion) {
-    getBuildingInstance().getEndpointProtocolVersion().add(endpointProtocolVersion);
+  public B securityAttributes(List<SecurityAttributeObject> securityAttributes) {
+    getBuildingInstance().setSecurityAttributes(securityAttributes);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List securityAttributes
+   *
+   * @param securityAttributes desired value to be added
+   * @return Builder object with new value for securityAttributes
+   */
+  public B securityAttributes(SecurityAttributeObject securityAttributes) {
+    getBuildingInstance().getSecurityAttributes().add(securityAttributes);
     return getSelf();
   }
 
@@ -97,28 +109,6 @@ public abstract class ProtocolInformationBuilder<
    */
   public B subprotocolBodyEncoding(String subprotocolBodyEncoding) {
     getBuildingInstance().setSubprotocolBodyEncoding(subprotocolBodyEncoding);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for securityAttributes
-   *
-   * @param securityAttributes desired value to be set
-   * @return Builder object with new value for securityAttributes
-   */
-  public B securityAttributes(List<SecurityAttributeObject> securityAttributes) {
-    getBuildingInstance().setSecurityAttributes(securityAttributes);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List securityAttributes
-   *
-   * @param securityAttributes desired value to be added
-   * @return Builder object with new value for securityAttributes
-   */
-  public B securityAttributes(SecurityAttributeObject securityAttributes) {
-    getBuildingInstance().getSecurityAttributes().add(securityAttributes);
     return getSelf();
   }
 }

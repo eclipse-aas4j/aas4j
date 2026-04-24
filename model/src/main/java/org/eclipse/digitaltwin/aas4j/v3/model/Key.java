@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -26,17 +26,17 @@ public interface Key {
   /**
    * Denotes which kind of entity is referenced.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Key/type
+   * <p>More information under https://admin-shell.io/aas/3/2/Key/type
    *
    * @return Returns the KeyTypes for the property type.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Key/type")
+  @IRI("https://admin-shell.io/aas/3/2/Key/type")
   KeyTypes getType();
 
   /**
    * Denotes which kind of entity is referenced.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Key/type
+   * <p>More information under https://admin-shell.io/aas/3/2/Key/type
    *
    * @param type desired value for the property type.
    */
@@ -45,17 +45,17 @@ public interface Key {
   /**
    * The key value, for example an IRDI or an URI
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Key/value
+   * <p>More information under https://admin-shell.io/aas/3/2/Key/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Key/value")
+  @IRI("https://admin-shell.io/aas/3/2/Key/value")
   String getValue();
 
   /**
    * The key value, for example an IRDI or an URI
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Key/value
+   * <p>More information under https://admin-shell.io/aas/3/2/Key/value
    *
    * @param value desired value for the property value.
    */

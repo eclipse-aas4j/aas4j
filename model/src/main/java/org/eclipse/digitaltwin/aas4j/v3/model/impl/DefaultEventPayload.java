@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,12 +15,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Arrays;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.EventPayload;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EventPayloadBuilder;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.EventPayload
@@ -30,31 +31,61 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EventPayloadBuilder;
 @IRI("aas:EventPayload")
 public class DefaultEventPayload implements EventPayload {
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableReference")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/observableReference")
   protected Reference observableReference;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/observableSemanticId")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/observableSemanticId")
   protected Reference observableSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/payload")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/payload")
   protected byte[] payload;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/source")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/source")
   protected Reference source;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/sourceSemanticId")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/sourceSemanticId")
   protected Reference sourceSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/subjectId")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/subjectId")
   protected Reference subjectId;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/timeStamp")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/timeStamp")
   protected String timeStamp;
 
-  @IRI("https://admin-shell.io/aas/3/1/EventPayload/topic")
+  @IRI("https://admin-shell.io/aas/3/2/EventPayload/topic")
   protected String topic;
 
   public DefaultEventPayload() {}
+
+  @Override
+  public String toString() {
+    return "DefaultEventPayload{"
+        + "source='"
+        + source
+        + "',"
+        + "sourceSemanticId='"
+        + sourceSemanticId
+        + "',"
+        + "observableReference='"
+        + observableReference
+        + "',"
+        + "observableSemanticId='"
+        + observableSemanticId
+        + "',"
+        + "topic='"
+        + topic
+        + "',"
+        + "subjectId='"
+        + subjectId
+        + "',"
+        + "timeStamp='"
+        + timeStamp
+        + "',"
+        + "payload='"
+        + payload
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -88,30 +119,6 @@ public class DefaultEventPayload implements EventPayload {
           && Objects.equals(this.timeStamp, other.timeStamp)
           && Arrays.equals(this.payload, other.payload);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultEventPayload{"
-        + "observableReference="
-        + observableReference
-        + ", observableSemanticId="
-        + observableSemanticId
-        + ", payload="
-        + Arrays.toString(payload)
-        + ", source="
-        + source
-        + ", sourceSemanticId="
-        + sourceSemanticId
-        + ", subjectId="
-        + subjectId
-        + ", timeStamp='"
-        + timeStamp
-        + '\''
-        + ", topic='"
-        + topic
-        + '\''
-        + '}';
   }
 
   @Override

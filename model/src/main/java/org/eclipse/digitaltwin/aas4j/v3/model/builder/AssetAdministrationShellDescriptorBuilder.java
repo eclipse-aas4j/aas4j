@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,16 +15,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
-import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SpecificAssetId;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
+
+import java.util.List;
 
 public abstract class AssetAdministrationShellDescriptorBuilder<
         T extends AssetAdministrationShellDescriptor,
@@ -43,46 +43,24 @@ public abstract class AssetAdministrationShellDescriptorBuilder<
   }
 
   /**
-   * This function allows setting a value for assetKind
+   * This function allows setting a value for description
    *
-   * @param assetKind desired value to be set
-   * @return Builder object with new value for assetKind
+   * @param description desired value to be set
+   * @return Builder object with new value for description
    */
-  public B assetKind(AssetKind assetKind) {
-    getBuildingInstance().setAssetKind(assetKind);
+  public B description(LangStringTextType description) {
+    getBuildingInstance().setDescription(description);
     return getSelf();
   }
 
   /**
-   * This function allows setting a value for assetType
+   * This function allows setting a value for displayName
    *
-   * @param assetType desired value to be set
-   * @return Builder object with new value for assetType
+   * @param displayName desired value to be set
+   * @return Builder object with new value for displayName
    */
-  public B assetType(String assetType) {
-    getBuildingInstance().setAssetType(assetType);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for endpoints
-   *
-   * @param endpoints desired value to be set
-   * @return Builder object with new value for endpoints
-   */
-  public B endpoints(List<Endpoint> endpoints) {
-    getBuildingInstance().setEndpoints(endpoints);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List endpoints
-   *
-   * @param endpoints desired value to be added
-   * @return Builder object with new value for endpoints
-   */
-  public B endpoints(Endpoint endpoints) {
-    getBuildingInstance().getEndpoints().add(endpoints);
+  public B displayName(LangStringNameType displayName) {
+    getBuildingInstance().setDisplayName(displayName);
     return getSelf();
   }
 
@@ -92,7 +70,7 @@ public abstract class AssetAdministrationShellDescriptorBuilder<
    * @param globalAssetId desired value to be set
    * @return Builder object with new value for globalAssetId
    */
-  public B globalAssetId(String globalAssetId) {
+  public B globalAssetId(Reference globalAssetId) {
     getBuildingInstance().setGlobalAssetId(globalAssetId);
     return getSelf();
   }
@@ -109,13 +87,13 @@ public abstract class AssetAdministrationShellDescriptorBuilder<
   }
 
   /**
-   * This function allows setting a value for id
+   * This function allows setting a value for identification
    *
-   * @param id desired value to be set
-   * @return Builder object with new value for id
+   * @param identification desired value to be set
+   * @return Builder object with new value for identification
    */
-  public B id(String id) {
-    getBuildingInstance().setId(id);
+  public B identification(String identification) {
+    getBuildingInstance().setIdentification(identification);
     return getSelf();
   }
 
@@ -147,85 +125,30 @@ public abstract class AssetAdministrationShellDescriptorBuilder<
    * @param submodelDescriptors desired value to be set
    * @return Builder object with new value for submodelDescriptors
    */
-  public B submodelDescriptors(List<SubmodelDescriptor> submodelDescriptors) {
+  public B submodelDescriptors(SubmodelDescriptor submodelDescriptors) {
     getBuildingInstance().setSubmodelDescriptors(submodelDescriptors);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List submodelDescriptors
+   * This function allows setting a value for endpoints
    *
-   * @param submodelDescriptors desired value to be added
-   * @return Builder object with new value for submodelDescriptors
+   * @param endpoints desired value to be set
+   * @return Builder object with new value for endpoints
    */
-  public B submodelDescriptors(SubmodelDescriptor submodelDescriptors) {
-    getBuildingInstance().getSubmodelDescriptors().add(submodelDescriptors);
+  public B endpoints(List<Endpoint> endpoints) {
+    getBuildingInstance().setEndpoints(endpoints);
     return getSelf();
   }
 
   /**
-   * This function allows setting a value for description
+   * This function allows adding a value to the List endpoints
    *
-   * @param description desired value to be set
-   * @return Builder object with new value for description
+   * @param endpoints desired value to be added
+   * @return Builder object with new value for endpoints
    */
-  public B description(List<LangStringTextType> description) {
-    getBuildingInstance().setDescription(description);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List description
-   *
-   * @param description desired value to be added
-   * @return Builder object with new value for description
-   */
-  public B description(LangStringTextType description) {
-    getBuildingInstance().getDescription().add(description);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for displayName
-   *
-   * @param displayName desired value to be set
-   * @return Builder object with new value for displayName
-   */
-  public B displayName(List<LangStringNameType> displayName) {
-    getBuildingInstance().setDisplayName(displayName);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List displayName
-   *
-   * @param displayName desired value to be added
-   * @return Builder object with new value for displayName
-   */
-  public B displayName(LangStringNameType displayName) {
-    getBuildingInstance().getDisplayName().add(displayName);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for extensions
-   *
-   * @param extensions desired value to be set
-   * @return Builder object with new value for extensions
-   */
-  public B extensions(List<Extension> extensions) {
-    getBuildingInstance().setExtensions(extensions);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List extensions
-   *
-   * @param extensions desired value to be added
-   * @return Builder object with new value for extensions
-   */
-  public B extensions(Extension extensions) {
-    getBuildingInstance().getExtensions().add(extensions);
+  public B endpoints(Endpoint endpoints) {
+    getBuildingInstance().getEndpoints().add(endpoints);
     return getSelf();
   }
 }

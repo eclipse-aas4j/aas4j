@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,33 +15,53 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.xml.datatype.Duration;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationRequestBuilder;
 
+import java.math.BigInteger;
+import java.util.Objects;
+
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest */
 @IRI("aas:OperationRequest")
 public class DefaultOperationRequest implements OperationRequest {
 
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/clientTimeoutDuration")
-  protected Duration clientTimeoutDuration;
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/inoutputArguments")
+  protected OperationVariable inoutputArguments;
 
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inoutputArguments")
-  protected List<OperationVariable> inoutputArguments = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/inputArguments")
+  protected OperationVariable inputArguments;
 
-  @IRI("https://admin-shell.io/aas/3/1/OperationRequest/inputArguments")
-  protected List<OperationVariable> inputArguments = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/requestId")
+  protected String requestId;
+
+  @IRI("https://admin-shell.io/aas/3/2/OperationRequest/timeout")
+  protected BigInteger timeout;
 
   public DefaultOperationRequest() {}
 
   @Override
+  public String toString() {
+    return "DefaultOperationRequest{"
+        + "inoutputArguments='"
+        + inoutputArguments
+        + "',"
+        + "inputArguments='"
+        + inputArguments
+        + "',"
+        + "requestId='"
+        + requestId
+        + "',"
+        + "timeout='"
+        + timeout
+        + "',"
+        + "}";
+  }
+
+  @Override
   public int hashCode() {
-    return Objects.hash(this.inoutputArguments, this.inputArguments, this.clientTimeoutDuration);
+    return Objects.hash(this.inoutputArguments, this.inputArguments, this.requestId, this.timeout);
   }
 
   @Override
@@ -56,38 +76,49 @@ public class DefaultOperationRequest implements OperationRequest {
       DefaultOperationRequest other = (DefaultOperationRequest) obj;
       return Objects.equals(this.inoutputArguments, other.inoutputArguments)
           && Objects.equals(this.inputArguments, other.inputArguments)
-          && Objects.equals(this.clientTimeoutDuration, other.clientTimeoutDuration);
+          && Objects.equals(this.requestId, other.requestId)
+          && Objects.equals(this.timeout, other.timeout);
     }
   }
 
   @Override
-  public List<OperationVariable> getInoutputArguments() {
+  public OperationVariable getInoutputArguments() {
     return inoutputArguments;
   }
 
   @Override
-  public void setInoutputArguments(List<OperationVariable> inoutputArguments) {
+  public void setInoutputArguments(OperationVariable inoutputArguments) {
     this.inoutputArguments = inoutputArguments;
   }
 
   @Override
-  public List<OperationVariable> getInputArguments() {
+  public OperationVariable getInputArguments() {
     return inputArguments;
   }
 
   @Override
-  public void setInputArguments(List<OperationVariable> inputArguments) {
+  public void setInputArguments(OperationVariable inputArguments) {
     this.inputArguments = inputArguments;
   }
 
   @Override
-  public Duration getClientTimeoutDuration() {
-    return clientTimeoutDuration;
+  public String getRequestId() {
+    return requestId;
   }
 
   @Override
-  public void setClientTimeoutDuration(Duration clientTimeoutDuration) {
-    this.clientTimeoutDuration = clientTimeoutDuration;
+  public void setRequestId(String requestId) {
+    this.requestId = requestId;
+  }
+
+  @Override
+  public BigInteger getTimeout() {
+    return timeout;
+  }
+
+  @Override
+  public void setTimeout(BigInteger timeout) {
+    this.timeout = timeout;
   }
 
   /** This builder class can be used to construct a DefaultOperationRequest bean. */

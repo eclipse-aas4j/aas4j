@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -29,6 +29,17 @@ public abstract class OperationHandleBuilder<
    */
   public B handleId(String handleId) {
     getBuildingInstance().setHandleId(handleId);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for requestId
+   *
+   * @param requestId desired value to be set
+   * @return Builder object with new value for requestId
+   */
+  public B requestId(String requestId) {
+    getBuildingInstance().setRequestId(requestId);
     return getSelf();
   }
 }

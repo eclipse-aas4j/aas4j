@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,14 +15,14 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
+
+import java.util.List;
 
 public abstract class SubmodelDescriptorBuilder<
         T extends SubmodelDescriptor, B extends SubmodelDescriptorBuilder<T, B>>
@@ -36,6 +36,61 @@ public abstract class SubmodelDescriptorBuilder<
    */
   public B administration(AdministrativeInformation administration) {
     getBuildingInstance().setAdministration(administration);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for description
+   *
+   * @param description desired value to be set
+   * @return Builder object with new value for description
+   */
+  public B description(LangStringTextType description) {
+    getBuildingInstance().setDescription(description);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for displayName
+   *
+   * @param displayName desired value to be set
+   * @return Builder object with new value for displayName
+   */
+  public B displayName(LangStringNameType displayName) {
+    getBuildingInstance().setDisplayName(displayName);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for idShort
+   *
+   * @param idShort desired value to be set
+   * @return Builder object with new value for idShort
+   */
+  public B idShort(String idShort) {
+    getBuildingInstance().setIdShort(idShort);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for identification
+   *
+   * @param identification desired value to be set
+   * @return Builder object with new value for identification
+   */
+  public B identification(String identification) {
+    getBuildingInstance().setIdentification(identification);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for semanticId
+   *
+   * @param semanticId desired value to be set
+   * @return Builder object with new value for semanticId
+   */
+  public B semanticId(Reference semanticId) {
+    getBuildingInstance().setSemanticId(semanticId);
     return getSelf();
   }
 
@@ -58,127 +113,6 @@ public abstract class SubmodelDescriptorBuilder<
    */
   public B endpoints(Endpoint endpoints) {
     getBuildingInstance().getEndpoints().add(endpoints);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for idShort
-   *
-   * @param idShort desired value to be set
-   * @return Builder object with new value for idShort
-   */
-  public B idShort(String idShort) {
-    getBuildingInstance().setIdShort(idShort);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for id
-   *
-   * @param id desired value to be set
-   * @return Builder object with new value for id
-   */
-  public B id(String id) {
-    getBuildingInstance().setId(id);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for semanticId
-   *
-   * @param semanticId desired value to be set
-   * @return Builder object with new value for semanticId
-   */
-  public B semanticId(Reference semanticId) {
-    getBuildingInstance().setSemanticId(semanticId);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for supplementalSemanticIds
-   *
-   * @param supplementalSemanticIds desired value to be set
-   * @return Builder object with new value for supplementalSemanticIds
-   */
-  public B supplementalSemanticIds(List<Reference> supplementalSemanticIds) {
-    getBuildingInstance().setSupplementalSemanticIds(supplementalSemanticIds);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List supplementalSemanticIds
-   *
-   * @param supplementalSemanticId desired value to be added
-   * @return Builder object with new value for supplementalSemanticIds
-   */
-  public B supplementalSemanticId(Reference supplementalSemanticId) {
-    getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticId);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for description
-   *
-   * @param description desired value to be set
-   * @return Builder object with new value for description
-   */
-  public B description(List<LangStringTextType> description) {
-    getBuildingInstance().setDescription(description);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List description
-   *
-   * @param description desired value to be added
-   * @return Builder object with new value for description
-   */
-  public B description(LangStringTextType description) {
-    getBuildingInstance().getDescription().add(description);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for displayName
-   *
-   * @param displayName desired value to be set
-   * @return Builder object with new value for displayName
-   */
-  public B displayName(List<LangStringNameType> displayName) {
-    getBuildingInstance().setDisplayName(displayName);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List displayName
-   *
-   * @param displayName desired value to be added
-   * @return Builder object with new value for displayName
-   */
-  public B displayName(LangStringNameType displayName) {
-    getBuildingInstance().getDisplayName().add(displayName);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for extensions
-   *
-   * @param extensions desired value to be set
-   * @return Builder object with new value for extensions
-   */
-  public B extensions(List<Extension> extensions) {
-    getBuildingInstance().setExtensions(extensions);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List extensions
-   *
-   * @param extensions desired value to be added
-   * @return Builder object with new value for extensions
-   */
-  public B extensions(Extension extensions) {
-    getBuildingInstance().getExtensions().add(extensions);
     return getSelf();
   }
 }

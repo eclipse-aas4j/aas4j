@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,9 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
@@ -29,6 +26,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Operation
  *
@@ -37,43 +38,85 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationBuilder;
 @IRI("aas:Operation")
 public class DefaultOperation implements Operation {
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Operation/inoutputVariables")
+  @IRI("https://admin-shell.io/aas/3/2/Operation/inoutputVariables")
   protected List<OperationVariable> inoutputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Operation/inputVariables")
+  @IRI("https://admin-shell.io/aas/3/2/Operation/inputVariables")
   protected List<OperationVariable> inputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Operation/outputVariables")
+  @IRI("https://admin-shell.io/aas/3/2/Operation/outputVariables")
   protected List<OperationVariable> outputVariables = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
-  protected List<LangStringTextType> description = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
+  protected List<LangStringTextType> descriptions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
-  protected List<LangStringNameType> displayName = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
+  protected List<LangStringNameType> displayNames = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
   protected String idShort;
 
   public DefaultOperation() {}
+
+  @Override
+  public String toString() {
+    return "DefaultOperation{"
+        + "inputVariables='"
+        + inputVariables
+        + "',"
+        + "outputVariables='"
+        + outputVariables
+        + "',"
+        + "inoutputVariables='"
+        + inoutputVariables
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayNames='"
+        + displayNames
+        + "',"
+        + "descriptions='"
+        + descriptions
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "qualifiers='"
+        + qualifiers
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -83,8 +126,8 @@ public class DefaultOperation implements Operation {
         this.inoutputVariables,
         this.category,
         this.idShort,
-        this.displayName,
-        this.description,
+        this.displayNames,
+        this.descriptions,
         this.extensions,
         this.embeddedDataSpecifications,
         this.semanticId,
@@ -107,46 +150,14 @@ public class DefaultOperation implements Operation {
           && Objects.equals(this.inoutputVariables, other.inoutputVariables)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
-          && Objects.equals(this.displayName, other.displayName)
-          && Objects.equals(this.description, other.description)
+          && Objects.equals(this.displayNames, other.displayNames)
+          && Objects.equals(this.descriptions, other.descriptions)
           && Objects.equals(this.extensions, other.extensions)
           && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds)
           && Objects.equals(this.qualifiers, other.qualifiers);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultOperation{"
-        + "embeddedDataSpecifications="
-        + embeddedDataSpecifications
-        + ", extensions="
-        + extensions
-        + ", semanticId="
-        + semanticId
-        + ", supplementalSemanticIds="
-        + supplementalSemanticIds
-        + ", inoutputVariables="
-        + inoutputVariables
-        + ", inputVariables="
-        + inputVariables
-        + ", outputVariables="
-        + outputVariables
-        + ", qualifiers="
-        + qualifiers
-        + ", category='"
-        + category
-        + '\''
-        + ", description="
-        + description
-        + ", displayName="
-        + displayName
-        + ", idShort='"
-        + idShort
-        + '\''
-        + '}';
   }
 
   @Override
@@ -200,23 +211,23 @@ public class DefaultOperation implements Operation {
   }
 
   @Override
-  public List<LangStringNameType> getDisplayName() {
-    return displayName;
+  public List<LangStringNameType> getDisplayNames() {
+    return displayNames;
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayName) {
-    this.displayName = displayName;
+  public void setDisplayNames(List<LangStringNameType> displayNames) {
+    this.displayNames = displayNames;
   }
 
   @Override
-  public List<LangStringTextType> getDescription() {
-    return description;
+  public List<LangStringTextType> getDescriptions() {
+    return descriptions;
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> description) {
-    this.description = description;
+  public void setDescriptions(List<LangStringTextType> descriptions) {
+    this.descriptions = descriptions;
   }
 
   @Override

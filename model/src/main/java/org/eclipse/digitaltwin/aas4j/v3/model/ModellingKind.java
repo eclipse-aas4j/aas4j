@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -25,13 +25,13 @@ public enum ModellingKind {
    * Concrete, clearly identifiable element instance. Its creation and validation may be guided by a
    * corresponding element template.
    */
-  @IRI("https://admin-shell.io/aas/3/1/ModellingKind/Instance")
+  @IRI("https://admin-shell.io/aas/3/2/ModellingKind/Instance")
   INSTANCE,
 
   /**
    * Specification of the common features of a structured element in sufficient detail that such a
    * instance can be instantiated using it
    */
-  @IRI("https://admin-shell.io/aas/3/1/ModellingKind/Template")
+  @IRI("https://admin-shell.io/aas/3/2/ModellingKind/Template")
   TEMPLATE;
 }

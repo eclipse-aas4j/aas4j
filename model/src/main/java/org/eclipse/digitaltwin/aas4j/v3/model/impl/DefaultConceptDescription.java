@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,9 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
@@ -28,6 +25,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ConceptDescriptionBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription
  *
@@ -37,46 +38,79 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ConceptDescriptionBuilder;
 @IRI("aas:ConceptDescription")
 public class DefaultConceptDescription implements ConceptDescription {
 
-  @IRI("https://admin-shell.io/aas/3/1/ConceptDescription/isCaseOf")
-  protected List<Reference> isCaseOf = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf")
+  protected List<Reference> isCaseOfs = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Identifiable/administration")
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/administration")
   protected AdministrativeInformation administration;
 
-  @IRI("https://admin-shell.io/aas/3/1/Identifiable/id")
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/id")
   protected String id;
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
-  protected List<LangStringTextType> description = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
+  protected List<LangStringTextType> descriptions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
-  protected List<LangStringNameType> displayName = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
+  protected List<LangStringNameType> displayNames = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
   protected String idShort;
 
   public DefaultConceptDescription() {}
 
   @Override
+  public String toString() {
+    return "DefaultConceptDescription{"
+        + "isCaseOfs='"
+        + isCaseOfs
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "administration='"
+        + administration
+        + "',"
+        + "id='"
+        + id
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayNames='"
+        + displayNames
+        + "',"
+        + "descriptions='"
+        + descriptions
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "}";
+  }
+
+  @Override
   public int hashCode() {
     return Objects.hash(
-        this.isCaseOf,
+        this.isCaseOfs,
         this.embeddedDataSpecifications,
         this.administration,
         this.id,
         this.category,
         this.idShort,
-        this.displayName,
-        this.description,
+        this.displayNames,
+        this.descriptions,
         this.extensions);
   }
 
@@ -90,53 +124,26 @@ public class DefaultConceptDescription implements ConceptDescription {
       return false;
     } else {
       DefaultConceptDescription other = (DefaultConceptDescription) obj;
-      return Objects.equals(this.isCaseOf, other.isCaseOf)
+      return Objects.equals(this.isCaseOfs, other.isCaseOfs)
           && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications)
           && Objects.equals(this.administration, other.administration)
           && Objects.equals(this.id, other.id)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
-          && Objects.equals(this.displayName, other.displayName)
-          && Objects.equals(this.description, other.description)
+          && Objects.equals(this.displayNames, other.displayNames)
+          && Objects.equals(this.descriptions, other.descriptions)
           && Objects.equals(this.extensions, other.extensions);
     }
   }
 
   @Override
-  public String toString() {
-    return "DefaultConceptDescription{"
-        + "isCaseOf="
-        + isCaseOf
-        + ", embeddedDataSpecifications="
-        + embeddedDataSpecifications
-        + ", extensions="
-        + extensions
-        + ", administration="
-        + administration
-        + ", id='"
-        + id
-        + '\''
-        + ", category='"
-        + category
-        + '\''
-        + ", description="
-        + description
-        + ", displayName="
-        + displayName
-        + ", idShort='"
-        + idShort
-        + '\''
-        + '}';
+  public List<Reference> getIsCaseOfs() {
+    return isCaseOfs;
   }
 
   @Override
-  public List<Reference> getIsCaseOf() {
-    return isCaseOf;
-  }
-
-  @Override
-  public void setIsCaseOf(List<Reference> isCaseOf) {
-    this.isCaseOf = isCaseOf;
+  public void setIsCaseOfs(List<Reference> isCaseOfs) {
+    this.isCaseOfs = isCaseOfs;
   }
 
   @Override
@@ -191,23 +198,23 @@ public class DefaultConceptDescription implements ConceptDescription {
   }
 
   @Override
-  public List<LangStringNameType> getDisplayName() {
-    return displayName;
+  public List<LangStringNameType> getDisplayNames() {
+    return displayNames;
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayName) {
-    this.displayName = displayName;
+  public void setDisplayNames(List<LangStringNameType> displayNames) {
+    this.displayNames = displayNames;
   }
 
   @Override
-  public List<LangStringTextType> getDescription() {
-    return description;
+  public List<LangStringTextType> getDescriptions() {
+    return descriptions;
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> description) {
-    this.description = description;
+  public void setDescriptions(List<LangStringTextType> descriptions) {
+    this.descriptions = descriptions;
   }
 
   @Override

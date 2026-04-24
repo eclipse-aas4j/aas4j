@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
+
+import java.util.List;
 
 /** Reference to either a model element of the same or another AAS or to an external entity. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultReference.class)})
@@ -27,17 +28,17 @@ public interface Reference {
   /**
    * Type of the reference.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/type
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/type
    *
    * @return Returns the ReferenceTypes for the property type.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Reference/type")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/type")
   ReferenceTypes getType();
 
   /**
    * Type of the reference.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/type
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/type
    *
    * @param type desired value for the property type.
    */
@@ -46,17 +47,17 @@ public interface Reference {
   /**
    * 'semanticId' of the referenced model element ('type' = 'ModelReference').
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/referredSemanticId
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/referredSemanticId
    *
    * @return Returns the Reference for the property referredSemanticId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Reference/referredSemanticId")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/referredSemanticId")
   Reference getReferredSemanticId();
 
   /**
    * 'semanticId' of the referenced model element ('type' = 'ModelReference').
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/referredSemanticId
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/referredSemanticId
    *
    * @param referredSemanticId desired value for the property referredSemanticId.
    */
@@ -65,17 +66,17 @@ public interface Reference {
   /**
    * Unique references in their name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/keys
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/keys
    *
    * @return Returns the List of Keys for the property keys.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Reference/keys")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/keys")
   List<Key> getKeys();
 
   /**
    * Unique references in their name space.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Reference/keys
+   * <p>More information under https://admin-shell.io/aas/3/2/Reference/keys
    *
    * @param keys desired value for the property keys.
    */

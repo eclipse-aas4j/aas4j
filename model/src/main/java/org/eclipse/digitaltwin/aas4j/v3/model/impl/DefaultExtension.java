@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,14 +15,15 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtensionBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Extension
@@ -32,25 +33,49 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ExtensionBuilder;
 @IRI("aas:Extension")
 public class DefaultExtension implements Extension {
 
-  @IRI("https://admin-shell.io/aas/3/1/Extension/name")
+  @IRI("https://admin-shell.io/aas/3/2/Extension/name")
   protected String name;
 
-  @IRI("https://admin-shell.io/aas/3/1/Extension/refersTo")
+  @IRI("https://admin-shell.io/aas/3/2/Extension/refersTo")
   protected List<Reference> refersTos = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Extension/value")
+  @IRI("https://admin-shell.io/aas/3/2/Extension/value")
   protected String value;
 
-  @IRI("https://admin-shell.io/aas/3/1/Extension/valueType")
+  @IRI("https://admin-shell.io/aas/3/2/Extension/valueType")
   protected DataTypeDefXsd valueType;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
   public DefaultExtension() {}
+
+  @Override
+  public String toString() {
+    return "DefaultExtension{"
+        + "name='"
+        + name
+        + "',"
+        + "valueType='"
+        + valueType
+        + "',"
+        + "value='"
+        + value
+        + "',"
+        + "refersTos='"
+        + refersTos
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -80,26 +105,6 @@ public class DefaultExtension implements Extension {
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultExtension{"
-        + "name='"
-        + name
-        + '\''
-        + ", refersTos="
-        + refersTos
-        + ", value='"
-        + value
-        + '\''
-        + ", valueType="
-        + valueType
-        + ", semanticId="
-        + semanticId
-        + ", supplementalSemanticIds="
-        + supplementalSemanticIds
-        + '}';
   }
 
   @Override
@@ -133,12 +138,12 @@ public class DefaultExtension implements Extension {
   }
 
   @Override
-  public List<Reference> getRefersTo() {
+  public List<Reference> getRefersTos() {
     return refersTos;
   }
 
   @Override
-  public void setRefersTo(List<Reference> refersTos) {
+  public void setRefersTos(List<Reference> refersTos) {
     this.refersTos = refersTos;
   }
 

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
@@ -25,6 +24,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 
+import java.util.List;
+
 public abstract class DataSpecificationIec61360Builder<
         T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
     extends ExtendableBuilder<T, B> {
@@ -32,11 +33,11 @@ public abstract class DataSpecificationIec61360Builder<
   /**
    * This function allows setting a value for preferredNames
    *
-   * @param preferredName desired value to be set
-   * @return Builder object with new value for preferredName
+   * @param preferredNames desired value to be set
+   * @return Builder object with new value for preferredNames
    */
-  public B preferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
-    getBuildingInstance().setPreferredName(preferredName);
+  public B preferredNames(List<LangStringPreferredNameTypeIec61360> preferredNames) {
+    getBuildingInstance().setPreferredNames(preferredNames);
     return getSelf();
   }
 
@@ -47,18 +48,18 @@ public abstract class DataSpecificationIec61360Builder<
    * @return Builder object with new value for preferredNames
    */
   public B preferredName(LangStringPreferredNameTypeIec61360 preferredName) {
-    getBuildingInstance().getPreferredName().add(preferredName);
+    getBuildingInstance().getPreferredNames().add(preferredName);
     return getSelf();
   }
 
   /**
    * This function allows setting a value for shortNames
    *
-   * @param shortName desired value to be set
+   * @param shortNames desired value to be set
    * @return Builder object with new value for shortNames
    */
-  public B shortName(List<LangStringShortNameTypeIec61360> shortName) {
-    getBuildingInstance().setShortName(shortName);
+  public B shortNames(List<LangStringShortNameTypeIec61360> shortNames) {
+    getBuildingInstance().setShortNames(shortNames);
     return getSelf();
   }
 
@@ -69,7 +70,7 @@ public abstract class DataSpecificationIec61360Builder<
    * @return Builder object with new value for shortNames
    */
   public B shortName(LangStringShortNameTypeIec61360 shortName) {
-    getBuildingInstance().getShortName().add(shortName);
+    getBuildingInstance().getShortNames().add(shortName);
     return getSelf();
   }
 
@@ -131,11 +132,11 @@ public abstract class DataSpecificationIec61360Builder<
   /**
    * This function allows setting a value for definitions
    *
-   * @param definition desired value to be set
-   * @return Builder object with new value for definition
+   * @param definitions desired value to be set
+   * @return Builder object with new value for definitions
    */
-  public B definition(List<LangStringDefinitionTypeIec61360> definition) {
-    getBuildingInstance().setDefinition(definition);
+  public B definitions(List<LangStringDefinitionTypeIec61360> definitions) {
+    getBuildingInstance().setDefinitions(definitions);
     return getSelf();
   }
 
@@ -146,7 +147,7 @@ public abstract class DataSpecificationIec61360Builder<
    * @return Builder object with new value for definitions
    */
   public B definition(LangStringDefinitionTypeIec61360 definition) {
-    getBuildingInstance().getDefinition().add(definition);
+    getBuildingInstance().getDefinitions().add(definition);
     return getSelf();
   }
 

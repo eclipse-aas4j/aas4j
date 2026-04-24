@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,10 +15,11 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec61360Builder;
+
+import java.util.Objects;
 
 /**
  * Default implementation of package
@@ -29,13 +30,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringShortNameTypeIec
 @IRI("aas:LangStringShortNameTypeIec61360")
 public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNameTypeIec61360 {
 
-  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/language")
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/language")
   protected String language;
 
-  @IRI("https://admin-shell.io/aas/3/1/AbstractLangString/text")
+  @IRI("https://admin-shell.io/aas/3/2/AbstractLangString/text")
   protected String text;
 
   public DefaultLangStringShortNameTypeIec61360() {}
+
+  @Override
+  public String toString() {
+    return "DefaultLangStringShortNameTypeIec61360{"
+        + "language='"
+        + language
+        + "',"
+        + "text='"
+        + text
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -54,18 +67,6 @@ public class DefaultLangStringShortNameTypeIec61360 implements LangStringShortNa
       DefaultLangStringShortNameTypeIec61360 other = (DefaultLangStringShortNameTypeIec61360) obj;
       return Objects.equals(this.language, other.language) && Objects.equals(this.text, other.text);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultLangStringShortNameTypeIec61360{"
-        + "language='"
-        + language
-        + '\''
-        + ", text='"
-        + text
-        + '\''
-        + '}';
   }
 
   @Override

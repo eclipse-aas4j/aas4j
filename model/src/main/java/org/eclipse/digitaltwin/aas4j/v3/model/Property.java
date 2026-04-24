@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -26,17 +26,17 @@ public interface Property extends DataElement {
   /**
    * Data type of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/valueType
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/valueType
    *
    * @return Returns the DataTypeDefXsd for the property valueType.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Property/valueType")
+  @IRI("https://admin-shell.io/aas/3/2/Property/valueType")
   DataTypeDefXsd getValueType();
 
   /**
    * Data type of the value
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/valueType
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/valueType
    *
    * @param valueType desired value for the property valueType.
    */
@@ -45,17 +45,17 @@ public interface Property extends DataElement {
   /**
    * The value of the property instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/value
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Property/value")
+  @IRI("https://admin-shell.io/aas/3/2/Property/value")
   String getValue();
 
   /**
    * The value of the property instance.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/value
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/value
    *
    * @param value desired value for the property value.
    */
@@ -64,17 +64,17 @@ public interface Property extends DataElement {
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/valueId
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/valueId
    *
    * @return Returns the Reference for the property valueId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/Property/valueId")
+  @IRI("https://admin-shell.io/aas/3/2/Property/valueId")
   Reference getValueId();
 
   /**
    * Reference to the global unique ID of a coded value.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/Property/valueId
+   * <p>More information under https://admin-shell.io/aas/3/2/Property/valueId
    *
    * @param valueId desired value for the property valueId.
    */

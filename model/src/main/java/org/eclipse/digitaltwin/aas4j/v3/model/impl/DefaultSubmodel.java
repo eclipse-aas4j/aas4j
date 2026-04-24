@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,9 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
@@ -31,6 +28,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Submodel
  *
@@ -39,47 +40,90 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelBuilder;
 @IRI("aas:Submodel")
 public class DefaultSubmodel implements Submodel {
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasKind/kind")
+  @IRI("https://admin-shell.io/aas/3/2/HasKind/kind")
   protected ModellingKind kind;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Identifiable/administration")
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/administration")
   protected AdministrativeInformation administration;
 
-  @IRI("https://admin-shell.io/aas/3/1/Identifiable/id")
+  @IRI("https://admin-shell.io/aas/3/2/Identifiable/id")
   protected String id;
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
-  protected List<LangStringTextType> description = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
+  protected List<LangStringTextType> descriptions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
-  protected List<LangStringNameType> displayName = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
+  protected List<LangStringNameType> displayNames = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
   protected String idShort;
 
-  @IRI("https://admin-shell.io/aas/3/1/Submodel/submodelElements")
+  @IRI("https://admin-shell.io/aas/3/2/Submodel/submodelElements")
   protected List<SubmodelElement> submodelElements = new ArrayList<>();
 
-  public DefaultSubmodel() {
-    this.kind = ModellingKind.INSTANCE;
+  public DefaultSubmodel() {}
+
+  @Override
+  public String toString() {
+    return "DefaultSubmodel{"
+        + "submodelElements='"
+        + submodelElements
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "qualifiers='"
+        + qualifiers
+        + "',"
+        + "kind='"
+        + kind
+        + "',"
+        + "administration='"
+        + administration
+        + "',"
+        + "id='"
+        + id
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayNames='"
+        + displayNames
+        + "',"
+        + "descriptions='"
+        + descriptions
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "}";
   }
 
   @Override
@@ -95,8 +139,8 @@ public class DefaultSubmodel implements Submodel {
         this.id,
         this.category,
         this.idShort,
-        this.displayName,
-        this.description,
+        this.displayNames,
+        this.descriptions,
         this.extensions);
   }
 
@@ -120,8 +164,8 @@ public class DefaultSubmodel implements Submodel {
           && Objects.equals(this.id, other.id)
           && Objects.equals(this.category, other.category)
           && Objects.equals(this.idShort, other.idShort)
-          && Objects.equals(this.displayName, other.displayName)
-          && Objects.equals(this.description, other.description)
+          && Objects.equals(this.displayNames, other.displayNames)
+          && Objects.equals(this.descriptions, other.descriptions)
           && Objects.equals(this.extensions, other.extensions);
     }
   }
@@ -228,23 +272,23 @@ public class DefaultSubmodel implements Submodel {
   }
 
   @Override
-  public List<LangStringNameType> getDisplayName() {
-    return displayName;
+  public List<LangStringNameType> getDisplayNames() {
+    return displayNames;
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayName) {
-    this.displayName = displayName;
+  public void setDisplayNames(List<LangStringNameType> displayNames) {
+    this.displayNames = displayNames;
   }
 
   @Override
-  public List<LangStringTextType> getDescription() {
-    return description;
+  public List<LangStringTextType> getDescriptions() {
+    return descriptions;
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> description) {
-    this.description = description;
+  public void setDescriptions(List<LangStringTextType> descriptions) {
+    this.descriptions = descriptions;
   }
 
   @Override
@@ -255,41 +299,6 @@ public class DefaultSubmodel implements Submodel {
   @Override
   public void setExtensions(List<Extension> extensions) {
     this.extensions = extensions;
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultSubmodel{"
-        + "embeddedDataSpecifications="
-        + embeddedDataSpecifications
-        + ", extensions="
-        + extensions
-        + ", kind="
-        + kind
-        + ", semanticId="
-        + semanticId
-        + ", supplementalSemanticIds="
-        + supplementalSemanticIds
-        + ", administration="
-        + administration
-        + ", id='"
-        + id
-        + '\''
-        + ", qualifiers="
-        + qualifiers
-        + ", category='"
-        + category
-        + '\''
-        + ", description="
-        + description
-        + ", displayName="
-        + displayName
-        + ", idShort='"
-        + idShort
-        + '\''
-        + ", submodelElements="
-        + submodelElements
-        + '}';
   }
 
   /** This builder class can be used to construct a DefaultSubmodel bean. */

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -22,22 +22,22 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 public enum MessageType {
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/1/MessageType/Error")
+  @IRI("https://admin-shell.io/aas/3/2/MessageType/Error")
   ERROR,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/1/MessageType/Exception")
+  @IRI("https://admin-shell.io/aas/3/2/MessageType/Exception")
   EXCEPTION,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/1/MessageType/Info")
+  @IRI("https://admin-shell.io/aas/3/2/MessageType/Info")
   INFO,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/1/MessageType/Undefined")
+  @IRI("https://admin-shell.io/aas/3/2/MessageType/Undefined")
   UNDEFINED,
 
   /** */
-  @IRI("https://admin-shell.io/aas/3/1/MessageType/Warning")
+  @IRI("https://admin-shell.io/aas/3/2/MessageType/Warning")
   WARNING;
 }
