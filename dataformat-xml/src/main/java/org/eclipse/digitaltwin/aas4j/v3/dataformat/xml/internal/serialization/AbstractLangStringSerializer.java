@@ -17,14 +17,16 @@
 /** */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import java.lang.reflect.Field;
-import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
 import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
+
+import javax.xml.namespace.QName;
+import java.lang.reflect.Field;
 
 public class AbstractLangStringSerializer<T extends AbstractLangString> extends ValueSerializer<T> {
 
@@ -36,7 +38,7 @@ public class AbstractLangStringSerializer<T extends AbstractLangString> extends 
 
   @Override
   public void serialize(T langString, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     try {
       Field nextName = xgen.getClass().getDeclaredField("_nextName");
@@ -52,7 +54,7 @@ public class AbstractLangStringSerializer<T extends AbstractLangString> extends 
   }
 
   protected void serializeLangStringContent(ToXmlGenerator xgen, AbstractLangString langString)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     xgen.writeStartObject();
     xgen.writeName("language");
     xgen.writeString(langString.getLanguage());

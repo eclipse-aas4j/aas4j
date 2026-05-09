@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
 import java.util.List;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -40,12 +41,11 @@ public class NoEntryWrapperListSerializer<T extends Object> extends ValueSeriali
 
   @Override
   public void serialize(List<T> list, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     writeList(list, (ToXmlGenerator) gen);
   }
 
-  private void writeList(List<T> list, ToXmlGenerator xgen)
-      throws tools.jackson.core.JacksonException {
+  private void writeList(List<T> list, ToXmlGenerator xgen) throws JacksonException {
     xgen.writeStartObject();
 
     writeOuterWrapperStart(xgen);
@@ -55,22 +55,19 @@ public class NoEntryWrapperListSerializer<T extends Object> extends ValueSeriali
     xgen.writeEndObject();
   }
 
-  private void writeListEntries(List<T> list, ToXmlGenerator xgen)
-      throws tools.jackson.core.JacksonException {
+  private void writeListEntries(List<T> list, ToXmlGenerator xgen) throws JacksonException {
     for (Object listEntry : list) {
       xgen.writePOJO(listEntry);
     }
   }
 
-  private void writeOuterWrapperStart(ToXmlGenerator xgen)
-      throws tools.jackson.core.JacksonException {
+  private void writeOuterWrapperStart(ToXmlGenerator xgen) throws JacksonException {
     if (outerWrapperName != null && !outerWrapperName.isEmpty()) {
       xgen.writeObjectPropertyStart(outerWrapperName);
     }
   }
 
-  private void writeOuterWrapperEnd(ToXmlGenerator xgen)
-      throws tools.jackson.core.JacksonException {
+  private void writeOuterWrapperEnd(ToXmlGenerator xgen) throws JacksonException {
     if (outerWrapperName != null && !outerWrapperName.isEmpty()) {
       xgen.writeEndObject();
     }

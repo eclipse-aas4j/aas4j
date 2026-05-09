@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;
@@ -45,7 +46,7 @@ public class NoEntryWrapperListDeserializer<T> extends ValueDeserializer<List<T>
 
   @Override
   public List<T> deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     try {
       ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
       JsonNode langStringNode = node.get(elementName);
@@ -62,7 +63,7 @@ public class NoEntryWrapperListDeserializer<T> extends ValueDeserializer<List<T>
   }
 
   private List<T> createEntriesFromArrayNode(ArrayNode langStringsNode, DeserializationContext ctxt)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     List<T> entries = new ArrayList<>();
     for (int i = 0; i < langStringsNode.size(); i++) {
       JsonNode nextNode = langStringsNode.get(i);
@@ -72,7 +73,7 @@ public class NoEntryWrapperListDeserializer<T> extends ValueDeserializer<List<T>
   }
 
   private List<T> createEntriesFromObjectNode(JsonNode langStringNode, DeserializationContext ctxt)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     T entry = nodeDeserializer.readValue(langStringNode, ctxt);
     return Lists.newArrayList(entry);
   }

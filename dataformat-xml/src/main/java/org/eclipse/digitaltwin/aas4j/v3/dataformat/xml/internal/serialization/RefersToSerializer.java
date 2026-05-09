@@ -29,6 +29,7 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins.HasSemanticsMixin;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -45,7 +46,7 @@ public class RefersToSerializer extends ValueSerializer<List<Reference>> {
 
   @Override
   public void serialize(List<Reference> value, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     if (value.isEmpty()) return;
 
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
@@ -59,8 +60,7 @@ public class RefersToSerializer extends ValueSerializer<List<Reference>> {
     xgen.writeEndObject();
   }
 
-  private void writeReference(ToXmlGenerator xgen, Reference ref)
-      throws tools.jackson.core.JacksonException {
+  private void writeReference(ToXmlGenerator xgen, Reference ref) throws JacksonException {
     xgen.writeName("reference");
     xgen.writePOJO(ref);
   }

@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -36,7 +37,7 @@ public class DataElementsSerializer extends ValueSerializer<List<SubmodelElement
   @Override
   public void serialize(
       List<SubmodelElement> value, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     xgen.writeStartObject();
     for (SubmodelElement element : value) {

@@ -22,6 +22,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -35,7 +36,7 @@ public class EnumSerializer extends ValueSerializer<Enum> {
 
   @Override
   public void serialize(Enum value, JsonGenerator gen, SerializationContext provider)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     if (value instanceof DataTypeDefXsd) {
       // only for the DataTypeDefXsd notation
       if (value.equals(DataTypeDefXsd.ANY_URI)) {
@@ -62,8 +63,7 @@ public class EnumSerializer extends ValueSerializer<Enum> {
     }
   }
 
-  private void handleTimeRelatedValue(JsonGenerator gen, Enum<?> value)
-      throws tools.jackson.core.JacksonException {
+  private void handleTimeRelatedValue(JsonGenerator gen, Enum<?> value) throws JacksonException {
     String enumString = serializeEnumName(value.name());
     String adaptedEnumString =
         "xs:g" + enumString.substring(1, 2).toUpperCase() + enumString.substring(2);

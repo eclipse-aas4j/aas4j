@@ -47,6 +47,7 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;
@@ -60,7 +61,7 @@ public class QualifierDeserializer extends ValueDeserializer<List<Qualifier>> {
 
   @Override
   public List<Qualifier> deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     try {
       ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
 
@@ -83,7 +84,7 @@ public class QualifierDeserializer extends ValueDeserializer<List<Qualifier>> {
   }
 
   private List<Qualifier> createConstraintsFromArrayNode(
-      DeserializationContext ctxt, ObjectNode node) throws tools.jackson.core.JacksonException {
+      DeserializationContext ctxt, ObjectNode node) throws JacksonException {
     ArrayNode content = (ArrayNode) node.get("qualifier");
     return DeserializationHelper.createInstancesFromArrayNode(ctxt, content, Qualifier.class);
   }

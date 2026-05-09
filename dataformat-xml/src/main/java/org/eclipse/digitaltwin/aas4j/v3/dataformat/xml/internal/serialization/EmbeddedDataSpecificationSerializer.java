@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
 import com.google.common.base.CaseFormat;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -31,7 +32,7 @@ public class EmbeddedDataSpecificationSerializer extends ValueSerializer<DataSpe
   @Override
   public void serialize(
       DataSpecificationContent data, JsonGenerator generator, SerializationContext provider)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     if (data == null) {
       return;
     }
@@ -55,7 +56,7 @@ public class EmbeddedDataSpecificationSerializer extends ValueSerializer<DataSpe
       JsonGenerator generator,
       SerializationContext provider,
       TypeSerializer typedSerializer)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     serialize(data, generator, provider);
   }
 }

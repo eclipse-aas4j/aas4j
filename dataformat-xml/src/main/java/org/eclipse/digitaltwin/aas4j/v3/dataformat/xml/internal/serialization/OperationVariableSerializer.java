@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -28,7 +29,7 @@ public class OperationVariableSerializer extends ValueSerializer<OperationVariab
   @Override
   public void serialize(
       OperationVariable operationVariable, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     List<Runnable> resetRunnables =
         ReflectionHelper.setEmptyListsToNull(operationVariable.getValue());

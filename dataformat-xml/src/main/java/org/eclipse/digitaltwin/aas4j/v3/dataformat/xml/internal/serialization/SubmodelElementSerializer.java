@@ -19,6 +19,7 @@ import java.lang.reflect.Field;
 import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.core.exc.StreamWriteException;
 import tools.jackson.databind.SerializationContext;
@@ -29,7 +30,7 @@ public class SubmodelElementSerializer extends ValueSerializer<SubmodelElement> 
 
   @Override
   public void serialize(SubmodelElement value, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
 
     try {

@@ -20,6 +20,7 @@ import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
@@ -39,7 +40,7 @@ public class AbstractLangStringsSerializer<T extends AbstractLangString>
 
   @Override
   public void serialize(List<T> langStrings, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
 
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     xgen.writeStartObject();

@@ -28,6 +28,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -66,7 +67,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
 
   @Override
   public void serialize(Environment value, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     XMLStreamWriter streamWriter = xgen.getStaxWriter();
     setPrefixes(streamWriter);
@@ -86,7 +87,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
   }
 
   private void writeOpeningTag(ToXmlGenerator xgen, XMLStreamWriter streamWriter)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     xgen.setNextName(AASENV_TAGNAME);
     xgen.writeStartObject();
     try {
@@ -99,16 +100,14 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
     }
   }
 
-  private void writeContent(Environment value, ToXmlGenerator xgen)
-      throws tools.jackson.core.JacksonException {
+  private void writeContent(Environment value, ToXmlGenerator xgen) throws JacksonException {
     writeAssetAdministrationShells(xgen, value.getAssetAdministrationShells());
     writeSubmodels(xgen, value.getSubmodels());
     writeConceptDescriptions(xgen, value.getConceptDescriptions());
   }
 
   private void writeAssetAdministrationShells(
-      ToXmlGenerator xgen, List<AssetAdministrationShell> aasList)
-      throws tools.jackson.core.JacksonException {
+      ToXmlGenerator xgen, List<AssetAdministrationShell> aasList) throws JacksonException {
     if (aasList.isEmpty()) {
       return;
     }
@@ -116,8 +115,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
   }
 
   private void writeConceptDescriptions(
-      ToXmlGenerator xgen, List<ConceptDescription> conceptDescriptions)
-      throws tools.jackson.core.JacksonException {
+      ToXmlGenerator xgen, List<ConceptDescription> conceptDescriptions) throws JacksonException {
     if (conceptDescriptions.isEmpty()) {
       return;
     }
@@ -126,7 +124,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
   }
 
   private void writeSubmodels(ToXmlGenerator xgen, List<Submodel> submodels)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     if (submodels.isEmpty()) {
       return;
     }
@@ -134,7 +132,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
   }
 
   private void writeWrappedArray(ToXmlGenerator xgen, QName wrapper, QName wrapped, List<?> list)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     // overwrite all empty list with null, as the schema does not allow empty XML lists
 
     List<Runnable> resetRunnables = new ArrayList<>();
@@ -153,7 +151,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializ
     resetRunnables.stream().forEach(r -> r.run());
   }
 
-  private void closeOpeningTag(ToXmlGenerator xgen) throws tools.jackson.core.JacksonException {
+  private void closeOpeningTag(ToXmlGenerator xgen) throws JacksonException {
     xgen.writeEndObject();
   }
 }

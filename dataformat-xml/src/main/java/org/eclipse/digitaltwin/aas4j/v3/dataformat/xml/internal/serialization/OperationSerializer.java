@@ -21,6 +21,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
@@ -29,7 +30,7 @@ public class OperationSerializer extends ValueSerializer<Operation> {
 
   @Override
   public void serialize(Operation operation, JsonGenerator gen, SerializationContext serializers)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     gen.writeStartObject();
     writeWrappedList(gen, serializers, "extensions", "extension", operation.getExtensions());
     if (operation.getCategory() != null) {
@@ -91,7 +92,7 @@ public class OperationSerializer extends ValueSerializer<Operation> {
       SerializationContext serializers,
       List<OperationVariable> inputVariables,
       String variableType)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     gen.writeName(variableType);
     gen.writeStartObject();
     gen.writeArrayPropertyStart("operationVariable");
@@ -108,7 +109,7 @@ public class OperationSerializer extends ValueSerializer<Operation> {
       String wrapperName,
       String itemName,
       List<T> values)
-      throws tools.jackson.core.JacksonException {
+      throws JacksonException {
     if (values == null || values.isEmpty()) {
       return;
     }
