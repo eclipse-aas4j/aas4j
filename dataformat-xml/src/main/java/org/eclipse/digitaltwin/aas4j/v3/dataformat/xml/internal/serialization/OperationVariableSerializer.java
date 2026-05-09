@@ -15,29 +15,28 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class OperationVariableSerializer extends JsonSerializer<OperationVariable> {
+public class OperationVariableSerializer extends ValueSerializer<OperationVariable> {
   @Override
   public void serialize(
-      OperationVariable operationVariable, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+      OperationVariable operationVariable, JsonGenerator gen, SerializationContext serializers)
+      throws tools.jackson.core.JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     List<Runnable> resetRunnables =
         ReflectionHelper.setEmptyListsToNull(operationVariable.getValue());
     xgen.writeStartObject();
-    xgen.writeFieldName("value");
+    xgen.writeName("value");
     xgen.writeStartObject();
-    xgen.writeFieldName(SubmodelElementManager.getXmlName(operationVariable.getValue().getClass()));
-    xgen.writeObject(operationVariable.getValue());
+    xgen.writeName(SubmodelElementManager.getXmlName(operationVariable.getValue().getClass()));
+    xgen.writePOJO(operationVariable.getValue());
     xgen.writeEndObject();
     xgen.writeEndObject();
     resetRunnables.stream().forEach(r -> r.run());

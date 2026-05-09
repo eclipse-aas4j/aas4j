@@ -15,25 +15,21 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
 
 public class KeyDeserializer implements CustomJsonNodeDeserializer<Key> {
 
   @Override
-  public Key readValue(JsonNode node, JsonParser parser) throws IOException {
+  public Key readValue(JsonNode node, DeserializationContext ctxt) throws JacksonException {
     JsonNode typeNode = node.get("type");
     JsonNode valueNode = node.get("value");
-    KeyTypes type = createKeyTypesFromNode(parser, typeNode);
+    KeyTypes type = DeserializationHelper.createInstanceFromNode(ctxt, typeNode, KeyTypes.class);
     String value = valueNode.asText();
     return new DefaultKey.Builder().type(type).value(value).build();
-  }
-
-  private KeyTypes createKeyTypesFromNode(JsonParser parser, JsonNode typeNode) throws IOException {
-    return DeserializationHelper.createInstanceFromNode(parser, typeNode, KeyTypes.class);
   }
 }

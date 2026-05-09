@@ -18,19 +18,18 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import static org.junit.Assert.assertEquals;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
 
 public class EnumSerializerTest {
 
   private JsonGenerator jsonGeneratorMock;
-  private SerializerProvider serializerProviderMock;
+  private SerializationContext serializerProviderMock;
   private EnumSerializer enumSerializer;
   private StringBuffer serializationOutput;
 
@@ -46,7 +45,7 @@ public class EnumSerializerTest {
             })
         .when(jsonGeneratorMock)
         .writeString(Mockito.anyString());
-    serializerProviderMock = Mockito.mock(SerializerProvider.class);
+    serializerProviderMock = Mockito.mock(SerializationContext.class);
     this.enumSerializer = new EnumSerializer();
   }
 
@@ -95,7 +94,7 @@ public class EnumSerializerTest {
     this.serializationOutput.setLength(0);
     try {
       this.enumSerializer.serialize(value, jsonGeneratorMock, serializerProviderMock);
-    } catch (IOException ex) {
+    } catch (Exception ex) {
       throw new RuntimeException(ex);
     }
     String actual = this.serializationOutput.toString();

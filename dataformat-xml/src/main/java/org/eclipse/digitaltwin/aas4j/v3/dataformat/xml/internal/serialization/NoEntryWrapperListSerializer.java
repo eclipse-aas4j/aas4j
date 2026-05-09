@@ -15,19 +15,18 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.List;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * Custom serializer for lists without individual list entry wrappers for parametrized classes.
  *
  * @param <T> serialized class within the list
  */
-public class NoEntryWrapperListSerializer<T extends Object> extends JsonSerializer<List<T>> {
+public class NoEntryWrapperListSerializer<T extends Object> extends ValueSerializer<List<T>> {
   private String outerWrapperName;
 
   /**
@@ -40,12 +39,13 @@ public class NoEntryWrapperListSerializer<T extends Object> extends JsonSerializ
   }
 
   @Override
-  public void serialize(List<T> list, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(List<T> list, JsonGenerator gen, SerializationContext serializers)
+      throws tools.jackson.core.JacksonException {
     writeList(list, (ToXmlGenerator) gen);
   }
 
-  private void writeList(List<T> list, ToXmlGenerator xgen) throws IOException {
+  private void writeList(List<T> list, ToXmlGenerator xgen)
+      throws tools.jackson.core.JacksonException {
     xgen.writeStartObject();
 
     writeOuterWrapperStart(xgen);
@@ -55,26 +55,29 @@ public class NoEntryWrapperListSerializer<T extends Object> extends JsonSerializ
     xgen.writeEndObject();
   }
 
-  private void writeListEntries(List<T> list, ToXmlGenerator xgen) throws IOException {
+  private void writeListEntries(List<T> list, ToXmlGenerator xgen)
+      throws tools.jackson.core.JacksonException {
     for (Object listEntry : list) {
-      xgen.writeObject(listEntry);
+      xgen.writePOJO(listEntry);
     }
   }
 
-  private void writeOuterWrapperStart(ToXmlGenerator xgen) throws IOException {
+  private void writeOuterWrapperStart(ToXmlGenerator xgen)
+      throws tools.jackson.core.JacksonException {
     if (outerWrapperName != null && !outerWrapperName.isEmpty()) {
-      xgen.writeObjectFieldStart(outerWrapperName);
+      xgen.writeObjectPropertyStart(outerWrapperName);
     }
   }
 
-  private void writeOuterWrapperEnd(ToXmlGenerator xgen) throws IOException {
+  private void writeOuterWrapperEnd(ToXmlGenerator xgen)
+      throws tools.jackson.core.JacksonException {
     if (outerWrapperName != null && !outerWrapperName.isEmpty()) {
       xgen.writeEndObject();
     }
   }
 
   @Override
-  public boolean isEmpty(SerializerProvider provider, List<T> value) {
+  public boolean isEmpty(SerializationContext provider, List<T> value) {
     return value == null || value.isEmpty();
   }
 }

@@ -15,16 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>> {
+public class DataElementsSerializer extends ValueSerializer<List<SubmodelElement>> {
 
   SubmodelElementSerializer ser = new SubmodelElementSerializer();
 
@@ -36,12 +35,12 @@ public class DataElementsSerializer extends JsonSerializer<List<SubmodelElement>
 
   @Override
   public void serialize(
-      List<SubmodelElement> value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+      List<SubmodelElement> value, JsonGenerator gen, SerializationContext serializers)
+      throws tools.jackson.core.JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     xgen.writeStartObject();
     for (SubmodelElement element : value) {
-      xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
+      xgen.writeName(SubmodelElementManager.getXmlName(element.getClass()));
       ser.serialize(element, xgen, serializers);
     }
     xgen.writeEndObject();

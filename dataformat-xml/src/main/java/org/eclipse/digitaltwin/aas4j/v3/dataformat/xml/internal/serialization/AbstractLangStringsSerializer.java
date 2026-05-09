@@ -16,14 +16,13 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * @author schnicke
@@ -39,8 +38,8 @@ public class AbstractLangStringsSerializer<T extends AbstractLangString>
   }
 
   @Override
-  public void serialize(List<T> langStrings, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(List<T> langStrings, JsonGenerator gen, SerializationContext serializers)
+      throws tools.jackson.core.JacksonException {
 
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     xgen.writeStartObject();
@@ -49,7 +48,7 @@ public class AbstractLangStringsSerializer<T extends AbstractLangString>
           ReflectionHelper.setEmptyListsToNull(
               element); // call is needed to prevent empty tags (e.g. statements.size=0 leads to
       // <statements />, which is not allowed according to the schema
-      xgen.writeFieldName(SubmodelElementManager.getXmlName(element.getClass()));
+      xgen.writeName(SubmodelElementManager.getXmlName(element.getClass()));
       ser.serialize(element, xgen, serializers);
 
       resetRunnables.stream().forEach(r -> r.run());

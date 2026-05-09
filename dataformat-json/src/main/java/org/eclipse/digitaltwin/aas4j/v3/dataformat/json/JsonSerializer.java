@@ -16,12 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
@@ -29,6 +23,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.JsonNodeFactory;
 
 /** Class for serializing of AAS instances. */
 public class JsonSerializer {
@@ -48,7 +47,7 @@ public class JsonSerializer {
   public String write(Object aasInstance) throws SerializationException {
     try {
       return mapper.writeValueAsString(aasInstance);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new SerializationException(
           String.format("error serializing %s", aasInstance.getClass().getSimpleName()), ex);
     }
@@ -71,7 +70,7 @@ public class JsonSerializer {
       return mapper
           .writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
           .writeValueAsString(collection);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
     }
   }
@@ -117,7 +116,7 @@ public class JsonSerializer {
       throws SerializationException {
     try {
       mapper.writeValue(new OutputStreamWriter(out, charset), aasInstance);
-    } catch (IOException ex) {
+    } catch (JacksonException ex) {
       throw new SerializationException(
           "error serializing " + aasInstance.getClass().getSimpleName(), ex);
     }
@@ -153,7 +152,7 @@ public class JsonSerializer {
         mapper
             .writerFor(mapper.getTypeFactory().constructCollectionType(List.class, clazz))
             .writeValue(new OutputStreamWriter(out, charset), collection);
-      } catch (IOException ex) {
+      } catch (JacksonException ex) {
         throw new SerializationException("error serializing list of " + clazz.getSimpleName(), ex);
       }
     }

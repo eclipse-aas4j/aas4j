@@ -15,59 +15,50 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyName;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.introspect.AnnotatedMember;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.BeanDescription;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.PropertyName;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.introspect.AnnotatedMember;
+import tools.jackson.databind.introspect.BeanPropertyDefinition;
+import tools.jackson.databind.node.ObjectNode;
 
-public class SubmodelElementDeserializer extends JsonDeserializer<SubmodelElement> {
+public class SubmodelElementDeserializer extends ValueDeserializer<SubmodelElement> {
 
   @Override
   public SubmodelElement deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
+      throws JacksonException {
     ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
     String elemName = findSubmodelElementName(parser, node);
     JsonNode nodeContent = node.get(elemName);
     Class<?> clazz = SubmodelElementManager.getClassByXmlName(elemName);
-    JsonNode normalizedNode = unwrapWrappedLists(parser, nodeContent, clazz);
+    JsonNode normalizedNode = unwrapWrappedLists(ctxt, nodeContent, clazz);
     return (SubmodelElement)
-        DeserializationHelper.createInstanceFromNode(parser, normalizedNode, clazz);
+        DeserializationHelper.createInstanceFromNode(ctxt, normalizedNode, clazz);
   }
 
   private String findSubmodelElementName(JsonParser parser, ObjectNode node)
-      throws JsonMappingException {
+      throws DatabindException {
     for (String value : SubmodelElementManager.NAME_TO_CLASS.keySet()) {
       if (node.has(value)) {
         return value;
       }
     }
-    throw new JsonMappingException(parser, "Unknown element " + node);
+    throw DatabindException.from(parser, "Unknown element " + node);
   }
 
-  private JsonNode unwrapWrappedLists(JsonParser parser, JsonNode node, Class<?> clazz) {
+  private JsonNode unwrapWrappedLists(DeserializationContext ctxt, JsonNode node, Class<?> clazz) {
     if (!(node instanceof ObjectNode)) {
       return node;
     }
-    ObjectCodec codec = parser.getCodec();
-    if (!(codec instanceof ObjectMapper)) {
-      return node;
-    }
-    ObjectMapper mapper = (ObjectMapper) codec;
-    BeanDescription desc =
-        mapper.getDeserializationConfig().introspect(mapper.constructType(clazz));
+    BeanDescription desc = ctxt.introspectBeanDescriptionForCreation(ctxt.constructType(clazz));
     ObjectNode objectNode = (ObjectNode) node;
     for (BeanPropertyDefinition prop : desc.findProperties()) {
       if (hasCustomDeserializer(prop)) {

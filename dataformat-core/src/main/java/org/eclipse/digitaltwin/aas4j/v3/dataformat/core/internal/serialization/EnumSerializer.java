@@ -16,27 +16,26 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
 
 /**
  * Serializes enum values. If enum is part of the AAS Java model, the name will be converted from
  * SCREAMING_SNAKE_CASE to UpperCamelCase, else default serialization will be used
  */
 @SuppressWarnings("rawtypes")
-public class EnumSerializer extends JsonSerializer<Enum> {
+public class EnumSerializer extends ValueSerializer<Enum> {
 
   @Override
-  public void serialize(Enum value, JsonGenerator gen, SerializerProvider provider)
-      throws IOException {
+  public void serialize(Enum value, JsonGenerator gen, SerializationContext provider)
+      throws tools.jackson.core.JacksonException {
     if (value instanceof DataTypeDefXsd) {
       // only for the DataTypeDefXsd notation
       if (value.equals(DataTypeDefXsd.ANY_URI)) {
@@ -63,7 +62,8 @@ public class EnumSerializer extends JsonSerializer<Enum> {
     }
   }
 
-  private void handleTimeRelatedValue(JsonGenerator gen, Enum<?> value) throws IOException {
+  private void handleTimeRelatedValue(JsonGenerator gen, Enum<?> value)
+      throws tools.jackson.core.JacksonException {
     String enumString = serializeEnumName(value.name());
     String adaptedEnumString =
         "xs:g" + enumString.substring(1, 2).toUpperCase() + enumString.substring(2);

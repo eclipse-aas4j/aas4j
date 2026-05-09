@@ -16,14 +16,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.EmbeddedDataSpecificationsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.EmbeddedDataSpecificationSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({"dataSpecification", "dataSpecificationContent"})
 public interface EmbeddedDataSpecificationMixin {

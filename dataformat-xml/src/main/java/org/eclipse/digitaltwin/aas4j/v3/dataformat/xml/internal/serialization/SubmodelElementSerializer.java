@@ -15,21 +15,21 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.SubmodelElementManager;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.exc.StreamWriteException;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
+public class SubmodelElementSerializer extends ValueSerializer<SubmodelElement> {
 
   @Override
-  public void serialize(SubmodelElement value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(SubmodelElement value, JsonGenerator gen, SerializationContext serializers)
+      throws tools.jackson.core.JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
 
     try {
@@ -40,20 +40,21 @@ public class SubmodelElementSerializer extends JsonSerializer<SubmodelElement> {
       String name = SubmodelElementManager.getXmlName(value.getClass());
 
       if (name != null && next.getLocalPart().equals(name)) {
-        xgen.writeObject(value); // only write the plain object without a deduplicate wrapping field
+        xgen.writePOJO(value); // only write the plain object without a deduplicate wrapping field
         return;
       }
     } catch (NoSuchFieldException | IllegalAccessException e) {
-      throw new IOException(e);
+      throw new StreamWriteException(gen, e.getMessage());
     }
 
     xgen.writeStartObject();
     String name = SubmodelElementManager.getXmlName(value.getClass());
     if (name == null) {
-      throw new IOException("Unknown submodel element type: " + value.getClass().getName());
+      throw new StreamWriteException(
+          gen, "Unknown submodel element type: " + value.getClass().getName());
     }
-    xgen.writeFieldName(name);
-    xgen.writeObject(value);
+    xgen.writeName(name);
+    xgen.writePOJO(value);
     xgen.writeEndObject();
   }
 }
