@@ -17,6 +17,8 @@
 /** */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
+import java.lang.reflect.Field;
+import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
 import tools.jackson.core.JacksonException;
@@ -24,9 +26,6 @@ import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ValueSerializer;
 import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
-
-import javax.xml.namespace.QName;
-import java.lang.reflect.Field;
 
 public class AbstractLangStringSerializer<T extends AbstractLangString> extends ValueSerializer<T> {
 
