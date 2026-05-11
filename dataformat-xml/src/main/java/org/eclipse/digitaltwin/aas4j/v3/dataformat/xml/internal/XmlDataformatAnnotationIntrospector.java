@@ -16,13 +16,13 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.cfg.MapperConfig;
-import com.fasterxml.jackson.databind.introspect.Annotated;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
-import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
 import java.util.Collection;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
+import tools.jackson.databind.cfg.MapperConfig;
+import tools.jackson.databind.introspect.Annotated;
+import tools.jackson.databind.introspect.AnnotatedClass;
+import tools.jackson.databind.introspect.AnnotatedMethod;
+import tools.jackson.dataformat.xml.JacksonXmlAnnotationIntrospector;
 
 /**
  * This class helps to dynamically decide how to de-/serialize classes and properties defined in the
@@ -45,7 +45,7 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
 
   @Override
   public String findNamespace(MapperConfig<?> config, Annotated ann) {
-    String ns = super.findNamespace(null, ann);
+    String ns = super.findNamespace(config, ann);
     if (ns == null) {
       return myDefaultNamespace;
     } else {
@@ -54,8 +54,8 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
   }
 
   @Override
-  public String[] findSerializationPropertyOrder(AnnotatedClass ac) {
-    String[] order = super.findSerializationPropertyOrder(ac);
+  public String[] findSerializationPropertyOrder(MapperConfig<?> config, AnnotatedClass ac) {
+    String[] order = super.findSerializationPropertyOrder(config, ac);
     if (order == null) {
       order =
           new String[] {
@@ -113,8 +113,8 @@ public class XmlDataformatAnnotationIntrospector extends JacksonXmlAnnotationInt
   }
 
   @Override
-  public JsonInclude.Value findPropertyInclusion(Annotated a) {
-    JsonInclude.Value result = super.findPropertyInclusion(a);
+  public JsonInclude.Value findPropertyInclusion(MapperConfig<?> config, Annotated a) {
+    JsonInclude.Value result = super.findPropertyInclusion(config, a);
     if (result != JsonInclude.Value.empty()) {
       return result;
     }

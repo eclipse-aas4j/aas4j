@@ -16,17 +16,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.module.SimpleAbstractTypeResolver;
 
 /** Class for deserializing/parsing AAS JSON documents. */
 public class JsonDeserializer {
@@ -70,7 +69,7 @@ public class JsonDeserializer {
   public <T> T read(String value, Class<T> valueType) throws DeserializationException {
     try {
       return mapper.readValue(value, valueType);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
     }
   }
@@ -88,7 +87,7 @@ public class JsonDeserializer {
     try {
       return mapper.readValue(
           value, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException(
           "error deserializing list of " + valueType.getSimpleName(), ex);
     }
@@ -123,7 +122,7 @@ public class JsonDeserializer {
       throws DeserializationException {
     try {
       return mapper.readValue(new InputStreamReader(stream, charset), valueType);
-    } catch (IOException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
     }
   }
@@ -176,7 +175,7 @@ public class JsonDeserializer {
   public <T> T read(JsonNode node, Class<T> valueType) throws DeserializationException {
     try {
       return mapper.treeToValue(node, valueType);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException("error deserializing " + valueType.getSimpleName(), ex);
     }
   }
@@ -194,7 +193,7 @@ public class JsonDeserializer {
     try {
       return mapper.treeToValue(
           node, mapper.getTypeFactory().constructCollectionLikeType(List.class, valueType));
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException(
           "error deserializing list of " + valueType.getSimpleName(), ex);
     }

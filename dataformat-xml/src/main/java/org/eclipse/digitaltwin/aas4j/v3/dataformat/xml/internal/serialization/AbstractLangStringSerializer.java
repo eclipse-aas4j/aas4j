@@ -17,17 +17,17 @@
 /** */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import javax.xml.namespace.QName;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AbstractLangString;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class AbstractLangStringSerializer<T extends AbstractLangString> extends JsonSerializer<T> {
+public class AbstractLangStringSerializer<T extends AbstractLangString> extends ValueSerializer<T> {
 
   private String name;
 
@@ -36,8 +36,8 @@ public class AbstractLangStringSerializer<T extends AbstractLangString> extends 
   }
 
   @Override
-  public void serialize(T langString, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(T langString, JsonGenerator gen, SerializationContext serializers)
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     try {
       Field nextName = xgen.getClass().getDeclaredField("_nextName");
@@ -53,12 +53,12 @@ public class AbstractLangStringSerializer<T extends AbstractLangString> extends 
   }
 
   protected void serializeLangStringContent(ToXmlGenerator xgen, AbstractLangString langString)
-      throws IOException {
+      throws JacksonException {
     xgen.writeStartObject();
-    xgen.writeFieldName("language");
+    xgen.writeName("language");
     xgen.writeString(langString.getLanguage());
 
-    xgen.writeFieldName("text");
+    xgen.writeName("text");
     xgen.writeString(langString.getText());
 
     xgen.writeEndObject();

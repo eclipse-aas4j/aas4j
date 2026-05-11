@@ -15,23 +15,22 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.TreeNode;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.TreeNode;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.ObjectNode;
+import tools.jackson.databind.node.StringNode;
 
-public class SubmodelElementsDeserializer extends JsonDeserializer<List<SubmodelElement>> {
+public class SubmodelElementsDeserializer extends ValueDeserializer<List<SubmodelElement>> {
 
   private SubmodelElementDeserializer deserializer = new SubmodelElementDeserializer();
 
@@ -43,9 +42,9 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
 
   @Override
   public List<SubmodelElement> deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
+      throws JacksonException {
     TreeNode treeNode = DeserializationHelper.getRootTreeNode(parser);
-    if (treeNode instanceof TextNode) {
+    if (treeNode instanceof StringNode) {
       return new ArrayList<>();
     } else {
       return createSubmodelElements(parser, ctxt, treeNode);
@@ -53,8 +52,7 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
   }
 
   private List<SubmodelElement> createSubmodelElements(
-      JsonParser parser, DeserializationContext ctxt, TreeNode treeNode)
-      throws IOException, JsonProcessingException {
+      JsonParser parser, DeserializationContext ctxt, TreeNode treeNode) throws JacksonException {
     if (treeNode.isArray()) {
       return getSubmodelElementsFromArrayNode(parser, ctxt, (ArrayNode) treeNode);
     } else {
@@ -64,14 +62,14 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
 
   private List<SubmodelElement> getSubmodelElementsFromObjectNode(
       JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement)
-      throws IOException, JsonProcessingException {
+      throws JacksonException {
 
-    Iterator<String> iter = nodeSubmodelElement.fieldNames();
+    Iterator<String> iter = nodeSubmodelElement.propertyNames().iterator();
     List<SubmodelElement> submodelElements = new ArrayList<SubmodelElement>();
 
     while (iter.hasNext()) {
       String submodelElementName = iter.next();
-      final ObjectMapper mapper = new ObjectMapper();
+      final JsonMapper mapper = JsonMapper.builder().build();
       final ObjectNode node = mapper.createObjectNode();
       node.set(submodelElementName, nodeSubmodelElement.get(submodelElementName));
       if (nodeSubmodelElement.get(submodelElementName).isArray()) {
@@ -91,8 +89,7 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
   }
 
   private List<SubmodelElement> getSubmodelElementsFromArrayNode(
-      JsonParser parser, DeserializationContext ctxt, ArrayNode arrayNode)
-      throws IOException, JsonProcessingException {
+      JsonParser parser, DeserializationContext ctxt, ArrayNode arrayNode) throws JacksonException {
     List<SubmodelElement> elements = new ArrayList<>();
     for (int i = 0; i < arrayNode.size(); i++) {
       JsonNode jsonNode = arrayNode.get(i);
@@ -104,9 +101,8 @@ public class SubmodelElementsDeserializer extends JsonDeserializer<List<Submodel
 
   private SubmodelElement getSubmodelElementFromJsonNode(
       JsonParser parser, DeserializationContext ctxt, JsonNode nodeSubmodelElement)
-      throws IOException, JsonProcessingException {
-    JsonParser parserReference =
-        parser.getCodec().getFactory().getCodec().treeAsTokens(nodeSubmodelElement);
-    return deserializer.deserialize(parserReference, ctxt);
+      throws JacksonException {
+    return DeserializationHelper.createInstanceFromNode(
+        ctxt, nodeSubmodelElement, SubmodelElement.class);
   }
 }

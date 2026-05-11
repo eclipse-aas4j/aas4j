@@ -16,9 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementsDeserializer;
@@ -27,6 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AasSubmodelElements;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public interface SubmodelElementListMixin {
   @JacksonXmlProperty(namespace = AasXmlNamespaceContext.AAS_URI, localName = "value")

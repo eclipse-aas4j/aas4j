@@ -15,9 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.Error;
 import com.networknt.schema.Schema;
 import com.networknt.schema.SchemaRegistry;
@@ -30,6 +27,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Class for validating a serialized instance of AssetAdministrationShellEnvironment against a
@@ -38,7 +38,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 public class JsonSchemaValidator implements SchemaValidator {
 
   private static final String SCHEMA = "/aas.json";
-  private final ObjectMapper mapper = new ObjectMapper();
+  private final JsonMapper mapper = JsonMapper.builder().build();
 
   public JsonSchemaValidator() {}
 
@@ -74,7 +74,7 @@ public class JsonSchemaValidator implements SchemaValidator {
       JsonNode node = mapper.readTree(serialized);
       Set<Error> validationMessages = new HashSet<>(schema.validate(node));
       return generalizeValidationMessagesAsStringSet(validationMessages);
-    } catch (JsonProcessingException e) {
+    } catch (JacksonException e) {
       return Set.of(e.getMessage());
     }
   }

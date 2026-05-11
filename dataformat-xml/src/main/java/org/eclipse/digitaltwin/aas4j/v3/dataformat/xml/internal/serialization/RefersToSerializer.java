@@ -25,15 +25,15 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins.HasSemanticsMixin;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
  * Serializes the RefersTo value of {@link Extension}. <br>
@@ -42,11 +42,11 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
  *
  * @author schnicke
  */
-public class RefersToSerializer extends JsonSerializer<List<Reference>> {
+public class RefersToSerializer extends ValueSerializer<List<Reference>> {
 
   @Override
-  public void serialize(List<Reference> value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(List<Reference> value, JsonGenerator gen, SerializationContext serializers)
+      throws JacksonException {
     if (value.isEmpty()) return;
 
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
@@ -60,8 +60,8 @@ public class RefersToSerializer extends JsonSerializer<List<Reference>> {
     xgen.writeEndObject();
   }
 
-  private void writeReference(ToXmlGenerator xgen, Reference ref) throws IOException {
-    xgen.writeFieldName("reference");
-    xgen.writeObject(ref);
+  private void writeReference(ToXmlGenerator xgen, Reference ref) throws JacksonException {
+    xgen.writeName("reference");
+    xgen.writePOJO(ref);
   }
 }

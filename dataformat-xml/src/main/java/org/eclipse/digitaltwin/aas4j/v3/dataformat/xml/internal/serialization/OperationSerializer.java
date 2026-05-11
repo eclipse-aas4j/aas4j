@@ -16,42 +16,44 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import java.io.IOException;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
 
-public class OperationSerializer extends JsonSerializer<Operation> {
+public class OperationSerializer extends ValueSerializer<Operation> {
 
   @Override
-  public void serialize(Operation operation, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(Operation operation, JsonGenerator gen, SerializationContext serializers)
+      throws JacksonException {
     gen.writeStartObject();
     writeWrappedList(gen, serializers, "extensions", "extension", operation.getExtensions());
     if (operation.getCategory() != null) {
-      gen.writeStringField("category", operation.getCategory());
+      gen.writeStringProperty("category", operation.getCategory());
     }
     if (operation.getIdShort() != null) {
-      gen.writeStringField("idShort", operation.getIdShort());
+      gen.writeStringProperty("idShort", operation.getIdShort());
     }
     List<LangStringNameType> displayName = operation.getDisplayName();
     if (displayName != null && !displayName.isEmpty()) {
-      gen.writeFieldName("displayName");
+      gen.writeName("displayName");
       new LangStringsNameTypeSerializer().serialize(displayName, gen, serializers);
     }
     List<LangStringTextType> description = operation.getDescription();
     if (description != null && !description.isEmpty()) {
-      gen.writeFieldName("description");
+      gen.writeName("description");
       new LangStringsTextTypeSerializer().serialize(description, gen, serializers);
     }
     if (operation.getSemanticId() != null) {
-      gen.writeFieldName("semanticId");
-      serializers.defaultSerializeValue(operation.getSemanticId(), gen);
+      gen.writeName("semanticId");
+      serializers
+          .findValueSerializer(operation.getSemanticId().getClass())
+          .serialize(operation.getSemanticId(), gen, serializers);
     }
     writeWrappedList(
         gen,
@@ -87,15 +89,15 @@ public class OperationSerializer extends JsonSerializer<Operation> {
 
   private static void serializeOperationVariable(
       JsonGenerator gen,
-      SerializerProvider serializers,
+      SerializationContext serializers,
       List<OperationVariable> inputVariables,
       String variableType)
-      throws IOException {
-    gen.writeFieldName(variableType);
+      throws JacksonException {
+    gen.writeName(variableType);
     gen.writeStartObject();
-    gen.writeArrayFieldStart("operationVariable");
+    gen.writeArrayPropertyStart("operationVariable");
     for (OperationVariable var : inputVariables) {
-      serializers.defaultSerializeValue(var, gen);
+      serializers.findValueSerializer(var.getClass()).serialize(var, gen, serializers);
     }
     gen.writeEndArray();
     gen.writeEndObject();
@@ -103,19 +105,19 @@ public class OperationSerializer extends JsonSerializer<Operation> {
 
   private static <T> void writeWrappedList(
       JsonGenerator gen,
-      SerializerProvider serializers,
+      SerializationContext serializers,
       String wrapperName,
       String itemName,
       List<T> values)
-      throws IOException {
+      throws JacksonException {
     if (values == null || values.isEmpty()) {
       return;
     }
-    gen.writeFieldName(wrapperName);
+    gen.writeName(wrapperName);
     gen.writeStartObject();
-    gen.writeArrayFieldStart(itemName);
+    gen.writeArrayPropertyStart(itemName);
     for (T value : values) {
-      serializers.defaultSerializeValue(value, gen);
+      serializers.findValueSerializer(value.getClass()).serialize(value, gen, serializers);
     }
     gen.writeEndArray();
     gen.writeEndObject();

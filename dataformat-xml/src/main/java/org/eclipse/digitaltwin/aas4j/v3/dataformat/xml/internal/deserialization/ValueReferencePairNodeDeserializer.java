@@ -17,12 +17,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultValueReferencePair;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
 
 public class ValueReferencePairNodeDeserializer
     implements CustomJsonNodeDeserializer<ValueReferencePair> {
@@ -30,13 +30,14 @@ public class ValueReferencePairNodeDeserializer
   public static final String VALUE_ID = "valueId";
 
   @Override
-  public ValueReferencePair readValue(JsonNode node, JsonParser parser) throws IOException {
+  public ValueReferencePair readValue(JsonNode node, DeserializationContext ctxt)
+      throws JacksonException {
     String value = node.get("value").asText();
 
     if (!node.has(VALUE_ID)) return new DefaultValueReferencePair.Builder().value(value).build();
 
     Reference valueId =
-        DeserializationHelper.createInstanceFromNode(parser, node.get(VALUE_ID), Reference.class);
+        DeserializationHelper.createInstanceFromNode(ctxt, node.get(VALUE_ID), Reference.class);
     return new DefaultValueReferencePair.Builder().value(value).valueId(valueId).build();
   }
 }

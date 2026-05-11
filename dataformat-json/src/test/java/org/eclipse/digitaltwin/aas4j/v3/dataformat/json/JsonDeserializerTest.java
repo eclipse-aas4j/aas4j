@@ -18,7 +18,6 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -44,6 +43,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import tools.jackson.databind.node.JsonNodeFactory;
 
 public class JsonDeserializerTest {
   private static JsonDeserializer deserializerToTest;

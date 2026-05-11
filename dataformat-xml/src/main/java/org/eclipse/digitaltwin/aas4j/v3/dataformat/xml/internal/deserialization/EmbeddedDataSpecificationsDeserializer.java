@@ -15,12 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,26 +23,32 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.Reflection
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.node.ObjectNode;
 
 public class EmbeddedDataSpecificationsDeserializer
-    extends JsonDeserializer<DataSpecificationContent> {
+    extends ValueDeserializer<DataSpecificationContent> {
 
   private static final Logger logger =
       LoggerFactory.getLogger(EmbeddedDataSpecificationsDeserializer.class);
 
   @Override
   public DataSpecificationContent deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws IOException {
+      throws JacksonException {
     ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
     if (node == null) {
       return null;
     }
-
-    return createEmbeddedDataSpecificationsFromContent(parser, node);
+    return createEmbeddedDataSpecificationsFromContent(ctxt, parser, node);
   }
 
   private DataSpecificationContent createEmbeddedDataSpecificationsFromContent(
-      JsonParser parser, JsonNode node) throws IOException {
+      DeserializationContext ctxt, JsonParser parser, JsonNode node) throws JacksonException {
     JsonNode contentNode = node;
     if (contentNode.isObject() && contentNode.has("dataSpecificationContent")) {
       contentNode = contentNode.get("dataSpecificationContent");
@@ -59,39 +59,39 @@ public class EmbeddedDataSpecificationsDeserializer
 
     Set<Class<?>> subtypes = ReflectionHelper.SUBTYPES.get(DataSpecificationContent.class);
     if (subtypes == null || subtypes.isEmpty()) {
-      throw new IOException("No known subtypes of DataSpecificationContent registered");
+      throw DatabindException.from(
+          parser, "No known subtypes of DataSpecificationContent registered");
     }
     if (contentNode.isObject()) {
-      Iterator<Map.Entry<String, JsonNode>> fields = contentNode.fields();
-      while (fields.hasNext()) {
-        Map.Entry<String, JsonNode> field = fields.next();
+      for (Map.Entry<String, JsonNode> field : contentNode.properties()) {
         DataSpecificationContent content =
-            tryDeserializeDataSpecification(parser, field.getKey(), field.getValue(), subtypes);
+            tryDeserializeDataSpecification(ctxt, field.getKey(), field.getValue(), subtypes);
         if (content != null) {
           return content;
         }
       }
     }
 
-    DataSpecificationContent direct = tryDeserializeFromNode(parser, contentNode, subtypes);
+    DataSpecificationContent direct = tryDeserializeFromNode(ctxt, contentNode, subtypes);
     if (direct != null) {
       return direct;
     }
 
-    throw new IOException(
+    throw DatabindException.from(
+        parser,
         "Was expecting a known subclass of DataSpecificationContent but found " + contentNode);
   }
 
   private DataSpecificationContent tryDeserializeDataSpecification(
-      JsonParser parser, String fieldName, JsonNode fieldValue, Set<Class<?>> subtypes)
-      throws IOException {
+      DeserializationContext ctxt, String fieldName, JsonNode fieldValue, Set<Class<?>> subtypes)
+      throws JacksonException {
     Iterator<Class<?>> iter = subtypes.iterator();
     while (iter.hasNext()) {
       Class<?> clazz = iter.next();
       if (matchesType(fieldName, clazz)) {
         try {
           return (DataSpecificationContent)
-              DeserializationHelper.createInstanceFromNode(parser, fieldValue, clazz);
+              DeserializationHelper.createInstanceFromNode(ctxt, fieldValue, clazz);
         } catch (Exception e) {
           if (logger.isDebugEnabled()) {
             logger.debug(
@@ -107,11 +107,11 @@ public class EmbeddedDataSpecificationsDeserializer
   }
 
   private DataSpecificationContent tryDeserializeFromNode(
-      JsonParser parser, JsonNode node, Set<Class<?>> subtypes) throws IOException {
+      DeserializationContext ctxt, JsonNode node, Set<Class<?>> subtypes) throws JacksonException {
     for (Class<?> clazz : subtypes) {
       try {
         return (DataSpecificationContent)
-            DeserializationHelper.createInstanceFromNode(parser, node, clazz);
+            DeserializationHelper.createInstanceFromNode(ctxt, node, clazz);
       } catch (Exception e) {
         if (logger.isDebugEnabled()) {
           logger.debug(

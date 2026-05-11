@@ -15,10 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.OperationVariableDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 public interface OperationMixin {
   @JsonDeserialize(using = OperationVariableDeserializer.class)

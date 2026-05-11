@@ -15,18 +15,17 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import java.io.IOException;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
  * Deserializes enum values converting element names from UpperCamelCase to SCREAMING_SNAKE_CASE
  *
  * @param <T> Type of enum to deserialize
  */
-public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
+public class EnumDeserializer<T extends Enum<T>> extends ValueDeserializer<T> {
 
   protected final Class<T> type;
 
@@ -35,10 +34,9 @@ public class EnumDeserializer<T extends Enum<T>> extends JsonDeserializer<T> {
   }
 
   @Override
-  public T deserialize(JsonParser parser, DeserializationContext context)
-      throws IOException, JsonProcessingException {
+  public T deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
 
-    String value = parser.getText();
+    String value = parser.getString();
 
     if (value.startsWith("xs:")) {
       value = value.substring(3);

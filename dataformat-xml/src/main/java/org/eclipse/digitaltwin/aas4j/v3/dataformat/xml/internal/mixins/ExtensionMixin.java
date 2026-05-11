@@ -16,10 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.RefersToSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 @JsonPropertyOrder({
   "semanticId",
