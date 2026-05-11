@@ -37,12 +37,14 @@
         <module>dataformat-xml</module>
     </modules>
     <properties>
-        <revision.major>2</revision.major>
-        <revision.minor>1</revision.minor>
+        <revision.major>3</revision.major>
+        <revision.minor>0</revision.minor>
         <revision.patch>0</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
-        <model.version>2.1.0-SNAPSHOT</model.version>
+        <model.version>3.0.0-SNAPSHOT</model.version>
 
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <plugin.central-publishing-maven-plugin.version>0.10.0</plugin.central-publishing-maven-plugin.version>
@@ -116,15 +118,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${plugin.compiler.version}</version>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
