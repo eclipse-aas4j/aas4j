@@ -75,8 +75,30 @@ public class SubmodelElementManager {
             .collect(Collectors.toMap(x -> x.getValue(), x -> x.getKey()));
   }
 
+  /**
+   * Resolves the XML element name for a given submodel element type.
+   *
+   * <p>The mapping is defined in {@code CLASS_TO_NAME}. If the exact class is not present, the
+   * method walks up the class hierarchy and returns the first mapped superclass. This supports
+   * subclasses of the known model implementations.
+   *
+   * @param type the Java class to resolve
+   * @return the XML element local name, or {@code null} if no mapping exists
+   */
   public static String getXmlName(Class<?> type) {
-    return CLASS_TO_NAME.get(type);
+    String name = CLASS_TO_NAME.get(type);
+    if (name != null) {
+      return name;
+    }
+    Class<?> current = type.getSuperclass();
+    while (current != null) {
+      name = CLASS_TO_NAME.get(current);
+      if (name != null) {
+        return name;
+      }
+      current = current.getSuperclass();
+    }
+    return null;
   }
 
   public static Class<?> getClassByXmlName(String xmlName) {
