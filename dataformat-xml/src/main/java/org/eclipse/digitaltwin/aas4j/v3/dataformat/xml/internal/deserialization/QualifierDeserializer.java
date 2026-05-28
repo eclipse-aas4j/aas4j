@@ -41,28 +41,27 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Lists;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.ObjectNode;
 
-public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
+public class QualifierDeserializer extends ValueDeserializer<List<Qualifier>> {
 
   private static Logger logger = LoggerFactory.getLogger(QualifierDeserializer.class);
 
   @Override
   public List<Qualifier> deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
+      throws JacksonException {
     try {
       ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
 
@@ -71,10 +70,10 @@ public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
       }
       JsonNode qualifierNode = node.get("qualifier");
       if (qualifierNode.isArray()) {
-        return createConstraintsFromArrayNode(parser, node);
+        return createConstraintsFromArrayNode(ctxt, node);
       } else {
         Qualifier qualifier =
-            DeserializationHelper.createInstanceFromNode(parser, qualifierNode, Qualifier.class);
+            DeserializationHelper.createInstanceFromNode(ctxt, qualifierNode, Qualifier.class);
         return Lists.newArrayList(qualifier);
       }
     } catch (ClassCastException e) {
@@ -84,9 +83,9 @@ public class QualifierDeserializer extends JsonDeserializer<List<Qualifier>> {
     }
   }
 
-  private List<Qualifier> createConstraintsFromArrayNode(JsonParser parser, ObjectNode node)
-      throws IOException {
+  private List<Qualifier> createConstraintsFromArrayNode(
+      DeserializationContext ctxt, ObjectNode node) throws JacksonException {
     ArrayNode content = (ArrayNode) node.get("qualifier");
-    return DeserializationHelper.createInstancesFromArrayNode(parser, content, Qualifier.class);
+    return DeserializationHelper.createInstancesFromArrayNode(ctxt, content, Qualifier.class);
   }
 }

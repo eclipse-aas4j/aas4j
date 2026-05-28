@@ -16,52 +16,52 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
-public class OperationVariableDeserializer extends JsonDeserializer<List<OperationVariable>> {
+public class OperationVariableDeserializer extends ValueDeserializer<List<OperationVariable>> {
 
   @Override
   public List<OperationVariable> deserialize(JsonParser parser, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
-    JsonNode rootNode = parser.getCodec().readTree(parser);
+      throws JacksonException {
+    JsonNode rootNode = ctxt.readTree(parser);
     List<OperationVariable> result = new ArrayList<>();
 
     if (rootNode.isArray()) {
       for (JsonNode element : rootNode) {
         if (element.has("operationVariable")) {
-          deserializeOperationVariable(parser, element, result);
+          deserializeOperationVariable(ctxt, element, result);
         }
       }
     } else if (rootNode.isObject()) {
       if (!rootNode.has("operationVariable")) {
         return result;
       }
-      deserializeOperationVariable(parser, rootNode, result);
+      deserializeOperationVariable(ctxt, rootNode, result);
     }
 
     return result;
   }
 
   private static void deserializeOperationVariable(
-      JsonParser parser, JsonNode element, List<OperationVariable> result) throws IOException {
+      DeserializationContext ctxt, JsonNode element, List<OperationVariable> result)
+      throws JacksonException {
     JsonNode opVarNode = element.get("operationVariable");
     if (opVarNode.isArray()) {
       for (JsonNode inner : opVarNode) {
         OperationVariable opVar =
-            DeserializationHelper.createInstanceFromNode(parser, inner, OperationVariable.class);
+            DeserializationHelper.createInstanceFromNode(ctxt, inner, OperationVariable.class);
         result.add(opVar);
       }
     } else {
       OperationVariable opVar =
-          DeserializationHelper.createInstanceFromNode(parser, opVarNode, OperationVariable.class);
+          DeserializationHelper.createInstanceFromNode(ctxt, opVarNode, OperationVariable.class);
       result.add(opVar);
     }
   }

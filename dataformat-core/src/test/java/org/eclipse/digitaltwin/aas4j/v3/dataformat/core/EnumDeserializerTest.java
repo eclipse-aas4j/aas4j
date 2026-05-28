@@ -16,9 +16,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
@@ -27,6 +24,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
 
 public class EnumDeserializerTest {
 
@@ -88,12 +87,12 @@ public class EnumDeserializerTest {
   @SuppressWarnings("rawtypes")
   private void assertDeserialization(String value, Enum<?> expected) {
     try {
-      Mockito.doReturn(value).when(jsonParserMock).getText();
+      Mockito.doReturn(value).when(jsonParserMock).getString();
       Class<? extends Enum> type = expected.getClass();
       EnumDeserializer<? extends Enum> enumDeserializer = new EnumDeserializer<>(type);
       Enum actual = enumDeserializer.deserialize(jsonParserMock, deserializationContextMock);
       Assert.assertEquals(expected, actual);
-    } catch (IOException ex) {
+    } catch (Exception ex) {
       throw new RuntimeException(ex);
     }
   }

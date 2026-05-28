@@ -15,25 +15,24 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.google.common.base.CaseFormat;
-import java.io.IOException;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.jsontype.TypeSerializer;
 
 /**
  * Custom Serializer for class DataSpecification. Adds type information in form of a reference. Uses
  * DataSpecificationManager to resolve java type to reference.
  */
-public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpecificationContent> {
+public class EmbeddedDataSpecificationSerializer extends ValueSerializer<DataSpecificationContent> {
 
   @Override
   public void serialize(
-      DataSpecificationContent data, JsonGenerator generator, SerializerProvider provider)
-      throws IOException {
+      DataSpecificationContent data, JsonGenerator generator, SerializationContext provider)
+      throws JacksonException {
     if (data == null) {
       return;
     }
@@ -47,7 +46,7 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
     }
     className = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, className);
     generator.writeStartObject();
-    generator.writeObjectField(className, data);
+    generator.writePOJOProperty(className, data);
     generator.writeEndObject();
   }
 
@@ -55,9 +54,9 @@ public class EmbeddedDataSpecificationSerializer extends JsonSerializer<DataSpec
   public void serializeWithType(
       DataSpecificationContent data,
       JsonGenerator generator,
-      SerializerProvider provider,
+      SerializationContext provider,
       TypeSerializer typedSerializer)
-      throws IOException, JsonProcessingException {
+      throws JacksonException {
     serialize(data, generator, provider);
   }
 }

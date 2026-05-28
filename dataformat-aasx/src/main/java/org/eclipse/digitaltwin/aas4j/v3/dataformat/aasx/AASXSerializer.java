@@ -326,7 +326,7 @@ public class AASXSerializer {
     }
     writeDataToPart(part, content);
     root.registerPartAndContentType(part);
-    relateTo.addRelationship(partName, TargetMode.EXTERNAL, relType, createUniqueID());
+    relateTo.addRelationship(partName, TargetMode.INTERNAL, relType, createUniqueID());
     return part;
   }
 
