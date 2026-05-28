@@ -16,14 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.dataformat.xml.XmlFactory;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,6 +34,14 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.module.SimpleAbstractTypeResolver;
+import tools.jackson.databind.module.SimpleModule;
+import tools.jackson.dataformat.xml.XmlFactory;
+import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.dataformat.xml.XmlReadFeature;
 
 public class XmlDeserializer {
 
@@ -50,7 +50,7 @@ public class XmlDeserializer {
   protected SimpleAbstractTypeResolver typeResolver;
 
   @SuppressWarnings("rawtypes")
-  protected static Map<Class<?>, JsonDeserializer> customDeserializers =
+  protected static Map<Class<?>, ValueDeserializer> customDeserializers =
       Map.of(
           SubmodelElement.class, new SubmodelElementDeserializer(),
           Operation.class, new OperationDeserializer());
@@ -68,18 +68,19 @@ public class XmlDeserializer {
   }
 
   protected void buildMapper() {
-    mapper =
+    XmlMapper.Builder builder =
         XmlMapper.builder(xmlFactory)
             .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-            .enable(FromXmlParser.Feature.EMPTY_ELEMENT_AS_NULL)
+            .enable(XmlReadFeature.EMPTY_ELEMENT_AS_NULL)
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-            .serializationInclusion(JsonInclude.Include.NON_NULL)
+            .changeDefaultPropertyInclusion(
+                incl -> incl.withValueInclusion(JsonInclude.Include.NON_NULL))
             .annotationIntrospector(new XmlDataformatAnnotationIntrospector())
             .addModule(buildImplementationModule())
             .addModule(buildCustomDeserializerModule())
-            .addModule(buildEnumModule())
-            .build();
-    ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
+            .addModule(buildEnumModule());
+    ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> builder.addMixIn(x.getKey(), x.getValue()));
+    mapper = builder.build();
   }
 
   protected SimpleModule buildCustomDeserializerModule() {
@@ -118,7 +119,7 @@ public class XmlDeserializer {
   public Environment read(String value) throws DeserializationException {
     try {
       return mapper.readValue(value, Environment.class);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new DeserializationException("deserialization failed", ex);
     }
   }

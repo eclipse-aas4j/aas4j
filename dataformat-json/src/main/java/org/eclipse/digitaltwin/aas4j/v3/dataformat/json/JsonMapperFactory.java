@@ -17,18 +17,18 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.json.JsonMapper.Builder;
+import tools.jackson.databind.module.SimpleAbstractTypeResolver;
+import tools.jackson.databind.module.SimpleModule;
 
 /**
  * Factory for creating a {@link JsonMapper} configured to produce and consume AAS Version 3
@@ -45,14 +45,15 @@ public class JsonMapperFactory {
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
             .annotationIntrospector(new ReflectionAnnotationIntrospector())
-            .serializationInclusion(JsonInclude.Include.NON_NULL);
+            .changeDefaultPropertyInclusion(
+                incl -> incl.withValueInclusion(JsonInclude.Include.NON_NULL));
 
     getModulesToInstall(typeResolver).stream().forEach(m -> builder.addModule(m));
+    ReflectionHelper.JSON_MIXINS
+        .entrySet()
+        .forEach(x -> builder.addMixIn(x.getKey(), x.getValue()));
 
-    JsonMapper mapper = builder.build();
-    ReflectionHelper.JSON_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
-
-    return mapper;
+    return builder.build();
   }
 
   protected List<SimpleModule> getModulesToInstall(SimpleAbstractTypeResolver typeResolver) {

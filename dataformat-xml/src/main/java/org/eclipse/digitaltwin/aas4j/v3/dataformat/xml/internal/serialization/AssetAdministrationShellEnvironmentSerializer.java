@@ -15,11 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +28,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.dataformat.xml.ser.ToXmlGenerator;
 
-public class AssetAdministrationShellEnvironmentSerializer extends JsonSerializer<Environment> {
+public class AssetAdministrationShellEnvironmentSerializer extends ValueSerializer<Environment> {
 
   private static final String[] SCHEMA_LOCATION = {
     "xsi:schemaLocation", "https://admin-shell.io/aas/3/1 AAS.xsd"
@@ -66,8 +66,8 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
   }
 
   @Override
-  public void serialize(Environment value, JsonGenerator gen, SerializerProvider serializers)
-      throws IOException {
+  public void serialize(Environment value, JsonGenerator gen, SerializationContext serializers)
+      throws JacksonException {
     ToXmlGenerator xgen = (ToXmlGenerator) gen;
     XMLStreamWriter streamWriter = xgen.getStaxWriter();
     setPrefixes(streamWriter);
@@ -87,7 +87,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
   }
 
   private void writeOpeningTag(ToXmlGenerator xgen, XMLStreamWriter streamWriter)
-      throws IOException {
+      throws JacksonException {
     xgen.setNextName(AASENV_TAGNAME);
     xgen.writeStartObject();
     try {
@@ -100,14 +100,14 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
     }
   }
 
-  private void writeContent(Environment value, ToXmlGenerator xgen) throws IOException {
+  private void writeContent(Environment value, ToXmlGenerator xgen) throws JacksonException {
     writeAssetAdministrationShells(xgen, value.getAssetAdministrationShells());
     writeSubmodels(xgen, value.getSubmodels());
     writeConceptDescriptions(xgen, value.getConceptDescriptions());
   }
 
   private void writeAssetAdministrationShells(
-      ToXmlGenerator xgen, List<AssetAdministrationShell> aasList) throws IOException {
+      ToXmlGenerator xgen, List<AssetAdministrationShell> aasList) throws JacksonException {
     if (aasList.isEmpty()) {
       return;
     }
@@ -115,7 +115,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
   }
 
   private void writeConceptDescriptions(
-      ToXmlGenerator xgen, List<ConceptDescription> conceptDescriptions) throws IOException {
+      ToXmlGenerator xgen, List<ConceptDescription> conceptDescriptions) throws JacksonException {
     if (conceptDescriptions.isEmpty()) {
       return;
     }
@@ -123,7 +123,8 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
         xgen, CONCEPTDICTIONARYLIST_TAGNAME, CONCEPTDICTIONARY_TAGNAME, conceptDescriptions);
   }
 
-  private void writeSubmodels(ToXmlGenerator xgen, List<Submodel> submodels) throws IOException {
+  private void writeSubmodels(ToXmlGenerator xgen, List<Submodel> submodels)
+      throws JacksonException {
     if (submodels.isEmpty()) {
       return;
     }
@@ -131,18 +132,18 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
   }
 
   private void writeWrappedArray(ToXmlGenerator xgen, QName wrapper, QName wrapped, List<?> list)
-      throws IOException {
+      throws JacksonException {
     // overwrite all empty list with null, as the schema does not allow empty XML lists
 
     List<Runnable> resetRunnables = new ArrayList<>();
 
     for (Object obj : list) resetRunnables.addAll(ReflectionHelper.setEmptyListsToNull(obj));
 
-    xgen.writeFieldName(wrapper.getLocalPart());
+    xgen.writeName(wrapper.getLocalPart());
     xgen.writeStartArray();
     xgen.startWrappedValue(wrapper, wrapped);
     for (Object aas : list) {
-      xgen.writeObject(aas);
+      xgen.writePOJO(aas);
     }
     xgen.finishWrappedValue(wrapper, wrapped);
     xgen.writeEndArray();
@@ -150,7 +151,7 @@ public class AssetAdministrationShellEnvironmentSerializer extends JsonSerialize
     resetRunnables.stream().forEach(r -> r.run());
   }
 
-  private void closeOpeningTag(ToXmlGenerator xgen) throws IOException {
+  private void closeOpeningTag(ToXmlGenerator xgen) throws JacksonException {
     xgen.writeEndObject();
   }
 }
