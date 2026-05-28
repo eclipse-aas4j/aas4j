@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,13 +25,13 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultRange;
  * A range data element is a data element that defines a range with min and max.
  */
 @KnownSubtypes({
-    @KnownSubtypes.Type(value = DefaultRange.class)
+        @KnownSubtypes.Type(value = DefaultRange.class)
 })
 public interface Range extends DataElement {
 
     /**
      * Data type of the min und max
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/valueType
      *
      * @return Returns the DataTypeDefXsd for the property valueType.
@@ -41,7 +41,7 @@ public interface Range extends DataElement {
 
     /**
      * Data type of the min und max
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/valueType
      *
      * @param valueType desired value for the property valueType.
@@ -50,7 +50,7 @@ public interface Range extends DataElement {
 
     /**
      * The minimum value of the range.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/min
      *
      * @return Returns the String for the property min.
@@ -60,7 +60,7 @@ public interface Range extends DataElement {
 
     /**
      * The minimum value of the range.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/min
      *
      * @param min desired value for the property min.
@@ -69,7 +69,7 @@ public interface Range extends DataElement {
 
     /**
      * The maximum value of the range.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/max
      *
      * @return Returns the String for the property max.
@@ -79,7 +79,7 @@ public interface Range extends DataElement {
 
     /**
      * The maximum value of the range.
-     *
+     * <p>
      * More information under https://admin-shell.io/aas/3/0/Range/max
      *
      * @param max desired value for the property max.

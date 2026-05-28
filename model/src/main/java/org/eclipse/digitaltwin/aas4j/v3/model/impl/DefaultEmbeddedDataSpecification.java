@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -27,7 +27,7 @@ import java.util.Objects;
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification
- * 
+ * <p>
  * Embed the content of a data specification.
  */
 
@@ -40,12 +40,13 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
     @IRI("https://admin-shell.io/aas/3/0/EmbeddedDataSpecification/dataSpecificationContent")
     protected DataSpecificationContent dataSpecificationContent;
 
-    public DefaultEmbeddedDataSpecification() {}
+    public DefaultEmbeddedDataSpecification() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.dataSpecification,
-            this.dataSpecificationContent);
+                this.dataSpecificationContent);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
         } else {
             DefaultEmbeddedDataSpecification other = (DefaultEmbeddedDataSpecification) obj;
             return Objects.equals(this.dataSpecification, other.dataSpecification) &&
-                Objects.equals(this.dataSpecificationContent, other.dataSpecificationContent);
+                    Objects.equals(this.dataSpecificationContent, other.dataSpecificationContent);
         }
     }
 
@@ -85,10 +86,10 @@ public class DefaultEmbeddedDataSpecification implements EmbeddedDataSpecificati
 
     public String toString() {
         return String.format(
-            "DefaultEmbeddedDataSpecification (" + "dataSpecification=%s,"
-                + "dataSpecificationContent=%s,"
-                + ")",
-            this.dataSpecification, this.dataSpecificationContent);
+                "DefaultEmbeddedDataSpecification (" + "dataSpecification=%s,"
+                        + "dataSpecificationContent=%s,"
+                        + ")",
+                this.dataSpecification, this.dataSpecificationContent);
     }
 
     /**

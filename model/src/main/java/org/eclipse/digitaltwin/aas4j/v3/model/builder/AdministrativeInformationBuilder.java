@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -23,11 +23,11 @@ import java.util.List;
 
 
 public abstract class AdministrativeInformationBuilder<T extends AdministrativeInformation, B extends AdministrativeInformationBuilder<T, B>>
-    extends ExtendableBuilder<T, B> {
+        extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for version
-     * 
+     *
      * @param version desired value to be set
      * @return Builder object with new value for version
      */
@@ -38,7 +38,7 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
 
     /**
      * This function allows setting a value for revision
-     * 
+     *
      * @param revision desired value to be set
      * @return Builder object with new value for revision
      */
@@ -49,7 +49,7 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
 
     /**
      * This function allows setting a value for creator
-     * 
+     *
      * @param creator desired value to be set
      * @return Builder object with new value for creator
      */
@@ -60,7 +60,7 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
 
     /**
      * This function allows setting a value for templateId
-     * 
+     *
      * @param templateId desired value to be set
      * @return Builder object with new value for templateId
      */
@@ -71,7 +71,7 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
 
     /**
      * This function allows setting a value for embeddedDataSpecifications
-     * 
+     *
      * @param embeddedDataSpecifications desired value to be set
      * @return Builder object with new value for embeddedDataSpecifications
      */
@@ -82,7 +82,7 @@ public abstract class AdministrativeInformationBuilder<T extends AdministrativeI
 
     /**
      * This function allows adding a value to the List embeddedDataSpecifications
-     * 
+     *
      * @param embeddedDataSpecifications desired value to be added
      * @return Builder object with new value for embeddedDataSpecifications
      */

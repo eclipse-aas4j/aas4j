@@ -19,4 +19,5 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 
 public abstract class SecurityTypeEnumBuilder<
         T extends SecurityTypeEnum, B extends SecurityTypeEnumBuilder<T, B>>
-    extends ExtendableBuilder<T, B> {}
+        extends ExtendableBuilder<T, B> {
+}

@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Result
- * 
+ *
  */
 
 @IRI("aas:Result")
@@ -36,7 +36,8 @@ public class DefaultResult implements Result {
     @IRI("https://admin-shell.io/aas/3/0/Result/messages")
     protected List<Message> messages = new ArrayList<>();
 
-    public DefaultResult() {}
+    public DefaultResult() {
+    }
 
     @Override
     public int hashCode() {
@@ -69,9 +70,9 @@ public class DefaultResult implements Result {
 
     public String toString() {
         return String.format(
-            "DefaultResult (" + "messages=%s,"
-                + ")",
-            this.messages);
+                "DefaultResult (" + "messages=%s,"
+                        + ")",
+                this.messages);
     }
 
     /**

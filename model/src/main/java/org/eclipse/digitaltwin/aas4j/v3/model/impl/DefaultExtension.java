@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -28,7 +28,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Extension
- * 
+ * <p>
  * Single extension of an element.
  */
 
@@ -53,16 +53,17 @@ public class DefaultExtension implements Extension {
     @IRI("https://admin-shell.io/aas/3/0/HasSemantics/supplementalSemanticIds")
     protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-    public DefaultExtension() {}
+    public DefaultExtension() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.name,
-            this.valueType,
-            this.value,
-            this.refersTo,
-            this.semanticId,
-            this.supplementalSemanticIds);
+                this.valueType,
+                this.value,
+                this.refersTo,
+                this.semanticId,
+                this.supplementalSemanticIds);
     }
 
     @Override
@@ -76,11 +77,11 @@ public class DefaultExtension implements Extension {
         } else {
             DefaultExtension other = (DefaultExtension) obj;
             return Objects.equals(this.name, other.name) &&
-                Objects.equals(this.valueType, other.valueType) &&
-                Objects.equals(this.value, other.value) &&
-                Objects.equals(this.refersTo, other.refersTo) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
+                    Objects.equals(this.valueType, other.valueType) &&
+                    Objects.equals(this.value, other.value) &&
+                    Objects.equals(this.refersTo, other.refersTo) &&
+                    Objects.equals(this.semanticId, other.semanticId) &&
+                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
         }
     }
 
@@ -146,12 +147,12 @@ public class DefaultExtension implements Extension {
 
     public String toString() {
         return String.format(
-            "DefaultExtension (" + "name=%s,"
-                + "valueType=%s,"
-                + "value=%s,"
-                + "refersTo=%s,"
-                + ")",
-            this.name, this.valueType, this.value, this.refersTo);
+                "DefaultExtension (" + "name=%s,"
+                        + "valueType=%s,"
+                        + "value=%s,"
+                        + "refersTo=%s,"
+                        + ")",
+                this.name, this.valueType, this.value, this.refersTo);
     }
 
     /**

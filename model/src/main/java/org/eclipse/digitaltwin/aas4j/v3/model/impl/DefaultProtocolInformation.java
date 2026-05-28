@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation
- * 
+ *
  */
 
 @IRI("aas:ProtocolInformation")
@@ -54,17 +54,18 @@ public class DefaultProtocolInformation implements ProtocolInformation {
     @IRI("https://admin-shell.io/aas/3/0/ProtocolInformation/subprotocolBodyEncoding")
     protected String subprotocolBodyEncoding;
 
-    public DefaultProtocolInformation() {}
+    public DefaultProtocolInformation() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.href,
-            this.endpointProtocol,
-            this.endpointProtocolVersion,
-            this.subprotocol,
-            this.subprotocolBody,
-            this.subprotocolBodyEncoding,
-            this.securityAttributes);
+                this.endpointProtocol,
+                this.endpointProtocolVersion,
+                this.subprotocol,
+                this.subprotocolBody,
+                this.subprotocolBodyEncoding,
+                this.securityAttributes);
     }
 
     @Override
@@ -78,12 +79,12 @@ public class DefaultProtocolInformation implements ProtocolInformation {
         } else {
             DefaultProtocolInformation other = (DefaultProtocolInformation) obj;
             return Objects.equals(this.href, other.href) &&
-                Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
-                Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
-                Objects.equals(this.subprotocol, other.subprotocol) &&
-                Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
-                Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding) &&
-                Objects.equals(this.securityAttributes, other.securityAttributes);
+                    Objects.equals(this.endpointProtocol, other.endpointProtocol) &&
+                    Objects.equals(this.endpointProtocolVersion, other.endpointProtocolVersion) &&
+                    Objects.equals(this.subprotocol, other.subprotocol) &&
+                    Objects.equals(this.subprotocolBody, other.subprotocolBody) &&
+                    Objects.equals(this.subprotocolBodyEncoding, other.subprotocolBodyEncoding) &&
+                    Objects.equals(this.securityAttributes, other.securityAttributes);
         }
     }
 
@@ -159,16 +160,16 @@ public class DefaultProtocolInformation implements ProtocolInformation {
 
     public String toString() {
         return String.format(
-            "DefaultProtocolInformation (" + "href=%s,"
-                + "endpointProtocol=%s,"
-                + "endpointProtocolVersion=%s,"
-                + "subprotocol=%s,"
-                + "subprotocolBody=%s,"
-                + "subprotocolBodyEncoding=%s,"
-                + "securityAttributes=%s,"
-                + ")",
-            this.href, this.endpointProtocol, this.endpointProtocolVersion, this.subprotocol, this.subprotocolBody,
-            this.subprotocolBodyEncoding, this.securityAttributes);
+                "DefaultProtocolInformation (" + "href=%s,"
+                        + "endpointProtocol=%s,"
+                        + "endpointProtocolVersion=%s,"
+                        + "subprotocol=%s,"
+                        + "subprotocolBody=%s,"
+                        + "subprotocolBodyEncoding=%s,"
+                        + "securityAttributes=%s,"
+                        + ")",
+                this.href, this.endpointProtocol, this.endpointProtocolVersion, this.subprotocol, this.subprotocolBody,
+                this.subprotocolBodyEncoding, this.securityAttributes);
     }
 
     /**

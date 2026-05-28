@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -32,7 +32,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Capability
- * 
+ * <p>
  * A capability is the implementation-independent description of the potential of an asset to
  * achieve a certain effect in the physical or virtual world.
  */
@@ -67,19 +67,20 @@ public class DefaultCapability implements Capability {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultCapability() {}
+    public DefaultCapability() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
-            this.extensions,
-            this.embeddedDataSpecifications,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers);
+                this.idShort,
+                this.displayName,
+                this.description,
+                this.extensions,
+                this.embeddedDataSpecifications,
+                this.semanticId,
+                this.supplementalSemanticIds,
+                this.qualifiers);
     }
 
     @Override
@@ -93,14 +94,14 @@ public class DefaultCapability implements Capability {
         } else {
             DefaultCapability other = (DefaultCapability) obj;
             return Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                    Objects.equals(this.idShort, other.idShort) &&
+                    Objects.equals(this.displayName, other.displayName) &&
+                    Objects.equals(this.description, other.description) &&
+                    Objects.equals(this.extensions, other.extensions) &&
+                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
+                    Objects.equals(this.semanticId, other.semanticId) &&
+                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                    Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -196,8 +197,8 @@ public class DefaultCapability implements Capability {
 
     public String toString() {
         return String.format(
-            "DefaultCapability ("
-                + ")"
+                "DefaultCapability ("
+                        + ")"
 
         );
     }

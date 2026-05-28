@@ -21,45 +21,50 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.SecurityTypeEnumBuilder;
 
 import java.util.Objects;
 
-/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum */
+/**
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum
+ */
 @IRI("aas:SecurityTypeEnum")
 public class DefaultSecurityTypeEnum implements SecurityTypeEnum {
 
-  public DefaultSecurityTypeEnum() {}
-
-  @Override
-  public String toString() {
-    return "DefaultSecurityTypeEnum{" + "}";
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode());
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    } else if (obj == null) {
-      return false;
-    } else if (this.getClass() != obj.getClass()) {
-      return false;
-    }
-    return true;
-  }
-
-  /** This builder class can be used to construct a DefaultSecurityTypeEnum bean. */
-  public static class Builder extends SecurityTypeEnumBuilder<DefaultSecurityTypeEnum, Builder> {
-
-    @Override
-    protected Builder getSelf() {
-      return this;
+    public DefaultSecurityTypeEnum() {
     }
 
     @Override
-    protected DefaultSecurityTypeEnum newBuildingInstance() {
-      return new DefaultSecurityTypeEnum();
+    public String toString() {
+        return "DefaultSecurityTypeEnum{" + "}";
     }
-  }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * This builder class can be used to construct a DefaultSecurityTypeEnum bean.
+     */
+    public static class Builder extends SecurityTypeEnumBuilder<DefaultSecurityTypeEnum, Builder> {
+
+        @Override
+        protected Builder getSelf() {
+            return this;
+        }
+
+        @Override
+        protected DefaultSecurityTypeEnum newBuildingInstance() {
+            return new DefaultSecurityTypeEnum();
+        }
+    }
 }

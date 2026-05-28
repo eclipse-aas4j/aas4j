@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -15,12 +15,6 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
@@ -28,13 +22,31 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+
+private void validateReferredSemanticId(Reference referredSemanticId) {
+    if (referredSemanticId == null) {
+        return;
+    }
+    Set<Reference> visited = Collections.newSetFromMap(new IdentityHashMap<>());
+    Reference current = referredSemanticId;
+    while (current != null) {
+        if (current == this || !visited.add(current)) {
+            throw new IllegalArgumentException(
+                    "referredSemanticId must not create a circular Reference");
+        }
+        current = current.getReferredSemanticId();
+    }
+}
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
- * 
+ * <p>
  * Reference to either a model element of the same or another AAS or to an external entity.
  */
 
@@ -50,20 +62,15 @@ public class DefaultReference implements Reference {
     @IRI("https://admin-shell.io/aas/3/0/Reference/type")
     protected ReferenceTypes type;
 
-    public DefaultReference() {}
+    public DefaultReference() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.type,
-            this.referredSemanticId,
-            this.keys);
+                this.referredSemanticId,
+                this.keys);
     }
-
-  @Override
-  public void setReferredSemanticId(Reference referredSemanticId) {
-    validateReferredSemanticId(referredSemanticId);
-    this.referredSemanticId = referredSemanticId;
-  }
 
     @Override
     public boolean equals(Object obj) {
@@ -76,8 +83,8 @@ public class DefaultReference implements Reference {
         } else {
             DefaultReference other = (DefaultReference) obj;
             return Objects.equals(this.type, other.type) &&
-                Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                Objects.equals(this.keys, other.keys);
+                    Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
+                    Objects.equals(this.keys, other.keys);
         }
     }
 
@@ -97,6 +104,12 @@ public class DefaultReference implements Reference {
     }
 
     @Override
+    public void setReferredSemanticId(Reference referredSemanticId) {
+        validateReferredSemanticId(referredSemanticId);
+        this.referredSemanticId = referredSemanticId;
+    }
+
+    @Override
     public List<Key> getKeys() {
         return keys;
     }
@@ -108,11 +121,11 @@ public class DefaultReference implements Reference {
 
     public String toString() {
         return String.format(
-            "DefaultReference (" + "type=%s,"
-                + "referredSemanticId=%s,"
-                + "keys=%s,"
-                + ")",
-            this.type, this.referredSemanticId, this.keys);
+                "DefaultReference (" + "type=%s,"
+                        + "referredSemanticId=%s,"
+                        + "keys=%s,"
+                        + ")",
+                this.type, this.referredSemanticId, this.keys);
     }
 
     /**
@@ -131,20 +144,5 @@ public class DefaultReference implements Reference {
         }
     }
 
-  }
-
-  private void validateReferredSemanticId(Reference referredSemanticId) {
-    if (referredSemanticId == null) {
-      return;
-    }
-    Set<Reference> visited = Collections.newSetFromMap(new IdentityHashMap<>());
-    Reference current = referredSemanticId;
-    while (current != null) {
-      if (current == this || !visited.add(current)) {
-        throw new IllegalArgumentException(
-            "referredSemanticId must not create a circular Reference");
-      }
-      current = current.getReferredSemanticId();
-    }
-  }
+}
 }

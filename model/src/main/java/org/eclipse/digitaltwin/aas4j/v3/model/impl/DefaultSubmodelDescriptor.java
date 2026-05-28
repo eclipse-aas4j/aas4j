@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -32,7 +32,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor
- * 
+ *
  */
 
 @IRI("aas:SubmodelDescriptor")
@@ -65,19 +65,20 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId")
     protected List<Reference> supplementalSemanticId = new ArrayList<>();
 
-    public DefaultSubmodelDescriptor() {}
+    public DefaultSubmodelDescriptor() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.administration,
-            this.endpoints,
-            this.idShort,
-            this.id,
-            this.semanticId,
-            this.supplementalSemanticId,
-            this.description,
-            this.displayName,
-            this.extensions);
+                this.endpoints,
+                this.idShort,
+                this.id,
+                this.semanticId,
+                this.supplementalSemanticId,
+                this.description,
+                this.displayName,
+                this.extensions);
     }
 
     @Override
@@ -91,14 +92,14 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
         } else {
             DefaultSubmodelDescriptor other = (DefaultSubmodelDescriptor) obj;
             return Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.endpoints, other.endpoints) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticId, other.supplementalSemanticId) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.extensions, other.extensions);
+                    Objects.equals(this.endpoints, other.endpoints) &&
+                    Objects.equals(this.idShort, other.idShort) &&
+                    Objects.equals(this.id, other.id) &&
+                    Objects.equals(this.semanticId, other.semanticId) &&
+                    Objects.equals(this.supplementalSemanticId, other.supplementalSemanticId) &&
+                    Objects.equals(this.description, other.description) &&
+                    Objects.equals(this.displayName, other.displayName) &&
+                    Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -194,14 +195,14 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
 
     public String toString() {
         return String.format(
-            "DefaultSubmodelDescriptor (" + "administration=%s,"
-                + "endpoints=%s,"
-                + "idShort=%s,"
-                + "id=%s,"
-                + "semanticId=%s,"
-                + "supplementalSemanticId=%s,"
-                + ")",
-            this.administration, this.endpoints, this.idShort, this.id, this.semanticId, this.supplementalSemanticId);
+                "DefaultSubmodelDescriptor (" + "administration=%s,"
+                        + "endpoints=%s,"
+                        + "idShort=%s,"
+                        + "id=%s,"
+                        + "semanticId=%s,"
+                        + "supplementalSemanticId=%s,"
+                        + ")",
+                this.administration, this.endpoints, this.idShort, this.id, this.semanticId, this.supplementalSemanticId);
     }
 
     /**

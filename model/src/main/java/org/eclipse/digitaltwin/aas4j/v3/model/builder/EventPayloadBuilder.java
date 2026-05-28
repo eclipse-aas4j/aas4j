@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -24,7 +24,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for source
-     * 
+     *
      * @param source desired value to be set
      * @return Builder object with new value for source
      */
@@ -35,7 +35,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for sourceSemanticId
-     * 
+     *
      * @param sourceSemanticId desired value to be set
      * @return Builder object with new value for sourceSemanticId
      */
@@ -46,7 +46,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for observableReference
-     * 
+     *
      * @param observableReference desired value to be set
      * @return Builder object with new value for observableReference
      */
@@ -57,7 +57,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for observableSemanticId
-     * 
+     *
      * @param observableSemanticId desired value to be set
      * @return Builder object with new value for observableSemanticId
      */
@@ -68,7 +68,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for topic
-     * 
+     *
      * @param topic desired value to be set
      * @return Builder object with new value for topic
      */
@@ -79,7 +79,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for subjectId
-     * 
+     *
      * @param subjectId desired value to be set
      * @return Builder object with new value for subjectId
      */
@@ -90,7 +90,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for timeStamp
-     * 
+     *
      * @param timeStamp desired value to be set
      * @return Builder object with new value for timeStamp
      */
@@ -101,7 +101,7 @@ public abstract class EventPayloadBuilder<T extends EventPayload, B extends Even
 
     /**
      * This function allows setting a value for payload
-     * 
+     *
      * @param payload desired value to be set
      * @return Builder object with new value for payload
      */

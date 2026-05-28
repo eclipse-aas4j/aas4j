@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,7 +25,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Message
- * 
+ *
  */
 
 @IRI("aas:Message")
@@ -46,15 +46,16 @@ public class DefaultMessage implements Message {
     @IRI("https://admin-shell.io/aas/3/0/Message/timestamp")
     protected String timestamp;
 
-    public DefaultMessage() {}
+    public DefaultMessage() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.code,
-            this.correlationId,
-            this.messageType,
-            this.text,
-            this.timestamp);
+                this.correlationId,
+                this.messageType,
+                this.text,
+                this.timestamp);
     }
 
     @Override
@@ -68,10 +69,10 @@ public class DefaultMessage implements Message {
         } else {
             DefaultMessage other = (DefaultMessage) obj;
             return Objects.equals(this.code, other.code) &&
-                Objects.equals(this.correlationId, other.correlationId) &&
-                Objects.equals(this.messageType, other.messageType) &&
-                Objects.equals(this.text, other.text) &&
-                Objects.equals(this.timestamp, other.timestamp);
+                    Objects.equals(this.correlationId, other.correlationId) &&
+                    Objects.equals(this.messageType, other.messageType) &&
+                    Objects.equals(this.text, other.text) &&
+                    Objects.equals(this.timestamp, other.timestamp);
         }
     }
 
@@ -127,13 +128,13 @@ public class DefaultMessage implements Message {
 
     public String toString() {
         return String.format(
-            "DefaultMessage (" + "code=%s,"
-                + "correlationId=%s,"
-                + "messageType=%s,"
-                + "text=%s,"
-                + "timestamp=%s,"
-                + ")",
-            this.code, this.correlationId, this.messageType, this.text, this.timestamp);
+                "DefaultMessage (" + "code=%s,"
+                        + "correlationId=%s,"
+                        + "messageType=%s,"
+                        + "text=%s,"
+                        + "timestamp=%s,"
+                        + ")",
+                this.code, this.correlationId, this.messageType, this.text, this.timestamp);
     }
 
     /**

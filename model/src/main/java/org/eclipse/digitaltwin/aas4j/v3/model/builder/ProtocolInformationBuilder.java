@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -22,11 +22,11 @@ import java.util.List;
 
 
 public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, B extends ProtocolInformationBuilder<T, B>>
-    extends ExtendableBuilder<T, B> {
+        extends ExtendableBuilder<T, B> {
 
     /**
      * This function allows setting a value for href
-     * 
+     *
      * @param href desired value to be set
      * @return Builder object with new value for href
      */
@@ -37,7 +37,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for endpointProtocol
-     * 
+     *
      * @param endpointProtocol desired value to be set
      * @return Builder object with new value for endpointProtocol
      */
@@ -48,7 +48,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for endpointProtocolVersion
-     * 
+     *
      * @param endpointProtocolVersions desired value to be set
      * @return Builder object with new value for endpointProtocolVersion
      */
@@ -59,7 +59,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows adding a value to the List endpointProtocolVersion
-     * 
+     *
      * @param endpointProtocolVersion desired value to be added
      * @return Builder object with new value for endpointProtocolVersion
      */
@@ -70,7 +70,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for subprotocol
-     * 
+     *
      * @param subprotocol desired value to be set
      * @return Builder object with new value for subprotocol
      */
@@ -81,7 +81,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for subprotocolBody
-     * 
+     *
      * @param subprotocolBody desired value to be set
      * @return Builder object with new value for subprotocolBody
      */
@@ -92,7 +92,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for subprotocolBodyEncoding
-     * 
+     *
      * @param subprotocolBodyEncoding desired value to be set
      * @return Builder object with new value for subprotocolBodyEncoding
      */
@@ -103,7 +103,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows setting a value for securityAttributes
-     * 
+     *
      * @param securityAttributes desired value to be set
      * @return Builder object with new value for securityAttributes
      */
@@ -114,7 +114,7 @@ public abstract class ProtocolInformationBuilder<T extends ProtocolInformation, 
 
     /**
      * This function allows adding a value to the List securityAttributes
-     * 
+     *
      * @param securityAttributes desired value to be added
      * @return Builder object with new value for securityAttributes
      */

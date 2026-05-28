@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -35,7 +35,7 @@ import java.util.Objects;
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor
- * 
+ *
  */
 
 @IRI("aas:AssetAdministrationShellDescriptor")
@@ -77,22 +77,23 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
     @IRI("https://admin-shell.io/aas/3/0/Descriptor/extensions")
     protected List<Extension> extensions = new ArrayList<>();
 
-    public DefaultAssetAdministrationShellDescriptor() {}
+    public DefaultAssetAdministrationShellDescriptor() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.administration,
-            this.assetKind,
-            this.assetType,
-            this.endpoints,
-            this.globalAssetId,
-            this.idShort,
-            this.id,
-            this.specificAssetIds,
-            this.submodelDescriptors,
-            this.description,
-            this.displayName,
-            this.extensions);
+                this.assetKind,
+                this.assetType,
+                this.endpoints,
+                this.globalAssetId,
+                this.idShort,
+                this.id,
+                this.specificAssetIds,
+                this.submodelDescriptors,
+                this.description,
+                this.displayName,
+                this.extensions);
     }
 
     @Override
@@ -106,17 +107,17 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
         } else {
             DefaultAssetAdministrationShellDescriptor other = (DefaultAssetAdministrationShellDescriptor) obj;
             return Objects.equals(this.administration, other.administration) &&
-                Objects.equals(this.assetKind, other.assetKind) &&
-                Objects.equals(this.assetType, other.assetType) &&
-                Objects.equals(this.endpoints, other.endpoints) &&
-                Objects.equals(this.globalAssetId, other.globalAssetId) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.id, other.id) &&
-                Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
-                Objects.equals(this.submodelDescriptors, other.submodelDescriptors) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.extensions, other.extensions);
+                    Objects.equals(this.assetKind, other.assetKind) &&
+                    Objects.equals(this.assetType, other.assetType) &&
+                    Objects.equals(this.endpoints, other.endpoints) &&
+                    Objects.equals(this.globalAssetId, other.globalAssetId) &&
+                    Objects.equals(this.idShort, other.idShort) &&
+                    Objects.equals(this.id, other.id) &&
+                    Objects.equals(this.specificAssetIds, other.specificAssetIds) &&
+                    Objects.equals(this.submodelDescriptors, other.submodelDescriptors) &&
+                    Objects.equals(this.description, other.description) &&
+                    Objects.equals(this.displayName, other.displayName) &&
+                    Objects.equals(this.extensions, other.extensions);
         }
     }
 
@@ -242,18 +243,18 @@ public class DefaultAssetAdministrationShellDescriptor implements AssetAdministr
 
     public String toString() {
         return String.format(
-            "DefaultAssetAdministrationShellDescriptor (" + "administration=%s,"
-                + "assetKind=%s,"
-                + "assetType=%s,"
-                + "endpoints=%s,"
-                + "globalAssetId=%s,"
-                + "idShort=%s,"
-                + "id=%s,"
-                + "specificAssetIds=%s,"
-                + "submodelDescriptors=%s,"
-                + ")",
-            this.administration, this.assetKind, this.assetType, this.endpoints, this.globalAssetId, this.idShort, this.id,
-            this.specificAssetIds, this.submodelDescriptors);
+                "DefaultAssetAdministrationShellDescriptor (" + "administration=%s,"
+                        + "assetKind=%s,"
+                        + "assetType=%s,"
+                        + "endpoints=%s,"
+                        + "globalAssetId=%s,"
+                        + "idShort=%s,"
+                        + "id=%s,"
+                        + "specificAssetIds=%s,"
+                        + "submodelDescriptors=%s,"
+                        + ")",
+                this.administration, this.assetKind, this.assetType, this.endpoints, this.globalAssetId, this.idShort, this.id,
+                this.specificAssetIds, this.submodelDescriptors);
     }
 
     /**

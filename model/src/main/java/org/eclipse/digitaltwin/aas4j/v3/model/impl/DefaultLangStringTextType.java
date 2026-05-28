@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType
- * 
+ * <p>
  * String with length 1023 maximum and minimum 1 characters and with language tags
  */
 
@@ -37,12 +37,13 @@ public class DefaultLangStringTextType implements LangStringTextType {
     @IRI("https://admin-shell.io/aas/3/0/AbstractLangString/text")
     protected String text;
 
-    public DefaultLangStringTextType() {}
+    public DefaultLangStringTextType() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.language,
-            this.text);
+                this.text);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class DefaultLangStringTextType implements LangStringTextType {
         } else {
             DefaultLangStringTextType other = (DefaultLangStringTextType) obj;
             return Objects.equals(this.language, other.language) &&
-                Objects.equals(this.text, other.text);
+                    Objects.equals(this.text, other.text);
         }
     }
 
@@ -82,8 +83,8 @@ public class DefaultLangStringTextType implements LangStringTextType {
 
     public String toString() {
         return String.format(
-            "DefaultLangStringTextType ("
-                + ")"
+                "DefaultLangStringTextType ("
+                        + ")"
 
         );
     }

@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -34,7 +34,7 @@ import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement
- * 
+ * <p>
  * A basic event element.
  */
 
@@ -92,27 +92,28 @@ public class DefaultBasicEventElement implements BasicEventElement {
     @IRI("https://admin-shell.io/aas/3/0/Referable/idShort")
     protected String idShort;
 
-    public DefaultBasicEventElement() {}
+    public DefaultBasicEventElement() {
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(this.observed,
-            this.direction,
-            this.state,
-            this.messageTopic,
-            this.messageBroker,
-            this.lastUpdate,
-            this.minInterval,
-            this.maxInterval,
-            this.category,
-            this.idShort,
-            this.displayName,
-            this.description,
-            this.extensions,
-            this.embeddedDataSpecifications,
-            this.semanticId,
-            this.supplementalSemanticIds,
-            this.qualifiers);
+                this.direction,
+                this.state,
+                this.messageTopic,
+                this.messageBroker,
+                this.lastUpdate,
+                this.minInterval,
+                this.maxInterval,
+                this.category,
+                this.idShort,
+                this.displayName,
+                this.description,
+                this.extensions,
+                this.embeddedDataSpecifications,
+                this.semanticId,
+                this.supplementalSemanticIds,
+                this.qualifiers);
     }
 
     @Override
@@ -126,22 +127,22 @@ public class DefaultBasicEventElement implements BasicEventElement {
         } else {
             DefaultBasicEventElement other = (DefaultBasicEventElement) obj;
             return Objects.equals(this.observed, other.observed) &&
-                Objects.equals(this.direction, other.direction) &&
-                Objects.equals(this.state, other.state) &&
-                Objects.equals(this.messageTopic, other.messageTopic) &&
-                Objects.equals(this.messageBroker, other.messageBroker) &&
-                Objects.equals(this.lastUpdate, other.lastUpdate) &&
-                Objects.equals(this.minInterval, other.minInterval) &&
-                Objects.equals(this.maxInterval, other.maxInterval) &&
-                Objects.equals(this.category, other.category) &&
-                Objects.equals(this.idShort, other.idShort) &&
-                Objects.equals(this.displayName, other.displayName) &&
-                Objects.equals(this.description, other.description) &&
-                Objects.equals(this.extensions, other.extensions) &&
-                Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
-                Objects.equals(this.semanticId, other.semanticId) &&
-                Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
-                Objects.equals(this.qualifiers, other.qualifiers);
+                    Objects.equals(this.direction, other.direction) &&
+                    Objects.equals(this.state, other.state) &&
+                    Objects.equals(this.messageTopic, other.messageTopic) &&
+                    Objects.equals(this.messageBroker, other.messageBroker) &&
+                    Objects.equals(this.lastUpdate, other.lastUpdate) &&
+                    Objects.equals(this.minInterval, other.minInterval) &&
+                    Objects.equals(this.maxInterval, other.maxInterval) &&
+                    Objects.equals(this.category, other.category) &&
+                    Objects.equals(this.idShort, other.idShort) &&
+                    Objects.equals(this.displayName, other.displayName) &&
+                    Objects.equals(this.description, other.description) &&
+                    Objects.equals(this.extensions, other.extensions) &&
+                    Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications) &&
+                    Objects.equals(this.semanticId, other.semanticId) &&
+                    Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds) &&
+                    Objects.equals(this.qualifiers, other.qualifiers);
         }
     }
 
@@ -317,17 +318,17 @@ public class DefaultBasicEventElement implements BasicEventElement {
 
     public String toString() {
         return String.format(
-            "DefaultBasicEventElement (" + "observed=%s,"
-                + "direction=%s,"
-                + "state=%s,"
-                + "messageTopic=%s,"
-                + "messageBroker=%s,"
-                + "lastUpdate=%s,"
-                + "minInterval=%s,"
-                + "maxInterval=%s,"
-                + ")",
-            this.observed, this.direction, this.state, this.messageTopic, this.messageBroker, this.lastUpdate, this.minInterval,
-            this.maxInterval);
+                "DefaultBasicEventElement (" + "observed=%s,"
+                        + "direction=%s,"
+                        + "state=%s,"
+                        + "messageTopic=%s,"
+                        + "messageBroker=%s,"
+                        + "lastUpdate=%s,"
+                        + "minInterval=%s,"
+                        + "maxInterval=%s,"
+                        + ")",
+                this.observed, this.direction, this.state, this.messageTopic, this.messageBroker, this.lastUpdate, this.minInterval,
+                this.maxInterval);
     }
 
     /**

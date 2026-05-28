@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
  * Copyright (c) 2023, SAP SE or an SAP affiliate company
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -24,7 +24,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
 
     /**
      * This function allows setting a value for code
-     * 
+     *
      * @param code desired value to be set
      * @return Builder object with new value for code
      */
@@ -35,7 +35,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
 
     /**
      * This function allows setting a value for correlationId
-     * 
+     *
      * @param correlationId desired value to be set
      * @return Builder object with new value for correlationId
      */
@@ -46,7 +46,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
 
     /**
      * This function allows setting a value for messageType
-     * 
+     *
      * @param messageType desired value to be set
      * @return Builder object with new value for messageType
      */
@@ -57,7 +57,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
 
     /**
      * This function allows setting a value for text
-     * 
+     *
      * @param text desired value to be set
      * @return Builder object with new value for text
      */
@@ -68,7 +68,7 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
 
     /**
      * This function allows setting a value for timestamp
-     * 
+     *
      * @param timestamp desired value to be set
      * @return Builder object with new value for timestamp
      */
