@@ -15,37 +15,30 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
-import java.util.List;
-
-
-/**
- * Element that can be extended by proprietary extensions.
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = Referable.class)
-})
+/** Element that can be extended by proprietary extensions. */
+@KnownSubtypes({@KnownSubtypes.Type(value = Referable.class)})
 public interface HasExtensions {
 
-    /**
-     * An extension of the element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
-     *
-     * @return Returns the List of Extensions for the property extensions.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
-    List<Extension> getExtensions();
+  /**
+   * An extension of the element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
+   *
+   * @return Returns the List of Extensions for the property extensions.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/HasExtensions/extensions")
+  List<Extension> getExtensions();
 
-    /**
-     * An extension of the element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
-     *
-     * @param extensions desired value for the property extensions.
-     */
-    void setExtensions(List<Extension> extensions);
-
+  /**
+   * An extension of the element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/HasExtensions/extensions
+   *
+   * @param extensions desired value for the property extensions.
+   */
+  void setExtensions(List<Extension> extensions);
 }

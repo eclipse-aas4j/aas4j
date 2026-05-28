@@ -15,35 +15,27 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementAttributes;
 
+/** */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultSubmodelElementAttributes.class)})
+public interface SubmodelElementAttributes
+    extends Referable, HasDataSpecification, HasSemantics, Qualifiable {
 
-/**
- *
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultSubmodelElementAttributes.class)
-})
-public interface SubmodelElementAttributes extends Referable, HasDataSpecification, HasSemantics, Qualifiable {
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind
+   *
+   * @return Returns the ModellingKind for the property kind.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind")
+  ModellingKind getKind();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind
-     *
-     * @return Returns the ModellingKind for the property kind.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind")
-    ModellingKind getKind();
-
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind
-     *
-     * @param kind desired value for the property kind.
-     */
-    void setKind(ModellingKind kind);
-
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SubmodelElementAttributes/kind
+   *
+   * @param kind desired value for the property kind.
+   */
+  void setKind(ModellingKind kind);
 }

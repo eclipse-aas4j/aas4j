@@ -15,39 +15,34 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultConceptDescription;
-
-import java.util.List;
-
 
 /**
  * The semantics of a property or other elements that may have a semantic description is defined by
  * a concept description.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultConceptDescription.class)
-})
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultConceptDescription.class)})
 public interface ConceptDescription extends HasDataSpecification, Identifiable {
 
-    /**
-     * Reference to an external definition the concept is compatible to or was derived from.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
-     *
-     * @return Returns the List of References for the property isCaseOf.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
-    List<Reference> getIsCaseOf();
+  /**
+   * Reference to an external definition the concept is compatible to or was derived from.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
+   *
+   * @return Returns the List of References for the property isCaseOf.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf")
+  List<Reference> getIsCaseOf();
 
-    /**
-     * Reference to an external definition the concept is compatible to or was derived from.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
-     *
-     * @param isCaseOfs desired value for the property isCaseOf.
-     */
-    void setIsCaseOf(List<Reference> isCaseOfs);
-
+  /**
+   * Reference to an external definition the concept is compatible to or was derived from.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/ConceptDescription/isCaseOf
+   *
+   * @param isCaseOfs desired value for the property isCaseOf.
+   */
+  void setIsCaseOf(List<Reference> isCaseOfs);
 }

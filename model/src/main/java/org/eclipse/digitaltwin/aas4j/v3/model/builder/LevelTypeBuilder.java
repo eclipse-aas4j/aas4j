@@ -15,53 +15,52 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 
+public abstract class LevelTypeBuilder<T extends LevelType, B extends LevelTypeBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class LevelTypeBuilder<T extends LevelType, B extends LevelTypeBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for min
+   *
+   * @param min desired value to be set
+   * @return Builder object with new value for min
+   */
+  public B min(boolean min) {
+    getBuildingInstance().setMin(min);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for min
-     *
-     * @param min desired value to be set
-     * @return Builder object with new value for min
-     */
-    public B min(boolean min) {
-        getBuildingInstance().setMin(min);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for nom
+   *
+   * @param nom desired value to be set
+   * @return Builder object with new value for nom
+   */
+  public B nom(boolean nom) {
+    getBuildingInstance().setNom(nom);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for nom
-     *
-     * @param nom desired value to be set
-     * @return Builder object with new value for nom
-     */
-    public B nom(boolean nom) {
-        getBuildingInstance().setNom(nom);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for typ
+   *
+   * @param typ desired value to be set
+   * @return Builder object with new value for typ
+   */
+  public B typ(boolean typ) {
+    getBuildingInstance().setTyp(typ);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for typ
-     *
-     * @param typ desired value to be set
-     * @return Builder object with new value for typ
-     */
-    public B typ(boolean typ) {
-        getBuildingInstance().setTyp(typ);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for max
-     *
-     * @param max desired value to be set
-     * @return Builder object with new value for max
-     */
-    public B max(boolean max) {
-        getBuildingInstance().setMax(max);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for max
+   *
+   * @param max desired value to be set
+   * @return Builder object with new value for max
+   */
+  public B max(boolean max) {
+    getBuildingInstance().setMax(max);
+    return getSelf();
+  }
 }

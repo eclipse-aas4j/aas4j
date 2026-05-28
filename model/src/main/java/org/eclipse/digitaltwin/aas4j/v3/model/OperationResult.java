@@ -15,53 +15,42 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationResult;
 
-import java.util.List;
-
-
-/**
- *
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultOperationResult.class)
-})
+/** */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperationResult.class)})
 public interface OperationResult {
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
-     *
-     * @return Returns the List of OperationVariables for the property inoutputArguments.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
-    List<OperationVariable> getInoutputArguments();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
+   *
+   * @return Returns the List of OperationVariables for the property inoutputArguments.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
+  List<OperationVariable> getInoutputArguments();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
-     *
-     * @param inoutputArguments desired value for the property inoutputArguments.
-     */
-    void setInoutputArguments(List<OperationVariable> inoutputArguments);
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments
+   *
+   * @param inoutputArguments desired value for the property inoutputArguments.
+   */
+  void setInoutputArguments(List<OperationVariable> inoutputArguments);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
-     *
-     * @return Returns the List of OperationVariables for the property outputArguments.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
-    List<OperationVariable> getOutputArguments();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
+   *
+   * @return Returns the List of OperationVariables for the property outputArguments.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
+  List<OperationVariable> getOutputArguments();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
-     *
-     * @param outputArguments desired value for the property outputArguments.
-     */
-    void setOutputArguments(List<OperationVariable> outputArguments);
-
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationResult/outputArguments
+   *
+   * @param outputArguments desired value for the property outputArguments.
+   */
+  void setOutputArguments(List<OperationVariable> outputArguments);
 }

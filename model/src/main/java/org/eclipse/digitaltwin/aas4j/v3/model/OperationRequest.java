@@ -15,70 +15,57 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationRequest;
 
-import java.util.List;
-
-
-/**
- *
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultOperationRequest.class)
-})
+/** */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperationRequest.class)})
 public interface OperationRequest {
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
-     *
-     * @return Returns the List of OperationVariables for the property inoutputArguments.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
-    List<OperationVariable> getInoutputArguments();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
+   *
+   * @return Returns the List of OperationVariables for the property inoutputArguments.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments")
+  List<OperationVariable> getInoutputArguments();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
-     *
-     * @param inoutputArguments desired value for the property inoutputArguments.
-     */
-    void setInoutputArguments(List<OperationVariable> inoutputArguments);
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inoutputArguments
+   *
+   * @param inoutputArguments desired value for the property inoutputArguments.
+   */
+  void setInoutputArguments(List<OperationVariable> inoutputArguments);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
-     *
-     * @return Returns the List of OperationVariables for the property inputArguments.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
-    List<OperationVariable> getInputArguments();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
+   *
+   * @return Returns the List of OperationVariables for the property inputArguments.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/inputArguments")
+  List<OperationVariable> getInputArguments();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
-     *
-     * @param inputArguments desired value for the property inputArguments.
-     */
-    void setInputArguments(List<OperationVariable> inputArguments);
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/inputArguments
+   *
+   * @param inputArguments desired value for the property inputArguments.
+   */
+  void setInputArguments(List<OperationVariable> inputArguments);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
-     *
-     * @return Returns the String for the property clientTimeoutDuration.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
-    String getClientTimeoutDuration();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
+   *
+   * @return Returns the String for the property clientTimeoutDuration.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration")
+  String getClientTimeoutDuration();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
-     *
-     * @param clientTimeoutDuration desired value for the property clientTimeoutDuration.
-     */
-    void setClientTimeoutDuration(String clientTimeoutDuration);
-
+  /**
+   * More information under https://admin-shell.io/aas/3/0/OperationRequest/clientTimeoutDuration
+   *
+   * @param clientTimeoutDuration desired value for the property clientTimeoutDuration.
+   */
+  void setClientTimeoutDuration(String clientTimeoutDuration);
 }

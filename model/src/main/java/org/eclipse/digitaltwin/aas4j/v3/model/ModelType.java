@@ -15,128 +15,85 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- *
- */
+/** */
 @IRI("aas:ModelType")
 public enum ModelType {
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/AnnotatedRelationshipElement")
-    ANNOTATED_RELATIONSHIP_ELEMENT,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/AnnotatedRelationshipElement")
+  ANNOTATED_RELATIONSHIP_ELEMENT,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/AssetAdministrationShell")
-    ASSET_ADMINISTRATION_SHELL,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/AssetAdministrationShell")
+  ASSET_ADMINISTRATION_SHELL,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/BasicEventElement")
-    BASIC_EVENT_ELEMENT,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/BasicEventElement")
+  BASIC_EVENT_ELEMENT,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Blob")
-    BLOB,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Blob")
+  BLOB,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Capability")
-    CAPABILITY,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Capability")
+  CAPABILITY,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/ConceptDescription")
-    CONCEPT_DESCRIPTION,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/ConceptDescription")
+  CONCEPT_DESCRIPTION,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Entity")
-    ENTITY,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Entity")
+  ENTITY,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/File")
-    FILE,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/File")
+  FILE,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/MultiLanguageProperty")
-    MULTI_LANGUAGE_PROPERTY,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/MultiLanguageProperty")
+  MULTI_LANGUAGE_PROPERTY,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Operation")
-    OPERATION,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Operation")
+  OPERATION,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Property")
-    PROPERTY,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Property")
+  PROPERTY,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Qualifier")
-    QUALIFIER,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Qualifier")
+  QUALIFIER,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Range")
-    RANGE,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Range")
+  RANGE,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Reference")
-    REFERENCE,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Reference")
+  REFERENCE,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/ReferenceElement")
-    REFERENCE_ELEMENT,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/ReferenceElement")
+  REFERENCE_ELEMENT,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/RelationshipElement")
-    RELATIONSHIP_ELEMENT,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/RelationshipElement")
+  RELATIONSHIP_ELEMENT,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/Submodel")
-    SUBMODEL,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/Submodel")
+  SUBMODEL,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementCollection")
-    SUBMODEL_ELEMENT_COLLECTION,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementCollection")
+  SUBMODEL_ELEMENT_COLLECTION,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementList")
-    SUBMODEL_ELEMENT_LIST;
-
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ModelType/SubmodelElementList")
+  SUBMODEL_ELEMENT_LIST;
 }

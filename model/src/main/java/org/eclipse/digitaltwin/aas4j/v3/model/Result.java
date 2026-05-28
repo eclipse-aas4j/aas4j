@@ -15,37 +15,30 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultResult;
 
-import java.util.List;
-
-
-/**
- *
- */
+/** */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultResult.class),
-        @KnownSubtypes.Type(value = BaseOperationResult.class)
+  @KnownSubtypes.Type(value = DefaultResult.class),
+  @KnownSubtypes.Type(value = BaseOperationResult.class)
 })
 public interface Result {
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/Result/messages
-     *
-     * @return Returns the List of Messages for the property messages.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Result/messages")
-    List<Message> getMessages();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/Result/messages
+   *
+   * @return Returns the List of Messages for the property messages.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Result/messages")
+  List<Message> getMessages();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/Result/messages
-     *
-     * @param messages desired value for the property messages.
-     */
-    void setMessages(List<Message> messages);
-
+  /**
+   * More information under https://admin-shell.io/aas/3/0/Result/messages
+   *
+   * @param messages desired value for the property messages.
+   */
+  void setMessages(List<Message> messages);
 }

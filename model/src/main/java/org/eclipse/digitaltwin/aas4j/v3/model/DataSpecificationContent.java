@@ -15,18 +15,12 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-
 
 /**
  * Data specification content is part of a data specification template and defines which additional
  * attributes shall be added to the element instance that references the data specification template
  * and meta information about the template itself.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DataSpecificationIec61360.class)
-})
-public interface DataSpecificationContent {
-
-}
+@KnownSubtypes({@KnownSubtypes.Type(value = DataSpecificationIec61360.class)})
+public interface DataSpecificationContent {}

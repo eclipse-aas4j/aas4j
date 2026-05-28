@@ -15,32 +15,21 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * Enumeration for denoting whether an asset is a type asset or an instance asset.
- */
+/** Enumeration for denoting whether an asset is a type asset or an instance asset. */
 @IRI("aas:AssetKind")
 public enum AssetKind {
 
-    /**
-     * Instance asset
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
-    INSTANCE,
+  /** Instance asset */
+  @IRI("https://admin-shell.io/aas/3/0/AssetKind/Instance")
+  INSTANCE,
 
-    /**
-     * Neither a type asset nor an instance asset
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
-    NOT_APPLICABLE,
+  /** Neither a type asset nor an instance asset */
+  @IRI("https://admin-shell.io/aas/3/0/AssetKind/NotApplicable")
+  NOT_APPLICABLE,
 
-    /**
-     * Type asset
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
-    TYPE;
-
+  /** Type asset */
+  @IRI("https://admin-shell.io/aas/3/0/AssetKind/Type")
+  TYPE;
 }

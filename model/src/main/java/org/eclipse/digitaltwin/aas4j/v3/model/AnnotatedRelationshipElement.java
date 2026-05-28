@@ -15,41 +15,38 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
-
-import java.util.List;
-
 
 /**
  * An annotated relationship element is a relationship element that can be annotated with additional
  * data elements.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultAnnotatedRelationshipElement.class)
-})
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultAnnotatedRelationshipElement.class)})
 public interface AnnotatedRelationshipElement extends RelationshipElement {
 
-    /**
-     * A data element that represents an annotation that holds for the relationship between the two
-     * elements
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
-     *
-     * @return Returns the List of DataElements for the property annotations.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations")
-    List<DataElement> getAnnotations();
+  /**
+   * A data element that represents an annotation that holds for the relationship between the two
+   * elements
+   *
+   * <p>More information under
+   * https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
+   *
+   * @return Returns the List of DataElements for the property annotations.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations")
+  List<DataElement> getAnnotations();
 
-    /**
-     * A data element that represents an annotation that holds for the relationship between the two
-     * elements
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
-     *
-     * @param annotations desired value for the property annotations.
-     */
-    void setAnnotations(List<DataElement> annotations);
-
+  /**
+   * A data element that represents an annotation that holds for the relationship between the two
+   * elements
+   *
+   * <p>More information under
+   * https://admin-shell.io/aas/3/0/AnnotatedRelationshipElement/annotations
+   *
+   * @param annotations desired value for the property annotations.
+   */
+  void setAnnotations(List<DataElement> annotations);
 }

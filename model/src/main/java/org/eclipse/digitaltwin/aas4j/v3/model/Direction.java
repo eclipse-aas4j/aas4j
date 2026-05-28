@@ -15,26 +15,17 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * Direction
- */
+/** Direction */
 @IRI("aas:Direction")
 public enum Direction {
 
-    /**
-     * Input direction.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Direction/Input")
-    INPUT,
+  /** Input direction. */
+  @IRI("https://admin-shell.io/aas/3/0/Direction/Input")
+  INPUT,
 
-    /**
-     * Output direction
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Direction/Output")
-    OUTPUT;
-
+  /** Output direction */
+  @IRI("https://admin-shell.io/aas/3/0/Direction/Output")
+  OUTPUT;
 }

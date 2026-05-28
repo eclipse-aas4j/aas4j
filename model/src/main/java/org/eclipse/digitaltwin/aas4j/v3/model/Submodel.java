@@ -15,38 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 
-import java.util.List;
+/** A submodel defines a specific aspect of the asset represented by the AAS. */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultSubmodel.class)})
+public interface Submodel
+    extends HasDataSpecification, HasSemantics, Qualifiable, HasKind, Identifiable {
 
+  /**
+   * A submodel consists of zero or more submodel elements.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
+   *
+   * @return Returns the List of SubmodelElements for the property submodelElements.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Submodel/submodelElements")
+  List<SubmodelElement> getSubmodelElements();
 
-/**
- * A submodel defines a specific aspect of the asset represented by the AAS.
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultSubmodel.class)
-})
-public interface Submodel extends HasDataSpecification, HasSemantics, Qualifiable, HasKind, Identifiable {
-
-    /**
-     * A submodel consists of zero or more submodel elements.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
-     *
-     * @return Returns the List of SubmodelElements for the property submodelElements.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Submodel/submodelElements")
-    List<SubmodelElement> getSubmodelElements();
-
-    /**
-     * A submodel consists of zero or more submodel elements.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
-     *
-     * @param submodelElements desired value for the property submodelElements.
-     */
-    void setSubmodelElements(List<SubmodelElement> submodelElements);
-
+  /**
+   * A submodel consists of zero or more submodel elements.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Submodel/submodelElements
+   *
+   * @param submodelElements desired value for the property submodelElements.
+   */
+  void setSubmodelElements(List<SubmodelElement> submodelElements);
 }

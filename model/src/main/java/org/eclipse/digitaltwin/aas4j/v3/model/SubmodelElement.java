@@ -15,23 +15,18 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
-
-/**
- * A submodel element is an element suitable for the description and differentiation of assets.
- */
+/** A submodel element is an element suitable for the description and differentiation of assets. */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = DataElement.class),
-        @KnownSubtypes.Type(value = Capability.class),
-        @KnownSubtypes.Type(value = Entity.class),
-        @KnownSubtypes.Type(value = EventElement.class),
-        @KnownSubtypes.Type(value = Operation.class),
-        @KnownSubtypes.Type(value = RelationshipElement.class),
-        @KnownSubtypes.Type(value = SubmodelElementCollection.class),
-        @KnownSubtypes.Type(value = SubmodelElementList.class)
+  @KnownSubtypes.Type(value = DataElement.class),
+  @KnownSubtypes.Type(value = Capability.class),
+  @KnownSubtypes.Type(value = Entity.class),
+  @KnownSubtypes.Type(value = EventElement.class),
+  @KnownSubtypes.Type(value = Operation.class),
+  @KnownSubtypes.Type(value = RelationshipElement.class),
+  @KnownSubtypes.Type(value = SubmodelElementCollection.class),
+  @KnownSubtypes.Type(value = SubmodelElementList.class)
 })
-public interface SubmodelElement extends Referable, HasDataSpecification, HasSemantics, Qualifiable {
-
-}
+public interface SubmodelElement
+    extends Referable, HasDataSpecification, HasSemantics, Qualifiable {}

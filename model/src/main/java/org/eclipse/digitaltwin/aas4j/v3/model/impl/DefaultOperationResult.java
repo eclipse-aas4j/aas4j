@@ -15,95 +15,83 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.OperationResultBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationResult
- *
- */
-
+/** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.OperationResult */
 @IRI("aas:OperationResult")
 public class DefaultOperationResult implements OperationResult {
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
-    protected List<OperationVariable> inoutputArguments = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/0/OperationResult/inoutputArguments")
+  protected List<OperationVariable> inoutputArguments = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
-    protected List<OperationVariable> outputArguments = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/0/OperationResult/outputArguments")
+  protected List<OperationVariable> outputArguments = new ArrayList<>();
 
-    public DefaultOperationResult() {
+  public DefaultOperationResult() {}
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.inoutputArguments, this.outputArguments);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultOperationResult other = (DefaultOperationResult) obj;
+      return Objects.equals(this.inoutputArguments, other.inoutputArguments)
+          && Objects.equals(this.outputArguments, other.outputArguments);
+    }
+  }
+
+  @Override
+  public List<OperationVariable> getInoutputArguments() {
+    return inoutputArguments;
+  }
+
+  @Override
+  public void setInoutputArguments(List<OperationVariable> inoutputArguments) {
+    this.inoutputArguments = inoutputArguments;
+  }
+
+  @Override
+  public List<OperationVariable> getOutputArguments() {
+    return outputArguments;
+  }
+
+  @Override
+  public void setOutputArguments(List<OperationVariable> outputArguments) {
+    this.outputArguments = outputArguments;
+  }
+
+  public String toString() {
+    return String.format(
+        "DefaultOperationResult (" + "inoutputArguments=%s," + "outputArguments=%s," + ")",
+        this.inoutputArguments, this.outputArguments);
+  }
+
+  /** This builder class can be used to construct a DefaultOperationResult bean. */
+  public static class Builder extends OperationResultBuilder<DefaultOperationResult, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(this.inoutputArguments,
-                this.outputArguments);
+    protected DefaultOperationResult newBuildingInstance() {
+      return new DefaultOperationResult();
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultOperationResult other = (DefaultOperationResult) obj;
-            return Objects.equals(this.inoutputArguments, other.inoutputArguments) &&
-                    Objects.equals(this.outputArguments, other.outputArguments);
-        }
-    }
-
-    @Override
-    public List<OperationVariable> getInoutputArguments() {
-        return inoutputArguments;
-    }
-
-    @Override
-    public void setInoutputArguments(List<OperationVariable> inoutputArguments) {
-        this.inoutputArguments = inoutputArguments;
-    }
-
-    @Override
-    public List<OperationVariable> getOutputArguments() {
-        return outputArguments;
-    }
-
-    @Override
-    public void setOutputArguments(List<OperationVariable> outputArguments) {
-        this.outputArguments = outputArguments;
-    }
-
-    public String toString() {
-        return String.format(
-                "DefaultOperationResult (" + "inoutputArguments=%s,"
-                        + "outputArguments=%s,"
-                        + ")",
-                this.inoutputArguments, this.outputArguments);
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultOperationResult bean.
-     */
-    public static class Builder extends OperationResultBuilder<DefaultOperationResult, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultOperationResult newBuildingInstance() {
-            return new DefaultOperationResult();
-        }
-    }
+  }
 }

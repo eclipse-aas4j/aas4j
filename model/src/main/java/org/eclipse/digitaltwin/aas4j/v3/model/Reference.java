@@ -15,76 +15,69 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
 
-import java.util.List;
-
-
-/**
- * Reference to either a model element of the same or another AAS or to an external entity.
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultReference.class)
-})
+/** Reference to either a model element of the same or another AAS or to an external entity. */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultReference.class)})
 public interface Reference {
 
-    /**
-     * Type of the reference.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/type
-     *
-     * @return Returns the ReferenceTypes for the property type.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Reference/type")
-    ReferenceTypes getType();
+  /**
+   * Type of the reference.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/type
+   *
+   * @return Returns the ReferenceTypes for the property type.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Reference/type")
+  ReferenceTypes getType();
 
-    /**
-     * Type of the reference.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/type
-     *
-     * @param type desired value for the property type.
-     */
-    void setType(ReferenceTypes type);
+  /**
+   * Type of the reference.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/type
+   *
+   * @param type desired value for the property type.
+   */
+  void setType(ReferenceTypes type);
 
-    /**
-     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
-     *
-     * @return Returns the Reference for the property referredSemanticId.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
-    Reference getReferredSemanticId();
+  /**
+   * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+   *
+   * @return Returns the Reference for the property referredSemanticId.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+  Reference getReferredSemanticId();
 
-    /**
-     * 'semanticId' of the referenced model element ('type' = 'ModelReference').
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
-     *
-     * @param referredSemanticId desired value for the property referredSemanticId.
-     */
-    void setReferredSemanticId(Reference referredSemanticId);
+  /**
+   * 'semanticId' of the referenced model element ('type' = 'ModelReference').
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/referredSemanticId
+   *
+   * @param referredSemanticId desired value for the property referredSemanticId.
+   */
+  void setReferredSemanticId(Reference referredSemanticId);
 
-    /**
-     * Unique references in their name space.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/keys
-     *
-     * @return Returns the List of Keys for the property keys.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
-    List<Key> getKeys();
+  /**
+   * Unique references in their name space.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/keys
+   *
+   * @return Returns the List of Keys for the property keys.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+  List<Key> getKeys();
 
-    /**
-     * Unique references in their name space.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Reference/keys
-     *
-     * @param keys desired value for the property keys.
-     */
-    void setKeys(List<Key> keys);
-
+  /**
+   * Unique references in their name space.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Reference/keys
+   *
+   * @param keys desired value for the property keys.
+   */
+  void setKeys(List<Key> keys);
 }

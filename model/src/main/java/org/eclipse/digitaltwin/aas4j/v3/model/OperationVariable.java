@@ -15,38 +15,33 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperationVariable;
-
 
 /**
  * The value of an operation variable is a submodel element that is used as input and/or output
  * variable of an operation.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultOperationVariable.class)
-})
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperationVariable.class)})
 public interface OperationVariable {
 
-    /**
-     * Describes an argument or result of an operation via a submodel element
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/OperationVariable/value
-     *
-     * @return Returns the SubmodelElement for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
-    SubmodelElement getValue();
+  /**
+   * Describes an argument or result of an operation via a submodel element
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/OperationVariable/value
+   *
+   * @return Returns the SubmodelElement for the property value.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/OperationVariable/value")
+  SubmodelElement getValue();
 
-    /**
-     * Describes an argument or result of an operation via a submodel element
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/OperationVariable/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(SubmodelElement value);
-
+  /**
+   * Describes an argument or result of an operation via a submodel element
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/OperationVariable/value
+   *
+   * @param value desired value for the property value.
+   */
+  void setValue(SubmodelElement value);
 }

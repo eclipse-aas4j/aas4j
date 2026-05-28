@@ -15,33 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 import org.eclipse.digitaltwin.aas4j.v3.model.ValueReferencePair;
 
-import java.util.List;
+public abstract class ValueListBuilder<T extends ValueList, B extends ValueListBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
+  /**
+   * This function allows setting a value for valueReferencePairs
+   *
+   * @param valueReferencePairs desired value to be set
+   * @return Builder object with new value for valueReferencePairs
+   */
+  public B valueReferencePairs(List<ValueReferencePair> valueReferencePairs) {
+    getBuildingInstance().setValueReferencePairs(valueReferencePairs);
+    return getSelf();
+  }
 
-public abstract class ValueListBuilder<T extends ValueList, B extends ValueListBuilder<T, B>> extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for valueReferencePairs
-     *
-     * @param valueReferencePairs desired value to be set
-     * @return Builder object with new value for valueReferencePairs
-     */
-    public B valueReferencePairs(List<ValueReferencePair> valueReferencePairs) {
-        getBuildingInstance().setValueReferencePairs(valueReferencePairs);
-        return getSelf();
-    }
-
-    /**
-     * This function allows adding a value to the List valueReferencePairs
-     *
-     * @param valueReferencePairs desired value to be added
-     * @return Builder object with new value for valueReferencePairs
-     */
-    public B valueReferencePairs(ValueReferencePair valueReferencePairs) {
-        getBuildingInstance().getValueReferencePairs().add(valueReferencePairs);
-        return getSelf();
-    }
+  /**
+   * This function allows adding a value to the List valueReferencePairs
+   *
+   * @param valueReferencePairs desired value to be added
+   * @return Builder object with new value for valueReferencePairs
+   */
+  public B valueReferencePairs(ValueReferencePair valueReferencePairs) {
+    getBuildingInstance().getValueReferencePairs().add(valueReferencePairs);
+    return getSelf();
+  }
 }

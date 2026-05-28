@@ -15,39 +15,34 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
-
-import java.util.List;
-
 
 /**
  * A submodel element collection is a kind of struct, i.e. a a logical encapsulation of multiple
  * named values. It has a fixed number of submodel elements.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultSubmodelElementCollection.class)
-})
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultSubmodelElementCollection.class)})
 public interface SubmodelElementCollection extends SubmodelElement {
 
-    /**
-     * Submodel element contained in the collection.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
-     *
-     * @return Returns the List of SubmodelElements for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
-    List<SubmodelElement> getValue();
+  /**
+   * Submodel element contained in the collection.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+   *
+   * @return Returns the List of SubmodelElements for the property value.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
+  List<SubmodelElement> getValue();
 
-    /**
-     * Submodel element contained in the collection.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
-     *
-     * @param values desired value for the property value.
-     */
-    void setValue(List<SubmodelElement> values);
-
+  /**
+   * Submodel element contained in the collection.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+   *
+   * @param values desired value for the property value.
+   */
+  void setValue(List<SubmodelElement> values);
 }

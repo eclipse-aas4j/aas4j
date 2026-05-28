@@ -15,69 +15,56 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSecurityAttributeObject;
 
-
-/**
- *
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultSecurityAttributeObject.class)
-})
+/** */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultSecurityAttributeObject.class)})
 public interface SecurityAttributeObject {
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
-     *
-     * @return Returns the SecurityTypeEnum for the property type.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
-    SecurityTypeEnum getType();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
+   *
+   * @return Returns the SecurityTypeEnum for the property type.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
+  SecurityTypeEnum getType();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
-     *
-     * @param type desired value for the property type.
-     */
-    void setType(SecurityTypeEnum type);
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/type
+   *
+   * @param type desired value for the property type.
+   */
+  void setType(SecurityTypeEnum type);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
-     *
-     * @return Returns the String for the property key.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
-    String getKey();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
+   *
+   * @return Returns the String for the property key.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
+  String getKey();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
-     *
-     * @param key desired value for the property key.
-     */
-    void setKey(String key);
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/key
+   *
+   * @param key desired value for the property key.
+   */
+  void setKey(String key);
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
-     *
-     * @return Returns the String for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
-    String getValue();
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
+   *
+   * @return Returns the String for the property value.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
+  String getValue();
 
-    /**
-     *
-     * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(String value);
-
+  /**
+   * More information under https://admin-shell.io/aas/3/0/SecurityAttributeObject/value
+   *
+   * @param value desired value for the property value.
+   */
+  void setValue(String value);
 }

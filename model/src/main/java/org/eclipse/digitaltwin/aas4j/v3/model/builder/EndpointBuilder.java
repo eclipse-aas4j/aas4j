@@ -15,32 +15,31 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 
+public abstract class EndpointBuilder<T extends Endpoint, B extends EndpointBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class EndpointBuilder<T extends Endpoint, B extends EndpointBuilder<T, B>> extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for _interface
+   *
+   * @param _interface desired value to be set
+   * @return Builder object with new value for _interface
+   */
+  public B _interface(String _interface) {
+    getBuildingInstance().set_interface(_interface);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for _interface
-     *
-     * @param _interface desired value to be set
-     * @return Builder object with new value for _interface
-     */
-    public B _interface(String _interface) {
-        getBuildingInstance().set_interface(_interface);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for protocolInformation
-     *
-     * @param protocolInformation desired value to be set
-     * @return Builder object with new value for protocolInformation
-     */
-    public B protocolInformation(ProtocolInformation protocolInformation) {
-        getBuildingInstance().setProtocolInformation(protocolInformation);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for protocolInformation
+   *
+   * @param protocolInformation desired value to be set
+   * @return Builder object with new value for protocolInformation
+   */
+  public B protocolInformation(ProtocolInformation protocolInformation) {
+    getBuildingInstance().setProtocolInformation(protocolInformation);
+    return getSelf();
+  }
 }

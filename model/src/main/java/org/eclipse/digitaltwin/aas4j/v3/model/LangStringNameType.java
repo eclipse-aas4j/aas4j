@@ -15,17 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultLangStringNameType;
 
-
-/**
- * String with length 128 maximum and minimum 1 characters and with language tags
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultLangStringNameType.class)
-})
-public interface LangStringNameType extends AbstractLangString {
-
-}
+/** String with length 128 maximum and minimum 1 characters and with language tags */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultLangStringNameType.class)})
+public interface LangStringNameType extends AbstractLangString {}

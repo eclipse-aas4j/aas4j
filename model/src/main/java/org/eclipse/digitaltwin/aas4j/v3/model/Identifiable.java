@@ -15,57 +15,52 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
-
-/**
- * An element that has a globally unique identifier.
- */
+/** An element that has a globally unique identifier. */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = AssetAdministrationShell.class),
-        @KnownSubtypes.Type(value = ConceptDescription.class),
-        @KnownSubtypes.Type(value = Submodel.class)
+  @KnownSubtypes.Type(value = AssetAdministrationShell.class),
+  @KnownSubtypes.Type(value = ConceptDescription.class),
+  @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface Identifiable extends Referable {
 
-    /**
-     * Administrative information of an identifiable element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Identifiable/administration
-     *
-     * @return Returns the AdministrativeInformation for the property administration.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Identifiable/administration")
-    AdministrativeInformation getAdministration();
+  /**
+   * Administrative information of an identifiable element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Identifiable/administration
+   *
+   * @return Returns the AdministrativeInformation for the property administration.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Identifiable/administration")
+  AdministrativeInformation getAdministration();
 
-    /**
-     * Administrative information of an identifiable element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Identifiable/administration
-     *
-     * @param administration desired value for the property administration.
-     */
-    void setAdministration(AdministrativeInformation administration);
+  /**
+   * Administrative information of an identifiable element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Identifiable/administration
+   *
+   * @param administration desired value for the property administration.
+   */
+  void setAdministration(AdministrativeInformation administration);
 
-    /**
-     * The globally unique identification of the element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Identifiable/id
-     *
-     * @return Returns the String for the property id.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
-    String getId();
+  /**
+   * The globally unique identification of the element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Identifiable/id
+   *
+   * @return Returns the String for the property id.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Identifiable/id")
+  String getId();
 
-    /**
-     * The globally unique identification of the element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Identifiable/id
-     *
-     * @param id desired value for the property id.
-     */
-    void setId(String id);
-
+  /**
+   * The globally unique identification of the element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Identifiable/id
+   *
+   * @param id desired value for the property id.
+   */
+  void setId(String id);
 }

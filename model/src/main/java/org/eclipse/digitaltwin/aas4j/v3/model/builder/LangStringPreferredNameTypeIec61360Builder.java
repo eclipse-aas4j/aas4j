@@ -15,32 +15,32 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
 
+public abstract class LangStringPreferredNameTypeIec61360Builder<
+        T extends LangStringPreferredNameTypeIec61360,
+        B extends LangStringPreferredNameTypeIec61360Builder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class LangStringPreferredNameTypeIec61360Builder<T extends LangStringPreferredNameTypeIec61360, B extends LangStringPreferredNameTypeIec61360Builder<T, B>>
-        extends ExtendableBuilder<T, B> {
+  /**
+   * This function allows setting a value for language
+   *
+   * @param language desired value to be set
+   * @return Builder object with new value for language
+   */
+  public B language(String language) {
+    getBuildingInstance().setLanguage(language);
+    return getSelf();
+  }
 
-    /**
-     * This function allows setting a value for language
-     *
-     * @param language desired value to be set
-     * @return Builder object with new value for language
-     */
-    public B language(String language) {
-        getBuildingInstance().setLanguage(language);
-        return getSelf();
-    }
-
-    /**
-     * This function allows setting a value for text
-     *
-     * @param text desired value to be set
-     * @return Builder object with new value for text
-     */
-    public B text(String text) {
-        getBuildingInstance().setText(text);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for text
+   *
+   * @param text desired value to be set
+   * @return Builder object with new value for text
+   */
+  public B text(String text) {
+    getBuildingInstance().setText(text);
+    return getSelf();
+  }
 }

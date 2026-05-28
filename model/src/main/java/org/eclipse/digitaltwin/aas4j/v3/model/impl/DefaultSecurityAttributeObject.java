@@ -15,109 +15,98 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SecurityAttributeObjectBuilder;
 
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject
- *
  */
-
 @IRI("aas:SecurityAttributeObject")
 public class DefaultSecurityAttributeObject implements SecurityAttributeObject {
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
-    protected String key;
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/key")
+  protected String key;
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
-    protected SecurityTypeEnum type;
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/type")
+  protected SecurityTypeEnum type;
 
-    @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
-    protected String value;
+  @IRI("https://admin-shell.io/aas/3/0/SecurityAttributeObject/value")
+  protected String value;
 
-    public DefaultSecurityAttributeObject() {
+  public DefaultSecurityAttributeObject() {}
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.type, this.key, this.value);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultSecurityAttributeObject other = (DefaultSecurityAttributeObject) obj;
+      return Objects.equals(this.type, other.type)
+          && Objects.equals(this.key, other.key)
+          && Objects.equals(this.value, other.value);
+    }
+  }
+
+  @Override
+  public SecurityTypeEnum getType() {
+    return type;
+  }
+
+  @Override
+  public void setType(SecurityTypeEnum type) {
+    this.type = type;
+  }
+
+  @Override
+  public String getKey() {
+    return key;
+  }
+
+  @Override
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+  @Override
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  public String toString() {
+    return String.format(
+        "DefaultSecurityAttributeObject (" + "type=%s," + "key=%s," + "value=%s," + ")",
+        this.type, this.key, this.value);
+  }
+
+  /** This builder class can be used to construct a DefaultSecurityAttributeObject bean. */
+  public static class Builder
+      extends SecurityAttributeObjectBuilder<DefaultSecurityAttributeObject, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(this.type,
-                this.key,
-                this.value);
+    protected DefaultSecurityAttributeObject newBuildingInstance() {
+      return new DefaultSecurityAttributeObject();
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultSecurityAttributeObject other = (DefaultSecurityAttributeObject) obj;
-            return Objects.equals(this.type, other.type) &&
-                    Objects.equals(this.key, other.key) &&
-                    Objects.equals(this.value, other.value);
-        }
-    }
-
-    @Override
-    public SecurityTypeEnum getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(SecurityTypeEnum type) {
-        this.type = type;
-    }
-
-    @Override
-    public String getKey() {
-        return key;
-    }
-
-    @Override
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    @Override
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String toString() {
-        return String.format(
-                "DefaultSecurityAttributeObject (" + "type=%s,"
-                        + "key=%s,"
-                        + "value=%s,"
-                        + ")",
-                this.type, this.key, this.value);
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultSecurityAttributeObject bean.
-     */
-    public static class Builder extends SecurityAttributeObjectBuilder<DefaultSecurityAttributeObject, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultSecurityAttributeObject newBuildingInstance() {
-            return new DefaultSecurityAttributeObject();
-        }
-    }
+  }
 }

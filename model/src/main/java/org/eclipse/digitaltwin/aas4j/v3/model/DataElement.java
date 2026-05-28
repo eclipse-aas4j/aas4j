@@ -15,21 +15,17 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-
 
 /**
  * A data element is a submodel element that is not further composed out of other submodel elements.
  */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = Blob.class),
-        @KnownSubtypes.Type(value = File.class),
-        @KnownSubtypes.Type(value = MultiLanguageProperty.class),
-        @KnownSubtypes.Type(value = Property.class),
-        @KnownSubtypes.Type(value = Range.class),
-        @KnownSubtypes.Type(value = ReferenceElement.class)
+  @KnownSubtypes.Type(value = Blob.class),
+  @KnownSubtypes.Type(value = File.class),
+  @KnownSubtypes.Type(value = MultiLanguageProperty.class),
+  @KnownSubtypes.Type(value = Property.class),
+  @KnownSubtypes.Type(value = Range.class),
+  @KnownSubtypes.Type(value = ReferenceElement.class)
 })
-public interface DataElement extends SubmodelElement {
-
-}
+public interface DataElement extends SubmodelElement {}

@@ -15,56 +15,49 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultFile;
 
-
-/**
- * A File is a data element that represents an address to a file (a locator).
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultFile.class)
-})
+/** A File is a data element that represents an address to a file (a locator). */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultFile.class)})
 public interface File extends DataElement {
 
-    /**
-     * Path and name of the referenced file (with file extension).
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/File/value
-     *
-     * @return Returns the String for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/File/value")
-    String getValue();
+  /**
+   * Path and name of the referenced file (with file extension).
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/File/value
+   *
+   * @return Returns the String for the property value.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/File/value")
+  String getValue();
 
-    /**
-     * Path and name of the referenced file (with file extension).
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/File/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(String value);
+  /**
+   * Path and name of the referenced file (with file extension).
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/File/value
+   *
+   * @param value desired value for the property value.
+   */
+  void setValue(String value);
 
-    /**
-     * Content type of the content of the file.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/File/contentType
-     *
-     * @return Returns the String for the property contentType.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/File/contentType")
-    String getContentType();
+  /**
+   * Content type of the content of the file.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/File/contentType
+   *
+   * @return Returns the String for the property contentType.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/File/contentType")
+  String getContentType();
 
-    /**
-     * Content type of the content of the file.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/File/contentType
-     *
-     * @param contentType desired value for the property contentType.
-     */
-    void setContentType(String contentType);
-
+  /**
+   * Content type of the content of the file.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/File/contentType
+   *
+   * @param contentType desired value for the property contentType.
+   */
+  void setContentType(String contentType);
 }

@@ -15,76 +15,69 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
 
-import java.util.List;
-
-
-/**
- * An operation is a submodel element with input and output variables.
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultOperation.class)
-})
+/** An operation is a submodel element with input and output variables. */
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultOperation.class)})
 public interface Operation extends SubmodelElement {
 
-    /**
-     * Input parameter of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
-     *
-     * @return Returns the List of OperationVariables for the property inputVariables.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
-    List<OperationVariable> getInputVariables();
+  /**
+   * Input parameter of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
+   *
+   * @return Returns the List of OperationVariables for the property inputVariables.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Operation/inputVariables")
+  List<OperationVariable> getInputVariables();
 
-    /**
-     * Input parameter of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
-     *
-     * @param inputVariables desired value for the property inputVariables.
-     */
-    void setInputVariables(List<OperationVariable> inputVariables);
+  /**
+   * Input parameter of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inputVariables
+   *
+   * @param inputVariables desired value for the property inputVariables.
+   */
+  void setInputVariables(List<OperationVariable> inputVariables);
 
-    /**
-     * Output parameter of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
-     *
-     * @return Returns the List of OperationVariables for the property outputVariables.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
-    List<OperationVariable> getOutputVariables();
+  /**
+   * Output parameter of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
+   *
+   * @return Returns the List of OperationVariables for the property outputVariables.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Operation/outputVariables")
+  List<OperationVariable> getOutputVariables();
 
-    /**
-     * Output parameter of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
-     *
-     * @param outputVariables desired value for the property outputVariables.
-     */
-    void setOutputVariables(List<OperationVariable> outputVariables);
+  /**
+   * Output parameter of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/outputVariables
+   *
+   * @param outputVariables desired value for the property outputVariables.
+   */
+  void setOutputVariables(List<OperationVariable> outputVariables);
 
-    /**
-     * Parameter that is input and output of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
-     *
-     * @return Returns the List of OperationVariables for the property inoutputVariables.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
-    List<OperationVariable> getInoutputVariables();
+  /**
+   * Parameter that is input and output of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+   *
+   * @return Returns the List of OperationVariables for the property inoutputVariables.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Operation/inoutputVariables")
+  List<OperationVariable> getInoutputVariables();
 
-    /**
-     * Parameter that is input and output of the operation.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
-     *
-     * @param inoutputVariables desired value for the property inoutputVariables.
-     */
-    void setInoutputVariables(List<OperationVariable> inoutputVariables);
-
+  /**
+   * Parameter that is input and output of the operation.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Operation/inoutputVariables
+   *
+   * @param inoutputVariables desired value for the property inoutputVariables.
+   */
+  void setInoutputVariables(List<OperationVariable> inoutputVariables);
 }

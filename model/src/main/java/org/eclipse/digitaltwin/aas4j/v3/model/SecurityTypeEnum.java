@@ -15,32 +15,21 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- *
- */
+/** */
 @IRI("aas:SecurityTypeEnum")
 public enum SecurityTypeEnum {
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/None")
-    NONE,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/None")
+  NONE,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/Rfc_Tlsa")
-    RFC_TLSA,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/Rfc_Tlsa")
+  RFC_TLSA,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/W3c_Did")
-    W3C_DID;
-
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/SecurityTypeEnum/W3c_Did")
+  W3C_DID;
 }

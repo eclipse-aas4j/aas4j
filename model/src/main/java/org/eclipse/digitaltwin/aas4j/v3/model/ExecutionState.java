@@ -15,50 +15,33 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- *
- */
+/** */
 @IRI("aas:ExecutionState")
 public enum ExecutionState {
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Canceled")
-    CANCELED,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Canceled")
+  CANCELED,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Completed")
-    COMPLETED,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Completed")
+  COMPLETED,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Failed")
-    FAILED,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Failed")
+  FAILED,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Initiated")
-    INITIATED,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Initiated")
+  INITIATED,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Running")
-    RUNNING,
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Running")
+  RUNNING,
 
-    /**
-     *
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Timeout")
-    TIMEOUT;
-
+  /** */
+  @IRI("https://admin-shell.io/aas/3/0/ExecutionState/Timeout")
+  TIMEOUT;
 }

@@ -15,26 +15,17 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * Reference types
- */
+/** Reference types */
 @IRI("aas:ReferenceTypes")
 public enum ReferenceTypes {
 
-    /**
-     * External reference.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ExternalReference")
-    EXTERNAL_REFERENCE,
+  /** External reference. */
+  @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ExternalReference")
+  EXTERNAL_REFERENCE,
 
-    /**
-     * Model reference.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ModelReference")
-    MODEL_REFERENCE;
-
+  /** Model reference. */
+  @IRI("https://admin-shell.io/aas/3/0/ReferenceTypes/ModelReference")
+  MODEL_REFERENCE;
 }

@@ -28,121 +28,109 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
+ *
+ * <p>Reference to either a model element of the same or another AAS or to an external entity.
+ */
+@IRI("aas:Reference")
+public class DefaultReference implements Reference {
 
-private void validateReferredSemanticId(Reference referredSemanticId) {
+  @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+  protected List<Key> keys = new ArrayList<>();
+
+  @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+  protected Reference referredSemanticId;
+
+  @IRI("https://admin-shell.io/aas/3/0/Reference/type")
+  protected ReferenceTypes type;
+
+  public DefaultReference() {}
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.type, this.referredSemanticId, this.keys);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultReference other = (DefaultReference) obj;
+      return Objects.equals(this.type, other.type)
+          && Objects.equals(this.referredSemanticId, other.referredSemanticId)
+          && Objects.equals(this.keys, other.keys);
+    }
+  }
+
+  @Override
+  public ReferenceTypes getType() {
+    return type;
+  }
+
+  @Override
+  public void setType(ReferenceTypes type) {
+    this.type = type;
+  }
+
+  @Override
+  public Reference getReferredSemanticId() {
+    return referredSemanticId;
+  }
+
+  @Override
+  public void setReferredSemanticId(Reference referredSemanticId) {
+    validateReferredSemanticId(referredSemanticId);
+    this.referredSemanticId = referredSemanticId;
+  }
+
+  private void validateReferredSemanticId(Reference referredSemanticId) {
     if (referredSemanticId == null) {
-        return;
+      return;
     }
     Set<Reference> visited = Collections.newSetFromMap(new IdentityHashMap<>());
     Reference current = referredSemanticId;
     while (current != null) {
-        if (current == this || !visited.add(current)) {
-            throw new IllegalArgumentException(
-                    "referredSemanticId must not create a circular Reference");
-        }
-        current = current.getReferredSemanticId();
+      if (current == this || !visited.add(current)) {
+        throw new IllegalArgumentException(
+            "referredSemanticId must not create a circular Reference");
+      }
+      current = current.getReferredSemanticId();
     }
-}
+  }
 
-/**
- * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
- * <p>
- * Reference to either a model element of the same or another AAS or to an external entity.
- */
+  @Override
+  public List<Key> getKeys() {
+    return keys;
+  }
 
-@IRI("aas:Reference")
-public class DefaultReference implements Reference {
+  @Override
+  public void setKeys(List<Key> keys) {
+    this.keys = keys;
+  }
 
-    @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
-    protected List<Key> keys = new ArrayList<>();
+  public String toString() {
+    return String.format(
+        "DefaultReference (" + "type=%s," + "referredSemanticId=%s," + "keys=%s," + ")",
+        this.type, this.referredSemanticId, this.keys);
+  }
 
-    @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
-    protected Reference referredSemanticId;
+  /** This builder class can be used to construct a DefaultReference bean. */
+  public static class Builder extends ReferenceBuilder<DefaultReference, Builder> {
 
-    @IRI("https://admin-shell.io/aas/3/0/Reference/type")
-    protected ReferenceTypes type;
-
-    public DefaultReference() {
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(this.type,
-                this.referredSemanticId,
-                this.keys);
+    protected DefaultReference newBuildingInstance() {
+      return new DefaultReference();
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultReference other = (DefaultReference) obj;
-            return Objects.equals(this.type, other.type) &&
-                    Objects.equals(this.referredSemanticId, other.referredSemanticId) &&
-                    Objects.equals(this.keys, other.keys);
-        }
-    }
-
-    @Override
-    public ReferenceTypes getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(ReferenceTypes type) {
-        this.type = type;
-    }
-
-    @Override
-    public Reference getReferredSemanticId() {
-        return referredSemanticId;
-    }
-
-    @Override
-    public void setReferredSemanticId(Reference referredSemanticId) {
-        validateReferredSemanticId(referredSemanticId);
-        this.referredSemanticId = referredSemanticId;
-    }
-
-    @Override
-    public List<Key> getKeys() {
-        return keys;
-    }
-
-    @Override
-    public void setKeys(List<Key> keys) {
-        this.keys = keys;
-    }
-
-    public String toString() {
-        return String.format(
-                "DefaultReference (" + "type=%s,"
-                        + "referredSemanticId=%s,"
-                        + "keys=%s,"
-                        + ")",
-                this.type, this.referredSemanticId, this.keys);
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultReference bean.
-     */
-    public static class Builder extends ReferenceBuilder<DefaultReference, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultReference newBuildingInstance() {
-            return new DefaultReference();
-        }
-    }
-
-}
+  }
 }

@@ -15,28 +15,23 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * Enumeration for denoting whether an entity is a self-managed entity or a co-managed entity.
- */
+/** Enumeration for denoting whether an entity is a self-managed entity or a co-managed entity. */
 @IRI("aas:EntityType")
 public enum EntityType {
 
-    /**
-     * For co-managed entities there is no separate AAS. Co-managed entities need to be part of a
-     * self-managed entity.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/EntityType/CoManagedEntity")
-    CO_MANAGED_ENTITY,
+  /**
+   * For co-managed entities there is no separate AAS. Co-managed entities need to be part of a
+   * self-managed entity.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/EntityType/CoManagedEntity")
+  CO_MANAGED_ENTITY,
 
-    /**
-     * Self-Managed Entities have their own AAS but can be part of the bill of material of a composite
-     * self-managed entity.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/EntityType/SelfManagedEntity")
-    SELF_MANAGED_ENTITY;
-
+  /**
+   * Self-Managed Entities have their own AAS but can be part of the bill of material of a composite
+   * self-managed entity.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/EntityType/SelfManagedEntity")
+  SELF_MANAGED_ENTITY;
 }

@@ -15,32 +15,21 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * Enumeration for kinds of qualifiers.
- */
+/** Enumeration for kinds of qualifiers. */
 @IRI("aas:QualifierKind")
 public enum QualifierKind {
 
-    /**
-     * qualifies the semantic definition the element is referring to ('semanticId')
-     */
-    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ConceptQualifier")
-    CONCEPT_QUALIFIER,
+  /** qualifies the semantic definition the element is referring to ('semanticId') */
+  @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ConceptQualifier")
+  CONCEPT_QUALIFIER,
 
-    /**
-     * qualifies the elements within a specific submodel on concept level.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/TemplateQualifier")
-    TEMPLATE_QUALIFIER,
+  /** qualifies the elements within a specific submodel on concept level. */
+  @IRI("https://admin-shell.io/aas/3/0/QualifierKind/TemplateQualifier")
+  TEMPLATE_QUALIFIER,
 
-    /**
-     * qualifies the value of the element and can change during run-time.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ValueQualifier")
-    VALUE_QUALIFIER;
-
+  /** qualifies the value of the element and can change during run-time. */
+  @IRI("https://admin-shell.io/aas/3/0/QualifierKind/ValueQualifier")
+  VALUE_QUALIFIER;
 }

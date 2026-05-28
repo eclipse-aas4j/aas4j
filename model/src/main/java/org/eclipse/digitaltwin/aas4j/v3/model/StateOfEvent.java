@@ -15,26 +15,17 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
-
-/**
- * State of an event
- */
+/** State of an event */
 @IRI("aas:StateOfEvent")
 public enum StateOfEvent {
 
-    /**
-     * Event is off.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/Off")
-    OFF,
+  /** Event is off. */
+  @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/Off")
+  OFF,
 
-    /**
-     * Event is on
-     */
-    @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/On")
-    ON;
-
+  /** Event is on */
+  @IRI("https://admin-shell.io/aas/3/0/StateOfEvent/On")
+  ON;
 }

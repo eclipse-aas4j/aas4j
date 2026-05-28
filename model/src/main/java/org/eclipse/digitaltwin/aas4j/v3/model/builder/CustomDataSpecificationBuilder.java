@@ -19,5 +19,4 @@ import org.eclipse.digitaltwin.aas4j.v3.model.CustomDataSpecification;
 
 public abstract class CustomDataSpecificationBuilder<
         T extends CustomDataSpecification, B extends CustomDataSpecificationBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
-}
+    extends ExtendableBuilder<T, B> {}

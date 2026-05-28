@@ -15,11 +15,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.CustomDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.CustomDataSpecificationBuilder;
-
-import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.CustomDataSpecification
@@ -30,45 +29,42 @@ import java.util.Objects;
 @IRI("aas:CustomDataSpecification")
 public class DefaultCustomDataSpecification implements CustomDataSpecification {
 
-    public DefaultCustomDataSpecification() {
+  public DefaultCustomDataSpecification() {}
+
+  @Override
+  public String toString() {
+    return "DefaultCustomDataSpecification{" + "}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode());
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    }
+    return true;
+  }
+
+  /** This builder class can be used to construct a DefaultCustomDataSpecification bean. */
+  public static class Builder
+      extends CustomDataSpecificationBuilder<DefaultCustomDataSpecification, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public String toString() {
-        return "DefaultCustomDataSpecification{" + "}";
+    protected DefaultCustomDataSpecification newBuildingInstance() {
+      return new DefaultCustomDataSpecification();
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultCustomDataSpecification bean.
-     */
-    public static class Builder
-            extends CustomDataSpecificationBuilder<DefaultCustomDataSpecification, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultCustomDataSpecification newBuildingInstance() {
-            return new DefaultCustomDataSpecification();
-        }
-    }
+  }
 }

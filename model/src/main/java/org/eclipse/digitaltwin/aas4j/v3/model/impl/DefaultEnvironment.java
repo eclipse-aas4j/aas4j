@@ -15,6 +15,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
@@ -22,107 +25,98 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EnvironmentBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Environment
- * <p>
- * Container for the sets of different identifiables.
+ *
+ * <p>Container for the sets of different identifiables.
  */
-
 @IRI("aas:Environment")
 public class DefaultEnvironment implements Environment {
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
-    protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+  protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
-    protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+  protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-    @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
-    protected List<Submodel> submodels = new ArrayList<>();
+  @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
+  protected List<Submodel> submodels = new ArrayList<>();
 
-    public DefaultEnvironment() {
+  public DefaultEnvironment() {}
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    } else if (obj == null) {
+      return false;
+    } else if (this.getClass() != obj.getClass()) {
+      return false;
+    } else {
+      DefaultEnvironment other = (DefaultEnvironment) obj;
+      return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells)
+          && Objects.equals(this.submodels, other.submodels)
+          && Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
+    }
+  }
+
+  @Override
+  public List<AssetAdministrationShell> getAssetAdministrationShells() {
+    return assetAdministrationShells;
+  }
+
+  @Override
+  public void setAssetAdministrationShells(
+      List<AssetAdministrationShell> assetAdministrationShells) {
+    this.assetAdministrationShells = assetAdministrationShells;
+  }
+
+  @Override
+  public List<Submodel> getSubmodels() {
+    return submodels;
+  }
+
+  @Override
+  public void setSubmodels(List<Submodel> submodels) {
+    this.submodels = submodels;
+  }
+
+  @Override
+  public List<ConceptDescription> getConceptDescriptions() {
+    return conceptDescriptions;
+  }
+
+  @Override
+  public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
+    this.conceptDescriptions = conceptDescriptions;
+  }
+
+  public String toString() {
+    return String.format(
+        "DefaultEnvironment ("
+            + "assetAdministrationShells=%s,"
+            + "submodels=%s,"
+            + "conceptDescriptions=%s,"
+            + ")",
+        this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
+  }
+
+  /** This builder class can be used to construct a DefaultEnvironment bean. */
+  public static class Builder extends EnvironmentBuilder<DefaultEnvironment, Builder> {
+
+    @Override
+    protected Builder getSelf() {
+      return this;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(this.assetAdministrationShells,
-                this.submodels,
-                this.conceptDescriptions);
+    protected DefaultEnvironment newBuildingInstance() {
+      return new DefaultEnvironment();
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (this.getClass() != obj.getClass()) {
-            return false;
-        } else {
-            DefaultEnvironment other = (DefaultEnvironment) obj;
-            return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells) &&
-                    Objects.equals(this.submodels, other.submodels) &&
-                    Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
-        }
-    }
-
-    @Override
-    public List<AssetAdministrationShell> getAssetAdministrationShells() {
-        return assetAdministrationShells;
-    }
-
-    @Override
-    public void setAssetAdministrationShells(List<AssetAdministrationShell> assetAdministrationShells) {
-        this.assetAdministrationShells = assetAdministrationShells;
-    }
-
-    @Override
-    public List<Submodel> getSubmodels() {
-        return submodels;
-    }
-
-    @Override
-    public void setSubmodels(List<Submodel> submodels) {
-        this.submodels = submodels;
-    }
-
-    @Override
-    public List<ConceptDescription> getConceptDescriptions() {
-        return conceptDescriptions;
-    }
-
-    @Override
-    public void setConceptDescriptions(List<ConceptDescription> conceptDescriptions) {
-        this.conceptDescriptions = conceptDescriptions;
-    }
-
-    public String toString() {
-        return String.format(
-                "DefaultEnvironment (" + "assetAdministrationShells=%s,"
-                        + "submodels=%s,"
-                        + "conceptDescriptions=%s,"
-                        + ")",
-                this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
-    }
-
-    /**
-     * This builder class can be used to construct a DefaultEnvironment bean.
-     */
-    public static class Builder extends EnvironmentBuilder<DefaultEnvironment, Builder> {
-
-        @Override
-        protected Builder getSelf() {
-            return this;
-        }
-
-        @Override
-        protected DefaultEnvironment newBuildingInstance() {
-            return new DefaultEnvironment();
-        }
-    }
+  }
 }

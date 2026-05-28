@@ -15,40 +15,35 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReferenceElement;
-
 
 /**
  * A reference element is a data element that defines a logical reference to another element within
  * the same or another AAS or a reference to an external object or entity.
  */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = DefaultReferenceElement.class)
-})
+@KnownSubtypes({@KnownSubtypes.Type(value = DefaultReferenceElement.class)})
 public interface ReferenceElement extends DataElement {
 
-    /**
-     * Global reference to an external object or entity or a logical reference to another element within
-     * the same or another AAS (i.e. a model reference to a Referable).
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
-     *
-     * @return Returns the Reference for the property value.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/ReferenceElement/value")
-    Reference getValue();
+  /**
+   * Global reference to an external object or entity or a logical reference to another element
+   * within the same or another AAS (i.e. a model reference to a Referable).
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
+   *
+   * @return Returns the Reference for the property value.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/ReferenceElement/value")
+  Reference getValue();
 
-    /**
-     * Global reference to an external object or entity or a logical reference to another element within
-     * the same or another AAS (i.e. a model reference to a Referable).
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
-     *
-     * @param value desired value for the property value.
-     */
-    void setValue(Reference value);
-
+  /**
+   * Global reference to an external object or entity or a logical reference to another element
+   * within the same or another AAS (i.e. a model reference to a Referable).
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/ReferenceElement/value
+   *
+   * @param value desired value for the property value.
+   */
+  void setValue(Reference value);
 }

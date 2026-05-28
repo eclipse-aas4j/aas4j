@@ -15,22 +15,21 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
 
+public abstract class OperationVariableBuilder<
+        T extends OperationVariable, B extends OperationVariableBuilder<T, B>>
+    extends ExtendableBuilder<T, B> {
 
-public abstract class OperationVariableBuilder<T extends OperationVariable, B extends OperationVariableBuilder<T, B>>
-        extends ExtendableBuilder<T, B> {
-
-    /**
-     * This function allows setting a value for value
-     *
-     * @param value desired value to be set
-     * @return Builder object with new value for value
-     */
-    public B value(SubmodelElement value) {
-        getBuildingInstance().setValue(value);
-        return getSelf();
-    }
+  /**
+   * This function allows setting a value for value
+   *
+   * @param value desired value to be set
+   * @return Builder object with new value for value
+   */
+  public B value(SubmodelElement value) {
+    getBuildingInstance().setValue(value);
+    return getSelf();
+  }
 }

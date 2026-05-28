@@ -15,39 +15,34 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
-import java.util.List;
-
-
-/**
- * The value of a qualifiable element may be further qualified by one or more qualifiers.
- */
+/** The value of a qualifiable element may be further qualified by one or more qualifiers. */
 @KnownSubtypes({
-        @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
-        @KnownSubtypes.Type(value = SubmodelElement.class),
-        @KnownSubtypes.Type(value = Submodel.class)
+  @KnownSubtypes.Type(value = SubmodelElementAttributes.class),
+  @KnownSubtypes.Type(value = SubmodelElement.class),
+  @KnownSubtypes.Type(value = Submodel.class)
 })
 public interface Qualifiable {
 
-    /**
-     * Additional qualification of a qualifiable element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
-     *
-     * @return Returns the List of Qualifiers for the property qualifiers.
-     */
-    @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
-    List<Qualifier> getQualifiers();
+  /**
+   * Additional qualification of a qualifiable element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
+   *
+   * @return Returns the List of Qualifiers for the property qualifiers.
+   */
+  @IRI("https://admin-shell.io/aas/3/0/Qualifiable/qualifiers")
+  List<Qualifier> getQualifiers();
 
-    /**
-     * Additional qualification of a qualifiable element.
-     * <p>
-     * More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
-     *
-     * @param qualifiers desired value for the property qualifiers.
-     */
-    void setQualifiers(List<Qualifier> qualifiers);
-
+  /**
+   * Additional qualification of a qualifiable element.
+   *
+   * <p>More information under https://admin-shell.io/aas/3/0/Qualifiable/qualifiers
+   *
+   * @param qualifiers desired value for the property qualifiers.
+   */
+  void setQualifiers(List<Qualifier> qualifiers);
 }

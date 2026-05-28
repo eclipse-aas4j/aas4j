@@ -15,16 +15,8 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 
-
-/**
- * An event element.
- */
-@KnownSubtypes({
-        @KnownSubtypes.Type(value = BasicEventElement.class)
-})
-public interface EventElement extends SubmodelElement {
-
-}
+/** An event element. */
+@KnownSubtypes({@KnownSubtypes.Type(value = BasicEventElement.class)})
+public interface EventElement extends SubmodelElement {}
