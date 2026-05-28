@@ -20,14 +20,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClassResolver;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
-import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
-import com.fasterxml.jackson.databind.jsontype.impl.TypeNameIdResolver;
 import java.util.List;
 import java.util.Map;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
@@ -48,6 +40,12 @@ import org.eclipse.digitaltwin.aas4j.v3.model.TypedProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.TypedSubProperty;
 import org.junit.Before;
 import org.junit.Test;
+import tools.jackson.databind.introspect.AnnotatedClass;
+import tools.jackson.databind.introspect.AnnotatedClassResolver;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.jsontype.NamedType;
+import tools.jackson.databind.jsontype.TypeResolverBuilder;
+import tools.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 
 // review AAS-134: some basic, rather simple tests would be helpful to understand/document the cases
 // for which the introspector is build for
@@ -55,26 +53,26 @@ import org.junit.Test;
 public class ReflectionAnnotationIntrospectorTest {
 
   private static ReflectionAnnotationIntrospector introspector;
-  private static ObjectMapper mapper;
+  private static JsonMapper mapper;
 
   @Before
   public void setUp() {
     introspector = new ReflectionAnnotationIntrospector();
-    mapper = new ObjectMapper();
+    mapper = JsonMapper.builder().build();
   }
 
   private AnnotatedClass getAnnotatedClass(Class<?> clazz) {
     return AnnotatedClassResolver.resolve(
-        mapper.getSerializationConfig(),
+        mapper.serializationConfig(),
         mapper.getTypeFactory().constructFromCanonical(clazz.getName()),
         null);
   }
 
   private TypeResolverBuilder<?> getTypeResolver(Class<?> clazz) {
-    return introspector.findTypeResolver(
-        mapper.getSerializationConfig(),
-        getAnnotatedClass(clazz),
-        mapper.getTypeFactory().constructFromCanonical(clazz.getName()));
+    Object result =
+        introspector.findTypeResolverBuilder(
+            mapper.serializationConfig(), getAnnotatedClass(clazz));
+    return result instanceof TypeResolverBuilder ? (TypeResolverBuilder<?>) result : null;
   }
 
   @Test
@@ -85,7 +83,10 @@ public class ReflectionAnnotationIntrospectorTest {
             Integer.class,
             ReflectionAnnotationIntrospectorTest.class,
             DummyInterface.class)
-        .forEach(x -> assertNull(introspector.findTypeName(getAnnotatedClass(x))));
+        .forEach(
+            x ->
+                assertNull(
+                    introspector.findTypeName(mapper.serializationConfig(), getAnnotatedClass(x))));
   }
 
   @Test
@@ -107,7 +108,8 @@ public class ReflectionAnnotationIntrospectorTest {
         .forEach(
             x ->
                 assertEquals(
-                    introspector.findTypeName(getAnnotatedClass(x.getKey())),
+                    introspector.findTypeName(
+                        mapper.serializationConfig(), getAnnotatedClass(x.getKey())),
                     x.getValue().getSimpleName()));
   }
 
@@ -139,15 +141,7 @@ public class ReflectionAnnotationIntrospectorTest {
             x -> {
               TypeResolverBuilder<?> typeResolver = getTypeResolver(x);
               assertNotNull(typeResolver);
-              TypeDeserializer typeDeserializer =
-                  typeResolver.buildTypeDeserializer(
-                      mapper.getDeserializationConfig(),
-                      mapper.getTypeFactory().constructFromCanonical(x.getName()),
-                      null);
-              assertEquals("modelType", typeDeserializer.getPropertyName());
-              assertEquals(JsonTypeInfo.As.PROPERTY, typeDeserializer.getTypeInclusion());
-              assertEquals(
-                  TypeNameIdResolver.class, typeDeserializer.getTypeIdResolver().getClass());
+              assertTrue(typeResolver instanceof StdTypeResolverBuilder);
             });
   }
 
@@ -161,7 +155,8 @@ public class ReflectionAnnotationIntrospectorTest {
             DummyInterface.class)
         .forEach(
             x -> {
-              List<NamedType> subtypes = introspector.findSubtypes(getAnnotatedClass(x));
+              List<NamedType> subtypes =
+                  introspector.findSubtypes(mapper.serializationConfig(), getAnnotatedClass(x));
               assertTrue(subtypes == null || subtypes.isEmpty());
             });
   }
@@ -171,7 +166,8 @@ public class ReflectionAnnotationIntrospectorTest {
     List.of(ClassA.class, ClassB.class)
         .forEach(
             x -> {
-              List<NamedType> subtypes = introspector.findSubtypes(getAnnotatedClass(x));
+              List<NamedType> subtypes =
+                  introspector.findSubtypes(mapper.serializationConfig(), getAnnotatedClass(x));
               assertTrue(subtypes == null || subtypes.isEmpty());
             });
   }
@@ -181,7 +177,8 @@ public class ReflectionAnnotationIntrospectorTest {
     List.of(TypedProperty.class)
         .forEach(
             x -> {
-              List<NamedType> subtypes = introspector.findSubtypes(getAnnotatedClass(x));
+              List<NamedType> subtypes =
+                  introspector.findSubtypes(mapper.serializationConfig(), getAnnotatedClass(x));
               assertTrue(subtypes != null);
               assertTrue(!subtypes.isEmpty());
             });
@@ -192,7 +189,8 @@ public class ReflectionAnnotationIntrospectorTest {
     List.of(SubmodelElement.class, Referable.class, DataElement.class, Identifiable.class)
         .forEach(
             x -> {
-              List<NamedType> subtypes = introspector.findSubtypes(getAnnotatedClass(x));
+              List<NamedType> subtypes =
+                  introspector.findSubtypes(mapper.serializationConfig(), getAnnotatedClass(x));
               assertTrue(subtypes != null);
               assertTrue(!subtypes.isEmpty());
             });

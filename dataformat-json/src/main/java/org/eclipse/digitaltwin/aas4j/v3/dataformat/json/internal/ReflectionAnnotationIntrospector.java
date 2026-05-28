@@ -17,18 +17,17 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.cfg.MapperConfig;
-import com.fasterxml.jackson.databind.introspect.Annotated;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
-import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
-import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
+import tools.jackson.databind.cfg.MapperConfig;
+import tools.jackson.databind.introspect.Annotated;
+import tools.jackson.databind.introspect.AnnotatedClass;
+import tools.jackson.databind.introspect.AnnotatedMethod;
+import tools.jackson.databind.introspect.JacksonAnnotationIntrospector;
+import tools.jackson.databind.jsontype.NamedType;
+import tools.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 
 /**
  * This class helps to dynamically decide how to de-/serialize classes and properties defined in the
@@ -59,40 +58,44 @@ public class ReflectionAnnotationIntrospector extends JacksonAnnotationIntrospec
   private static final String GETTER_PREFIX = "get";
 
   @Override
-  public String findTypeName(AnnotatedClass ac) {
+  public String findTypeName(MapperConfig<?> config, AnnotatedClass ac) {
     String customType = ReflectionHelper.getModelType(ac.getRawType());
-    return customType != null ? customType : super.findTypeName(ac);
+    return customType != null ? customType : super.findTypeName(config, ac);
   }
 
   @Override
-  public TypeResolverBuilder<?> findTypeResolver(
-      MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
-    String modelType = ReflectionHelper.getModelType(ac.getRawType());
-    if (modelType != null) {
-      TypeResolverBuilder<?> result = _constructStdTypeResolverBuilder();
-      result = result.init(JsonTypeInfo.Id.NAME, null);
-      result.inclusion(JsonTypeInfo.As.PROPERTY);
-      result.typeProperty(MODEL_TYPE_PROPERTY);
-      result.typeIdVisibility(false);
-      return result;
+  public Object findTypeResolverBuilder(MapperConfig<?> config, Annotated ac) {
+    if (ac instanceof AnnotatedClass) {
+      String modelType = ReflectionHelper.getModelType(ac.getRawType());
+      if (modelType != null) {
+        JsonTypeInfo.Value typeInfoValue =
+            JsonTypeInfo.Value.construct(
+                JsonTypeInfo.Id.NAME,
+                JsonTypeInfo.As.PROPERTY,
+                MODEL_TYPE_PROPERTY,
+                null,
+                false,
+                null);
+        return new StdTypeResolverBuilder(typeInfoValue);
+      }
     }
-    return super.findTypeResolver(config, ac, baseType);
+    return super.findTypeResolverBuilder(config, ac);
   }
 
   @Override
-  public List<NamedType> findSubtypes(Annotated a) {
+  public List<NamedType> findSubtypes(MapperConfig<?> config, Annotated a) {
     if (ReflectionHelper.SUBTYPES.containsKey(a.getRawType())
         && !ReflectionHelper.SUBTYPES.get(a.getRawType()).isEmpty()) {
       return ReflectionHelper.SUBTYPES.get(a.getRawType()).stream()
           .map(x -> new NamedType(x, x.getSimpleName()))
           .collect(Collectors.toList());
     }
-    return super.findSubtypes(a);
+    return super.findSubtypes(config, a);
   }
 
   @Override
-  public JsonInclude.Value findPropertyInclusion(Annotated a) {
-    JsonInclude.Value result = super.findPropertyInclusion(a);
+  public JsonInclude.Value findPropertyInclusion(MapperConfig<?> config, Annotated a) {
+    JsonInclude.Value result = super.findPropertyInclusion(config, a);
     if (result != JsonInclude.Value.empty()) {
       return result;
     }

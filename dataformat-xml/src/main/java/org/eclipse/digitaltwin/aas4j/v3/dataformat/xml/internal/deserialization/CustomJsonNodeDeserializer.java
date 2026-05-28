@@ -15,10 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
-import java.io.IOException;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
 
 public interface CustomJsonNodeDeserializer<T extends Object> {
-  public T readValue(JsonNode node, JsonParser parser) throws IOException;
+  public T readValue(JsonNode node, DeserializationContext ctxt) throws JacksonException;
 }

@@ -16,14 +16,6 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.dataformat.xml.XmlFactory;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,6 +34,14 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.Op
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectWriter;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.module.SimpleModule;
+import tools.jackson.dataformat.xml.XmlFactory;
+import tools.jackson.dataformat.xml.XmlMapper;
+import tools.jackson.dataformat.xml.XmlWriteFeature;
 
 public class XmlSerializer {
   protected final XmlFactory xmlFactory;
@@ -64,18 +64,19 @@ public class XmlSerializer {
   }
 
   protected void buildMapper() {
-    mapper =
+    XmlMapper.Builder builder =
         XmlMapper.builder(xmlFactory)
             .enable(SerializationFeature.INDENT_OUTPUT)
             .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-            .serializationInclusion(JsonInclude.Include.NON_NULL)
+            .changeDefaultPropertyInclusion(
+                incl -> incl.withValueInclusion(JsonInclude.Include.NON_NULL))
             .annotationIntrospector(new XmlDataformatAnnotationIntrospector())
             .defaultUseWrapper(false)
             .addModule(buildEnumModule())
             .addModule(buildCustomSerializerModule())
-            .configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true)
-            .build();
-    ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> mapper.addMixIn(x.getKey(), x.getValue()));
+            .enable(XmlWriteFeature.WRITE_XML_DECLARATION);
+    ReflectionHelper.XML_MIXINS.entrySet().forEach(x -> builder.addMixIn(x.getKey(), x.getValue()));
+    mapper = builder.build();
   }
 
   protected SimpleModule buildCustomSerializerModule() {
@@ -109,7 +110,7 @@ public class XmlSerializer {
     try {
       ObjectWriter writer = mapper.writer();
       return writer.writeValueAsString(aasEnvironment);
-    } catch (JsonProcessingException ex) {
+    } catch (JacksonException ex) {
       throw new SerializationException("serialization failed", ex);
     }
   }

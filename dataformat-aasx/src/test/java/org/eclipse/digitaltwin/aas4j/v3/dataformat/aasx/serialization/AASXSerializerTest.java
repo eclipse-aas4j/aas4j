@@ -23,12 +23,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
@@ -54,6 +56,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class AASXSerializerTest {
 
@@ -61,6 +67,14 @@ public class AASXSerializerTest {
   private static final String XML_PATH_URI = "file:///aasx/xml/content.xml";
   private static final String JSON_PATH_URI = "file:///aasx/json/content.json";
   private static final String ORIGIN_PATH_URI = "file:///aasx/aasx-origin";
+  private static final String THUMBNAIL_PATH = "master/verwaltungsschale-detail-part1.png";
+  private static final String TARGET_MODE_EXTERNAL = "External";
+  private static final List<String> INTERNAL_RELATIONSHIP_TYPES =
+      List.of(
+          AASXSerializer.ORIGIN_RELTYPE,
+          AASXSerializer.AASSPEC_RELTYPE,
+          AASXSerializer.AASSUPPL_RELTYPE,
+          AASXSerializer.AAS_THUMBNAIL_RELTYPE);
 
   @Rule public TemporaryFolder tempFolder = new TemporaryFolder();
 
@@ -219,6 +233,32 @@ public class AASXSerializerTest {
     validateAASX(out, XML_PATH_URI, List.of(AASXSerializerTest::assertRootXml));
   }
 
+  @Test
+  public void testInternalRelationshipsDoNotUseExternalTargetMode()
+      throws IOException, ParserConfigurationException, SAXException, SerializationException {
+    byte[] thumbnail = {0, 1, 2, 3, 4};
+    byte[] operationManualContent = {5, 6, 7, 8, 9};
+    List<InMemoryFile> files =
+        List.of(
+            new InMemoryFile(operationManualContent, "file:///aasx/OperatingManual.pdf"),
+            new InMemoryFile(thumbnail, "file:///master/verwaltungsschale-detail-part1.png"));
+
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    new AASXSerializer().write(AASSimple.createEnvironment(), files, out, MetamodelContentType.XML);
+
+    Set<String> observedRelationshipTypes = new HashSet<>();
+    for (Relationship relationship : readRelationships(out)) {
+      if (!INTERNAL_RELATIONSHIP_TYPES.contains(relationship.type)) {
+        continue;
+      }
+      observedRelationshipTypes.add(relationship.type);
+      assertTrue(
+          relationship.type + " must not target an internal package part as external",
+          !TARGET_MODE_EXTERNAL.equals(relationship.targetMode));
+    }
+    assertTrue(observedRelationshipTypes.containsAll(INTERNAL_RELATIONSHIP_TYPES));
+  }
+
   private void validateAASX(
       ByteArrayOutputStream byteStream,
       String contentFilePath,
@@ -286,16 +326,62 @@ public class AASXSerializerTest {
     if (!RELS_PATH_URI.endsWith(zipEntry.getName())) {
       return;
     }
-    final String content;
+    final List<Relationship> relationships;
     try {
-      content = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-    } catch (IOException e) {
+      relationships = readRelationships(in.readAllBytes());
+    } catch (IOException | ParserConfigurationException | SAXException e) {
       throw new RuntimeException(e);
     }
     assertTrue(
-        content.contains(
-            "Type=\"http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail\""));
-    assertTrue(content.contains("Target=\"/master/verwaltungsschale-detail-part1.png\""));
+        relationships.stream()
+            .anyMatch(
+                relationship ->
+                    AASXSerializer.AAS_THUMBNAIL_RELTYPE.equals(relationship.type)
+                        && relationship.target.endsWith(THUMBNAIL_PATH)));
+  }
+
+  private static List<Relationship> readRelationships(ByteArrayOutputStream byteStream)
+      throws IOException, ParserConfigurationException, SAXException {
+    List<Relationship> result = new ArrayList<>();
+    ZipInputStream in = new ZipInputStream(new ByteArrayInputStream(byteStream.toByteArray()));
+    ZipEntry zipEntry;
+    while ((zipEntry = in.getNextEntry()) != null) {
+      if (zipEntry.getName().endsWith(".rels")) {
+        result.addAll(readRelationships(in.readAllBytes()));
+      }
+    }
+    return result;
+  }
+
+  private static List<Relationship> readRelationships(byte[] content)
+      throws IOException, ParserConfigurationException, SAXException {
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    Document document = factory.newDocumentBuilder().parse(new ByteArrayInputStream(content));
+    NodeList relationships =
+        document.getElementsByTagNameNS(AASXSerializer.OPC_NAMESPACE, "Relationship");
+    List<Relationship> result = new ArrayList<>();
+    for (int i = 0; i < relationships.getLength(); i++) {
+      Element relationship = (Element) relationships.item(i);
+      result.add(
+          new Relationship(
+              relationship.getAttribute("Type"),
+              relationship.getAttribute("Target"),
+              relationship.getAttribute("TargetMode")));
+    }
+    return result;
+  }
+
+  private static class Relationship {
+    private final String type;
+    private final String target;
+    private final String targetMode;
+
+    private Relationship(String type, String target, String targetMode) {
+      this.type = type;
+      this.target = target;
+      this.targetMode = targetMode;
+    }
   }
 
   private static class DerivedProperty extends DefaultProperty {}
