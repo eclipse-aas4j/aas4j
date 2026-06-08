@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,21 +11,21 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
@@ -35,16 +35,31 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
 @IRI("aas:Reference")
 public class DefaultReference implements Reference {
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/keys")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/keys")
   protected List<Key> keys = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/referredSemanticId")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/referredSemanticId")
   protected Reference referredSemanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/Reference/type")
+  @IRI("https://admin-shell.io/aas/3/2/Reference/type")
   protected ReferenceTypes type;
 
   public DefaultReference() {}
+
+  @Override
+  public String toString() {
+    return "DefaultReference{"
+        + "type='"
+        + type
+        + "',"
+        + "referredSemanticId='"
+        + referredSemanticId
+        + "',"
+        + "keys='"
+        + keys
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -84,23 +99,7 @@ public class DefaultReference implements Reference {
 
   @Override
   public void setReferredSemanticId(Reference referredSemanticId) {
-    validateReferredSemanticId(referredSemanticId);
     this.referredSemanticId = referredSemanticId;
-  }
-
-  private void validateReferredSemanticId(Reference referredSemanticId) {
-    if (referredSemanticId == null) {
-      return;
-    }
-    Set<Reference> visited = Collections.newSetFromMap(new IdentityHashMap<>());
-    Reference current = referredSemanticId;
-    while (current != null) {
-      if (current == this || !visited.add(current)) {
-        throw new IllegalArgumentException(
-            "referredSemanticId must not create a circular Reference");
-      }
-      current = current.getReferredSemanticId();
-    }
   }
 
   @Override
@@ -113,10 +112,9 @@ public class DefaultReference implements Reference {
     this.keys = keys;
   }
 
-  public String toString() {
-    return String.format(
-        "DefaultReference (" + "type=%s," + "referredSemanticId=%s," + "keys=%s," + ")",
-        this.type, this.referredSemanticId, this.keys);
+  @Override
+  public void setKey(Key key) {
+    this.keys.add(key);
   }
 
   /** This builder class can be used to construct a DefaultReference bean. */

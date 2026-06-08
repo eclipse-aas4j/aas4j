@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,19 +11,22 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.EnvironmentBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Environment
@@ -33,20 +36,35 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.EnvironmentBuilder;
 @IRI("aas:Environment")
 public class DefaultEnvironment implements Environment {
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/assetAdministrationShells")
+  @IRI("https://admin-shell.io/aas/3/2/Environment/assetAdministrationShells")
   protected List<AssetAdministrationShell> assetAdministrationShells = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/conceptDescriptions")
+  @IRI("https://admin-shell.io/aas/3/2/Environment/conceptDescriptions")
   protected List<ConceptDescription> conceptDescriptions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/Environment/submodels")
+  @IRI("https://admin-shell.io/aas/3/2/Environment/submodels")
   protected List<Submodel> submodels = new ArrayList<>();
 
   public DefaultEnvironment() {}
 
   @Override
+  public String toString() {
+    return "DefaultEnvironment{"
+        + "assetAdministrationShells='"
+        + assetAdministrationShells
+        + "',"
+        + "conceptDescriptions='"
+        + conceptDescriptions
+        + "',"
+        + "submodels='"
+        + submodels
+        + "',"
+        + "}";
+  }
+
+  @Override
   public int hashCode() {
-    return Objects.hash(this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
+    return Objects.hash(this.assetAdministrationShells, this.conceptDescriptions, this.submodels);
   }
 
   @Override
@@ -60,8 +78,8 @@ public class DefaultEnvironment implements Environment {
     } else {
       DefaultEnvironment other = (DefaultEnvironment) obj;
       return Objects.equals(this.assetAdministrationShells, other.assetAdministrationShells)
-          && Objects.equals(this.submodels, other.submodels)
-          && Objects.equals(this.conceptDescriptions, other.conceptDescriptions);
+          && Objects.equals(this.conceptDescriptions, other.conceptDescriptions)
+          && Objects.equals(this.submodels, other.submodels);
     }
   }
 
@@ -77,13 +95,8 @@ public class DefaultEnvironment implements Environment {
   }
 
   @Override
-  public List<Submodel> getSubmodels() {
-    return submodels;
-  }
-
-  @Override
-  public void setSubmodels(List<Submodel> submodels) {
-    this.submodels = submodels;
+  public void setAssetAdministrationShell(AssetAdministrationShell assetAdministrationShell) {
+    this.assetAdministrationShells.add(assetAdministrationShell);
   }
 
   @Override
@@ -96,14 +109,24 @@ public class DefaultEnvironment implements Environment {
     this.conceptDescriptions = conceptDescriptions;
   }
 
-  public String toString() {
-    return String.format(
-        "DefaultEnvironment ("
-            + "assetAdministrationShells=%s,"
-            + "submodels=%s,"
-            + "conceptDescriptions=%s,"
-            + ")",
-        this.assetAdministrationShells, this.submodels, this.conceptDescriptions);
+  @Override
+  public void setConceptDescription(ConceptDescription conceptDescription) {
+    this.conceptDescriptions.add(conceptDescription);
+  }
+
+  @Override
+  public List<Submodel> getSubmodels() {
+    return submodels;
+  }
+
+  @Override
+  public void setSubmodels(List<Submodel> submodels) {
+    this.submodels = submodels;
+  }
+
+  @Override
+  public void setSubmodel(Submodel submodel) {
+    this.submodels.add(submodel);
   }
 
   /** This builder class can be used to construct a DefaultEnvironment bean. */

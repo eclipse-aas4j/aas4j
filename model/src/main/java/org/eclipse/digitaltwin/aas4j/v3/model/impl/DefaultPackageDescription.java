@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,28 +11,43 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.PackageDescriptionBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription */
 @IRI("aas:PackageDescription")
 public class DefaultPackageDescription implements PackageDescription {
 
-  @IRI("https://admin-shell.io/aas/3/0/PackageDescription/items")
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/items")
   protected List<String> items = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/PackageDescription/packageId")
+  @IRI("https://admin-shell.io/aas/3/2/PackageDescription/packageId")
   protected String packageId;
 
   public DefaultPackageDescription() {}
+
+  @Override
+  public String toString() {
+    return "DefaultPackageDescription{"
+        + "items='"
+        + items
+        + "',"
+        + "packageId='"
+        + packageId
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -65,6 +80,11 @@ public class DefaultPackageDescription implements PackageDescription {
   }
 
   @Override
+  public void setItem(String item) {
+    this.items.add(item);
+  }
+
+  @Override
   public String getPackageId() {
     return packageId;
   }
@@ -72,12 +92,6 @@ public class DefaultPackageDescription implements PackageDescription {
   @Override
   public void setPackageId(String packageId) {
     this.packageId = packageId;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultPackageDescription (" + "items=%s," + "packageId=%s," + ")",
-        this.items, this.packageId);
   }
 
   /** This builder class can be used to construct a DefaultPackageDescription bean. */

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
@@ -22,5 +24,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
  * attributes shall be added to the element instance that references the data specification template
  * and meta information about the template itself.
  */
-@KnownSubtypes({@KnownSubtypes.Type(value = DataSpecificationIec61360.class)})
+@KnownSubtypes({
+  @KnownSubtypes.Type(value = DataSpecificationIec61360.class),
+  @KnownSubtypes.Type(value = DataSpecificationUom.class)
+})
 public interface DataSpecificationContent {}

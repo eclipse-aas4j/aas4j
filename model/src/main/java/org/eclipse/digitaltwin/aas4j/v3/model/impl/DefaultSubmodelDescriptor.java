@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,16 +11,14 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.Endpoint;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
@@ -28,51 +26,74 @@ import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SubmodelDescriptorBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SubmodelDescriptor */
 @IRI("aas:SubmodelDescriptor")
 public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
 
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/description")
-  protected List<LangStringTextType> description = new ArrayList<>();
-
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/displayName")
-  protected List<LangStringNameType> displayName = new ArrayList<>();
-
-  @IRI("https://admin-shell.io/aas/3/0/Descriptor/extensions")
-  protected List<Extension> extensions = new ArrayList<>();
-
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/administration")
-  protected AdministrativeInformation administration;
-
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/endpoints")
+  @IRI("https://admin-shell.io/aas/3/2/Descriptor/endpoints")
   protected List<Endpoint> endpoints = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/id")
-  protected String id;
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/administration")
+  protected AdministrativeInformation administration;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/description")
+  protected LangStringTextType description;
+
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/displayName")
+  protected LangStringNameType displayName;
+
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/idShort")
   protected String idShort;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/identification")
+  protected String identification;
+
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelDescriptor/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelDescriptor/supplementalSemanticId")
-  protected List<Reference> supplementalSemanticId = new ArrayList<>();
-
   public DefaultSubmodelDescriptor() {}
+
+  @Override
+  public String toString() {
+    return "DefaultSubmodelDescriptor{"
+        + "administration='"
+        + administration
+        + "',"
+        + "description='"
+        + description
+        + "',"
+        + "displayName='"
+        + displayName
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "identification='"
+        + identification
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "endpoints='"
+        + endpoints
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
     return Objects.hash(
         this.administration,
-        this.endpoints,
-        this.idShort,
-        this.id,
-        this.semanticId,
-        this.supplementalSemanticId,
         this.description,
         this.displayName,
-        this.extensions);
+        this.idShort,
+        this.identification,
+        this.semanticId,
+        this.endpoints);
   }
 
   @Override
@@ -86,14 +107,12 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
     } else {
       DefaultSubmodelDescriptor other = (DefaultSubmodelDescriptor) obj;
       return Objects.equals(this.administration, other.administration)
-          && Objects.equals(this.endpoints, other.endpoints)
-          && Objects.equals(this.idShort, other.idShort)
-          && Objects.equals(this.id, other.id)
-          && Objects.equals(this.semanticId, other.semanticId)
-          && Objects.equals(this.supplementalSemanticId, other.supplementalSemanticId)
           && Objects.equals(this.description, other.description)
           && Objects.equals(this.displayName, other.displayName)
-          && Objects.equals(this.extensions, other.extensions);
+          && Objects.equals(this.idShort, other.idShort)
+          && Objects.equals(this.identification, other.identification)
+          && Objects.equals(this.semanticId, other.semanticId)
+          && Objects.equals(this.endpoints, other.endpoints);
     }
   }
 
@@ -108,13 +127,23 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public List<Endpoint> getEndpoints() {
-    return endpoints;
+  public LangStringTextType getDescription() {
+    return description;
   }
 
   @Override
-  public void setEndpoints(List<Endpoint> endpoints) {
-    this.endpoints = endpoints;
+  public void setDescription(LangStringTextType description) {
+    this.description = description;
+  }
+
+  @Override
+  public LangStringNameType getDisplayName() {
+    return displayName;
+  }
+
+  @Override
+  public void setDisplayName(LangStringNameType displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -128,13 +157,13 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public String getId() {
-    return id;
+  public String getIdentification() {
+    return identification;
   }
 
   @Override
-  public void setId(String id) {
-    this.id = id;
+  public void setIdentification(String identification) {
+    this.identification = identification;
   }
 
   @Override
@@ -148,61 +177,18 @@ public class DefaultSubmodelDescriptor implements SubmodelDescriptor {
   }
 
   @Override
-  public List<Reference> getSupplementalSemanticId() {
-    return supplementalSemanticId;
+  public List<Endpoint> getEndpoints() {
+    return endpoints;
   }
 
   @Override
-  public void setSupplementalSemanticId(List<Reference> supplementalSemanticIds) {
-    this.supplementalSemanticId = supplementalSemanticIds;
+  public void setEndpoints(List<Endpoint> endpoints) {
+    this.endpoints = endpoints;
   }
 
   @Override
-  public List<LangStringTextType> getDescription() {
-    return description;
-  }
-
-  @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
-  }
-
-  @Override
-  public List<LangStringNameType> getDisplayName() {
-    return displayName;
-  }
-
-  @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
-  }
-
-  @Override
-  public List<Extension> getExtensions() {
-    return extensions;
-  }
-
-  @Override
-  public void setExtensions(List<Extension> extensions) {
-    this.extensions = extensions;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultSubmodelDescriptor ("
-            + "administration=%s,"
-            + "endpoints=%s,"
-            + "idShort=%s,"
-            + "id=%s,"
-            + "semanticId=%s,"
-            + "supplementalSemanticId=%s,"
-            + ")",
-        this.administration,
-        this.endpoints,
-        this.idShort,
-        this.id,
-        this.semanticId,
-        this.supplementalSemanticId);
+  public void setEndpoint(Endpoint endpoint) {
+    this.endpoints.add(endpoint);
   }
 
   /** This builder class can be used to construct a DefaultSubmodelDescriptor bean. */

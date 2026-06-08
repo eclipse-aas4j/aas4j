@@ -11,14 +11,17 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.SecurityTypeEnumBuilder;
+
+import java.util.Objects;
 
 /** Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.SecurityTypeEnum */
 @IRI("aas:SecurityTypeEnum")

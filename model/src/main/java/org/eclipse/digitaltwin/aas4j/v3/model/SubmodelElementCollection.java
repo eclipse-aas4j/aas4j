@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,14 +11,17 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementCollection;
+
+import java.util.List;
 
 /**
  * A submodel element collection is a kind of struct, i.e. a a logical encapsulation of multiple
@@ -30,19 +33,26 @@ public interface SubmodelElementCollection extends SubmodelElement {
   /**
    * Submodel element contained in the collection.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementCollection/value
    *
    * @return Returns the List of SubmodelElements for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/0/SubmodelElementCollection/value")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementCollection/value")
   List<SubmodelElement> getValue();
 
   /**
    * Submodel element contained in the collection.
    *
-   * <p>More information under https://admin-shell.io/aas/3/0/SubmodelElementCollection/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementCollection/value
    *
    * @param values desired value for the property value.
    */
   void setValue(List<SubmodelElement> values);
+
+  /**
+   * More information under https://admin-shell.io/aas/3/2/SubmodelElementCollection/value
+   *
+   * @param value desired value to be added to the property value.
+   */
+  void setValue(SubmodelElement value);
 }

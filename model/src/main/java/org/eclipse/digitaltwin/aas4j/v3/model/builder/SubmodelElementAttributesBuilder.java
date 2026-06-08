@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,11 +11,12 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
@@ -24,6 +25,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementAttributes;
+
+import java.util.List;
 
 public abstract class SubmodelElementAttributesBuilder<
         T extends SubmodelElementAttributes, B extends SubmodelElementAttributesBuilder<T, B>>
@@ -120,11 +123,11 @@ public abstract class SubmodelElementAttributesBuilder<
   /**
    * This function allows adding a value to the List extensions
    *
-   * @param extensions desired value to be added
+   * @param extension desired value to be added
    * @return Builder object with new value for extensions
    */
-  public B extensions(Extension extensions) {
-    getBuildingInstance().getExtensions().add(extensions);
+  public B extension(Extension extension) {
+    getBuildingInstance().getExtensions().add(extension);
     return getSelf();
   }
 
@@ -142,11 +145,11 @@ public abstract class SubmodelElementAttributesBuilder<
   /**
    * This function allows adding a value to the List embeddedDataSpecifications
    *
-   * @param embeddedDataSpecifications desired value to be added
+   * @param embeddedDataSpecification desired value to be added
    * @return Builder object with new value for embeddedDataSpecifications
    */
-  public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-    getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+  public B embeddedDataSpecification(EmbeddedDataSpecification embeddedDataSpecification) {
+    getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecification);
     return getSelf();
   }
 
@@ -175,11 +178,11 @@ public abstract class SubmodelElementAttributesBuilder<
   /**
    * This function allows adding a value to the List supplementalSemanticIds
    *
-   * @param supplementalSemanticIds desired value to be added
+   * @param supplementalSemanticId desired value to be added
    * @return Builder object with new value for supplementalSemanticIds
    */
-  public B supplementalSemanticIds(Reference supplementalSemanticIds) {
-    getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticIds);
+  public B supplementalSemanticId(Reference supplementalSemanticId) {
+    getBuildingInstance().getSupplementalSemanticIds().add(supplementalSemanticId);
     return getSelf();
   }
 
@@ -197,11 +200,11 @@ public abstract class SubmodelElementAttributesBuilder<
   /**
    * This function allows adding a value to the List qualifiers
    *
-   * @param qualifiers desired value to be added
+   * @param qualifier desired value to be added
    * @return Builder object with new value for qualifiers
    */
-  public B qualifiers(Qualifier qualifiers) {
-    getBuildingInstance().getQualifiers().add(qualifiers);
+  public B qualifier(Qualifier qualifier) {
+    getBuildingInstance().getQualifiers().add(qualifier);
     return getSelf();
   }
 }

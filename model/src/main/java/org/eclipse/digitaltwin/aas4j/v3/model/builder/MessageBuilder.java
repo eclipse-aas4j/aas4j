@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,12 +11,14 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
-import org.eclipse.digitaltwin.aas4j.v3.model.MessageTypeEnum;
+import org.eclipse.digitaltwin.aas4j.v3.model.MessageType;
 
 public abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
@@ -33,23 +35,12 @@ public abstract class MessageBuilder<T extends Message, B extends MessageBuilder
   }
 
   /**
-   * This function allows setting a value for correlationId
-   *
-   * @param correlationId desired value to be set
-   * @return Builder object with new value for correlationId
-   */
-  public B correlationId(String correlationId) {
-    getBuildingInstance().setCorrelationId(correlationId);
-    return getSelf();
-  }
-
-  /**
    * This function allows setting a value for messageType
    *
    * @param messageType desired value to be set
    * @return Builder object with new value for messageType
    */
-  public B messageType(MessageTypeEnum messageType) {
+  public B messageType(MessageType messageType) {
     getBuildingInstance().setMessageType(messageType);
     return getSelf();
   }

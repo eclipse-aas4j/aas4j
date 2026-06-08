@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,17 +11,66 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.ExecutionState;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationResult;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Result;
+
+import java.util.List;
 
 public abstract class OperationResultBuilder<
         T extends OperationResult, B extends OperationResultBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
+
+  /**
+   * This function allows setting a value for executionResult
+   *
+   * @param executionResults desired value to be set
+   * @return Builder object with new value for executionResult
+   */
+  public B executionResult(List<Result> executionResults) {
+    getBuildingInstance().setExecutionResult(executionResults);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List executionResult
+   *
+   * @param executionResult desired value to be added
+   * @return Builder object with new value for executionResult
+   */
+  public B executionResult(Result executionResult) {
+    getBuildingInstance().getExecutionResult().add(executionResult);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for executionState
+   *
+   * @param executionStates desired value to be set
+   * @return Builder object with new value for executionState
+   */
+  public B executionState(List<ExecutionState> executionStates) {
+    getBuildingInstance().setExecutionState(executionStates);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List executionState
+   *
+   * @param executionState desired value to be added
+   * @return Builder object with new value for executionState
+   */
+  public B executionState(ExecutionState executionState) {
+    getBuildingInstance().getExecutionState().add(executionState);
+    return getSelf();
+  }
 
   /**
    * This function allows setting a value for inoutputArguments
@@ -37,11 +86,11 @@ public abstract class OperationResultBuilder<
   /**
    * This function allows adding a value to the List inoutputArguments
    *
-   * @param inoutputArguments desired value to be added
+   * @param inoutputArgument desired value to be added
    * @return Builder object with new value for inoutputArguments
    */
-  public B inoutputArguments(OperationVariable inoutputArguments) {
-    getBuildingInstance().getInoutputArguments().add(inoutputArguments);
+  public B inoutputArgument(OperationVariable inoutputArgument) {
+    getBuildingInstance().getInoutputArguments().add(inoutputArgument);
     return getSelf();
   }
 
@@ -59,11 +108,33 @@ public abstract class OperationResultBuilder<
   /**
    * This function allows adding a value to the List outputArguments
    *
-   * @param outputArguments desired value to be added
+   * @param outputArgument desired value to be added
    * @return Builder object with new value for outputArguments
    */
-  public B outputArguments(OperationVariable outputArguments) {
-    getBuildingInstance().getOutputArguments().add(outputArguments);
+  public B outputArgument(OperationVariable outputArgument) {
+    getBuildingInstance().getOutputArguments().add(outputArgument);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for requestId
+   *
+   * @param requestIds desired value to be set
+   * @return Builder object with new value for requestId
+   */
+  public B requestId(List<String> requestIds) {
+    getBuildingInstance().setRequestId(requestIds);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List requestId
+   *
+   * @param requestId desired value to be added
+   * @return Builder object with new value for requestId
+   */
+  public B requestId(String requestId) {
+    getBuildingInstance().getRequestId().add(requestId);
     return getSelf();
   }
 }

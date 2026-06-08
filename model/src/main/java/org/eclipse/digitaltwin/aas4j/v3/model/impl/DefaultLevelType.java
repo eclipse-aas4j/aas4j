@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,14 +11,17 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
+
+import java.util.Objects;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.LevelType
@@ -29,19 +32,37 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.LevelTypeBuilder;
 @IRI("aas:LevelType")
 public class DefaultLevelType implements LevelType {
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/max")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/max")
   protected boolean max;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/min")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/min")
   protected boolean min;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/nom")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/nom")
   protected boolean nom;
 
-  @IRI("https://admin-shell.io/aas/3/0/LevelType/typ")
+  @IRI("https://admin-shell.io/aas/3/2/LevelType/typ")
   protected boolean typ;
 
   public DefaultLevelType() {}
+
+  @Override
+  public String toString() {
+    return "DefaultLevelType{"
+        + "min='"
+        + min
+        + "',"
+        + "nom='"
+        + nom
+        + "',"
+        + "typ='"
+        + typ
+        + "',"
+        + "max='"
+        + max
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -103,12 +124,6 @@ public class DefaultLevelType implements LevelType {
   @Override
   public void setMax(boolean max) {
     this.max = max;
-  }
-
-  public String toString() {
-    return String.format(
-        "DefaultLevelType (" + "min=%s," + "nom=%s," + "typ=%s," + "max=%s," + ")",
-        this.min, this.nom, this.typ, this.max);
   }
 
   /** This builder class can be used to construct a DefaultLevelType bean. */

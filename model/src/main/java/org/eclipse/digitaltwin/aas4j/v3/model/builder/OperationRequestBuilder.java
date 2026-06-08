@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,13 +11,16 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationRequest;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
+import java.math.BigInteger;
 
 public abstract class OperationRequestBuilder<
         T extends OperationRequest, B extends OperationRequestBuilder<T, B>>
@@ -29,19 +32,8 @@ public abstract class OperationRequestBuilder<
    * @param inoutputArguments desired value to be set
    * @return Builder object with new value for inoutputArguments
    */
-  public B inoutputArguments(List<OperationVariable> inoutputArguments) {
-    getBuildingInstance().setInoutputArguments(inoutputArguments);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List inoutputArguments
-   *
-   * @param inoutputArguments desired value to be added
-   * @return Builder object with new value for inoutputArguments
-   */
   public B inoutputArguments(OperationVariable inoutputArguments) {
-    getBuildingInstance().getInoutputArguments().add(inoutputArguments);
+    getBuildingInstance().setInoutputArguments(inoutputArguments);
     return getSelf();
   }
 
@@ -51,30 +43,30 @@ public abstract class OperationRequestBuilder<
    * @param inputArguments desired value to be set
    * @return Builder object with new value for inputArguments
    */
-  public B inputArguments(List<OperationVariable> inputArguments) {
+  public B inputArguments(OperationVariable inputArguments) {
     getBuildingInstance().setInputArguments(inputArguments);
     return getSelf();
   }
 
   /**
-   * This function allows adding a value to the List inputArguments
+   * This function allows setting a value for requestId
    *
-   * @param inputArguments desired value to be added
-   * @return Builder object with new value for inputArguments
+   * @param requestId desired value to be set
+   * @return Builder object with new value for requestId
    */
-  public B inputArguments(OperationVariable inputArguments) {
-    getBuildingInstance().getInputArguments().add(inputArguments);
+  public B requestId(String requestId) {
+    getBuildingInstance().setRequestId(requestId);
     return getSelf();
   }
 
   /**
-   * This function allows setting a value for clientTimeoutDuration
+   * This function allows setting a value for timeout
    *
-   * @param clientTimeoutDuration desired value to be set
-   * @return Builder object with new value for clientTimeoutDuration
+   * @param timeout desired value to be set
+   * @return Builder object with new value for timeout
    */
-  public B clientTimeoutDuration(String clientTimeoutDuration) {
-    getBuildingInstance().setClientTimeoutDuration(clientTimeoutDuration);
+  public B timeout(BigInteger timeout) {
+    getBuildingInstance().setTimeout(timeout);
     return getSelf();
   }
 }
