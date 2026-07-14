@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 SAP SE or an SAP affiliate company.
+ * Copyright (C) 2026 SAP SE or an SAP affiliate company.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

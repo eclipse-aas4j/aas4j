@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,18 +11,21 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Default implementation of package
@@ -33,19 +36,25 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationB
 @IRI("aas:AdministrativeInformation")
 public class DefaultAdministrativeInformation implements AdministrativeInformation {
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
+  protected String createdAt;
+
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
   protected Reference creator;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/revision")
   protected String revision;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/templateId")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/templateId")
   protected String templateId;
 
-  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/version")
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
+  protected String updatedAt;
+
+  @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
   protected String version;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
   public DefaultAdministrativeInformation() {}
@@ -53,20 +62,28 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   @Override
   public String toString() {
     return "DefaultAdministrativeInformation{"
-        + "creator="
-        + creator
-        + ", revision='"
-        + revision
-        + '\''
-        + ", templateId='"
-        + templateId
-        + '\''
-        + ", version='"
+        + "version='"
         + version
-        + '\''
-        + ", embeddedDataSpecifications="
+        + "',"
+        + "revision='"
+        + revision
+        + "',"
+        + "creator='"
+        + creator
+        + "',"
+        + "createdAt='"
+        + createdAt
+        + "',"
+        + "updatedAt='"
+        + updatedAt
+        + "',"
+        + "templateId='"
+        + templateId
+        + "',"
+        + "embeddedDataSpecifications='"
         + embeddedDataSpecifications
-        + '}';
+        + "',"
+        + "}";
   }
 
   @Override
@@ -75,6 +92,8 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
         this.version,
         this.revision,
         this.creator,
+        this.createdAt,
+        this.updatedAt,
         this.templateId,
         this.embeddedDataSpecifications);
   }
@@ -92,6 +111,8 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
       return Objects.equals(this.version, other.version)
           && Objects.equals(this.revision, other.revision)
           && Objects.equals(this.creator, other.creator)
+          && Objects.equals(this.createdAt, other.createdAt)
+          && Objects.equals(this.updatedAt, other.updatedAt)
           && Objects.equals(this.templateId, other.templateId)
           && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
     }
@@ -128,6 +149,26 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   }
 
   @Override
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+  @Override
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Override
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+  @Override
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  @Override
   public String getTemplateId() {
     return templateId;
   }
@@ -146,6 +187,11 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   public void setEmbeddedDataSpecifications(
       List<EmbeddedDataSpecification> embeddedDataSpecifications) {
     this.embeddedDataSpecifications = embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecification(EmbeddedDataSpecification embeddedDataSpecification) {
+    this.embeddedDataSpecifications.add(embeddedDataSpecification);
   }
 
   /** This builder class can be used to construct a DefaultAdministrativeInformation bean. */

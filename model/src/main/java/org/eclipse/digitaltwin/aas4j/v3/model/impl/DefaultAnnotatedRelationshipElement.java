@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,13 +11,12 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
@@ -29,6 +28,10 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.AnnotatedRelationshipElementBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Default implementation of package
  * org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement
@@ -39,43 +42,85 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AnnotatedRelationshipEleme
 @IRI("aas:AnnotatedRelationshipElement")
 public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshipElement {
 
-  @IRI("https://admin-shell.io/aas/3/1/AnnotatedRelationshipElement/annotations")
+  @IRI("https://admin-shell.io/aas/3/2/AnnotatedRelationshipElement/annotations")
   protected List<DataElement> annotations = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasDataSpecification/embeddedDataSpecifications")
+  @IRI("https://admin-shell.io/aas/3/2/HasDataSpecification/embeddedDataSpecifications")
   protected List<EmbeddedDataSpecification> embeddedDataSpecifications = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasExtensions/extensions")
+  @IRI("https://admin-shell.io/aas/3/2/HasExtensions/extensions")
   protected List<Extension> extensions = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifiable/qualifiers")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifiable/qualifiers")
   protected List<Qualifier> qualifiers = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/category")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/category")
   protected String category;
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/description")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/description")
   protected List<LangStringTextType> description = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/displayName")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/displayName")
   protected List<LangStringNameType> displayName = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Referable/idShort")
+  @IRI("https://admin-shell.io/aas/3/2/Referable/idShort")
   protected String idShort;
 
-  @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/first")
+  @IRI("https://admin-shell.io/aas/3/2/RelationshipElement/first")
   protected Reference first;
 
-  @IRI("https://admin-shell.io/aas/3/1/RelationshipElement/second")
+  @IRI("https://admin-shell.io/aas/3/2/RelationshipElement/second")
   protected Reference second;
 
   public DefaultAnnotatedRelationshipElement() {}
+
+  @Override
+  public String toString() {
+    return "DefaultAnnotatedRelationshipElement{"
+        + "annotations='"
+        + annotations
+        + "',"
+        + "first='"
+        + first
+        + "',"
+        + "second='"
+        + second
+        + "',"
+        + "category='"
+        + category
+        + "',"
+        + "idShort='"
+        + idShort
+        + "',"
+        + "displayName='"
+        + displayName
+        + "',"
+        + "description='"
+        + description
+        + "',"
+        + "extensions='"
+        + extensions
+        + "',"
+        + "embeddedDataSpecifications='"
+        + embeddedDataSpecifications
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "qualifiers='"
+        + qualifiers
+        + "',"
+        + "}";
+  }
 
   @Override
   public int hashCode() {
@@ -120,38 +165,6 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   }
 
   @Override
-  public String toString() {
-    return "DefaultAnnotatedRelationshipElement{"
-        + "annotations="
-        + annotations
-        + ", embeddedDataSpecifications="
-        + embeddedDataSpecifications
-        + ", extensions="
-        + extensions
-        + ", semanticId="
-        + semanticId
-        + ", supplementalSemanticIds="
-        + supplementalSemanticIds
-        + ", qualifiers="
-        + qualifiers
-        + ", category='"
-        + category
-        + '\''
-        + ", description="
-        + description
-        + ", displayName="
-        + displayName
-        + ", idShort='"
-        + idShort
-        + '\''
-        + ", first="
-        + first
-        + ", second="
-        + second
-        + '}';
-  }
-
-  @Override
   public List<DataElement> getAnnotations() {
     return annotations;
   }
@@ -159,6 +172,11 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   @Override
   public void setAnnotations(List<DataElement> annotations) {
     this.annotations = annotations;
+  }
+
+  @Override
+  public void setAnnotation(DataElement annotation) {
+    this.annotations.add(annotation);
   }
 
   @Override
@@ -207,8 +225,13 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayName) {
-    this.displayName = displayName;
+  public void setDisplayName(List<LangStringNameType> displayNames) {
+    this.displayName = displayNames;
+  }
+
+  @Override
+  public void setDisplayName(LangStringNameType displayName) {
+    this.displayName.add(displayName);
   }
 
   @Override
@@ -217,8 +240,13 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> description) {
-    this.description = description;
+  public void setDescription(List<LangStringTextType> descriptions) {
+    this.description = descriptions;
+  }
+
+  @Override
+  public void setDescription(LangStringTextType description) {
+    this.description.add(description);
   }
 
   @Override
@@ -232,6 +260,11 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   }
 
   @Override
+  public void setExtension(Extension extension) {
+    this.extensions.add(extension);
+  }
+
+  @Override
   public List<EmbeddedDataSpecification> getEmbeddedDataSpecifications() {
     return embeddedDataSpecifications;
   }
@@ -240,6 +273,11 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   public void setEmbeddedDataSpecifications(
       List<EmbeddedDataSpecification> embeddedDataSpecifications) {
     this.embeddedDataSpecifications = embeddedDataSpecifications;
+  }
+
+  @Override
+  public void setEmbeddedDataSpecification(EmbeddedDataSpecification embeddedDataSpecification) {
+    this.embeddedDataSpecifications.add(embeddedDataSpecification);
   }
 
   @Override
@@ -263,6 +301,11 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   }
 
   @Override
+  public void setSupplementalSemanticId(Reference supplementalSemanticId) {
+    this.supplementalSemanticIds.add(supplementalSemanticId);
+  }
+
+  @Override
   public List<Qualifier> getQualifiers() {
     return qualifiers;
   }
@@ -270,6 +313,11 @@ public class DefaultAnnotatedRelationshipElement implements AnnotatedRelationshi
   @Override
   public void setQualifiers(List<Qualifier> qualifiers) {
     this.qualifiers = qualifiers;
+  }
+
+  @Override
+  public void setQualifier(Qualifier qualifier) {
+    this.qualifiers.add(qualifier);
   }
 
   /** This builder class can be used to construct a DefaultAnnotatedRelationshipElement bean. */
