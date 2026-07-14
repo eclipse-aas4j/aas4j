@@ -29,6 +29,9 @@ import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ConstraintValidatorRegistry;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.EnvironmentConstraintValidator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 
 /**
@@ -39,11 +42,13 @@ public class JsonSchemaValidator implements SchemaValidator {
 
   private static final String SCHEMA = "/aas.json";
   private final ObjectMapper mapper = new ObjectMapper();
+  private final JsonDeserializer deserializer = new JsonDeserializer();
 
   public JsonSchemaValidator() {}
 
   /**
-   * validates against default schema
+   * Validates against the default schema and checks AAS metamodel constraints (e.g. {@code
+   * typeValueListElement} and {@code valueTypeListElement} on {@code SubmodelElementList}).
    *
    * @param serialized AssetAdministrationShellEnvironment, serialized as json string
    * @return Set of messages to display validation results
@@ -51,8 +56,26 @@ public class JsonSchemaValidator implements SchemaValidator {
   @Override
   public Set<String> validateSchema(String serialized) {
     try {
-      return new HashSet<>(validateSchema(serialized, loadDefaultSchema()));
+      Set<String> errors = new HashSet<>(validateSchema(serialized, loadDefaultSchema()));
+      if (errors.isEmpty()) {
+        errors.addAll(validateConstraints(serialized));
+      }
+      return errors;
     } catch (IOException | URISyntaxException e) {
+      return Set.of(e.getMessage());
+    }
+  }
+
+  private Set<String> validateConstraints(String serialized) {
+    try {
+      org.eclipse.digitaltwin.aas4j.v3.model.Environment env =
+          deserializer.read(serialized, org.eclipse.digitaltwin.aas4j.v3.model.Environment.class);
+      Set<String> errors = new HashSet<>();
+      for (EnvironmentConstraintValidator v : ConstraintValidatorRegistry.getValidators()) {
+        errors.addAll(v.validate(env));
+      }
+      return errors;
+    } catch (DeserializationException e) {
       return Set.of(e.getMessage());
     }
   }

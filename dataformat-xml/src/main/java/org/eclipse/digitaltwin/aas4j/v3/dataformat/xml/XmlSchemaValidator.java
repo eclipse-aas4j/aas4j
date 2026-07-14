@@ -23,12 +23,16 @@ import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.ConstraintValidatorRegistry;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
+import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.EnvironmentConstraintValidator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 import org.xml.sax.SAXException;
 
 public class XmlSchemaValidator implements SchemaValidator {
   private static final String SCHEMA = "/AAS.xsd";
   protected Schema schema;
+  private final XmlDeserializer deserializer = new XmlDeserializer();
 
   public XmlSchemaValidator() throws SAXException {
     loadSchemaFromResource();
@@ -39,6 +43,13 @@ public class XmlSchemaValidator implements SchemaValidator {
     schema = factory.newSchema(getClass().getResource(SCHEMA));
   }
 
+  /**
+   * Validates against the default schema and checks AAS metamodel constraints (e.g. {@code
+   * typeValueListElement} and {@code valueTypeListElement} on {@code SubmodelElementList}).
+   *
+   * @param serializedAASEnvironment A string-serialized AASEnvironment.
+   * @return Set of validation errors. If validation succeeds, the Set is empty.
+   */
   @Override
   public Set<String> validateSchema(String serializedAASEnvironment) {
     Set<String> errorMessages = new HashSet<>();
@@ -49,7 +60,21 @@ public class XmlSchemaValidator implements SchemaValidator {
       errorMessages.add(se.getMessage());
       return errorMessages;
     }
+    errorMessages.addAll(validateConstraints(serializedAASEnvironment));
     return errorMessages;
+  }
+
+  private Set<String> validateConstraints(String serialized) {
+    try {
+      org.eclipse.digitaltwin.aas4j.v3.model.Environment env = deserializer.read(serialized);
+      Set<String> errors = new HashSet<>();
+      for (EnvironmentConstraintValidator v : ConstraintValidatorRegistry.getValidators()) {
+        errors.addAll(v.validate(env));
+      }
+      return errors;
+    } catch (DeserializationException e) {
+      return Set.of(e.getMessage());
+    }
   }
 
   private static String stripBom(String value) {

@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -74,6 +75,52 @@ public class XmlValidationTest {
     Set<String> errors = validateXmlFile(file);
     logErrors(file, errors);
     assertEquals(1, errors.size());
+  }
+
+  @Test
+  public void validateSubmodelElementList_validTypeConstraint_noErrors() {
+    String xml =
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            + "<environment xmlns=\"https://admin-shell.io/aas/3/1\">"
+            + "<submodels><submodel>"
+            + "<idShort>sm1</idShort><id>sm1</id>"
+            + "<submodelElements>"
+            + "<submodelElementList>"
+            + "<idShort>list1</idShort>"
+            + "<typeValueListElement>Property</typeValueListElement>"
+            + "<value>"
+            + "<property><idShort>p1</idShort><valueType>xs:string</valueType></property>"
+            + "<property><idShort>p2</idShort><valueType>xs:string</valueType></property>"
+            + "</value>"
+            + "</submodelElementList>"
+            + "</submodelElements></submodel></submodels>"
+            + "</environment>";
+    Set<String> errors = validator.validateSchema(xml);
+    logErrors("valid SubmodelElementList", errors);
+    assertTrue(errors.isEmpty());
+  }
+
+  @Test
+  public void validateSubmodelElementList_typeConstraintViolation_reportsError() {
+    String xml =
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+            + "<environment xmlns=\"https://admin-shell.io/aas/3/1\">"
+            + "<submodels><submodel>"
+            + "<idShort>sm1</idShort><id>sm1</id>"
+            + "<submodelElements>"
+            + "<submodelElementList>"
+            + "<idShort>list1</idShort>"
+            + "<typeValueListElement>Property</typeValueListElement>"
+            + "<value>"
+            + "<property><idShort>p1</idShort><valueType>xs:string</valueType></property>"
+            + "<blob><idShort>b1</idShort></blob>"
+            + "</value>"
+            + "</submodelElementList>"
+            + "</submodelElements></submodel></submodels>"
+            + "</environment>";
+    Set<String> errors = validator.validateSchema(xml);
+    logErrors("invalid SubmodelElementList", errors);
+    assertFalse(errors.isEmpty());
   }
 
   @Test

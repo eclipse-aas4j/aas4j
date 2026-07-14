@@ -109,6 +109,46 @@ public class JsonValidationTest {
     assertFalse(validate(file).isEmpty());
   }
 
+  @Test
+  public void validateSubmodelElementList_validTypeConstraint_noErrors() {
+    String json =
+        "{"
+            + "\"submodels\":[{"
+            + "  \"modelType\":\"Submodel\","
+            + "  \"id\":\"sm1\",\"idShort\":\"sm1\","
+            + "  \"submodelElements\":[{"
+            + "    \"modelType\":\"SubmodelElementList\","
+            + "    \"idShort\":\"list1\","
+            + "    \"typeValueListElement\":\"Property\","
+            + "    \"value\":["
+            + "      {\"modelType\":\"Property\",\"idShort\":\"p1\",\"valueType\":\"xs:string\"},"
+            + "      {\"modelType\":\"Property\",\"idShort\":\"p2\",\"valueType\":\"xs:string\"}"
+            + "    ]"
+            + "  }]"
+            + "}]}";
+    assertTrue(validator.validateSchema(json).isEmpty());
+  }
+
+  @Test
+  public void validateSubmodelElementList_typeConstraintViolation_reportsError() {
+    String json =
+        "{"
+            + "\"submodels\":[{"
+            + "  \"modelType\":\"Submodel\","
+            + "  \"id\":\"sm1\",\"idShort\":\"sm1\","
+            + "  \"submodelElements\":[{"
+            + "    \"modelType\":\"SubmodelElementList\","
+            + "    \"idShort\":\"list1\","
+            + "    \"typeValueListElement\":\"Property\","
+            + "    \"value\":["
+            + "      {\"modelType\":\"Property\",\"idShort\":\"p1\",\"valueType\":\"xs:string\"},"
+            + "      {\"modelType\":\"Blob\",\"idShort\":\"b1\"}"
+            + "    ]"
+            + "  }]"
+            + "}]}";
+    assertFalse(validator.validateSchema(json).isEmpty());
+  }
+
   private Set<String> validate(String file) throws IOException {
     String json = new String(Files.readAllBytes(Paths.get(file)));
     Set<String> result = validator.validateSchema(json);
