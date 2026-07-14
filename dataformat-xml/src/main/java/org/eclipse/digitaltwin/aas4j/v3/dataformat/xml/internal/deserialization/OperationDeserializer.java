@@ -16,24 +16,23 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.node.ArrayNode;
+import tools.jackson.databind.node.ObjectNode;
 
-public class OperationDeserializer extends JsonDeserializer<Operation> {
+public class OperationDeserializer extends ValueDeserializer<Operation> {
 
   @Override
-  public Operation deserialize(JsonParser parser, DeserializationContext deserializationContext)
-      throws IOException, JacksonException {
+  public Operation deserialize(JsonParser parser, DeserializationContext ctxt)
+      throws JacksonException {
     ObjectNode node = DeserializationHelper.getRootObjectNode(parser);
     JsonNode embeddedDataSpecificationsNode = node.get("embeddedDataSpecifications");
     JsonNode extensionsNode = node.get("extensions");
@@ -50,7 +49,7 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
     DefaultOperation.Builder builder = new DefaultOperation.Builder();
     List<EmbeddedDataSpecification> embeddedDataSpecifications =
         readWrappedList(
-            parser,
+            ctxt,
             embeddedDataSpecificationsNode,
             "embeddedDataSpecification",
             EmbeddedDataSpecification.class);
@@ -59,38 +58,37 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
     }
 
     List<Extension> extensions =
-        readWrappedList(parser, extensionsNode, "extension", Extension.class);
+        readWrappedList(ctxt, extensionsNode, "extension", Extension.class);
     if (extensions != null) {
       builder.extensions(extensions);
     }
 
     List<Reference> supplementalSemanticIds =
-        readWrappedList(parser, supplementalSemanticIdsNode, "reference", Reference.class);
+        readWrappedList(ctxt, supplementalSemanticIdsNode, "reference", Reference.class);
     if (supplementalSemanticIds != null) {
       builder.supplementalSemanticIds(supplementalSemanticIds);
     }
 
     List<OperationVariable> inoutputVariables =
-        readWrappedList(
-            parser, inoutputVariablesNode, "operationVariable", OperationVariable.class);
+        readWrappedList(ctxt, inoutputVariablesNode, "operationVariable", OperationVariable.class);
     if (inoutputVariables != null) {
       builder.inoutputVariables(inoutputVariables);
     }
 
     List<OperationVariable> inputVariables =
-        readWrappedList(parser, inputVariablesNode, "operationVariable", OperationVariable.class);
+        readWrappedList(ctxt, inputVariablesNode, "operationVariable", OperationVariable.class);
     if (inputVariables != null) {
       builder.inputVariables(inputVariables);
     }
 
     List<OperationVariable> outputVariables =
-        readWrappedList(parser, outputVariablesNode, "operationVariable", OperationVariable.class);
+        readWrappedList(ctxt, outputVariablesNode, "operationVariable", OperationVariable.class);
     if (outputVariables != null) {
       builder.outputVariables(outputVariables);
     }
 
     List<Qualifier> qualifiers =
-        readWrappedList(parser, qualifiersNode, "qualifier", Qualifier.class);
+        readWrappedList(ctxt, qualifiersNode, "qualifier", Qualifier.class);
     if (qualifiers != null) {
       builder.qualifiers(qualifiers);
     }
@@ -100,13 +98,13 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
     }
 
     List<LangStringTextType> description =
-        readWrappedList(parser, descriptionNode, "langStringTextType", LangStringTextType.class);
+        readWrappedList(ctxt, descriptionNode, "langStringTextType", LangStringTextType.class);
     if (description != null) {
       builder.description(description);
     }
 
     List<LangStringNameType> displayName =
-        readWrappedList(parser, displayNameNode, "langStringNameType", LangStringNameType.class);
+        readWrappedList(ctxt, displayNameNode, "langStringNameType", LangStringNameType.class);
     if (displayName != null) {
       builder.displayName(displayName);
     }
@@ -117,13 +115,14 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
 
     if (semanticIdNode != null && !semanticIdNode.isNull()) {
       builder.semanticId(
-          DeserializationHelper.createInstanceFromNode(parser, semanticIdNode, Reference.class));
+          DeserializationHelper.createInstanceFromNode(ctxt, semanticIdNode, Reference.class));
     }
     return builder.build();
   }
 
   private static <T> List<T> readWrappedList(
-      JsonParser parser, JsonNode wrapperNode, String itemName, Class<T> clazz) throws IOException {
+      DeserializationContext ctxt, JsonNode wrapperNode, String itemName, Class<T> clazz)
+      throws JacksonException {
     if (wrapperNode == null || wrapperNode.isNull()) {
       return null;
     }
@@ -132,11 +131,10 @@ public class OperationDeserializer extends JsonDeserializer<Operation> {
       return null;
     }
     if (itemsNode.isArray()) {
-      return DeserializationHelper.createInstancesFromArrayNode(
-          parser, (ArrayNode) itemsNode, clazz);
+      return DeserializationHelper.createInstancesFromArrayNode(ctxt, (ArrayNode) itemsNode, clazz);
     }
     List<T> values = new ArrayList<>();
-    values.add(DeserializationHelper.createInstanceFromNode(parser, itemsNode, clazz));
+    values.add(DeserializationHelper.createInstanceFromNode(ctxt, itemsNode, clazz));
     return values;
   }
 
