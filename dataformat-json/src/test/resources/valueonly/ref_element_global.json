@@ -1,0 +1,20 @@
+{
+  "referenceGlobal": {
+    "referredSemanticId": {
+      "keys": [
+        {
+          "type": "ConceptDescription",
+          "value": "Concept Description key value"
+        }
+      ],
+      "type": "ExternalReference"
+    },
+    "keys": [
+      {
+        "type": "GlobalReference",
+        "value": "global reference key value"
+      }
+    ],
+    "type": "ExternalReference"
+  }
+}
