@@ -15,6 +15,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -36,6 +37,12 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/creator")
   protected Reference creator;
 
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/createdAt")
+  protected OffsetDateTime createdAt;
+
+  @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/updatedAt")
+  protected OffsetDateTime updatedAt;
+
   @IRI("https://admin-shell.io/aas/3/1/AdministrativeInformation/revision")
   protected String revision;
 
@@ -55,6 +62,10 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
     return "DefaultAdministrativeInformation{"
         + "creator="
         + creator
+        + ", createdAt="
+        + createdAt
+        + ", updatedAt="
+        + updatedAt
         + ", revision='"
         + revision
         + '\''
@@ -75,6 +86,8 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
         this.version,
         this.revision,
         this.creator,
+        this.createdAt,
+        this.updatedAt,
         this.templateId,
         this.embeddedDataSpecifications);
   }
@@ -92,6 +105,8 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
       return Objects.equals(this.version, other.version)
           && Objects.equals(this.revision, other.revision)
           && Objects.equals(this.creator, other.creator)
+          && Objects.equals(this.createdAt, other.createdAt)
+          && Objects.equals(this.updatedAt, other.updatedAt)
           && Objects.equals(this.templateId, other.templateId)
           && Objects.equals(this.embeddedDataSpecifications, other.embeddedDataSpecifications);
     }
@@ -125,6 +140,26 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   @Override
   public void setCreator(Reference creator) {
     this.creator = creator;
+  }
+
+  @Override
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  @Override
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Override
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  @Override
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
   @Override
