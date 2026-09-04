@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,11 +11,12 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
@@ -24,6 +25,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import java.util.List;
 
 public abstract class AssetAdministrationShellBuilder<
         T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>
@@ -65,11 +68,11 @@ public abstract class AssetAdministrationShellBuilder<
   /**
    * This function allows adding a value to the List submodels
    *
-   * @param submodels desired value to be added
+   * @param submodel desired value to be added
    * @return Builder object with new value for submodels
    */
-  public B submodels(Reference submodels) {
-    getBuildingInstance().getSubmodels().add(submodels);
+  public B submodel(Reference submodel) {
+    getBuildingInstance().getSubmodels().add(submodel);
     return getSelf();
   }
 
@@ -87,11 +90,11 @@ public abstract class AssetAdministrationShellBuilder<
   /**
    * This function allows adding a value to the List embeddedDataSpecifications
    *
-   * @param embeddedDataSpecifications desired value to be added
+   * @param embeddedDataSpecification desired value to be added
    * @return Builder object with new value for embeddedDataSpecifications
    */
-  public B embeddedDataSpecifications(EmbeddedDataSpecification embeddedDataSpecifications) {
-    getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecifications);
+  public B embeddedDataSpecification(EmbeddedDataSpecification embeddedDataSpecification) {
+    getBuildingInstance().getEmbeddedDataSpecifications().add(embeddedDataSpecification);
     return getSelf();
   }
 
@@ -142,11 +145,11 @@ public abstract class AssetAdministrationShellBuilder<
   /**
    * This function allows setting a value for displayName
    *
-   * @param displayName desired value to be set
+   * @param displayNames desired value to be set
    * @return Builder object with new value for displayName
    */
-  public B displayName(List<LangStringNameType> displayName) {
-    getBuildingInstance().setDisplayName(displayName);
+  public B displayName(List<LangStringNameType> displayNames) {
+    getBuildingInstance().setDisplayName(displayNames);
     return getSelf();
   }
 
@@ -164,11 +167,11 @@ public abstract class AssetAdministrationShellBuilder<
   /**
    * This function allows setting a value for description
    *
-   * @param description desired value to be set
+   * @param descriptions desired value to be set
    * @return Builder object with new value for description
    */
-  public B description(List<LangStringTextType> description) {
-    getBuildingInstance().setDescription(description);
+  public B description(List<LangStringTextType> descriptions) {
+    getBuildingInstance().setDescription(descriptions);
     return getSelf();
   }
 
@@ -197,11 +200,11 @@ public abstract class AssetAdministrationShellBuilder<
   /**
    * This function allows adding a value to the List extensions
    *
-   * @param extensions desired value to be added
+   * @param extension desired value to be added
    * @return Builder object with new value for extensions
    */
-  public B extensions(Extension extensions) {
-    getBuildingInstance().getExtensions().add(extensions);
+  public B extension(Extension extension) {
+    getBuildingInstance().getExtensions().add(extension);
     return getSelf();
   }
 }
