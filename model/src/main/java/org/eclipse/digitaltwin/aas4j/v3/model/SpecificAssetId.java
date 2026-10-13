@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
@@ -26,17 +28,17 @@ public interface SpecificAssetId extends HasSemantics {
   /**
    * Name of the identifier
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/name
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/name
    *
    * @return Returns the String for the property name.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/name")
+  @IRI("https://admin-shell.io/aas/3/2/SpecificAssetId/name")
   String getName();
 
   /**
    * Name of the identifier
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/name
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/name
    *
    * @param name desired value for the property name.
    */
@@ -45,17 +47,17 @@ public interface SpecificAssetId extends HasSemantics {
   /**
    * The value of the specific asset identifier with the corresponding name.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/value
    *
    * @return Returns the String for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/value")
+  @IRI("https://admin-shell.io/aas/3/2/SpecificAssetId/value")
   String getValue();
 
   /**
    * The value of the specific asset identifier with the corresponding name.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/value
    *
    * @param value desired value for the property value.
    */
@@ -64,17 +66,17 @@ public interface SpecificAssetId extends HasSemantics {
   /**
    * The (external) subject the key belongs to or has meaning to.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/externalSubjectId
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/externalSubjectId
    *
    * @return Returns the Reference for the property externalSubjectId.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SpecificAssetId/externalSubjectId")
+  @IRI("https://admin-shell.io/aas/3/2/SpecificAssetId/externalSubjectId")
   Reference getExternalSubjectId();
 
   /**
    * The (external) subject the key belongs to or has meaning to.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SpecificAssetId/externalSubjectId
+   * <p>More information under https://admin-shell.io/aas/3/2/SpecificAssetId/externalSubjectId
    *
    * @param externalSubjectId desired value for the property externalSubjectId.
    */
