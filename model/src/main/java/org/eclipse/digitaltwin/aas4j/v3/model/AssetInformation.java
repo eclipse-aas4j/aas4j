@@ -17,11 +17,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAssetInformation;
-
-import java.util.List;
 
 /**
  * In 'AssetInformation' identifying meta data of the asset that is represented by an AAS is

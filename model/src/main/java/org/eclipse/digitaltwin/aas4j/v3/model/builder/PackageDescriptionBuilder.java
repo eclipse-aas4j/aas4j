@@ -17,9 +17,8 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
-
 import java.util.List;
+import org.eclipse.digitaltwin.aas4j.v3.model.PackageDescription;
 
 public abstract class PackageDescriptionBuilder<
         T extends PackageDescription, B extends PackageDescriptionBuilder<T, B>>

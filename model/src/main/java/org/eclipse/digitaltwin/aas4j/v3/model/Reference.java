@@ -17,11 +17,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultReference;
-
-import java.util.List;
 
 /** Reference to either a model element of the same or another AAS or to an external entity. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultReference.class)})

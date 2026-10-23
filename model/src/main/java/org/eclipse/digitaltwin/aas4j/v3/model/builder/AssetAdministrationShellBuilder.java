@@ -17,6 +17,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetInformation;
@@ -25,8 +26,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
-import java.util.List;
 
 public abstract class AssetAdministrationShellBuilder<
         T extends AssetAdministrationShell, B extends AssetAdministrationShellBuilder<T, B>>

@@ -17,11 +17,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationUom;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeUom;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringUom;
-
-import java.util.List;
 
 public abstract class DataSpecificationUomBuilder<
         T extends DataSpecificationUom, B extends DataSpecificationUomBuilder<T, B>>

@@ -17,6 +17,7 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.AnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
@@ -25,8 +26,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-
-import java.util.List;
 
 public abstract class AnnotatedRelationshipElementBuilder<
         T extends AnnotatedRelationshipElement, B extends AnnotatedRelationshipElementBuilder<T, B>>

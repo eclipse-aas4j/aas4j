@@ -17,11 +17,10 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
-
-import java.util.List;
 
 /** A submodel element list is an ordered list of submodel elements. */
 @KnownSubtypes({@KnownSubtypes.Type(value = DefaultSubmodelElementList.class)})

@@ -17,10 +17,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
+import java.util.List;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.KnownSubtypes;
-
-import java.util.List;
 
 /** The value of a qualifiable element may be further qualified by one or more qualifiers. */
 @KnownSubtypes({

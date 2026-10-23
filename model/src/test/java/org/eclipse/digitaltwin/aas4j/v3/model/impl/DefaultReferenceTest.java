@@ -16,9 +16,9 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertSame;
+
+import org.junit.Test;
 
 public class DefaultReferenceTest {
 

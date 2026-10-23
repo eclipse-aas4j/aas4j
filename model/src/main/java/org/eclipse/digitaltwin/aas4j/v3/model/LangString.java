@@ -17,10 +17,9 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
 
-import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-
 import java.io.Serializable;
 import java.util.Objects;
+import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 
 @IRI("rdf:langString")
 public class LangString implements Serializable {
