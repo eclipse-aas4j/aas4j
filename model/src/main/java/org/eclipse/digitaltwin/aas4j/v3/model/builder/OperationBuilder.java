@@ -18,7 +18,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 
 public abstract class OperationBuilder<T extends Operation, B extends OperationBuilder<T, B>>
     extends ExtendableBuilder<T, B> {

@@ -18,7 +18,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
 
 public abstract class DataSpecificationIec61360Builder<
         T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
