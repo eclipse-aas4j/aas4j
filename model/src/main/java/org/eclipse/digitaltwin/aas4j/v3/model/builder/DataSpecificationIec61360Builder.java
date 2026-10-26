@@ -18,14 +18,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public abstract class DataSpecificationIec61360Builder<
         T extends DataSpecificationIec61360, B extends DataSpecificationIec61360Builder<T, B>>
@@ -34,11 +27,11 @@ public abstract class DataSpecificationIec61360Builder<
   /**
    * This function allows setting a value for preferredName
    *
-   * @param preferredNames desired value to be set
+   * @param preferredName desired value to be set
    * @return Builder object with new value for preferredName
    */
-  public B preferredName(List<LangStringPreferredNameTypeIec61360> preferredNames) {
-    getBuildingInstance().setPreferredName(preferredNames);
+  public B preferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
+    getBuildingInstance().setPreferredName(preferredName);
     return getSelf();
   }
 
@@ -56,11 +49,11 @@ public abstract class DataSpecificationIec61360Builder<
   /**
    * This function allows setting a value for shortName
    *
-   * @param shortNames desired value to be set
+   * @param shortName desired value to be set
    * @return Builder object with new value for shortName
    */
-  public B shortName(List<LangStringShortNameTypeIec61360> shortNames) {
-    getBuildingInstance().setShortName(shortNames);
+  public B shortName(List<LangStringShortNameTypeIec61360> shortName) {
+    getBuildingInstance().setShortName(shortName);
     return getSelf();
   }
 
@@ -133,11 +126,11 @@ public abstract class DataSpecificationIec61360Builder<
   /**
    * This function allows setting a value for definition
    *
-   * @param definitions desired value to be set
+   * @param definition desired value to be set
    * @return Builder object with new value for definition
    */
-  public B definition(List<LangStringDefinitionTypeIec61360> definitions) {
-    getBuildingInstance().setDefinition(definitions);
+  public B definition(List<LangStringDefinitionTypeIec61360> definition) {
+    getBuildingInstance().setDefinition(definition);
     return getSelf();
   }
 

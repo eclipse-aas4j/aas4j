@@ -20,14 +20,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringPreferredNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringShortNameTypeIec61360;
-import org.eclipse.digitaltwin.aas4j.v3.model.LevelType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ValueList;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.DataSpecificationIec61360Builder;
 
@@ -169,8 +162,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
-  public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredNames) {
-    this.preferredName = preferredNames;
+  public void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName) {
+    this.preferredName = preferredName;
   }
 
   @Override
@@ -184,8 +177,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
-  public void setShortName(List<LangStringShortNameTypeIec61360> shortNames) {
-    this.shortName = shortNames;
+  public void setShortName(List<LangStringShortNameTypeIec61360> shortName) {
+    this.shortName = shortName;
   }
 
   @Override
@@ -249,8 +242,8 @@ public class DefaultDataSpecificationIec61360 implements DataSpecificationIec613
   }
 
   @Override
-  public void setDefinition(List<LangStringDefinitionTypeIec61360> definitions) {
-    this.definition = definitions;
+  public void setDefinition(List<LangStringDefinitionTypeIec61360> definition) {
+    this.definition = definition;
   }
 
   @Override

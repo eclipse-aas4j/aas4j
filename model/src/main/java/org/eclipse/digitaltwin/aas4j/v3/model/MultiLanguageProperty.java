@@ -41,9 +41,9 @@ public interface MultiLanguageProperty extends DataElement {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/MultiLanguageProperty/value
    *
-   * @param values desired value for the property value.
+   * @param value desired value for the property value.
    */
-  void setValue(List<LangStringTextType> values);
+  void setValue(List<LangStringTextType> value);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/MultiLanguageProperty/value

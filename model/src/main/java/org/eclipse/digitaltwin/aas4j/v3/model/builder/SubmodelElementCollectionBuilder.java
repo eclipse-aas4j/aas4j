@@ -18,14 +18,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElementCollection;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public abstract class SubmodelElementCollectionBuilder<
         T extends SubmodelElementCollection, B extends SubmodelElementCollectionBuilder<T, B>>
@@ -34,11 +27,11 @@ public abstract class SubmodelElementCollectionBuilder<
   /**
    * This function allows setting a value for value
    *
-   * @param values desired value to be set
+   * @param value desired value to be set
    * @return Builder object with new value for value
    */
-  public B value(List<SubmodelElement> values) {
-    getBuildingInstance().setValue(values);
+  public B value(List<SubmodelElement> value) {
+    getBuildingInstance().setValue(value);
     return getSelf();
   }
 
@@ -78,11 +71,11 @@ public abstract class SubmodelElementCollectionBuilder<
   /**
    * This function allows setting a value for displayName
    *
-   * @param displayNames desired value to be set
+   * @param displayName desired value to be set
    * @return Builder object with new value for displayName
    */
-  public B displayName(List<LangStringNameType> displayNames) {
-    getBuildingInstance().setDisplayName(displayNames);
+  public B displayName(List<LangStringNameType> displayName) {
+    getBuildingInstance().setDisplayName(displayName);
     return getSelf();
   }
 
@@ -100,11 +93,11 @@ public abstract class SubmodelElementCollectionBuilder<
   /**
    * This function allows setting a value for description
    *
-   * @param descriptions desired value to be set
+   * @param description desired value to be set
    * @return Builder object with new value for description
    */
-  public B description(List<LangStringTextType> descriptions) {
-    getBuildingInstance().setDescription(descriptions);
+  public B description(List<LangStringTextType> description) {
+    getBuildingInstance().setDescription(description);
     return getSelf();
   }
 

@@ -18,13 +18,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.Blob;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>>
     extends ExtendableBuilder<T, B> {
@@ -76,11 +70,11 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>>
   /**
    * This function allows setting a value for displayName
    *
-   * @param displayNames desired value to be set
+   * @param displayName desired value to be set
    * @return Builder object with new value for displayName
    */
-  public B displayName(List<LangStringNameType> displayNames) {
-    getBuildingInstance().setDisplayName(displayNames);
+  public B displayName(List<LangStringNameType> displayName) {
+    getBuildingInstance().setDisplayName(displayName);
     return getSelf();
   }
 
@@ -98,11 +92,11 @@ public abstract class BlobBuilder<T extends Blob, B extends BlobBuilder<T, B>>
   /**
    * This function allows setting a value for description
    *
-   * @param descriptions desired value to be set
+   * @param description desired value to be set
    * @return Builder object with new value for description
    */
-  public B description(List<LangStringTextType> descriptions) {
-    getBuildingInstance().setDescription(descriptions);
+  public B description(List<LangStringTextType> description) {
+    getBuildingInstance().setDescription(description);
     return getSelf();
   }
 

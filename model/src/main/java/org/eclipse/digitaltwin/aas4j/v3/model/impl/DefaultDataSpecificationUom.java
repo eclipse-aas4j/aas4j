@@ -130,8 +130,8 @@ public class DefaultDataSpecificationUom implements DataSpecificationUom {
   }
 
   @Override
-  public void setPreferredName(List<LangStringUom> preferredNames) {
-    this.preferredName = preferredNames;
+  public void setPreferredName(List<LangStringUom> preferredName) {
+    this.preferredName = preferredName;
   }
 
   @Override
@@ -165,8 +165,8 @@ public class DefaultDataSpecificationUom implements DataSpecificationUom {
   }
 
   @Override
-  public void setDefinition(List<LangStringDefinitionTypeUom> definitions) {
-    this.definition = definitions;
+  public void setDefinition(List<LangStringDefinitionTypeUom> definition) {
+    this.definition = definition;
   }
 
   @Override
@@ -180,8 +180,8 @@ public class DefaultDataSpecificationUom implements DataSpecificationUom {
   }
 
   @Override
-  public void setPreferredNameQuantity(List<LangStringUom> preferredNameQuantities) {
-    this.preferredNameQuantity = preferredNameQuantities;
+  public void setPreferredNameQuantity(List<LangStringUom> preferredNameQuantity) {
+    this.preferredNameQuantity = preferredNameQuantity;
   }
 
   @Override

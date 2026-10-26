@@ -134,10 +134,10 @@ public interface BasicEventElement extends EventElement {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/BasicEventElement/lastUpdate
    *
-   * @return Returns the String for the property lastUpdate.
+   * @return Returns the java.time.OffsetDateTime for the property lastUpdate.
    */
   @IRI("https://admin-shell.io/aas/3/2/BasicEventElement/lastUpdate")
-  String getLastUpdate();
+  java.time.OffsetDateTime getLastUpdate();
 
   /**
    * Timestamp in UTC, when the last event was received (input direction) or sent (output
@@ -147,7 +147,7 @@ public interface BasicEventElement extends EventElement {
    *
    * @param lastUpdate desired value for the property lastUpdate.
    */
-  void setLastUpdate(String lastUpdate);
+  void setLastUpdate(java.time.OffsetDateTime lastUpdate);
 
   /**
    * For input direction, reports on the maximum frequency, the software entity behind the

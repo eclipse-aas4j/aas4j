@@ -30,11 +30,11 @@ public abstract class OperationResultBuilder<
   /**
    * This function allows setting a value for executionResult
    *
-   * @param executionResults desired value to be set
+   * @param executionResult desired value to be set
    * @return Builder object with new value for executionResult
    */
-  public B executionResult(List<Result> executionResults) {
-    getBuildingInstance().setExecutionResult(executionResults);
+  public B executionResult(List<Result> executionResult) {
+    getBuildingInstance().setExecutionResult(executionResult);
     return getSelf();
   }
 
@@ -52,11 +52,11 @@ public abstract class OperationResultBuilder<
   /**
    * This function allows setting a value for executionState
    *
-   * @param executionStates desired value to be set
+   * @param executionState desired value to be set
    * @return Builder object with new value for executionState
    */
-  public B executionState(List<ExecutionState> executionStates) {
-    getBuildingInstance().setExecutionState(executionStates);
+  public B executionState(List<ExecutionState> executionState) {
+    getBuildingInstance().setExecutionState(executionState);
     return getSelf();
   }
 
@@ -118,11 +118,11 @@ public abstract class OperationResultBuilder<
   /**
    * This function allows setting a value for requestId
    *
-   * @param requestIds desired value to be set
+   * @param requestId desired value to be set
    * @return Builder object with new value for requestId
    */
-  public B requestId(List<String> requestIds) {
-    getBuildingInstance().setRequestId(requestIds);
+  public B requestId(List<String> requestId) {
+    getBuildingInstance().setRequestId(requestId);
     return getSelf();
   }
 

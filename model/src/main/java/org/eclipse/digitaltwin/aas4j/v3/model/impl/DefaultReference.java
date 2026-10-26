@@ -18,13 +18,14 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.model.Key;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.ReferenceTypes;
+import java.util.Set;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
-import org.eclipse.digitaltwin.aas4j.v3.model.builder.ReferenceBuilder;
+import org.eclipse.digitaltwin.aas4j.v3.model.builder.*;
 
 /**
  * Default implementation of package org.eclipse.digitaltwin.aas4j.v3.model.Reference
@@ -98,7 +99,23 @@ public class DefaultReference implements Reference {
 
   @Override
   public void setReferredSemanticId(Reference referredSemanticId) {
+    validateReferredSemanticId(referredSemanticId);
     this.referredSemanticId = referredSemanticId;
+  }
+
+  private void validateReferredSemanticId(Reference referredSemanticId) {
+    if (referredSemanticId == null) {
+      return;
+    }
+    Set<Reference> visited = Collections.newSetFromMap(new IdentityHashMap<>());
+    Reference current = referredSemanticId;
+    while (current != null) {
+      if (current == this || !visited.add(current)) {
+        throw new IllegalArgumentException(
+            "referredSemanticId must not create a circular Reference");
+      }
+      current = current.getReferredSemanticId();
+    }
   }
 
   @Override

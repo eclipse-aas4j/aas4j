@@ -18,13 +18,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
-import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 
 public abstract class ConceptDescriptionBuilder<
         T extends ConceptDescription, B extends ConceptDescriptionBuilder<T, B>>
@@ -33,11 +27,11 @@ public abstract class ConceptDescriptionBuilder<
   /**
    * This function allows setting a value for isCaseOf
    *
-   * @param isCaseOfs desired value to be set
+   * @param isCaseOf desired value to be set
    * @return Builder object with new value for isCaseOf
    */
-  public B isCaseOf(List<Reference> isCaseOfs) {
-    getBuildingInstance().setIsCaseOf(isCaseOfs);
+  public B isCaseOf(List<Reference> isCaseOf) {
+    getBuildingInstance().setIsCaseOf(isCaseOf);
     return getSelf();
   }
 
@@ -121,11 +115,11 @@ public abstract class ConceptDescriptionBuilder<
   /**
    * This function allows setting a value for displayName
    *
-   * @param displayNames desired value to be set
+   * @param displayName desired value to be set
    * @return Builder object with new value for displayName
    */
-  public B displayName(List<LangStringNameType> displayNames) {
-    getBuildingInstance().setDisplayName(displayNames);
+  public B displayName(List<LangStringNameType> displayName) {
+    getBuildingInstance().setDisplayName(displayName);
     return getSelf();
   }
 
@@ -143,11 +137,11 @@ public abstract class ConceptDescriptionBuilder<
   /**
    * This function allows setting a value for description
    *
-   * @param descriptions desired value to be set
+   * @param description desired value to be set
    * @return Builder object with new value for description
    */
-  public B description(List<LangStringTextType> descriptions) {
-    getBuildingInstance().setDescription(descriptions);
+  public B description(List<LangStringTextType> description) {
+    getBuildingInstance().setDescription(description);
     return getSelf();
   }
 

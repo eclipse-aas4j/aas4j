@@ -65,7 +65,7 @@ public abstract class AdministrativeInformationBuilder<
    * @param createdAt desired value to be set
    * @return Builder object with new value for createdAt
    */
-  public B createdAt(String createdAt) {
+  public B createdAt(java.time.OffsetDateTime createdAt) {
     getBuildingInstance().setCreatedAt(createdAt);
     return getSelf();
   }
@@ -76,7 +76,7 @@ public abstract class AdministrativeInformationBuilder<
    * @param updatedAt desired value to be set
    * @return Builder object with new value for updatedAt
    */
-  public B updatedAt(String updatedAt) {
+  public B updatedAt(java.time.OffsetDateTime updatedAt) {
     getBuildingInstance().setUpdatedAt(updatedAt);
     return getSelf();
   }

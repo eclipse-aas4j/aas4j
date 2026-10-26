@@ -29,11 +29,11 @@ public abstract class DataSpecificationUomBuilder<
   /**
    * This function allows setting a value for preferredName
    *
-   * @param preferredNames desired value to be set
+   * @param preferredName desired value to be set
    * @return Builder object with new value for preferredName
    */
-  public B preferredName(List<LangStringUom> preferredNames) {
-    getBuildingInstance().setPreferredName(preferredNames);
+  public B preferredName(List<LangStringUom> preferredName) {
+    getBuildingInstance().setPreferredName(preferredName);
     return getSelf();
   }
 
@@ -73,11 +73,11 @@ public abstract class DataSpecificationUomBuilder<
   /**
    * This function allows setting a value for definition
    *
-   * @param definitions desired value to be set
+   * @param definition desired value to be set
    * @return Builder object with new value for definition
    */
-  public B definition(List<LangStringDefinitionTypeUom> definitions) {
-    getBuildingInstance().setDefinition(definitions);
+  public B definition(List<LangStringDefinitionTypeUom> definition) {
+    getBuildingInstance().setDefinition(definition);
     return getSelf();
   }
 
@@ -95,11 +95,11 @@ public abstract class DataSpecificationUomBuilder<
   /**
    * This function allows setting a value for preferredNameQuantity
    *
-   * @param preferredNameQuantities desired value to be set
+   * @param preferredNameQuantity desired value to be set
    * @return Builder object with new value for preferredNameQuantity
    */
-  public B preferredNameQuantity(List<LangStringUom> preferredNameQuantities) {
-    getBuildingInstance().setPreferredNameQuantity(preferredNameQuantities);
+  public B preferredNameQuantity(List<LangStringUom> preferredNameQuantity) {
+    getBuildingInstance().setPreferredNameQuantity(preferredNameQuantity);
     return getSelf();
   }
 

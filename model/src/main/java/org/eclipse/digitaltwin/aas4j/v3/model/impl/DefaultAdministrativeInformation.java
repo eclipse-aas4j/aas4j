@@ -36,7 +36,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.AdministrativeInformationB
 public class DefaultAdministrativeInformation implements AdministrativeInformation {
 
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
-  protected String createdAt;
+  protected java.time.OffsetDateTime createdAt;
 
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/creator")
   protected Reference creator;
@@ -48,7 +48,7 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   protected String templateId;
 
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
-  protected String updatedAt;
+  protected java.time.OffsetDateTime updatedAt;
 
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/version")
   protected String version;
@@ -148,22 +148,22 @@ public class DefaultAdministrativeInformation implements AdministrativeInformati
   }
 
   @Override
-  public String getCreatedAt() {
+  public java.time.OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
   @Override
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(java.time.OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
   @Override
-  public String getUpdatedAt() {
+  public java.time.OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
 
   @Override
-  public void setUpdatedAt(String updatedAt) {
+  public void setUpdatedAt(java.time.OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 

@@ -44,9 +44,9 @@ public interface ConceptDescription extends HasDataSpecification, Identifiable {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf
    *
-   * @param isCaseOfs desired value for the property isCaseOf.
+   * @param isCaseOf desired value for the property isCaseOf.
    */
-  void setIsCaseOf(List<Reference> isCaseOfs);
+  void setIsCaseOf(List<Reference> isCaseOf);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/ConceptDescription/isCaseOf

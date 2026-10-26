@@ -98,9 +98,9 @@ public interface Extension extends HasSemantics {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/Extension/refersTo
    *
-   * @param refersTos desired value for the property refersTo.
+   * @param refersTo desired value for the property refersTo.
    */
-  void setRefersTo(List<Reference> refersTos);
+  void setRefersTo(List<Reference> refersTo);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/Extension/refersTo

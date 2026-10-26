@@ -103,8 +103,8 @@ public class DefaultOperationResult implements OperationResult {
   }
 
   @Override
-  public void setExecutionResult(List<Result> executionResults) {
-    this.executionResult = executionResults;
+  public void setExecutionResult(List<Result> executionResult) {
+    this.executionResult = executionResult;
   }
 
   @Override
@@ -118,8 +118,8 @@ public class DefaultOperationResult implements OperationResult {
   }
 
   @Override
-  public void setExecutionState(List<ExecutionState> executionStates) {
-    this.executionState = executionStates;
+  public void setExecutionState(List<ExecutionState> executionState) {
+    this.executionState = executionState;
   }
 
   @Override
@@ -163,8 +163,8 @@ public class DefaultOperationResult implements OperationResult {
   }
 
   @Override
-  public void setRequestId(List<String> requestIds) {
-    this.requestId = requestIds;
+  public void setRequestId(List<String> requestId) {
+    this.requestId = requestId;
   }
 
   @Override

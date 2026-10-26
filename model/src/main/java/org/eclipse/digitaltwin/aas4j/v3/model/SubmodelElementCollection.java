@@ -44,9 +44,9 @@ public interface SubmodelElementCollection extends SubmodelElement {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementCollection/value
    *
-   * @param values desired value for the property value.
+   * @param value desired value for the property value.
    */
-  void setValue(List<SubmodelElement> values);
+  void setValue(List<SubmodelElement> value);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/SubmodelElementCollection/value

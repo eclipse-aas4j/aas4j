@@ -41,9 +41,9 @@ public interface DataSpecificationUom extends DataSpecificationContent {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/DataSpecificationUom/preferredName
    *
-   * @param preferredNames desired value for the property preferredName.
+   * @param preferredName desired value for the property preferredName.
    */
-  void setPreferredName(List<LangStringUom> preferredNames);
+  void setPreferredName(List<LangStringUom> preferredName);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/DataSpecificationUom/preferredName
@@ -105,9 +105,9 @@ public interface DataSpecificationUom extends DataSpecificationContent {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/DataSpecificationUom/definition
    *
-   * @param definitions desired value for the property definition.
+   * @param definition desired value for the property definition.
    */
-  void setDefinition(List<LangStringDefinitionTypeUom> definitions);
+  void setDefinition(List<LangStringDefinitionTypeUom> definition);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/DataSpecificationUom/definition
@@ -133,9 +133,9 @@ public interface DataSpecificationUom extends DataSpecificationContent {
    * <p>More information under
    * https://admin-shell.io/aas/3/2/DataSpecificationUom/preferredNameQuantity
    *
-   * @param preferredNameQuantities desired value for the property preferredNameQuantity.
+   * @param preferredNameQuantity desired value for the property preferredNameQuantity.
    */
-  void setPreferredNameQuantity(List<LangStringUom> preferredNameQuantities);
+  void setPreferredNameQuantity(List<LangStringUom> preferredNameQuantity);
 
   /**
    * More information under

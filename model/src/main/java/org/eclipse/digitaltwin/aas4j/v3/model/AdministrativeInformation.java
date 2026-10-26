@@ -87,10 +87,10 @@ public interface AdministrativeInformation extends HasDataSpecification {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt
    *
-   * @return Returns the String for the property createdAt.
+   * @return Returns the java.time.OffsetDateTime for the property createdAt.
    */
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/createdAt")
-  String getCreatedAt();
+  java.time.OffsetDateTime getCreatedAt();
 
   /**
    * Date of creation
@@ -99,17 +99,17 @@ public interface AdministrativeInformation extends HasDataSpecification {
    *
    * @param createdAt desired value for the property createdAt.
    */
-  void setCreatedAt(String createdAt);
+  void setCreatedAt(java.time.OffsetDateTime createdAt);
 
   /**
    * Date of update
    *
    * <p>More information under https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt
    *
-   * @return Returns the String for the property updatedAt.
+   * @return Returns the java.time.OffsetDateTime for the property updatedAt.
    */
   @IRI("https://admin-shell.io/aas/3/2/AdministrativeInformation/updatedAt")
-  String getUpdatedAt();
+  java.time.OffsetDateTime getUpdatedAt();
 
   /**
    * Date of update
@@ -118,7 +118,7 @@ public interface AdministrativeInformation extends HasDataSpecification {
    *
    * @param updatedAt desired value for the property updatedAt.
    */
-  void setUpdatedAt(String updatedAt);
+  void setUpdatedAt(java.time.OffsetDateTime updatedAt);
 
   /**
    * Identifier of the template that guided the creation of the element.

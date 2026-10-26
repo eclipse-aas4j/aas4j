@@ -144,8 +144,8 @@ public class DefaultExtension implements Extension {
   }
 
   @Override
-  public void setRefersTo(List<Reference> refersTos) {
-    this.refersTo = refersTos;
+  public void setRefersTo(List<Reference> refersTo) {
+    this.refersTo = refersTo;
   }
 
   @Override

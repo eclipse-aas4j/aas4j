@@ -20,15 +20,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.model.BasicEventElement;
-import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
-import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.BasicEventElementBuilder;
 
@@ -44,7 +36,7 @@ public class DefaultBasicEventElement implements BasicEventElement {
   protected Direction direction;
 
   @IRI("https://admin-shell.io/aas/3/2/BasicEventElement/lastUpdate")
-  protected String lastUpdate;
+  protected java.time.OffsetDateTime lastUpdate;
 
   @IRI("https://admin-shell.io/aas/3/2/BasicEventElement/maxInterval")
   protected String maxInterval;
@@ -253,12 +245,12 @@ public class DefaultBasicEventElement implements BasicEventElement {
   }
 
   @Override
-  public String getLastUpdate() {
+  public java.time.OffsetDateTime getLastUpdate() {
     return lastUpdate;
   }
 
   @Override
-  public void setLastUpdate(String lastUpdate) {
+  public void setLastUpdate(java.time.OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
@@ -308,8 +300,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -323,8 +315,8 @@ public class DefaultBasicEventElement implements BasicEventElement {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override

@@ -37,9 +37,9 @@ public interface OperationResult {
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/executionResult
    *
-   * @param executionResults desired value for the property executionResult.
+   * @param executionResult desired value for the property executionResult.
    */
-  void setExecutionResult(List<Result> executionResults);
+  void setExecutionResult(List<Result> executionResult);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/executionResult
@@ -59,9 +59,9 @@ public interface OperationResult {
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/executionState
    *
-   * @param executionStates desired value for the property executionState.
+   * @param executionState desired value for the property executionState.
    */
-  void setExecutionState(List<ExecutionState> executionStates);
+  void setExecutionState(List<ExecutionState> executionState);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/executionState
@@ -125,9 +125,9 @@ public interface OperationResult {
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/requestId
    *
-   * @param requestIds desired value for the property requestId.
+   * @param requestId desired value for the property requestId.
    */
-  void setRequestId(List<String> requestIds);
+  void setRequestId(List<String> requestId);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/OperationResult/requestId

@@ -20,13 +20,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
-import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
-import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
-import org.eclipse.digitaltwin.aas4j.v3.model.MultiLanguageProperty;
-import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
-import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+import org.eclipse.digitaltwin.aas4j.v3.model.*;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.MultiLanguagePropertyBuilder;
 
@@ -158,8 +152,8 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
   }
 
   @Override
-  public void setValue(List<LangStringTextType> values) {
-    this.value = values;
+  public void setValue(List<LangStringTextType> value) {
+    this.value = value;
   }
 
   @Override
@@ -203,8 +197,8 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
   }
 
   @Override
-  public void setDisplayName(List<LangStringNameType> displayNames) {
-    this.displayName = displayNames;
+  public void setDisplayName(List<LangStringNameType> displayName) {
+    this.displayName = displayName;
   }
 
   @Override
@@ -218,8 +212,8 @@ public class DefaultMultiLanguageProperty implements MultiLanguageProperty {
   }
 
   @Override
-  public void setDescription(List<LangStringTextType> descriptions) {
-    this.description = descriptions;
+  public void setDescription(List<LangStringTextType> description) {
+    this.description = description;
   }
 
   @Override

@@ -47,9 +47,9 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
    * <p>More information under
    * https://admin-shell.io/aas/3/2/DataSpecificationIec61360/preferredName
    *
-   * @param preferredNames desired value for the property preferredName.
+   * @param preferredName desired value for the property preferredName.
    */
-  void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredNames);
+  void setPreferredName(List<LangStringPreferredNameTypeIec61360> preferredName);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/preferredName
@@ -73,9 +73,9 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/shortName
    *
-   * @param shortNames desired value for the property shortName.
+   * @param shortName desired value for the property shortName.
    */
-  void setShortName(List<LangStringShortNameTypeIec61360> shortNames);
+  void setShortName(List<LangStringShortNameTypeIec61360> shortName);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/shortName
@@ -196,9 +196,9 @@ public interface DataSpecificationIec61360 extends DataSpecificationContent {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/definition
    *
-   * @param definitions desired value for the property definition.
+   * @param definition desired value for the property definition.
    */
-  void setDefinition(List<LangStringDefinitionTypeIec61360> definitions);
+  void setDefinition(List<LangStringDefinitionTypeIec61360> definition);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/DataSpecificationIec61360/definition

@@ -86,9 +86,9 @@ public interface Referable extends HasExtensions {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/Referable/displayName
    *
-   * @param displayNames desired value for the property displayName.
+   * @param displayName desired value for the property displayName.
    */
-  void setDisplayName(List<LangStringNameType> displayNames);
+  void setDisplayName(List<LangStringNameType> displayName);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/Referable/displayName
@@ -112,9 +112,9 @@ public interface Referable extends HasExtensions {
    *
    * <p>More information under https://admin-shell.io/aas/3/2/Referable/description
    *
-   * @param descriptions desired value for the property description.
+   * @param description desired value for the property description.
    */
-  void setDescription(List<LangStringTextType> descriptions);
+  void setDescription(List<LangStringTextType> description);
 
   /**
    * More information under https://admin-shell.io/aas/3/2/Referable/description

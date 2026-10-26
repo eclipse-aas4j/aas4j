@@ -61,11 +61,11 @@ public abstract class ExtensionBuilder<T extends Extension, B extends ExtensionB
   /**
    * This function allows setting a value for refersTo
    *
-   * @param refersTos desired value to be set
+   * @param refersTo desired value to be set
    * @return Builder object with new value for refersTo
    */
-  public B refersTo(List<Reference> refersTos) {
-    getBuildingInstance().setRefersTo(refersTos);
+  public B refersTo(List<Reference> refersTo) {
+    getBuildingInstance().setRefersTo(refersTo);
     return getSelf();
   }
 
