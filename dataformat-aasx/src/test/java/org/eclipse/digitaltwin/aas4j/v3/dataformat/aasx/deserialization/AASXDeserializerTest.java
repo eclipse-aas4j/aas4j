@@ -167,6 +167,7 @@ public class AASXDeserializerTest {
             .getClassLoader()
             .getResource("HandoverDocumentation_embedded_file_with_space.aasx");
     assertNotNull("Resource file should exist on the classpath", resourceUrl);
+    InMemoryFile expectedFile = new InMemoryFile(null, "/aasx/test%20text%20document.txt");
 
     try (InputStream in = new FileInputStream(resourceUrl.getFile())) {
       AASXDeserializer deserializer = new AASXDeserializer(in);
@@ -179,6 +180,9 @@ public class AASXDeserializerTest {
 
       List<InMemoryFile> relatedFiles = deserializer.getRelatedFiles();
       assertNotNull("Related files list should not be null", relatedFiles);
+      assertTrue(
+          "Expected file should be present in related files",
+          relatedFiles.stream().anyMatch(file -> expectedFile.getPath().equals(file.getPath())));
     }
   }
 
