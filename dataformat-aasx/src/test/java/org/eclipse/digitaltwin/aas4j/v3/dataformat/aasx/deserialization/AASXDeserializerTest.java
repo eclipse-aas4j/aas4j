@@ -15,13 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.deserialization;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -156,6 +156,33 @@ public class AASXDeserializerTest {
     InputStream in = new FileInputStream(file);
     AASXDeserializer deserializer = new AASXDeserializer(in);
     assertEquals(Collections.singletonList(inMemoryFile), deserializer.getRelatedFiles());
+  }
+
+  @Test
+  public void deserializeResourceFileWithSpace()
+      throws IOException, InvalidFormatException, DeserializationException {
+    URL resourceUrl =
+        getClass()
+            .getClassLoader()
+            .getResource("HandoverDocumentation_embedded_file_with_space.aasx");
+    assertNotNull("Resource file should exist on the classpath", resourceUrl);
+    InMemoryFile expectedFile = new InMemoryFile(null, "/aasx/test%20text%20document.txt");
+
+    try (InputStream in = new FileInputStream(resourceUrl.getFile())) {
+      AASXDeserializer deserializer = new AASXDeserializer(in);
+      Environment environment = deserializer.read();
+
+      assertNotNull("Deserialized environment should not be null", environment);
+      assertNotNull("Environment should contain submodels", environment.getSubmodels());
+      assertFalse(
+          "Environment should contain at least one submodel", environment.getSubmodels().isEmpty());
+
+      List<InMemoryFile> relatedFiles = deserializer.getRelatedFiles();
+      assertNotNull("Related files list should not be null", relatedFiles);
+      assertTrue(
+          "Expected file should be present in related files",
+          relatedFiles.stream().anyMatch(file -> expectedFile.getPath().equals(file.getPath())));
+    }
   }
 
   private static List<SubmodelElement> createFileSubmodelElements() {
