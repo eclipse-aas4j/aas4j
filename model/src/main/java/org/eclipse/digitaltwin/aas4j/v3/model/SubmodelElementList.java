@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model;
@@ -28,18 +30,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
    * representing a set or a bag.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementList/orderRelevant
    *
    * @return Returns the boolean for the property orderRelevant.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementList/orderRelevant")
   boolean getOrderRelevant();
 
   /**
    * Defines whether order in list is relevant. If 'orderRelevant' = False then the list is
    * representing a set or a bag.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/orderRelevant
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementList/orderRelevant
    *
    * @param orderRelevant desired value for the property orderRelevant.
    */
@@ -49,18 +51,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * Semantic ID the submodel elements contained in the list match to.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/semanticIdListElement
    *
    * @return Returns the Reference for the property semanticIdListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementList/semanticIdListElement")
   Reference getSemanticIdListElement();
 
   /**
    * Semantic ID the submodel elements contained in the list match to.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/semanticIdListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/semanticIdListElement
    *
    * @param semanticIdListElement desired value for the property semanticIdListElement.
    */
@@ -70,18 +72,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * The submodel element type of the submodel elements contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/typeValueListElement
    *
    * @return Returns the AasSubmodelElements for the property typeValueListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementList/typeValueListElement")
   AasSubmodelElements getTypeValueListElement();
 
   /**
    * The submodel element type of the submodel elements contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/typeValueListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/typeValueListElement
    *
    * @param typeValueListElement desired value for the property typeValueListElement.
    */
@@ -91,18 +93,18 @@ public interface SubmodelElementList extends SubmodelElement {
    * The value type of the submodel element contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/valueTypeListElement
    *
    * @return Returns the DataTypeDefXsd for the property valueTypeListElement.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementList/valueTypeListElement")
   DataTypeDefXsd getValueTypeListElement();
 
   /**
    * The value type of the submodel element contained in the list.
    *
    * <p>More information under
-   * https://admin-shell.io/aas/3/1/SubmodelElementList/valueTypeListElement
+   * https://admin-shell.io/aas/3/2/SubmodelElementList/valueTypeListElement
    *
    * @param valueTypeListElement desired value for the property valueTypeListElement.
    */
@@ -111,19 +113,26 @@ public interface SubmodelElementList extends SubmodelElement {
   /**
    * Submodel element contained in the list.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementList/value
    *
-   * @return Returns the List of SubmodelElements for the property values.
+   * @return Returns the List of SubmodelElements for the property value.
    */
-  @IRI("https://admin-shell.io/aas/3/1/SubmodelElementList/value")
+  @IRI("https://admin-shell.io/aas/3/2/SubmodelElementList/value")
   List<SubmodelElement> getValue();
 
   /**
    * Submodel element contained in the list.
    *
-   * <p>More information under https://admin-shell.io/aas/3/1/SubmodelElementList/value
+   * <p>More information under https://admin-shell.io/aas/3/2/SubmodelElementList/value
    *
-   * @param value desired value for the property values.
+   * @param value desired value for the property value.
    */
   void setValue(List<SubmodelElement> value);
+
+  /**
+   * More information under https://admin-shell.io/aas/3/2/SubmodelElementList/value
+   *
+   * @param value desired value to be added to the property value.
+   */
+  void setValue(SubmodelElement value);
 }

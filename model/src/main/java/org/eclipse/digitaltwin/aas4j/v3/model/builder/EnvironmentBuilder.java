@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
@@ -38,33 +40,11 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
   /**
    * This function allows adding a value to the List assetAdministrationShells
    *
-   * @param assetAdministrationShells desired value to be added
+   * @param assetAdministrationShell desired value to be added
    * @return Builder object with new value for assetAdministrationShells
    */
-  public B assetAdministrationShells(AssetAdministrationShell assetAdministrationShells) {
-    getBuildingInstance().getAssetAdministrationShells().add(assetAdministrationShells);
-    return getSelf();
-  }
-
-  /**
-   * This function allows setting a value for submodels
-   *
-   * @param submodels desired value to be set
-   * @return Builder object with new value for submodels
-   */
-  public B submodels(List<Submodel> submodels) {
-    getBuildingInstance().setSubmodels(submodels);
-    return getSelf();
-  }
-
-  /**
-   * This function allows adding a value to the List submodels
-   *
-   * @param submodels desired value to be added
-   * @return Builder object with new value for submodels
-   */
-  public B submodels(Submodel submodels) {
-    getBuildingInstance().getSubmodels().add(submodels);
+  public B assetAdministrationShell(AssetAdministrationShell assetAdministrationShell) {
+    getBuildingInstance().getAssetAdministrationShells().add(assetAdministrationShell);
     return getSelf();
   }
 
@@ -82,11 +62,33 @@ public abstract class EnvironmentBuilder<T extends Environment, B extends Enviro
   /**
    * This function allows adding a value to the List conceptDescriptions
    *
-   * @param conceptDescriptions desired value to be added
+   * @param conceptDescription desired value to be added
    * @return Builder object with new value for conceptDescriptions
    */
-  public B conceptDescriptions(ConceptDescription conceptDescriptions) {
-    getBuildingInstance().getConceptDescriptions().add(conceptDescriptions);
+  public B conceptDescription(ConceptDescription conceptDescription) {
+    getBuildingInstance().getConceptDescriptions().add(conceptDescription);
+    return getSelf();
+  }
+
+  /**
+   * This function allows setting a value for submodels
+   *
+   * @param submodels desired value to be set
+   * @return Builder object with new value for submodels
+   */
+  public B submodels(List<Submodel> submodels) {
+    getBuildingInstance().setSubmodels(submodels);
+    return getSelf();
+  }
+
+  /**
+   * This function allows adding a value to the List submodels
+   *
+   * @param submodel desired value to be added
+   * @return Builder object with new value for submodels
+   */
+  public B submodel(Submodel submodel) {
+    getBuildingInstance().getSubmodels().add(submodel);
     return getSelf();
   }
 }
