@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
- * Copyright (c) 2023, SAP SE or an SAP affiliate company
+ * Copyright (c) 2026 Fraunhofer-Gesellschaft zur Foerderung der angewandten Forschung e. V.
+ * Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,6 +11,8 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+ *
+ * AI-assisted: This file was generated or updated with assistance from AI tools.
  */
 
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
@@ -34,29 +36,54 @@ import org.eclipse.digitaltwin.aas4j.v3.model.builder.QualifierBuilder;
 @IRI("aas:Qualifier")
 public class DefaultQualifier implements Qualifier {
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/semanticId")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/semanticId")
   protected Reference semanticId;
 
-  @IRI("https://admin-shell.io/aas/3/1/HasSemantics/supplementalSemanticIds")
+  @IRI("https://admin-shell.io/aas/3/2/HasSemantics/supplementalSemanticIds")
   protected List<Reference> supplementalSemanticIds = new ArrayList<>();
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifier/kind")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifier/kind")
   protected QualifierKind kind;
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifier/type")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifier/type")
   protected String type;
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifier/value")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifier/value")
   protected String value;
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueId")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifier/valueId")
   protected Reference valueId;
 
-  @IRI("https://admin-shell.io/aas/3/1/Qualifier/valueType")
+  @IRI("https://admin-shell.io/aas/3/2/Qualifier/valueType")
   protected DataTypeDefXsd valueType;
 
-  public DefaultQualifier() {
-    this.kind = QualifierKind.CONCEPT_QUALIFIER;
+  public DefaultQualifier() {}
+
+  @Override
+  public String toString() {
+    return "DefaultQualifier{"
+        + "kind='"
+        + kind
+        + "',"
+        + "type='"
+        + type
+        + "',"
+        + "valueType='"
+        + valueType
+        + "',"
+        + "value='"
+        + value
+        + "',"
+        + "valueId='"
+        + valueId
+        + "',"
+        + "semanticId='"
+        + semanticId
+        + "',"
+        + "supplementalSemanticIds='"
+        + supplementalSemanticIds
+        + "',"
+        + "}";
   }
 
   @Override
@@ -89,28 +116,6 @@ public class DefaultQualifier implements Qualifier {
           && Objects.equals(this.semanticId, other.semanticId)
           && Objects.equals(this.supplementalSemanticIds, other.supplementalSemanticIds);
     }
-  }
-
-  @Override
-  public String toString() {
-    return "DefaultQualifier{"
-        + "semanticId="
-        + semanticId
-        + ", supplementalSemanticIds="
-        + supplementalSemanticIds
-        + ", kind="
-        + kind
-        + ", type='"
-        + type
-        + '\''
-        + ", value='"
-        + value
-        + '\''
-        + ", valueId="
-        + valueId
-        + ", valueType="
-        + valueType
-        + '}';
   }
 
   @Override
@@ -181,6 +186,11 @@ public class DefaultQualifier implements Qualifier {
   @Override
   public void setSupplementalSemanticIds(List<Reference> supplementalSemanticIds) {
     this.supplementalSemanticIds = supplementalSemanticIds;
+  }
+
+  @Override
+  public void setSupplementalSemanticId(Reference supplementalSemanticId) {
+    this.supplementalSemanticIds.add(supplementalSemanticId);
   }
 
   /** This builder class can be used to construct a DefaultQualifier bean. */
