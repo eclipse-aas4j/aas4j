@@ -113,8 +113,6 @@ We intentionally do not override Apache POI's defaults inside AAS4J so that appl
 
 ## Support
 
-Current status of the project is *incubating*. 
-
 If you find any issue, please, file it at https://github.com/eclipse-aas4j/aas4j/issues. **Note** that some issues might affect the AAS specifications that are not addressed here but at the corresponding workstreams (AAS in Details) for the Industrial Digital Twin Association (IDTA).
 
 You can contact us via our mailing list (aas4j-dev@eclipse.org).
