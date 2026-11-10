@@ -15,10 +15,13 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
-import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
+import com.google.common.collect.Lists;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.core.TreeNode;

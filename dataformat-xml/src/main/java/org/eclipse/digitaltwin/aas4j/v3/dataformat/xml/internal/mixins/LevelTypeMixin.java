@@ -16,8 +16,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({"min", "nom", "typ", "max"})

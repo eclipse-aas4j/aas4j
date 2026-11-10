@@ -26,9 +26,11 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins.HasSemanticsMixin;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;

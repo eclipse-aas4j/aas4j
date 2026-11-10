@@ -19,10 +19,12 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SchemaValidator;
 import org.xml.sax.SAXException;
 

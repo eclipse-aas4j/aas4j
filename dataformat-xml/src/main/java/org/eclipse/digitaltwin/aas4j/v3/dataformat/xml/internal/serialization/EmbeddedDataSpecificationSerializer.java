@@ -15,8 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
-import com.google.common.base.CaseFormat;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
+
+import com.google.common.base.CaseFormat;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;

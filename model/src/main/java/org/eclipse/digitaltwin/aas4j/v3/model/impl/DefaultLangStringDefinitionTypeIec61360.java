@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;
 import org.eclipse.digitaltwin.aas4j.v3.model.builder.LangStringDefinitionTypeIec61360Builder;

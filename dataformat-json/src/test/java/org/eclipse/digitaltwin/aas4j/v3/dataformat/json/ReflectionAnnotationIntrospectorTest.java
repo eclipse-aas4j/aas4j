@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
@@ -40,6 +41,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.TypedProperty;
 import org.eclipse.digitaltwin.aas4j.v3.model.TypedSubProperty;
 import org.junit.Before;
 import org.junit.Test;
+
 import tools.jackson.databind.introspect.AnnotatedClass;
 import tools.jackson.databind.introspect.AnnotatedClassResolver;
 import tools.jackson.databind.json.JsonMapper;

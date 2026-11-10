@@ -15,7 +15,10 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.deserialization;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
@@ -47,7 +50,6 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-import org.xml.sax.SAXException;
 
 public class AASXDeserializerTest {
 
@@ -55,12 +57,7 @@ public class AASXDeserializerTest {
 
   @Test
   public void roundTrip()
-      throws SerializationException,
-          IOException,
-          InvalidFormatException,
-          DeserializationException,
-          ParserConfigurationException,
-          SAXException {
+      throws SerializationException, IOException, InvalidFormatException, DeserializationException {
     List<InMemoryFile> fileList = new ArrayList<>();
     byte[] operationManualContent = {0, 1, 2, 3, 4};
     byte[] thumbnail = {0, 1, 2, 3, 4};

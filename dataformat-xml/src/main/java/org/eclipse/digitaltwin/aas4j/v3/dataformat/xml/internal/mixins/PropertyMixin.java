@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
+
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 /**

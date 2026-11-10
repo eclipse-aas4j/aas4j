@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.JsonSchemaValidator;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.XmlSchemaValidator;

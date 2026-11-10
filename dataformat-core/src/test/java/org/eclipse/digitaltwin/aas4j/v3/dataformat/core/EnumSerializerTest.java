@@ -19,10 +19,15 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 import static org.junit.Assert.assertEquals;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
+import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
+import org.eclipse.digitaltwin.aas4j.v3.model.Direction;
+import org.eclipse.digitaltwin.aas4j.v3.model.ModellingKind;
+import org.eclipse.digitaltwin.aas4j.v3.model.StateOfEvent;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 
