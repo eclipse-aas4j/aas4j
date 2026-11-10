@@ -22,7 +22,9 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;

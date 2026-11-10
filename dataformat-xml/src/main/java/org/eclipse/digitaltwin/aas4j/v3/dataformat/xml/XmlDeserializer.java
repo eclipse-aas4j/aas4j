@@ -15,7 +15,6 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +24,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
@@ -34,6 +34,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.ValueDeserializer;

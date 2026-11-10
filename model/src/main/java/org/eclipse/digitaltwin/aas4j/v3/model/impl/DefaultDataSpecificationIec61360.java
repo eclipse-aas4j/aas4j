@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeIec61360;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringDefinitionTypeIec61360;

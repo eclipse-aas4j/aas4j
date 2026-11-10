@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import java.util.ArrayList;
 import java.util.List;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.core.TreeNode;

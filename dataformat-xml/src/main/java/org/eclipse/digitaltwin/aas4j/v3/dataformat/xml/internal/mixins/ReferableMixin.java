@@ -15,8 +15,8 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.LangStringsNameTypeDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.LangStringsTextTypeDeserializer;
@@ -24,6 +24,9 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.La
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.LangStringsTextTypeSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonSerialize;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;

@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASSimple;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.DeserializationException;

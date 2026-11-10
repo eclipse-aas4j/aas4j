@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultAnnotatedRelationshipElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBasicEventElement;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultBlob;

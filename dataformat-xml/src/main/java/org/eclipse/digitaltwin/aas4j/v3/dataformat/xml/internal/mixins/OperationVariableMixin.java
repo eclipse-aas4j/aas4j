@@ -19,6 +19,7 @@ import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceC
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.SubmodelElementSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonSerialize;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;

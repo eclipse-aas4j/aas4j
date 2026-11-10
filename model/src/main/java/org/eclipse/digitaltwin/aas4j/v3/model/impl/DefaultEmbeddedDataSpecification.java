@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.DataSpecificationContent;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Reference;

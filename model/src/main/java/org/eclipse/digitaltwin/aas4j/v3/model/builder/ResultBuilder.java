@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.model.builder;
 
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.Message;
 import org.eclipse.digitaltwin.aas4j.v3.model.Result;
 

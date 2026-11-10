@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomProperty;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.CustomSubmodel2;
@@ -43,6 +44,7 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodel;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import tools.jackson.databind.node.JsonNodeFactory;
 
 public class JsonDeserializerTest {

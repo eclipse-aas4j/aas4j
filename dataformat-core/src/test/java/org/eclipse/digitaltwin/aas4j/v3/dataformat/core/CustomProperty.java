@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core;
 
 import java.util.List;
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;

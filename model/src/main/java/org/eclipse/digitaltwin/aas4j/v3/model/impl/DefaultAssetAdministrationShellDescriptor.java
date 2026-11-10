@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.AdministrativeInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShellDescriptor;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetKind;

@@ -16,13 +16,16 @@
 
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.json;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.deserialization.EnumDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.serialization.EnumSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.internal.ReflectionAnnotationIntrospector;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;

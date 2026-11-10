@@ -17,10 +17,12 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization;
 
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
 import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
 import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
 import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;

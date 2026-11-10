@@ -19,7 +19,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.util;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import junitparams.JUnitParamsRunner;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.AASFull;
 import org.eclipse.digitaltwin.aas4j.v3.model.DataTypeDefXsd;
 import org.eclipse.digitaltwin.aas4j.v3.model.Environment;
@@ -43,6 +43,8 @@ import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultSubmodelElementList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import junitparams.JUnitParamsRunner;
 
 @RunWith(JUnitParamsRunner.class)
 public class AasUtilsTest {

@@ -30,9 +30,11 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.AASXSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.aasx.InMemoryFile;

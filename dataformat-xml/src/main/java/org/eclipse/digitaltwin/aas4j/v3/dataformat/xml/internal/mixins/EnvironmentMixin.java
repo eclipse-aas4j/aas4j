@@ -15,13 +15,16 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;
 import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
 import org.eclipse.digitaltwin.aas4j.v3.model.Submodel;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @JsonPropertyOrder({

@@ -206,7 +206,7 @@
                             <order>java,javax,org,com</order>
                         </importOrder>
                         <removeUnusedImports/>
-                        <importOrder/>
+                        <forbidWildcardImports/>
                         <formatAnnotations/>
                     </java>
                 </configuration>

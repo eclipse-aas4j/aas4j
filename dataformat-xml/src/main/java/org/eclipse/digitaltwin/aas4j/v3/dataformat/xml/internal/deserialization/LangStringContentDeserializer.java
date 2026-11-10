@@ -16,6 +16,7 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization;
 
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.util.LangStringContent;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;

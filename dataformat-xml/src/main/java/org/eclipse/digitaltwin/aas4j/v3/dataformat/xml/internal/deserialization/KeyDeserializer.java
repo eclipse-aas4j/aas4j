@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 import org.eclipse.digitaltwin.aas4j.v3.model.Key;
 import org.eclipse.digitaltwin.aas4j.v3.model.KeyTypes;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultKey;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;

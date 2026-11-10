@@ -18,8 +18,17 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization
 
 import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.digitaltwin.aas4j.v3.model.*;
+
+import org.eclipse.digitaltwin.aas4j.v3.model.EmbeddedDataSpecification;
+import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringNameType;
+import org.eclipse.digitaltwin.aas4j.v3.model.LangStringTextType;
+import org.eclipse.digitaltwin.aas4j.v3.model.Operation;
+import org.eclipse.digitaltwin.aas4j.v3.model.OperationVariable;
+import org.eclipse.digitaltwin.aas4j.v3.model.Qualifier;
+import org.eclipse.digitaltwin.aas4j.v3.model.Reference;
 import org.eclipse.digitaltwin.aas4j.v3.model.impl.DefaultOperation;
+
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;

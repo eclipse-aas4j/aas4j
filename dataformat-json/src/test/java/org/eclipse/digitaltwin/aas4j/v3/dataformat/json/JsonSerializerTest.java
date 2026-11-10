@@ -28,6 +28,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.SerializationException;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.ExampleData;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util.Examples;
@@ -43,6 +44,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.node.JsonNodeFactory;
 

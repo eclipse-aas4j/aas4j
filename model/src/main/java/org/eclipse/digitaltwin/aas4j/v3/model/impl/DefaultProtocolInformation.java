@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import org.eclipse.digitaltwin.aas4j.v3.model.ProtocolInformation;
 import org.eclipse.digitaltwin.aas4j.v3.model.SecurityAttributeObject;
 import org.eclipse.digitaltwin.aas4j.v3.model.annotations.IRI;

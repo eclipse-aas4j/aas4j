@@ -16,8 +16,10 @@
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.model.Extension;
+
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 

@@ -18,6 +18,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.json.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 

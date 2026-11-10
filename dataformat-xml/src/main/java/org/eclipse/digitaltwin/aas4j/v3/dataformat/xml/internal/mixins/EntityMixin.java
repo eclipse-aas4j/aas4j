@@ -15,12 +15,15 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.mixins;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.AasXmlNamespaceContext;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.deserialization.SubmodelElementsDeserializer;
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal.serialization.SubmodelElementsSerializer;
 import org.eclipse.digitaltwin.aas4j.v3.model.SubmodelElement;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonSerialize;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;

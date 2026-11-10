@@ -17,6 +17,7 @@ package org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.visitor.AssetAdministrationShellElementWalkerVisitor;
 import org.eclipse.digitaltwin.aas4j.v3.model.AssetAdministrationShell;
 import org.eclipse.digitaltwin.aas4j.v3.model.ConceptDescription;

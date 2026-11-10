@@ -15,9 +15,12 @@
  */
 package org.eclipse.digitaltwin.aas4j.v3.dataformat.xml.internal;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Collection;
+
 import org.eclipse.digitaltwin.aas4j.v3.dataformat.core.internal.util.ReflectionHelper;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import tools.jackson.databind.cfg.MapperConfig;
 import tools.jackson.databind.introspect.Annotated;
 import tools.jackson.databind.introspect.AnnotatedClass;
