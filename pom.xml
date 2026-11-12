@@ -41,7 +41,7 @@
         <revision.minor>0</revision.minor>
         <revision.patch>1</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
-        <model.version>3.0.1-SNAPSHOT</model.version>
+        <model.version>3.0.1</model.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
