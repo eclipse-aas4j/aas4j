@@ -39,7 +39,7 @@
     <properties>
         <revision.major>3</revision.major>
         <revision.minor>0</revision.minor>
-        <revision.patch>0</revision.patch>
+        <revision.patch>1</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
         <model.version>3.0.0-SNAPSHOT</model.version>
 
