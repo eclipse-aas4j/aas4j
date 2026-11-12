@@ -39,9 +39,9 @@
     <properties>
         <revision.major>3</revision.major>
         <revision.minor>0</revision.minor>
-        <revision.patch>1</revision.patch>
-        <revision>${revision.major}.${revision.minor}.${revision.patch}</revision>
-        <model.version>3.0.1</model.version>
+        <revision.patch>2</revision.patch>
+        <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
+        <model.version>3.0.2-SNAPSHOT</model.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -246,9 +246,6 @@
                             <publishingServerId>central</publishingServerId>
                             <autoPublish>true</autoPublish>
                             <waitUntil>published</waitUntil>
-                            <!-- Skip components (e.g. aas4j-model:3.0.1) that are already
-                                 published on Central; publish only the new modules. -->
-                            <ignorePublishedComponents>true</ignorePublishedComponents>
                             <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
                         </configuration>
                     </plugin>
