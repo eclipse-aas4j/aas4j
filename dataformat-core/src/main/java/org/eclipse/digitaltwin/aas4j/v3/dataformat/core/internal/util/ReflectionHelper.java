@@ -300,20 +300,24 @@ public class ReflectionHelper {
 
   static {
     ScanResult modelScan =
-        new ClassGraph().enableClassInfo().acceptPackagesNonRecursive(MODEL_PACKAGE_NAME).scan();
+        new ClassGraph()
+            .enableClassInfo()
+            .enableClassLoaders(ReflectionHelper.class.getClassLoader())
+            .acceptPackagesNonRecursive(MODEL_PACKAGE_NAME)
+            .scan();
     TYPES_WITH_MODEL_TYPE = scanModelTypes(modelScan);
     SUBTYPES = scanSubtypes(modelScan);
     JSON_MIXINS = scanMixins(modelScan, JSON_MIXINS_PACKAGE_NAME);
     XML_MIXINS = scanMixins(modelScan, XML_MIXINS_PACKAGE_NAME);
     DEFAULT_IMPLEMENTATIONS = scanDefaultImplementations(modelScan);
     INTERFACES = scanAasInterfaces();
-    ENUMS = modelScan.getAllEnums().loadClasses(Enum.class);
+    ENUMS = loadClasses(modelScan.getAllEnums(), Enum.class);
     INTERFACES_WITHOUT_DEFAULT_IMPLEMENTATION =
         getInterfacesWithoutDefaultImplementation(modelScan);
   }
 
   private static Set<Class<?>> getInterfacesWithoutDefaultImplementation(ScanResult modelScan) {
-    return modelScan.getAllInterfaces().loadClasses().stream()
+    return loadClasses(modelScan.getAllInterfaces(), Object.class).stream()
         .filter(x -> !hasDefaultImplementation(x))
         .collect(Collectors.toSet());
   }
@@ -338,13 +342,15 @@ public class ReflectionHelper {
     ScanResult defaulImplementationScan =
         new ClassGraph()
             .enableClassInfo()
+            .enableClassLoaders(ReflectionHelper.class.getClassLoader())
             .acceptPackagesNonRecursive(DEFAULT_IMPLEMENTATION_PACKAGE_NAME)
             .scan();
     List<ImplementationInfo> defaultImplementations = new ArrayList<>();
-    defaulImplementationScan
-        .getAllClasses()
-        .filter(x -> x.getSimpleName().startsWith(DEFAULT_IMPLEMENTATION_PREFIX))
-        .loadClasses()
+    loadClasses(
+            defaulImplementationScan
+                .getAllClasses()
+                .filter(x -> x.getSimpleName().startsWith(DEFAULT_IMPLEMENTATION_PREFIX)),
+            Object.class)
         .stream()
         .forEach(
             x -> {
@@ -361,12 +367,20 @@ public class ReflectionHelper {
                     "could not find interface realized by default implementation class '{}'",
                     x.getSimpleName());
               } else {
-                Class<?> implementedClass = interfaceClassInfos.get(0).loadClass();
-                defaultImplementations.add(new ImplementationInfo(implementedClass, x));
-                logger.debug(
-                    "using default implementation class '{}' for interface '{}'",
-                    x.getSimpleName(),
-                    interfaceClassInfos.get(0).getName());
+                try {
+                  Class<?> implementedClass =
+                      Class.forName(
+                          interfaceClassInfos.get(0).getName(),
+                          false,
+                          Thread.currentThread().getContextClassLoader());
+                  defaultImplementations.add(new ImplementationInfo(implementedClass, x));
+                  logger.debug(
+                      "using default implementation class '{}' for interface '{}'",
+                      x.getSimpleName(),
+                      interfaceClassInfos.get(0).getName());
+                } catch (ClassNotFoundException e) {
+                  // ignore
+                }
               }
             });
     return defaultImplementations;
@@ -379,12 +393,15 @@ public class ReflectionHelper {
 
   private static Map<Class<?>, Class<?>> scanMixins(ScanResult modelScan, String packageName) {
     ScanResult mixinScan =
-        new ClassGraph().enableClassInfo().acceptPackagesNonRecursive(packageName).scan();
+        new ClassGraph()
+            .enableClassInfo()
+            .enableClassLoaders(ReflectionHelper.class.getClassLoader())
+            .acceptPackagesNonRecursive(packageName)
+            .scan();
     Map<Class<?>, Class<?>> mixins = new HashMap<>();
-    mixinScan
-        .getAllClasses()
-        .filter(x -> x.getSimpleName().endsWith(MIXIN_SUFFIX))
-        .loadClasses()
+    loadClasses(
+            mixinScan.getAllClasses().filter(x -> x.getSimpleName().endsWith(MIXIN_SUFFIX)),
+            Object.class)
         .forEach(
             x -> {
               String modelClassName =
@@ -398,11 +415,20 @@ public class ReflectionHelper {
                 logger.warn(
                     "could not auto-resolve target class for mixin '{}'", x.getSimpleName());
               } else {
-                mixins.put(modelClassInfos.get(0).loadClass(), x);
-                logger.debug(
-                    "using mixin '{}' for class '{}'",
-                    x.getSimpleName(),
-                    modelClassInfos.get(0).getName());
+                try {
+                  mixins.put(
+                      Class.forName(
+                          modelClassInfos.get(0).getName(),
+                          false,
+                          Thread.currentThread().getContextClassLoader()),
+                      x);
+                  logger.debug(
+                      "using mixin '{}' for class '{}'",
+                      x.getSimpleName(),
+                      modelClassInfos.get(0).getName());
+                } catch (ClassNotFoundException e) {
+                  // ignore
+                }
               }
             });
     return mixins;
@@ -411,15 +437,24 @@ public class ReflectionHelper {
   private static Map<Class<?>, Set<Class<?>>> scanSubtypes(ScanResult modelScan) {
     return modelScan.getAllInterfaces().stream()
         .filter(ReflectionHelper::hasSubclass)
-        .collect(Collectors.toMap(ClassInfo::loadClass, ReflectionHelper::getSubclasses));
+        .collect(
+            Collectors.toMap(
+                x -> {
+                  try {
+                    return Class.forName(
+                        x.getName(), false, Thread.currentThread().getContextClassLoader());
+                  } catch (ClassNotFoundException e) {
+                    // ignore
+                    return null;
+                  }
+                },
+                ReflectionHelper::getSubclasses));
   }
 
   private static Set<Class<?>> getSubclasses(ClassInfo clazzInfo) {
-    return clazzInfo
-        .getClassesImplementing()
-        .directOnly()
-        .filter(ClassInfo::isInterface)
-        .loadClasses()
+    return loadClasses(
+            clazzInfo.getAllClassesImplementing().directOnly().filter(ClassInfo::isInterface),
+            Object.class)
         .stream()
         .collect(Collectors.toSet());
   }
@@ -432,7 +467,10 @@ public class ReflectionHelper {
     Set<Class<?>> typesWithModelTypes;
     typesWithModelTypes =
         MODEL_TYPE_SUPERCLASSES.stream()
-            .flatMap(x -> modelScan.getClassesImplementing(x.getName()).loadClasses().stream())
+            .flatMap(
+                x ->
+                    loadClasses(modelScan.getAllClassesImplementing(x.getName()), Object.class)
+                        .stream())
             .collect(Collectors.toSet());
     typesWithModelTypes.addAll(MODEL_TYPE_SUPERCLASSES);
     return typesWithModelTypes;
@@ -482,5 +520,28 @@ public class ReflectionHelper {
           field.setAccessible(false);
         };
     return resetRunnable;
+  }
+
+  private static List<Class<?>> loadClasses(List<ClassInfo> infos) {
+    return infos.stream()
+        .map(
+            x -> {
+              try {
+                return Class.forName(
+                    x.getName(), false, Thread.currentThread().getContextClassLoader());
+              } catch (Exception e) {
+                logger.debug("failed to load class {}", x.getName());
+                return null;
+              }
+            })
+        .filter(c -> c != null)
+        .collect(Collectors.toList());
+  }
+
+  private static <T> List<Class<T>> loadClasses(List<ClassInfo> infos, Class<T> type) {
+    return loadClasses(infos).stream()
+        .filter(x -> type.isAssignableFrom(x))
+        .map(x -> (Class<T>) x)
+        .collect(Collectors.toList());
   }
 }

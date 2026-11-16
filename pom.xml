@@ -38,10 +38,10 @@
     </modules>
     <properties>
         <revision.major>3</revision.major>
-        <revision.minor>0</revision.minor>
-        <revision.patch>2</revision.patch>
+        <revision.minor>1</revision.minor>
+        <revision.patch>0</revision.patch>
         <revision>${revision.major}.${revision.minor}.${revision.patch}-SNAPSHOT</revision>
-        <model.version>3.0.2-SNAPSHOT</model.version>
+        <model.version>3.1.0-SNAPSHOT</model.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -57,7 +57,7 @@
         <plugin.projectinfo.version>3.9.0</plugin.projectinfo.version>
         <plugin.source.version>3.4.0</plugin.source.version>
         <plugin.jacoco.version>0.8.16</plugin.jacoco.version>
-        <classgraph.version>4.8.197</classgraph.version>
+        <classgraph.version>5.0.2</classgraph.version>
         <commons-codec.version>1.15</commons-codec.version>
         <commons-io.version>2.22.0</commons-io.version>
         <commons-compress.version>1.28.0</commons-compress.version>
