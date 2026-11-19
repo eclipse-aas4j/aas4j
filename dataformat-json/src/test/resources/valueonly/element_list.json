@@ -1,0 +1,64 @@
+[
+  {
+    "propString": "foo"
+  },
+  {
+    "rangeDouble": {
+      "min": 3.0,
+      "max": 5.0
+    }
+  },
+  {
+    "entity1": {
+      "statements": [
+        {
+          "maxRotationSpeed": 5000
+        }
+      ],
+      "globalAssetId": "Global Asset Id",
+      "entityType": "SelfManagedEntity"
+    }
+  },
+  {
+    "annotatedRelationship1": {
+      "first": {
+        "referredSemanticId": {
+          "keys": [
+            {
+              "type": "ConceptDescription",
+              "value": "Concept Description key value"
+            }
+          ],
+          "type": "ExternalReference"
+        },
+        "keys": [
+          {
+            "type": "GlobalReference",
+            "value": "global reference key value"
+          }
+        ],
+        "type": "ExternalReference"
+      },
+      "second": {
+        "keys": [
+          {
+            "type": "Property",
+            "value": "MaxRotationSpeed"
+          }
+        ],
+        "type": "ModelReference"
+      },
+      "annotations": [
+        {
+          "propDateTime": "2022-07-31T17:08:51Z"
+        },
+        {
+          "rangeInt": {
+            "min": 17,
+            "max": 42
+          }
+        }
+      ]
+    }
+  }
+]
